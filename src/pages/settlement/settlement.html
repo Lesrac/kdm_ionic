@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-item>
+        Settlement
+        <ion-input required [(ngModel)]="settlement.name"></ion-input>
+      </ion-item>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider>
+        Survival Limit
+      </ion-item-divider>
+      <ion-item>
+        <ion-input required [(ngModel)]="settlement.survivalLimit"></ion-input>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Death Count
+      </ion-item-divider>
+      <ion-item text-wrap>
+        <ion-checkbox *ngFor="let deathcount of deathCounts" [(ngModel)]="settlement.deahtcount"></ion-checkbox>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Timeline
+      </ion-item-divider>
+      <ion-item *ngFor="let timelineevent of settlement.timeline">
+        <ion-label>{{timelineevent.position}} <span *ngIf="timelineevent.event"><ion-icon name="book"></ion-icon> {{timelineevent.event.name}}</span>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Milestone Story Events
+      </ion-item-divider>
+      <ion-item *ngFor="let milestone of settlement.milestones">
+        <ion-checkbox [(ngModel)]="milestone.reached"></ion-checkbox>
+        <ion-label>{{milestone.tag}} <b>{{milestone.name}}</b></ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Nemesis Monsters
+      </ion-item-divider>
+      <ion-item *ngFor="let nemesis of settlement.nemesisMonsters">
+        <ion-checkbox [(ngModel)]="nemesis.isHuntable">
+        </ion-checkbox>
+        <ion-label>{{nemesis.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="nemesis.defeatedLevelOne">
+        </ion-checkbox>
+        <ion-label>Lvl 1</ion-label>
+        <ion-checkbox [(ngModel)]="nemesis.defeatedLevelTwo">
+        </ion-checkbox>
+        <ion-label>Lvl 2</ion-label>
+        <ion-checkbox [(ngModel)]="nemesis.defeatedLevelThree">
+        </ion-checkbox>
+        <ion-label>Lvl 3</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Innovations
+      </ion-item-divider>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Principles
+      </ion-item-divider>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Settlement Locations
+      </ion-item-divider>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Quarries
+      </ion-item-divider>
+      <ion-item *ngFor="let quarry of settlement.quarries">
+        <ion-checkbox [(ngModel)]="quarry.isHuntable"></ion-checkbox>
+        <ion-label>{{quarry.name}}</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider>
+        Storage
+      </ion-item-divider>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Defeated Monsters
+        <button ion-button icon-only>
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </ion-item-divider>
+      <ion-item *ngFor="let monster of settlement.defeatedMonsters">
+        {{monster.name}} - {{monster.level}}
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Population
+      </ion-item-divider>
+      <ion-item>
+        <input class="item" type="text" required [(ngModel)]="settlement.population" name="population">
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Lost Settlements
+      </ion-item-divider>
+      <ion-item>
+        <ion-checkbox *ngFor="let lostsettlement of lostSettlements"></ion-checkbox>
+      </ion-item>
+    </ion-item-group>
+
+  </ion-list>
+</ion-content>
