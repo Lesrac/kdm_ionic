@@ -1,6 +1,7 @@
 Setup:
 Needs Android and NPM installed
 - npm install -g ionic cordova
+- npm install
 
 Start:
 - ionic serve
