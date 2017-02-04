@@ -1,6 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {NavController, NavParams} from "ionic-angular";
 import {Settlement} from "../../models/settlement";
+import {Monster} from "../../models/monster";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -18,5 +19,9 @@ export class SettlementPage {
 
   constructor(public navCtrl: NavController, public params: NavParams) {
     this.settlement = params.get("settlement");
+  }
+
+  addDefeatedMonster(): void {
+    this.settlement.defeatedMonsters.push(new Monster('White Lion'));
   }
 }
