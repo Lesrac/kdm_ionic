@@ -1,6 +1,8 @@
 <ion-content>
-  <button ion-button (click)="close()">Close</button>
-
+  <ion-item-group>
+    <button ion-button (click)="close()">Close</button>
+    <ion-title>{{lanternEvent.name}}</ion-title>
+  </ion-item-group>
   <ion-item>
     {{lanternEvent.todo}}
   </ion-item>

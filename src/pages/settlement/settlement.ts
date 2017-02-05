@@ -32,9 +32,9 @@ export class SettlementPage {
   eventReached(event: Event, kdmEvent: any): void {
     if(kdmEvent.reached){
       if(kdmEvent instanceof Timeline){
+        console.log("timeline");
         kdmEvent = kdmEvent.event;
         if(kdmEvent == null) {
-          console.log("return");
           return;
         }
       }

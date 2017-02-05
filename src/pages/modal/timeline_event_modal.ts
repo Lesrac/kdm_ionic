@@ -1,6 +1,5 @@
 import {Component} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
-import {Timeline} from "../../models/timeline";
 import {LanternEvent} from "../../models/lantern_event";
 /**
  * Created by Daniel on 04.02.2017.
