@@ -7,6 +7,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {SettlementsPage} from "../pages/settlements/settlements";
 import {SettlementPage} from "../pages/settlement/settlement";
 import {KDMService} from "../services/kdm.service";
+import {CreateSettlementPopover} from "../pages/popover/create_settlement_popover";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {KDMService} from "../services/kdm.service";
     ContactPage,
     SettlementsPage,
     SettlementPage,
-    TabsPage
+    TabsPage,
+    CreateSettlementPopover
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -27,7 +29,8 @@ import {KDMService} from "../services/kdm.service";
     ContactPage,
     SettlementsPage,
     SettlementPage,
-    TabsPage
+    TabsPage,
+    CreateSettlementPopover
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, KDMService]
 })

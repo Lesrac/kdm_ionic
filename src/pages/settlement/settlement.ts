@@ -18,7 +18,9 @@ export class SettlementPage {
   lostSettlements: number[] = Array(19).fill((x, i) => i);
 
   constructor(public navCtrl: NavController, public params: NavParams) {
-    this.settlement = params.get("settlement");
+    if (params.get("settlement")) {
+      this.settlement = params.get("settlement");
+    }
   }
 
   addDefeatedMonster(): void {

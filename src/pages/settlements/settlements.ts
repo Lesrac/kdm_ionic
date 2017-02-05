@@ -1,11 +1,11 @@
-import {NavController} from "ionic-angular";
+import {NavController, PopoverController} from "ionic-angular";
 import {Component, OnInit} from "@angular/core";
 import {Settlement} from "../../models/settlement";
 import {SettlementPage} from "../settlement/settlement";
 import {Timeline} from "../../models/timeline";
 import {LanternEvent} from "../../models/lantern_event";
-import {Monster} from "../../models/monster";
 import {KDMService} from "../../services/kdm.service";
+import {CreateSettlementPopover} from "../popover/create_settlement_popover";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -17,12 +17,19 @@ import {KDMService} from "../../services/kdm.service";
 export class SettlementsPage implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public navCtrl: NavController, private kdmService: KDMService) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private kdmService: KDMService) {
+  }
+
+  presentPopover() {
+    let settlement: Settlement = new Settlement('');
+    let popover = this.popoverCtrl.create(CreateSettlementPopover, {
+      se: settlement
+    });
+    popover.present().then(x => this.settlements.push(settlement));
   }
 
   addSettlement(): void {
     this.kdmService.addSettlement(this.createDefaultSettlement());
-    // this.settlements.push(this.createDefaultSettlement());
   }
 
   ngOnInit(): void {
@@ -30,7 +37,7 @@ export class SettlementsPage implements OnInit {
   }
 
   private createDefaultSettlement(): Settlement {
-    let settlement: Settlement = new Settlement('New Haven');
+    let settlement: Settlement = new Settlement('New Settlement');
     this.createDefaultTimeline(settlement.timeline, 1);
     this.createDefaultNemesisMonsters(settlement);
     this.createDefaultMilestoneStoryEvents(settlement);
