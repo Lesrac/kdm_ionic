@@ -8,6 +8,7 @@ import {SettlementsPage} from "../pages/settlements/settlements";
 import {SettlementPage} from "../pages/settlement/settlement";
 import {KDMService} from "../services/kdm.service";
 import {CreateSettlementPopover} from "../pages/popover/create_settlement_popover";
+import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {CreateSettlementPopover} from "../pages/popover/create_settlement_popove
     SettlementsPage,
     SettlementPage,
     TabsPage,
-    CreateSettlementPopover
+    CreateSettlementPopover,
+    TimelineEventModal
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,7 +32,8 @@ import {CreateSettlementPopover} from "../pages/popover/create_settlement_popove
     SettlementsPage,
     SettlementPage,
     TabsPage,
-    CreateSettlementPopover
+    CreateSettlementPopover,
+    TimelineEventModal
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, KDMService]
 })

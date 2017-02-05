@@ -34,6 +34,8 @@
         Timeline
       </ion-item-divider>
       <ion-item *ngFor="let timelineevent of settlement.timeline">
+        <ion-checkbox [(ngModel)]="timelineevent.reached"
+                      (click)="timelineeventReached($event,timelineevent)"></ion-checkbox>
         <ion-label>{{timelineevent.position}} <span *ngIf="timelineevent.event"><ion-icon name="book"></ion-icon> {{timelineevent.event.name}}</span>
         </ion-label>
       </ion-item>

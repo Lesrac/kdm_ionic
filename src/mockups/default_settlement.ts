@@ -21,9 +21,9 @@ export const QUARRIES: Monster[] = [
 ];
 
 export const EVENTS: LanternEvent[] = [
-  {name:'Principle: New Life', tag: 'First child is born', reached: false, isMilestone: true},
-  {name:'Principle: Death', tag: 'First time death count is updated', reached: false, isMilestone: true},
-  {name:'Principle: Society', tag: 'Populations reaches 15', reached: false, isMilestone: true},
-  {name:'Principle: Hooded Knight', tag: 'Settlement has 5 innovations', reached: false, isMilestone: true},
-  {name:'Principle: Game Over', tag: 'Population reaches 0', reached: false, isMilestone: true}
+  {name:'Principle: New Life', tag: 'First child is born', reached: false, isMilestone: true, todo: 'The group must decide how to raise their young. Choose one.', storyEvents: []},
+  {name:'Principle: Death', tag: 'First time death count is updated', reached: false, isMilestone: true, todo: '', storyEvents: []},
+  {name:'Principle: Society', tag: 'Populations reaches 15', reached: false, isMilestone: true, todo: '', storyEvents: []},
+  {name:'Principle: Hooded Knight', tag: 'Settlement has 5 innovations', reached: false, isMilestone: true, todo: '', storyEvents: []},
+  {name:'Principle: Game Over', tag: 'Population reaches 0', reached: false, isMilestone: true, todo: '', storyEvents: []}
 ];

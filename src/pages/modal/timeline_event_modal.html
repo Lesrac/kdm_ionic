@@ -1,0 +1,10 @@
+<ion-content>
+  <button ion-button (click)="close()">Close</button>
+  <ion-item>
+    {{timeline.event.todo}}
+  </ion-item>
+  <ion-item-group *ngFor="let storyEvent of timeline.event.storyEvents">
+    <ion-item-divider>{{storyEvent.title}}</ion-item-divider>
+    <ion-item>{{storyEvent.description}}</ion-item>
+  </ion-item-group>
+</ion-content>

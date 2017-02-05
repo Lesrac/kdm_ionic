@@ -6,6 +6,7 @@ import {Timeline} from "../../models/timeline";
 import {LanternEvent} from "../../models/lantern_event";
 import {KDMService} from "../../services/kdm.service";
 import {CreateSettlementPopover} from "../popover/create_settlement_popover";
+import {StoryEvent} from "../../models/story_event";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -51,6 +52,19 @@ export class SettlementsPage implements OnInit {
     switch (id) {
       case 1:
         event.name = "Returning Survivors";
+        event.todo = "Nominate a survivor to utter the First Words";
+        let story1 = new StoryEvent();
+        story1.title = "First Words";
+        story1.description = "whaba";
+        let story2 = new StoryEvent();
+        story2.title = "Build the Innovation Deck";
+        story2.description = "whubu";
+        let story3 = new StoryEvent();
+        story3.title = "Glowing Center";
+        story3.description = "whebe";
+        event.storyEvents.push(story1);
+        event.storyEvents.push(story2);
+        event.storyEvents.push(story3);
         timelineYear.event = event;
         break;
       case 2:
