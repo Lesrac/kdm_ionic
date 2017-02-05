@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {NavController, NavParams, PopoverController, ModalController} from "ionic-angular";
+import {NavController, NavParams, ModalController} from "ionic-angular";
 import {Settlement} from "../../models/settlement";
 import {Monster} from "../../models/monster";
 import {TimelineEventModal} from "../modal/timeline_event_modal";
@@ -29,10 +29,18 @@ export class SettlementPage {
     this.settlement.defeatedMonsters.push(new Monster('White Lion'));
   }
 
-  timelineeventReached(event: Event, timeline: Timeline): void {
-    if (timeline.reached && timeline.event != null) {
+  eventReached(event: Event, kdmEvent: any): void {
+    if(kdmEvent.reached){
+      if(kdmEvent instanceof Timeline){
+        kdmEvent = kdmEvent.event;
+        if(kdmEvent == null) {
+          console.log("return");
+          return;
+        }
+      }
+      console.log(kdmEvent);
       let popover = this.modalCtrl.create(TimelineEventModal, {
-        timeline: timeline
+        lanternEvent: kdmEvent
       });
       popover.present({
         ev: event
