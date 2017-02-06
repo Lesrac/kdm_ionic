@@ -11,13 +11,11 @@ import {LanternEvent} from "../../models/lantern_event";
 export class TimelineEventModal {
   lanternEvent: LanternEvent;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams)
-  {
+  constructor(public viewCtrl: ViewController, private params: NavParams) {
     this.lanternEvent = this.params.get('lanternEvent');
-    console.log(this.lanternEvent);
   }
 
-  close(){
+  close() {
     this.viewCtrl.dismiss();
   }
 }

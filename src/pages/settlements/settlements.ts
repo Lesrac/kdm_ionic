@@ -2,11 +2,8 @@ import {NavController, PopoverController} from "ionic-angular";
 import {Component, OnInit} from "@angular/core";
 import {Settlement} from "../../models/settlement";
 import {SettlementPage} from "../settlement/settlement";
-import {Timeline} from "../../models/timeline";
-import {LanternEvent} from "../../models/lantern_event";
 import {KDMService} from "../../services/kdm.service";
 import {CreateSettlementPopover} from "../popover/create_settlement_popover";
-import {StoryEvent} from "../../models/story_event";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -48,7 +45,6 @@ export class SettlementsPage implements OnInit {
 
   private createDefaultTimeline(settlement: Settlement): void {
     this.kdmService.getDefaultTimeline().then(timeline => {
-      console.log(typeof timeline);
       settlement.timeline = timeline;
     });
   }

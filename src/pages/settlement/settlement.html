@@ -35,8 +35,8 @@
       </ion-item-divider>
       <ion-item *ngFor="let timelineevent of settlement.timeline">
         <ion-checkbox [(ngModel)]="timelineevent.reached"
-                      (click)="eventReached($event, timelineevent)"></ion-checkbox>
-        <ion-label>{{timelineevent.position}} <span *ngIf="timelineevent.event"><ion-icon name="book"></ion-icon> {{timelineevent.event.name}}</span>
+                      (click)="timelineReached($event, timelineevent)"></ion-checkbox>
+        <ion-label>{{timelineevent.position}} <span *ngIf="timelineevent.lanternEvent"><ion-icon name="book"></ion-icon> {{timelineevent.lanternEvent.name}}</span>
         </ion-label>
       </ion-item>
     </ion-item-group>
