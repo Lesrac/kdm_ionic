@@ -137,7 +137,8 @@
         Population
       </ion-item-divider>
       <ion-item>
-        <ion-input required [(ngModel)]="settlement.population" (onchange)="checkMilestone('population')"></ion-input>
+        <ion-input required [(ngModel)]="settlement.population"
+                   (change)="checkMilestone($event, 'population', settlement.population)"></ion-input>
       </ion-item>
     </ion-item-group>
 

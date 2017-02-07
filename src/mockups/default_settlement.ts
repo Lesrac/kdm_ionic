@@ -163,37 +163,47 @@ export const MILESTONES: Milestone[] = [
     tag: 'First child is born',
     reached: false,
     todo: 'The group must decide how to raise their young. Choose one.',
-    storyEvents: []
+    storyEvents: [],
+    value: 1,
+    identifier: 'child'
   },
   {
     name: 'Principle: Death',
     tag: 'First time death count is updated',
     reached: false,
     todo: '',
-    storyEvents: []
+    storyEvents: [],
+    value: 1,
+    identifier: 'death'
   },
   {
     name: 'Principle: Society',
     tag: 'Populations reaches 15',
     reached: false,
     todo: '',
-    storyEvents: []
+    storyEvents: [],
+    value: 15,
+    identifier: 'population'
   },
   {
     name: 'Principle: Hooded Knight',
     tag: 'Settlement has 5 innovations',
     reached: false,
     todo: '',
-    storyEvents: []
+    storyEvents: [],
+    value: 5,
+    identifier: 'innovation'
   },
   {
     name: 'Principle: Game Over',
     tag: 'Population reaches 0',
     reached: false,
     todo: '',
-    storyEvents: []
+    storyEvents: [],
+    value: 0,
+    identifier: 'population'
   }
-]
+];
 
 export const DEFAULTTIMELINE: Timeline[] = [
   {position: 1, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Returning Survivors')},

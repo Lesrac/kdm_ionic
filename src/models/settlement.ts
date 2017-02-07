@@ -1,21 +1,22 @@
 import {Timeline} from "./timeline";
 import {LanternEvent} from "./lantern_event";
 import {Monster} from "./monster";
+import {Milestone} from "./milestone";
 /**
  * Created by Daniel on 27.01.2017.
  */
-export class Settlement{
+export class Settlement {
   name: string;
   survivalLimit: number = 0;
   population: number = 0;
   deahtcount: number = 0;
   timeline: Timeline[] = [];
-  milestones: LanternEvent[] = [];
+  milestones: Milestone[] = [];
   nemesisMonsters: Monster[] = [];
   quarries: Monster[] = [];
   defeatedMonsters: Monster[] = [];
 
-  constructor(name: string){
+  constructor(name: string) {
     this.name = name;
   }
 }
