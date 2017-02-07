@@ -57,4 +57,8 @@ export class SettlementPage {
     }
   }
 
+  checkMilestone(what: string): void {
+    
+  }
+
 }

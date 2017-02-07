@@ -54,9 +54,7 @@ export class SettlementsPage implements OnInit {
   }
 
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
-    this.kdmService.getEvents().then(lanternEvents => {
-      settlement.milestones = lanternEvents.filter(lanternEvent => lanternEvent.isMilestone);
-    });
+    this.kdmService.getMilestones().then(milestones => settlement.milestones = milestones);
   }
 
   private createDefaultQuarries(settlement: Settlement): void {

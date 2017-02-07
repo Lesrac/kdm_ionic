@@ -1,9 +1,13 @@
 import {Injectable} from "@angular/core";
 import {Settlement} from "../models/settlement";
-import {SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE} from "../mockups/default_settlement";
+import {
+  SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
+  MILESTONES
+} from "../mockups/default_settlement";
 import {Monster} from "../models/monster";
 import {LanternEvent} from "../models/lantern_event";
 import {Timeline} from "../models/timeline";
+import {Milestone} from "../models/milestone";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -32,6 +36,10 @@ export class KDMService {
 
   getEvents(): Promise<LanternEvent[]> {
     return Promise.resolve(EVENTS);
+  }
+
+  getMilestones(): Promise<Milestone[]> {
+    return Promise.resolve(MILESTONES);
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {

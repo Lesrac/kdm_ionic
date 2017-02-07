@@ -3,6 +3,7 @@ import {Settlement} from "../models/settlement";
 import {LanternEvent} from "../models/lantern_event";
 import {Timeline} from "../models/timeline";
 import {StoryEvent} from "../models/story_event";
+import {Milestone} from "../models/milestone";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -78,113 +79,89 @@ export const STORYEVENTS: StoryEvent[] = [
 export const EVENTS: LanternEvent[] = [
   {
     name: 'Returning Survivors',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: 'Nominate a survivor to utter the First Words',
     storyEvents: STORYEVENTS.slice(0, 3)
   },
   {
     name: 'Endless Screams',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Nemesis Encounter - Butcher',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Hands of Heat',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Armored Strangers',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Phoenix Feather',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Nemesis Encounter - King\'s Man',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Regal Visit',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Principle: Conviction',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Nemesis Encounter',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Watched',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Nemesis Encounter - Level 3',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
   },
   {
     name: 'Nemesis Encounter - Watcher',
-    tag: '',
     reached: false,
-    isMilestone: false,
     todo: '',
     storyEvents: []
-  },
+  }
+];
+
+export const MILESTONES: Milestone[] = [
   {
     name: 'Principle: New Life',
     tag: 'First child is born',
     reached: false,
-    isMilestone: true,
     todo: 'The group must decide how to raise their young. Choose one.',
     storyEvents: []
   },
@@ -192,7 +169,6 @@ export const EVENTS: LanternEvent[] = [
     name: 'Principle: Death',
     tag: 'First time death count is updated',
     reached: false,
-    isMilestone: true,
     todo: '',
     storyEvents: []
   },
@@ -200,7 +176,6 @@ export const EVENTS: LanternEvent[] = [
     name: 'Principle: Society',
     tag: 'Populations reaches 15',
     reached: false,
-    isMilestone: true,
     todo: '',
     storyEvents: []
   },
@@ -208,7 +183,6 @@ export const EVENTS: LanternEvent[] = [
     name: 'Principle: Hooded Knight',
     tag: 'Settlement has 5 innovations',
     reached: false,
-    isMilestone: true,
     todo: '',
     storyEvents: []
   },
@@ -216,11 +190,10 @@ export const EVENTS: LanternEvent[] = [
     name: 'Principle: Game Over',
     tag: 'Population reaches 0',
     reached: false,
-    isMilestone: true,
     todo: '',
     storyEvents: []
   }
-];
+]
 
 export const DEFAULTTIMELINE: Timeline[] = [
   {position: 1, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Returning Survivors')},

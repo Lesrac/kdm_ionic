@@ -128,7 +128,7 @@
         </button>
       </ion-item-divider>
       <ion-item *ngFor="let monster of settlement.defeatedMonsters">
-        {{monster.name}} - {{monster.level}}
+        {{monster.name}} - Level {{monster.level}}
       </ion-item>
     </ion-item-group>
 
@@ -137,7 +137,7 @@
         Population
       </ion-item-divider>
       <ion-item>
-        <ion-input required [(ngModel)]="settlement.population"></ion-input>
+        <ion-input required [(ngModel)]="settlement.population" (onchange)="checkMilestone('population')"></ion-input>
       </ion-item>
     </ion-item-group>
 
