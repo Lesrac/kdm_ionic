@@ -1,14 +1,15 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { TabsPage } from '../pages/tabs/tabs';
+import {NgModule, ErrorHandler} from '@angular/core';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {MyApp} from './app.component';
+import {AboutPage} from '../pages/about/about';
+import {ContactPage} from '../pages/contact/contact';
+import {TabsPage} from '../pages/tabs/tabs';
 import {SettlementsPage} from "../pages/settlements/settlements";
 import {SettlementPage} from "../pages/settlement/settlement";
 import {KDMService} from "../services/kdm.service";
 import {CreateSettlementPopover} from "../pages/popover/create_settlement_popover";
 import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
+import {DefeatedMonsterModal} from "../pages/modal/defeated_monster_modal";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
     SettlementPage,
     TabsPage,
     CreateSettlementPopover,
-    TimelineEventModal
+    TimelineEventModal,
+    DefeatedMonsterModal
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,8 +35,10 @@ import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
     SettlementPage,
     TabsPage,
     CreateSettlementPopover,
-    TimelineEventModal
+    TimelineEventModal,
+    DefeatedMonsterModal
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, KDMService]
 })
-export class AppModule {}
+export class AppModule {
+}

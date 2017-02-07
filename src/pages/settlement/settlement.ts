@@ -5,6 +5,7 @@ import {Monster} from "../../models/monster";
 import {TimelineEventModal} from "../modal/timeline_event_modal";
 import {Timeline} from "../../models/timeline";
 import {LanternEvent} from "../../models/lantern_event";
+import {DefeatedMonsterModal} from "../modal/defeated_monster_modal";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -27,15 +28,19 @@ export class SettlementPage {
   }
 
   addDefeatedMonster(): void {
-    this.settlement.defeatedMonsters.push(new Monster('White Lion'));
+    //   this.settlement.defeatedMonsters.push(new Monster('White Lion'));
+    let modal = this.modalCtrl.create(DefeatedMonsterModal, {
+      settlement: this.settlement
+    });
+    modal.present();
   }
 
   timelineReached(event: Event, timeline: Timeline): void {
     if (timeline.lanternEvent != null && timeline.reached) {
-      let popover = this.modalCtrl.create(TimelineEventModal, {
+      let modal = this.modalCtrl.create(TimelineEventModal, {
         lanternEvent: timeline.lanternEvent
       });
-      popover.present({
+      modal.present({
         ev: event
       });
     }

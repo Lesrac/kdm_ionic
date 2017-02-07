@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-item-group>
+    <button ion-button (click)="close()">Close</button>
+    <ion-title>Add defeated Monster</ion-title>
+  </ion-item-group>
+  <ion-item>
+    <ion-label>Monster</ion-label>
+    <ion-select [(ngModel)]="monsterName">
+      <ion-option *ngFor="let huntableMonster of huntableMonsters">{{huntableMonster.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Level</ion-label>
+    <ion-select [(ngModel)]="monsterLevel">
+      <ion-option value="1" selected="true">Level 1</ion-option>
+      <ion-option value="2">Level 2</ion-option>
+      <ion-option value="3">Level 3</ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>
