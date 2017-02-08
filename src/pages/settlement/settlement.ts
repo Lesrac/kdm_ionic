@@ -1,7 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {NavController, NavParams, ModalController} from "ionic-angular";
 import {Settlement} from "../../models/settlement";
-import {Monster} from "../../models/monster";
 import {TimelineEventModal} from "../modal/timeline_event_modal";
 import {Timeline} from "../../models/timeline";
 import {LanternEvent} from "../../models/lantern_event";

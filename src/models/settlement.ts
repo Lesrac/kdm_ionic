@@ -1,5 +1,4 @@
 import {Timeline} from "./timeline";
-import {LanternEvent} from "./lantern_event";
 import {Monster} from "./monster";
 import {Milestone} from "./milestone";
 /**
