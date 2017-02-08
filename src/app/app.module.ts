@@ -11,6 +11,7 @@ import {CreateSettlementPopover} from "../pages/popover/create_settlement_popove
 import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
 import {DefeatedMonsterModal} from "../pages/modal/defeated_monster_modal";
 import {AddLinebreakToPunctuationPipe} from "../pipe/add_linebreak_to_punctuation_pipe";
+import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_directive";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AddLinebreakToPunctuationPipe} from "../pipe/add_linebreak_to_punctuatio
     CreateSettlementPopover,
     TimelineEventModal,
     DefeatedMonsterModal,
-    AddLinebreakToPunctuationPipe
+    AddLinebreakToPunctuationPipe,
+    AutoresizeTextareaDirective
   ],
   imports: [
     IonicModule.forRoot(MyApp)
