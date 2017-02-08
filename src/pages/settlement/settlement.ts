@@ -57,9 +57,10 @@ export class SettlementPage {
     }
   }
 
-  checkMilestone(event: Event, what: string, value: number): void {
+  checkMilestone(event: Event, identifier: string, value: number | string): void {
+    console.log('checkMilestone');
     this.settlement.milestones.forEach(milestone => {
-      if (milestone.identifier == what && milestone.value == value && milestone.reached == false) {
+      if (milestone.identifier == identifier && milestone.value == value && milestone.reached == false) {
         milestone.reached = true;
         let popover = this.modalCtrl.create(TimelineEventModal, {
           lanternEvent: milestone

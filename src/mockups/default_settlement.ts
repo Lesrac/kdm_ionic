@@ -4,6 +4,7 @@ import {LanternEvent} from "../models/lantern_event";
 import {Timeline} from "../models/timeline";
 import {StoryEvent} from "../models/story_event";
 import {Milestone} from "../models/milestone";
+import {Resource} from "../models/resource";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -18,7 +19,9 @@ export const NEMESISMONSTERS: Monster[] = [
     isHuntable: true,
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
-    defeatedLevelThree: false
+    defeatedLevelThree: false,
+    resources: null,
+    huntedResources: []
   },
   {
     name: 'King\'s Man',
@@ -27,7 +30,9 @@ export const NEMESISMONSTERS: Monster[] = [
     isHuntable: false,
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
-    defeatedLevelThree: false
+    defeatedLevelThree: false,
+    resources: null,
+    huntedResources: []
   },
   {
     name: 'The Hand',
@@ -36,7 +41,20 @@ export const NEMESISMONSTERS: Monster[] = [
     isHuntable: false,
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
-    defeatedLevelThree: false
+    defeatedLevelThree: false,
+    resources: null,
+    huntedResources: []
+  }
+];
+
+export const RESSOURCES: Resource[] = [
+  {
+    name: 'Bone',
+    description: ''
+  },
+  {
+    name: 'Fur',
+    description: ''
   }
 ];
 
@@ -48,7 +66,9 @@ export const QUARRIES: Monster[] = [
     isHuntable: true,
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
-    defeatedLevelThree: false
+    defeatedLevelThree: false,
+    resources: [[RESSOURCES[0], 1], [RESSOURCES[1], 4]],
+    huntedResources: []
   },
   {
     name: 'Screaming Antelope',
@@ -57,7 +77,9 @@ export const QUARRIES: Monster[] = [
     isHuntable: false,
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
-    defeatedLevelThree: false
+    defeatedLevelThree: false,
+    resources: null,
+    huntedResources: []
   },
   {
     name: 'Phoenix',
@@ -66,7 +88,9 @@ export const QUARRIES: Monster[] = [
     isHuntable: false,
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
-    defeatedLevelThree: false
+    defeatedLevelThree: false,
+    resources: null,
+    huntedResources: []
   }
 ];
 

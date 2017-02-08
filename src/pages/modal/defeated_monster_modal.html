@@ -1,6 +1,5 @@
 <ion-content>
   <ion-item-group>
-    <button ion-button (click)="close()">Close</button>
     <ion-title>Add defeated Monster</ion-title>
   </ion-item-group>
   <ion-item>
@@ -17,5 +16,12 @@
       <ion-option value="3">Level 3</ion-option>
     </ion-select>
   </ion-item>
-
+  <ion-item>
+    <ion-checkbox [(ngModel)]="huntResources"></ion-checkbox>
+    <ion-label>Add hunt resources</ion-label>
+  </ion-item>
+  <ion-item>
+    <button ion-button (click)="addClose()">Add</button>
+    <button ion-button (click)="close()">Close</button>
+  </ion-item>
 </ion-content>

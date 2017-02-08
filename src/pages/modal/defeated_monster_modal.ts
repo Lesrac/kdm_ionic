@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
 import {Settlement} from "../../models/settlement";
 import {Monster} from "../../models/monster";
+import {Resource} from "../../models/resource";
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -14,6 +15,7 @@ export class DefeatedMonsterModal {
   huntableMonsters: Monster[] = [];
   monsterLevel: number;
   monsterName: string;
+  huntResources: boolean;
 
   constructor(public viewCtrl: ViewController, private params: NavParams) {
     this.settlement = this.params.get('settlement');
@@ -25,10 +27,30 @@ export class DefeatedMonsterModal {
     )
   }
 
-  close() {
-    let monster = this.huntableMonsters.find(monster => monster.name === this.monsterName);
-    monster.level = this.monsterLevel;
-    this.settlement.defeatedMonsters.push(monster);
+  close(): void {
     this.viewCtrl.dismiss();
+  }
+
+  addClose(): void {
+    if (this.monsterName != null && this.monsterLevel != null) {
+      const monsterOrig = this.huntableMonsters.find(monster => monster.name === this.monsterName);
+      const monster = new Monster(this.monsterName);
+      monster.level = this.monsterLevel;
+      if (this.huntResources) {
+        const resources: Resource[] = [];
+        monsterOrig.resources.forEach(resource => {
+          const amount: number = resource[1];
+          const res: Resource = resource[0];
+          for (let i = 0; i < amount; i++) {
+            resources.push(res);
+          }
+        });
+        resources.forEach(x => console.log(x.name));
+        monster.huntedResources = resources;
+      }
+      this.settlement.defeatedMonsters.push(monster);
+    }
+
+    this.close();
   }
 }
