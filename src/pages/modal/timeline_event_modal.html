@@ -8,7 +8,9 @@
   </ion-item>
   <ion-item-group *ngFor="let storyEvent of lanternEvent.storyEvents">
     <ion-item-divider>{{storyEvent.title}}</ion-item-divider>
-    <ion-item>{{storyEvent.description}}</ion-item>
+    <ion-item>
+      <ion-textarea readonly [ngModel]="storyEvent.description | addLinebreakToPunctuationPipe"></ion-textarea>
+    </ion-item>
   </ion-item-group>
 
 </ion-content>

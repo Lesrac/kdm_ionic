@@ -95,9 +95,18 @@ export const QUARRIES: Monster[] = [
 ];
 
 export const STORYEVENTS: StoryEvent[] = [
-  {title: 'First Words', description: ''},
-  {title: 'Build the Innovation Deck', description: ''},
-  {title: 'Glowing Center', description: ''}
+  {
+    title: 'First Words',
+    description: `The nominated survivor steps forward and gains + 1 courage. They lead the other survivors to learn to speak to one another! They discuss their situation, realizing they must hunt to live. Add the White Lion to the Quarry list on the settlement record sheet. Your settlement gains the Language innovation. Search the Innovation cards for Language and place it face up in your play area and record it on your settlement sheet. Language is your first innovation, and it will spark the creation of the innovation deck. Build the Innovation deck now .`
+  },
+  {
+    title: 'Build the Innovation Deck',
+    description: `The innovation deck represents the potential cultural and technological growth of your settlement. It will grow throughout the campaign as you gain new innovation cards. Find the 6 innovation cards with language consequence listed under their title: Ammonia, Drums, Hovel, Inner Lantern, Paint, and Symposium. Shuttle these 6 cards together to form your settlement's innovation deck. Place it face down in the designated space on the settlement board. The innovation deck is persistent. Make sure to preserve the unique combination of cards in your deck between play sessions. Finished with their work, the settlement gathers around its Glowing Center`
+  },
+  {
+    title: 'Glowing Center',
+    description: `Armed with language, the nominated survivor aptly names the glowing center of their home The Lantern Hoard. The settlement gains the Lantern Hoard Settlement Location. Search the large Settlement Location cards for the Lantern Hoard and place it face up in your play area. The Lantern Hoard is the source of all innovations and further locations the settlement will develop. The nominated survivor sits in front of the Lantern Hoard in awe and gains + 1 understanding. They must skip the next hunt phase as they ponder the meaning of existence. Check off the skip hunt box on the survivor's record sheet. They cannot be selected as a departing survivor this phase.`
+  }
 ];
 
 export const EVENTS: LanternEvent[] = [

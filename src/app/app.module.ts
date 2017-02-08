@@ -10,6 +10,7 @@ import {KDMService} from "../services/kdm.service";
 import {CreateSettlementPopover} from "../pages/popover/create_settlement_popover";
 import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
 import {DefeatedMonsterModal} from "../pages/modal/defeated_monster_modal";
+import {AddLinebreakToPunctuationPipe} from "../pipe/add_linebreak_to_punctuation_pipe";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {DefeatedMonsterModal} from "../pages/modal/defeated_monster_modal";
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
-    DefeatedMonsterModal
+    DefeatedMonsterModal,
+    AddLinebreakToPunctuationPipe
   ],
   imports: [
     IonicModule.forRoot(MyApp)
