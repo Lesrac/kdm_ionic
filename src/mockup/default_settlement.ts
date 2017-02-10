@@ -1,10 +1,12 @@
-import {Monster} from "../models/monster";
-import {Settlement} from "../models/settlement";
-import {LanternEvent} from "../models/lantern_event";
-import {Timeline} from "../models/timeline";
-import {StoryEvent} from "../models/story_event";
-import {Milestone} from "../models/milestone";
-import {Resource} from "../models/resource";
+import {Monster} from "../model/monster";
+import {Settlement} from "../model/settlement";
+import {LanternEvent} from "../model/lantern_event";
+import {Timeline} from "../model/timeline";
+import {StoryEvent} from "../model/story_event";
+import {Milestone} from "../model/milestone";
+import {Resource} from "../model/resource";
+import {Equals} from "../model/visitor/equals";
+import {GreaterThanEquals} from "../model/visitor/greater_than_equals";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -198,7 +200,11 @@ export const MILESTONES: Milestone[] = [
     todo: 'The group must decide how to raise their young. Choose one.',
     storyEvents: [],
     value: 1,
-    identifier: 'child'
+    identifier: 'child',
+    visitor: new Equals(),
+    accept(compareValue: string|number): boolean {
+      return this.visitor.visit(this, compareValue);
+    }
   },
   {
     name: 'Principle: Death',
@@ -207,7 +213,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 1,
-    identifier: 'death'
+    identifier: 'death',
+    visitor: new Equals(),
+    accept(compareValue: string|number): boolean {
+      return this.visitor.visit(this, compareValue);
+    }
   },
   {
     name: 'Principle: Society',
@@ -216,7 +226,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 15,
-    identifier: 'population'
+    identifier: 'population',
+    visitor: new GreaterThanEquals(),
+    accept(compareValue: string|number): boolean {
+      return this.visitor.visit(this, compareValue);
+    }
   },
   {
     name: 'Principle: Hooded Knight',
@@ -225,7 +239,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 5,
-    identifier: 'innovation'
+    identifier: 'innovation',
+    visitor: new GreaterThanEquals(),
+    accept(compareValue: string|number): boolean {
+      return this.visitor.visit(this, compareValue);
+    }
   },
   {
     name: 'Principle: Game Over',
@@ -234,7 +252,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 0,
-    identifier: 'population'
+    identifier: 'population',
+    visitor: new Equals(),
+    accept(compareValue: string|number): boolean {
+      return this.visitor.visit(this, compareValue);
+    }
   }
 ];
 

@@ -1,10 +1,11 @@
 import {Component, Input} from "@angular/core";
 import {NavController, NavParams, ModalController} from "ionic-angular";
-import {Settlement} from "../../models/settlement";
+import {Settlement} from "../../model/settlement";
 import {TimelineEventModal} from "../modal/timeline_event_modal";
-import {Timeline} from "../../models/timeline";
-import {LanternEvent} from "../../models/lantern_event";
+import {Timeline} from "../../model/timeline";
+import {LanternEvent} from "../../model/lantern_event";
 import {DefeatedMonsterModal} from "../modal/defeated_monster_modal";
+import {KDMCheckerService} from "../../service/kdm_checker.service";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -20,14 +21,13 @@ export class SettlementPage {
 
   lostSettlements: number[] = Array(19).fill((x, i) => i);
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams, public kdmChecker: KDMCheckerService) {
     if (params.get("settlement")) {
       this.settlement = params.get("settlement");
     }
   }
 
   addDefeatedMonster(): void {
-    //   this.settlement.defeatedMonsters.push(new Monster('White Lion'));
     let modal = this.modalCtrl.create(DefeatedMonsterModal, {
       settlement: this.settlement
     });
@@ -59,7 +59,7 @@ export class SettlementPage {
   checkMilestone(event: Event, identifier: string, value: number | string): void {
     console.log('checkMilestone');
     this.settlement.milestones.forEach(milestone => {
-      if (milestone.identifier == identifier && milestone.value == value && milestone.reached == false) {
+      if(this.kdmChecker.checkMilestone(milestone, identifier, value)){
         milestone.reached = true;
         let popover = this.modalCtrl.create(TimelineEventModal, {
           lanternEvent: milestone

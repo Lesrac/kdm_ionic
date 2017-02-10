@@ -1,8 +1,8 @@
 import {Component} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
-import {Settlement} from "../../models/settlement";
-import {Monster} from "../../models/monster";
-import {Resource} from "../../models/resource";
+import {Settlement} from "../../model/settlement";
+import {Monster} from "../../model/monster";
+import {Resource} from "../../model/resource";
 /**
  * Created by Daniel on 07.02.2017.
  */

@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
-import {Settlement} from "../../models/settlement";
+import {Settlement} from "../../model/settlement";
 /**
  * Created by Daniel on 04.02.2017.
  */

@@ -1,8 +1,8 @@
 import {NavController, PopoverController} from "ionic-angular";
 import {Component, OnInit} from "@angular/core";
-import {Settlement} from "../../models/settlement";
+import {Settlement} from "../../model/settlement";
 import {SettlementPage} from "../settlement/settlement";
-import {KDMService} from "../../services/kdm.service";
+import {KDMDataService} from "../../service/kdm_data.service";
 import {CreateSettlementPopover} from "../popover/create_settlement_popover";
 /**
  * Created by Daniel on 27.01.2017.
@@ -15,7 +15,7 @@ import {CreateSettlementPopover} from "../popover/create_settlement_popover";
 export class SettlementsPage implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private kdmService: KDMService) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private kdmService: KDMDataService) {
   }
 
   presentPopover() {

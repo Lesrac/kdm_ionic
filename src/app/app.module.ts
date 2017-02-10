@@ -6,7 +6,8 @@ import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 import {SettlementsPage} from "../pages/settlements/settlements";
 import {SettlementPage} from "../pages/settlement/settlement";
-import {KDMService} from "../services/kdm.service";
+import {KDMDataService} from "../service/kdm_data.service";
+import {KDMCheckerService} from "../service/kdm_checker.service";
 import {CreateSettlementPopover} from "../pages/popover/create_settlement_popover";
 import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
 import {DefeatedMonsterModal} from "../pages/modal/defeated_monster_modal";
@@ -42,7 +43,7 @@ import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_dire
     TimelineEventModal,
     DefeatedMonsterModal
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, KDMService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, KDMDataService, KDMCheckerService]
 })
 export class AppModule {
 }
