@@ -46,13 +46,13 @@ export class SettlementPage implements OnInit {
     this.deathCountGroup = this.formBuilder.group({deathCounts: checkboxArray});
   }
 
-  updateDeathcount(control: FormControl): void {
-    console.log(control);
+  updateDeathcount(event: Event, control: FormControl): void {
     if(control.value){
       this.settlement.deathcount++;
     } else{
       this.settlement.deathcount--;
     }
+    this.checkMilestone(event, 'death', this.settlement.deathcount);
   }
 
   addDefeatedMonster(): void {
