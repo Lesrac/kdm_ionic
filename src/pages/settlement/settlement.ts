@@ -37,7 +37,7 @@ export class SettlementPage implements OnInit {
   private setupDeathcounts(): void {
     const checkboxArray = new FormArray([]);
     for (let i: number = 0; i < SettlementPage.max_deaths; i++) {
-      if (i < this.settlement.deahtcount) {
+      if (i < this.settlement.deathcount) {
         checkboxArray.push(new FormControl(true));
       } else {
         checkboxArray.push(new FormControl(false));
@@ -46,8 +46,13 @@ export class SettlementPage implements OnInit {
     this.deathCountGroup = this.formBuilder.group({deathCounts: checkboxArray});
   }
 
-  updateDeathcount(event: Event): void {
-    console.log(event);
+  updateDeathcount(control: FormControl): void {
+    console.log(control);
+    if(control.value){
+      this.settlement.deathcount++;
+    } else{
+      this.settlement.deathcount--;
+    }
   }
 
   addDefeatedMonster(): void {

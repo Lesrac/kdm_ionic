@@ -24,17 +24,13 @@
       <ion-item-divider>
         Death Count
       </ion-item-divider>
-      <ion-item>
-        <form [formGroup]="deathCountGroup">
-          <ion-item formArrayName="deathCounts">
-            <ion-checkbox type="checkbox"
-              *ngFor="let control of deathCountGroup.controls.deathCounts.controls; let i = index"
-                          [formControl]="control" (change)="updateDeathcount($event)"
-                          [(ngModel)]="control.checked"></ion-checkbox>
-          </ion-item>
-        </form>
-      </ion-item>
-      <ion-item>{{deathCountGroup.controls['deathCounts'].value}}</ion-item>
+      <form [formGroup]="deathCountGroup">
+        <ion-row formArrayName="deathCounts" responsive-sm>
+          <ion-col *ngFor="let control of deathCountGroup.controls.deathCounts.controls; let i = index">
+            <ion-checkbox type="checkbox" (click)="updateDeathcount(control)" [formControl]="control"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+      </form>
     </ion-item-group>
 
     <ion-item-group>
