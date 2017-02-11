@@ -16,7 +16,7 @@
         Survival Limit
       </ion-item-divider>
       <ion-item>
-        <ion-input required [(ngModel)]="settlement.survivalLimit"></ion-input>
+        <ion-input type="number" required [(ngModel)]="settlement.survivalLimit"></ion-input>
       </ion-item>
     </ion-item-group>
 
@@ -137,7 +137,7 @@
         Population
       </ion-item-divider>
       <ion-item>
-        <ion-input required [(ngModel)]="settlement.population"
+        <ion-input type="number" required [(ngModel)]="settlement.population"
                    (change)="checkMilestone($event, 'population', settlement.population)"></ion-input>
       </ion-item>
     </ion-item-group>

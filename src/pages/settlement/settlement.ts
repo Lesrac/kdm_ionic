@@ -57,7 +57,6 @@ export class SettlementPage {
   }
 
   checkMilestone(event: Event, identifier: string, value: number | string): void {
-    console.log('checkMilestone');
     this.settlement.milestones.forEach(milestone => {
       if(this.kdmChecker.checkMilestone(milestone, identifier, value)){
         milestone.reached = true;
