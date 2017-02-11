@@ -6,11 +6,8 @@ import {Milestone} from "../model/milestone";
 @Injectable()
 export class KDMCheckerService {
 
-  checkMilestone(milestone : Milestone, identifier: string, value: number | string): boolean {
-    if (milestone.identifier == identifier && milestone.accept(value) && milestone.reached == false) {
-      return true;
-    }
-    return false;
+  static checkMilestone(milestone : Milestone, identifier: string, value: number | string): boolean {
+    return (!milestone.reached && milestone.identifier == identifier && milestone.accept(value));
   }
 
 }

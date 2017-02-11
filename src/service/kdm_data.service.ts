@@ -14,35 +14,35 @@ import {Milestone} from "../model/milestone";
 @Injectable()
 export class KDMDataService {
 
-  getSettlements(): Promise<Settlement[]> {
+  static getSettlements(): Promise<Settlement[]> {
     return Promise.resolve(SETTLEMENTS);
   }
 
-  getSettlement(name: string): Promise<Settlement> {
+  static getSettlement(name: string): Promise<Settlement> {
     return Promise.resolve(SETTLEMENTS.find(settlement => settlement.name === name));
   }
 
-  addSettlement(settlement: Settlement): void {
+  static addSettlement(settlement: Settlement): void {
     SETTLEMENTS.push(settlement);
   }
 
-  getNemesisMonsters(): Promise<Monster[]> {
+  static getNemesisMonsters(): Promise<Monster[]> {
     return Promise.resolve(NEMESISMONSTERS);
   }
 
-  getQuarries(): Promise<Monster[]> {
+  static getQuarries(): Promise<Monster[]> {
     return Promise.resolve(QUARRIES);
   }
 
-  getEvents(): Promise<LanternEvent[]> {
+  static getEvents(): Promise<LanternEvent[]> {
     return Promise.resolve(EVENTS);
   }
 
-  getMilestones(): Promise<Milestone[]> {
+  static getMilestones(): Promise<Milestone[]> {
     return Promise.resolve(MILESTONES);
   }
 
-  getDefaultTimeline(): Promise<Timeline[]> {
+  static getDefaultTimeline(): Promise<Timeline[]> {
     return Promise.resolve(DEFAULTTIMELINE);
   }
 
