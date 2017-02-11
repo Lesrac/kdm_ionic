@@ -108,6 +108,14 @@ export const STORYEVENTS: StoryEvent[] = [
   {
     title: 'Glowing Center',
     description: `Armed with language, the nominated survivor aptly names the glowing center of their home The Lantern Hoard. The settlement gains the Lantern Hoard Settlement Location. Search the large Settlement Location cards for the Lantern Hoard and place it face up in your play area. The Lantern Hoard is the source of all innovations and further locations the settlement will develop. The nominated survivor sits in front of the Lantern Hoard in awe and gains + 1 understanding. They must skip the next hunt phase as they ponder the meaning of existence. Check off the skip hunt box on the survivor's record sheet. They cannot be selected as a departing survivor this phase.`
+  },
+  {
+    title: 'The First Harvest',
+    description: `The settlement decides to harvest the body for resources. The settlement gains the Death Principle: Cannibalize. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result 1 -s The settlement ritualistically divides the corpse with a sharp stone and grimly consumes the dead flesh. Gain a Founding Stone starting gear. All departing survivors gain +3 insanity. 6 - 10 Nominate a survivor. The survivor fanatically tears the corpse open and deeply drinks its blood. They decide that for every new creature they eat, they will become stronger. The survivor gains +1 permanent speed.`
+  },
+  {
+    title: 'The First Grave',
+    description: `The settlement decides to build a small monument to mark their loss. The settlement gains the Death Principle: Graves. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result 1 - 5 The settlement gathers around the grave, each taking a moment to reflect the loss and their place in the darkness. All departing survivors gain +l survival and +l understanding. 6 -10 Nominate a survivor. With tears in their eyes, the survivor takes a shard of rock from the grave and marks themselves with it. They cherish this mark forever. The survivor gains +l permanent luck.`
   }
 ];
 
@@ -210,8 +218,8 @@ export const MILESTONES: Milestone[] = [
     name: 'Principle: Death',
     tag: 'First time death count is updated',
     reached: false,
-    todo: '',
-    storyEvents: [],
+    todo: 'The group must decide what to do with their first survivor corpse. Choose one.',
+    storyEvents: STORYEVENTS.slice(3, 5),
     value: 1,
     identifier: 'death',
     visitor: new Equals(),
