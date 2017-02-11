@@ -17,12 +17,13 @@ import {FormArray, FormControl, FormBuilder, FormGroup} from "@angular/forms";
 export class SettlementPage implements OnInit {
 
   private static max_deaths: number = 36;
+  private static max_lost_settlements: number = 19;
   @Input()
   settlement: Settlement;
 
   deathCountGroup: FormGroup;
 
-  lostSettlements: number[] = Array(19).fill((x, i) => i);
+  lostSettlementGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams, public kdmChecker: KDMCheckerService, public formBuilder: FormBuilder) {
     if (params.get("settlement")) {
@@ -32,6 +33,7 @@ export class SettlementPage implements OnInit {
 
   ngOnInit(): void {
     this.setupDeathcounts();
+    this.setupLostSettlements();
   }
 
   private setupDeathcounts(): void {
@@ -46,13 +48,33 @@ export class SettlementPage implements OnInit {
     this.deathCountGroup = this.formBuilder.group({deathCounts: checkboxArray});
   }
 
+  private setupLostSettlements(): void {
+    const checkboxArray = new FormArray([]);
+    for (let i: number = 0; i < SettlementPage.max_lost_settlements; i++) {
+      if (i < this.settlement.deathcount) {
+        checkboxArray.push(new FormControl(true));
+      } else {
+        checkboxArray.push(new FormControl(false));
+      }
+    }
+    this.lostSettlementGroup = this.formBuilder.group({settlementCounts: checkboxArray});
+  }
+
   updateDeathcount(event: Event, control: FormControl): void {
-    if(control.value){
+    if (control.value) {
       this.settlement.deathcount++;
-    } else{
+    } else {
       this.settlement.deathcount--;
     }
     this.checkMilestone(event, 'death', this.settlement.deathcount);
+  }
+
+  updateLostSettlement(event: Event, control: FormControl): void {
+    if (control.value) {
+      this.settlement.settlementLost++;
+    } else {
+      this.settlement.settlementLost--;
+    }
   }
 
   addDefeatedMonster(): void {

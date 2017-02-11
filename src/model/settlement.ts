@@ -9,6 +9,7 @@ export class Settlement {
   survivalLimit: number = 0;
   population: number = 0;
   deathcount: number = 0;
+  settlementLost: number = 0;
   timeline: Timeline[] = [];
   milestones: Milestone[] = [];
   nemesisMonsters: Monster[] = [];
