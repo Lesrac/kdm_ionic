@@ -59,7 +59,7 @@
       </ion-item-divider>
       <ion-item *ngFor="let milestone of settlement.milestones">
         <ion-checkbox [(ngModel)]="milestone.reached" (click)="eventReached($event, milestone)"></ion-checkbox>
-        <ion-label>{{milestone.tag}} <b>{{milestone.name}}</b></ion-label>
+        <ion-label>{{milestone.tag}} <br/><b>{{milestone.name}}</b></ion-label>
       </ion-item>
     </ion-item-group>
 
@@ -67,7 +67,7 @@
       <ion-item-divider>
         Nemesis Monsters
       </ion-item-divider>
-      <ion-row *ngFor="let nemesis of settlement.nemesisMonsters">
+      <ion-row *ngFor="let nemesis of settlement.nemesisMonsters" class="container">
         <ion-col>
           <ion-item>
             <ion-checkbox [(ngModel)]="nemesis.isHuntable">
