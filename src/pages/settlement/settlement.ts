@@ -116,4 +116,22 @@ export class SettlementPage implements OnInit {
     })
   }
 
+  increaseSurvivalLimit(): void {
+    this.settlement.survivalLimit++;
+  }
+
+  decreaseSurvivalLimit(): void {
+    this.settlement.survivalLimit--;
+  }
+
+  increasePopulation(): void {
+    //TODO checkMilestone
+    this.settlement.population++;
+  }
+
+  decreasePopulation(): void {
+    //TODO checkMilestone
+    this.settlement.population--;
+  }
+
 }

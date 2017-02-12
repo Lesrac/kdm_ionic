@@ -17,18 +17,30 @@
           <ion-item-divider>
             Survival Limit
           </ion-item-divider>
-          <ion-item>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseSurvivalLimit()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
             <ion-input type="number" required [(ngModel)]="settlement.survivalLimit"></ion-input>
-          </ion-item>
+            <button ion-button icon-only (click)="decreaseSurvivalLimit()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
         </ion-col>
         <ion-col>
           <ion-item-divider>
             Population
           </ion-item-divider>
-          <ion-item>
+          <ion-segment>
+            <button ion-button icon-only (click)="increasePopulation()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
             <ion-input type="number" required [(ngModel)]="settlement.population"
                        (change)="checkMilestone($event, 'population', settlement.population)"></ion-input>
-          </ion-item>
+            <button ion-button icon-only (click)="decreasePopulation()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
         </ion-col>
       </ion-row>
     </ion-item-group>
