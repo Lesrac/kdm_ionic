@@ -29,7 +29,6 @@ export class SettlementPage implements OnInit {
     if (params.get("settlement")) {
       this.settlement = params.get("settlement");
     }
-    console.log(this.settlement);
   }
 
   ngOnInit(): void {
@@ -64,10 +63,11 @@ export class SettlementPage implements OnInit {
   updateDeathcount(event: Event, control: FormControl): void {
     if (control.value) {
       this.settlement.deathcount++;
+      this.settlement.population--;
+      this.checkMilestone(event, 'death', this.settlement.deathcount);
     } else {
       this.settlement.deathcount--;
     }
-    this.checkMilestone(event, 'death', this.settlement.deathcount);
   }
 
   updateLostSettlement(event: Event, control: FormControl): void {

@@ -12,12 +12,30 @@
 <ion-content padding>
   <ion-list>
     <ion-item-group>
-      <ion-item-divider>
-        Survival Limit
-      </ion-item-divider>
-      <ion-item>
-        <ion-input type="number" required [(ngModel)]="settlement.survivalLimit"></ion-input>
-      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item-divider>
+            Survival Limit
+          </ion-item-divider>
+          <ion-item>
+            <ion-input type="number" required [(ngModel)]="settlement.survivalLimit"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item-divider>
+            Population
+          </ion-item-divider>
+          <ion-item>
+            <ion-input type="number" required [(ngModel)]="settlement.population"
+                       (change)="checkMilestone($event, 'population', settlement.population)"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+
+    <ion-item-group>
+
     </ion-item-group>
 
     <ion-item-group>
@@ -27,7 +45,8 @@
       <form [formGroup]="deathCountGroup">
         <ion-row formArrayName="deathCounts" class="container">
           <ion-col *ngFor="let control of deathCountGroup.controls.deathCounts.controls">
-            <ion-checkbox type="checkbox" (click)="updateDeathcount($event, control)" [formControl]="control"></ion-checkbox>
+            <ion-checkbox type="checkbox" (click)="updateDeathcount($event, control)"
+                          [formControl]="control"></ion-checkbox>
           </ion-col>
         </ion-row>
       </form>
@@ -136,15 +155,6 @@
       </ion-item>
     </ion-item-group>
 
-    <ion-item-group>
-      <ion-item-divider>
-        Population
-      </ion-item-divider>
-      <ion-item>
-        <ion-input type="number" required [(ngModel)]="settlement.population"
-                   (change)="checkMilestone($event, 'population', settlement.population)"></ion-input>
-      </ion-item>
-    </ion-item-group>
 
     <ion-item-group>
       <ion-item-divider>
@@ -153,7 +163,8 @@
       <form [formGroup]="lostSettlementGroup">
         <ion-row formArrayName="settlementCounts" class="container">
           <ion-col *ngFor="let control of lostSettlementGroup.controls.settlementCounts.controls">
-            <ion-checkbox type="checkbox" (click)="updateLostSettlement($event, control)" [formControl]="control"></ion-checkbox>
+            <ion-checkbox type="checkbox" (click)="updateLostSettlement($event, control)"
+                          [formControl]="control"></ion-checkbox>
           </ion-col>
         </ion-row>
       </form>
