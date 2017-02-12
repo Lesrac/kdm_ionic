@@ -4,7 +4,7 @@
     <ion-title>{{lanternEvent.name}}</ion-title>
   </ion-item-group>
   <ion-item>
-    {{lanternEvent.todo}}
+    <ion-textarea readonly [ngModel]="lanternEvent.todo | addLinebreakToPunctuationPipe"></ion-textarea>
   </ion-item>
   <ion-item-group *ngFor="let storyEvent of lanternEvent.storyEvents">
     <ion-item-divider>{{storyEvent.title}}</ion-item-divider>

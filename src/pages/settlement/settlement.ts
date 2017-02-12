@@ -29,6 +29,7 @@ export class SettlementPage implements OnInit {
     if (params.get("settlement")) {
       this.settlement = params.get("settlement");
     }
+    console.log(this.settlement);
   }
 
   ngOnInit(): void {
@@ -51,7 +52,7 @@ export class SettlementPage implements OnInit {
   private setupLostSettlements(): void {
     const checkboxArray = new FormArray([]);
     for (let i: number = 0; i < SettlementPage.max_lost_settlements; i++) {
-      if (i < this.settlement.deathcount) {
+      if (i < this.settlement.settlementLost) {
         checkboxArray.push(new FormControl(true));
       } else {
         checkboxArray.push(new FormControl(false));
