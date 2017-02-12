@@ -7,15 +7,21 @@
 <ion-content padding>
   <div>
     <h2>Available Settlements</h2>
-    <button ion-button (click)="addSettlement()">Add</button>
+    <button ion-button full (click)="addSettlement()">Add</button>
   </div>
   <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
     <ion-item *ngFor="let settlement of settlements" (click)="goToDetail(settlement)">
-      {{settlement.name}}
-      <button ion-button icon-only
-              (click)="removeSettlement(settlement)">
-        <ion-icon name="remove-circle"></ion-icon>
-      </button>
+      <ion-row class="container">
+        <ion-col>
+          {{settlement.name}}
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only full
+                  (click)="removeSettlement(settlement)">
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>

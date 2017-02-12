@@ -133,17 +133,10 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-item-divider>
+      <button ion-button full (click)="showDefeatedMonsters()">
         Defeated Monsters
-        <button ion-button icon-only (click)="addDefeatedMonster()">
-          <ion-icon name="add-circle"></ion-icon>
-        </button>
-      </ion-item-divider>
-      <ion-item *ngFor="let monster of settlement.defeatedMonsters">
-        {{monster.name}} - Level {{monster.level}}
-      </ion-item>
+      </button>
     </ion-item-group>
-
 
     <ion-item-group>
       <ion-item-divider>

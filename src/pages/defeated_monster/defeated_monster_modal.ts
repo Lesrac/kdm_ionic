@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
 import {Monster} from "../../model/monster";
@@ -10,7 +10,8 @@ import {Resource} from "../../model/resource";
   selector: 'defeated-monster-modal',
   templateUrl: 'defeated_monster_modal.html'
 })
-export class DefeatedMonsterModal {
+export class DefeatedMonsterModal implements OnInit {
+
   settlement: Settlement;
   huntableMonsters: Monster[] = [];
   monsterLevel: number;
@@ -19,6 +20,13 @@ export class DefeatedMonsterModal {
 
   constructor(public viewCtrl: ViewController, private params: NavParams) {
     this.settlement = this.params.get('settlement');
+  }
+
+  ngOnInit(): void {
+    this.setupHuntableMonsters();
+  }
+
+  private setupHuntableMonsters(): void {
     this.settlement.quarries.forEach(monster => {
         if (monster.isHuntable) {
           this.huntableMonsters.push(monster)

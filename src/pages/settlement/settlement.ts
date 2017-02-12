@@ -1,13 +1,12 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {NavController, NavParams, ModalController} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
-import {TimelineEventModal} from "../modal/timeline_event_modal";
-import {Timeline} from "../../model/timeline";
+import {TimelineEventModal} from "../timeline/timeline_event_modal";
 import {LanternEvent} from "../../model/lantern_event";
-import {DefeatedMonsterModal} from "../modal/defeated_monster_modal";
 import {KDMCheckerService} from "../../service/kdm_checker.service";
 import {FormArray, FormControl, FormBuilder, FormGroup} from "@angular/forms";
 import {TimelinePage} from "../timeline/timeline";
+import {DefeatedMonsterPage} from "../defeated_monster/defeated_monster";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -68,6 +67,7 @@ export class SettlementPage implements OnInit {
       this.checkMilestone(event, 'death', this.settlement.deathcount);
     } else {
       this.settlement.deathcount--;
+      this.settlement.population++;
     }
   }
 
@@ -79,16 +79,15 @@ export class SettlementPage implements OnInit {
     }
   }
 
-  addDefeatedMonster(): void {
-    let modal = this.modalCtrl.create(DefeatedMonsterModal, {
-      settlement: this.settlement
-    });
-    modal.present();
-  }
-
   showTimeline(): void {
     this.navCtrl.push(TimelinePage, {
       timeline: this.settlement.timeline
+    }).then();
+  }
+
+  showDefeatedMonsters(): void {
+    this.navCtrl.push(DefeatedMonsterPage, {
+      settlement: this.settlement
     }).then();
   }
 

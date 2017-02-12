@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {NavController, NavParams, ModalController} from "ionic-angular";
 import {Timeline} from "../../model/timeline";
-import {TimelineEventModal} from "../modal/timeline_event_modal";
+import {TimelineEventModal} from "./timeline_event_modal";
 /**
  * Created by Daniel on 12.02.2017.
  */

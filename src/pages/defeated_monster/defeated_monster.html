@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Defeated Monsters
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <button ion-button icon-only full (click)="addDefeatedMonster()">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item *ngFor="let monster of settlement.defeatedMonsters">
+    <ion-row>
+      <ion-col>
+        {{monster.name}} - Level {{monster.level}}
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only full (click)="removeDefeatedMonster(monster)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>

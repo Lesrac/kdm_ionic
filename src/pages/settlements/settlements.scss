@@ -1,3 +1,6 @@
-page-settlements{
-
+page-settlements {
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+  }
 }
