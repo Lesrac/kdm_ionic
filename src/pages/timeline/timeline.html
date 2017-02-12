@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Timeline
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let timelineevent of timeline">
+    <ion-checkbox [(ngModel)]="timelineevent.reached"
+                  (click)="timelineReached($event, timelineevent)"></ion-checkbox>
+    <ion-label>{{timelineevent.position}} <span *ngIf="timelineevent.lanternEvent"><ion-icon name="book"></ion-icon> {{timelineevent.lanternEvent.name}}</span>
+    </ion-label>
+  </ion-item>
+</ion-content>

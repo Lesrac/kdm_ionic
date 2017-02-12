@@ -13,6 +13,7 @@ import {TimelineEventModal} from "../pages/modal/timeline_event_modal";
 import {DefeatedMonsterModal} from "../pages/modal/defeated_monster_modal";
 import {AddLinebreakToPunctuationPipe} from "../pipe/add_linebreak_to_punctuation_pipe";
 import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_directive";
+import {TimelinePage} from "../pages/timeline/timeline";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_dire
     ContactPage,
     SettlementsPage,
     SettlementPage,
+    TimelinePage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -38,6 +40,7 @@ import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_dire
     ContactPage,
     SettlementsPage,
     SettlementPage,
+    TimelinePage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,

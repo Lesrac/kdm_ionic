@@ -33,11 +33,6 @@
       </ion-row>
     </ion-item-group>
 
-
-    <ion-item-group>
-
-    </ion-item-group>
-
     <ion-item-group>
       <ion-item-divider>
         Death Count
@@ -53,15 +48,9 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-item-divider>
+      <button ion-button full (click)="showTimeline()">
         Timeline
-      </ion-item-divider>
-      <ion-item *ngFor="let timelineevent of settlement.timeline">
-        <ion-checkbox [(ngModel)]="timelineevent.reached"
-                      (click)="timelineReached($event, timelineevent)"></ion-checkbox>
-        <ion-label>{{timelineevent.position}} <span *ngIf="timelineevent.lanternEvent"><ion-icon name="book"></ion-icon> {{timelineevent.lanternEvent.name}}</span>
-        </ion-label>
-      </ion-item>
+      </button>
     </ion-item-group>
 
     <ion-item-group>

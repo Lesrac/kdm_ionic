@@ -7,6 +7,7 @@ import {LanternEvent} from "../../model/lantern_event";
 import {DefeatedMonsterModal} from "../modal/defeated_monster_modal";
 import {KDMCheckerService} from "../../service/kdm_checker.service";
 import {FormArray, FormControl, FormBuilder, FormGroup} from "@angular/forms";
+import {TimelinePage} from "../timeline/timeline";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -85,15 +86,10 @@ export class SettlementPage implements OnInit {
     modal.present();
   }
 
-  timelineReached(event: Event, timeline: Timeline): void {
-    if (timeline.lanternEvent != null && timeline.reached) {
-      let modal = this.modalCtrl.create(TimelineEventModal, {
-        lanternEvent: timeline.lanternEvent
-      });
-      modal.present({
-        ev: event
-      });
-    }
+  showTimeline(): void {
+    this.navCtrl.push(TimelinePage, {
+      timeline: this.settlement.timeline
+    }).then();
   }
 
   eventReached(event: Event, lanternEvent: LanternEvent): void {
