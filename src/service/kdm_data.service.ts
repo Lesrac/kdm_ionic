@@ -2,12 +2,13 @@ import {Injectable} from "@angular/core";
 import {Settlement} from "../model/settlement";
 import {
   SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES
+  MILESTONES, SETTLEMENTLOCATIONS
 } from "../mockup/default_settlement";
 import {Monster} from "../model/monster";
 import {LanternEvent} from "../model/lantern_event";
 import {Timeline} from "../model/timeline";
 import {Milestone} from "../model/milestone";
+import {Location} from "../model/location";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -44,6 +45,10 @@ export class KDMDataService {
 
   getDefaultTimeline(): Promise<Timeline[]> {
     return Promise.resolve(DEFAULTTIMELINE);
+  }
+
+  getSettlementLocations(): Promise<Location[]> {
+    return Promise.resolve(SETTLEMENTLOCATIONS);
   }
 
 }

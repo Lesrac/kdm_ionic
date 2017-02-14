@@ -3,6 +3,7 @@ import {Settlement} from "../model/settlement";
 import {LanternEvent} from "../model/lantern_event";
 import {Timeline} from "../model/timeline";
 import {StoryEvent} from "../model/story_event";
+import {Location} from "../model/location";
 import {Milestone} from "../model/milestone";
 import {Resource} from "../model/resource";
 import {Equals} from "../model/visitor/equals";
@@ -309,4 +310,18 @@ export const DEFAULTTIMELINE: Timeline[] = [
   {position: 38, reached: false, lanternEvent: null},
   {position: 39, reached: false, lanternEvent: null},
   {position: 40, reached: false, lanternEvent: null}
+];
+
+export const SETTLEMENTLOCATIONS: Location[] = [
+  {name: 'Lantern Hoard', built: true},
+  {name: 'Bone Smith', built: false},
+  {name: 'Skinnery', built: false},
+  {name: 'Organ Grinder', built: false},
+  {name: 'Weapon Crafter', built: false},
+  {name: 'Leather Worker', built: false},
+  {name: 'Stone Circle', built: false},
+  {name: 'Barber Surgeon', built: false},
+  {name: 'Plumery', built: false},
+  {name: 'Blacksmith', built: false},
+  {name: 'Mask Maker', built: false}
 ];

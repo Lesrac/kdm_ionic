@@ -1,6 +1,7 @@
 import {Timeline} from "./timeline";
 import {Monster} from "./monster";
 import {Milestone} from "./milestone";
+import {Location} from "./location";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -15,6 +16,7 @@ export class Settlement {
   nemesisMonsters: Monster[] = [];
   quarries: Monster[] = [];
   defeatedMonsters: Monster[] = [];
+  locations: Location[] = [];
 
   constructor(name: string) {
     this.name = name;

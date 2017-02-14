@@ -40,6 +40,7 @@ export class SettlementsPage implements OnInit {
     this.createDefaultNemesisMonsters(settlement);
     this.createDefaultMilestoneStoryEvents(settlement);
     this.createDefaultQuarries(settlement);
+    this.createDefaultSettlementLocations(settlement);
     return settlement;
   }
 
@@ -59,6 +60,10 @@ export class SettlementsPage implements OnInit {
 
   private createDefaultQuarries(settlement: Settlement): void {
     this.kdmService.getQuarries().then(quarries => settlement.quarries = quarries);
+  }
+
+  private createDefaultSettlementLocations(settlement: Settlement): void {
+    this.kdmService.getSettlementLocations().then(locations => settlement.locations = locations);
   }
 
   goToDetail(settlement: Settlement): void {

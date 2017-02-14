@@ -15,6 +15,7 @@ import {AddLinebreakToPunctuationPipe} from "../pipe/add_linebreak_to_punctuatio
 import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_directive";
 import {TimelinePage} from "../pages/timeline/timeline";
 import {DefeatedMonsterPage} from "../pages/defeated_monster/defeated_monster";
+import {LocationPage} from "../pages/location/location";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {DefeatedMonsterPage} from "../pages/defeated_monster/defeated_monster";
     SettlementPage,
     TimelinePage,
     DefeatedMonsterPage,
+    LocationPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -44,6 +46,7 @@ import {DefeatedMonsterPage} from "../pages/defeated_monster/defeated_monster";
     SettlementPage,
     TimelinePage,
     DefeatedMonsterPage,
+    LocationPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,

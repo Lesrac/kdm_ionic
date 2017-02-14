@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settlement Locations
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let location of settlement.locations">
+    <ion-checkbox [(ngModel)]="location.built"></ion-checkbox>
+    <ion-label>{{location.name}}</ion-label>
+  </ion-item>
+</ion-content>
