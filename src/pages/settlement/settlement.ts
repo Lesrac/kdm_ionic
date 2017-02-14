@@ -4,7 +4,7 @@ import {Settlement} from "../../model/settlement";
 import {TimelineEventModal} from "../timeline/timeline_event_modal";
 import {LanternEvent} from "../../model/lantern_event";
 import {KDMCheckerService} from "../../service/kdm_checker.service";
-import {FormArray, FormControl, FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormControl, FormBuilder, FormGroup, AbstractControl} from "@angular/forms";
 import {TimelinePage} from "../timeline/timeline";
 import {DefeatedMonsterPage} from "../defeated_monster/defeated_monster";
 /**
@@ -25,15 +25,18 @@ export class SettlementPage implements OnInit {
 
   lostSettlementGroup: FormGroup;
 
+  populationControl: FormControl = new FormControl();
+
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams, public kdmChecker: KDMCheckerService, public formBuilder: FormBuilder) {
-    if (params.get("settlement")) {
-      this.settlement = params.get("settlement");
+    if (params.get('settlement')) {
+      this.settlement = params.get('settlement');
     }
   }
 
   ngOnInit(): void {
     this.setupDeathcounts();
     this.setupLostSettlements();
+    this.setupPopulationControl();
   }
 
   private setupDeathcounts(): void {
@@ -58,6 +61,12 @@ export class SettlementPage implements OnInit {
       }
     }
     this.lostSettlementGroup = this.formBuilder.group({settlementCounts: checkboxArray});
+  }
+
+  private setupPopulationControl(): void {
+    this.populationControl.valueChanges.subscribe((value) => {
+      this.checkMilestone(null, 'population', value);
+    });
   }
 
   updateDeathcount(event: Event, control: FormControl): void {
@@ -125,12 +134,10 @@ export class SettlementPage implements OnInit {
   }
 
   increasePopulation(): void {
-    //TODO checkMilestone
     this.settlement.population++;
   }
 
   decreasePopulation(): void {
-    //TODO checkMilestone
     this.settlement.population--;
   }
 

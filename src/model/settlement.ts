@@ -7,7 +7,7 @@ import {Milestone} from "./milestone";
 export class Settlement {
   name: string;
   survivalLimit: number = 0;
-  population: number = 0;
+  population: number = 1;
   deathcount: number = 0;
   settlementLost: number = 0;
   timeline: Timeline[] = [];
