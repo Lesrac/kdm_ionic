@@ -53,11 +53,13 @@ export const NEMESISMONSTERS: Monster[] = [
 export const RESSOURCES: Resource[] = [
   {
     name: 'Bone',
-    description: ''
+    description: '',
+    amount: 0
   },
   {
     name: 'Fur',
-    description: ''
+    description: '',
+    amount: 0
   }
 ];
 

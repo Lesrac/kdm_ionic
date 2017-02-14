@@ -15,7 +15,6 @@ export class LocationPage {
 
   constructor(public navCtrl: NavController, public params: NavParams) {
     this.settlement = params.get('settlement');
-    console.log(this.settlement);
   }
 
 }

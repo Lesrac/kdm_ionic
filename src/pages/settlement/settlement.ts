@@ -8,6 +8,7 @@ import {FormArray, FormControl, FormBuilder, FormGroup, AbstractControl} from "@
 import {TimelinePage} from "../timeline/timeline";
 import {DefeatedMonsterPage} from "../defeated_monster/defeated_monster";
 import {LocationPage} from "../location/location";
+import {StoragePage} from "../storage/storage";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -103,6 +104,12 @@ export class SettlementPage implements OnInit {
 
   showSettlementLocations(): void {
     this.navCtrl.push(LocationPage, {
+      settlement: this.settlement
+    }).then();
+  }
+
+  showStorage(): void {
+    this.navCtrl.push(StoragePage, {
       settlement: this.settlement
     }).then();
   }

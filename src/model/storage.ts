@@ -4,4 +4,5 @@
 export class Storage {
   name: string;
   description: string;
+  amount: number = 1;
 }

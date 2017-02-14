@@ -16,6 +16,7 @@ import {AutoresizeTextareaDirective} from "../directive/autoresize_textarea_dire
 import {TimelinePage} from "../pages/timeline/timeline";
 import {DefeatedMonsterPage} from "../pages/defeated_monster/defeated_monster";
 import {LocationPage} from "../pages/location/location";
+import {StoragePage} from "../pages/storage/storage";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {LocationPage} from "../pages/location/location";
     TimelinePage,
     DefeatedMonsterPage,
     LocationPage,
+    StoragePage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -47,6 +49,7 @@ import {LocationPage} from "../pages/location/location";
     TimelinePage,
     DefeatedMonsterPage,
     LocationPage,
+    StoragePage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,

@@ -53,10 +53,15 @@ export class DefeatedMonsterModal implements OnInit {
             resources.push(res);
           }
         });
-        resources.forEach(x => console.log(x.name));
+        resources.forEach(str => {
+          console.log(str.name);
+          this.settlement.addStorageItem(str)
+        });
         monster.huntedResources = resources;
+        console.log(this.settlement);
       }
       this.settlement.defeatedMonsters.push(monster);
+      console.log(this.settlement);
     }
 
     this.close();

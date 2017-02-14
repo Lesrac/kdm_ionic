@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Storage
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let storage of settlement.storages">
+    <ion-segment>
+      <button ion-button icon-only (click)="increaseAmount(storage)">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="decreaseAmount(storage)">
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+      <ion-input type="number" [(ngModel)]="storage.amount"></ion-input>
+    </ion-segment>
+  </ion-item>
+</ion-content>
