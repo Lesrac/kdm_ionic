@@ -7,15 +7,14 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let storage of settlement.storages">
-    <ion-segment>
-      <button ion-button icon-only (click)="increaseAmount(storage)">
-        <ion-icon name="add-circle"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="decreaseAmount(storage)">
-        <ion-icon name="remove-circle"></ion-icon>
-      </button>
-      <ion-input type="number" [(ngModel)]="storage.amount"></ion-input>
-    </ion-segment>
-  </ion-item>
+  <ion-segment *ngFor="let storage of settlement.storages">
+    <button ion-button icon-only (click)="increaseAmount(storage)">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+    <button ion-button icon-only (click)="decreaseAmount(storage)">
+      <ion-icon name="remove-circle"></ion-icon>
+    </button>
+    <ion-input type="number" [(ngModel)]="storage.amount"></ion-input>
+    <ion-label>{{storage.name}}</ion-label>
+  </ion-segment>
 </ion-content>

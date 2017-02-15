@@ -22,6 +22,7 @@ export class StoragePage {
   decreaseAmount(storage: Storage) {
     storage.amount--;
     if (storage.amount === 0) {
+      console.log('remove');
       this.removeStorage(storage);
     }
   }
@@ -32,7 +33,8 @@ export class StoragePage {
 
   removeStorage(storage: Storage) {
     const index = this.settlement.storages.findIndex(str => str === storage);
-    this.settlement.storages.slice(index, index + 1);
+    console.log(index);
+    this.settlement.storages.splice(index, 1);
   }
 
 }

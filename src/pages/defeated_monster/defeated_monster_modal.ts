@@ -58,7 +58,6 @@ export class DefeatedMonsterModal implements OnInit {
           this.settlement.addStorageItem(str)
         });
         monster.huntedResources = resources;
-        console.log(this.settlement);
       }
       this.settlement.defeatedMonsters.push(monster);
       console.log(this.settlement);
