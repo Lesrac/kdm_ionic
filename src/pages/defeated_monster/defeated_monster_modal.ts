@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
 import {Monster} from "../../model/monster";
-import {Resource} from "../../model/resource";
+import {Storage} from "../../model/storage";
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -45,12 +45,13 @@ export class DefeatedMonsterModal implements OnInit {
       const monster = new Monster(this.monsterName);
       monster.level = this.monsterLevel;
       if (this.huntResources) {
-        const resources: Resource[] = [];
+        const resources: Storage[] = [];
         monsterOrig.resources.forEach(resource => {
-          const amount: number = resource[1];
-          const res: Resource = resource[0];
-          for (let i = 0; i < amount; i++) {
-            resources.push(res);
+          if(resource.monsterLevel == this.monsterLevel) {
+            const res: Storage = resource.storage;
+            for (let i = 0; i < resource.amount; i++) {
+              resources.push(res);
+            }
           }
         });
         resources.forEach(str => {
@@ -60,7 +61,6 @@ export class DefeatedMonsterModal implements OnInit {
         monster.huntedResources = resources;
       }
       this.settlement.defeatedMonsters.push(monster);
-      console.log(this.settlement);
     }
 
     this.close();

@@ -8,6 +8,8 @@ import {Milestone} from "../model/milestone";
 import {Resource} from "../model/resource";
 import {Equals} from "../model/visitor/equals";
 import {GreaterThanEquals} from "../model/visitor/greater_than_equals";
+import {MonsterResource} from "../model/monster_resource";
+import {ResourceType} from "../model/resource_type";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -54,12 +56,14 @@ export const RESSOURCES: Resource[] = [
   {
     name: 'Bone',
     description: '',
-    amount: 0
+    amount: 0,
+    type: ResourceType.Basic
   },
   {
     name: 'Fur',
     description: '',
-    amount: 0
+    amount: 0,
+    type: ResourceType.Basic
   }
 ];
 
@@ -72,7 +76,7 @@ export const QUARRIES: Monster[] = [
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
     defeatedLevelThree: false,
-    resources: [[RESSOURCES[0], 1], [RESSOURCES[1], 4]],
+    resources: [],
     huntedResources: []
   },
   {
@@ -83,7 +87,7 @@ export const QUARRIES: Monster[] = [
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
     defeatedLevelThree: false,
-    resources: null,
+    resources: [],
     huntedResources: []
   },
   {
@@ -94,8 +98,18 @@ export const QUARRIES: Monster[] = [
     defeatedLevelOne: false,
     defeatedLevelTwo: false,
     defeatedLevelThree: false,
-    resources: null,
+    resources: [],
     huntedResources: []
+  }
+];
+
+
+export const MONSTERRESOURCES: MonsterResource[] = [
+  {
+    monster: QUARRIES[0],
+    storage: RESSOURCES[0],
+    amount: 3,
+    monsterLevel: 1
   }
 ];
 

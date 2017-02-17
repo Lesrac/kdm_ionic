@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Settlement} from "../model/settlement";
 import {
   SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS
+  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES
 } from "../mockup/default_settlement";
 import {Monster} from "../model/monster";
 import {LanternEvent} from "../model/lantern_event";
@@ -32,6 +32,14 @@ export class KDMDataService {
   }
 
   getQuarries(): Promise<Monster[]> {
+    QUARRIES.forEach(monster => {
+      MONSTERRESOURCES.forEach(resource => {
+        if (resource.monster == monster) {
+          monster.resources.push(resource);
+        }
+      })
+    });
+    console.log(QUARRIES);
     return Promise.resolve(QUARRIES);
   }
 

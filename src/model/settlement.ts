@@ -30,6 +30,7 @@ export class Settlement {
       str.amount++;
     }
     else {
+      storage.amount = 1;
       this.storages.push(storage);
     }
   }
