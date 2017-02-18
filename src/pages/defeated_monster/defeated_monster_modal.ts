@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {ViewController, NavParams} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
 import {Monster} from "../../model/monster";
-import {Storage} from "../../model/storage";
 import {KDMCalculationService} from "../../service/kdm_calculation.service";
 /**
  * Created by Daniel on 07.02.2017.

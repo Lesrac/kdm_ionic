@@ -24,9 +24,9 @@ export class KDMCalculationService {
             settlement.addStorageItem(str);
           });
         } else if (monsterResource.resourceType != null && monsterResource.resourceType >= 0) {
-          this.test(monsterResource.resourceType, monsterResource.amount).then(storages => {
-            killedMonster.huntedResources = storages;
-            storages.forEach(storage => {
+          this.getAllResourceCardsFromType(monsterResource.resourceType).then(storages => {
+            killedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
+            killedMonster.huntedResources.forEach(storage => {
               settlement.addStorageItem(storage);
             })
           });
@@ -49,37 +49,12 @@ export class KDMCalculationService {
     return storages;
   }
 
-  private test(resourceType: ResourceType, maxAmount: number): Promise<Storage[]> {
-    const storages: Storage[] = [];
-    const resources: Resource[] = [];
-    this.kdmData.getResources().then(res => {
-        const tempStorages: Storage[] = [];
-        res.forEach(resource => {
-          if (resource.type === resourceType) {
-            resources.push(resource);
-          }
-        });
-        resources.forEach(resource => {
-          for (let i = 0; i < resource.existingCards; i++) {
-            tempStorages.push(resource);
-          }
-        });
-
-        //TODO probability calculation
-        for (let i: number = 0; i < maxAmount; i++) {
-          storages.push(tempStorages[0]);
-        }
-      }
-    );
-    return Promise.resolve(storages);
-  }
-
   /**
    * Get all existing cards from a specific resource type
    * @param resourceType
    * @returns {Storage[]}
    */
-  private getAllResourceCardsFromType(resourceType: ResourceType): Storage[] {
+  private getAllResourceCardsFromType(resourceType: ResourceType): Promise<Storage[]> {
     const storages: Storage[] = [];
     const resources: Resource[] = [];
     this.kdmData.getResources().then(res => {
@@ -89,14 +64,15 @@ export class KDMCalculationService {
             resources.push(resource);
           }
         });
+        resources.forEach(resource => {
+          for (let i = 0; i < resource.existingCards; i++) {
+            storages.push(resource);
+          }
+        });
       }
     );
-    resources.forEach(resource => {
-      for (let i = 0; i < resource.existingCards; i++) {
-        storages.push(resource);
-      }
-    });
-    return storages;
+
+    return Promise.resolve(storages);
   }
 
   /**
