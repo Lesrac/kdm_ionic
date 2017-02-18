@@ -5,5 +5,6 @@ export enum ResourceType {
   Basic,
   WhiteLion,
   Phoenix,
-  ScreamingAntelope
+  ScreamingAntelope,
+  Strange
 }

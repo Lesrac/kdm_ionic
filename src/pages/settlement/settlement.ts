@@ -4,7 +4,7 @@ import {Settlement} from "../../model/settlement";
 import {TimelineEventModal} from "../timeline/timeline_event_modal";
 import {LanternEvent} from "../../model/lantern_event";
 import {KDMCheckerService} from "../../service/kdm_checker.service";
-import {FormArray, FormControl, FormBuilder, FormGroup, AbstractControl} from "@angular/forms";
+import {FormArray, FormControl, FormBuilder, FormGroup} from "@angular/forms";
 import {TimelinePage} from "../timeline/timeline";
 import {DefeatedMonsterPage} from "../defeated_monster/defeated_monster";
 import {LocationPage} from "../location/location";

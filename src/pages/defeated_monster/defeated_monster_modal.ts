@@ -3,6 +3,7 @@ import {ViewController, NavParams} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
 import {Monster} from "../../model/monster";
 import {Storage} from "../../model/storage";
+import {KDMCalculationService} from "../../service/kdm_calculation.service";
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -18,7 +19,7 @@ export class DefeatedMonsterModal implements OnInit {
   monsterName: string;
   huntResources: boolean;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams) {
+  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmCalculation: KDMCalculationService) {
     this.settlement = this.params.get('settlement');
   }
 
@@ -45,20 +46,7 @@ export class DefeatedMonsterModal implements OnInit {
       const monster = new Monster(this.monsterName);
       monster.level = this.monsterLevel;
       if (this.huntResources) {
-        const resources: Storage[] = [];
-        monsterOrig.resources.forEach(resource => {
-          if(resource.monsterLevel == this.monsterLevel) {
-            const res: Storage = resource.storage;
-            for (let i = 0; i < resource.amount; i++) {
-              resources.push(res);
-            }
-          }
-        });
-        resources.forEach(str => {
-          console.log(str.name);
-          this.settlement.addStorageItem(str)
-        });
-        monster.huntedResources = resources;
+        this.kdmCalculation.addResourcesFromKilledMonster(this.settlement, monster, monsterOrig);
       }
       this.settlement.defeatedMonsters.push(monster);
     }

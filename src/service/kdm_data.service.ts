@@ -2,13 +2,14 @@ import {Injectable} from "@angular/core";
 import {Settlement} from "../model/settlement";
 import {
   SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES
+  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES
 } from "../mockup/default_settlement";
 import {Monster} from "../model/monster";
 import {LanternEvent} from "../model/lantern_event";
 import {Timeline} from "../model/timeline";
 import {Milestone} from "../model/milestone";
 import {Location} from "../model/location";
+import {Resource} from "../model/resource";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -39,8 +40,11 @@ export class KDMDataService {
         }
       })
     });
-    console.log(QUARRIES);
     return Promise.resolve(QUARRIES);
+  }
+
+  getResources(): Promise<Resource[]>{
+    return Promise.resolve(RESSOURCES);
   }
 
   getEvents(): Promise<LanternEvent[]> {

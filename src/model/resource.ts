@@ -6,5 +6,6 @@ import {ResourceType} from "./resource_type";
 export class Resource extends Storage {
 
   type: ResourceType;
+  existingCards: number;
 
 }

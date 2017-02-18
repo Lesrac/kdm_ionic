@@ -57,13 +57,29 @@ export const RESSOURCES: Resource[] = [
     name: 'Bone',
     description: '',
     amount: 0,
-    type: ResourceType.Basic
+    type: ResourceType.Basic,
+    existingCards: 4
   },
   {
     name: 'Fur',
     description: '',
     amount: 0,
-    type: ResourceType.Basic
+    type: ResourceType.Basic,
+    existingCards: 4
+  },
+  {
+    name: 'Elder Cat Teeth',
+    description: '',
+    amount: 0,
+    type: ResourceType.Strange,
+    existingCards: 1
+  },
+  {
+    name: 'White Fur',
+    description: '',
+    amount: 0,
+    type: ResourceType.WhiteLion,
+    existingCards: 4
   }
 ];
 
@@ -107,9 +123,52 @@ export const QUARRIES: Monster[] = [
 export const MONSTERRESOURCES: MonsterResource[] = [
   {
     monster: QUARRIES[0],
-    storage: RESSOURCES[0],
-    amount: 3,
-    monsterLevel: 1
+    storage: null,
+    amount: 4,
+    monsterLevel: 1,
+    resourceType: ResourceType.Basic
+  },
+  {
+    monster: QUARRIES[0],
+    storage: null,
+    amount: 4,
+    monsterLevel: 1,
+    resourceType: ResourceType.WhiteLion
+  },
+  {
+    monster: QUARRIES[0],
+    storage: null,
+    amount: 4,
+    monsterLevel: 2,
+    resourceType: ResourceType.Basic
+  },
+  {
+    monster: QUARRIES[0],
+    storage: null,
+    amount: 6,
+    monsterLevel: 2,
+    resourceType: ResourceType.WhiteLion
+  },
+  {
+    monster: QUARRIES[0],
+    storage: null,
+    amount: 4,
+    monsterLevel: 3,
+    resourceType: ResourceType.Basic
+  },
+  {
+    monster: QUARRIES[0],
+    storage: null,
+    amount: 8,
+    monsterLevel: 3,
+    resourceType: ResourceType.WhiteLion
+  },
+  {
+    monster: QUARRIES[0],
+    storage: null,
+    amount: 4,
+    monsterLevel: 3,
+    resourceType: null
   }
 ];
 

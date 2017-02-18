@@ -17,6 +17,7 @@ import {TimelinePage} from "../pages/timeline/timeline";
 import {DefeatedMonsterPage} from "../pages/defeated_monster/defeated_monster";
 import {LocationPage} from "../pages/location/location";
 import {StoragePage} from "../pages/storage/storage";
+import {KDMCalculationService} from "../service/kdm_calculation.service";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import {StoragePage} from "../pages/storage/storage";
     TimelineEventModal,
     DefeatedMonsterModal
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, KDMDataService, KDMCheckerService]
+  providers: [{
+    provide: ErrorHandler,
+    useClass: IonicErrorHandler
+  }, KDMDataService, KDMCheckerService, KDMCalculationService]
 })
 export class AppModule {
 }

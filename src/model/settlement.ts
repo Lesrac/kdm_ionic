@@ -25,6 +25,10 @@ export class Settlement {
   }
 
   public addStorageItem(storage: Storage): void {
+    if (!storage) {
+      console.log('Settlement - addStorageItem: Storage is null');
+      return;
+    }
     const str = this.storages.find(str => str.name === storage.name);
     if (str) {
       str.amount++;
