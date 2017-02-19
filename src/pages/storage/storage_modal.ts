@@ -21,7 +21,21 @@ export class StorageModal implements OnInit {
   }
 
   ngOnInit(): void {
-    this.kdmData.getResources().then(resources => this.storageItems = resources);
+    this.getStorageItems();
+  }
+
+  private getStorageItems(): void {
+    this.kdmData.getResources().then(resources =>
+      this.storageItems = resources.sort((l: Storage, r: Storage) => {
+        if (l.name < r.name) {
+          return -1;
+        }
+        if (l.name > r.name) {
+          return 1;
+        }
+        return 0;
+      })
+    );
   }
 
   addClose(): void {

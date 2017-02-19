@@ -1,9 +1,8 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {NavParams, NavController, ModalController} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
 import {Storage} from "../../model/storage";
 import {StorageModal} from "./storage_modal";
-import {FormControl} from "@angular/forms";
 /**
  * Created by Daniel on 14.02.2017.
 
