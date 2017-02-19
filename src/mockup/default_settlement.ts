@@ -68,6 +68,13 @@ export const RESSOURCES: Resource[] = [
     existingCards: 4
   },
   {
+    name: 'Scrap',
+    description: '',
+    amount: 0,
+    type: ResourceType.Basic,
+    existingCards: 4
+  },
+  {
     name: 'Elder Cat Teeth',
     description: '',
     amount: 0,

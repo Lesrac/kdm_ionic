@@ -10,6 +10,7 @@ import {Settlement} from "../model/settlement";
  */
 @Injectable()
 export class KDMCalculationService {
+  factorials: number[] = [];
 
   constructor(private kdmData: KDMDataService) {
   }
@@ -20,7 +21,6 @@ export class KDMCalculationService {
         if (monsterResource.storage) {
           killedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
           killedMonster.huntedResources.forEach(str => {
-            console.log(str);
             settlement.addStorageItem(str);
           });
         } else if (monsterResource.resourceType != null && monsterResource.resourceType >= 0) {
@@ -58,7 +58,6 @@ export class KDMCalculationService {
     const storages: Storage[] = [];
     const resources: Resource[] = [];
     this.kdmData.getResources().then(res => {
-        console.log(res);
         res.forEach(resource => {
           if (resource.type === resourceType) {
             resources.push(resource);
@@ -88,12 +87,13 @@ export class KDMCalculationService {
       console.log('KDMCalculationService - getRandomizedResourceCards: allStoragesItems is null or empty');
       return storages;
     }
-
-    //TODO probability calculation
     for (let i: number = 0; i < maxAmount; i++) {
-      storages.push(allStorageItems[0]);
+      const start: number = Math.floor(Math.random() * allStorageItems.length);
+      const rand: Storage[] = allStorageItems.slice(start, start + 1);
+      storages.push(rand[0]);
     }
 
     return storages;
   }
+
 }

@@ -16,13 +16,11 @@ export class StoragePage {
 
   constructor(public navCtrl: NavController, public params: NavParams) {
     this.settlement = params.get('settlement');
-    console.log(this.settlement);
   }
 
   decreaseAmount(storage: Storage) {
     storage.amount--;
     if (storage.amount === 0) {
-      console.log('remove');
       this.removeStorage(storage);
     }
   }
@@ -33,7 +31,6 @@ export class StoragePage {
 
   removeStorage(storage: Storage) {
     const index = this.settlement.storages.findIndex(str => str === storage);
-    console.log(index);
     this.settlement.storages.splice(index, 1);
   }
 
