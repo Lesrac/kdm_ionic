@@ -84,7 +84,7 @@ export class KDMCalculationService {
   private getRandomizedResourceCards(allStorageItems: Storage[], maxAmount: number): Storage[] {
     const storages: Storage[] = [];
     if (!allStorageItems || allStorageItems.length < 1) {
-      console.log('KDMCalculationService - getRandomizedResourceCards: allStoragesItems is null or empty');
+      console.log('KDMCalculationService - getRandomizedResourceCards: allStorageItems is null or empty');
       return storages;
     }
     for (let i: number = 0; i < maxAmount; i++) {

@@ -18,6 +18,7 @@ import {DefeatedMonsterPage} from "../pages/defeated_monster/defeated_monster";
 import {LocationPage} from "../pages/location/location";
 import {StoragePage} from "../pages/storage/storage";
 import {KDMCalculationService} from "../service/kdm_calculation.service";
+import {StorageModal} from "../pages/storage/storage_modal";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {KDMCalculationService} from "../service/kdm_calculation.service";
     CreateSettlementPopover,
     TimelineEventModal,
     DefeatedMonsterModal,
+    StorageModal,
     AddLinebreakToPunctuationPipe,
     AutoresizeTextareaDirective
   ],
@@ -54,7 +56,8 @@ import {KDMCalculationService} from "../service/kdm_calculation.service";
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
-    DefeatedMonsterModal
+    DefeatedMonsterModal,
+    StorageModal
   ],
   providers: [{
     provide: ErrorHandler,
