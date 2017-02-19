@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-item-group>
+    <ion-title>Add Innovation</ion-title>
+  </ion-item-group>
+  <ion-item>
+    <ion-label>Innovation</ion-label>
+    <ion-select [(ngModel)]="innovationName">
+      <ion-option *ngFor="let innovation of usableInnovations">{{innovation.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <button ion-button full (click)="addClose()">Add</button>
+    <button ion-button full color="secondary" (click)="close()">Cancel</button>
+  </ion-item>
+</ion-content>

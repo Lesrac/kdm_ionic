@@ -19,6 +19,8 @@ import {LocationPage} from "../pages/location/location";
 import {StoragePage} from "../pages/storage/storage";
 import {KDMCalculationService} from "../service/kdm_calculation.service";
 import {StorageModal} from "../pages/storage/storage_modal";
+import {InnovationPage} from "../pages/innovation/innovation";
+import {InnovationModal} from "../pages/innovation/innovation_modal";
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import {StorageModal} from "../pages/storage/storage_modal";
     DefeatedMonsterPage,
     LocationPage,
     StoragePage,
+    InnovationPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
     DefeatedMonsterModal,
     StorageModal,
+    InnovationModal,
     AddLinebreakToPunctuationPipe,
     AutoresizeTextareaDirective
   ],
@@ -53,11 +57,13 @@ import {StorageModal} from "../pages/storage/storage_modal";
     DefeatedMonsterPage,
     LocationPage,
     StoragePage,
+    InnovationPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
     DefeatedMonsterModal,
-    StorageModal
+    StorageModal,
+    InnovationModal
   ],
   providers: [{
     provide: ErrorHandler,

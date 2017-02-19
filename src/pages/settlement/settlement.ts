@@ -9,6 +9,7 @@ import {TimelinePage} from "../timeline/timeline";
 import {DefeatedMonsterPage} from "../defeated_monster/defeated_monster";
 import {LocationPage} from "../location/location";
 import {StoragePage} from "../storage/storage";
+import {InnovationPage} from "../innovation/innovation";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -98,6 +99,12 @@ export class SettlementPage implements OnInit {
 
   showDefeatedMonsters(): void {
     this.navCtrl.push(DefeatedMonsterPage, {
+      settlement: this.settlement
+    }).then();
+  }
+
+  showInnovations(): void{
+    this.navCtrl.push(InnovationPage, {
       settlement: this.settlement
     }).then();
   }

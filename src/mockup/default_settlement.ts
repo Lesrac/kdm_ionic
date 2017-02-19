@@ -10,6 +10,7 @@ import {Equals} from "../model/visitor/equals";
 import {GreaterThanEquals} from "../model/visitor/greater_than_equals";
 import {MonsterResource} from "../model/monster_resource";
 import {ResourceType} from "../model/resource_type";
+import {Innovation} from "../model/innovation";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -406,4 +407,9 @@ export const SETTLEMENTLOCATIONS: Location[] = [
   {name: 'Plumery', built: false},
   {name: 'Blacksmith', built: false},
   {name: 'Mask Maker', built: false}
+];
+
+export const INNOVATIONS: Innovation[] = [
+  {name: 'Drums', description: '', subInnovations: []},
+  {name: 'Speech', description: '', subInnovations: []}
 ];
