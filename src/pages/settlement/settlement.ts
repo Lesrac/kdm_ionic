@@ -126,17 +126,19 @@ export class SettlementPage implements OnInit {
   }
 
   checkMilestone(event: Event, identifier: string, value: number | string): void {
-    this.settlement.milestones.forEach(milestone => {
-      if (this.kdmChecker.checkMilestone(milestone, identifier, value)) {
-        milestone.reached = true;
-        let popover = this.modalCtrl.create(TimelineEventModal, {
-          lanternEvent: milestone
-        });
-        popover.present({
-          ev: event
-        });
-      }
-    })
+    if (value) {
+      this.settlement.milestones.forEach(milestone => {
+        if (this.kdmChecker.checkMilestone(milestone, identifier, value)) {
+          milestone.reached = true;
+          let popover = this.modalCtrl.create(TimelineEventModal, {
+            lanternEvent: milestone
+          });
+          popover.present({
+            ev: event
+          });
+        }
+      })
+    }
   }
 
   increaseSurvivalLimit(): void {
