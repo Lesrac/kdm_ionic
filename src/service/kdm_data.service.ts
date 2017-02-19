@@ -43,7 +43,7 @@ export class KDMDataService {
     return Promise.resolve(QUARRIES);
   }
 
-  getResources(): Promise<Resource[]>{
+  getResources(): Promise<Resource[]> {
     return Promise.resolve(RESSOURCES);
   }
 

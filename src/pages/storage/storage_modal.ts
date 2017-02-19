@@ -3,6 +3,7 @@ import {ViewController, NavParams} from "ionic-angular";
 import {Settlement} from "../../model/settlement";
 import {KDMDataService} from "../../service/kdm_data.service";
 import {Storage} from "../../model/storage";
+import {Observable, Subject} from "rxjs";
 /**
  * Created by Daniel on 19.02.2017.
  */
@@ -15,6 +16,9 @@ export class StorageModal implements OnInit {
   settlement: Settlement;
   storageItems: Storage[];
   storageItemName: string;
+  searchName: string;
+  foundStorageItems: Observable<Storage[]>;
+  private searchNames = new Subject<string>();
 
   constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
     this.settlement = this.params.get('settlement');
@@ -22,6 +26,7 @@ export class StorageModal implements OnInit {
 
   ngOnInit(): void {
     this.getStorageItems();
+    this.getSearchedStorageItems();
   }
 
   private getStorageItems(): void {
@@ -36,6 +41,39 @@ export class StorageModal implements OnInit {
         return 0;
       })
     );
+  }
+
+  private getSearchedStorageItems(): void {
+    this.foundStorageItems = this.searchNames
+      .debounceTime(500)
+      .switchMap(term => {
+        return term
+          ? this.searchStorageItems(this.searchName)
+          : Observable.of<Storage[]>([])
+      })
+      .catch(error => {
+        // TODO error handling
+        console.log(error);
+        return Observable.of<Storage[]>([]);
+      })
+  }
+
+  private searchStorageItems(name: string): Observable<Storage[]> {
+    if (name == null || name.length < 1) {
+      return Observable.of<Storage[]>([]);
+    }
+    const searchRgx: RegExp = new RegExp(name, 'gi');
+    return Observable.of<Storage[]>(this.storageItems.filter(resource => {
+      return resource.name.match(searchRgx);
+    }));
+  }
+
+  search(): void {
+    this.searchNames.next(this.searchName);
+  }
+
+  selectItem(storage: Storage): void {
+    this.storageItemName = storage.name;
   }
 
   addClose(): void {

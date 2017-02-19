@@ -2,6 +2,19 @@
   <ion-item-group>
     <ion-title>Add Storage Item</ion-title>
   </ion-item-group>
+  <div>
+    <ion-item>
+      <ion-label floating>Search</ion-label>
+      <ion-input type="text" (keyup)="search()" [(ngModel)]="searchName"></ion-input>
+    </ion-item>
+    <ion-item>
+      Results
+    </ion-item>
+    <ion-list *ngFor="let storageItem of foundStorageItems | async">
+      <ion-item (click)="selectItem(storageItem)">{{storageItem.name}}</ion-item>
+    </ion-list>
+  </div>
+
   <ion-item>
     <ion-label>Storage Item</ion-label>
     <ion-select [(ngModel)]="storageItemName">
