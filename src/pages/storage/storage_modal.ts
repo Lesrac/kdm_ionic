@@ -31,16 +31,7 @@ export class StorageModal implements OnInit {
 
   private getStorageItems(): void {
     this.kdmData.getResources().then(resources =>
-      this.storageItems = resources.sort((l: Storage, r: Storage) => {
-        if (l.name < r.name) {
-          return -1;
-        }
-        if (l.name > r.name) {
-          return 1;
-        }
-        return 0;
-      })
-    );
+      this.storageItems = resources.sort(this.kdmData.sortByName));
   }
 
   private getSearchedStorageItems(): void {

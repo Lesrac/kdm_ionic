@@ -63,4 +63,14 @@ export class KDMDataService {
     return Promise.resolve(SETTLEMENTLOCATIONS);
   }
 
+  sortByName(l, r) {
+    if (l.name < r.name) {
+      return -1;
+    }
+    if (l.name > r.name) {
+      return 1;
+    }
+    return 0;
+  }
+
 }
