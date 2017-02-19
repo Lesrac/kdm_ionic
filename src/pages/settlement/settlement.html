@@ -21,12 +21,14 @@
             <button ion-button icon-only (click)="increaseSurvivalLimit()">
               <ion-icon name="add-circle"></ion-icon>
             </button>
-            <ion-input type="number" required
-                       [(ngModel)]="settlement.survivalLimit"></ion-input>
             <button ion-button icon-only (click)="decreaseSurvivalLimit()">
               <ion-icon name="remove-circle"></ion-icon>
             </button>
           </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="settlement.survivalLimit"></ion-input>
+          </ion-item>
         </ion-col>
         <ion-col>
           <ion-item-divider>
@@ -36,13 +38,15 @@
             <button ion-button icon-only (click)="increasePopulation()">
               <ion-icon name="add-circle"></ion-icon>
             </button>
-            <ion-input type="number" required
-                       [formControl]="populationControl"
-                       [ngModel]="settlement.population"></ion-input>
             <button ion-button icon-only (click)="decreasePopulation()">
               <ion-icon name="remove-circle"></ion-icon>
             </button>
           </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [formControl]="populationControl"
+                       [ngModel]="settlement.population"></ion-input>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-item-group>
