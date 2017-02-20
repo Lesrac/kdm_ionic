@@ -25,9 +25,11 @@ export class InnovationModal implements OnInit {
   }
 
   private setupUsableInnovations(): void {
-    //TODO only allow consequence
-    this.kdmData.getInnovations().then(innovations => this.usableInnovations = innovations.filter(innovation =>
-    this.settlement.innovations.indexOf(innovation) < 0).sort(this.kdmData.sortByName));
+    this.kdmData.getInnovations().then(innovations =>
+      this.usableInnovations = innovations.filter(innovation =>
+      this.settlement.innovations.indexOf(innovation) < 0 && innovation.tags.some(tag =>
+      this.settlement.innovations.filter(inov =>
+      inov.consequence == tag).length > 0)).sort(this.kdmData.sortByName));
   }
 
   addClose(): void {
