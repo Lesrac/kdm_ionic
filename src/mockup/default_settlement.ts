@@ -5,12 +5,15 @@ import {Timeline} from "../model/timeline";
 import {StoryEvent} from "../model/story_event";
 import {Location} from "../model/location";
 import {Milestone} from "../model/milestone";
-import {Resource} from "../model/resource";
+import {Resource, ResourceType} from "../model/resource";
 import {Equals} from "../model/visitor/equals";
 import {GreaterThanEquals} from "../model/visitor/greater_than_equals";
 import {MonsterResource} from "../model/monster_resource";
-import {ResourceType} from "../model/resource_type";
-import {Innovation} from "../model/innovation";
+import {Innovation, InnovationTag} from "../model/innovation";
+import {StorageTag} from "../model/storage";
+import {Weapon} from "../model/weapon";
+import {Armor, ArmorSpace} from "../model/armor";
+import {Affinity, Direction} from "../model/equipment";
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -55,39 +58,76 @@ export const NEMESISMONSTERS: Monster[] = [
 
 export const RESSOURCES: Resource[] = [
   {
-    name: 'Bone',
-    description: '',
+    name: 'Monster Bone',
+    description: 'A bone suitable for crafting.',
     amount: 0,
     type: ResourceType.Basic,
-    existingCards: 4
+    existingCards: 4,
+    tags: [StorageTag.bone]
   },
   {
-    name: 'Fur',
-    description: '',
+    name: 'Monster Hide',
+    description: 'The skin of a beast.',
     amount: 0,
     type: ResourceType.Basic,
-    existingCards: 4
+    existingCards: 6,
+    tags: [StorageTag.hide]
   },
   {
-    name: 'Scrap',
-    description: '',
+    name: 'Broken Lantern',
+    description: 'Remains of an extinguished lantern.',
     amount: 0,
     type: ResourceType.Basic,
-    existingCards: 4
+    existingCards: 1,
+    tags: [StorageTag.scrap]
+  },
+  {
+    name: '???',
+    description: 'You have no idea what monster bit this is. Can be used as bone, organ or hide',
+    amount: 0,
+    type: ResourceType.Basic,
+    existingCards: 2,
+    tags: [StorageTag.hide, StorageTag.bone, StorageTag.consumable, StorageTag.organ]
+  },
+  {
+    name: 'Skull',
+    description: 'When you gain this, a survivor of your choice gains +1 insanity.',
+    amount: 0,
+    type: ResourceType.Basic,
+    existingCards: 1,
+    tags: [StorageTag.bone]
+  },
+  {
+    name: 'Monster Organ',
+    description: 'If you consume this, archive this card. Roll 1d10. On a result of 6+, you contract a parasite. Archive all consumable gear in your gear grid now.',
+    amount: 0,
+    type: ResourceType.Basic,
+    existingCards: 3,
+    tags: [StorageTag.organ, StorageTag.consumable]
+  },
+  {
+    name: 'Love Juice',
+    description: 'During the settlement phase, you may archive this to Intimacy. Nominated survivors must be able to consume.',
+    amount: 0,
+    type: ResourceType.Basic,
+    existingCards: 2,
+    tags: [StorageTag.organ, StorageTag.consumable]
   },
   {
     name: 'Elder Cat Teeth',
     description: '',
     amount: 0,
     type: ResourceType.Strange,
-    existingCards: 1
+    existingCards: 1,
+    tags: []
   },
   {
     name: 'White Fur',
     description: '',
     amount: 0,
     type: ResourceType.WhiteLion,
-    existingCards: 4
+    existingCards: 4,
+    tags: []
   }
 ];
 
@@ -127,6 +167,94 @@ export const QUARRIES: Monster[] = [
   }
 ];
 
+export const WEAPONS: Weapon[] = [
+  {
+    name: 'Bone Axe',
+    description: 'Frail',
+    amount: 0,
+    speed: 2,
+    accuracy: 6,
+    strength: 3,
+    tags: [StorageTag.weapon, StorageTag.bone, StorageTag.axe, StorageTag.melee],
+    affinities: new Map([
+      [Affinity.red, [Direction.left]]
+    ])
+  },
+  {
+    name: 'Bone Blade',
+    description: 'Frail',
+    amount: 0,
+    speed: 2,
+    accuracy: 6,
+    strength: 2,
+    tags: [StorageTag.weapon, StorageTag.bone, StorageTag.sword, StorageTag.melee],
+    affinities: new Map([
+      [Affinity.red, [Direction.left]]
+    ])
+  },
+  {
+    name: 'Bone Dagger',
+    description: 'On a perfect hit',
+    amount: 0,
+    speed: 3,
+    accuracy: 7,
+    strength: 1,
+    tags: [StorageTag.weapon, StorageTag.bone, StorageTag.dagger, StorageTag.melee],
+    affinities: new Map([
+      [Affinity.red, [Direction.left]]
+    ])
+  },
+  {
+    name: 'Bone Darts',
+    description: 'Range: 6.',
+    amount: 0,
+    speed: 1,
+    accuracy: 7,
+    strength: 3,
+    tags: [StorageTag.weapon, StorageTag.bone, StorageTag.thrown, StorageTag.ranged],
+    affinities: new Map([
+      [Affinity.red, [Direction.left]]
+    ])
+  },
+  {
+    name: 'Bone Pickaxe',
+    description: 'Frail',
+    amount: 0,
+    speed: 1,
+    accuracy: 8,
+    strength: 2,
+    tags: [StorageTag.item, StorageTag.bone, StorageTag.tool],
+    affinities: new Map([
+      [Affinity.green, [Direction.up]]
+    ])
+  },
+  {
+    name: 'Bone Sickle',
+    description: 'Frail',
+    amount: 0,
+    speed: 2,
+    accuracy: 8,
+    strength: 1,
+    tags: [StorageTag.item, StorageTag.bone, StorageTag.tool],
+    affinities: new Map([
+      [Affinity.green, [Direction.up]]
+    ])
+  }
+];
+
+export const ARMORS: Armor[] = [
+  {
+    name: 'Skull Helm',
+    description: 'When you suffer a severe head injury, the Skull Helm is destroyed. Archive this card.',
+    amount: 0,
+    value: 3,
+    space: ArmorSpace.head,
+    tags: [StorageTag.armor, StorageTag.bone, StorageTag.fragile],
+    affinities: new Map([
+      [Affinity.red, [Direction.down]]
+    ])
+  }
+];
 
 export const MONSTERRESOURCES: MonsterResource[] = [
   {
@@ -410,6 +538,28 @@ export const SETTLEMENTLOCATIONS: Location[] = [
 ];
 
 export const INNOVATIONS: Innovation[] = [
-  {name: 'Drums', description: '', subInnovations: []},
-  {name: 'Speech', description: '', subInnovations: []}
+  {
+    name: 'Language',
+    description: 'Survival Limit +1. All survivors gain the Encourage survival action.',
+    consequence: InnovationTag.LANGUAGE_CONSEQUENCE,
+    tags: [InnovationTag.STARTING_INNOVATION]
+  },
+  {
+    name: 'Paint',
+    description: 'The settlement swells with creative energy. All survivors gain the Dash survival action.',
+    consequence: InnovationTag.LANGUAGE_CONSEQUENCE,
+    tags: [InnovationTag.LANGUAGE_CONSEQUENCE, InnovationTag.ART]
+  },
+  {
+    name: 'Ammonia',
+    description: 'A pungent, bilious substance ideal for crafting leather and treating wounds. Departing survivors gain +1 survival.',
+    consequence: InnovationTag.AMMONIA_CONSEQUENCE,
+    tags: [InnovationTag.LANGUAGE_CONSEQUENCE, InnovationTag.SCIENCE]
+  },
+  {
+    name: 'Bloodletting',
+    description: 'Endeavor and table',
+    consequence: null,
+    tags: [InnovationTag.AMMONIA_CONSEQUENCE, InnovationTag.SCIENCE]
+  }
 ];

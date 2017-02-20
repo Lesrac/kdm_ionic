@@ -4,5 +4,15 @@
 export class Innovation {
   name: string;
   description: string;
-  subInnovations: Innovation[];
+  consequence: InnovationTag;
+  tags: InnovationTag[];
+}
+
+export enum InnovationTag {
+  STARTING_INNOVATION,
+  ART,
+  LANGUAGE_CONSEQUENCE,
+  SCIENCE,
+  PAINT_CONSEQUENCE,
+  AMMONIA_CONSEQUENCE
 }

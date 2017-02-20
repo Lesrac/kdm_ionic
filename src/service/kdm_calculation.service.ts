@@ -1,9 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Monster} from "../model/monster";
 import {Storage} from "../model/storage";
-import {ResourceType} from "../model/resource_type";
 import {KDMDataService} from "./kdm_data.service";
-import {Resource} from "../model/resource";
+import {Resource, ResourceType} from "../model/resource";
 import {Settlement} from "../model/settlement";
 /**
  * Created by Daniel on 18.02.2017.
