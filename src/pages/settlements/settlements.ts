@@ -4,6 +4,7 @@ import {Settlement} from "../../model/settlement";
 import {SettlementPage} from "../settlement/settlement";
 import {KDMDataService} from "../../service/kdm_data.service";
 import {CreateSettlementPopover} from "../popover/create_settlement_popover";
+import {InnovationTag} from "../../model/innovation";
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -41,6 +42,7 @@ export class SettlementsPage implements OnInit {
     this.createDefaultMilestoneStoryEvents(settlement);
     this.createDefaultQuarries(settlement);
     this.createDefaultSettlementLocations(settlement);
+    this.createDefaultInnovations(settlement);
     return settlement;
   }
 
@@ -64,6 +66,13 @@ export class SettlementsPage implements OnInit {
 
   private createDefaultSettlementLocations(settlement: Settlement): void {
     this.kdmService.getSettlementLocations().then(locations => settlement.locations = locations);
+  }
+
+  private createDefaultInnovations(settlement: Settlement): void {
+    this.kdmService.getInnovations().then(innovations =>
+      settlement.innovations = innovations.filter(innovation =>
+      innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1)
+    );
   }
 
   goToDetail(settlement: Settlement): void {

@@ -25,8 +25,9 @@ export class InnovationModal implements OnInit {
   }
 
   private setupUsableInnovations(): void {
-    //TODO Innovations depending on SettlementInnovations
-    this.kdmData.getInnovations().then(innovations => this.usableInnovations = innovations);
+    //TODO only allow consequence
+    this.kdmData.getInnovations().then(innovations => this.usableInnovations = innovations.filter(innovation =>
+    this.settlement.innovations.indexOf(innovation) < 0).sort(this.kdmData.sortByName));
   }
 
   addClose(): void {
