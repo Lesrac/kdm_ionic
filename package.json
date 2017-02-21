@@ -2,12 +2,20 @@
   "name": "kdm-ionic",
   "author": "Daniel Frick",
   "homepage": "",
+  "version": "0.0.1",
+  "keywords": [
+    "ionic2",
+    "angular2",
+    "typescript",
+    "karma"
+  ],
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "test": "karma start"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
@@ -29,7 +37,29 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
-    "typescript": "2.0.9"
+    "@types/jasmine": "^2.5.43",
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^2.2.1",
+    "codelyzer": "2.0.0-beta.1",
+    "istanbul-instrumenter-loader": "0.2.0",
+    "jasmine-core": "^2.5.2",
+    "jasmine-spec-reporter": "^3.2.0",
+    "karma": "^1.4.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha-reporter": "^2.2.2",
+    "karma-remap-coverage": "0.1.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "1.8.1",
+    "protractor": "^5.0.0",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.2",
+    "ts-helpers": "^1.1.1",
+    "ts-node": "^2.0.0",
+    "tslint": "4.0.2",
+    "tslint-loader": "^3.3.0",
+    "typescript": "2.0.9",
+    "webpack": "2.2.0-rc.3"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
