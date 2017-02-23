@@ -103,7 +103,7 @@ export class SettlementPage implements OnInit {
     }).then();
   }
 
-  showInnovations(): void{
+  showInnovations(): void {
     this.navCtrl.push(InnovationPage, {
       settlement: this.settlement
     }).then();
@@ -133,7 +133,7 @@ export class SettlementPage implements OnInit {
   }
 
   checkMilestone(event: Event, identifier: string, value: number | string): void {
-    if (value) {
+    if (value != null) {
       this.settlement.milestones.forEach(milestone => {
         if (this.kdmChecker.checkMilestone(milestone, identifier, value)) {
           milestone.reached = true;
