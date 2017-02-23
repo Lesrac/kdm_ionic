@@ -8,7 +8,7 @@ export class Storage {
   tags: StorageTag[];
 }
 
-export enum StorageTag{
+export enum StorageTag {
   bone,
   organ,
   consumable,
@@ -24,5 +24,5 @@ export enum StorageTag{
   tool,
   item,
   ranged,
-  thrown
+  thrown,
 }

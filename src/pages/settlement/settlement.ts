@@ -1,26 +1,26 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {NavController, NavParams, ModalController} from "ionic-angular";
-import {Settlement} from "../../model/settlement";
-import {TimelineEventModal} from "../timeline/timeline_event_modal";
-import {LanternEvent} from "../../model/lantern_event";
-import {KDMCheckerService} from "../../service/kdm_checker.service";
-import {FormArray, FormControl, FormBuilder, FormGroup} from "@angular/forms";
-import {TimelinePage} from "../timeline/timeline";
-import {DefeatedMonsterPage} from "../defeated_monster/defeated_monster";
-import {LocationPage} from "../location/location";
-import {StoragePage} from "../storage/storage";
-import {InnovationPage} from "../innovation/innovation";
+import { Component, Input, OnInit } from '@angular/core';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { Settlement } from '../../model/settlement';
+import { TimelineEventModal } from '../timeline/timeline_event_modal';
+import { LanternEvent } from '../../model/lantern_event';
+import { KDMCheckerService } from '../../service/kdm_checker.service';
+import { FormArray, FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { TimelinePage } from '../timeline/timeline';
+import { DefeatedMonsterPage } from '../defeated_monster/defeated_monster';
+import { LocationPage } from '../location/location';
+import { StoragePage } from '../storage/storage';
+import { InnovationPage } from '../innovation/innovation';
 /**
  * Created by Daniel on 27.01.2017.
  */
 @Component({
-  selector: 'page-settlement',
-  templateUrl: 'settlement.html'
+  selector: 'kdmf-page-settlement',
+  templateUrl: 'settlement.html',
 })
 export class SettlementPage implements OnInit {
 
-  private static max_deaths: number = 36;
-  private static max_lost_settlements: number = 19;
+  private static MAX_DEATHS: number = 36;
+  private static MAX_LOST_SETTLEMENTS: number = 19;
   @Input()
   settlement: Settlement;
 
@@ -30,7 +30,8 @@ export class SettlementPage implements OnInit {
 
   populationControl: FormControl = new FormControl();
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams, public kdmChecker: KDMCheckerService, public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
+              public kdmChecker: KDMCheckerService, public formBuilder: FormBuilder) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
     }
@@ -40,36 +41,6 @@ export class SettlementPage implements OnInit {
     this.setupDeathcounts();
     this.setupLostSettlements();
     this.setupPopulationControl();
-  }
-
-  private setupDeathcounts(): void {
-    const checkboxArray = new FormArray([]);
-    for (let i: number = 0; i < SettlementPage.max_deaths; i++) {
-      if (i < this.settlement.deathcount) {
-        checkboxArray.push(new FormControl(true));
-      } else {
-        checkboxArray.push(new FormControl(false));
-      }
-    }
-    this.deathCountGroup = this.formBuilder.group({deathCounts: checkboxArray});
-  }
-
-  private setupLostSettlements(): void {
-    const checkboxArray = new FormArray([]);
-    for (let i: number = 0; i < SettlementPage.max_lost_settlements; i++) {
-      if (i < this.settlement.settlementLost) {
-        checkboxArray.push(new FormControl(true));
-      } else {
-        checkboxArray.push(new FormControl(false));
-      }
-    }
-    this.lostSettlementGroup = this.formBuilder.group({settlementCounts: checkboxArray});
-  }
-
-  private setupPopulationControl(): void {
-    this.populationControl.valueChanges.subscribe((value) => {
-      this.checkMilestone(null, 'population', value);
-    });
   }
 
   updateDeathcount(event: Event, control: FormControl): void {
@@ -93,41 +64,41 @@ export class SettlementPage implements OnInit {
 
   showTimeline(): void {
     this.navCtrl.push(TimelinePage, {
-      timeline: this.settlement.timeline
+      timeline: this.settlement.timeline,
     }).then();
   }
 
   showDefeatedMonsters(): void {
     this.navCtrl.push(DefeatedMonsterPage, {
-      settlement: this.settlement
+      settlement: this.settlement,
     }).then();
   }
 
   showInnovations(): void {
     this.navCtrl.push(InnovationPage, {
-      settlement: this.settlement
+      settlement: this.settlement,
     }).then();
   }
 
   showSettlementLocations(): void {
     this.navCtrl.push(LocationPage, {
-      settlement: this.settlement
+      settlement: this.settlement,
     }).then();
   }
 
   showStorage(): void {
     this.navCtrl.push(StoragePage, {
-      settlement: this.settlement
+      settlement: this.settlement,
     }).then();
   }
 
   eventReached(event: Event, lanternEvent: LanternEvent): void {
     if (lanternEvent.reached) {
       let popover = this.modalCtrl.create(TimelineEventModal, {
-        lanternEvent: lanternEvent
+        lanternEvent: lanternEvent,
       });
       popover.present({
-        ev: event
+        ev: event,
       });
     }
   }
@@ -138,13 +109,13 @@ export class SettlementPage implements OnInit {
         if (this.kdmChecker.checkMilestone(milestone, identifier, value)) {
           milestone.reached = true;
           let popover = this.modalCtrl.create(TimelineEventModal, {
-            lanternEvent: milestone
+            lanternEvent: milestone,
           });
           popover.present({
-            ev: event
+            ev: event,
           });
         }
-      })
+      });
     }
   }
 
@@ -162,6 +133,36 @@ export class SettlementPage implements OnInit {
 
   decreasePopulation(): void {
     this.settlement.population--;
+  }
+
+  private setupDeathcounts(): void {
+    const checkboxArray = new FormArray([]);
+    for (let i: number = 0; i < SettlementPage.MAX_DEATHS; i++) {
+      if (i < this.settlement.deathcount) {
+        checkboxArray.push(new FormControl(true));
+      } else {
+        checkboxArray.push(new FormControl(false));
+      }
+    }
+    this.deathCountGroup = this.formBuilder.group({deathCounts: checkboxArray});
+  }
+
+  private setupLostSettlements(): void {
+    const checkboxArray = new FormArray([]);
+    for (let i: number = 0; i < SettlementPage.MAX_LOST_SETTLEMENTS; i++) {
+      if (i < this.settlement.settlementLost) {
+        checkboxArray.push(new FormControl(true));
+      } else {
+        checkboxArray.push(new FormControl(false));
+      }
+    }
+    this.lostSettlementGroup = this.formBuilder.group({settlementCounts: checkboxArray});
+  }
+
+  private setupPopulationControl(): void {
+    this.populationControl.valueChanges.subscribe((value) => {
+      this.checkMilestone(null, 'population', value);
+    });
   }
 
 }

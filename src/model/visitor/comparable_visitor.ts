@@ -1,4 +1,4 @@
-import {Milestone} from "../milestone";
+import { Milestone } from '../milestone';
 /**
  * Created by Daniel on 10.02.2017.
  */

@@ -130,13 +130,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ib",
+      "kdmf",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ib",
+      "kdmf",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

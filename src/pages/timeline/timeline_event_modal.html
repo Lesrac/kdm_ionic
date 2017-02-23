@@ -4,12 +4,13 @@
     <ion-title>{{lanternEvent.name}}</ion-title>
   </ion-item-group>
   <ion-item>
-    <ion-textarea readonly [ngModel]="lanternEvent.todo | addLinebreakToPunctuationPipe"></ion-textarea>
+    <ion-textarea readonly [ngModel]="lanternEvent.todo"></ion-textarea>
   </ion-item>
   <ion-item-group *ngFor="let storyEvent of lanternEvent.storyEvents">
     <ion-item-divider>{{storyEvent.title}}</ion-item-divider>
     <ion-item>
-      <ion-textarea autoresize readonly [ngModel]="storyEvent.description | addLinebreakToPunctuationPipe"></ion-textarea>
+      <ion-textarea autoresize readonly
+                    [ngModel]="storyEvent.description"></ion-textarea>
     </ion-item>
   </ion-item-group>
   <ion-item>

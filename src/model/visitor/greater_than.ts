@@ -1,5 +1,5 @@
-import {ComparableVisitor} from "./comparable_visitor";
-import {Milestone} from "../milestone";
+import { ComparableVisitor } from './comparable_visitor';
+import { Milestone } from '../milestone';
 /**
  * Created by Daniel on 10.02.2017.
  */

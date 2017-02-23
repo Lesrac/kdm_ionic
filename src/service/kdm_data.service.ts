@@ -1,16 +1,16 @@
-import {Injectable} from "@angular/core";
-import {Settlement} from "../model/settlement";
+import { Injectable } from '@angular/core';
+import { Settlement } from '../model/settlement';
 import {
   SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS
-} from "../mockup/default_settlement";
-import {Monster} from "../model/monster";
-import {LanternEvent} from "../model/lantern_event";
-import {Timeline} from "../model/timeline";
-import {Milestone} from "../model/milestone";
-import {Location} from "../model/location";
-import {Resource} from "../model/resource";
-import {Innovation} from "../model/innovation";
+  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS,
+} from '../mockup/default_settlement';
+import { Monster } from '../model/monster';
+import { LanternEvent } from '../model/lantern_event';
+import { Timeline } from '../model/timeline';
+import { Milestone } from '../model/milestone';
+import { Location } from '../model/location';
+import { Resource } from '../model/resource';
+import { Innovation } from '../model/innovation';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -36,10 +36,10 @@ export class KDMDataService {
   getQuarries(): Promise<Monster[]> {
     QUARRIES.forEach(monster => {
       MONSTERRESOURCES.forEach(resource => {
-        if (resource.monster == monster) {
+        if (resource.monster === monster) {
           monster.resources.push(resource);
         }
-      })
+      });
     });
     return Promise.resolve(QUARRIES);
   }

@@ -1,9 +1,9 @@
-import {Timeline} from "./timeline";
-import {Monster} from "./monster";
-import {Milestone} from "./milestone";
-import {Location} from "./location";
-import {Storage} from "./storage";
-import {Innovation} from "./innovation";
+import { Timeline } from './timeline';
+import { Monster } from './monster';
+import { Milestone } from './milestone';
+import { Location } from './location';
+import { Storage } from './storage';
+import { Innovation } from './innovation';
 /**
  * Created by Daniel on 27.01.2017.
  */

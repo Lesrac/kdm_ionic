@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {Monster} from "../model/monster";
-import {Storage} from "../model/storage";
-import {KDMDataService} from "./kdm_data.service";
-import {Resource, ResourceType} from "../model/resource";
-import {Settlement} from "../model/settlement";
+import { Injectable } from '@angular/core';
+import { Monster } from '../model/monster';
+import { Storage } from '../model/storage';
+import { KDMDataService } from './kdm_data.service';
+import { Resource, ResourceType } from '../model/resource';
+import { Settlement } from '../model/settlement';
 /**
  * Created by Daniel on 18.02.2017.
  */
@@ -16,7 +16,7 @@ export class KDMCalculationService {
 
   addResourcesFromKilledMonster(settlement: Settlement, killedMonster: Monster, originalMonster: Monster): void {
     originalMonster.resources.forEach(monsterResource => {
-      if (monsterResource.monsterLevel == killedMonster.level) {
+      if (monsterResource.monsterLevel === killedMonster.level) {
         if (monsterResource.storage) {
           killedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
           killedMonster.huntedResources.forEach(str => {
@@ -27,7 +27,7 @@ export class KDMCalculationService {
             killedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
             killedMonster.huntedResources.forEach(storage => {
               settlement.addStorageItem(storage);
-            })
+            });
           });
         }
       }
@@ -67,7 +67,7 @@ export class KDMCalculationService {
             storages.push(resource);
           }
         });
-      }
+      },
     );
 
     return Promise.resolve(storages);

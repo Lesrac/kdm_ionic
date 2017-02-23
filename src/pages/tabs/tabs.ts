@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import {SettlementsPage} from "../settlements/settlements";
+import { SettlementsPage } from '../settlements/settlements';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'tabs.html',
 })
 export class TabsPage {
   // this tells the tabs component which Pages

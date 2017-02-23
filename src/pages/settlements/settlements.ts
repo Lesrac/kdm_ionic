@@ -1,28 +1,29 @@
-import {NavController, PopoverController} from "ionic-angular";
-import {Component, OnInit} from "@angular/core";
-import {Settlement} from "../../model/settlement";
-import {SettlementPage} from "../settlement/settlement";
-import {KDMDataService} from "../../service/kdm_data.service";
-import {CreateSettlementPopover} from "../popover/create_settlement_popover";
-import {InnovationTag} from "../../model/innovation";
+import { NavController, PopoverController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { Settlement } from '../../model/settlement';
+import { SettlementPage } from '../settlement/settlement';
+import { KDMDataService } from '../../service/kdm_data.service';
+import { CreateSettlementPopover } from '../popover/create_settlement_popover';
+import { InnovationTag } from '../../model/innovation';
 /**
  * Created by Daniel on 27.01.2017.
  */
 
 @Component({
-  selector: 'page-settlements',
-  templateUrl: 'settlements.html'
+  selector: 'kdmf-page-settlements',
+  templateUrl: 'settlements.html',
 })
 export class SettlementsPage implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private kdmService: KDMDataService) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController,
+              private kdmService: KDMDataService) {
   }
 
   presentPopover() {
     let settlement: Settlement = new Settlement('');
     let popover = this.popoverCtrl.create(CreateSettlementPopover, {
-      se: settlement
+      se: settlement,
     });
     popover.present().then(x => this.settlements.push(settlement));
   }
@@ -33,6 +34,16 @@ export class SettlementsPage implements OnInit {
 
   ngOnInit(): void {
     this.kdmService.getSettlements().then(settlements => this.settlements = settlements);
+  }
+
+  goToDetail(settlement: Settlement): void {
+    this.navCtrl.push(SettlementPage, {
+      settlement,
+    }).then();
+  }
+
+  removeSettlement(settlement: Settlement): void {
+    this.settlements.splice(this.settlements.indexOf(settlement), 1);
   }
 
   private createDefaultSettlement(): Settlement {
@@ -71,17 +82,7 @@ export class SettlementsPage implements OnInit {
   private createDefaultInnovations(settlement: Settlement): void {
     this.kdmService.getInnovations().then(innovations =>
       settlement.innovations = innovations.filter(innovation =>
-      innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1)
+      innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1),
     );
-  }
-
-  goToDetail(settlement: Settlement): void {
-    this.navCtrl.push(SettlementPage, {
-      settlement
-    }).then();
-  }
-
-  removeSettlement(settlement: Settlement): void {
-    this.settlements.splice(this.settlements.indexOf(settlement), 1);
   }
 }

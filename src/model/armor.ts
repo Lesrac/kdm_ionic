@@ -1,8 +1,8 @@
-import {Equipment} from "./equipment";
+import { Equipment } from './equipment';
 /**
  * Created by Daniel on 20.02.2017.
  */
-export class Armor extends Equipment{
+export class Armor extends Equipment {
   value: number;
   space: ArmorSpace;
 }

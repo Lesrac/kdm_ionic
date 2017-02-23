@@ -1,15 +1,15 @@
-import {Component, OnInit} from "@angular/core";
-import {ViewController, NavParams} from "ionic-angular";
-import {Settlement} from "../../model/settlement";
-import {KDMDataService} from "../../service/kdm_data.service";
-import {Storage} from "../../model/storage";
-import {Observable, Subject} from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { ViewController, NavParams } from 'ionic-angular';
+import { Settlement } from '../../model/settlement';
+import { KDMDataService } from '../../service/kdm_data.service';
+import { Storage } from '../../model/storage';
+import { Observable, Subject } from 'rxjs';
 /**
  * Created by Daniel on 19.02.2017.
  */
 @Component({
-  selector: 'storage-modal',
-  templateUrl: 'storage_modal.html'
+  selector: 'kdmf-storage-modal',
+  templateUrl: 'storage_modal.html',
 })
 export class StorageModal implements OnInit {
 
@@ -29,6 +29,26 @@ export class StorageModal implements OnInit {
     this.getSearchedStorageItems();
   }
 
+  search(): void {
+    this.searchNames.next(this.searchName);
+  }
+
+  selectItem(storage: Storage): void {
+    this.storageItemName = storage.name;
+  }
+
+  addClose(): void {
+    const storageItem = this.storageItems.find(item => item.name === this.storageItemName);
+    if (storageItem) {
+      this.settlement.addStorageItem(storageItem);
+    }
+    this.close();
+  }
+
+  close(): void {
+    this.viewCtrl.dismiss();
+  }
+
   private getStorageItems(): void {
     this.kdmData.getResources().then(resources =>
       this.storageItems = resources.sort(this.kdmData.sortByName));
@@ -40,13 +60,13 @@ export class StorageModal implements OnInit {
       .switchMap(term => {
         return term
           ? this.searchStorageItems(this.searchName)
-          : Observable.of<Storage[]>([])
+          : Observable.of<Storage[]>([]);
       })
       .catch(error => {
         // TODO error handling
         console.log(error);
         return Observable.of<Storage[]>([]);
-      })
+      });
   }
 
   private searchStorageItems(name: string): Observable<Storage[]> {
@@ -57,26 +77,6 @@ export class StorageModal implements OnInit {
     return Observable.of<Storage[]>(this.storageItems.filter(resource => {
       return resource.name.match(searchRgx);
     }));
-  }
-
-  search(): void {
-    this.searchNames.next(this.searchName);
-  }
-
-  selectItem(storage: Storage): void {
-    this.storageItemName = storage.name;
-  }
-
-  addClose(): void {
-    const storageItem = this.storageItems.find(item => item.name == this.storageItemName);
-    if (storageItem) {
-      this.settlement.addStorageItem(storageItem);
-    }
-    this.close();
-  }
-
-  close(): void {
-    this.viewCtrl.dismiss();
   }
 
 }

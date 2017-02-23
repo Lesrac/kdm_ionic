@@ -1,4 +1,4 @@
-import {StoryEvent} from "./story_event";
+import { StoryEvent } from './story_event';
 /**
  * Created by Daniel on 27.01.2017.
  */

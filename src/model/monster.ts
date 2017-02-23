@@ -1,5 +1,5 @@
-import {MonsterResource} from "./monster_resource";
-import {Storage} from "./storage";
+import { MonsterResource } from './monster_resource';
+import { Storage } from './storage';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -13,7 +13,7 @@ export class Monster {
   defeatedLevelThree: boolean = false;
   resources: MonsterResource[] = [];
   huntedResources: Storage[] = [];
-
+  locations: Location[] = [];
 
   constructor(name: string, isHuntable = false, isNemesis = false) {
     this.name = name;

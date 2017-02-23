@@ -1,14 +1,14 @@
-import {Component, OnInit} from "@angular/core";
-import {Settlement} from "../../model/settlement";
-import {ViewController, NavParams} from "ionic-angular";
-import {Innovation} from "../../model/innovation";
-import {KDMDataService} from "../../service/kdm_data.service";
+import { Component, OnInit } from '@angular/core';
+import { Settlement } from '../../model/settlement';
+import { ViewController, NavParams } from 'ionic-angular';
+import { Innovation } from '../../model/innovation';
+import { KDMDataService } from '../../service/kdm_data.service';
 /**
  * Created by Daniel on 19.02.2017.
  */
 @Component({
-  selector: 'innovation-modal',
-  templateUrl: 'innovation_modal.html'
+  selector: 'kdmf-innovation-modal',
+  templateUrl: 'innovation_modal.html',
 })
 export class InnovationModal implements OnInit {
 
@@ -24,14 +24,6 @@ export class InnovationModal implements OnInit {
     this.setupUsableInnovations();
   }
 
-  private setupUsableInnovations(): void {
-    this.kdmData.getInnovations().then(innovations =>
-      this.usableInnovations = innovations.filter(innovation =>
-      this.settlement.innovations.indexOf(innovation) < 0 && innovation.tags.some(tag =>
-      this.settlement.innovations.filter(inov =>
-      inov.consequence == tag).length > 0)).sort(this.kdmData.sortByName));
-  }
-
   addClose(): void {
     const innovation: Innovation = this.usableInnovations.find(item => item.name == this.innovationName);
     if (innovation) {
@@ -42,5 +34,13 @@ export class InnovationModal implements OnInit {
 
   close(): void {
     this.viewCtrl.dismiss();
+  }
+
+  private setupUsableInnovations(): void {
+    this.kdmData.getInnovations().then(innovations =>
+      this.usableInnovations = innovations.filter(innovation =>
+      this.settlement.innovations.indexOf(innovation) < 0 && innovation.tags.some(tag =>
+      this.settlement.innovations.filter(inov =>
+      inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName));
   }
 }

@@ -1,15 +1,14 @@
-import {Component} from "@angular/core";
-import {NavParams, NavController, ModalController} from "ionic-angular";
-import {Settlement} from "../../model/settlement";
-import {Storage} from "../../model/storage";
-import {StorageModal} from "./storage_modal";
+import { Component } from '@angular/core';
+import { NavParams, NavController, ModalController } from 'ionic-angular';
+import { Settlement } from '../../model/settlement';
+import { Storage } from '../../model/storage';
+import { StorageModal } from './storage_modal';
 /**
  * Created by Daniel on 14.02.2017.
-
  */
 @Component({
-  selector: 'page-storage',
-  templateUrl: 'storage.html'
+  selector: 'kdmf-page-storage',
+  templateUrl: 'storage.html',
 })
 export class StoragePage {
 
@@ -31,7 +30,7 @@ export class StoragePage {
   }
 
   changedAmount(storage: Storage): void {
-    if (storage.amount == 0) {
+    if (storage.amount === 0) {
       this.removeStorage(storage);
     }
   }
@@ -43,7 +42,7 @@ export class StoragePage {
 
   addStorageItem(): void {
     let modal = this.modalCtrl.create(StorageModal, {
-      settlement: this.settlement
+      settlement: this.settlement,
     });
     modal.present();
   }

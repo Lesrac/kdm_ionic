@@ -1,6 +1,6 @@
-import {LanternEvent} from "./lantern_event";
-import {Comparable} from "./comparable";
-import {ComparableVisitor} from "./visitor/comparable_visitor";
+import { LanternEvent } from './lantern_event';
+import { Comparable } from './comparable';
+import { ComparableVisitor } from './visitor/comparable_visitor';
 /**
  * Created by Daniel on 07.02.2017.
  */

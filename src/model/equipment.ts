@@ -1,4 +1,4 @@
-import {Storage} from "./storage";
+import { Storage } from './storage';
 /**
  * Created by Daniel on 20.02.2017.
  */
