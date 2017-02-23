@@ -13,7 +13,9 @@
     "sourceMap": true,
     "target": "es6"
   },
-  "types": ["jasmine"],
+  "types": [
+    "jasmine"
+  ],
   "include": [
     "src/**/*.ts"
   ],
