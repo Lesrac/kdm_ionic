@@ -7,7 +7,7 @@ import { Milestone } from '../model/milestone';
 export class KDMCheckerService {
 
   checkMilestone(milestone: Milestone, identifier: string, value: number | string): boolean {
-    return (!milestone.reached && milestone.identifier == identifier && milestone.accept(value));
+    return (!milestone.reached && milestone.identifier === identifier && milestone.accept(value));
   }
 
 }

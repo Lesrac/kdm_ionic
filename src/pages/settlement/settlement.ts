@@ -10,6 +10,7 @@ import { DefeatedMonsterPage } from '../defeated_monster/defeated_monster';
 import { LocationPage } from '../location/location';
 import { StoragePage } from '../storage/storage';
 import { InnovationPage } from '../innovation/innovation';
+import { Survivor } from '../../model/survivor';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -129,6 +130,7 @@ export class SettlementPage implements OnInit {
 
   increasePopulation(): void {
     this.settlement.population++;
+    this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
   }
 
   decreasePopulation(): void {

@@ -25,7 +25,7 @@ export class InnovationModal implements OnInit {
   }
 
   addClose(): void {
-    const innovation: Innovation = this.usableInnovations.find(item => item.name == this.innovationName);
+    const innovation: Innovation = this.usableInnovations.find(item => item.name === this.innovationName);
     if (innovation) {
       this.settlement.innovations.push(innovation);
     }

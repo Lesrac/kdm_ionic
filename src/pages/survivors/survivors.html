@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Survivors</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Settlement</ion-label>
+    <ion-select [(ngModel)]="settlementId" (ionChange)="confirmChange()">
+      <ion-option *ngFor="let stlmnt of settlements" (ionSelect)="selectedSettlement(stlmnt)">
+        {{stlmnt.name}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-list *ngIf="settlement">
+    <ion-item *ngFor="let survivor of settlement.survivors">{{survivor.name}}</ion-item>
+  </ion-list>
+</ion-content>

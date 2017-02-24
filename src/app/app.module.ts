@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettlementsPage } from '../pages/settlements/settlements';
@@ -21,11 +20,11 @@ import { KDMCalculationService } from '../service/kdm_calculation.service';
 import { StorageModal } from '../pages/storage/storage_modal';
 import { InnovationPage } from '../pages/innovation/innovation';
 import { InnovationModal } from '../pages/innovation/innovation_modal';
+import { SurvivorsPage } from '../pages/survivors/survivors';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
     ContactPage,
     SettlementsPage,
     SettlementPage,
@@ -34,6 +33,7 @@ import { InnovationModal } from '../pages/innovation/innovation_modal';
     LocationPage,
     StoragePage,
     InnovationPage,
+    SurvivorsPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -49,7 +49,6 @@ import { InnovationModal } from '../pages/innovation/innovation_modal';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
     ContactPage,
     SettlementsPage,
     SettlementPage,
@@ -58,6 +57,7 @@ import { InnovationModal } from '../pages/innovation/innovation_modal';
     LocationPage,
     StoragePage,
     InnovationPage,
+    SurvivorsPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,

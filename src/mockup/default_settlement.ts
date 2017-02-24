@@ -94,7 +94,7 @@ export const RESSOURCES: Resource[] = [
   },
   {
     name: 'Skull',
-    description: 'When you gain this, a survivor of your choice gains +1 insanity.',
+    description: 'When you gain this, a survivors of your choice gains +1 insanity.',
     amount: 0,
     type: ResourceType.Basic,
     existingCards: 1,
@@ -383,7 +383,7 @@ export const EVENTS: LanternEvent[] = [
   {
     name: 'Returning Survivors',
     reached: false,
-    todo: 'Nominate a survivor to utter the First Words',
+    todo: 'Nominate a survivors to utter the First Words',
     storyEvents: STORYEVENTS.slice(0, 3),
   },
   {
@@ -478,7 +478,7 @@ export const MILESTONES: Milestone[] = [
     name: 'Principle: Death',
     tag: 'First time death count is updated',
     reached: false,
-    todo: 'The group must decide what to do with their first survivor corpse. Choose one.',
+    todo: 'The group must decide what to do with their first survivors corpse. Choose one.',
     storyEvents: STORYEVENTS.slice(3, 5),
     value: 1,
     identifier: 'death',

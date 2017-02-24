@@ -5,6 +5,6 @@ import { Milestone } from '../milestone';
  */
 export class Equals implements ComparableVisitor {
   visit(milestone: Milestone, compareValue: string|number): boolean {
-    return compareValue == milestone.value;
+    return compareValue === milestone.value;
   }
 }

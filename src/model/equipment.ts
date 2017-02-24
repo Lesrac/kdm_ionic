@@ -8,13 +8,13 @@ export class Equipment extends Storage {
 
 }
 
-export enum Affinity{
+export enum Affinity {
   green,
   blue,
   red
 }
 
-export enum Direction{
+export enum Direction {
   up,
   down,
   left,
