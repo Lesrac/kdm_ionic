@@ -24,11 +24,15 @@ export class SurvivorsPage implements OnInit {
   }
 
   selectedSettlement(settlement: Settlement): void {
-    this.tempSettlement = settlement;
+    if (settlement) {
+      this.tempSettlement = settlement;
+    }
   }
 
   confirmChange(): void {
-    this.settlement = this.tempSettlement;
+    if (this.tempSettlement) {
+      this.settlement = this.tempSettlement;
+    }
   }
 
   private getSettlements(): void {
