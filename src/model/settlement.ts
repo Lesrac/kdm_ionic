@@ -13,7 +13,7 @@ export class Settlement {
   id: number;
   name: string;
   survivalLimit: number = 0;
-  population: number = 1;
+  population: number = 0;
   deathcount: number = 0;
   settlementLost: number = 0;
   timeline: Timeline[] = [];

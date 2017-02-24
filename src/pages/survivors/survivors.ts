@@ -35,6 +35,14 @@ export class SurvivorsPage implements OnInit {
     }
   }
 
+  survivorsCheck(): boolean {
+    if (this.settlement &&
+      this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population) {
+      return true;
+    }
+    return false;
+  }
+
   private getSettlements(): void {
     this.kdmService.getSettlements().then(settlements => {
       if (settlements) {

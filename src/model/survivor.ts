@@ -5,6 +5,7 @@ export class Survivor {
   static counter: number = 0;
   id: number;
   name: string;
+  isAlive: boolean = true;
 
   constructor(name: string) {
     this.name = name;

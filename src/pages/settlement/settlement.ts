@@ -162,8 +162,14 @@ export class SettlementPage implements OnInit {
   }
 
   private setupPopulationControl(): void {
+    // ignore first valueChange, because Settlement starts with population=0
+    let init = true;
     this.populationControl.valueChanges.subscribe((value) => {
-      this.checkMilestone(null, 'population', value);
+      if (!init) {
+        this.checkMilestone(null, 'population', value);
+      } else {
+        init = false;
+      }
     });
   }
 

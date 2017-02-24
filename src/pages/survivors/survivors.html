@@ -13,7 +13,11 @@
       </ion-option>
     </ion-select>
   </ion-item>
+  <ion-item *ngIf="survivorsCheck()">
+    <ion-textarea readonly placeholder="There are more Survivors alive then population would allow"></ion-textarea>
+  </ion-item>
   <ion-list *ngIf="settlement">
+    <ion-item *ngIf="settlement.survivors.length < 1">No Survivors available</ion-item>
     <ion-item *ngFor="let survivor of settlement.survivors">{{survivor.name}}</ion-item>
   </ion-list>
 </ion-content>
