@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { NavController } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
+import { Survivor } from '../../model/survivor';
 /**
  * Created by Daniel on 24.02.2017.
  */
@@ -35,12 +36,24 @@ export class SurvivorsPage implements OnInit {
     }
   }
 
+  addSurvivor(): void {
+    this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
+  }
+
   survivorsCheck(): boolean {
-    if (this.settlement &&
-      this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population) {
-      return true;
+    return (this.settlement &&
+    this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population);
+  }
+
+  updateSurvivorAlive(survivor: Survivor): void {
+    survivor.isAlive = !survivor.isAlive;
+  }
+
+  removeSurvivor(survivor: Survivor): void {
+    const index: number = this.settlement.survivors.findIndex(s => survivor === s);
+    if (index >= 0) {
+      this.settlement.survivors.splice(index, 1);
     }
-    return false;
   }
 
   private getSettlements(): void {

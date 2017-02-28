@@ -13,11 +13,31 @@
       </ion-option>
     </ion-select>
   </ion-item>
+  <button *ngIf="settlement" ion-button icon-only full (click)="addSurvivor()">
+    <ion-icon name="add-circle"></ion-icon>
+  </button>
   <ion-item *ngIf="survivorsCheck()">
-    <ion-textarea readonly placeholder="There are more Survivors alive then population would allow"></ion-textarea>
+    <ion-textarea autoresize readonly
+                  placeholder="There are more Survivors alive then population would allow"></ion-textarea>
   </ion-item>
   <ion-list *ngIf="settlement">
     <ion-item *ngIf="settlement.survivors.length < 1">No Survivors available</ion-item>
-    <ion-item *ngFor="let survivor of settlement.survivors">{{survivor.name}}</ion-item>
+    <ion-row *ngFor="let survivor of settlement.survivors">
+      <ion-col style="width: 60%">
+        <span>{{survivor.name}}</span>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-checkbox [(ngModel)]="survivor.isAlive"></ion-checkbox>
+          <ion-label *ngIf="survivor.isAlive">is alive</ion-label>
+          <ion-label *ngIf="!survivor.isAlive">is dead</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col style="width: 20%">
+        <button ion-button icon-only full (click)="removeSurvivor(survivor)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-list>
 </ion-content>
