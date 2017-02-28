@@ -29,8 +29,6 @@ export class SettlementPage implements OnInit {
 
   lostSettlementGroup: FormGroup;
 
-  populationControl: FormControl = new FormControl();
-
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public kdmChecker: KDMCheckerService, public formBuilder: FormBuilder) {
     if (params.get('settlement')) {
@@ -41,7 +39,6 @@ export class SettlementPage implements OnInit {
   ngOnInit(): void {
     this.setupDeathcounts();
     this.setupLostSettlements();
-    this.setupPopulationControl();
   }
 
   updateDeathcount(event: Event, control: FormControl): void {
@@ -129,12 +126,31 @@ export class SettlementPage implements OnInit {
   }
 
   increasePopulation(): void {
-    this.settlement.population++;
+    const stlmt = this.settlement;
+    stlmt.population++;
+    if (stlmt.survivors.length < stlmt.population) {
+      this.addSurvivor();
+    }
+  }
+
+  addSurvivor(): void {
     this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
   }
 
   decreasePopulation(): void {
     this.settlement.population--;
+  }
+
+  populationChecker(): void {
+    const population = this.settlement.population;
+    this.checkMilestone(null, 'population', population);
+    const survivors = this.settlement.survivors.length;
+    if (survivors <= population) {
+      const difference = population - survivors;
+      for (let i = 0; i < difference; i++) {
+        this.addSurvivor();
+      }
+    }
   }
 
   private setupDeathcounts(): void {
@@ -159,18 +175,6 @@ export class SettlementPage implements OnInit {
       }
     }
     this.lostSettlementGroup = this.formBuilder.group({settlementCounts: checkboxArray});
-  }
-
-  private setupPopulationControl(): void {
-    // ignore first valueChange, because Settlement starts with population=0
-    let init = true;
-    this.populationControl.valueChanges.subscribe((value) => {
-      if (!init) {
-        this.checkMilestone(null, 'population', value);
-      } else {
-        init = false;
-      }
-    });
   }
 
 }
