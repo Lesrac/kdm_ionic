@@ -68,7 +68,11 @@ import { SurvivorsPage } from '../pages/survivors/survivors';
   providers: [{
     provide: ErrorHandler,
     useClass: IonicErrorHandler,
-  }, KDMDataService, KDMCheckerService, KDMCalculationService]
+  },
+    KDMDataService,
+    KDMCheckerService,
+    KDMCalculationService,
+  ],
 })
 export class AppModule {
 }
