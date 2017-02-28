@@ -45,10 +45,6 @@ export class SurvivorsPage implements OnInit {
     this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population);
   }
 
-  updateSurvivorAlive(survivor: Survivor): void {
-    survivor.isAlive = !survivor.isAlive;
-  }
-
   removeSurvivor(survivor: Survivor): void {
     const index: number = this.settlement.survivors.findIndex(s => survivor === s);
     if (index >= 0) {
