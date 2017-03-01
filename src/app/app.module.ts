@@ -21,6 +21,7 @@ import { StorageModal } from '../pages/storage/storage_modal';
 import { InnovationPage } from '../pages/innovation/innovation';
 import { InnovationModal } from '../pages/innovation/innovation_modal';
 import { SurvivorsPage } from '../pages/survivors/survivors';
+import { SurvivorPage } from '../pages/survivor/survivor';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SurvivorsPage } from '../pages/survivors/survivors';
     StoragePage,
     InnovationPage,
     SurvivorsPage,
+    SurvivorPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -58,6 +60,7 @@ import { SurvivorsPage } from '../pages/survivors/survivors';
     StoragePage,
     InnovationPage,
     SurvivorsPage,
+    SurvivorPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,

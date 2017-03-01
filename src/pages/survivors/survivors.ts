@@ -3,6 +3,7 @@ import { Settlement } from '../../model/settlement';
 import { NavController } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Survivor } from '../../model/survivor';
+import { SurvivorPage } from '../survivor/survivor';
 /**
  * Created by Daniel on 24.02.2017.
  */
@@ -12,7 +13,7 @@ import { Survivor } from '../../model/survivor';
 })
 export class SurvivorsPage implements OnInit {
 
-  settlementId: number = 0;
+  settlementId: number = -1;
   settlements: Settlement[];
   settlement: Settlement;
   tempSettlement: Settlement;
@@ -24,6 +25,12 @@ export class SurvivorsPage implements OnInit {
     this.getSettlements();
   }
 
+  goToDetail(survivor: Survivor): void {
+    this.navCtrl.push(SurvivorPage, {
+      survivor,
+    }).then();
+  }
+
   selectedSettlement(settlement: Settlement): void {
     if (settlement) {
       this.tempSettlement = settlement;
@@ -33,6 +40,7 @@ export class SurvivorsPage implements OnInit {
   confirmChange(): void {
     if (this.tempSettlement) {
       this.settlement = this.tempSettlement;
+      this.settlementId = this.settlement.id;
     }
   }
 
