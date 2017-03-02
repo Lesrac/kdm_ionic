@@ -8,3 +8,80 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-group>
+      <ion-row>
+        <ion-col>
+          <ion-item-divider>
+            Survival
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseSurvival()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseSurvival()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.survival"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.canDodge"></ion-checkbox>
+            <ion-label>Dodge</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.canEncourage"></ion-checkbox>
+            <ion-label>Encourage</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.canSurge"></ion-checkbox>
+            <ion-label>Surge</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.canDash"></ion-checkbox>
+            <ion-label>Dash</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Hunt XP
+      </ion-item-divider>
+      <form [formGroup]="xpGroup">
+        <ion-row formArrayName="xps" class="container">
+          <ion-col *ngFor="let control of xpGroup.controls.xps.controls">
+            <ion-checkbox type="checkbox" (click)="updateXP($event, control)"
+                          [formControl]="control"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.cannotSpendSurvival"></ion-checkbox>
+            <ion-label>Cannot spend survival.</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.cannotUseFightingArts"></ion-checkbox>
+            <ion-label>Cannot use Fighting Arts.</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.skipNextHunt"></ion-checkbox>
+            <ion-label>Skip Next Hunt.</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
