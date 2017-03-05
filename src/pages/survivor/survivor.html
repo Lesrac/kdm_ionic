@@ -12,7 +12,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item-group>
-      <ion-row>
+      <ion-row class="container">
         <ion-col>
           <ion-item-divider>
             Survival
@@ -46,6 +46,139 @@
           <ion-item>
             <ion-checkbox [(ngModel)]="survivor.canDash"></ion-checkbox>
             <ion-label>Dash</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-row class="container">
+        <ion-col>
+          <ion-item-divider>
+            Movement
+          </ion-item-divider>
+          <ion-item>
+            <ion-input type="number" readonly
+                       [ngModel]="survivor.movement"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item-divider>
+            Accuracy
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseAccuracy()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseAccuracy()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.accuracy"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item-divider>
+            Strength
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseStrength()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseStrength()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.strength"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item-divider>
+            Evasion
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseEvasion()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseEvasion()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.evasion"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item-divider>
+            Luck
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseLuck()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseLuck()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.luck"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item-divider>
+            Speed
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseSpeed()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseSpeed()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.speed"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-row class="container">
+        <ion-col>
+          <ion-item-divider>
+            Brain
+          </ion-item-divider>
+          <ion-segment>
+            <button ion-button icon-only (click)="increaseInsanity()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="decreaseInsanity()">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+          </ion-segment>
+          <ion-item>
+            <ion-input type="number" required
+                       [(ngModel)]="survivor.insanity"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.isBrainDamaged"></ion-checkbox>
+            <ion-label>Brain</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>If your insanity is 3+, you are insane.</ion-label>
           </ion-item>
         </ion-col>
       </ion-row>

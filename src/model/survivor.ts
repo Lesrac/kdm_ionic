@@ -1,3 +1,5 @@
+import { FightingArt } from './fighting_art';
+import { Disorder } from './disorder';
 /**
  * Created by Daniel on 24.02.2017.
  */
@@ -20,7 +22,7 @@ export class Survivor {
   luck: number = 0;
   speed: number = 0;
   insanity: number = 0;
-  brainDamage: boolean = false;
+  isBrainDamaged: boolean = false;
   headArmor: number = 0;
   headHeavyInjury: boolean = false;
   armsArmor: number = 0;
@@ -38,6 +40,8 @@ export class Survivor {
   cannotUseFightingArts: boolean = false;
   cannotSpendSurvival: boolean = false;
   skipNextHunt: boolean = false;
+  fightingArts: FightingArt[] = [];
+  disorders: Disorder[] = [];
 
   constructor(name: string) {
     this.name = name;

@@ -34,6 +34,54 @@ export class SurvivorPage implements OnInit {
     this.survivor.survival--;
   }
 
+  increaseAccuracy(): void {
+    this.survivor.accuracy++;
+  }
+
+  decreaseAccuracy(): void {
+    this.survivor.accuracy--;
+  }
+
+  increaseStrength(): void {
+    this.survivor.strength++;
+  }
+
+  decreaseStrength(): void {
+    this.survivor.strength--;
+  }
+
+  increaseEvasion(): void {
+    this.survivor.evasion++;
+  }
+
+  decreaseEvasion(): void {
+    this.survivor.evasion--;
+  }
+
+  increaseLuck(): void {
+    this.survivor.luck++;
+  }
+
+  decreaseLuck(): void {
+    this.survivor.luck--;
+  }
+
+  increaseSpeed(): void {
+    this.survivor.speed++;
+  }
+
+  decreaseSpeed(): void {
+    this.survivor.speed--;
+  }
+
+  increaseInsanity(): void {
+    this.survivor.insanity++;
+  }
+
+  decreaseInsanity(): void {
+    this.survivor.insanity--;
+  }
+
   updateXP(event: Event, control: FormControl): void {
     if (control.value) {
       this.survivor.experience++;
