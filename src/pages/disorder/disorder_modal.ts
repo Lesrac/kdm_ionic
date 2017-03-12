@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Disorder } from '../../model/disorder';
 import { ViewController, NavParams } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
-import { Survivor } from '../../model/survivor';
 /**
  * Created by Daniel on 12.03.2017.
  */

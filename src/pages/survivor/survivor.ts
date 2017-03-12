@@ -3,6 +3,7 @@ import { Survivor } from '../../model/survivor';
 import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { DisordersPage } from '../disorder/disorders';
+import { FightingArtPage } from '../fighting_art/fighting_art';
 /**
  * Created by Daniel on 01.03.2017.
  */
@@ -94,6 +95,12 @@ export class SurvivorPage implements OnInit {
   showDisorders(): void {
     this.navCtrl.push(DisordersPage, {
       disorders: this.survivor.disorders,
+    }).then();
+  }
+
+  showFightingArts(): void {
+    this.navCtrl.push(FightingArtPage, {
+      fightingArts: this.survivor.fightingArts,
     }).then();
   }
 

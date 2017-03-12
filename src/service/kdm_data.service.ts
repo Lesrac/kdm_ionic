@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import {
   SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS,
+  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS, FIGHTINGARTS,
 } from '../mockup/default_settlement';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
@@ -12,6 +12,7 @@ import { Location } from '../model/location';
 import { Resource } from '../model/resource';
 import { Innovation } from '../model/innovation';
 import { Disorder } from '../model/disorder';
+import { FightingArt } from '../model/fighting_art';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -71,6 +72,10 @@ export class KDMDataService {
 
   getDisorders(): Promise<Disorder[]> {
     return Promise.resolve(DISORDERS);
+  }
+
+  getFightingArts(): Promise<FightingArt[]> {
+    return Promise.resolve(FIGHTINGARTS);
   }
 
   sortByName(l, r) {

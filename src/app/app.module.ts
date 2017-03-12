@@ -24,6 +24,8 @@ import { SurvivorsPage } from '../pages/survivors/survivors';
 import { SurvivorPage } from '../pages/survivor/survivor';
 import { DisordersPage } from '../pages/disorder/disorders';
 import { DisorderModal } from '../pages/disorder/disorder_modal';
+import { FightingArtPage } from '../pages/fighting_art/fighting_art';
+import { FightingArtModal } from '../pages/fighting_art/fighting_art_modal';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { DisorderModal } from '../pages/disorder/disorder_modal';
     SurvivorsPage,
     SurvivorPage,
     DisordersPage,
+    FightingArtPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -46,6 +49,7 @@ import { DisorderModal } from '../pages/disorder/disorder_modal';
     StorageModal,
     InnovationModal,
     DisorderModal,
+    FightingArtModal,
     AddLinebreakToPunctuationPipe,
     AutoresizeTextareaDirective,
   ],
@@ -66,6 +70,7 @@ import { DisorderModal } from '../pages/disorder/disorder_modal';
     SurvivorsPage,
     SurvivorPage,
     DisordersPage,
+    FightingArtPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
@@ -73,6 +78,7 @@ import { DisorderModal } from '../pages/disorder/disorder_modal';
     StorageModal,
     InnovationModal,
     DisorderModal,
+    FightingArtModal,
   ],
   providers: [{
     provide: ErrorHandler,
