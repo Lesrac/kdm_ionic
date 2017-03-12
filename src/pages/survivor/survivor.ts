@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Survivor } from '../../model/survivor';
 import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { DisordersPage } from '../disorder/disorders';
 /**
  * Created by Daniel on 01.03.2017.
  */
@@ -88,6 +89,12 @@ export class SurvivorPage implements OnInit {
     } else {
       this.survivor.experience--;
     }
+  }
+
+  showDisorders(): void {
+    this.navCtrl.push(DisordersPage, {
+      disorders: this.survivor.disorders,
+    }).then();
   }
 
   private setupXP(): void {

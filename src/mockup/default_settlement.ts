@@ -14,6 +14,7 @@ import { StorageTag } from '../model/storage';
 import { Weapon } from '../model/weapon';
 import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction } from '../model/equipment';
+import { Disorder } from '../model/disorder';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -611,4 +612,11 @@ export const INNOVATIONS: Innovation[] = [
     consequence: null,
     tags: [InnovationTag.AMMONIA_CONSEQUENCE, InnovationTag.SCIENCE],
   },
+];
+
+export const DISORDERS: Disorder[] = [
+  {
+    name: 'Absent Seizures',
+    description: 'No one knows where your mind goes when you\'re gone, not even you. The first time you would suffer a brain injury each showdown, you are instead knocked down and forget a fighting art (erase it).',
+  }
 ];

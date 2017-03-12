@@ -22,6 +22,8 @@ import { InnovationPage } from '../pages/innovation/innovation';
 import { InnovationModal } from '../pages/innovation/innovation_modal';
 import { SurvivorsPage } from '../pages/survivors/survivors';
 import { SurvivorPage } from '../pages/survivor/survivor';
+import { DisordersPage } from '../pages/disorder/disorders';
+import { DisorderModal } from '../pages/disorder/disorder_modal';
 
 @NgModule({
   declarations: [
@@ -36,12 +38,14 @@ import { SurvivorPage } from '../pages/survivor/survivor';
     InnovationPage,
     SurvivorsPage,
     SurvivorPage,
+    DisordersPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
     DefeatedMonsterModal,
     StorageModal,
     InnovationModal,
+    DisorderModal,
     AddLinebreakToPunctuationPipe,
     AutoresizeTextareaDirective,
   ],
@@ -61,12 +65,14 @@ import { SurvivorPage } from '../pages/survivor/survivor';
     InnovationPage,
     SurvivorsPage,
     SurvivorPage,
+    DisordersPage,
     TabsPage,
     CreateSettlementPopover,
     TimelineEventModal,
     DefeatedMonsterModal,
     StorageModal,
     InnovationModal,
+    DisorderModal,
   ],
   providers: [{
     provide: ErrorHandler,
