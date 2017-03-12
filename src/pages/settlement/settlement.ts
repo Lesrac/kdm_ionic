@@ -131,6 +131,7 @@ export class SettlementPage implements OnInit {
     if (stlmt.survivors.length < stlmt.population) {
       this.addSurvivor();
     }
+    this.populationChecker();
   }
 
   addSurvivor(): void {
@@ -139,6 +140,7 @@ export class SettlementPage implements OnInit {
 
   decreasePopulation(): void {
     this.settlement.population--;
+    this.populationChecker();
   }
 
   populationChecker(): void {
