@@ -28,60 +28,76 @@ export class SurvivorPageComponent implements OnInit {
     this.setupXP();
   }
 
-  increaseSurvival(): void {
-    this.survivor.survival++;
+  survivalChange(event: number): void {
+    if (typeof event === 'number') {
+      this.survivor.survival = event;
+    }
   }
 
-  decreaseSurvival(): void {
-    this.survivor.survival--;
+  accuracyChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.accuracy = event;
+    }
   }
 
-  increaseAccuracy(): void {
-    this.survivor.accuracy++;
+  strengthChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.strength = event;
+    }
   }
 
-  decreaseAccuracy(): void {
-    this.survivor.accuracy--;
+  evasionChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.evasion = event;
+    }
   }
 
-  increaseStrength(): void {
-    this.survivor.strength++;
+  luckChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.luck = event;
+    }
   }
 
-  decreaseStrength(): void {
-    this.survivor.strength--;
+  speedChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.speed = event;
+    }
   }
 
-  increaseEvasion(): void {
-    this.survivor.evasion++;
+  insanityChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.insanity = event;
+    }
   }
 
-  decreaseEvasion(): void {
-    this.survivor.evasion--;
+  headArmorChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.headArmor = event;
+    }
   }
 
-  increaseLuck(): void {
-    this.survivor.luck++;
+  armsArmorChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.armsArmor = event;
+    }
   }
 
-  decreaseLuck(): void {
-    this.survivor.luck--;
+  bodyArmorChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.bodyArmor = event;
+    }
   }
 
-  increaseSpeed(): void {
-    this.survivor.speed++;
+  waistArmorChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.waistArmor = event;
+    }
   }
 
-  decreaseSpeed(): void {
-    this.survivor.speed--;
-  }
-
-  increaseInsanity(): void {
-    this.survivor.insanity++;
-  }
-
-  decreaseInsanity(): void {
-    this.survivor.insanity--;
+  legsArmorChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.legsArmor = event;
+    }
   }
 
   updateXP(event: Event, control: FormControl): void {

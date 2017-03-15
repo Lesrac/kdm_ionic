@@ -17,36 +17,15 @@
           <ion-item-divider>
             Survival Limit
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseSurvivalLimit()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseSurvivalLimit()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="settlement.survivalLimit"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="settlement.survivalLimit" (change)="survivalLimitChange($event)">
+          </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item-divider>
             Population
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increasePopulation()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreasePopulation()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       (blur)="populationChecker()"
-                       [(ngModel)]="settlement.population"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="settlement.population" (change)="populationChange($event)">
+          </kdmf-input-number>
         </ion-col>
       </ion-row>
     </ion-item-group>

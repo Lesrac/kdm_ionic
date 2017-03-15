@@ -33,18 +33,8 @@
           <ion-item-divider>
             Survival
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseSurvival()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseSurvival()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.survival"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.survival" (change)="survivalChange($event)">
+          </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item>
@@ -82,89 +72,40 @@
           <ion-item-divider>
             Accuracy
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseAccuracy()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseAccuracy()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.accuracy"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.accuracy" (change)="accuracyChange($event)">
+          </kdmf-input-number>
         </ion-col>
 
         <ion-col>
           <ion-item-divider>
             Strength
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseStrength()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseStrength()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.strength"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.strength" (change)="strengthChange($event)">
+          </kdmf-input-number>
         </ion-col>
 
         <ion-col>
           <ion-item-divider>
             Evasion
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseEvasion()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseEvasion()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.evasion"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.evasion" (change)="evasionChange($event)">
+          </kdmf-input-number>
         </ion-col>
 
         <ion-col>
           <ion-item-divider>
             Luck
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseLuck()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseLuck()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.luck"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.luck" (change)="luckChange($event)">
+          </kdmf-input-number>
         </ion-col>
+
         <ion-col>
           <ion-item-divider>
             Speed
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseSpeed()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseSpeed()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.speed"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.speed" (change)="speedChange($event)">
+          </kdmf-input-number>
         </ion-col>
       </ion-row>
     </ion-item-group>
@@ -175,18 +116,8 @@
           <ion-item-divider>
             Brain
           </ion-item-divider>
-          <ion-segment>
-            <button ion-button icon-only (click)="increaseInsanity()">
-              <ion-icon name="add-circle"></ion-icon>
-            </button>
-            <button ion-button icon-only (click)="decreaseInsanity()">
-              <ion-icon name="remove-circle"></ion-icon>
-            </button>
-          </ion-segment>
-          <ion-item>
-            <ion-input type="number" required
-                       [(ngModel)]="survivor.insanity"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.insanity" (change)="insanityChange($event)">
+          </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item>
@@ -208,18 +139,8 @@
           </ion-item-divider>
           <ion-row>
             <ion-col>
-              <ion-segment>
-                <button ion-button icon-only (click)="increaseInsanity()">
-                  <ion-icon name="add-circle"></ion-icon>
-                </button>
-                <button ion-button icon-only (click)="decreaseInsanity()">
-                  <ion-icon name="remove-circle"></ion-icon>
-                </button>
-              </ion-segment>
-              <ion-item>
-                <ion-input type="number" required
-                           [(ngModel)]="survivor.headArmor"></ion-input>
-              </ion-item>
+              <kdmf-input-number [value]="survivor.headArmor" (change)="headArmorChange($event)">
+              </kdmf-input-number>
             </ion-col>
             <ion-col>
               <ion-checkbox color="dark" [(ngModel)]="survivor.headHeavyInjury"></ion-checkbox>
@@ -234,18 +155,8 @@
           </ion-item-divider>
           <ion-row>
             <ion-col>
-              <ion-segment>
-                <button ion-button icon-only (click)="increaseInsanity()">
-                  <ion-icon name="add-circle"></ion-icon>
-                </button>
-                <button ion-button icon-only (click)="decreaseInsanity()">
-                  <ion-icon name="remove-circle"></ion-icon>
-                </button>
-              </ion-segment>
-              <ion-item>
-                <ion-input type="number" required
-                           [(ngModel)]="survivor.armsArmor"></ion-input>
-              </ion-item>
+              <kdmf-input-number [value]="survivor.armsArmor" (change)="armsArmorChange($event)">
+              </kdmf-input-number>
             </ion-col>
             <ion-col>
               <ion-checkbox [(ngModel)]="survivor.armsLightInjury"></ion-checkbox>
@@ -264,18 +175,8 @@
           </ion-item-divider>
           <ion-row>
             <ion-col>
-              <ion-segment>
-                <button ion-button icon-only (click)="increaseInsanity()">
-                  <ion-icon name="add-circle"></ion-icon>
-                </button>
-                <button ion-button icon-only (click)="decreaseInsanity()">
-                  <ion-icon name="remove-circle"></ion-icon>
-                </button>
-              </ion-segment>
-              <ion-item>
-                <ion-input type="number" required
-                           [(ngModel)]="survivor.bodyArmor"></ion-input>
-              </ion-item>
+              <kdmf-input-number [value]="survivor.bodyArmor" (change)="bodyArmorChange($event)">
+              </kdmf-input-number>
             </ion-col>
             <ion-col>
               <ion-checkbox [(ngModel)]="survivor.bodyLightInjury"></ion-checkbox>
@@ -294,18 +195,8 @@
           </ion-item-divider>
           <ion-row>
             <ion-col>
-              <ion-segment>
-                <button ion-button icon-only (click)="increaseInsanity()">
-                  <ion-icon name="add-circle"></ion-icon>
-                </button>
-                <button ion-button icon-only (click)="decreaseInsanity()">
-                  <ion-icon name="remove-circle"></ion-icon>
-                </button>
-              </ion-segment>
-              <ion-item>
-                <ion-input type="number" required
-                           [(ngModel)]="survivor.waistArmor"></ion-input>
-              </ion-item>
+              <kdmf-input-number [value]="survivor.waistArmor" (change)="waistArmorChange($event)">
+              </kdmf-input-number>
             </ion-col>
             <ion-col>
               <ion-checkbox [(ngModel)]="survivor.waistLightInjury"></ion-checkbox>
@@ -324,18 +215,8 @@
           </ion-item-divider>
           <ion-row>
             <ion-col>
-              <ion-segment>
-                <button ion-button icon-only (click)="increaseInsanity()">
-                  <ion-icon name="add-circle"></ion-icon>
-                </button>
-                <button ion-button icon-only (click)="decreaseInsanity()">
-                  <ion-icon name="remove-circle"></ion-icon>
-                </button>
-              </ion-segment>
-              <ion-item>
-                <ion-input type="number" required
-                           [(ngModel)]="survivor.legsArmor"></ion-input>
-              </ion-item>
+              <kdmf-input-number [value]="survivor.legsArmor" (change)="legsArmorChange($event)">
+              </kdmf-input-number>
             </ion-col>
             <ion-col>
               <ion-checkbox [(ngModel)]="survivor.legsLightInjury"></ion-checkbox>

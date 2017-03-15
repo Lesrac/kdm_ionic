@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterContentInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
@@ -19,9 +19,9 @@ import { Survivor } from '../../model/survivor';
   templateUrl: 'settlement.component.html',
 })
 export class SettlementPageComponent implements OnInit {
-
   private static MAX_DEATHS: number = 36;
   private static MAX_LOST_SETTLEMENTS: number = 19;
+
   @Input()
   settlement: Settlement;
 
@@ -117,30 +117,25 @@ export class SettlementPageComponent implements OnInit {
     }
   }
 
-  increaseSurvivalLimit(): void {
-    this.settlement.survivalLimit++;
-  }
-
-  decreaseSurvivalLimit(): void {
-    this.settlement.survivalLimit--;
-  }
-
-  increasePopulation(): void {
-    const stlmt = this.settlement;
-    stlmt.population++;
-    if (stlmt.survivors.length < stlmt.population) {
-      this.addSurvivor();
+  survivalLimitChange(event): void {
+    if (typeof event === 'number') {
+      this.settlement.survivalLimit = event;
     }
-    this.populationChecker();
+  }
+
+  populationChange(event): void {
+    if (typeof event === 'number') {
+      const stlmt = this.settlement;
+      stlmt.population = event;
+      if (stlmt.survivors.length < stlmt.population) {
+        this.addSurvivor();
+      }
+      this.populationChecker();
+    }
   }
 
   addSurvivor(): void {
     this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
-  }
-
-  decreasePopulation(): void {
-    this.settlement.population--;
-    this.populationChecker();
   }
 
   populationChecker(): void {

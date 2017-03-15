@@ -26,6 +26,7 @@ import { DisordersPageComponent } from '../pages/disorder/disorders.component';
 import { DisorderModalComponent } from '../pages/disorder/disorder_modal.component';
 import { FightingArtPageComponent } from '../pages/fighting_art/fighting_art.component';
 import { FightingArtModalComponent } from '../pages/fighting_art/fighting_art_modal.component';
+import { InputNumberComponent } from '../pages/template/input_number.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FightingArtModalComponent } from '../pages/fighting_art/fighting_art_mo
     SurvivorPageComponent,
     DisordersPageComponent,
     FightingArtPageComponent,
+    InputNumberComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
     TimelineEventModalComponent,
