@@ -2,54 +2,54 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ContactPage } from '../pages/contact/contact';
-import { TabsPage } from '../pages/tabs/tabs';
-import { SettlementsPage } from '../pages/settlements/settlements';
-import { SettlementPage } from '../pages/settlement/settlement';
+import { TabsPageComponent } from '../pages/tabs/tabs.component';
+import { SettlementsPageComponent } from '../pages/settlements/settlements.component';
+import { SettlementPageComponent } from '../pages/settlement/settlement.component';
 import { KDMDataService } from '../service/kdm_data.service';
 import { KDMCheckerService } from '../service/kdm_checker.service';
-import { CreateSettlementPopover } from '../pages/popover/create_settlement_popover';
-import { TimelineEventModal } from '../pages/timeline/timeline_event_modal';
-import { DefeatedMonsterModal } from '../pages/defeated_monster/defeated_monster_modal';
-import { AddLinebreakToPunctuationPipe } from '../pipe/add_linebreak_to_punctuation_pipe';
-import { AutoresizeTextareaDirective } from '../directive/autoresize_textarea_directive';
-import { TimelinePage } from '../pages/timeline/timeline';
-import { DefeatedMonsterPage } from '../pages/defeated_monster/defeated_monster';
-import { LocationPage } from '../pages/location/location';
-import { StoragePage } from '../pages/storage/storage';
+import { CreateSettlementPopoverComponent } from '../pages/popover/create_settlement_popover.component';
+import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
+import { DefeatedMonsterModalComponent } from '../pages/defeated_monster/defeated_monster_modal.component';
+import { AddLinebreakToPunctuationPipe } from '../pipe/add_linebreak_to_punctuation.pipe';
+import { AutoresizeTextareaDirective } from '../directive/autoresize_textarea.directive';
+import { TimelinePageComponent } from '../pages/timeline/timeline.component';
+import { DefeatedMonsterPageComponent } from '../pages/defeated_monster/defeated_monster.component';
+import { LocationPageComponent } from '../pages/location/location.component';
+import { StoragePageComponent } from '../pages/storage/storage.component';
 import { KDMCalculationService } from '../service/kdm_calculation.service';
-import { StorageModal } from '../pages/storage/storage_modal';
-import { InnovationPage } from '../pages/innovation/innovation';
-import { InnovationModal } from '../pages/innovation/innovation_modal';
-import { SurvivorsPage } from '../pages/survivors/survivors';
-import { SurvivorPage } from '../pages/survivor/survivor';
-import { DisordersPage } from '../pages/disorder/disorders';
-import { DisorderModal } from '../pages/disorder/disorder_modal';
-import { FightingArtPage } from '../pages/fighting_art/fighting_art';
-import { FightingArtModal } from '../pages/fighting_art/fighting_art_modal';
+import { StorageModalComponent } from '../pages/storage/storage_modal.component';
+import { InnovationPageComponent } from '../pages/innovation/innovation.component';
+import { InnovationModalComponent } from '../pages/innovation/innovation_modal.component';
+import { SurvivorsPageComponent } from '../pages/survivors/survivors.component';
+import { SurvivorPageComponent } from '../pages/survivor/survivor.component';
+import { DisordersPageComponent } from '../pages/disorder/disorders.component';
+import { DisorderModalComponent } from '../pages/disorder/disorder_modal.component';
+import { FightingArtPageComponent } from '../pages/fighting_art/fighting_art.component';
+import { FightingArtModalComponent } from '../pages/fighting_art/fighting_art_modal.component';
 
 @NgModule({
   declarations: [
     MyApp,
     ContactPage,
-    SettlementsPage,
-    SettlementPage,
-    TimelinePage,
-    DefeatedMonsterPage,
-    LocationPage,
-    StoragePage,
-    InnovationPage,
-    SurvivorsPage,
-    SurvivorPage,
-    DisordersPage,
-    FightingArtPage,
-    TabsPage,
-    CreateSettlementPopover,
-    TimelineEventModal,
-    DefeatedMonsterModal,
-    StorageModal,
-    InnovationModal,
-    DisorderModal,
-    FightingArtModal,
+    SettlementsPageComponent,
+    SettlementPageComponent,
+    TimelinePageComponent,
+    DefeatedMonsterPageComponent,
+    LocationPageComponent,
+    StoragePageComponent,
+    InnovationPageComponent,
+    SurvivorsPageComponent,
+    SurvivorPageComponent,
+    DisordersPageComponent,
+    FightingArtPageComponent,
+    TabsPageComponent,
+    CreateSettlementPopoverComponent,
+    TimelineEventModalComponent,
+    DefeatedMonsterModalComponent,
+    StorageModalComponent,
+    InnovationModalComponent,
+    DisorderModalComponent,
+    FightingArtModalComponent,
     AddLinebreakToPunctuationPipe,
     AutoresizeTextareaDirective,
   ],
@@ -60,25 +60,25 @@ import { FightingArtModal } from '../pages/fighting_art/fighting_art_modal';
   entryComponents: [
     MyApp,
     ContactPage,
-    SettlementsPage,
-    SettlementPage,
-    TimelinePage,
-    DefeatedMonsterPage,
-    LocationPage,
-    StoragePage,
-    InnovationPage,
-    SurvivorsPage,
-    SurvivorPage,
-    DisordersPage,
-    FightingArtPage,
-    TabsPage,
-    CreateSettlementPopover,
-    TimelineEventModal,
-    DefeatedMonsterModal,
-    StorageModal,
-    InnovationModal,
-    DisorderModal,
-    FightingArtModal,
+    SettlementsPageComponent,
+    SettlementPageComponent,
+    TimelinePageComponent,
+    DefeatedMonsterPageComponent,
+    LocationPageComponent,
+    StoragePageComponent,
+    InnovationPageComponent,
+    SurvivorsPageComponent,
+    SurvivorPageComponent,
+    DisordersPageComponent,
+    FightingArtPageComponent,
+    TabsPageComponent,
+    CreateSettlementPopoverComponent,
+    TimelineEventModalComponent,
+    DefeatedMonsterModalComponent,
+    StorageModalComponent,
+    InnovationModalComponent,
+    DisorderModalComponent,
+    FightingArtModalComponent,
   ],
   providers: [{
     provide: ErrorHandler,
