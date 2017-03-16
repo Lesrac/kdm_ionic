@@ -9,10 +9,10 @@ import { Innovation } from '../../model/innovation';
  * Created by Daniel on 16.03.2017.
  */
 @Component({
-  selector: 'kdmf-show-list-modal',
-  templateUrl: 'show_list_modal.component.html',
+  selector: 'kdmf-show-list-add',
+  templateUrl: 'show_list_add_modal.component.html',
 })
-export class ShowListModalComponent implements OnInit {
+export class ShowListAddModalComponent implements OnInit {
 
   objects: Object[];
   existingObjects: Object[];

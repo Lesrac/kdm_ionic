@@ -1,9 +1,8 @@
+import { BaseModel } from './base_model';
 /**
  * Created by Daniel on 08.02.2017.
  */
-export class Storage {
-  name: string;
-  description: string;
+export class Storage extends BaseModel {
   amount: number;
   tags: StorageTag[];
 }

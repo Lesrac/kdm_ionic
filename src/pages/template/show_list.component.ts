@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { ShowListModalComponent } from './show_list_modal.component';
+import { ShowListAddModalComponent } from './show_list_add_modal.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { BaseModel } from '../../model/base_model';
+import { ShowListDetailComponent } from './show_list_detail.component';
 /**
  * Created by Daniel on 16.03.2017.
  */
@@ -26,7 +27,7 @@ export class ShowListComponent implements OnInit {
   }
 
   addObject(): void {
-    let modal = this.modalCtrl.create(ShowListModalComponent, {
+    let modal = this.modalCtrl.create(ShowListAddModalComponent, {
       objects: this.objects,
       type: this.type,
     });
@@ -39,7 +40,9 @@ export class ShowListComponent implements OnInit {
   }
 
   showDetail(object: BaseModel): void {
-
+    this.navCtrl.push(ShowListDetailComponent, {
+      object: object,
+    }).then();
   }
 
   private setup(): void {

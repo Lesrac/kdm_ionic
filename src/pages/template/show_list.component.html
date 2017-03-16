@@ -14,7 +14,7 @@
   </ion-item>
   <ion-item *ngFor="let object of objects">
     <ion-row>
-      <ion-col>
+      <ion-col (click)="showDetail(object)">
         {{object.name}}
       </ion-col>
       <ion-col>

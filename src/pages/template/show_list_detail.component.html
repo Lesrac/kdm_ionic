@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{object.name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-textarea readonly autoresize [ngModel]="object.description">
+    </ion-textarea>
+  </ion-item>
+</ion-content>

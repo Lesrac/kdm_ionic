@@ -22,7 +22,8 @@ import { SurvivorsPageComponent } from '../pages/survivors/survivors.component';
 import { SurvivorPageComponent } from '../pages/survivor/survivor.component';
 import { InputNumberComponent } from '../pages/template/input_number.component';
 import { ShowListComponent } from '../pages/template/show_list.component';
-import { ShowListModalComponent } from '../pages/template/show_list_modal.component';
+import { ShowListAddModalComponent } from '../pages/template/show_list_add_modal.component';
+import { ShowListDetailComponent } from '../pages/template/show_list_detail.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ShowListModalComponent } from '../pages/template/show_list_modal.compon
     SurvivorPageComponent,
     InputNumberComponent,
     ShowListComponent,
-    ShowListModalComponent,
+    ShowListDetailComponent,
+    ShowListAddModalComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
     TimelineEventModalComponent,
@@ -63,7 +65,8 @@ import { ShowListModalComponent } from '../pages/template/show_list_modal.compon
     SurvivorsPageComponent,
     SurvivorPageComponent,
     ShowListComponent,
-    ShowListModalComponent,
+    ShowListAddModalComponent,
+    ShowListDetailComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
     TimelineEventModalComponent,
