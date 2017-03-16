@@ -76,7 +76,7 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultSettlementLocations(settlement: Settlement): void {
-    this.kdmService.getSettlementLocations().then(locations => settlement.locations = locations);
+    this.kdmService.getSettlementLocations().then(locations => settlement.locations = locations.slice());
   }
 
   private createDefaultInnovations(settlement: Settlement): void {

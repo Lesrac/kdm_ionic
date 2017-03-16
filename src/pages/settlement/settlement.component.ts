@@ -82,8 +82,9 @@ export class SettlementPageComponent implements OnInit {
   }
 
   showSettlementLocations(): void {
-    this.navCtrl.push(LocationPageComponent, {
-      settlement: this.settlement,
+    this.navCtrl.push(ShowListComponent, {
+      objects: this.settlement.locations,
+      type: ShowListTypes.Location,
     }).then();
   }
 

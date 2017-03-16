@@ -56,6 +56,9 @@ export class ShowListComponent implements OnInit {
       case ShowListTypes.Innovation:
         this.title = 'Innovations';
         break;
+      case ShowListTypes.Location:
+        this.title = 'Locations';
+        break;
     }
   }
 

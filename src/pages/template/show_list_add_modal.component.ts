@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { BaseModel } from '../../model/base_model';
@@ -12,7 +12,7 @@ import { Innovation } from '../../model/innovation';
   selector: 'kdmf-show-list-add',
   templateUrl: 'show_list_add_modal.component.html',
 })
-export class ShowListAddModalComponent implements OnInit {
+export class ShowListAddModalComponent implements OnInit, AfterViewInit {
 
   objects: Object[];
   existingObjects: Object[];
@@ -21,11 +21,18 @@ export class ShowListAddModalComponent implements OnInit {
   type: ShowListTypes;
 
   constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
+    console.log('constr');
     this.objects = this.params.get('objects');
+    console.log(this.objects);
     this.type = this.params.get('type');
   }
 
   ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngAfterViewInit(): void {
+    console.log('afterViewInit');
     this.setup();
   }
 
@@ -60,6 +67,11 @@ export class ShowListAddModalComponent implements OnInit {
           this.objects.indexOf(innovation) < 0 && innovation.tags.some(tag =>
           this.objects.filter((inov: Innovation) =>
           inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName));
+        break;
+      case ShowListTypes.Location:
+        this.typename = 'Location';
+        this.kdmData.getSettlementLocations().then(locations =>
+          this.existingObjects = locations.filter(location => this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
         break;
     }
   }
