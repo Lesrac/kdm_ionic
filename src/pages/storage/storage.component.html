@@ -20,6 +20,6 @@
       <ion-icon name="remove-circle"></ion-icon>
     </button>
     <ion-input type="number" (change)="changedAmount(storage)" [(ngModel)]="storage.amount"></ion-input>
-    <ion-label>{{storage.name}}</ion-label>
+    <ion-label (click)="showDetail(storage)">{{storage.name}}</ion-label>
   </ion-segment>
 </ion-content>
