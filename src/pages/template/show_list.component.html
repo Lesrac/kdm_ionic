@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <button ion-button icon-only full (click)="addObject()">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item *ngFor="let object of objects">
+    <ion-row>
+      <ion-col>
+        {{object.name}}
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only full (click)="removeObject(object)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>

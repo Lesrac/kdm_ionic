@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, AfterContentInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 /**
  * Created by Daniel on 15.03.2017.

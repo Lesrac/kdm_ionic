@@ -14,7 +14,7 @@ var FightingArtModalComponent = (function () {
         this.viewCtrl = viewCtrl;
         this.params = params;
         this.kdmData = kdmData;
-        this.fightingArts = this.params.get('fightingArts');
+        this.fightingArts = this.params.get('objects');
     }
     FightingArtModalComponent.prototype.ngOnInit = function () {
         this.setupExistingFightingArts();

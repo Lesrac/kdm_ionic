@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Disorder } from '../../model/disorder';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { FightingArt } from '../../model/fighting_art';
 import { FightingArtModalComponent } from './fighting_art_modal.component';
@@ -24,8 +23,8 @@ export class FightingArtPageComponent {
     modal.present();
   }
 
-  removeFightingArt(disorder: Disorder): void {
-    const index = this.fightingArts.findIndex(x => x === disorder);
+  removeFightingArt(fightingArt: FightingArt): void {
+    const index = this.fightingArts.findIndex(x => x === fightingArt);
     this.fightingArts.splice(index, 1);
   }
 }

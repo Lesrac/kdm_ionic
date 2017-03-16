@@ -1,11 +1,11 @@
 <ion-content>
   <ion-item-group>
-    <ion-title>Add Fighting Art</ion-title>
+    <ion-title>Add {{typename}}</ion-title>
   </ion-item-group>
   <ion-item>
-    <ion-label>Fighting Art</ion-label>
-    <ion-select [(ngModel)]="fightingArtName">
-      <ion-option *ngFor="let fightingArt of existingFightingArts">{{fightingArt.name}}</ion-option>
+    <ion-label>{{typename}}</ion-label>
+    <ion-select [(ngModel)]="objectName">
+      <ion-option *ngFor="let object of existingObjects">{{object.name}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>

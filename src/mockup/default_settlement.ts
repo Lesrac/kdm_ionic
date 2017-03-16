@@ -619,12 +619,12 @@ export const DISORDERS: Disorder[] = [
   {
     name: 'Absent Seizures',
     description: 'No one knows where your mind goes when you\'re gone, not even you. The first time you would suffer a brain injury each showdown, you are instead knocked down and forget a fighting art (erase it).',
-  }
+  },
 ];
 
 export const FIGHTINGARTS: FightingArt[] = [
   {
     name: 'Abyssal Sadist',
     description: 'The first time you wound the monster each attack, gain +1 survival and +1 insanity. Ignore the effects of the Fear of the Dark and Prey disorders.',
-  }
+  },
 ];

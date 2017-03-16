@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Survivor } from '../../model/survivor';
 import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { DisordersPageComponent } from '../disorder/disorders.component';
-import { FightingArtPageComponent } from '../fighting_art/fighting_art.component';
+import { ShowListComponent } from '../template/show_list.component';
+import { ShowListTypes } from '../template/show_list_types';
 /**
  * Created by Daniel on 01.03.2017.
  */
@@ -109,14 +109,17 @@ export class SurvivorPageComponent implements OnInit {
   }
 
   showDisorders(): void {
-    this.navCtrl.push(DisordersPageComponent, {
-      disorders: this.survivor.disorders,
+    this.navCtrl.push(ShowListComponent, {
+      objects: this.survivor.disorders,
+      type: ShowListTypes.Disorder,
     }).then();
   }
 
+
   showFightingArts(): void {
-    this.navCtrl.push(FightingArtPageComponent, {
-      fightingArts: this.survivor.fightingArts,
+    this.navCtrl.push(ShowListComponent, {
+      objects: this.survivor.fightingArts,
+      type: ShowListTypes.FightingArt,
     }).then();
   }
 

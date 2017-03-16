@@ -15,7 +15,7 @@ var FightingArtPageComponent = (function () {
         this.navCtrl = navCtrl;
         this.params = params;
         this.modalCtrl = modalCtrl;
-        this.fightingArts = params.get('fightingArts');
+        this.fightingArts = params.get('objects');
     }
     FightingArtPageComponent.prototype.addFightingArt = function () {
         var modal = this.modalCtrl.create(fighting_art_modal_component_1.FightingArtModalComponent, {
