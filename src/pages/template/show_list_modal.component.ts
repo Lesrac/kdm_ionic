@@ -46,12 +46,12 @@ export class ShowListModalComponent implements OnInit {
       case ShowListTypes.FightingArt:
         this.typename = 'Fighting Art';
         this.kdmData.getFightingArts().then(fightingArt =>
-          this.existingObjects = fightingArt.sort(this.kdmData.sortByName));
+          this.existingObjects = fightingArt.filter(art => this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.Disorder:
         this.typename = 'Disorder';
         this.kdmData.getDisorders().then(disorders =>
-          this.existingObjects = disorders.sort(this.kdmData.sortByName));
+          this.existingObjects = disorders.filter(disorder => this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.Innovation:
         this.typename = 'Innovation';
