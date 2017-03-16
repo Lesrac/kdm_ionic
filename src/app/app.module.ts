@@ -18,14 +18,8 @@ import { LocationPageComponent } from '../pages/location/location.component';
 import { StoragePageComponent } from '../pages/storage/storage.component';
 import { KDMCalculationService } from '../service/kdm_calculation.service';
 import { StorageModalComponent } from '../pages/storage/storage_modal.component';
-import { InnovationPageComponent } from '../pages/innovation/innovation.component';
-import { InnovationModalComponent } from '../pages/innovation/innovation_modal.component';
 import { SurvivorsPageComponent } from '../pages/survivors/survivors.component';
 import { SurvivorPageComponent } from '../pages/survivor/survivor.component';
-import { DisordersPageComponent } from '../pages/disorder/disorders.component';
-import { DisorderModalComponent } from '../pages/disorder/disorder_modal.component';
-import { FightingArtPageComponent } from '../pages/fighting_art/fighting_art.component';
-import { FightingArtModalComponent } from '../pages/fighting_art/fighting_art_modal.component';
 import { InputNumberComponent } from '../pages/template/input_number.component';
 import { ShowListComponent } from '../pages/template/show_list.component';
 import { ShowListModalComponent } from '../pages/template/show_list_modal.component';
@@ -40,11 +34,8 @@ import { ShowListModalComponent } from '../pages/template/show_list_modal.compon
     DefeatedMonsterPageComponent,
     LocationPageComponent,
     StoragePageComponent,
-    InnovationPageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,
-    DisordersPageComponent,
-    FightingArtPageComponent,
     InputNumberComponent,
     ShowListComponent,
     ShowListModalComponent,
@@ -53,9 +44,6 @@ import { ShowListModalComponent } from '../pages/template/show_list_modal.compon
     TimelineEventModalComponent,
     DefeatedMonsterModalComponent,
     StorageModalComponent,
-    InnovationModalComponent,
-    DisorderModalComponent,
-    FightingArtModalComponent,
     AddLinebreakToPunctuationPipe,
     AutoresizeTextareaDirective,
   ],
@@ -72,11 +60,8 @@ import { ShowListModalComponent } from '../pages/template/show_list_modal.compon
     DefeatedMonsterPageComponent,
     LocationPageComponent,
     StoragePageComponent,
-    InnovationPageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,
-    DisordersPageComponent,
-    FightingArtPageComponent,
     ShowListComponent,
     ShowListModalComponent,
     TabsPageComponent,
@@ -84,9 +69,6 @@ import { ShowListModalComponent } from '../pages/template/show_list_modal.compon
     TimelineEventModalComponent,
     DefeatedMonsterModalComponent,
     StorageModalComponent,
-    InnovationModalComponent,
-    DisorderModalComponent,
-    FightingArtModalComponent,
   ],
   providers: [{
     provide: ErrorHandler,
