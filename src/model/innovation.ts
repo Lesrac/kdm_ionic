@@ -1,9 +1,8 @@
+import { BaseModel } from './base_model';
 /**
  * Created by Daniel on 19.02.2017.
  */
-export class Innovation {
-  name: string;
-  description: string;
+export class Innovation extends BaseModel {
   consequence: InnovationTag;
   tags: InnovationTag[];
 }

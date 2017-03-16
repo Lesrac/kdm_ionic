@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ShowListModalComponent } from './show_list_modal.component';
 import { ShowListTypes } from '../../model/show_list_types';
+import { BaseModel } from '../../model/base_model';
 /**
  * Created by Daniel on 16.03.2017.
  */
@@ -11,7 +12,7 @@ import { ShowListTypes } from '../../model/show_list_types';
 })
 export class ShowListComponent implements OnInit {
 
-  objects: Object[];
+  objects: BaseModel[];
   type: ShowListTypes;
   title: string;
 
@@ -32,9 +33,13 @@ export class ShowListComponent implements OnInit {
     modal.present();
   }
 
-  removeObject(object: Object): void {
+  removeObject(object: BaseModel): void {
     const index = this.objects.findIndex(x => x === object);
     this.objects.splice(index, 1);
+  }
+
+  showDetail(object: BaseModel): void {
+
   }
 
   private setup(): void {

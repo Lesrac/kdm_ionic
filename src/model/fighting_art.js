@@ -10,8 +10,8 @@ var base_model_1 = require('./base_model');
  */
 var FightingArt = (function (_super) {
     __extends(FightingArt, _super);
-    function FightingArt(name) {
-        _super.call(this, name);
+    function FightingArt() {
+        _super.apply(this, arguments);
     }
     return FightingArt;
 }(base_model_1.BaseModel));
