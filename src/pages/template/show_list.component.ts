@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { ShowListModalComponent } from './show_list_modal.component';
-import { ShowListTypes } from './show_list_types';
+import { ShowListTypes } from '../../model/show_list_types';
 /**
  * Created by Daniel on 16.03.2017.
  */
@@ -44,6 +44,9 @@ export class ShowListComponent implements OnInit {
         break;
       case ShowListTypes.Disorder:
         this.title = 'Disorders';
+        break;
+      case ShowListTypes.Innovation:
+        this.title = 'Innovations';
         break;
     }
   }

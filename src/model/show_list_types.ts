@@ -4,4 +4,5 @@
 export enum ShowListTypes {
   FightingArt,
   Disorder,
+  Innovation,
 }

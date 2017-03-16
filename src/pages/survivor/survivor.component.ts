@@ -3,7 +3,7 @@ import { Survivor } from '../../model/survivor';
 import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { ShowListComponent } from '../template/show_list.component';
-import { ShowListTypes } from '../template/show_list_types';
+import { ShowListTypes } from '../../model/show_list_types';
 /**
  * Created by Daniel on 01.03.2017.
  */

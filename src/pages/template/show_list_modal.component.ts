@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { BaseModel } from '../../model/base_model';
-import { ShowListTypes } from './show_list_types';
+import { ShowListTypes } from '../../model/show_list_types';
+import { Innovation } from '../../model/innovation';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -51,6 +52,14 @@ export class ShowListModalComponent implements OnInit {
         this.typename = 'Disorder';
         this.kdmData.getDisorders().then(disorders =>
           this.existingObjects = disorders.sort(this.kdmData.sortByName));
+        break;
+      case ShowListTypes.Innovation:
+        this.typename = 'Innovation';
+        this.kdmData.getInnovations().then(innovations =>
+          this.existingObjects = innovations.filter(innovation =>
+          this.objects.indexOf(innovation) < 0 && innovation.tags.some(tag =>
+          this.objects.filter((inov: Innovation) =>
+          inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName));
         break;
     }
   }

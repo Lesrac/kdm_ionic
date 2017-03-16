@@ -11,6 +11,8 @@ import { LocationPageComponent } from '../location/location.component';
 import { StoragePageComponent } from '../storage/storage.component';
 import { InnovationPageComponent } from '../innovation/innovation.component';
 import { Survivor } from '../../model/survivor';
+import { ShowListComponent } from '../template/show_list.component';
+import { ShowListTypes } from '../../model/show_list_types';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -73,8 +75,9 @@ export class SettlementPageComponent implements OnInit {
   }
 
   showInnovations(): void {
-    this.navCtrl.push(InnovationPageComponent, {
-      settlement: this.settlement,
+    this.navCtrl.push(ShowListComponent, {
+      objects: this.settlement.innovations,
+      type: ShowListTypes.Innovation,
     }).then();
   }
 
