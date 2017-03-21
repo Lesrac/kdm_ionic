@@ -1,13 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
+      <ion-item>
+        Survivor
+        <ion-input required [(ngModel)]="survivor.name"></ion-input>
+      </ion-item>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-group>
       <ion-row>
-        <ion-col>
-          <ion-item>
-            Survivor
-            <ion-input required [(ngModel)]="survivor.name"></ion-input>
-          </ion-item>
-        </ion-col>
         <ion-col>
           <ion-item>
             <ion-checkbox [(ngModel)]="survivor.isMale"></ion-checkbox>
@@ -21,12 +26,7 @@
           </ion-item>
         </ion-col>
       </ion-row>
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-list>
+    </ion-item-group>
     <ion-item-group>
       <ion-row class="container">
         <ion-col>
