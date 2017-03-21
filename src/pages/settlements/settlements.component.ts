@@ -1,4 +1,4 @@
-import { NavController, PopoverController } from 'ionic-angular';
+import { NavController, PopoverController, ModalController, AlertController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
@@ -16,8 +16,8 @@ import { InnovationTag } from '../../model/innovation';
 export class SettlementsPageComponent implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController,
-              private kdmService: KDMDataService) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public modalCtrl: ModalController,
+              private alertCtrl: AlertController, private kdmService: KDMDataService) {
   }
 
   presentPopover() {
@@ -43,7 +43,25 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   removeSettlement(settlement: Settlement): void {
-    this.settlements.splice(this.settlements.indexOf(settlement), 1);
+    const alert = this.alertCtrl.create({
+      title: 'Confirm deletion',
+      message: 'Do you want to delete ' + settlement.name + '?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.settlements.splice(this.settlements.indexOf(settlement), 1);
+          },
+        },
+      ],
+    });
+    alert.present();
   }
 
   private createDefaultSettlement(): Settlement {

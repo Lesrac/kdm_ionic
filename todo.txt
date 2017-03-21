@@ -1,5 +1,4 @@
-- OK to delete for survivor and settlement
-- possibility to add parent of an inovation that is already in the list (when it was deleted through the user)
+- possibility to add parent of an innovation that is already in the list (when it was deleted through the user)
 - Hunt XP Events
 - Impairments and Abilities for Survivor
 - "Is Alive" inside Survivor view

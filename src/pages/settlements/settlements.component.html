@@ -10,9 +10,9 @@
     <button ion-button full (click)="addSettlement()">Add</button>
   </div>
   <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-    <ion-item *ngFor="let settlement of settlements" (click)="goToDetail(settlement)">
+    <ion-item *ngFor="let settlement of settlements">
       <ion-row class="container">
-        <ion-col>
+        <ion-col (click)="goToDetail(settlement)">
           {{settlement.name}}
         </ion-col>
         <ion-col>

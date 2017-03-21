@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { BaseModel } from '../../model/base_model';
@@ -12,7 +12,7 @@ import { Innovation } from '../../model/innovation';
   selector: 'kdmf-show-list-add',
   templateUrl: 'show_list_add_modal.component.html',
 })
-export class ShowListAddModalComponent implements OnInit, AfterViewInit {
+export class ShowListAddModalComponent implements AfterViewInit {
 
   objects: Object[];
   existingObjects: Object[];
@@ -25,10 +25,6 @@ export class ShowListAddModalComponent implements OnInit, AfterViewInit {
     this.objects = this.params.get('objects');
     console.log(this.objects);
     this.type = this.params.get('type');
-  }
-
-  ngOnInit(): void {
-    console.log('ngOnInit');
   }
 
   ngAfterViewInit(): void {

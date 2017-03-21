@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
-import { NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Survivor } from '../../model/survivor';
 import { SurvivorPageComponent } from '../survivor/survivor.component';
@@ -18,7 +18,7 @@ export class SurvivorsPageComponent implements OnInit {
   settlement: Settlement;
   tempSettlement: Settlement;
 
-  constructor(public navCtrl: NavController, private kdmService: KDMDataService) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private kdmService: KDMDataService) {
   }
 
   ngOnInit(): void {
@@ -56,7 +56,25 @@ export class SurvivorsPageComponent implements OnInit {
   removeSurvivor(survivor: Survivor): void {
     const index: number = this.settlement.survivors.findIndex(s => survivor === s);
     if (index >= 0) {
-      this.settlement.survivors.splice(index, 1);
+      const alert = this.alertCtrl.create({
+        title: 'Confirm deletion',
+        message: 'Do you want to delete ' + survivor.name + '?',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+            },
+          },
+          {
+            text: 'Yes',
+            handler: () => {
+              this.settlement.survivors.splice(index, 1);
+            },
+          },
+        ],
+      });
+      alert.present();
     }
   }
 
