@@ -5,7 +5,6 @@
 var LanternEvent = (function () {
     function LanternEvent(name) {
         if (name === void 0) { name = ''; }
-        this.reached = false;
         this.storyEvents = [];
         this.name = name;
     }

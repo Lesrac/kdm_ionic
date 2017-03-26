@@ -49,12 +49,14 @@ export class ShowListAddModalComponent implements AfterViewInit {
       case ShowListTypes.FightingArt:
         this.typename = 'Fighting Art';
         this.kdmData.getFightingArts().then(fightingArt =>
-          this.existingObjects = fightingArt.filter(art => this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
+          this.existingObjects = fightingArt.filter(art =>
+          this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.Disorder:
         this.typename = 'Disorder';
         this.kdmData.getDisorders().then(disorders =>
-          this.existingObjects = disorders.filter(disorder => this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
+          this.existingObjects = disorders.filter(disorder =>
+          this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.Innovation:
         this.typename = 'Innovation';
@@ -67,7 +69,8 @@ export class ShowListAddModalComponent implements AfterViewInit {
       case ShowListTypes.Location:
         this.typename = 'Location';
         this.kdmData.getSettlementLocations().then(locations =>
-          this.existingObjects = locations.filter(location => this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
+          this.existingObjects = locations.filter(location =>
+          this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
         break;
     }
   }
