@@ -5,5 +5,4 @@ import { LanternEvent } from './lantern_event';
 export class Timeline {
   position: number;
   lanternEvent: LanternEvent;
-  reached: boolean = false;
 }

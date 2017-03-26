@@ -1,10 +1,10 @@
-import { Timeline } from './timeline';
 import { Monster } from './monster';
-import { Milestone } from './milestone';
 import { Location } from './location';
 import { Storage } from './storage';
 import { Innovation } from './innovation';
 import { Survivor } from './survivor';
+import { SettlementTimeline } from './linking/settlement_timeline';
+import { SettlementMilestone } from './linking/settlement_milestone';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -16,8 +16,8 @@ export class Settlement {
   population: number = 0;
   deathcount: number = 0;
   settlementLost: number = 0;
-  timeline: Timeline[] = [];
-  milestones: Milestone[] = [];
+  timeline: SettlementTimeline[] = [];
+  milestones: SettlementMilestone[] = [];
   nemesisMonsters: Monster[] = [];
   quarries: Monster[] = [];
   defeatedMonsters: Monster[] = [];

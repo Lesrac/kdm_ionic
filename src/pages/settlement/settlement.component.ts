@@ -13,6 +13,7 @@ import { InnovationPageComponent } from '../innovation/innovation.component';
 import { Survivor } from '../../model/survivor';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
+import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -64,7 +65,7 @@ export class SettlementPageComponent implements OnInit {
 
   showTimeline(): void {
     this.navCtrl.push(TimelinePageComponent, {
-      timeline: this.settlement.timeline,
+      settlementTimeline: this.settlement.timeline,
     }).then();
   }
 
@@ -94,10 +95,10 @@ export class SettlementPageComponent implements OnInit {
     }).then();
   }
 
-  eventReached(event: Event, lanternEvent: LanternEvent): void {
+  eventReached(event: Event, lanternEvent: SettlementLanternEvent): void {
     if (lanternEvent.reached) {
       let popover = this.modalCtrl.create(TimelineEventModalComponent, {
-        lanternEvent: lanternEvent,
+        lanternEvent: lanternEvent.lanternEvent,
       });
       popover.present({
         ev: event,
@@ -111,7 +112,7 @@ export class SettlementPageComponent implements OnInit {
         if (this.kdmChecker.checkMilestone(milestone, identifier, value)) {
           milestone.reached = true;
           let popover = this.modalCtrl.create(TimelineEventModalComponent, {
-            lanternEvent: milestone,
+            lanternEvent: milestone.milestone,
           });
           popover.present({
             ev: event,

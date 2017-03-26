@@ -4,7 +4,6 @@ import { StoryEvent } from './story_event';
  */
 export class LanternEvent {
   name: string;
-  reached: boolean = false;
   todo: string;
   storyEvents: StoryEvent[] = [];
 

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Milestone } from '../model/milestone';
+import { SettlementMilestone } from '../model/linking/settlement_milestone';
 /**
  * Created by Daniel on 10.02.2017.
  */
 @Injectable()
 export class KDMCheckerService {
 
-  checkMilestone(milestone: Milestone, identifier: string, value: number | string): boolean {
-    return (!milestone.reached && milestone.identifier === identifier && milestone.accept(value));
+  checkMilestone(milestone: SettlementMilestone, identifier: string, value: number | string): boolean {
+    return (!milestone.reached && milestone.milestone.identifier === identifier && milestone.milestone.accept(value));
   }
 
 }

@@ -384,79 +384,66 @@ export const STORYEVENTS: StoryEvent[] = [
 export const EVENTS: LanternEvent[] = [
   {
     name: 'Returning Survivors',
-    reached: false,
     todo: 'Nominate a survivors to utter the First Words',
     storyEvents: STORYEVENTS.slice(0, 3),
   },
   {
     name: 'Endless Screams',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Nemesis Encounter - Butcher',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Hands of Heat',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Armored Strangers',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Phoenix Feather',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Nemesis Encounter - King\'s Man',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Regal Visit',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Principle: Conviction',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Nemesis Encounter',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Watched',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Nemesis Encounter - Level 3',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
   {
     name: 'Nemesis Encounter - Watcher',
-    reached: false,
     todo: '',
     storyEvents: [],
   },
@@ -466,111 +453,106 @@ export const MILESTONES: Milestone[] = [
   {
     name: 'Principle: New Life',
     tag: 'First child is born',
-    reached: false,
     todo: 'The group must decide how to raise their young. Choose one.',
     storyEvents: [],
     value: 1,
     identifier: 'child',
     visitor: new Equals(),
-    accept(compareValue: string|number): boolean {
+    accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
   },
   {
     name: 'Principle: Death',
     tag: 'First time death count is updated',
-    reached: false,
     todo: 'The group must decide what to do with their first survivors corpse. Choose one.',
     storyEvents: STORYEVENTS.slice(3, 5),
     value: 1,
     identifier: 'death',
     visitor: new Equals(),
-    accept(compareValue: string|number): boolean {
+    accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
   },
   {
     name: 'Principle: Society',
     tag: 'Populations reaches 15',
-    reached: false,
     todo: '',
     storyEvents: [],
     value: 15,
     identifier: 'population',
     visitor: new GreaterThanEquals(),
-    accept(compareValue: string|number): boolean {
+    accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
   },
   {
     name: 'Principle: Hooded Knight',
     tag: 'Settlement has 5 innovations',
-    reached: false,
     todo: '',
     storyEvents: [],
     value: 5,
     identifier: 'innovation',
     visitor: new GreaterThanEquals(),
-    accept(compareValue: string|number): boolean {
+    accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
   },
   {
     name: 'Principle: Game Over',
     tag: 'Population reaches 0',
-    reached: false,
     todo: '',
     storyEvents: [],
     value: 0,
     identifier: 'population',
     visitor: new Equals(),
-    accept(compareValue: string|number): boolean {
+    accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
   },
 ];
 
 export const DEFAULTTIMELINE: Timeline[] = [
-  {position: 1, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Returning Survivors')},
-  {position: 2, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Endless Screams')},
-  {position: 3, reached: false, lanternEvent: null},
-  {position: 4, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - Butcher')},
-  {position: 5, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Hands of Heat')},
-  {position: 6, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Armored Strangers')},
-  {position: 7, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Phoenix Feather')},
-  {position: 8, reached: false, lanternEvent: null},
-  {position: 9, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - King\'s Man')},
-  {position: 10, reached: false, lanternEvent: null},
-  {position: 11, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Regal Visit')},
-  {position: 12, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Principle: Conviction')},
-  {position: 13, reached: false, lanternEvent: null},
-  {position: 14, reached: false, lanternEvent: null},
-  {position: 15, reached: false, lanternEvent: null},
-  {position: 16, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter')},
-  {position: 17, reached: false, lanternEvent: null},
-  {position: 18, reached: false, lanternEvent: null},
-  {position: 19, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter')},
-  {position: 20, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Watched')},
-  {position: 21, reached: false, lanternEvent: null},
-  {position: 22, reached: false, lanternEvent: null},
-  {position: 23, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - Level 3')},
-  {position: 24, reached: false, lanternEvent: null},
-  {position: 25, reached: false, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - Watcher')},
-  {position: 27, reached: false, lanternEvent: null},
-  {position: 28, reached: false, lanternEvent: null},
-  {position: 26, reached: false, lanternEvent: null},
-  {position: 29, reached: false, lanternEvent: null},
-  {position: 30, reached: false, lanternEvent: null},
-  {position: 31, reached: false, lanternEvent: null},
-  {position: 32, reached: false, lanternEvent: null},
-  {position: 33, reached: false, lanternEvent: null},
-  {position: 34, reached: false, lanternEvent: null},
-  {position: 35, reached: false, lanternEvent: null},
-  {position: 36, reached: false, lanternEvent: null},
-  {position: 37, reached: false, lanternEvent: null},
-  {position: 38, reached: false, lanternEvent: null},
-  {position: 39, reached: false, lanternEvent: null},
-  {position: 40, reached: false, lanternEvent: null},
+  {position: 1, lanternEvent: EVENTS.find(x => x.name === 'Returning Survivors')},
+  {position: 2, lanternEvent: EVENTS.find(x => x.name === 'Endless Screams')},
+  {position: 3, lanternEvent: null},
+  {position: 4, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - Butcher')},
+  {position: 5, lanternEvent: EVENTS.find(x => x.name === 'Hands of Heat')},
+  {position: 6, lanternEvent: EVENTS.find(x => x.name === 'Armored Strangers')},
+  {position: 7, lanternEvent: EVENTS.find(x => x.name === 'Phoenix Feather')},
+  {position: 8, lanternEvent: null},
+  {position: 9, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - King\'s Man')},
+  {position: 10, lanternEvent: null},
+  {position: 11, lanternEvent: EVENTS.find(x => x.name === 'Regal Visit')},
+  {position: 12, lanternEvent: EVENTS.find(x => x.name === 'Principle: Conviction')},
+  {position: 13, lanternEvent: null},
+  {position: 14, lanternEvent: null},
+  {position: 15, lanternEvent: null},
+  {position: 16, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter')},
+  {position: 17, lanternEvent: null},
+  {position: 18, lanternEvent: null},
+  {position: 19, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter')},
+  {position: 20, lanternEvent: EVENTS.find(x => x.name === 'Watched')},
+  {position: 21, lanternEvent: null},
+  {position: 22, lanternEvent: null},
+  {position: 23, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - Level 3')},
+  {position: 24, lanternEvent: null},
+  {position: 25, lanternEvent: EVENTS.find(x => x.name === 'Nemesis Encounter - Watcher')},
+  {position: 27, lanternEvent: null},
+  {position: 28, lanternEvent: null},
+  {position: 26, lanternEvent: null},
+  {position: 29, lanternEvent: null},
+  {position: 30, lanternEvent: null},
+  {position: 31, lanternEvent: null},
+  {position: 32, lanternEvent: null},
+  {position: 33, lanternEvent: null},
+  {position: 34, lanternEvent: null},
+  {position: 35, lanternEvent: null},
+  {position: 36, lanternEvent: null},
+  {position: 37, lanternEvent: null},
+  {position: 38, lanternEvent: null},
+  {position: 39, lanternEvent: null},
+  {position: 40, lanternEvent: null},
 ];
 
 export const SETTLEMENTLOCATIONS: Location[] = [
@@ -618,13 +600,15 @@ export const INNOVATIONS: Innovation[] = [
 export const DISORDERS: Disorder[] = [
   {
     name: 'Absent Seizures',
-    description: 'No one knows where your mind goes when you\'re gone, not even you. The first time you would suffer a brain injury each showdown, you are instead knocked down and forget a fighting art (erase it).',
+    description: 'No one knows where your mind goes when you\'re gone, not even you. The first time you would ' +
+    'suffer a brain injury each showdown, you are instead knocked down and forget a fighting art (erase it).',
   },
 ];
 
 export const FIGHTINGARTS: FightingArt[] = [
   {
     name: 'Abyssal Sadist',
-    description: 'The first time you wound the monster each attack, gain +1 survival and +1 insanity. Ignore the effects of the Fear of the Dark and Prey disorders.',
+    description: 'The first time you wound the monster each attack, gain +1 survival and +1 insanity. ' +
+    'Ignore the effects of the Fear of the Dark and Prey disorders.',
   },
 ];

@@ -5,6 +5,8 @@ import { SettlementPageComponent } from '../settlement/settlement.component';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { CreateSettlementPopoverComponent } from '../popover/create_settlement_popover.component';
 import { InnovationTag } from '../../model/innovation';
+import { SettlementTimeline } from '../../model/linking/settlement_timeline';
+import { SettlementMilestone } from '../../model/linking/settlement_milestone';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -76,8 +78,10 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultTimeline(settlement: Settlement): void {
-    this.kdmService.getDefaultTimeline().then(timeline => {
-      settlement.timeline = timeline;
+    this.kdmService.getDefaultTimeline().then(timelines => {
+      timelines.forEach(timeline => {
+        settlement.timeline.push(new SettlementTimeline(settlement, timeline));
+      });
     });
   }
 
@@ -86,7 +90,9 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
-    this.kdmService.getMilestones().then(milestones => settlement.milestones = milestones);
+    this.kdmService.getMilestones().then(
+      milestones => milestones.forEach(
+        milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone))));
   }
 
   private createDefaultQuarries(settlement: Settlement): void {
