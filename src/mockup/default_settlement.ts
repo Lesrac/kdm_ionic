@@ -556,17 +556,17 @@ export const DEFAULTTIMELINE: Timeline[] = [
 ];
 
 export const SETTLEMENTLOCATIONS: Location[] = [
-  {name: 'Lantern Hoard', description: '', built: true, storages: []},
-  {name: 'Bone Smith', description: '', built: false, storages: []},
-  {name: 'Skinnery', description: '', built: false, storages: []},
-  {name: 'Organ Grinder', description: '', built: false, storages: []},
-  {name: 'Weapon Crafter', description: '', built: false, storages: []},
-  {name: 'Leather Worker', description: '', built: false, storages: []},
-  {name: 'Stone Circle', description: '', built: false, storages: []},
-  {name: 'Barber Surgeon', description: '', built: false, storages: []},
-  {name: 'Plumery', description: '', built: false, storages: []},
-  {name: 'Blacksmith', description: '', built: false, storages: []},
-  {name: 'Mask Maker', description: '', built: false, storages: []},
+  {name: 'Lantern Hoard', description: '', storages: []},
+  {name: 'Bone Smith', description: '', storages: []},
+  {name: 'Skinnery', description: '', storages: []},
+  {name: 'Organ Grinder', description: '', storages: []},
+  {name: 'Weapon Crafter', description: '', storages: []},
+  {name: 'Leather Worker', description: '', storages: []},
+  {name: 'Stone Circle', description: '', storages: []},
+  {name: 'Barber Surgeon', description: '', storages: []},
+  {name: 'Plumery', description: '', storages: []},
+  {name: 'Blacksmith', description: '', storages: []},
+  {name: 'Mask Maker', description: '', storages: []},
 ];
 
 export const INNOVATIONS: Innovation[] = [
