@@ -1,5 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPageComponent } from '../pages/tabs/tabs.component';
@@ -51,6 +54,7 @@ import { ShowListDetailComponent } from '../pages/template/show_list_detail.comp
   ],
   imports: [
     IonicModule.forRoot(MyApp),
+    BrowserModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,6 +84,8 @@ import { ShowListDetailComponent } from '../pages/template/show_list_detail.comp
     KDMDataService,
     KDMCheckerService,
     KDMCalculationService,
+    StatusBar,
+    SplashScreen,
   ],
 })
 export class AppModule {
