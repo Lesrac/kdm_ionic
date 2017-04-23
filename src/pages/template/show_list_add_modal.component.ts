@@ -22,7 +22,6 @@ export class ShowListAddModalComponent implements AfterViewInit {
 
   constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
     this.objects = this.params.get('objects');
-    console.log(this.objects);
     this.type = this.params.get('type');
   }
 
@@ -63,13 +62,10 @@ export class ShowListAddModalComponent implements AfterViewInit {
           this.objects.indexOf(innovation) < 0 && innovation.tags.some(tag =>
           this.objects.filter((inov: Innovation) =>
           inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName);
-          console.log(this.existingObjects);
           // when null/undefined get all Base Innovations and add them to the list
           if (this.existingObjects == null || (this.existingObjects.length === 0 && this.objects.length === 0)) {
-            console.log('length is empty');
             this.existingObjects = innovations.filter(innovation => innovation.isBase);
           }
-          console.log(this.existingObjects);
         });
         break;
       case ShowListTypes.Location:
