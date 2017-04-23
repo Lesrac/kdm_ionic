@@ -573,12 +573,14 @@ export const INNOVATIONS: Innovation[] = [
   {
     name: 'Language',
     description: 'Survival Limit +1. All survivors gain the Encourage survival action.',
+    isBase: true,
     consequence: InnovationTag.LANGUAGE_CONSEQUENCE,
     tags: [InnovationTag.STARTING_INNOVATION],
   },
   {
     name: 'Paint',
     description: 'The settlement swells with creative energy. All survivors gain the Dash survival action.',
+    isBase: false,
     consequence: InnovationTag.LANGUAGE_CONSEQUENCE,
     tags: [InnovationTag.LANGUAGE_CONSEQUENCE, InnovationTag.ART],
   },
@@ -586,12 +588,14 @@ export const INNOVATIONS: Innovation[] = [
     name: 'Ammonia',
     description: `A pungent, bilious substance ideal for crafting leather and treating wounds.
     Departing survivors gain +1 survival.`,
+    isBase: false,
     consequence: InnovationTag.AMMONIA_CONSEQUENCE,
     tags: [InnovationTag.LANGUAGE_CONSEQUENCE, InnovationTag.SCIENCE],
   },
   {
     name: 'Bloodletting',
     description: 'Endeavor and table',
+    isBase: false,
     consequence: null,
     tags: [InnovationTag.AMMONIA_CONSEQUENCE, InnovationTag.SCIENCE],
   },

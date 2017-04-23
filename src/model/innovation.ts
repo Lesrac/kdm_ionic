@@ -5,6 +5,7 @@ import { BaseModel } from './base_model';
 export class Innovation extends BaseModel {
   consequence: InnovationTag;
   tags: InnovationTag[];
+  isBase: boolean;
 }
 
 export enum InnovationTag {
