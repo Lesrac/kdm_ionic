@@ -17,7 +17,6 @@ import { AddLinebreakToPunctuationPipe } from '../pipe/add_linebreak_to_punctuat
 import { AutoresizeTextareaDirective } from '../directive/autoresize_textarea.directive';
 import { TimelinePageComponent } from '../pages/timeline/timeline.component';
 import { DefeatedMonsterPageComponent } from '../pages/defeated_monster/defeated_monster.component';
-import { LocationPageComponent } from '../pages/location/location.component';
 import { StoragePageComponent } from '../pages/storage/storage.component';
 import { KDMCalculationService } from '../service/kdm_calculation.service';
 import { StorageModalComponent } from '../pages/storage/storage_modal.component';
@@ -27,6 +26,7 @@ import { InputNumberComponent } from '../pages/template/input_number.component';
 import { ShowListComponent } from '../pages/template/show_list.component';
 import { ShowListAddModalComponent } from '../pages/template/show_list_add_modal.component';
 import { ShowListDetailComponent } from '../pages/template/show_list_detail.component';
+import { PrinciplesPageComponent } from '../pages/principle/principles.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { ShowListDetailComponent } from '../pages/template/show_list_detail.comp
     SettlementPageComponent,
     TimelinePageComponent,
     DefeatedMonsterPageComponent,
-    LocationPageComponent,
+    PrinciplesPageComponent,
     StoragePageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,
@@ -64,7 +64,7 @@ import { ShowListDetailComponent } from '../pages/template/show_list_detail.comp
     SettlementPageComponent,
     TimelinePageComponent,
     DefeatedMonsterPageComponent,
-    LocationPageComponent,
+    PrinciplesPageComponent,
     StoragePageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,

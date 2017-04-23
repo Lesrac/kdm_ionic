@@ -5,4 +5,5 @@ import { BaseModel } from './base_model';
  */
 export class Location extends BaseModel {
   storages: Storage[] = [];
+  isStartLocation: boolean;
 }

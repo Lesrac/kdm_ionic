@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import {
   SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS, FIGHTINGARTS,
+  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS, FIGHTINGARTS, PRINCIPLES,
+  PRINCIPLETYPES,
 } from '../mockup/default_settlement';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
@@ -13,6 +14,7 @@ import { Resource } from '../model/resource';
 import { Innovation } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
+import { Principle, PrincipleType } from '../model/principle';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -76,6 +78,14 @@ export class KDMDataService {
 
   getFightingArts(): Promise<FightingArt[]> {
     return Promise.resolve(FIGHTINGARTS);
+  }
+
+  getPrinciples(): Promise<Principle[]> {
+    return Promise.resolve(PRINCIPLES);
+  }
+
+  getPrincipleTypes(): Promise<PrincipleType[]> {
+    return Promise.resolve(PRINCIPLETYPES);
   }
 
   sortByName(l, r) {

@@ -1,19 +1,18 @@
-import { Component, Input, OnInit, AfterContentInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
-import { LanternEvent } from '../../model/lantern_event';
 import { KDMCheckerService } from '../../service/kdm_checker.service';
 import { FormArray, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { TimelinePageComponent } from '../timeline/timeline.component';
 import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated_monster.component';
-import { LocationPageComponent } from '../location/location.component';
 import { StoragePageComponent } from '../storage/storage.component';
 import { InnovationPageComponent } from '../innovation/innovation.component';
 import { Survivor } from '../../model/survivor';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
+import { PrinciplesPageComponent } from '../principle/principles.component';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -79,6 +78,12 @@ export class SettlementPageComponent implements OnInit {
     this.navCtrl.push(ShowListComponent, {
       objects: this.settlement.innovations,
       type: ShowListTypes.Innovation,
+    }).then();
+  }
+
+  showPrinciples(): void {
+    this.navCtrl.push(PrinciplesPageComponent, {
+      settlement: this.settlement,
     }).then();
   }
 

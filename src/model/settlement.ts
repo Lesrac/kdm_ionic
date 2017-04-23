@@ -5,6 +5,7 @@ import { Innovation } from './innovation';
 import { Survivor } from './survivor';
 import { SettlementTimeline } from './linking/settlement_timeline';
 import { SettlementMilestone } from './linking/settlement_milestone';
+import { Principle } from './principle';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -25,6 +26,7 @@ export class Settlement {
   storages: Storage[] = [];
   innovations: Innovation[] = [];
   survivors: Survivor[] = [];
+  principles: Principle[] = [];
 
   constructor(name: string) {
     this.name = name;

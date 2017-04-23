@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settlement Principles
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let principleType of allPrincipleTypes">
+    <ion-row>
+      <ion-col>
+        {{principleType.name}} principle:
+      </ion-col>
+      <ion-col *ngIf="principleIsChosen(principleType)">
+        <button ion-button icon-only full
+                (click)="removePrinciple(principleType)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col *ngIf="!principleIsChosen(principleType)">
+        <button ion-button full (click)="selectPrinciple(principleType)">Choose</button>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>

@@ -16,6 +16,7 @@ import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction } from '../model/equipment';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
+import { Principle, PrincipleType } from '../model/principle';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -556,17 +557,17 @@ export const DEFAULTTIMELINE: Timeline[] = [
 ];
 
 export const SETTLEMENTLOCATIONS: Location[] = [
-  {name: 'Lantern Hoard', description: '', storages: []},
-  {name: 'Bone Smith', description: '', storages: []},
-  {name: 'Skinnery', description: '', storages: []},
-  {name: 'Organ Grinder', description: '', storages: []},
-  {name: 'Weapon Crafter', description: '', storages: []},
-  {name: 'Leather Worker', description: '', storages: []},
-  {name: 'Stone Circle', description: '', storages: []},
-  {name: 'Barber Surgeon', description: '', storages: []},
-  {name: 'Plumery', description: '', storages: []},
-  {name: 'Blacksmith', description: '', storages: []},
-  {name: 'Mask Maker', description: '', storages: []},
+  {name: 'Lantern Hoard', description: '', storages: [], isStartLocation: true},
+  {name: 'Bone Smith', description: '', storages: [], isStartLocation: false},
+  {name: 'Skinnery', description: '', storages: [], isStartLocation: false},
+  {name: 'Organ Grinder', description: '', storages: [], isStartLocation: false},
+  {name: 'Weapon Crafter', description: '', storages: [], isStartLocation: false},
+  {name: 'Leather Worker', description: '', storages: [], isStartLocation: false},
+  {name: 'Stone Circle', description: '', storages: [], isStartLocation: false},
+  {name: 'Barber Surgeon', description: '', storages: [], isStartLocation: false},
+  {name: 'Plumery', description: '', storages: [], isStartLocation: false},
+  {name: 'Blacksmith', description: '', storages: [], isStartLocation: false},
+  {name: 'Mask Maker', description: '', storages: [], isStartLocation: false},
 ];
 
 export const INNOVATIONS: Innovation[] = [
@@ -614,5 +615,34 @@ export const FIGHTINGARTS: FightingArt[] = [
     name: 'Abyssal Sadist',
     description: 'The first time you wound the monster each attack, gain +1 survival and +1 insanity. ' +
     'Ignore the effects of the Fear of the Dark and Prey disorders.',
+  },
+];
+
+export const PRINCIPLETYPES: PrincipleType[] = [
+  {
+    name: 'Death',
+  },
+  {
+    name: 'New Life',
+  },
+  {
+    name: 'Conviction',
+  },
+  {
+    name: 'Society',
+  },
+];
+
+export const PRINCIPLES: Principle[] = [
+  {
+    name: 'Protect the Young',
+    description: 'The children are the future. When rolling on the Intimacy story event, roll twice and pick  result.',
+    type: PRINCIPLETYPES[1],
+  },
+  {
+    name: 'Survival of the Fittest',
+    description: 'Survival Limit +1. When rolling on the Intimacy story event, roll twice and pick the' +
+    ' lowest result. All newborn survivors gain +1 strength',
+    type: PRINCIPLETYPES[1],
   },
 ];

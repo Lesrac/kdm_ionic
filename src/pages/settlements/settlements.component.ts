@@ -67,6 +67,7 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultSettlement(): Settlement {
+    // TODO probably export settlement creation to wizard or something similar
     let settlement: Settlement = new Settlement('New Settlement');
     this.createDefaultTimeline(settlement);
     this.createDefaultNemesisMonsters(settlement);
@@ -100,7 +101,8 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultSettlementLocations(settlement: Settlement): void {
-    this.kdmService.getSettlementLocations().then(locations => settlement.locations = locations.slice());
+    this.kdmService.getSettlementLocations().then(locations =>
+      settlement.locations = locations.filter(location => location.isStartLocation));
   }
 
   private createDefaultInnovations(settlement: Settlement): void {
