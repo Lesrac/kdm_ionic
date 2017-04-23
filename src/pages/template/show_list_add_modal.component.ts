@@ -16,7 +16,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
 
   objects: Object[];
   existingObjects: Object[];
-  typename: string = 'Hello';
+  typename: string = 'Non selected';
   objectName: string;
   type: ShowListTypes;
 
@@ -65,7 +65,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
           inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName);
           console.log(this.existingObjects);
           // when null/undefined get all Base Innovations and add them to the list
-          if (this.existingObjects == null) {
+          if (this.existingObjects == null || (this.existingObjects.length === 0 && this.objects.length === 0)) {
             console.log('length is empty');
             this.existingObjects = innovations.filter(innovation => innovation.isBase);
           }
