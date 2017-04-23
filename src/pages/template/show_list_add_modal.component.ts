@@ -64,8 +64,8 @@ export class ShowListAddModalComponent implements AfterViewInit {
           this.objects.filter((inov: Innovation) =>
           inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName);
           console.log(this.existingObjects);
-          // when null/undefined/size=0 get all Base Innovations and add them to the list
-          if (this.existingObjects == null || this.existingObjects.length === 0) {
+          // when null/undefined get all Base Innovations and add them to the list
+          if (this.existingObjects == null) {
             console.log('length is empty');
             this.existingObjects = innovations.filter(innovation => innovation.isBase);
           }
