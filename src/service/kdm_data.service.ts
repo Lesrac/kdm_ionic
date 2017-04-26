@@ -88,6 +88,12 @@ export class KDMDataService {
     return Promise.resolve(PRINCIPLETYPES);
   }
 
+  getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
+    return Promise.resolve(this.getPrinciples().then(principles =>
+      principles.filter(principle => principle.type === principleType),
+    ));
+  }
+
   sortByName(l, r) {
     if (l.name < r.name) {
       return -1;

@@ -3,6 +3,7 @@ import { NavParams, NavController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
+import { PrincipleChooserPageComponent } from './principle_chooser.component';
 /**
  * Created by Daniel on 14.02.2017.
  */
@@ -26,13 +27,17 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   principleIsChosen(type: PrincipleType): boolean {
-    return this.settlement.principles.find(principle =>
-        principle.type === type,
+    return this.settlement.principles.find(principle => {
+          return principle.type === type;
+        },
       ) != null;
   }
 
   selectPrinciple(type: PrincipleType): void {
-
+    this.navCtrl.push(PrincipleChooserPageComponent, {
+      principleType: type,
+      settlement: this.settlement,
+    }).then();
   }
 
   removePrinciple(type: PrincipleType): void {
@@ -40,5 +45,9 @@ export class PrinciplesPageComponent implements OnInit {
       principle.type === type,
     );
     this.settlement.principles.splice(itemToRemove, 1);
+  }
+
+  getPrincipleName(type: PrincipleType): string {
+    return this.settlement.principles.find(principle => principle.type === type).name;
   }
 }

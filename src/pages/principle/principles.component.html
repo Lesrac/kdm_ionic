@@ -11,6 +11,7 @@
     <ion-row>
       <ion-col>
         {{principleType.name}} principle:
+        <ion-label *ngIf="principleIsChosen(principleType)">{{getPrincipleName(principleType)}}</ion-label>
       </ion-col>
       <ion-col *ngIf="principleIsChosen(principleType)">
         <button ion-button icon-only full

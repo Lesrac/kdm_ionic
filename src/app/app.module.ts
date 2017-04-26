@@ -27,6 +27,7 @@ import { ShowListComponent } from '../pages/template/show_list.component';
 import { ShowListAddModalComponent } from '../pages/template/show_list_add_modal.component';
 import { ShowListDetailComponent } from '../pages/template/show_list_detail.component';
 import { PrinciplesPageComponent } from '../pages/principle/principles.component';
+import { PrincipleChooserPageComponent } from '../pages/principle/principle_chooser.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PrinciplesPageComponent } from '../pages/principle/principles.component
     TimelinePageComponent,
     DefeatedMonsterPageComponent,
     PrinciplesPageComponent,
+    PrincipleChooserPageComponent,
     StoragePageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,
@@ -65,6 +67,7 @@ import { PrinciplesPageComponent } from '../pages/principle/principles.component
     TimelinePageComponent,
     DefeatedMonsterPageComponent,
     PrinciplesPageComponent,
+    PrincipleChooserPageComponent,
     StoragePageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,
