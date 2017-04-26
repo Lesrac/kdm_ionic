@@ -22,22 +22,24 @@
   </ion-item>
   <ion-list *ngIf="settlement">
     <ion-item *ngIf="settlement.survivors.length < 1">No Survivors available</ion-item>
-    <ion-row *ngFor="let survivor of settlement.survivors">
-      <ion-col style="width: 60%" (click)="goToDetail(survivor)">
-        <span>{{survivor.name}}</span>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-checkbox [(ngModel)]="survivor.isAlive"></ion-checkbox>
-          <ion-label *ngIf="survivor.isAlive">is alive</ion-label>
-          <ion-label *ngIf="!survivor.isAlive">is dead</ion-label>
-        </ion-item>
-      </ion-col>
-      <ion-col style="width: 20%">
-        <button ion-button icon-only full (click)="removeSurvivor(survivor)">
-          <ion-icon name="remove-circle"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
+    <ion-grid *ngIf="settlement.survivors.length > 0">
+      <ion-row *ngFor="let survivor of settlement.survivors">
+        <ion-col style="width: 60%" (click)="goToDetail(survivor)">
+          <span>{{survivor.name}}</span>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-checkbox [(ngModel)]="survivor.isAlive"></ion-checkbox>
+            <ion-label *ngIf="survivor.isAlive">is alive</ion-label>
+            <ion-label *ngIf="!survivor.isAlive">is dead</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col style="width: 20%">
+          <button ion-button icon-only full (click)="removeSurvivor(survivor)">
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 </ion-content>

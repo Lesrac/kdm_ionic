@@ -246,22 +246,24 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-checkbox [(ngModel)]="survivor.cannotSpendSurvival"></ion-checkbox>
-            <ion-label>Cannot spend survival.</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-checkbox [(ngModel)]="survivor.cannotUseFightingArts"></ion-checkbox>
-            <ion-label>Cannot use Fighting Arts.</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-checkbox [(ngModel)]="survivor.skipNextHunt"></ion-checkbox>
-            <ion-label>Skip Next Hunt.</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox [(ngModel)]="survivor.cannotSpendSurvival"></ion-checkbox>
+              <ion-label>Cannot spend survival.</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-checkbox [(ngModel)]="survivor.cannotUseFightingArts"></ion-checkbox>
+              <ion-label>Cannot use Fighting Arts.</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-checkbox [(ngModel)]="survivor.skipNextHunt"></ion-checkbox>
+              <ion-label>Skip Next Hunt.</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item-group>
 
     <ion-item-group>
