@@ -21,8 +21,10 @@
                   placeholder="There are more Survivors alive then population would allow"></ion-textarea>
   </ion-item>
   <ion-list *ngIf="settlement">
-    <ion-item *ngIf="settlement.survivors.length < 1">No Survivors available</ion-item>
-    <ion-grid *ngIf="settlement.survivors.length > 0">
+    <ng-template #needsSurvivors>
+      <ion-item>No Survivors available</ion-item>
+    </ng-template>
+    <ion-grid *ngIf="settlement.survivors.length > 0; else needsSurvivors">
       <ion-row *ngFor="let survivor of settlement.survivors; let even=even; let odd=odd"
                [ngClass]="{ odd: odd, even: even }">
         <ion-col style="width: 60%" (click)="goToDetail(survivor)">
@@ -31,8 +33,10 @@
         <ion-col>
           <ion-item>
             <ion-checkbox [(ngModel)]="survivor.isAlive"></ion-checkbox>
-            <ion-label *ngIf="survivor.isAlive">is alive</ion-label>
-            <ion-label *ngIf="!survivor.isAlive">is dead</ion-label>
+            <ng-template #isDead>
+              <ion-label>is dead</ion-label>
+            </ng-template>
+            <ion-label *ngIf="survivor.isAlive; else isDead">is alive</ion-label>
           </ion-item>
         </ion-col>
         <ion-col style="width: 20%">
