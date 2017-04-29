@@ -23,7 +23,8 @@
   <ion-list *ngIf="settlement">
     <ion-item *ngIf="settlement.survivors.length < 1">No Survivors available</ion-item>
     <ion-grid *ngIf="settlement.survivors.length > 0">
-      <ion-row *ngFor="let survivor of settlement.survivors">
+      <ion-row *ngFor="let survivor of settlement.survivors; let even=even; let odd=odd"
+               [ngClass]="{ odd: odd, even: even }">
         <ion-col style="width: 60%" (click)="goToDetail(survivor)">
           <span>{{survivor.name}}</span>
         </ion-col>

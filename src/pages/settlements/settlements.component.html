@@ -10,7 +10,8 @@
     <button ion-button full (click)="addSettlement()">Add</button>
   </div>
   <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-    <ion-item *ngFor="let settlement of settlements">
+    <ion-item *ngFor="let settlement of settlements; let even=even; let odd=odd"
+              [ngClass]="{ odd: odd, even: even }">
       <ion-row class="container">
         <ion-col (click)="goToDetail(settlement)">
           {{settlement.name}}
