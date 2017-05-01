@@ -24,7 +24,7 @@
           <ion-item-divider>
             Population
           </ion-item-divider>
-          <kdmf-input-number [value]="settlement.population" (change)="populationChange($event)">
+          <kdmf-input-number [value]="settlement.population.getValue()" (change)="populationChange($event)">
           </kdmf-input-number>
         </ion-col>
       </ion-row>
@@ -34,14 +34,8 @@
       <ion-item-divider>
         Death Count
       </ion-item-divider>
-      <form [formGroup]="deathCountGroup">
-        <ion-row formArrayName="deathCounts" class="container">
-          <ion-col *ngFor="let control of deathCountGroup.controls.deathCounts.controls">
-            <ion-checkbox type="checkbox" (click)="updateDeathcount($event, control)"
-                          [formControl]="control"></ion-checkbox>
-          </ion-col>
-        </ion-row>
-      </form>
+      <kdmf-input-number [value]="settlement.deathcount.getValue()" (change)="deathcountChange($event)">
+      </kdmf-input-number>
     </ion-item-group>
 
     <ion-item-group>

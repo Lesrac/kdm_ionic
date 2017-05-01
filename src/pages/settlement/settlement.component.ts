@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
-import { KDMCheckerService } from '../../service/kdm_checker.service';
 import { FormArray, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { TimelinePageComponent } from '../timeline/timeline.component';
 import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated_monster.component';
@@ -32,7 +31,7 @@ export class SettlementPageComponent implements OnInit {
   lostSettlementGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              public kdmChecker: KDMCheckerService, public formBuilder: FormBuilder) {
+              public formBuilder: FormBuilder) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
     }
@@ -41,17 +40,6 @@ export class SettlementPageComponent implements OnInit {
   ngOnInit(): void {
     this.setupDeathcounts();
     this.setupLostSettlements();
-  }
-
-  updateDeathcount(event: Event, control: FormControl): void {
-    if (control.value) {
-      this.settlement.deathcount++;
-      this.settlement.population--;
-      this.checkMilestone(event, 'death', this.settlement.deathcount);
-    } else {
-      this.settlement.deathcount--;
-      this.settlement.population++;
-    }
   }
 
   updateLostSettlement(event: Event, control: FormControl): void {
@@ -111,33 +99,25 @@ export class SettlementPageComponent implements OnInit {
     }
   }
 
-  checkMilestone(event: Event, identifier: string, value: number | string): void {
-    if (value != null) {
-      this.settlement.milestones.forEach(milestone => {
-        if (this.kdmChecker.checkMilestone(milestone, identifier, value)) {
-          milestone.reached = true;
-          let popover = this.modalCtrl.create(TimelineEventModalComponent, {
-            lanternEvent: milestone.milestone,
-          });
-          popover.present({
-            ev: event,
-          });
-        }
-      });
-    }
-  }
-
   survivalLimitChange(event): void {
     if (typeof event === 'number') {
       this.settlement.survivalLimit = event;
     }
   }
 
+  deathcountChange(event): void {
+    console.log('deathcountChange');
+    if (typeof event === 'number') {
+      this.settlement.deathcount.next(event);
+    }
+  }
+
   populationChange(event): void {
+    console.log('populationChange');
     if (typeof event === 'number') {
       const stlmt = this.settlement;
-      stlmt.population = event;
-      if (stlmt.survivors.length < stlmt.population) {
+      stlmt.population.next(event);
+      if (stlmt.survivors.length < stlmt.population.getValue()) {
         this.addSurvivor();
       }
       this.populationChecker();
@@ -150,10 +130,9 @@ export class SettlementPageComponent implements OnInit {
 
   populationChecker(): void {
     const population = this.settlement.population;
-    this.checkMilestone(null, 'population', population);
     const survivors = this.settlement.survivors.length;
-    if (survivors <= population) {
-      const difference = population - survivors;
+    if (survivors <= population.getValue()) {
+      const difference = population.getValue() - survivors;
       for (let i = 0; i < difference; i++) {
         this.addSurvivor();
       }
@@ -163,7 +142,7 @@ export class SettlementPageComponent implements OnInit {
   private setupDeathcounts(): void {
     const checkboxArray = new FormArray([]);
     for (let i: number = 0; i < SettlementPageComponent.MAX_DEATHS; i++) {
-      if (i < this.settlement.deathcount) {
+      if (i < this.settlement.deathcount.getValue()) {
         checkboxArray.push(new FormControl(true));
       } else {
         checkboxArray.push(new FormControl(false));

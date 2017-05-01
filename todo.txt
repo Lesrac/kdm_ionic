@@ -2,6 +2,6 @@
 - Hunt XP Events
 - Impairments and Abilities for Survivor
 - "Is Alive" inside Survivor view
-- Principles inside Settlement view
-- Better Event handling
+- Better Event handling (doing)
 - Add DB (when model structure is defined/final)
+- Survivors List with max Elements shown

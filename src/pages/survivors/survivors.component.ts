@@ -50,7 +50,7 @@ export class SurvivorsPageComponent implements OnInit {
 
   survivorsCheck(): boolean {
     return (this.settlement &&
-    this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population);
+    this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population.getValue());
   }
 
   removeSurvivor(survivor: Survivor): void {

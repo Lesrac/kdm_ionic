@@ -6,6 +6,7 @@ import { Survivor } from './survivor';
 import { SettlementTimeline } from './linking/settlement_timeline';
 import { SettlementMilestone } from './linking/settlement_milestone';
 import { Principle } from './principle';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -14,11 +15,10 @@ export class Settlement {
   id: number;
   name: string;
   survivalLimit: number = 0;
-  population: number = 0;
-  deathcount: number = 0;
+  population: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  deathcount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   settlementLost: number = 0;
   timeline: SettlementTimeline[] = [];
-  milestones: SettlementMilestone[] = [];
   nemesisMonsters: Monster[] = [];
   quarries: Monster[] = [];
   defeatedMonsters: Monster[] = [];
@@ -26,6 +26,7 @@ export class Settlement {
   storages: Storage[] = [];
   innovations: Innovation[] = [];
   survivors: Survivor[] = [];
+  milestones: SettlementMilestone[] = [];
   principles: Principle[] = [];
 
   constructor(name: string) {
@@ -46,4 +47,5 @@ export class Settlement {
       this.storages.push(storage);
     }
   }
+
 }

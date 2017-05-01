@@ -457,11 +457,11 @@ export const MILESTONES: Milestone[] = [
     todo: 'The group must decide how to raise their young. Choose one.',
     storyEvents: [],
     value: 1,
-    identifier: 'child',
     visitor: new Equals(),
     accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
+    observerTarget: '',
   },
   {
     name: 'Principle: Death',
@@ -469,11 +469,11 @@ export const MILESTONES: Milestone[] = [
     todo: 'The group must decide what to do with their first survivors corpse. Choose one.',
     storyEvents: STORYEVENTS.slice(3, 5),
     value: 1,
-    identifier: 'death',
-    visitor: new Equals(),
+    visitor: new GreaterThanEquals(),
     accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
+    observerTarget: 'DEATHCOUNT',
   },
   {
     name: 'Principle: Society',
@@ -481,11 +481,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 15,
-    identifier: 'population',
     visitor: new GreaterThanEquals(),
     accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
+    observerTarget: 'POPULATION',
   },
   {
     name: 'Principle: Hooded Knight',
@@ -493,11 +493,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 5,
-    identifier: 'innovation',
     visitor: new GreaterThanEquals(),
     accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
+    observerTarget: 'INNOVATION',
   },
   {
     name: 'Principle: Game Over',
@@ -505,11 +505,11 @@ export const MILESTONES: Milestone[] = [
     todo: '',
     storyEvents: [],
     value: 0,
-    identifier: 'population',
     visitor: new Equals(),
     accept(compareValue: string | number): boolean {
       return this.visitor.visit(this, compareValue);
     },
+    observerTarget: 'POPULATION',
   },
 ];
 

@@ -9,7 +9,6 @@ import { TabsPageComponent } from '../pages/tabs/tabs.component';
 import { SettlementsPageComponent } from '../pages/settlements/settlements.component';
 import { SettlementPageComponent } from '../pages/settlement/settlement.component';
 import { KDMDataService } from '../service/kdm_data.service';
-import { KDMCheckerService } from '../service/kdm_checker.service';
 import { CreateSettlementPopoverComponent } from '../pages/popover/create_settlement_popover.component';
 import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
 import { DefeatedMonsterModalComponent } from '../pages/defeated_monster/defeated_monster_modal.component';
@@ -28,6 +27,7 @@ import { ShowListAddModalComponent } from '../pages/template/show_list_add_modal
 import { ShowListDetailComponent } from '../pages/template/show_list_detail.component';
 import { PrinciplesPageComponent } from '../pages/principle/principles.component';
 import { PrincipleChooserPageComponent } from '../pages/principle/principle_chooser.component';
+import { KDMObserverService } from '../service/kdm_observer.service';
 
 @NgModule({
   declarations: [
@@ -85,8 +85,8 @@ import { PrincipleChooserPageComponent } from '../pages/principle/principle_choo
     useClass: IonicErrorHandler,
   },
     KDMDataService,
-    KDMCheckerService,
     KDMCalculationService,
+    KDMObserverService,
     StatusBar,
     SplashScreen,
   ],

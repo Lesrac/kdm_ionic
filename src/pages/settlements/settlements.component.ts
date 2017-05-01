@@ -7,6 +7,7 @@ import { CreateSettlementPopoverComponent } from '../popover/create_settlement_p
 import { InnovationTag } from '../../model/innovation';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
+import { KDMObserverService } from '../../service/kdm_observer.service';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -19,7 +20,8 @@ export class SettlementsPageComponent implements OnInit {
   settlements: Settlement[] = [];
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public modalCtrl: ModalController,
-              private alertCtrl: AlertController, private kdmService: KDMDataService) {
+              private alertCtrl: AlertController, private kdmService: KDMDataService,
+              private kdmObserver: KDMObserverService) {
   }
 
   presentPopover() {
@@ -93,7 +95,7 @@ export class SettlementsPageComponent implements OnInit {
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
     this.kdmService.getMilestones().then(
       milestones => milestones.forEach(
-        milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone))));
+        milestone => this.kdmObserver.registerMilestone(settlement, milestone)));
   }
 
   private createDefaultQuarries(settlement: Settlement): void {

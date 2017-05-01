@@ -7,10 +7,10 @@ import { ComparableVisitor } from './visitor/comparable_visitor';
 export class Milestone extends LanternEvent implements Comparable {
   tag: string;
   value: number;
-  identifier: string;
   visitor: ComparableVisitor;
+  observerTarget: string;
 
-  accept(compareValue: string|number): boolean {
+  accept(compareValue: string | number): boolean {
     return this.visitor.visit(this, compareValue);
   }
 
