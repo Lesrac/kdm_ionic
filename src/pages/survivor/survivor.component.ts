@@ -115,7 +115,6 @@ export class SurvivorPageComponent implements OnInit {
     }).then();
   }
 
-
   showFightingArts(): void {
     this.navCtrl.push(ShowListComponent, {
       objects: this.survivor.fightingArts,

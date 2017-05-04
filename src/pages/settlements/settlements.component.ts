@@ -20,8 +20,7 @@ export class SettlementsPageComponent implements OnInit {
   settlements: Settlement[] = [];
 
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public modalCtrl: ModalController,
-              private alertCtrl: AlertController, private kdmService: KDMDataService,
-              private kdmObserver: KDMObserverService) {
+              private alertCtrl: AlertController, private kdmService: KDMDataService) {
   }
 
   presentPopover() {
@@ -95,7 +94,7 @@ export class SettlementsPageComponent implements OnInit {
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
     this.kdmService.getMilestones().then(
       milestones => milestones.forEach(
-        milestone => this.kdmObserver.registerMilestone(settlement, milestone)));
+        milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone))));
   }
 
   private createDefaultQuarries(settlement: Settlement): void {

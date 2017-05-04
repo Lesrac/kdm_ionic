@@ -12,6 +12,9 @@ import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
 import { PrinciplesPageComponent } from '../principle/principles.component';
+import { Subject } from 'rxjs/Subject';
+import { KDMObserverService } from '../../service/kdm_observer.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -23,6 +26,9 @@ export class SettlementPageComponent implements OnInit {
   private static MAX_DEATHS: number = 36;
   private static MAX_LOST_SETTLEMENTS: number = 19;
 
+  population: Subject<number> = new Subject<number>();
+  deathcount: Subject<number> = new Subject<number>();
+
   @Input()
   settlement: Settlement;
 
@@ -31,9 +37,10 @@ export class SettlementPageComponent implements OnInit {
   lostSettlementGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              public formBuilder: FormBuilder) {
+              public formBuilder: FormBuilder, private kdmObserver: KDMObserverService) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
+      this.settlement.milestones.forEach(milestone => kdmObserver.registerObserverForMilestone(this, milestone));
     }
   }
 
@@ -106,18 +113,18 @@ export class SettlementPageComponent implements OnInit {
   }
 
   deathcountChange(event): void {
-    console.log('deathcountChange');
     if (typeof event === 'number') {
-      this.settlement.deathcount.next(event);
+      this.deathcount.next(event);
+      this.settlement.deathcount = event;
     }
   }
 
   populationChange(event): void {
-    console.log('populationChange');
     if (typeof event === 'number') {
-      const stlmt = this.settlement;
-      stlmt.population.next(event);
-      if (stlmt.survivors.length < stlmt.population.getValue()) {
+      const settlement = this.settlement;
+      this.population.next(event);
+      this.settlement.population = event;
+      if (settlement.survivors.length < this.settlement.population) {
         this.addSurvivor();
       }
       this.populationChecker();
@@ -129,10 +136,10 @@ export class SettlementPageComponent implements OnInit {
   }
 
   populationChecker(): void {
-    const population = this.settlement.population;
     const survivors = this.settlement.survivors.length;
-    if (survivors <= population.getValue()) {
-      const difference = population.getValue() - survivors;
+    const population = this.settlement.population;
+    if (survivors <= population) {
+      const difference = population - survivors;
       for (let i = 0; i < difference; i++) {
         this.addSurvivor();
       }
@@ -142,7 +149,7 @@ export class SettlementPageComponent implements OnInit {
   private setupDeathcounts(): void {
     const checkboxArray = new FormArray([]);
     for (let i: number = 0; i < SettlementPageComponent.MAX_DEATHS; i++) {
-      if (i < this.settlement.deathcount.getValue()) {
+      if (i < this.settlement.deathcount) {
         checkboxArray.push(new FormControl(true));
       } else {
         checkboxArray.push(new FormControl(false));
