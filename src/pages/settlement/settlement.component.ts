@@ -45,7 +45,6 @@ export class SettlementPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setupDeathcounts();
     this.setupLostSettlements();
   }
 
@@ -112,6 +111,12 @@ export class SettlementPageComponent implements OnInit {
     }
   }
 
+  settlementLostChange(event): void {
+    if (typeof event === 'number') {
+      this.settlement.settlementLost = event;
+    }
+  }
+
   deathcountChange(event): void {
     if (typeof event === 'number') {
       this.deathcount.next(event);
@@ -144,18 +149,6 @@ export class SettlementPageComponent implements OnInit {
         this.addSurvivor();
       }
     }
-  }
-
-  private setupDeathcounts(): void {
-    const checkboxArray = new FormArray([]);
-    for (let i: number = 0; i < SettlementPageComponent.MAX_DEATHS; i++) {
-      if (i < this.settlement.deathcount) {
-        checkboxArray.push(new FormControl(true));
-      } else {
-        checkboxArray.push(new FormControl(false));
-      }
-    }
-    this.deathCountGroup = this.formBuilder.group({deathCounts: checkboxArray});
   }
 
   private setupLostSettlements(): void {

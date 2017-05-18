@@ -134,14 +134,8 @@
       <ion-item-divider>
         Lost Settlements
       </ion-item-divider>
-      <form [formGroup]="lostSettlementGroup">
-        <ion-row formArrayName="settlementCounts" class="container">
-          <ion-col *ngFor="let control of lostSettlementGroup.controls.settlementCounts.controls">
-            <ion-checkbox type="checkbox" (click)="updateLostSettlement($event, control)"
-                          [formControl]="control"></ion-checkbox>
-          </ion-col>
-        </ion-row>
-      </form>
+      <kdmf-input-number [value]="settlement.settlementLost" (change)="settlementLostChange($event)">
+      </kdmf-input-number>
     </ion-item-group>
 
   </ion-list>
