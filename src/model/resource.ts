@@ -12,5 +12,5 @@ export enum ResourceType {
   WhiteLion,
   Phoenix,
   ScreamingAntelope,
-  Strange
+  Strange,
 }

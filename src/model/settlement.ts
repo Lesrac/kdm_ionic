@@ -30,9 +30,14 @@ export class Settlement {
   milestones: SettlementMilestone[] = [];
   principles: Principle[] = [];
 
-  constructor(name: string) {
+  constructor(name: string, id?: number) {
     this.name = name;
-    this.id = Settlement.counter++;
+    Settlement.counter++;
+    if (id) {
+      this.id = id;
+    } else {
+      this.id = Settlement.counter;
+    }
   }
 
   public addStorageItem(storage: Storage): void {

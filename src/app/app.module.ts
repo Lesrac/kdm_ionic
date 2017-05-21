@@ -28,6 +28,8 @@ import { ShowListDetailComponent } from '../pages/template/show_list_detail.comp
 import { PrinciplesPageComponent } from '../pages/principle/principles.component';
 import { PrincipleChooserPageComponent } from '../pages/principle/principle_chooser.component';
 import { KDMObserverService } from '../service/kdm_observer.service';
+import { KDMDBService } from '../service/kdm_db.service';
+import { SQLite } from '@ionic-native/sqlite';
 
 @NgModule({
   declarations: [
@@ -55,8 +57,8 @@ import { KDMObserverService } from '../service/kdm_observer.service';
     AutoresizeTextareaDirective,
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
     BrowserModule,
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -89,6 +91,8 @@ import { KDMObserverService } from '../service/kdm_observer.service';
     KDMObserverService,
     StatusBar,
     SplashScreen,
+    KDMDBService,
+    SQLite,
   ],
 })
 export class AppModule {

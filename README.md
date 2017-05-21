@@ -1,15 +1,22 @@
 Setup:
 Needs Android and NPM installed
-- npm install -g ionic cordova
-- npm install --save @ionic-native/core
-- ionic plugin add cordova-plugin-statusbar
-- npm install --save @ionic-native/status-bar
-- ionic plugin add cordova-plugin-splashscreen
-- npm install --save @ionic-native/splash-screen
-- npm install
+npm install -g ionic cordova
+ionic cordova platform add android
+npm install --save @ionic-native/core
+ionic plugin add cordova-plugin-statusbar
+npm install --save @ionic-native/status-bar
+ionic plugin add cordova-plugin-splashscreen
+npm install --save @ionic-native/splash-screen
+ionic cordova plugin add cordova-sqlite-storage --save
+npm install --save @ionic-native/sqlite
+npm install
+
 
 Start:
-- ionic serve
+ionic serve
+
+On Android:
+ionic cordova run android -c -s
 
 
 Aims:

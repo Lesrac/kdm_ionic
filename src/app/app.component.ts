@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { TabsPageComponent } from '../pages/tabs/tabs.component';
+import { KDMDBService } from '../service/kdm_db.service';
 
 @Component({
   templateUrl: 'app.component.html',
@@ -11,12 +11,16 @@ import { TabsPageComponent } from '../pages/tabs/tabs.component';
 export class MyApp {
   rootPage: any = TabsPageComponent;
 
-  constructor(platform: Platform, private statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform,
+              private statusBar: StatusBar,
+              splashScreen: SplashScreen,
+              private db: KDMDBService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      db.initDB();
     });
   }
 }

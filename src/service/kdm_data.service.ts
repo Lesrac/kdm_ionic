@@ -15,22 +15,33 @@ import { Innovation } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
+import { KDMDBService } from './kdm_db.service';
 /**
  * Created by Daniel on 28.01.2017.
  */
 @Injectable()
 export class KDMDataService {
 
+  constructor(private kdmDB: KDMDBService) {
+  }
+
   getSettlements(): Promise<Settlement[]> {
-    return Promise.resolve(SETTLEMENTS);
+    console.log('Get Settlements');
+    return this.kdmDB.getSettlements();
+    // return Promise.resolve(SETTLEMENTS);
   }
 
   getSettlement(name: string): Promise<Settlement> {
-    return Promise.resolve(SETTLEMENTS.find(settlement => settlement.name === name));
+    return this.getSettlements().then(settlements => settlements.find(settlement => settlement.name === name));
+//    return Promise.resolve(SETTLEMENTS.find(settlement => settlement.name === name));
   }
 
-  addSettlement(settlement: Settlement): void {
-    SETTLEMENTS.push(settlement);
+  addSettlement(settlement: Settlement): Promise<Settlement> {
+    return this.kdmDB.saveSettlement(settlement);
+  }
+
+  removeSettlement(settlement: Settlement): void {
+    this.kdmDB.removeSettlement(settlement);
   }
 
   getNemesisMonsters(): Promise<Monster[]> {

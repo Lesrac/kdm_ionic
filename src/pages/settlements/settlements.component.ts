@@ -1,13 +1,11 @@
-import { NavController, PopoverController, ModalController, AlertController } from 'ionic-angular';
+import { NavController, ModalController, AlertController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
 import { KDMDataService } from '../../service/kdm_data.service';
-import { CreateSettlementPopoverComponent } from '../popover/create_settlement_popover.component';
 import { InnovationTag } from '../../model/innovation';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
-import { KDMObserverService } from '../../service/kdm_observer.service';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -19,20 +17,12 @@ import { KDMObserverService } from '../../service/kdm_observer.service';
 export class SettlementsPageComponent implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public modalCtrl: ModalController,
-              private alertCtrl: AlertController, private kdmService: KDMDataService) {
-  }
-
-  presentPopover() {
-    let settlement: Settlement = new Settlement('');
-    let popover = this.popoverCtrl.create(CreateSettlementPopoverComponent, {
-      se: settlement,
-    });
-    popover.present().then(x => this.settlements.push(settlement));
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private kdmService: KDMDataService) {
   }
 
   addSettlement(): void {
-    this.kdmService.addSettlement(this.createDefaultSettlement());
+    let settlement = this.createDefaultSettlement();
+    this.kdmService.addSettlement(settlement).then(stlmt => this.settlements.push(stlmt));
   }
 
   ngOnInit(): void {
@@ -60,6 +50,7 @@ export class SettlementsPageComponent implements OnInit {
           text: 'Yes',
           handler: () => {
             this.settlements.splice(this.settlements.indexOf(settlement), 1);
+            this.kdmService.removeSettlement(settlement);
           },
         },
       ],
