@@ -33,26 +33,22 @@ export class KDMDBService {
   }
 
   saveSettlement(settlement: Settlement): Promise<Settlement> {
-    let stlmt: Settlement;
     console.log('db value');
     console.log(this.db);
     let placeholders = '(?, ?, ?, ?, ?)';
     let parameters = [settlement.name,
       settlement.survivalLimit, settlement.population, settlement.deathcount, settlement.settlementLost];
 
-    this.createDbConnection()
+    return this.createDbConnection()
       .then(sqliteObject => sqliteObject
         .executeSql(`INSERT INTO SETTLEMENTS (name, survivalLimit, population,
       deathcount, settlementLost) VALUES ` + placeholders, parameters)
-        .then(() => {
+        .then(stlmt => {
           console.log('inserted into settlements: ', settlement.id);
           stlmt = settlement;
-        })
-        .catch(x => {
-          console.log('Error insert into settlements');
-          console.log(x);
+          return stlmt;
         }));
-    return Promise.resolve(stlmt);
+
   }
 
   removeSettlement(settlement: Settlement): void {
@@ -61,37 +57,38 @@ export class KDMDBService {
     this.createDbConnection()
       .then(sqliteObject => sqliteObject
         .executeSql('DELETE FROM SETTLEMENTS WHERE ID = ?', parameters)
-        .then(() => console.log('removed from settlements: ', settlement.id))
+        .then(x => {
+            console.log('removed from settlements: ', settlement.id);
+          },
+        )
         .catch(x => {
           console.log('Error remove from settlements');
           console.log(x);
-        }));
+        }),
+      )
+    ;
   }
 
   getSettlements(): Promise<Settlement[]> {
-    let kakask: Settlement[] = [];
     console.log('Select settlements');
-    this.createDbConnection()
+    return this.createDbConnection()
       .then(sqliteObject =>
         sqliteObject
           .executeSql('SELECT * FROM SETTLEMENTS', [])
           .then(data => {
             console.log('Found: ', data.rows.length);
+            let settlements: Settlement[] = [];
             for (let i = 0; i < data.rows.length; i++) {
               console.log('Element: ', data.rows.item(i));
               let id = data.rows.item(i).ID;
               let name = data.rows.item(i).Name;
               console.log(id);
               console.log(name);
-              kakask.push(new Settlement(name, id));
+              settlements.push(new Settlement(name, id));
             }
-          })
-          .catch(x => {
-            console.log('Error insert into settlement');
-            console.log(x);
+            return settlements;
           }),
       );
-    return Promise.resolve(kakask);
   }
 
   private createDbConnection(): Promise<SQLiteObject> {

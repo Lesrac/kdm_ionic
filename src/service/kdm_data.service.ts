@@ -28,12 +28,6 @@ export class KDMDataService {
   getSettlements(): Promise<Settlement[]> {
     console.log('Get Settlements');
     return this.kdmDB.getSettlements();
-    // return Promise.resolve(SETTLEMENTS);
-  }
-
-  getSettlement(name: string): Promise<Settlement> {
-    return this.getSettlements().then(settlements => settlements.find(settlement => settlement.name === name));
-//    return Promise.resolve(SETTLEMENTS.find(settlement => settlement.name === name));
   }
 
   addSettlement(settlement: Settlement): Promise<Settlement> {
