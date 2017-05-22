@@ -1,4 +1,3 @@
-import { Monster } from './monster';
 import { Location } from './location';
 import { Storage } from './storage';
 import { Innovation } from './innovation';
@@ -6,8 +5,7 @@ import { Survivor } from './survivor';
 import { SettlementTimeline } from './linking/settlement_timeline';
 import { SettlementMilestone } from './linking/settlement_milestone';
 import { Principle } from './principle';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from "rxjs/Subject";
+import { SettlementMonster } from './linking/settlement_monster';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -20,9 +18,8 @@ export class Settlement {
   deathcount: number = 0;
   settlementLost: number = 0;
   timeline: SettlementTimeline[] = [];
-  nemesisMonsters: Monster[] = [];
-  quarries: Monster[] = [];
-  defeatedMonsters: Monster[] = [];
+  monsters: SettlementMonster[] = [];
+  defeatedMonsters: SettlementMonster[] = [];
   locations: Location[] = [];
   storages: Storage[] = [];
   innovations: Innovation[] = [];

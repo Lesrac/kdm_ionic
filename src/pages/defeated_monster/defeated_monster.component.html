@@ -12,13 +12,13 @@
       <ion-icon name="add-circle"></ion-icon>
     </button>
   </ion-item>
-  <ion-item *ngFor="let monster of settlement.defeatedMonsters">
+  <ion-item *ngFor="let settlementMonster of settlement.defeatedMonsters">
     <ion-row>
       <ion-col>
-        {{monster.name}} - Level {{monster.level}}
+        {{settlementMonster.monster.name}} - Level {{settlementMonster.monster.level}}
       </ion-col>
       <ion-col>
-        <button ion-button icon-only full (click)="removeDefeatedMonster(monster)">
+        <button ion-button icon-only full (click)="removeDefeatedMonster(settlementMonster)">
           <ion-icon name="remove-circle"></ion-icon>
         </button>
       </ion-col>

@@ -6,6 +6,7 @@ import { KDMDataService } from '../../service/kdm_data.service';
 import { InnovationTag } from '../../model/innovation';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
+import { SettlementMonster } from '../../model/linking/settlement_monster';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -79,7 +80,14 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultNemesisMonsters(settlement: Settlement): void {
-    this.kdmService.getNemesisMonsters().then(nemesisMonsters => settlement.nemesisMonsters = nemesisMonsters);
+    this.kdmService.getNemesisMonsters().then(nemesisMonsters => nemesisMonsters.forEach(nemesisMonster => {
+        const settlementMonster = new SettlementMonster(settlement, nemesisMonster);
+        if (nemesisMonster.name === 'Butcher') {
+          settlementMonster.isHuntable = true;
+        }
+        settlement.monsters.push(settlementMonster);
+      },
+    ));
   }
 
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
@@ -89,7 +97,15 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultQuarries(settlement: Settlement): void {
-    this.kdmService.getQuarries().then(quarries => settlement.quarries = quarries);
+    this.kdmService.getQuarries().then(quarries => quarries.forEach(quarry => {
+        console.log('Push Monster: ', quarry.name);
+        const settlementMonster = new SettlementMonster(settlement, quarry);
+        if (quarry.name === 'White Lion') {
+          settlementMonster.isHuntable = true;
+        }
+        settlement.monsters.push(settlementMonster);
+      },
+    ));
   }
 
   private createDefaultSettlementLocations(settlement: Settlement): void {

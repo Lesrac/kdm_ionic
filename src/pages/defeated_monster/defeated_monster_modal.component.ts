@@ -3,6 +3,7 @@ import { ViewController, NavParams } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { Monster } from '../../model/monster';
 import { KDMCalculationService } from '../../service/kdm_calculation.service';
+import { SettlementMonster } from '../../model/linking/settlement_monster';
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -13,7 +14,7 @@ import { KDMCalculationService } from '../../service/kdm_calculation.service';
 export class DefeatedMonsterModalComponent implements OnInit {
 
   settlement: Settlement;
-  huntableMonsters: Monster[] = [];
+  huntableMonsters: SettlementMonster[] = [];
   monsterLevel: number;
   monsterName: string;
   huntResources: boolean;
@@ -33,20 +34,22 @@ export class DefeatedMonsterModalComponent implements OnInit {
 
   addClose(): void {
     if (this.monsterName != null && this.monsterLevel != null) {
-      const monsterOrig = this.huntableMonsters.find(monster => monster.name === this.monsterName);
-      const monster = new Monster(this.monsterName);
-      monster.level = +this.monsterLevel;
+      const monsterOrig = this.huntableMonsters.find(huntableMonster =>
+      huntableMonster.monster.name === this.monsterName).monster;
+      const mon = new Monster(this.monsterName);
+      mon.level = +this.monsterLevel;
+      const settlementMonster = new SettlementMonster(this.settlement, mon);
       if (this.huntResources) {
-        this.kdmCalculation.addResourcesFromKilledMonster(this.settlement, monster, monsterOrig);
+        this.kdmCalculation.addResourcesFromKilledMonster(settlementMonster, monsterOrig);
       }
-      this.settlement.defeatedMonsters.push(monster);
+      this.settlement.defeatedMonsters.push(settlementMonster);
     }
 
     this.close();
   }
 
   private setupHuntableMonsters(): void {
-    this.settlement.quarries.forEach(monster => {
+    this.settlement.monsters.filter(monster => monster.isHuntable).forEach(monster => {
         if (monster.isHuntable) {
           this.huntableMonsters.push(monster);
         }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import {
-  SETTLEMENTS, NEMESISMONSTERS, QUARRIES, EVENTS, DEFAULTTIMELINE,
+  SETTLEMENTS, QUARRIES, EVENTS, DEFAULTTIMELINE,
   MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS, FIGHTINGARTS, PRINCIPLES,
   PRINCIPLETYPES,
 } from '../mockup/default_settlement';
@@ -39,18 +39,20 @@ export class KDMDataService {
   }
 
   getNemesisMonsters(): Promise<Monster[]> {
-    return Promise.resolve(NEMESISMONSTERS);
+    return Promise.resolve(QUARRIES.filter(quarry => quarry.isNemesis));
   }
 
   getQuarries(): Promise<Monster[]> {
-    QUARRIES.forEach(monster => {
+    let quarries = QUARRIES.filter(quarry => !quarry.isNemesis);
+    quarries.forEach(monster => {
+      console.log(monster.name);
       MONSTERRESOURCES.forEach(resource => {
         if (resource.monster === monster) {
           monster.resources.push(resource);
         }
       });
     });
-    return Promise.resolve(QUARRIES);
+    return Promise.resolve(quarries);
   }
 
   getResources(): Promise<Resource[]> {

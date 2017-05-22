@@ -8,7 +8,7 @@ import { Milestone } from '../model/milestone';
 import { Resource, ResourceType } from '../model/resource';
 import { Equals } from '../model/visitor/equals';
 import { GreaterThanEquals } from '../model/visitor/greater_than_equals';
-import { MonsterResource } from '../model/monster_resource';
+import { MonsterResource } from '../model/linking/monster_resource';
 import { Innovation, InnovationTag } from '../model/innovation';
 import { StorageTag } from '../model/storage';
 import { Weapon } from '../model/weapon';
@@ -22,45 +22,6 @@ import { Principle, PrincipleType } from '../model/principle';
  */
 
 export const SETTLEMENTS: Settlement[] = [];
-
-export const NEMESISMONSTERS: Monster[] = [
-  {
-    name: 'Butcher',
-    level: 1,
-    isNemesis: true,
-    isHuntable: true,
-    defeatedLevelOne: false,
-    defeatedLevelTwo: false,
-    defeatedLevelThree: false,
-    resources: null,
-    huntedResources: [],
-    locations: [],
-  },
-  {
-    name: 'King\'s Man',
-    level: 1,
-    isNemesis: true,
-    isHuntable: false,
-    defeatedLevelOne: false,
-    defeatedLevelTwo: false,
-    defeatedLevelThree: false,
-    resources: null,
-    huntedResources: [],
-    locations: [],
-  },
-  {
-    name: 'The Hand',
-    level: 1,
-    isNemesis: true,
-    isHuntable: false,
-    defeatedLevelOne: false,
-    defeatedLevelTwo: false,
-    defeatedLevelThree: false,
-    resources: null,
-    huntedResources: [],
-    locations: [],
-  },
-];
 
 export const RESSOURCES: Resource[] = [
   {
@@ -142,39 +103,51 @@ export const RESSOURCES: Resource[] = [
 
 export const QUARRIES: Monster[] = [
   {
+    name: 'Butcher',
+    level: 1,
+    huntingSettlements: [],
+    isNemesis: true,
+    resources: null,
+    locations: [],
+  },
+  {
+    name: 'King\'s Man',
+    level: 1,
+    huntingSettlements: [],
+    isNemesis: true,
+    resources: null,
+    locations: [],
+  },
+  {
+    name: 'The Hand',
+    level: 1,
+    huntingSettlements: [],
+    isNemesis: true,
+    resources: null,
+    locations: [],
+  },
+  {
     name: 'White Lion',
     level: 1,
+    huntingSettlements: [],
     isNemesis: false,
-    isHuntable: true,
-    defeatedLevelOne: false,
-    defeatedLevelTwo: false,
-    defeatedLevelThree: false,
     resources: [],
-    huntedResources: [],
     locations: [],
   },
   {
     name: 'Screaming Antelope',
     level: 1,
+    huntingSettlements: [],
     isNemesis: false,
-    isHuntable: false,
-    defeatedLevelOne: false,
-    defeatedLevelTwo: false,
-    defeatedLevelThree: false,
     resources: [],
-    huntedResources: [],
     locations: [],
   },
   {
     name: 'Phoenix',
     level: 1,
+    huntingSettlements: [],
     isNemesis: false,
-    isHuntable: false,
-    defeatedLevelOne: false,
-    defeatedLevelTwo: false,
-    defeatedLevelThree: false,
     resources: [],
-    huntedResources: [],
     locations: [],
   },
 ];

@@ -57,9 +57,8 @@ export class KDMDBService {
     this.createDbConnection()
       .then(sqliteObject => sqliteObject
         .executeSql('DELETE FROM SETTLEMENTS WHERE ID = ?', parameters)
-        .then(x => {
-            console.log('removed from settlements: ', settlement.id);
-          },
+        .then(() =>
+          console.log('removed from settlements: ', settlement.id),
         )
         .catch(x => {
           console.log('Error remove from settlements');
@@ -82,8 +81,6 @@ export class KDMDBService {
               console.log('Element: ', data.rows.item(i));
               let id = data.rows.item(i).ID;
               let name = data.rows.item(i).Name;
-              console.log(id);
-              console.log(name);
               settlements.push(new Settlement(name, id));
             }
             return settlements;
