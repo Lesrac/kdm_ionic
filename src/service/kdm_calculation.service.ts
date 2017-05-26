@@ -3,7 +3,7 @@ import { Monster } from '../model/monster';
 import { Storage } from '../model/storage';
 import { KDMDataService } from './kdm_data.service';
 import { Resource, ResourceType } from '../model/resource';
-import { SettlementMonster } from '../model/linking/settlement_monster';
+import { HuntedMonster } from '../model/linking/hunted_monster';
 /**
  * Created by Daniel on 18.02.2017.
  */
@@ -14,19 +14,19 @@ export class KDMCalculationService {
   constructor(private kdmData: KDMDataService) {
   }
 
-  addResourcesFromKilledMonster(killedMonster: SettlementMonster, originalMonster: Monster): void {
+  addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
     originalMonster.resources.forEach(monsterResource => {
-      if (monsterResource.monsterLevel === killedMonster.monster.level) {
+      if (monsterResource.monsterLevel === huntedMonster.monster.level) {
         if (monsterResource.storage) {
-          killedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
-          killedMonster.huntedResources.forEach(str => {
-            killedMonster.settlement.addStorageItem(str);
+          huntedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
+          huntedMonster.huntedResources.forEach(str => {
+            huntedMonster.settlement.addStorageItem(str);
           });
         } else if (monsterResource.resourceType != null && monsterResource.resourceType >= 0) {
           this.getAllResourceCardsFromType(monsterResource.resourceType).then(storages => {
-            killedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
-            killedMonster.huntedResources.forEach(storage => {
-              killedMonster.settlement.addStorageItem(storage);
+            huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
+            huntedMonster.huntedResources.forEach(storage => {
+              huntedMonster.settlement.addStorageItem(storage);
             });
           });
         }

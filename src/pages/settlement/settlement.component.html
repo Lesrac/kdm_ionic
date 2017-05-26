@@ -58,7 +58,7 @@
       <ion-item-divider>
         Nemesis Monsters
       </ion-item-divider>
-      <ion-row *ngFor="let settlementMonster of settlement.monsters" class="container">
+      <ion-row *ngFor="let settlementMonster of settlement.huntableMonsters" class="container">
         <ng-container *ngIf="settlementMonster.monster.isNemesis">
           <ion-col>
             <ion-item>
@@ -114,7 +114,7 @@
       <ion-item-divider>
         Quarries
       </ion-item-divider>
-      <ng-container *ngFor="let settlementMonster of settlement.monsters">
+      <ng-container *ngFor="let settlementMonster of settlement.huntableMonsters">
         <ion-item *ngIf="!settlementMonster.monster.isNemesis">
           <ion-checkbox [(ngModel)]="settlementMonster.isHuntable"></ion-checkbox>
           <ion-label>{{settlementMonster.monster.name}}</ion-label>

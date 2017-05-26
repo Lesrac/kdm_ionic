@@ -45,9 +45,8 @@ export class KDMDataService {
   getQuarries(): Promise<Monster[]> {
     let quarries = QUARRIES.filter(quarry => !quarry.isNemesis);
     quarries.forEach(monster => {
-      console.log(monster.name);
       MONSTERRESOURCES.forEach(resource => {
-        if (resource.monster === monster) {
+        if (resource.monster.name === monster.name) {
           monster.resources.push(resource);
         }
       });

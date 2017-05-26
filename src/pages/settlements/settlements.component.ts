@@ -1,4 +1,4 @@
-import { NavController, ModalController, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
@@ -6,7 +6,7 @@ import { KDMDataService } from '../../service/kdm_data.service';
 import { InnovationTag } from '../../model/innovation';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
-import { SettlementMonster } from '../../model/linking/settlement_monster';
+import { HuntableMonster } from '../../model/linking/huntable_monster';
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -81,11 +81,11 @@ export class SettlementsPageComponent implements OnInit {
 
   private createDefaultNemesisMonsters(settlement: Settlement): void {
     this.kdmService.getNemesisMonsters().then(nemesisMonsters => nemesisMonsters.forEach(nemesisMonster => {
-        const settlementMonster = new SettlementMonster(settlement, nemesisMonster);
+        const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
         if (nemesisMonster.name === 'Butcher') {
           settlementMonster.isHuntable = true;
         }
-        settlement.monsters.push(settlementMonster);
+        settlement.huntableMonsters.push(settlementMonster);
       },
     ));
   }
@@ -98,12 +98,11 @@ export class SettlementsPageComponent implements OnInit {
 
   private createDefaultQuarries(settlement: Settlement): void {
     this.kdmService.getQuarries().then(quarries => quarries.forEach(quarry => {
-        console.log('Push Monster: ', quarry.name);
-        const settlementMonster = new SettlementMonster(settlement, quarry);
+        const settlementMonster = new HuntableMonster(settlement, quarry);
         if (quarry.name === 'White Lion') {
           settlementMonster.isHuntable = true;
         }
-        settlement.monsters.push(settlementMonster);
+        settlement.huntableMonsters.push(settlementMonster);
       },
     ));
   }

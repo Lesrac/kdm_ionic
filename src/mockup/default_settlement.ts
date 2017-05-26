@@ -103,30 +103,6 @@ export const RESSOURCES: Resource[] = [
 
 export const QUARRIES: Monster[] = [
   {
-    name: 'Butcher',
-    level: 1,
-    huntingSettlements: [],
-    isNemesis: true,
-    resources: null,
-    locations: [],
-  },
-  {
-    name: 'King\'s Man',
-    level: 1,
-    huntingSettlements: [],
-    isNemesis: true,
-    resources: null,
-    locations: [],
-  },
-  {
-    name: 'The Hand',
-    level: 1,
-    huntingSettlements: [],
-    isNemesis: true,
-    resources: null,
-    locations: [],
-  },
-  {
     name: 'White Lion',
     level: 1,
     huntingSettlements: [],
@@ -148,6 +124,30 @@ export const QUARRIES: Monster[] = [
     huntingSettlements: [],
     isNemesis: false,
     resources: [],
+    locations: [],
+  },
+  {
+    name: 'Butcher',
+    level: 1,
+    huntingSettlements: [],
+    isNemesis: true,
+    resources: null,
+    locations: [],
+  },
+  {
+    name: 'King\'s Man',
+    level: 1,
+    huntingSettlements: [],
+    isNemesis: true,
+    resources: null,
+    locations: [],
+  },
+  {
+    name: 'The Hand',
+    level: 1,
+    huntingSettlements: [],
+    isNemesis: true,
+    resources: null,
     locations: [],
   },
 ];

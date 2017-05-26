@@ -3,7 +3,8 @@ import { ViewController, NavParams } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { Monster } from '../../model/monster';
 import { KDMCalculationService } from '../../service/kdm_calculation.service';
-import { SettlementMonster } from '../../model/linking/settlement_monster';
+import { HuntableMonster } from '../../model/linking/huntable_monster';
+import { HuntedMonster } from '../../model/linking/hunted_monster';
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -14,13 +15,14 @@ import { SettlementMonster } from '../../model/linking/settlement_monster';
 export class DefeatedMonsterModalComponent implements OnInit {
 
   settlement: Settlement;
-  huntableMonsters: SettlementMonster[] = [];
-  monsterLevel: number;
+  huntableMonsters: HuntableMonster[] = [];
+  monsterLevel: number = 1;
   monsterName: string;
   huntResources: boolean;
 
   constructor(public viewCtrl: ViewController, private params: NavParams,
               private kdmCalculation: KDMCalculationService) {
+    console.log('DefeatedMonsterModalComponent');
     this.settlement = this.params.get('settlement');
   }
 
@@ -38,22 +40,23 @@ export class DefeatedMonsterModalComponent implements OnInit {
       huntableMonster.monster.name === this.monsterName).monster;
       const mon = new Monster(this.monsterName);
       mon.level = +this.monsterLevel;
-      const settlementMonster = new SettlementMonster(this.settlement, mon);
+      const huntedMonster = new HuntedMonster(this.settlement, mon);
       if (this.huntResources) {
-        this.kdmCalculation.addResourcesFromKilledMonster(settlementMonster, monsterOrig);
+        this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster, monsterOrig);
       }
-      this.settlement.defeatedMonsters.push(settlementMonster);
+      this.settlement.huntedMonsters.push(huntedMonster);
     }
 
     this.close();
   }
 
   private setupHuntableMonsters(): void {
-    this.settlement.monsters.filter(monster => monster.isHuntable).forEach(monster => {
+    this.settlement.huntableMonsters.filter(huntableMonster => huntableMonster.isHuntable).forEach(monster => {
         if (monster.isHuntable) {
           this.huntableMonsters.push(monster);
         }
       },
     );
   }
+
 }
