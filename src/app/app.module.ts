@@ -30,6 +30,7 @@ import { PrincipleChooserPageComponent } from '../pages/principle/principle_choo
 import { KDMObserverService } from '../service/kdm_observer.service';
 import { KDMDBService } from '../service/kdm_db.service';
 import { SQLite } from '@ionic-native/sqlite';
+import { KDMInitDBService } from '../service/kdm_init_db.service';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { SQLite } from '@ionic-native/sqlite';
     StatusBar,
     SplashScreen,
     KDMDBService,
+    KDMInitDBService,
     SQLite,
   ],
 })

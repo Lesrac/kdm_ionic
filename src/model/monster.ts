@@ -4,11 +4,11 @@ import { Settlement } from './settlement';
 /**
  * Created by Daniel on 28.01.2017.
  */
-export class Monster {
+export class  Monster {
+  id: number;
   name: string;
   level: number = 1;
   isNemesis: boolean;
-  huntingSettlements: Settlement[] = [];
   resources: MonsterResource[] = [];
   locations: Location[] = [];
 

@@ -26,7 +26,6 @@ export class KDMDataService {
   }
 
   getSettlements(): Promise<Settlement[]> {
-    console.log('Get Settlements');
     return this.kdmDB.getSettlements();
   }
 
@@ -38,8 +37,13 @@ export class KDMDataService {
     this.kdmDB.removeSettlement(settlement);
   }
 
+  getMonsters(): Promise<Monster[]> {
+    return this.kdmDB.getMonsters();
+  }
+
   getNemesisMonsters(): Promise<Monster[]> {
-    return Promise.resolve(QUARRIES.filter(quarry => quarry.isNemesis));
+    return this.getMonsters().then(monsters => monsters.filter(monster => monster.isNemesis));
+    //   return Promise.resolve(QUARRIES.filter(quarry => quarry.isNemesis));
   }
 
   getQuarries(): Promise<Monster[]> {
