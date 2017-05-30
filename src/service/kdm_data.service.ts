@@ -43,7 +43,6 @@ export class KDMDataService {
 
   getNemesisMonsters(): Promise<Monster[]> {
     return this.getMonsters().then(monsters => monsters.filter(monster => monster.isNemesis));
-    //   return Promise.resolve(QUARRIES.filter(quarry => quarry.isNemesis));
   }
 
   getQuarries(): Promise<Monster[]> {

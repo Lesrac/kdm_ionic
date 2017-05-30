@@ -16,20 +16,18 @@ export class KDMCalculationService {
 
   addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
     originalMonster.resources.forEach(monsterResource => {
-      if (monsterResource.monsterLevel === huntedMonster.monster.level) {
-        if (monsterResource.storage) {
-          huntedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
-          huntedMonster.huntedResources.forEach(str => {
-            huntedMonster.settlement.addStorageItem(str);
+      if (monsterResource.storage) {
+        huntedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
+        huntedMonster.huntedResources.forEach(str => {
+          huntedMonster.settlement.addStorageItem(str);
+        });
+      } else if (monsterResource.resourceType != null && monsterResource.resourceType >= 0) {
+        this.getAllResourceCardsFromType(monsterResource.resourceType).then(storages => {
+          huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
+          huntedMonster.huntedResources.forEach(storage => {
+            huntedMonster.settlement.addStorageItem(storage);
           });
-        } else if (monsterResource.resourceType != null && monsterResource.resourceType >= 0) {
-          this.getAllResourceCardsFromType(monsterResource.resourceType).then(storages => {
-            huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
-            huntedMonster.huntedResources.forEach(storage => {
-              huntedMonster.settlement.addStorageItem(storage);
-            });
-          });
-        }
+        });
       }
     });
   }

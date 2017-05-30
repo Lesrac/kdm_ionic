@@ -10,6 +10,5 @@ export class MonsterResource {
   storage: Storage;
   resourceType: ResourceType;
   amount: number;
-  monsterLevel: number;
 
 }
