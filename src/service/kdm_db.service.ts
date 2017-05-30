@@ -96,6 +96,16 @@ export class KDMDBService {
     this.createSettlements(db);
     this.createMonsters(db);
     this.createResources(db);
+    this.createMonsterResources(db);
+    this.createSettlementResources(db);
+    this.createHuntableMonster(db);
+    this.createHuntedMonster(db);
+    this.createSurvivor(db);
+    this.createSettlementSurvivor(db);
+    this.createMilestone(db);
+    this.createLanternEvent(db);
+    this.createStoryEvent(db);
+    this.createSettlementMilestone(db);
   }
 
   private createSettlements(db: SQLiteObject): void {
@@ -119,11 +129,10 @@ export class KDMDBService {
   private createMonsters(db: SQLiteObject): void {
     db.executeSql('CREATE TABLE IF NOT EXISTS Monsters' +
       '(' +
+      'ID INTEGER NOT NULL' +
+      'CONSTRAINT Key2 PRIMARY KEY AUTOINCREMENT,' +
       'Name varchar(50) NOT NULL,' +
       'Level INTEGER NOT NULL DEFAULT 1,' +
-      'IsNemesis boolean NOT NULL DEFAULT false,' +
-      'IsHuntable boolean NOT NULL DEFAULT false,' +
-      'CONSTRAINT Key2 PRIMARY KEY (Name)' +
       ')', [])
       .then(() => {
         console.log('TABLE monsters CREATED');
@@ -142,6 +151,7 @@ export class KDMDBService {
       'ExistingCards INTEGER NOT NULL DEFAULT 1,' +
       'StorageTag INTEGER NOT NULL,' +
       'ResourceType INTEGER NOT NULL,' +
+      'Amount INTEGER NOT NULL DEFAULT 0,' +
       'CONSTRAINT Key4 PRIMARY KEY (Name)' +
       ')', [])
       .then(() => {
@@ -152,4 +162,224 @@ export class KDMDBService {
         console.log(x);
       });
   }
+
+  private createMonsterResources(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Monster_Resources' +
+      '(' +
+      'ResourceName varchar(50) NOT NULL,' +
+      'Amount INTEGER NOT NULL DEFAULT 0,' +
+      'MonsterID INTEGER NOT NULL,' +
+      'Attribute1 INTEGER NOT NULL,' +
+      'CONSTRAINT Key5 PRIMARY KEY (ResourceName,MonsterID,Attribute1),' +
+      'CONSTRAINT Monster_Resource FOREIGN KEY (Attribute1) REFERENCES Monsters (ID),' +
+      'CONSTRAINT Resource_Monster FOREIGN KEY (ResourceName) REFERENCES Resources (Name)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE monsterResources CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating monsterResources table');
+        console.log(x);
+      });
+  }
+
+  private createSettlementResources(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Settlement_Resources' +
+      '(' +
+      'SettlementID INTEGER NOT NULL,' +
+      'ResourceName varchar(50) NOT NULL,' +
+      'Amount INTEGER NOT NULL DEFAULT 0,' +
+      'CONSTRAINT Key6 PRIMARY KEY (SettlementID,ResourceName),' +
+      'CONSTRAINT Relationship5 FOREIGN KEY (SettlementID) REFERENCES Settlements (ID),' +
+      'CONSTRAINT Relationship6 FOREIGN KEY (ResourceName) REFERENCES Resources (Name)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE settlementResources CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating settlementResources table');
+        console.log(x);
+      });
+  }
+
+  private createHuntableMonster(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Huntable_Monsters' +
+      '(' +
+      'SettlementID INTEGER NOT NULL,' +
+      'MonsterID INTEGER NOT NULL,' +
+      'IsHuntable boolean NOT NULL DEFAULT false,' +
+      'DefeatedLevelOne boolean NOT NULL DEFAULT false,' +
+      'DefeatedLevelTwo boolean NOT NULL DEFAULT false,' +
+      'DefeatedLevelThree boolean NOT NULL DEFAULT false,' +
+      'CONSTRAINT Key7 PRIMARY KEY (SettlementID,MonsterID),' +
+      'CONSTRAINT Relationship7 FOREIGN KEY (SettlementID) REFERENCES Settlements (ID),' +
+      'CONSTRAINT Relationship8 FOREIGN KEY (MonsterID) REFERENCES Monsters (ID)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE huntableMonster CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating huntableMonster table');
+        console.log(x);
+      });
+  }
+
+  private createHuntedMonster(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Hunted_Monster' +
+      '(' +
+      'SettlementID INTEGER NOT NULL,' +
+      'MonsterID INTEGER NOT NULL,' +
+      'CONSTRAINT Key8 PRIMARY KEY (SettlementID,MonsterID),' +
+      'CONSTRAINT Relationship9 FOREIGN KEY (SettlementID) REFERENCES Settlements (ID),' +
+      'CONSTRAINT Relationship10 FOREIGN KEY (MonsterID) REFERENCES Monsters (ID)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE huntedMonsters CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating huntedMonsters table');
+        console.log(x);
+      });
+  }
+
+  private createSurvivor(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Survivors' +
+      '(' +
+      'ID INTEGER NOT ' +
+      'CONSTRAINT Key9 PRIMARY KEY AUTOINCREMENT,' +
+      'Name varchar(50) NOT NULL,' +
+      'IsAlive boolean NOT NULL DEFAULT true,' +
+      'IsMale boolean NOT NULL,' +
+      'Experience INTEGER NOT NULL DEFAULT 0,' +
+      'Survival INTEGER NOT NULL DEFAULT 1,' +
+      'CanDodge boolean NOT NULL DEFAULT false,' +
+      'CanEncourage boolean NOT NULL DEFAULT false,' +
+      'CanSurge boolean NOT NULL DEFAULT false,' +
+      'CanDash boolean NOT NULL DEFAULT false,' +
+      'Movement INTEGER NOT NULL DEFAULT 5,' +
+      'Accuracy INTEGER NOT NULL,' +
+      'Strength INTEGER NOT NULL,' +
+      'Evasion INTEGER NOT NULL,' +
+      'Luck INTEGER NOT NULL,' +
+      'Speed INTEGER NOT NULL,' +
+      'Insanity INTEGER NOT NULL,' +
+      'IsBrainDamaged boolean NOT NULL DEFAULT false,' +
+      'HeadArmor INTEGER NOT NULL,' +
+      'HeadHeavyInjury boolean NOT NULL,' +
+      'ArmsArmor INTEGER NOT NULL,' +
+      'ArmsLightInjury boolean NOT NULL,' +
+      'ArmsHeavyInjury boolean NOT NULL,' +
+      'BodyArmor INTEGER NOT NULL,' +
+      'BodyLightInjury boolean NOT NULL,' +
+      'BodyHeavyInjury boolean NOT NULL,' +
+      'WaistArmor INTEGER NOT NULL,' +
+      'WaistLightInjury boolean NOT NULL,' +
+      'WaistHeavyInjury boolean NOT NULL,' +
+      'LegsArmor INTEGER NOT NULL,' +
+      'LegsLightInjury boolean NOT NULL,' +
+      'LegsHeavyInjury boolean NOT NULL,' +
+      'CannotUseFightingArts boolean NOT NULL,' +
+      'CannotSpendSurvival boolean NOT NULL,' +
+      'SkipNextHunt boolean NOT NULL' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE survivors CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating survivors table');
+        console.log(x);
+      });
+  }
+
+  private createSettlementSurvivor(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Settlement_Survivors' +
+      '(' +
+      'SettlementID INTEGER NOT NULL,' +
+      'SurvivorID INTEGER NOT NULL,' +
+      'CONSTRAINT Key10 PRIMARY KEY (SettlementID,SurvivorID),' +
+      'CONSTRAINT Relationship11 FOREIGN KEY (SettlementID) REFERENCES Settlements (ID),' +
+      'CONSTRAINT Relationship12 FOREIGN KEY (SurvivorID) REFERENCES Survivors (ID)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE settlementSurvivors CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating settlementSurvivors table');
+        console.log(x);
+      });
+  }
+
+  private createMilestone(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Milestones' +
+      '(' +
+      'Tag varchar(50) NOT NULL,' +
+      'Value INTEGER NOT NULL,' +
+      'ObserverTarget varchar(25) NOT NULL,' +
+      'LanternEventID INTEGER NOT NULL' +
+      'CONSTRAINT Key11 PRIMARY KEY AUTOINCREMENT,' +
+      'CONSTRAINT Relationship16 FOREIGN KEY (LanternEventID) REFERENCES Lantern_Events (ID)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE milestones CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating milestones table');
+        console.log(x);
+      });
+  }
+
+  private createLanternEvent(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Lantern_Events' +
+      '(' +
+      'ID INTEGER NOT NULL' +
+      'CONSTRAINT Key12 PRIMARY KEY AUTOINCREMENT,' +
+      'Name varchar(50) NOT NULL,' +
+      'Todo varchar(50) NOT NULL' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE lanternEvent CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating lanternEvent table');
+        console.log(x);
+      });
+  }
+
+  private createStoryEvent(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Story_Events' +
+      '(' +
+      'Title varchar(50) NOT NULL,' +
+      'Description varchar(250) NOT NULL,' +
+      'ID INTEGER NOT NULL,' +
+      'LanternEventID INTEGER NOT NULL,' +
+      'CONSTRAINT Key13 PRIMARY KEY (ID,LanternEventID),' +
+      'CONSTRAINT Relationship21 FOREIGN KEY (LanternEventID) REFERENCES Lantern_Events (ID)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE storyEvents CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating storyEvents table');
+        console.log(x);
+      });
+  }
+
+  private createSettlementMilestone(db: SQLiteObject): void {
+    db.executeSql('CREATE TABLE IF NOT EXISTS Settlement_Milestones' +
+      '(' +
+      'SettlementID INTEGER NOT NULL,' +
+      'LanternEventID INTEGER NOT NULL,' +
+      'CONSTRAINT Key14 PRIMARY KEY (SettlementID,LanternEventID),' +
+      'CONSTRAINT Relationship18 FOREIGN KEY (SettlementID) REFERENCES Settlements (ID),' +
+      'CONSTRAINT Relationship19 FOREIGN KEY (LanternEventID) REFERENCES Milestones (LanternEventID)' +
+      ')', [])
+      .then(() => {
+        console.log('TABLE settlementMilestones CREATED');
+      })
+      .catch(x => {
+        console.log('Error in creating settlementMilestones table');
+        console.log(x);
+      });
+  }
+
 }
