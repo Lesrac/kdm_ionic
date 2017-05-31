@@ -113,11 +113,31 @@ export class KDMDBService {
     return settlement;
   }
 
-  getAllExistingHuntableMonsters(): Promise<Monster[]> {
+  getAllInitialQuarries(): Promise<Monster[]> {
     return this.createDbConnection()
       .then(sqliteObject =>
         sqliteObject
-          .executeSql('SELECT * FROM MONSTERS WHERE ID < ?', [KDMInitDBService.incrementalID])
+          .executeSql('SELECT * FROM MONSTERS WHERE ID < ? and IsNemesis = false', [KDMInitDBService.incrementalID])
+          .then(data => {
+            let monsters: Monster[] = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let id = data.rows.item(i).ID;
+              let name = data.rows.item(i).Name;
+              let monster = new Monster(name);
+              monster.id = id;
+              monster.isNemesis = data.rows.item(i).IsNemesis;
+              monsters.push(monster);
+            }
+            return monsters;
+          }),
+      );
+  }
+
+  getAllInitialNemesisMonsters(): Promise<Monster[]> {
+    return this.createDbConnection()
+      .then(sqliteObject =>
+        sqliteObject
+          .executeSql('SELECT * FROM MONSTERS WHERE ID < ? and IsNemesis = true', [KDMInitDBService.incrementalID])
           .then(data => {
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
@@ -138,6 +158,26 @@ export class KDMDBService {
       .then(sqliteObject =>
         sqliteObject
           .executeSql('SELECT * FROM MONSTERS', [])
+          .then(data => {
+            let monsters: Monster[] = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let id = data.rows.item(i).ID;
+              let name = data.rows.item(i).Name;
+              let monster = new Monster(name);
+              monster.id = id;
+              monsters.push(monster);
+            }
+            return monsters;
+          }),
+      );
+  }
+
+  getHuntedMonsters(settlementId: number): Promise<Monster[]> {
+    return this.createDbConnection()
+      .then(sqliteObject =>
+        sqliteObject
+          .executeSql('SELECT * FROM Monsters WHERE ID IN (' +
+            'SELECT MonsterID from Hunted_Monsters WHERE SettlementID = ?)', [settlementId])
           .then(data => {
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {

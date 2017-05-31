@@ -42,27 +42,12 @@ export class KDMDataService {
     return this.kdmDB.getMonsters();
   }
 
-  getAllExistingHuntableMonsters(): Promise<Monster[]> {
-    return this.kdmDB.getAllExistingHuntableMonsters();
-  }
-
   getHuntableNemesisMonsters(): Promise<Monster[]> {
-    return this.getAllExistingHuntableMonsters().then(monsters => monsters.filter(monster => monster.isNemesis));
+    return this.kdmDB.getAllInitialQuarries();
   }
 
   getHuntableQuarries(): Promise<Monster[]> {
-    let quarries = this.getAllExistingHuntableMonsters().then(monsters => monsters.filter(quarry =>
-      !quarry.isNemesis));
-    console.log('Get Huntable Quarries');
-    console.log(quarries);
-    quarries.then(monsters => monsters.forEach(monster => {
-      MONSTERRESOURCES.forEach(resource => {
-        if (resource.monster.name === monster.name) {
-          monster.resources.push(resource);
-        }
-      });
-    }));
-    return Promise.resolve(quarries);
+    return this.kdmDB.getAllInitialNemesisMonsters();
   }
 
   getResources(): Promise<Resource[]> {
