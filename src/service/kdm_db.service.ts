@@ -7,6 +7,7 @@ import { Platform } from 'ionic-angular';
 import { Settlement } from '../model/settlement';
 import { Monster } from '../model/monster';
 import { KDMInitDBService } from './kdm_init_db.service';
+import { JsonToObjectConverter } from '../util/json_to_object_converter';
 
 @Injectable()
 export class KDMDBService {
@@ -25,7 +26,6 @@ export class KDMDBService {
         .then((db: SQLiteObject) => {
           this.db = db;
           this.kdmInitDB.initDB(db);
-          console.log('Tables created');
         })
         .catch(err => {
           console.error('Error in KDMDBService', err);
@@ -48,10 +48,9 @@ export class KDMDBService {
       deathcount, settlementLost) VALUES ` + placeholders, parameters)
         .then(stlmt => {
           console.log('inserted into settlements: ', settlement.id);
-          stlmt = settlement;
-          return stlmt;
+          settlement.id = stlmt.id;
+          return settlement;
         }));
-
   }
 
   removeSettlement(settlement: Settlement): void {
@@ -77,56 +76,24 @@ export class KDMDBService {
         sqliteObject
           .executeSql('SELECT * FROM SETTLEMENTS', [])
           .then(data => {
-            console.log('Get Settlements: ', data.rows.length);
             let settlements: Settlement[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              console.log(data.rows.item(i));
-              console.log(JSON.stringify(data.rows.item(i)));
-              let id = data.rows.item(i).ID;
-              let name = data.rows.item(i).Name;
-              settlements.push(this.convertToSettlementObject(data.rows.item(i)));
+              settlements.push(JsonToObjectConverter.convertToSettlementObject(data.rows.item(i)));
             }
             return settlements;
           }),
       );
   }
 
-  convertToSettlementObject(settlementObject: any): Settlement {
-    let settlement: Settlement = {
-      id: settlementObject.id,
-      name: settlementObject.name,
-      survivalLimit: settlementObject.survivalLimit,
-      population: settlementObject.population,
-      deathcount: settlementObject.deathcount,
-      settlementLost: settlementObject.settlementLost,
-      timeline: null,
-      huntableMonsters: null,
-      huntedMonsters: null,
-      locations: null,
-      storages: null,
-      innovations: null,
-      survivors: null,
-      milestones: null,
-      principles: null,
-      addStorageItem: null,
-    };
-    return settlement;
-  }
-
   getAllInitialQuarries(): Promise<Monster[]> {
     return this.createDbConnection()
       .then(sqliteObject =>
         sqliteObject
-          .executeSql('SELECT * FROM MONSTERS WHERE ID < ? and IsNemesis = false', [KDMInitDBService.incrementalID])
+          .executeSql('SELECT * FROM MONSTERS WHERE ID < ? and IsNemesis = ?', [KDMInitDBService.incrementalID, false])
           .then(data => {
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              let id = data.rows.item(i).ID;
-              let name = data.rows.item(i).Name;
-              let monster = new Monster(name);
-              monster.id = id;
-              monster.isNemesis = data.rows.item(i).IsNemesis;
-              monsters.push(monster);
+              monsters.push(JsonToObjectConverter.convertToMonsterObject(data.rows.item(i)));
             }
             return monsters;
           }),
@@ -137,16 +104,11 @@ export class KDMDBService {
     return this.createDbConnection()
       .then(sqliteObject =>
         sqliteObject
-          .executeSql('SELECT * FROM MONSTERS WHERE ID < ? and IsNemesis = true', [KDMInitDBService.incrementalID])
+          .executeSql('SELECT * FROM MONSTERS WHERE ID < ? and IsNemesis = ?', [KDMInitDBService.incrementalID, true])
           .then(data => {
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              let id = data.rows.item(i).ID;
-              let name = data.rows.item(i).Name;
-              let monster = new Monster(name);
-              monster.id = id;
-              monster.isNemesis = data.rows.item(i).IsNemesis;
-              monsters.push(monster);
+              monsters.push(JsonToObjectConverter.convertToMonsterObject(data.rows.item(i)));
             }
             return monsters;
           }),
@@ -161,11 +123,7 @@ export class KDMDBService {
           .then(data => {
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              let id = data.rows.item(i).ID;
-              let name = data.rows.item(i).Name;
-              let monster = new Monster(name);
-              monster.id = id;
-              monsters.push(monster);
+              monsters.push(JsonToObjectConverter.convertToMonsterObject(data.rows.item(i)));
             }
             return monsters;
           }),
@@ -181,11 +139,8 @@ export class KDMDBService {
           .then(data => {
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              let id = data.rows.item(i).ID;
-              let name = data.rows.item(i).Name;
-              let monster = new Monster(name);
-              monster.id = id;
-              monsters.push(monster);
+              // todo Hunted_Monsters converter
+              monsters.push(JsonToObjectConverter.convertToMonsterObject(data.rows.item(i)));
             }
             return monsters;
           }),

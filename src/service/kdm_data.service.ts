@@ -43,11 +43,11 @@ export class KDMDataService {
   }
 
   getHuntableNemesisMonsters(): Promise<Monster[]> {
-    return this.kdmDB.getAllInitialQuarries();
+    return this.kdmDB.getAllInitialNemesisMonsters();
   }
 
   getHuntableQuarries(): Promise<Monster[]> {
-    return this.kdmDB.getAllInitialNemesisMonsters();
+    return this.kdmDB.getAllInitialQuarries();
   }
 
   getResources(): Promise<Resource[]> {

@@ -58,32 +58,32 @@
       <ion-item-divider>
         Nemesis Monsters
       </ion-item-divider>
-      <ion-row *ngFor="let settlementMonster of settlement.huntableMonsters" class="container">
-        <ng-container *ngIf="settlementMonster.monster.isNemesis">
+      <ion-row *ngFor="let settlementNemesis of settlement.huntableMonsters" class="container">
+        <ng-container *ngIf="settlementNemesis.monster.isNemesis">
           <ion-col>
             <ion-item>
-              <ion-checkbox [(ngModel)]="settlementMonster.isHuntable">
+              <ion-checkbox [(ngModel)]="settlementNemesis.isHuntable">
               </ion-checkbox>
-              <ion-label>{{settlementMonster.monster.name}}</ion-label>
+              <ion-label>{{settlementNemesis.monster.name}}</ion-label>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-checkbox [(ngModel)]="settlementMonster.defeatedLevelOne">
+              <ion-checkbox [(ngModel)]="settlementNemesis.defeatedLevelOne">
               </ion-checkbox>
               <ion-label>Lvl 1</ion-label>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-checkbox [(ngModel)]="settlementMonster.defeatedLevelTwo">
+              <ion-checkbox [(ngModel)]="settlementNemesis.defeatedLevelTwo">
               </ion-checkbox>
               <ion-label>Lvl 2</ion-label>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
-              <ion-checkbox [(ngModel)]="settlementMonster.defeatedLevelThree">
+              <ion-checkbox [(ngModel)]="settlementNemesis.defeatedLevelThree">
               </ion-checkbox>
               <ion-label>Lvl 3</ion-label>
             </ion-item>
@@ -114,10 +114,10 @@
       <ion-item-divider>
         Quarries
       </ion-item-divider>
-      <ng-container *ngFor="let settlementMonster of settlement.huntableMonsters">
-        <ion-item *ngIf="!settlementMonster.monster.isNemesis">
-          <ion-checkbox [(ngModel)]="settlementMonster.isHuntable"></ion-checkbox>
-          <ion-label>{{settlementMonster.monster.name}}</ion-label>
+      <ng-container *ngFor="let settlementQuarry of settlement.huntableMonsters">
+        <ion-item *ngIf="!settlementQuarry.monster.isNemesis">
+          <ion-checkbox [(ngModel)]="settlementQuarry.isHuntable"></ion-checkbox>
+          <ion-label>{{settlementQuarry.monster.name}}</ion-label>
         </ion-item>
       </ng-container>
     </ion-item-group>

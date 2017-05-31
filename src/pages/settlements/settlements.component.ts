@@ -91,7 +91,10 @@ export class SettlementsPageComponent implements OnInit {
           settlement.huntableMonsters.push(settlementMonster);
         }
       },
-    ));
+    )).catch(error => {
+      console.log('Error in default nemesis');
+      console.log(error);
+    });
   }
 
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
@@ -112,7 +115,10 @@ export class SettlementsPageComponent implements OnInit {
           settlement.huntableMonsters.push(settlementMonster);
         }
       },
-    ));
+    )).catch(error => {
+      console.log('Error in default quarries');
+      console.log(error);
+    });
   }
 
   private createDefaultSettlementLocations(settlement: Settlement): void {
