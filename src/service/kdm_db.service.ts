@@ -72,21 +72,63 @@ export class KDMDBService {
   }
 
   getSettlements(): Promise<Settlement[]> {
-    console.log('Select settlements');
     return this.createDbConnection()
       .then(sqliteObject =>
         sqliteObject
           .executeSql('SELECT * FROM SETTLEMENTS', [])
           .then(data => {
-            console.log('Found: ', data.rows.length);
+            console.log('Get Settlements: ', data.rows.length);
             let settlements: Settlement[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              console.log('Element: ', data.rows.item(i));
+              console.log(data.rows.item(i));
+              console.log(JSON.stringify(data.rows.item(i)));
               let id = data.rows.item(i).ID;
               let name = data.rows.item(i).Name;
-              settlements.push(new Settlement(name, id));
+              settlements.push(this.convertToSettlementObject(data.rows.item(i)));
             }
             return settlements;
+          }),
+      );
+  }
+
+  convertToSettlementObject(settlementObject: any): Settlement {
+    let settlement: Settlement = {
+      id: settlementObject.id,
+      name: settlementObject.name,
+      survivalLimit: settlementObject.survivalLimit,
+      population: settlementObject.population,
+      deathcount: settlementObject.deathcount,
+      settlementLost: settlementObject.settlementLost,
+      timeline: null,
+      huntableMonsters: null,
+      huntedMonsters: null,
+      locations: null,
+      storages: null,
+      innovations: null,
+      survivors: null,
+      milestones: null,
+      principles: null,
+      addStorageItem: null,
+    };
+    return settlement;
+  }
+
+  getAllExistingHuntableMonsters(): Promise<Monster[]> {
+    return this.createDbConnection()
+      .then(sqliteObject =>
+        sqliteObject
+          .executeSql('SELECT * FROM MONSTERS WHERE ID < ?', [KDMInitDBService.incrementalID])
+          .then(data => {
+            let monsters: Monster[] = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              let id = data.rows.item(i).ID;
+              let name = data.rows.item(i).Name;
+              let monster = new Monster(name);
+              monster.id = id;
+              monster.isNemesis = data.rows.item(i).IsNemesis;
+              monsters.push(monster);
+            }
+            return monsters;
           }),
       );
   }
@@ -97,10 +139,8 @@ export class KDMDBService {
         sqliteObject
           .executeSql('SELECT * FROM MONSTERS', [])
           .then(data => {
-            console.log('Found: ', data.rows.length);
             let monsters: Monster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              console.log('Element: ', data.rows.item(i));
               let id = data.rows.item(i).ID;
               let name = data.rows.item(i).Name;
               let monster = new Monster(name);

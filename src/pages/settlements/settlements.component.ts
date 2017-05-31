@@ -80,12 +80,16 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultNemesisMonsters(settlement: Settlement): void {
-    this.kdmService.getNemesisMonsters().then(nemesisMonsters => nemesisMonsters.forEach(nemesisMonster => {
-        const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
-        if (nemesisMonster.name === 'Butcher') {
-          settlementMonster.isHuntable = true;
+    this.kdmService.getHuntableNemesisMonsters().then(nemesisMonsters => nemesisMonsters.forEach(nemesisMonster => {
+        const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
+        huntableMonster.monster.name === nemesisMonster.name);
+        if (!existingMonster) {
+          const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
+          if (nemesisMonster.name === 'Butcher') {
+            settlementMonster.isHuntable = true;
+          }
+          settlement.huntableMonsters.push(settlementMonster);
         }
-        settlement.huntableMonsters.push(settlementMonster);
       },
     ));
   }
@@ -97,12 +101,16 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultQuarries(settlement: Settlement): void {
-    this.kdmService.getQuarries().then(quarries => quarries.forEach(quarry => {
-        const settlementMonster = new HuntableMonster(settlement, quarry);
-        if (quarry.name === 'White Lion') {
-          settlementMonster.isHuntable = true;
+    this.kdmService.getHuntableQuarries().then(quarries => quarries.forEach(quarry => {
+        const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
+        huntableMonster.monster.name === quarry.name);
+        if (!existingMonster) {
+          const settlementMonster = new HuntableMonster(settlement, quarry);
+          if (quarry.name === 'White Lion') {
+            settlementMonster.isHuntable = true;
+          }
+          settlement.huntableMonsters.push(settlementMonster);
         }
-        settlement.huntableMonsters.push(settlementMonster);
       },
     ));
   }

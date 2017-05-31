@@ -16,6 +16,7 @@ import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
 import { KDMDBService } from './kdm_db.service';
+import { KDMInitDBService } from './kdm_init_db.service';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -41,19 +42,26 @@ export class KDMDataService {
     return this.kdmDB.getMonsters();
   }
 
-  getNemesisMonsters(): Promise<Monster[]> {
-    return this.getMonsters().then(monsters => monsters.filter(monster => monster.isNemesis));
+  getAllExistingHuntableMonsters(): Promise<Monster[]> {
+    return this.kdmDB.getAllExistingHuntableMonsters();
   }
 
-  getQuarries(): Promise<Monster[]> {
-    let quarries = QUARRIES.filter(quarry => !quarry.isNemesis);
-    quarries.forEach(monster => {
+  getHuntableNemesisMonsters(): Promise<Monster[]> {
+    return this.getAllExistingHuntableMonsters().then(monsters => monsters.filter(monster => monster.isNemesis));
+  }
+
+  getHuntableQuarries(): Promise<Monster[]> {
+    let quarries = this.getAllExistingHuntableMonsters().then(monsters => monsters.filter(quarry =>
+      !quarry.isNemesis));
+    console.log('Get Huntable Quarries');
+    console.log(quarries);
+    quarries.then(monsters => monsters.forEach(monster => {
       MONSTERRESOURCES.forEach(resource => {
         if (resource.monster.name === monster.name) {
           monster.resources.push(resource);
         }
       });
-    });
+    }));
     return Promise.resolve(quarries);
   }
 
