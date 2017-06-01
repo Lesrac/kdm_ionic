@@ -16,13 +16,13 @@ export class KDMCalculationService {
 
   addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
     originalMonster.resources.forEach(monsterResource => {
-      if (monsterResource.storage) {
-        huntedMonster.huntedResources = this.getAllStorageItems(monsterResource.storage, monsterResource.amount);
+      if (monsterResource.resource) {
+        huntedMonster.huntedResources = this.getAllStorageItems(monsterResource.resource, monsterResource.amount);
         huntedMonster.huntedResources.forEach(str => {
           huntedMonster.settlement.addStorageItem(str);
         });
-      } else if (monsterResource.resourceType != null && monsterResource.resourceType >= 0) {
-        this.getAllResourceCardsFromType(monsterResource.resourceType).then(storages => {
+      } else if (monsterResource.resource != null && monsterResource.resource.type >= 0) {
+        this.getAllResourceCardsFromType(monsterResource.resource.type).then(storages => {
           huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
           huntedMonster.huntedResources.forEach(storage => {
             huntedMonster.settlement.addStorageItem(storage);

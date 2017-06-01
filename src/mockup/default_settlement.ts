@@ -244,45 +244,38 @@ export const ARMORS: Armor[] = [
 export const MONSTERRESOURCES: MonsterResource[] = [
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 4,
-    resourceType: ResourceType.Basic,
   },
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 4,
-    resourceType: ResourceType.WhiteLion,
   },
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 4,
-    resourceType: ResourceType.Basic,
   },
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 6,
-    resourceType: ResourceType.WhiteLion,
   },
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 4,
-    resourceType: ResourceType.Basic,
   },
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 8,
-    resourceType: ResourceType.WhiteLion,
   },
   {
     monster: QUARRIES[0],
-    storage: null,
+    resource: null,
     amount: 4,
-    resourceType: null,
   },
 ];
 
