@@ -5,3 +5,11 @@ import { Milestone } from '../milestone';
 export interface ComparableVisitor {
   visit(milestone: Milestone, compareValue: string | number): boolean;
 }
+
+export enum ComparableVisitorValue {
+  L,
+  LE,
+  EQ,
+  GE,
+  G,
+}

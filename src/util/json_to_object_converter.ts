@@ -1,18 +1,22 @@
 import { Settlement } from '../model/settlement';
 import { Monster } from '../model/monster';
+import { Resource } from '../model/resource';
+import { MonsterResource } from '../model/linking/monster_resource';
+import { HuntableMonster } from '../model/linking/huntable_monster';
+import { HuntedMonster } from '../model/linking/hunted_monster';
 /**
  * Created by Daniel on 31.05.2017.
  */
 export class JsonToObjectConverter {
 
-  public static convertToSettlementObject(settlementObject: any): Settlement {
-    let settlement: Settlement = {
-      id: settlementObject.ID,
-      name: settlementObject.Name,
-      survivalLimit: settlementObject.SurvivalLimit,
-      population: settlementObject.Population,
-      deathcount: settlementObject.DeathCount,
-      settlementLost: settlementObject.SettlementLost,
+  public static convertToSettlementObject(settlementJSON: any): Settlement {
+    const settlement: Settlement = {
+      id: settlementJSON.ID,
+      name: settlementJSON.Name,
+      survivalLimit: settlementJSON.SurvivalLimit,
+      population: settlementJSON.Population,
+      deathcount: settlementJSON.DeathCount,
+      settlementLost: settlementJSON.SettlementLost,
       timeline: null,
       huntableMonsters: null,
       huntedMonsters: null,
@@ -24,22 +28,64 @@ export class JsonToObjectConverter {
       principles: null,
       addStorageItem: null,
     };
+    console.log(settlementJSON);
     return settlement;
   }
 
-  public static convertToMonsterObject(monsterObject: any): Monster {
-    let monster: Monster = {
-      id: monsterObject.ID,
-      name: monsterObject.Name,
-      level: monsterObject.Level,
-      isNemesis: monsterObject.IsNemesis === 'true',
+  public static convertToMonsterObject(monsterJSON: any): Monster {
+    const monster: Monster = {
+      id: monsterJSON.ID,
+      name: monsterJSON.Name,
+      level: monsterJSON.Level,
+      isNemesis: monsterJSON.IsNemesis === 'true',
       resources: null,
       locations: null,
     };
-    console.log(monster.name);
-    console.log(typeof monsterObject.IsNemesis);
-    console.log(typeof monster.isNemesis);
     return monster;
   }
+
+  public static convertToHuntableMonsterObject(huntableMonsterJSON: any): HuntableMonster {
+    const huntableMonster: HuntableMonster = {
+      monster: null, // MonsterID
+      settlement: null, // SettlementID
+      defeatedLevelOne: huntableMonsterJSON.DefeatedLevelOne === 'true',
+      defeatedLevelTwo: huntableMonsterJSON.DefeatedLevelTwo === 'true',
+      defeatedLevelThree: huntableMonsterJSON.DefeatedLevelThree === 'true',
+      isHuntable: huntableMonsterJSON.IsHuntable === 'true',
+    };
+    return huntableMonster;
+  }
+
+  public static convertToHuntedMonsterObject(huntedMonsterJSON: any): HuntedMonster {
+    const huntedMonster: HuntedMonster = {
+      monster: null, // MonsterID
+      settlement: null, // SettlementID
+      huntedResources: null,
+    };
+    return huntedMonster;
+  }
+
+  public static converToResourceObject(resourceJSON: any): Resource {
+    const resource: Resource = {
+      name: resourceJSON.Name,
+      type: resourceJSON.ResourceType,
+      description: resourceJSON.Description,
+      existingCards: resourceJSON.ExistingCards,
+      tags: null,
+      amount: resourceJSON.Amount,
+    };
+    return resource;
+  }
+
+  public static convertToMonsterResourceObject(monsterResourceJSON: any): MonsterResource {
+    const monsterResource: MonsterResource = {
+      monster: null, // MonsterID
+      resource: null, // ResourceName
+      amount: monsterResourceJSON.Amount,
+    };
+    return monsterResource;
+  }
+
+//  public static convertToSettlementResourceObject(settlementResourceJSON: any): Settlement
 
 }

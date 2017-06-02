@@ -11,7 +11,6 @@ import { HuntedMonster } from './linking/hunted_monster';
  * Created by Daniel on 27.01.2017.
  */
 export class Settlement {
-  static counter: number = 0;
   id: number;
   name: string;
   survivalLimit: number = 0;
@@ -28,14 +27,8 @@ export class Settlement {
   milestones: SettlementMilestone[] = [];
   principles: Principle[] = [];
 
-  constructor(name: string, id?: number) {
+  constructor(name: string) {
     this.name = name;
-    Settlement.counter++;
-    if (id) {
-      this.id = id;
-    } else {
-      this.id = Settlement.counter;
-    }
   }
 
   public addStorageItem(storage: Storage): void {
