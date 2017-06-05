@@ -40,7 +40,6 @@ export class JsonToObjectConverter {
       level: monsterJSON.Level,
       isNemesis: monsterJSON.IsNemesis === 'true',
       resources: null,
-      locations: null,
     };
     return monster;
   }

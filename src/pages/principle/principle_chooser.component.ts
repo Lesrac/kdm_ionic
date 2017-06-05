@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
-import { Principle, PrincipleType } from '../../model/principle';
+import { Principle } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Settlement } from '../../model/settlement';
+import { PrincipleType } from '../../model/principle_type';
 /**
  * Created by Daniel on 14.02.2017.
  */

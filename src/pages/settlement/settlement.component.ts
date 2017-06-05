@@ -120,7 +120,7 @@ export class SettlementPageComponent implements OnInit {
   }
 
   addSurvivor(): void {
-    this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
+    this.settlement.survivors.push(new Survivor('Survivor'));
   }
 
   populationChecker(): void {

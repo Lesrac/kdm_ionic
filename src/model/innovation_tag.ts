@@ -1,10 +1,10 @@
 import { Entity } from 'typeorm/decorator/entity/Entity';
 import { PrimaryColumn } from 'typeorm';
 /**
- * Created by Daniel on 12.03.2017.
+ * Created by Daniel on 05.06.2017.
  */
 @Entity()
-export class Characteristic {
+export class InnovationTag {
   @PrimaryColumn()
   name: string;
 }

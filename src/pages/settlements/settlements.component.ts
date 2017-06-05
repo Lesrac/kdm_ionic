@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
 import { KDMDataService } from '../../service/kdm_data.service';
-import { InnovationTag } from '../../model/innovation';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
 import { HuntableMonster } from '../../model/linking/huntable_monster';
@@ -103,7 +102,7 @@ export class SettlementsPageComponent implements OnInit {
       milestones => {
         console.log('Milestones: ', milestones.length);
         milestones.forEach(
-          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)))
+          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)));
       });
   }
 
@@ -132,8 +131,8 @@ export class SettlementsPageComponent implements OnInit {
 
   private createDefaultInnovations(settlement: Settlement): void {
     this.kdmService.getInnovations().then(innovations =>
-      settlement.innovations = innovations.filter(innovation =>
-      innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1),
+        settlement.innovations = innovations.filter(innovation => console.log('TODO')),
+      // TODO innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1),
     );
   }
 }

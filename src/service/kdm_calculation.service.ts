@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Monster } from '../model/monster';
 import { Storage } from '../model/storage';
 import { KDMDataService } from './kdm_data.service';
-import { Resource, ResourceType } from '../model/resource';
+import { Resource } from '../model/resource';
 import { HuntedMonster } from '../model/linking/hunted_monster';
+import { ResourceType } from '../model/resource_type';
 /**
  * Created by Daniel on 18.02.2017.
  */
 @Injectable()
 export class KDMCalculationService {
-  factorials: number[] = [];
 
   constructor(private kdmData: KDMDataService) {
   }
@@ -21,7 +21,7 @@ export class KDMCalculationService {
         huntedMonster.huntedResources.forEach(str => {
           huntedMonster.settlement.addStorageItem(str);
         });
-      } else if (monsterResource.resource != null && monsterResource.resource.type >= 0) {
+      } else if (monsterResource.resource != null && monsterResource.resource.type != null) {
         this.getAllResourceCardsFromType(monsterResource.resource.type).then(storages => {
           huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
           huntedMonster.huntedResources.forEach(storage => {

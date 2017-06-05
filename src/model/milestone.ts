@@ -6,14 +6,19 @@ import { LessThan } from './visitor/less_than';
 import { LessThanEquals } from './visitor/less_than_euqals';
 import { Equals } from './visitor/equals';
 import { GreaterThanEquals } from './visitor/greater_than_equals';
+import { Entity } from 'typeorm/decorator/entity/Entity';
+import { Column } from 'typeorm';
 /**
  * Created by Daniel on 07.02.2017.
  */
+@Entity()
 export class Milestone extends LanternEvent implements Comparable {
-  id: number;
+  @Column()
   tag: string;
+  @Column('int')
   value: number;
   visitor: ComparableVisitor;
+  @Column()
   observerTarget: string;
 
   constructor(comparator: ComparableVisitorValue) {

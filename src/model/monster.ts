@@ -1,16 +1,21 @@
 import { MonsterResource } from './linking/monster_resource';
-import { Storage } from './storage';
-import { Settlement } from './settlement';
+import { Entity } from 'typeorm/decorator/entity/Entity';
+import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 /**
  * Created by Daniel on 28.01.2017.
  */
-export class  Monster {
+@Entity()
+export class Monster {
+  @PrimaryGeneratedColumn()
   id: number;
+  @Column()
   name: string;
+  @Column('int')
   level: number = 1;
+  @Column()
   isNemesis: boolean;
+  @OneToMany(type => MonsterResource, monsterResource => monsterResource.monster)
   resources: MonsterResource[] = [];
-  locations: Location[] = [];
 
   constructor(name: string, isNemesis = false) {
     this.name = name;

@@ -45,7 +45,7 @@ export class SurvivorsPageComponent implements OnInit {
   }
 
   addSurvivor(): void {
-    this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
+    this.settlement.survivors.push(new Survivor('Survivor'));
   }
 
   survivorsCheck(): boolean {

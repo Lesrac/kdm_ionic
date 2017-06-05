@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
-import {
-  SETTLEMENTS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS, FIGHTINGARTS, PRINCIPLES,
-  PRINCIPLETYPES,
-} from '../mockup/default_settlement';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
@@ -14,9 +9,9 @@ import { Resource } from '../model/resource';
 import { Innovation } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
-import { Principle, PrincipleType } from '../model/principle';
+import { Principle } from '../model/principle';
 import { KDMDBService } from './kdm_db.service';
-import { KDMInitDBService } from './kdm_init_db.service';
+import { PrincipleType } from '../model/principle_type';
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -51,11 +46,11 @@ export class KDMDataService {
   }
 
   getResources(): Promise<Resource[]> {
-    return Promise.resolve(RESSOURCES);
+    return null;
   }
 
   getEvents(): Promise<LanternEvent[]> {
-    return Promise.resolve(EVENTS);
+    return null;
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
@@ -63,31 +58,31 @@ export class KDMDataService {
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {
-    return Promise.resolve(DEFAULTTIMELINE);
+    return null;
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    return Promise.resolve(SETTLEMENTLOCATIONS);
+    return null;
   }
 
   getInnovations(): Promise<Innovation[]> {
-    return Promise.resolve(INNOVATIONS);
+    return null;
   }
 
   getDisorders(): Promise<Disorder[]> {
-    return Promise.resolve(DISORDERS);
+    return null;
   }
 
   getFightingArts(): Promise<FightingArt[]> {
-    return Promise.resolve(FIGHTINGARTS);
+    return null;
   }
 
   getPrinciples(): Promise<Principle[]> {
-    return Promise.resolve(PRINCIPLES);
+    return null;
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
-    return Promise.resolve(PRINCIPLETYPES);
+    return null;
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
