@@ -10,6 +10,7 @@ import { GreaterThanEquals } from './visitor/greater_than_equals';
  * Created by Daniel on 07.02.2017.
  */
 export class Milestone extends LanternEvent implements Comparable {
+  id: number;
   tag: string;
   value: number;
   visitor: ComparableVisitor;

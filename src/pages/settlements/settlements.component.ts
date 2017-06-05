@@ -80,31 +80,35 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   private createDefaultNemesisMonsters(settlement: Settlement): void {
-    this.kdmService.getHuntableNemesisMonsters().then(nemesisMonsters => nemesisMonsters.forEach(nemesisMonster => {
-        const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-        huntableMonster.monster.name === nemesisMonster.name);
-        if (!existingMonster) {
-          const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
-          if (nemesisMonster.name === 'Butcher') {
-            settlementMonster.isHuntable = true;
+    this.kdmService.getDefaultInitialHuntableNemesisMonsters().then(nemesisMonsters =>
+      nemesisMonsters.forEach(nemesisMonster => {
+          const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
+          huntableMonster.monster.name === nemesisMonster.name);
+          if (!existingMonster) {
+            const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
+            if (nemesisMonster.name === 'Butcher') {
+              settlementMonster.isHuntable = true;
+            }
+            settlement.huntableMonsters.push(settlementMonster);
           }
-          settlement.huntableMonsters.push(settlementMonster);
-        }
-      },
-    )).catch(error => {
+        },
+      )).catch(error => {
       console.log('Error in default nemesis');
       console.log(error);
     });
   }
 
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
-    this.kdmService.getMilestones().then(
-      milestones => milestones.forEach(
-        milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone))));
+    this.kdmService.getInitialMilestones().then(
+      milestones => {
+        console.log('Milestones: ', milestones.length);
+        milestones.forEach(
+          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)))
+      });
   }
 
   private createDefaultQuarries(settlement: Settlement): void {
-    this.kdmService.getHuntableQuarries().then(quarries => quarries.forEach(quarry => {
+    this.kdmService.getDefaultInitialHuntableQuarries().then(quarries => quarries.forEach(quarry => {
         const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
         huntableMonster.monster.name === quarry.name);
         if (!existingMonster) {

@@ -10,10 +10,11 @@ import { KDMInitDBService } from './kdm_init_db.service';
 import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
+import { Milestone } from '../model/milestone';
+import { SettlementMilestone } from '../model/linking/settlement_milestone';
 
 @Injectable()
 export class KDMDBService {
-  db: SQLiteObject;
 
   constructor(private platform: Platform,
               private sqlite: SQLite,
@@ -26,7 +27,6 @@ export class KDMDBService {
       console.log('INIT cordova sqlite db');
       this.createDbConnection()
         .then((db: SQLiteObject) => {
-          this.db = db;
           this.kdmInitDB.initDB(db);
         })
         .catch(err => {
@@ -50,14 +50,16 @@ export class KDMDBService {
           console.log('inserted into settlements: ', settlement.id);
         })
         .then(() => {
-          settlement.huntedMonsters.forEach(huntedMonster => {
-            this.saveMonster(huntedMonster.monster).then(monster => this.saveHuntedMonster(huntedMonster));
-          });
+          settlement.huntedMonsters.forEach(huntedMonster =>
+            this.saveMonster(huntedMonster.monster).then(monster => this.saveHuntedMonster(huntedMonster)));
         })
         .then(() => {
-          settlement.huntableMonsters.forEach(huntableMonster => {
-            this.saveHuntableMonster(huntableMonster);
-          });
+          settlement.huntableMonsters.forEach(huntableMonster =>
+            this.saveHuntableMonster(huntableMonster));
+        })
+        .then(() => {
+          settlement.milestones.forEach(settlementMilestone =>
+            this.saveSettlementMilestone(settlementMilestone));
         })
         .then(() => settlement));
   }
@@ -87,9 +89,11 @@ export class KDMDBService {
             let settlements: Settlement[] = [];
             for (let i = 0; i < data.rows.length; i++) {
               const settlement: Settlement = JsonToObjectConverter.convertToSettlementObject(data.rows.item(i));
-              this.getHuntedMonsters(settlement.id).then(huntedMonsters => settlement.huntedMonsters = huntedMonsters);
-              this.getHuntableMonsters(settlement.id).then(huntableMonsters =>
+              const id = settlement.id;
+              this.getHuntedMonsters(id).then(huntedMonsters => settlement.huntedMonsters = huntedMonsters);
+              this.getHuntableMonsters(id).then(huntableMonsters =>
                 settlement.huntableMonsters = huntableMonsters);
+              this.getSettlementMilestones(id).then(milestones => settlement.milestones = milestones);
               settlements.push(settlement);
             }
             return settlements;
@@ -108,7 +112,7 @@ export class KDMDBService {
           console.log('inserted into monsters: ', monster.id);
           monster.id = stlmt.id;
           return monster;
-        }));
+        }).catch(exception => console.log('Error inserting into monsters: ', exception)));
 
   }
 
@@ -139,7 +143,22 @@ export class KDMDBService {
         .then(huntableMonsterRet => {
           console.log('inserted into huntableMonster: ', huntableMonsterRet.insertId);
           return Promise.resolve();
-        }));
+        })
+        .catch(exception => console.log('error inserting into huntableMonsters: ', exception)));
+  }
+
+  saveSettlementMilestone(settlementMileston: SettlementMilestone): Promise<void> {
+    let placeholders = '(?, ?)';
+    let parameters = [settlementMileston.settlement.id, settlementMileston.milestone.id];
+
+    return this.createDbConnection()
+      .then(sqliteObject => sqliteObject
+        .executeSql(`REPLACE INTO Settlement_Milestones (SettlementID, MilestoneID) VALUES ` + placeholders, parameters)
+        .then(settlementMilestonesRet => {
+          console.log('inserted into SettlementMilestones: ', settlementMilestonesRet.insertId);
+          return Promise.resolve();
+        })
+        .catch(exception => console.log('error inserting into SettlementMilestones: ', exception)));
   }
 
   getAllInitialQuarries(): Promise<Monster[]> {
@@ -208,13 +227,44 @@ export class KDMDBService {
       .then(sqliteObject =>
         sqliteObject
           .executeSql('SELECT * FROM Monsters WHERE ID IN (' +
-            'SELECT MonsterID from Huntable_Monsters WHERE SettlementID = ?)', [settlementId])
+            'SELECT MonsterID FROM Huntable_Monsters WHERE SettlementID = ?)', [settlementId])
           .then(data => {
             let huntableMonsters: HuntableMonster[] = [];
             for (let i = 0; i < data.rows.length; i++) {
               huntableMonsters.push(JsonToObjectConverter.convertToHuntableMonsterObject(data.rows.item(i)));
             }
             return huntableMonsters;
+          }),
+      );
+  }
+
+  getSettlementMilestones(settlementId: number): Promise<Milestone[]> {
+    return this.createDbConnection()
+      .then(sqliteObject =>
+        sqliteObject.executeSql('SELECT * FROM Milestones where ID IN (' +
+          'SELECT MilestoneID FROM Settlement_Milestones WHERE SettlementID = ?)', [settlementId])
+          .then(data => {
+            let milestones: Milestone[] = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              milestones.push(JsonToObjectConverter.convertToMilestoneObject(data.rows.item(i)));
+            }
+            return milestones;
+          }),
+      );
+  }
+
+  getInitialMilestones(): Promise<Milestone[]> {
+    return this.createDbConnection()
+      .then(sqliteObject =>
+        sqliteObject.executeSql('SELECT * FROM Milestones where ID < ?', [KDMInitDBService.incrementalID])
+          .then(data => {
+            console.log('Milestones from DB select: ', data.rows.length);
+            console.log(data);
+            let milestones: Milestone[] = [];
+            for (let i = 0; i < data.rows.length; i++) {
+              milestones.push(JsonToObjectConverter.convertToMilestoneObject(data.rows.item(i)));
+            }
+            return milestones;
           }),
       );
   }

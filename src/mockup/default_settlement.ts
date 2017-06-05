@@ -411,6 +411,7 @@ export const EVENTS: LanternEvent[] = [
 
 export const MILESTONES: Milestone[] = [
   {
+    id: 1,
     name: 'Principle: New Life',
     tag: 'First child is born',
     todo: 'The group must decide how to raise their young. Choose one.',
@@ -423,6 +424,7 @@ export const MILESTONES: Milestone[] = [
     observerTarget: '',
   },
   {
+    id: 2,
     name: 'Principle: Death',
     tag: 'First time death count is updated',
     todo: 'The group must decide what to do with their first survivors corpse. Choose one.',
@@ -435,6 +437,7 @@ export const MILESTONES: Milestone[] = [
     observerTarget: 'DEATHCOUNT',
   },
   {
+    id: 3,
     name: 'Principle: Society',
     tag: 'Populations reaches 15',
     todo: '',
@@ -447,6 +450,7 @@ export const MILESTONES: Milestone[] = [
     observerTarget: 'POPULATION',
   },
   {
+    id: 4,
     name: 'Principle: Hooded Knight',
     tag: 'Settlement has 5 innovations',
     todo: '',
@@ -459,6 +463,7 @@ export const MILESTONES: Milestone[] = [
     observerTarget: 'INNOVATION',
   },
   {
+    id: 5,
     name: 'Principle: Game Over',
     tag: 'Population reaches 0',
     todo: '',

@@ -42,11 +42,11 @@ export class KDMDataService {
     return this.kdmDB.getMonsters();
   }
 
-  getHuntableNemesisMonsters(): Promise<Monster[]> {
+  getDefaultInitialHuntableNemesisMonsters(): Promise<Monster[]> {
     return this.kdmDB.getAllInitialNemesisMonsters();
   }
 
-  getHuntableQuarries(): Promise<Monster[]> {
+  getDefaultInitialHuntableQuarries(): Promise<Monster[]> {
     return this.kdmDB.getAllInitialQuarries();
   }
 
@@ -58,8 +58,8 @@ export class KDMDataService {
     return Promise.resolve(EVENTS);
   }
 
-  getMilestones(): Promise<Milestone[]> {
-    return Promise.resolve(MILESTONES);
+  getInitialMilestones(): Promise<Milestone[]> {
+    return this.kdmDB.getInitialMilestones();
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {

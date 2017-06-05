@@ -4,6 +4,7 @@ import { Resource } from '../model/resource';
 import { MonsterResource } from '../model/linking/monster_resource';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
+import { Milestone } from '../model/milestone';
 /**
  * Created by Daniel on 31.05.2017.
  */
@@ -86,6 +87,12 @@ export class JsonToObjectConverter {
     return monsterResource;
   }
 
-//  public static convertToSettlementResourceObject(settlementResourceJSON: any): Settlement
-
+  public static convertToMilestoneObject(milestoneJSON: any): Milestone {
+    const milestone: Milestone = new Milestone(milestoneJSON.Comparator);
+    milestone.id = milestoneJSON.ID;
+    milestone.value = milestoneJSON.Value;
+    milestone.observerTarget = milestoneJSON.ObserverTarget;
+    milestone.tag = milestoneJSON.Tag;
+    return milestone;
+  }
 }
