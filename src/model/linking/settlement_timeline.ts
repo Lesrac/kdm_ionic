@@ -8,9 +8,8 @@ import { Column, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 @Entity()
 export class SettlementTimeline {
   @ManyToOne(type => Settlement, settlement => settlement.timeline)
-  @JoinColumn()
   settlement: Settlement;
-  @OneToOne(type => Timeline, timeline => timeline.id)
+  @OneToOne(type => Timeline)
   @JoinColumn()
   timeline: Timeline;
   @Column()

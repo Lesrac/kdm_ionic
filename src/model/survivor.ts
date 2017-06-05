@@ -78,13 +78,13 @@ export class Survivor {
   cannotSpendSurvival: boolean = false;
   @Column()
   skipNextHunt: boolean = false;
-  @ManyToMany(type => FightingArt, fightingArt => fightingArt.name)
+  @ManyToMany(type => FightingArt)
   @JoinTable()
   fightingArts: FightingArt[] = [];
-  @ManyToMany(type => Disorder, disorder => disorder.name)
+  @ManyToMany(type => Disorder)
   @JoinTable()
   disorders: Disorder[] = [];
-  @ManyToMany(type => Characteristic, characteristic => characteristic.name)
+  @ManyToMany(type => Characteristic)
   @JoinTable()
   characteristics: Characteristic[];
 

@@ -8,11 +8,9 @@ import { Column, JoinColumn, ManyToOne } from 'typeorm';
 @Entity()
 export class MonsterResource {
 
-  @ManyToOne(type => Monster, monster => monster.id)
-  @JoinColumn()
+  @ManyToOne(type => Monster, monster => monster.resources)
   monster: Monster;
-  @ManyToOne(type => Resource, resource => resource.name)
-  @JoinColumn()
+  @ManyToOne(type => Resource)
   resource: Resource;
   @Column('int')
   amount: number;

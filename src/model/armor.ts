@@ -9,8 +9,7 @@ import { Column, JoinColumn, ManyToOne } from 'typeorm';
 export class Armor extends Equipment {
   @Column()
   value: number;
-  @ManyToOne(type => ArmorSpace, armorSpace => armorSpace.name)
-  @JoinColumn()
+  @ManyToOne(type => ArmorSpace)
   space: ArmorSpace;
 }
 

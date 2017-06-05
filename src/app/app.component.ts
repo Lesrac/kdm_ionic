@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Component } from '@angular/core';
 import { createConnection } from 'ionic-orm/dist';
 import { Platform } from 'ionic-angular';
@@ -32,7 +33,6 @@ import { InnovationTag } from '../model/innovation_tag';
 import { ResourceType } from '../model/resource_type';
 import { SettlementTimeline } from '../model/linking/settlement_timeline';
 import { StorageTag } from '../model/storage_tag';
-import 'reflect-metadata';
 
 @Component({
   templateUrl: 'app.component.html',
@@ -69,7 +69,7 @@ export class MyApp {
         autoSchemaSync: true,
       }).then(async connection => {
         const settlement = new Settlement('Wise City');
-        const settlementRepo = connection.getRepository(settlement);
+        const settlementRepo = connection.getRepository(Settlement);
         await settlementRepo.persist(settlement);
       });
     });

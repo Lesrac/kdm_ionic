@@ -10,7 +10,7 @@ export class Timeline {
   id: number;
   @Column('int')
   position: number;
-  @OneToOne(type => LanternEvent, lanternEvent => lanternEvent.id)
+  @OneToOne(type => LanternEvent)
   @JoinColumn()
   lanternEvent: LanternEvent;
 }

@@ -7,11 +7,9 @@ import { Column, JoinColumn, ManyToOne } from 'typeorm';
  */
 @Entity()
 export class HuntableMonster {
-  @ManyToOne(type => Settlement, settlement => settlement.id)
-  @JoinColumn()
+  @ManyToOne(type => Settlement, settlement => settlement.huntableMonsters)
   settlement: Settlement;
-  @ManyToOne(type => Monster, monster => monster.id)
-  @JoinColumn()
+  @ManyToOne(type => Monster)
   monster: Monster;
   @Column()
   isHuntable: boolean = false;

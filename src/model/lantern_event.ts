@@ -13,7 +13,6 @@ export class LanternEvent {
   @Column()
   todo: string;
   @OneToMany(type => StoryEvent, storyEvent => storyEvent.id)
-  @JoinColumn()
   storyEvents: StoryEvent[] = [];
 
   constructor(name = '') {

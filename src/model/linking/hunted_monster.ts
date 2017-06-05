@@ -8,13 +8,11 @@ import { Entity } from 'typeorm/decorator/entity/Entity';
  */
 @Entity()
 export class HuntedMonster {
-  @ManyToOne(type => Settlement, settlement => settlement.id)
-  @JoinColumn()
+  @ManyToOne(type => Settlement, settlement => settlement.huntedMonsters)
   settlement: Settlement;
-  @ManyToOne(type => Monster, monster => monster.id)
-  @JoinColumn()
+  @ManyToOne(type => Monster)
   monster: Monster;
-  @ManyToMany(type => Storage, huntedResource => huntedResource.name)
+  @ManyToMany(type => Storage)
   @JoinTable()
   huntedResources: Storage[] = [];
 
