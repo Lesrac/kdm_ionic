@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import { Component } from '@angular/core';
-import { createConnection } from 'ionic-orm/dist';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +32,7 @@ import { InnovationTag } from '../model/innovation_tag';
 import { ResourceType } from '../model/resource_type';
 import { SettlementTimeline } from '../model/linking/settlement_timeline';
 import { StorageTag } from '../model/storage_tag';
+import { createConnection } from "typeorm";
 
 @Component({
   templateUrl: 'app.component.html',
