@@ -93,7 +93,8 @@ export class KDMDBService {
               this.getHuntedMonsters(id).then(huntedMonsters => settlement.huntedMonsters = huntedMonsters);
               this.getHuntableMonsters(id).then(huntableMonsters =>
                 settlement.huntableMonsters = huntableMonsters);
-              this.getSettlementMilestones(id).then(milestones => settlement.milestones = milestones);
+              this.getSettlementMilestones(id).then(settlementMilestones => settlementMilestones.forEach(milestone =>
+                settlement.milestones.push(new SettlementMilestone(settlement, milestone))));
               settlements.push(settlement);
             }
             return settlements;
