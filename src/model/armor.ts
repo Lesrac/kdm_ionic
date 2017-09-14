@@ -1,4 +1,5 @@
 import { Equipment } from './equipment';
+
 /**
  * Created by Daniel on 20.02.2017.
  */
@@ -12,5 +13,5 @@ export enum ArmorSpace {
   waist,
   body,
   legs,
-  arms
+  arms,
 }

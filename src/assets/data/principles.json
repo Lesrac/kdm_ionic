@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Protect the Young",
+    "description": "The children are the future. When rolling on the Intimacy story event, roll twice and pick  result.",
+    "type": "New Life"
+  },
+  {
+    "name": "Survival of the Fittest",
+    "description": "Survival Limit +1. When rolling on the Intimacy story event, roll twice and pick the lowest result. All newborn survivors gain +1 strength",
+    "type": "New Life"
+  }
+]

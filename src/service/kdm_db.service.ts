@@ -7,11 +7,11 @@ import { Platform } from 'ionic-angular';
 import { Settlement } from '../model/settlement';
 import { Monster } from '../model/monster';
 import { KDMInitDBService } from './kdm_init_db.service';
-import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { Milestone } from '../model/milestone';
 import { SettlementMilestone } from '../model/linking/settlement_milestone';
+import { JsonToObjectConverter } from '../util/json_to_object_converter';
 
 @Injectable()
 export class KDMDBService {
@@ -38,6 +38,7 @@ export class KDMDBService {
   }
 
   saveSettlement(settlement: Settlement): Promise<Settlement> {
+    console.log('saveSettlement');
     let placeholders = '(?, ?, ?, ?, ?, ?)';
     let parameters = [settlement.id, settlement.name,
       settlement.survivalLimit, settlement.population, settlement.deathcount, settlement.settlementLost];
@@ -81,6 +82,7 @@ export class KDMDBService {
   }
 
   getSettlements(): Promise<Settlement[]> {
+    console.log('getSettlements');
     return this.createDbConnection()
       .then(sqliteObject =>
         sqliteObject
@@ -247,7 +249,7 @@ export class KDMDBService {
           .then(data => {
             let milestones: Milestone[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              milestones.push(JsonToObjectConverter.convertToMilestoneObject(data.rows.item(i)));
+              milestones.push(JsonToObjectConverter.convertToMilestoneObject(data.rows.item(i), []));
             }
             return milestones;
           }),
@@ -263,7 +265,7 @@ export class KDMDBService {
             console.log(data);
             let milestones: Milestone[] = [];
             for (let i = 0; i < data.rows.length; i++) {
-              milestones.push(JsonToObjectConverter.convertToMilestoneObject(data.rows.item(i)));
+              milestones.push(JsonToObjectConverter.convertToMilestoneObject(data.rows.item(i), []));
             }
             return milestones;
           }),
@@ -271,7 +273,12 @@ export class KDMDBService {
   }
 
   private createDbConnection(): Promise<any> {
-    return this.sqlite.create({name: 'kdm.db', location: 'default'});
+    if (this.platform.is('cordova')) {
+      console.log('createDBConnection to cordova');
+      return this.sqlite.create({name: 'kdm.db', location: 'default'});
+    }
+    console.log('no cordova to create DB connection');
+    return new Promise<any>(null);
   }
 
 }

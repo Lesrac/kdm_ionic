@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "name": "Principle: New Life",
+    "tag": "First child is born",
+    "todo": "The group must decide how to raise their young. Choose one.",
+    "storyEvents": [],
+    "value": 1,
+    "comparator": "EQ",
+    "observerTarget": ""
+  },
+  {
+    "id": 2,
+    "name": "Principle: Death",
+    "tag": "First time death count is updated",
+    "todo": "The group must decide what to do with their first survivors corpse. Choose one.",
+    "storyEvents": [
+      4,
+      5
+    ],
+    "value": 1,
+    "comparator": "GE",
+    "observerTarget": "DEATHCOUNT"
+  },
+  {
+    "id": 3,
+    "name": "Principle: Society",
+    "tag": "Populations reaches 15",
+    "todo": "",
+    "storyEvents": [],
+    "value": 15,
+    "comparator": "GE",
+    "observerTarget": "POPULATION"
+  },
+  {
+    "id": 4,
+    "name": "Principle: Hooded Knight",
+    "tag": "Settlement has 5 innovations",
+    "todo": "",
+    "storyEvents": [],
+    "value": 5,
+    "comparator": "GE",
+    "observerTarget": "INNOVATION"
+  },
+  {
+    "id": 5,
+    "name": "Principle: Game Over",
+    "tag": "Population reaches 0",
+    "todo": "",
+    "storyEvents": [],
+    "value": 0,
+    "comparator": "EQ",
+    "observerTarget": "POPULATION"
+  }
+]

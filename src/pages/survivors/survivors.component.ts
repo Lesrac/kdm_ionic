@@ -4,6 +4,7 @@ import { AlertController, NavController } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Survivor } from '../../model/survivor';
 import { SurvivorPageComponent } from '../survivor/survivor.component';
+
 /**
  * Created by Daniel on 24.02.2017.
  */
@@ -50,7 +51,7 @@ export class SurvivorsPageComponent implements OnInit {
 
   survivorsCheck(): boolean {
     return (this.settlement &&
-    this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population);
+      this.settlement.survivors.filter(survivor => survivor.isAlive).length > this.settlement.population);
   }
 
   removeSurvivor(survivor: Survivor): void {

@@ -5,6 +5,10 @@ import { MonsterResource } from '../model/linking/monster_resource';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { Milestone } from '../model/milestone';
+import { StoryEvent } from '../model/story_event';
+import { Principle, PrincipleType } from '../model/principle';
+import { FightingArt } from '../model/fighting_art';
+
 /**
  * Created by Daniel on 31.05.2017.
  */
@@ -35,10 +39,10 @@ export class JsonToObjectConverter {
 
   public static convertToMonsterObject(monsterJSON: any): Monster {
     const monster: Monster = {
-      id: monsterJSON.ID,
-      name: monsterJSON.Name,
-      level: monsterJSON.Level,
-      isNemesis: monsterJSON.IsNemesis === 'true',
+      id: monsterJSON.id,
+      name: monsterJSON.name,
+      level: monsterJSON.level,
+      isNemesis: monsterJSON.isNemesis,
       resources: null,
       locations: null,
     };
@@ -87,12 +91,48 @@ export class JsonToObjectConverter {
     return monsterResource;
   }
 
-  public static convertToMilestoneObject(milestoneJSON: any): Milestone {
-    const milestone: Milestone = new Milestone(milestoneJSON.Comparator);
-    milestone.id = milestoneJSON.ID;
-    milestone.value = milestoneJSON.Value;
-    milestone.observerTarget = milestoneJSON.ObserverTarget;
-    milestone.tag = milestoneJSON.Tag;
+  public static convertToMilestoneObject(milestoneJSON: any, storyEvents: StoryEvent[]): Milestone {
+    const milestone: Milestone = new Milestone(milestoneJSON.comparator);
+    milestone.id = milestoneJSON.id;
+    milestone.name = milestoneJSON.name;
+    milestone.value = milestoneJSON.value;
+    milestone.observerTarget = milestoneJSON.observerTarget;
+    milestone.tag = milestoneJSON.tag;
+    milestone.storyEvents = storyEvents;
     return milestone;
+  }
+
+
+  public static convertToStoryEventObject(storyEventJSON: any): StoryEvent {
+    const storyEvent: StoryEvent = {
+      id: storyEventJSON.id,
+      title: storyEventJSON.title,
+      description: storyEventJSON.description,
+    };
+    return storyEvent;
+  }
+
+  public static convertToPrincipleTypeObject(principleTypeJSON: any): PrincipleType {
+    const principleType: PrincipleType = {
+      name: principleTypeJSON.name,
+    };
+    return principleType;
+  }
+
+  public static convertToPrincipleObject(principleJSON: any): Principle {
+    const principle: Principle = {
+      name: principleJSON.name,
+      description: principleJSON.description,
+      type: principleJSON.type,
+    };
+    return principle;
+  }
+
+  public static convertToFightingArtObject(fightingArtJSON: any): FightingArt {
+    const fightingArt: FightingArt = {
+      name: fightingArtJSON.name,
+      description: fightingArtJSON.description,
+    };
+    return fightingArt;
   }
 }

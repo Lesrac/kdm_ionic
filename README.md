@@ -16,7 +16,7 @@ Start:
 ionic serve
 
 On Android:
-ionic cordova run android -c -s
+ionic cordova run android --livereload
 
 
 Aims:

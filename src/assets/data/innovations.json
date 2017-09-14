@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Language",
+    "description": "Survival Limit +1. All survivors gain the Encourage survival action.",
+    "isBase": true,
+    "consequence": "LANGUAGE_CONSEQUENCE",
+    "tags": [
+      "STARTING_INNOVATION"
+    ]
+  },
+  {
+    "name": "Paint",
+    "description": "The settlement swells with creative energy. All survivors gain the Dash survival action.",
+    "isBase": false,
+    "consequence": "LANGUAGE_CONSEQUENCE",
+    "tags": [
+      "LANGUAGE_CONSEQUENCE",
+      "ART"
+    ]
+  },
+  {
+    "name": "Ammonia",
+    "description": "A pungent, bilious substance ideal for crafting leather and treating wounds. Departing survivors gain +1 survival.",
+    "isBase": false,
+    "consequence": "AMMONIA_CONSEQUENCE",
+    "tags": [
+      "LANGUAGE_CONSEQUENCE",
+      "SCIENCE"
+    ]
+  },
+  {
+    "name": "Bloodletting",
+    "description": "Endeavor and table",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "AMMONIA_CONSEQUENCE",
+      "SCIENCE"
+    ]
+  }
+]

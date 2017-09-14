@@ -17,6 +17,7 @@ import { Affinity, Direction } from '../model/equipment';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
+
 /**
  * Created by Daniel on 28.01.2017.
  */
@@ -281,6 +282,7 @@ export const MONSTERRESOURCES: MonsterResource[] = [
 
 export const STORYEVENTS: StoryEvent[] = [
   {
+    id: 1,
     title: 'First Words',
     description: `The nominated survivor steps forward and gains + 1 courage. 
     They lead the other survivors to learn to speak to one another! 
@@ -293,6 +295,7 @@ export const STORYEVENTS: StoryEvent[] = [
     Build the Innovation deck now .`,
   },
   {
+    id: 2,
     title: 'Build the Innovation Deck',
     description: `The innovation deck represents the potential cultural and technological growth of your settlement. 
     It will grow throughout the campaign as you gain new innovation cards. 
@@ -305,6 +308,7 @@ export const STORYEVENTS: StoryEvent[] = [
     Finished with their work, the settlement gathers around its Glowing Center`,
   },
   {
+    id: 3,
     title: 'Glowing Center',
     description: `Armed with language, the nominated survivor aptly names the glowing center of their home 
     The Lantern Hoard. The settlement gains the Lantern Hoard Settlement Location. 
@@ -316,6 +320,7 @@ export const STORYEVENTS: StoryEvent[] = [
     They cannot be selected as a departing survivor this phase.`,
   },
   {
+    id: 4,
     title: 'The First Harvest',
     description: `The settlement decides to harvest the body for resources. 
     The settlement gains the Death Principle: Cannibalize. 
@@ -328,6 +333,7 @@ export const STORYEVENTS: StoryEvent[] = [
     The survivor gains +1 permanent speed.`,
   },
   {
+    id: 5,
     title: 'The First Grave',
     description: `The settlement decides to build a small monument to mark their loss. 
     The settlement gains the Death Principle: Graves. 

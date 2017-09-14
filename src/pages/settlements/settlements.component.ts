@@ -7,6 +7,7 @@ import { InnovationTag } from '../../model/innovation';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
 import { HuntableMonster } from '../../model/linking/huntable_monster';
+
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -23,10 +24,11 @@ export class SettlementsPageComponent implements OnInit {
 
   addSettlement(): void {
     let settlement = this.createDefaultSettlement();
-    this.kdmService.addSettlement(settlement).then(stlmt => this.settlements.push(stlmt));
+    this.kdmService.addSettlement(settlement);
   }
 
   ngOnInit(): void {
+    this.kdmService.getMonsters();
     this.kdmService.getSettlements().then(settlements => this.settlements = settlements);
   }
 
@@ -83,7 +85,7 @@ export class SettlementsPageComponent implements OnInit {
     this.kdmService.getDefaultInitialHuntableNemesisMonsters().then(nemesisMonsters =>
       nemesisMonsters.forEach(nemesisMonster => {
           const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-          huntableMonster.monster.name === nemesisMonster.name);
+            huntableMonster.monster.name === nemesisMonster.name);
           if (!existingMonster) {
             const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
             if (nemesisMonster.name === 'Butcher') {
@@ -110,7 +112,7 @@ export class SettlementsPageComponent implements OnInit {
   private createDefaultQuarries(settlement: Settlement): void {
     this.kdmService.getDefaultInitialHuntableQuarries().then(quarries => quarries.forEach(quarry => {
         const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-        huntableMonster.monster.name === quarry.name);
+          huntableMonster.monster.name === quarry.name);
         if (!existingMonster) {
           const settlementMonster = new HuntableMonster(settlement, quarry);
           if (quarry.name === 'White Lion') {
@@ -133,7 +135,7 @@ export class SettlementsPageComponent implements OnInit {
   private createDefaultInnovations(settlement: Settlement): void {
     this.kdmService.getInnovations().then(innovations =>
       settlement.innovations = innovations.filter(innovation =>
-      innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1),
+        innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1),
     );
   }
 }

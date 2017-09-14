@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Settlement } from '../model/settlement';
 import { SettlementMilestone } from '../model/linking/settlement_milestone';
 import { Observer } from 'rxjs/Observer';
 import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
 import { ModalController } from 'ionic-angular';
 import { SettlementPageComponent } from '../pages/settlement/settlement.component';
+
 /**
  * Created by Daniel on 01.05.2017.
  */

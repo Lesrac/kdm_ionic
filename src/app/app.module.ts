@@ -31,6 +31,7 @@ import { KDMObserverService } from '../service/kdm_observer.service';
 import { KDMDBService } from '../service/kdm_db.service';
 import { SQLite } from '@ionic-native/sqlite';
 import { KDMInitDBService } from '../service/kdm_init_db.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { KDMInitDBService } from '../service/kdm_init_db.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -6,6 +6,7 @@ import { LessThan } from './visitor/less_than';
 import { LessThanEquals } from './visitor/less_than_euqals';
 import { Equals } from './visitor/equals';
 import { GreaterThanEquals } from './visitor/greater_than_equals';
+
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -18,7 +19,8 @@ export class Milestone extends LanternEvent implements Comparable {
 
   constructor(comparator: ComparableVisitorValue) {
     super();
-    switch (comparator) {
+    let compare: ComparableVisitorValue = <ComparableVisitorValue>ComparableVisitorValue[comparator.toString()];
+    switch (compare) {
       case ComparableVisitorValue.L:
         this.visitor = new LessThan();
         break;

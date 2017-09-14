@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "First Words",
+    "description": "The nominated survivor steps forward and gains + 1 courage. They lead the other survivors to learn to speak to one another! They discuss their situation, realizing they must hunt to live. Add the White Lion to the Quarry list on the settlement record sheet. Your settlement gains the Language innovation. Search the Innovation cards for Language and place it face up in your play area and record it on your settlement sheet. Language is your first innovation, and it will spark the creation of the innovation deck. Build the Innovation deck now ."
+  },
+  {
+    "id": 2,
+    "title": "Build the Innovation Deck",
+    "description": "The innovation deck represents the potential cultural and technological growth of your settlement. It will grow throughout the campaign as you gain new innovation cards. Find the 6 innovation cards with language consequence listed under their title: Ammonia, Drums, Hovel, Inner Lantern, Paint, and Symposium. Shuttle these 6 cards together to form your settlement's innovation deck.  Place it face down in the designated space on the settlement board. The innovation deck is persistent. Make sure to preserve the unique combination of cards in your deck between play sessions. Finished with their work, the settlement gathers around its Glowing Center"
+  },
+  {
+    "id": 3,
+    "title": "Glowing Center",
+    "description": "Armed with language, the nominated survivor aptly names the glowing center of their home The Lantern Hoard. The settlement gains the Lantern Hoard Settlement Location. Search the large Settlement Location cards for the Lantern Hoard and place it face up in your play area. The Lantern Hoard is the source of all innovations and further locations the settlement will develop. The nominated survivor sits in front of the Lantern Hoard in awe and gains + 1 understanding. They must skip the next hunt phase as they ponder the meaning of existence. Check off the skip hunt box on the survivor's record sheet.  They cannot be selected as a departing survivor this phase."
+  },
+  {
+    "id": 4,
+    "title": "The First Harvest",
+    "description": "The settlement decides to harvest the body for resources. The settlement gains the Death Principle: Cannibalize. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result 1 -s The settlement ritualistically divides the corpse with a sharp stone and grimly consumes the dead flesh. Gain a Founding Stone starting gear. All departing survivors gain +3 insanity. 6 - 10 Nominate a survivor. The survivor fanatically tears the corpse open and deeply drinks its blood. They decide that for every new creature they eat, they will become stronger. The survivor gains +1 permanent speed."
+  },
+  {
+    "id": 5,
+    "title": "The First Grave",
+    "description": "The settlement decides to build a small monument to mark their loss. The settlement gains the Death Principle: Graves. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result 1 - 5 The settlement gathers around the grave, each taking a moment to reflect the loss and their place in the darkness. All departing survivors gain +l survival and +l understanding. 6 -10 Nominate a survivor. With tears in their eyes, the survivor takes a shard of rock from the grave and marks themselves with it. They cherish this mark forever. The survivor gains +l permanent luck."
+  }
+]
