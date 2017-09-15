@@ -1,7 +1,6 @@
 - possibility to add parent of an innovation that is already in the list (when it was deleted through the user)
 - Hunt XP Events
 - Impairments and Abilities for Survivor
-- "Is Alive" inside Survivor view
 - Better Event handling (doing)
 - Add DB (when model structure is defined/final)
 - Survivors List with max Elements shown

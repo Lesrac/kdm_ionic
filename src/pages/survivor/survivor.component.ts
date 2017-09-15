@@ -4,6 +4,7 @@ import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
+
 /**
  * Created by Daniel on 01.03.2017.
  */
@@ -22,6 +23,8 @@ export class SurvivorPageComponent implements OnInit {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public formBuilder: FormBuilder) {
     this.survivor = params.get('survivor');
+    console.log(this.survivor);
+    console.log(typeof this.survivor.isMale);
   }
 
   ngOnInit(): void {
