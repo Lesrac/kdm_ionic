@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Lantern Hoard",
+    "description": "",
+    "storages": [],
+    "isStartLocation": true
+  },
+  {
+    "name": "Bone Smith",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Skinnery",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Organ Grinder",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Weapon Crafter",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Leather Worker",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Stone Circle",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Barber Surgeon",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Plumery",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Blacksmith",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  },
+  {
+    "name": "Mask Maker",
+    "description": "",
+    "storages": [],
+    "isStartLocation": false
+  }
+]

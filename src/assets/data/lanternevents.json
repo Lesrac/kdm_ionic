@@ -1,0 +1,71 @@
+[
+  {
+    "name": "Returning Survivors",
+    "todo": "Nominate a survivors to utter the First Words",
+    "storyEvents": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "name": "Endless Screams",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Butcher",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Hands of Heat",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Armored Strangers",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Phoenix Feather",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - King's Man",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Regal Visit",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Principle: Conviction",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Watched",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Level 3",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Watcher",
+    "todo": "",
+    "storyEvents": []
+  }
+]

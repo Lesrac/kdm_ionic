@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Monster Bone",
+    "description": "A bone suitable for crafting.",
+    "amount": 0,
+    "type": "Basic",
+    "existingCards": 4,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Monster Hide",
+    "description": "The skin of a beast.",
+    "mount": 0,
+    "type": "Basic",
+    "existingCards": 6,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Broken Lantern",
+    "description": "Remains of an extinguished lantern.",
+    "amount": 0,
+    "type": "Basic",
+    "existingCards": 1,
+    "tags": [
+      "scrap"
+    ]
+  },
+  {
+    "name": "???",
+    "description": "You have no idea what monster bit this is. Can be used as bone, organ or hide",
+    "amount": 0,
+    "type": "Basic",
+    "existingCards": 2,
+    "tags": [
+      "hide",
+      "bone",
+      "consumable",
+      "organ"
+    ]
+  },
+  {
+    "name": "Skull",
+    "description": "When you gain this, a survivors of your choice gains +1 insanity.",
+    "amount": 0,
+    "type": "Basic",
+    "existingCards": 1,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Monster Organ",
+    "description": "If you consume this, archive this card. Roll 1d10. On a result of 6+, you contract a parasite. Archive all consumable gear in your gear grid now.",
+    "amount": 0,
+    "type": "Basic",
+    "existingCards": 3,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Love Juice",
+    "description": "During the settlement phase, you may archive this to Intimacy. Nominated survivors must be able to consume.",
+    "amount": 0,
+    "type": "Basic",
+    "existingCards": 2,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Elder Cat Teeth",
+    "description": "",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 1,
+    "tags": []
+  },
+  {
+    "name": "White Fur",
+    "description": "",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 4,
+    "tags": []
+  }
+]

@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import { Http } from '@angular/http';
-import {
-  SETTLEMENTS, QUARRIES, EVENTS, DEFAULTTIMELINE,
-  MILESTONES, SETTLEMENTLOCATIONS, MONSTERRESOURCES, RESSOURCES, INNOVATIONS, DISORDERS, FIGHTINGARTS, PRINCIPLES,
-  PRINCIPLETYPES,
-} from '../mockup/default_settlement';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
 import { Milestone } from '../model/milestone';
 import { Location } from '../model/location';
 import { Resource } from '../model/resource';
-import { Innovation } from '../model/innovation';
+import { Innovation, InnovationTag } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
 import { KDMDBService } from './kdm_db.service';
 import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { StoryEvent } from '../model/story_event';
+import { StorageTag } from '../model/storage';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -59,11 +55,39 @@ export class KDMDataService {
   }
 
   getResources(): Promise<Resource[]> {
-    return Promise.resolve(RESSOURCES);
+    return this.http.get('assets/data/resources.json').toPromise()
+      .then(
+        res => {
+          let data: Resource[] = [];
+          res.json().forEach(resourceJson => {
+            const tags: StorageTag[] = [];
+            resourceJson.tags.forEach((tagName: string) => {
+              tags.push(<StorageTag>StorageTag[tagName]);
+            });
+            data.push(JsonToObjectConverter.converToResourceObject(resourceJson, tags));
+          });
+          console.log('resources');
+          console.log(data);
+          return data;
+        },
+      );
   }
 
-  getEvents(): Promise<LanternEvent[]> {
-    return Promise.resolve(EVENTS);
+  getLanternEvents(): Promise<LanternEvent[]> {
+    return this.http.get('assets/data/lanternevents.json').toPromise()
+      .then(
+        res => {
+          let data: LanternEvent[] = [];
+          res.json().forEach(lanternEventJson => {
+            const storyEvents: StoryEvent[] = [];
+            lanternEventJson.storyEvents.forEach((storyEventId: number) => {
+              this.getStoryEvent(storyEventId).then(storyEvent => storyEvents.push(storyEvent));
+            });
+            data.push(JsonToObjectConverter.convertToLanternEventObject(lanternEventJson, storyEvents));
+          });
+          return data;
+        },
+      );
   }
 
   getStoryEvents(): Promise<StoryEvent[]> {
@@ -93,19 +117,44 @@ export class KDMDataService {
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {
-    return Promise.resolve(DEFAULTTIMELINE);
+    return this.getLanternEvents().then(lanternEvents =>
+      this.http.get('assets/data/defaulttimeline.json').toPromise()
+        .then(
+          res => {
+            let data: Timeline[] = [];
+            res.json().forEach(timelineJson => {
+              let event: LanternEvent = lanternEvents.find(x => x.name === timelineJson.lanternEvent);
+              data.push(JsonToObjectConverter.convertToTimelineObject(timelineJson, event));
+            });
+            return data;
+          }
+        )
+    );
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    return Promise.resolve(SETTLEMENTLOCATIONS);
+    return this.getGenericList('assets/data/locations.json', JsonToObjectConverter.convertToLocationObject);
   }
 
   getInnovations(): Promise<Innovation[]> {
-    return Promise.resolve(INNOVATIONS);
+    return this.http.get('assets/data/innovations.json').toPromise()
+      .then(
+        res => {
+          let data: Innovation[] = [];
+          res.json().forEach(innovationJson => {
+            const tags: InnovationTag[] = [];
+            innovationJson.tags.forEach((tagName: string) => {
+              tags.push(<InnovationTag>InnovationTag[tagName]);
+            });
+            data.push(JsonToObjectConverter.convertToInnovationObject(innovationJson, tags));
+          });
+          return data;
+        },
+      );
   }
 
   getDisorders(): Promise<Disorder[]> {
-    return Promise.resolve(DISORDERS);
+    return this.getGenericList('assets/data/disorders.json', JsonToObjectConverter.convertToDisorderObject);
   }
 
   getFightingArts(): Promise<FightingArt[]> {
@@ -121,16 +170,16 @@ export class KDMDataService {
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
-    return Promise.resolve(this.getPrinciples().then(principles =>
+    return this.getPrinciples().then(principles =>
       principles.filter(principle => principle.type === principleType),
-    ));
+    );
   }
 
   getGenericList(file: string, methodCall: JsonToObjectConverterMethod): Promise<any> {
     return this.http.get(file).toPromise()
       .then(
         res => {
-          let data: FightingArt[] = [];
+          let data: any[] = [];
           res.json().forEach(json => {
             data.push(methodCall(json));
           });

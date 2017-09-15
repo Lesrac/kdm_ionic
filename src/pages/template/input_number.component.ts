@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+
 /**
  * Created by Daniel on 15.03.2017.
  */
@@ -28,8 +29,10 @@ export class InputNumberComponent implements OnInit {
   }
 
   decreaseValue() {
-    this.value--;
-    this.change.emit(this.value);
+    if (this.value > 0) {
+      this.value--;
+      this.change.emit(this.value);
+    }
   }
 
   private setupControl(): void {
