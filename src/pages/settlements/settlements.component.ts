@@ -28,7 +28,6 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.kdmService.getMonsters();
     this.kdmService.getSettlements().then(settlements => this.settlements = settlements);
   }
 
@@ -52,7 +51,6 @@ export class SettlementsPageComponent implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.settlements.splice(this.settlements.indexOf(settlement), 1);
             this.kdmService.removeSettlement(settlement);
           },
         },
@@ -103,7 +101,6 @@ export class SettlementsPageComponent implements OnInit {
   private createDefaultMilestoneStoryEvents(settlement: Settlement): void {
     this.kdmService.getInitialMilestones().then(
       milestones => {
-        console.log('Milestones: ', milestones.length);
         milestones.forEach(
           milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)))
       });

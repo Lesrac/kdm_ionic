@@ -39,7 +39,6 @@ export class JsonToObjectConverter {
       principles: null,
       addStorageItem: null,
     };
-    console.log(settlementJSON);
     return settlement;
   }
 

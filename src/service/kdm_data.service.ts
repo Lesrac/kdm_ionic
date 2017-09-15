@@ -11,7 +11,6 @@ import { Innovation, InnovationTag } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
-import { KDMDBService } from './kdm_db.service';
 import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { StoryEvent } from '../model/story_event';
 import { StorageTag } from '../model/storage';
@@ -27,7 +26,7 @@ export class KDMDataService {
 
   settlements: Settlement[] = [];
 
-  constructor(private http: Http, private kdmDB: KDMDBService) {
+  constructor(private http: Http) {
   }
 
   getSettlements(): Promise<Settlement[]> {
@@ -35,11 +34,18 @@ export class KDMDataService {
   }
 
   addSettlement(settlement: Settlement): void {
-    this.settlements.push(settlement);
+    this.getSettlements().then(settlements => {
+      if (settlements.length > 0) {
+        settlement.id = Math.max.apply(Math, settlements.map(settlement => settlement.id)) + 1;
+      } else {
+        settlement.id = 1;
+      }
+      this.settlements.push(settlement);
+    });
   }
 
   removeSettlement(settlement: Settlement): void {
-    this.kdmDB.removeSettlement(settlement);
+    this.settlements.splice(this.settlements.indexOf(settlement), 1);
   }
 
   getMonsters(): Promise<Monster[]> {
