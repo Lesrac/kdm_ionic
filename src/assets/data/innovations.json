@@ -70,7 +70,7 @@
   },
   {
     "name": "Bloodletting",
-    "description": "(*) Breathing a Vein - spend 1 resource and roll 1d10. (1-3) Gain +1 understanding. Lose all survival. You cannot gain survival this settlement phase for any reason. (4-7) Syncope. Gain +3 insanity. (8+) Cured! Gain +6 insanity. You may remove one of the following: - 1 disorder of your choice. - Warped Pelvis severe waist injury. - Inetestinal Prolapse severe waist injury.",
+    "description": "(*) Breathing a Vein - spend 1 resource and roll 1d10. (1-3) Gain +1 understanding. Lose all survival. You cannot gain survival this settlement phase for any reason. (4-7) Syncope. Gain +3 insanity. (8+) Cured! Gain +6 insanity. You may remove one of the following: (-) 1 disorder of your choice. (-) Warped Pelvis severe waist injury. (-) Intestinal Prolapse severe waist injury.",
     "isBase": false,
     "consequence": null,
     "tags": [
@@ -136,6 +136,193 @@
     "tags": [
       "MUSIC",
       "DRUMS_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Heart Flute",
+    "description": "May be used once per settlement phase. (*) Devil's Melody - roll 1d10. (1) Sharp note. The survivor drops dead. (2-5) Flat note. Add a Nemesis Encounter to the next timeline year. (6+) Select any Nemesis monster. Special encounter them now. You may choose their monster level. After the showdown, resume the settlement phase. Do not gain (*), draw a settlement event card, or advance a lantern year.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "MUSIC",
+      "FORBIDDEN_DANCE_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Pottery",
+    "description": "Survival Limit +1. If the settlement loses all its resources, you may select up to two resources and keep them. (* Build) Barber Surgeon (3x organ) (1x scrap). ",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "ART",
+      "SCULTURE_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Pictograph",
+    "description": "Crudely-drawn pictures guide the survivors' way home. Anytime during the hunt or showdown phase, a survivor may (book) Run Away.",
+    "isBase": false,
+    "consequence": "PICTOGRAPH_CONSEQUENCE",
+    "tags": [
+      "ART",
+      "PAINT_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Sculpture",
+    "description": "Survival Limit +1. Silhouettes of sculptures cast strange, comforting shadows on the outskirts of your settlement. Departing survivors gain +2 survival when they depart for a Nemesis Encounter.",
+    "isBase": false,
+    "consequence": "SCULPTURE_CONSEQUENCE",
+    "tags": [
+      "ART",
+      "PAINT_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Face Painting",
+    "description": "(*) Battle Paint - roll 1d10. (1-3) Laughing stock. Lose 1 survival. (4+) Death Ceremony. Gain +3 insanity. (*) Founder's Eye - roll 1d10. (1-3) An accidental mess. Nothing happens. (4+) Gain +1 to any rolls on the Intimacy story event this settlement phase.",
+    "isBase": false,
+    "consequence": "SCULPTURE_CONSEQUENCE",
+    "tags": [
+      "ART",
+      "PAINT_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Momento Mori",
+    "description": "May be used once per settlement phase. (*) Nominate a survivor that died in the last showdown and roll 1d10. (1) Nothing happens. (2-3) Gain the insanity of the dead survivor. (4-8) Painful memories. Gain the courage and the understanding of the dead survivor. (9-10) Profound memories. Gain the hunt experience of the dead survivor.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "ART",
+      "PICTOGRAPH_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Storytelling",
+    "description": "Survival +1. (*)(*) Tale as Old as Time - roll 1d10. (1-3) Spend 3 resources, gain +1 understanding. (4-7) Gain +2 survival and +2 insanity. (8+) (book) White Speaker.",
+    "isBase": false,
+    "consequence": "STORYTELLING_CONSEQUENCE",
+    "tags": [
+      "EDUCATION",
+      "SYMPOSIUM_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Nightmare Training",
+    "description": "(*) Train - Lose 3 survival and roll 1d10. (1) Accident. Spend 1 survival or die. (2-7) You may spend 1 survival and roll again. (8-9) Gain +1 weapon proficiency level. (10+) Gain +1 permanent accuracy or strength.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "EDUCATION",
+      "SYMPOSIUM_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Records",
+    "description": "(*)(*) Knowledge - roll 1d10. (1) Move (swords) Nemesis Encounter - Watcher one year forward on the timeline. If the event is moved to this year, trigger it now. (2) Record-keeping duty. Skipt the next hunt. (3-5) You learn nothing. NOTHING! (6-9) Gain any fighting art a survivor currently has (does not include secret fighting arts). (10+) Set your hunt XP to 0. You may gain the benefits of the Age story event again.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "EDUCATION",
+      "STORYTELLING_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Sacrifice",
+    "description": "(*) Death Ritual - roll 1d10. (1) Pointless deahts. -2 population. (2-3) Screamer. -1 population. Departing survivors gain +3 insanity. (4-5) Inhuman. -1 population. Departing survivors lose all insanity. (6+) Move (swords) Nemesis encounter - Watcher one year back on the timeline. -1 population. May be gained once per settlement phase.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "FAITH",
+      "SHRINE_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Family",
+    "description": "Departing Survivors gain +1 survival. Survivors nominated for Intimacy may give themselves a surname if they do not have one. A newborn survivor inherits the surname of one parent, their weapon type and half (rounded down) of their weapon proficiency levels.",
+    "isBase": false,
+    "consequence": "FAMILY_CONSEQUENCE",
+    "tags": [
+      "HOME",
+      "HOVEL_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Bed",
+    "description": "Survival Limit +1. (*) Rest - roll 1d10. (1-3) Nightmares. Gain +1 insanity. (4+) You cannot endeavor again this settlement phase. Skip the next hunt. You may remove one of the following: (-) All Broken Arm sever injuries. (-) All Broken Hip severe injuries. (-) All Broken Rib severe injuries. (-) Ruptured Muscle severe injury.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "HOME",
+      "HOVEL_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Clan of Death",
+    "description": "The enduring strength of your clan passes through generations. All newborn survivors gain: +1 Accuracy. +1 Strenght. +1 Evasion.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "HOME",
+      "FAMILY_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Partnership",
+    "description": "(*)(*): Nominate two survivors. They pair off, and each gains the Partner ability. A survivor may be nominated for Partnership once per lifetime. Partner - \"(Partner's' Name)\": When you both depart, gain +2 survival. While adjacent to your partner, gain +1 strength. Parnters may only nominate each other for (book) Intimacy. When a partner dies, the remaining partner gains a random disorder and loses this ability.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "HOME",
+      "HOVEL_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Cooking",
+    "description": "Survival Limit +1. (*) Culinary Inspiration - roll 1d10. (1-2) Uninspired. (3+) (book) Cooking.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "SCIENCE",
+      "LANTERN_OVEN_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Scrap Smelting",
+    "description": "(*) Purification - Roll 1d10. (1-2) Nothing happens. (3-9) Spend 3 scrap and add 1 Iron to storage. (10+) Spend 3 scrap and add 1 Iron to storage. You may repeat this any number of times. (* Build) Blacksmith (6x bone) (3x scrap).",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "SCIENCE",
+      "LANTERN_OVEN_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Ultimate Weapon",
+    "description": "Survival Limit +1. When you defeat a monster, gain 1 monster resource of your choice from its resource deck.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "SCIENCE"
+    ]
+  },
+  {
+    "name": "Final Fighting Art",
+    "description": "Survival Limit +1. Once per showdown, you may select a card from the discard pile or wound stack and place it on top of the AI deck.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "EDUCATION"
+    ]
+  },
+  {
+    "name": "Guidepost",
+    "description": "The soft glow of its light fills the survivors with a sense of security. Departing survivors gain +1 survival. (*): The survivor attempts to pull the weapon free from the ground. Roll 1d10 and add their strength. If the result ist 12+, gain the Lantern Halberd rare gear and lose this innovation (archive this card).",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "OTHER"
     ]
   }
 ]

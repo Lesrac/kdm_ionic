@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Skull Helm",
+    "description": "When you suffer a severe head injury, the Skull Helm is destroyed. Archive this card.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "down"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "fragile",
+      "bone"
+    ],
+    "space": "head",
+    "value": 3
+  }
+]

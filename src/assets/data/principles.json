@@ -8,5 +8,35 @@
     "name": "Survival of the Fittest",
     "description": "Survival Limit +1. When rolling on the Intimacy story event, roll twice and pick the lowest result. All newborn survivors gain +1 strength",
     "type": "New Life"
+  },
+  {
+    "name": "Romantic",
+    "description": "Survival Limit +1. Believe in the potential for beauty, decency, and ingenuity in others. You may innovate 1 additional time during the settlement phase. In addition, all current and newborn survivors gain +1 understanding.",
+    "type": "Conviction"
+  },
+  {
+    "name": "Barbaric",
+    "description": "Survival Limit +1. Believe in the power of human strength to overpower any obstacle. All current and newborn survivors gain +1 permanent strength.",
+    "type": "Conviction"
+  },
+  {
+    "name": "Collective Toil",
+    "description": "Your settlement leans into the storm. If everyone holds string, you will triumph. At the start of the settlement phase, gain +1(*) for every 10 population.",
+    "type": "Society"
+  },
+  {
+    "name": "Accept Darkness",
+    "description": "The settlement no longer fears the darkness. Letting go means your resolve cannot be cracked. Add +2 to all Brain Trauma rolls.",
+    "type": "Society"
+  },
+  {
+    "name": "Graves",
+    "description": "All new survivors gain +1 understanding. When a survivor dies during the hunt or showdown phase, gain +2(*). When a survivor dies during the settlement phase, gain +1(*).",
+    "type": "Death"
+  },
+  {
+    "name": "Cannibalize",
+    "description": "Survival Limit +1. Whenever a survivor dies, draw 1 basic resource and add it to the settlement storage.",
+    "type": "Death"
   }
 ]

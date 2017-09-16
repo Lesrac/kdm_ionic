@@ -1,0 +1,127 @@
+[
+  {
+    "name": "Bone Pickaxe",
+    "description": "Frail. After Hunt phase setup, place the Mineral Gathering event on any hunt space.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "up"
+        ]
+      }
+    ],
+    "tags": [
+      "item",
+      "tool",
+      "bone"
+    ],
+    "speed": 1,
+    "accuracy": 8,
+    "strength": 2
+  },
+  {
+    "name": "Bone Darts",
+    "description": "Range: 6. Frail: When you attempt tp wound a super-dense hit location, this weapon breaks. Archive this card at the end of the attack.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "ranged",
+      "thrown",
+      "bone"
+    ],
+    "speed": 1,
+    "accuracy": 7,
+    "strength": 3
+  },
+  {
+    "name": "Bone Axe",
+    "description": "Frail. Savage: Once per attack, if you critically wound, cause 1 additional wound. This effect does not apply to impervious hit locations.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "axe",
+      "bone"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 3
+  },
+  {
+    "name": "Bone Blade",
+    "description": "Frail: When you attempt tp wound a super-dense hit location, this weapon breaks. Archive this card at the end of the attack.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "sword",
+      "bone"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 2
+  },
+  {
+    "name": "Bone Dagger",
+    "description": "On a Perfect hit, gain +1 survival. Perfect hit: An attack roll result of a lantern 10.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left",
+          "up"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "dagger",
+      "bone"
+    ],
+    "speed": 3,
+    "accuracy": 7,
+    "strength": 1
+  },
+  {
+    "name": "Bone Sickle",
+    "description": "Frail. After the Hunt phase setup, place the Herb Gathering event on any hunt space.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "up"
+        ]
+      }
+    ],
+    "tags": [
+      "item",
+      "tool",
+      "bone"
+    ],
+    "speed": 2,
+    "accuracy": 8,
+    "strength": 1
+  }
+]

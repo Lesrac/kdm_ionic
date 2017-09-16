@@ -4,3 +4,4 @@
 - Better Event handling (doing)
 - Add DB (when model structure is defined/final)
 - Survivors List with max Elements shown
+- allow to edit the timeline
