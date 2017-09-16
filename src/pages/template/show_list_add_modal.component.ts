@@ -47,21 +47,21 @@ export class ShowListAddModalComponent implements AfterViewInit {
         this.typename = 'Fighting Art';
         this.kdmData.getFightingArts().then(fightingArt =>
           this.existingObjects = fightingArt.filter(art =>
-          this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
+            this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.Disorder:
         this.typename = 'Disorder';
         this.kdmData.getDisorders().then(disorders =>
           this.existingObjects = disorders.filter(disorder =>
-          this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
+            this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.Innovation:
         this.typename = 'Innovation';
         this.kdmData.getInnovations().then(innovations => {
           this.existingObjects = innovations.filter(innovation =>
-          this.objects.indexOf(innovation) < 0 && innovation.tags.some(tag =>
-          this.objects.filter((inov: Innovation) =>
-          inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName);
+            this.objects.indexOf(innovation) < 0 && innovation.tags.some(tag =>
+            this.objects.filter((inov: Innovation) =>
+              inov.consequence === tag).length > 0)).sort(this.kdmData.sortByName);
           // when null/undefined get all Base Innovations and add them to the list
           if (this.existingObjects == null || (this.existingObjects.length === 0 && this.objects.length === 0)) {
             this.existingObjects = innovations.filter(innovation => innovation.isBase);
@@ -72,8 +72,10 @@ export class ShowListAddModalComponent implements AfterViewInit {
         this.typename = 'Location';
         this.kdmData.getSettlementLocations().then(locations =>
           this.existingObjects = locations.filter(location =>
-          this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
+            this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
         break;
+      default:
+        console.error('unexpected type to setup add_modal: ' + this.type);
     }
   }
 }

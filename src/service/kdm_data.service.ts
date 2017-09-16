@@ -36,7 +36,7 @@ export class KDMDataService {
   addSettlement(settlement: Settlement): void {
     this.getSettlements().then(settlements => {
       if (settlements.length > 0) {
-        settlement.id = Math.max.apply(Math, settlements.map(settlement => settlement.id)) + 1;
+        settlement.id = Math.max.apply(Math, settlements.map(s => s.id)) + 1;
       } else {
         settlement.id = 1;
       }
@@ -133,8 +133,7 @@ export class KDMDataService {
               data.push(JsonToObjectConverter.convertToTimelineObject(timelineJson, event));
             });
             return data;
-          }
-        )
+          }),
     );
   }
 
