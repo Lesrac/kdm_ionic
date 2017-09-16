@@ -37,6 +37,12 @@ export class SurvivorPageComponent implements OnInit {
     }
   }
 
+  movementChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.movement = event;
+    }
+  }
+
   accuracyChange(event): void {
     if (typeof event === 'number') {
       this.survivor.accuracy = event;

@@ -70,10 +70,8 @@
           <ion-item-divider>
             Movement
           </ion-item-divider>
-          <ion-item>
-            <ion-input type="number" readonly
-                       [ngModel]="survivor.movement"></ion-input>
-          </ion-item>
+          <kdmf-input-number [value]="survivor.movement" (change)="movementChange($event)">
+          </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item-divider>
