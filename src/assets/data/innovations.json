@@ -29,13 +29,113 @@
     ]
   },
   {
+    "name": "Symposium",
+    "description": "Survival Limit +1. When a suirvivor innovates, draw an additional 2 innovation Cards to choose from.",
+    "isBase": false,
+    "consequence": "SYMPOSIUM_CONSEQUENCE",
+    "tags": [
+      "LANGUAGE_CONSEQUENCE",
+      "EDUCATION"
+    ]
+  },
+  {
+    "name": "Drums",
+    "description": "(*) Bone Beats - roll 1d10. (1-4) Lone drummer. Gain +1 insanity. (5-8) Rythmic trance. Gain +1 survival. (9+) Remove one disorder from any survivor. Departing survivors gain +1 survival.",
+    "isBase": false,
+    "consequence": "DRUMS_CONSEQUENCE",
+    "tags": [
+      "LANGUAGE_CONSEQUENCE",
+      "MUSIC"
+    ]
+  },
+  {
+    "name": "Inner Lantern",
+    "description": "The settlement finds the light within. all survivors gain the Surge survival action. Surge: Once per round spend 1 survival to gain +1 (flash) and use it immediately. (See detailed rules in rulebook.)",
+    "isBase": false,
+    "consequence": "INNER_LANTERN_CONSEQUENCE",
+    "tags": [
+      "LANGUAGE_CONSEQUENCE",
+      "FAITH"
+    ]
+  },
+  {
+    "name": "Hovel",
+    "description": "Survival Limit +1. The settlement accepts this nightmarish landscape as their home. Departing survivors gain +1 survival.",
+    "isBase": false,
+    "consequence": "HOVEL_CONSEQUENCE",
+    "tags": [
+      "LANGUAGE_CONSEQUENCE",
+      "HOME"
+    ]
+  },
+  {
     "name": "Bloodletting",
-    "description": "Endeavor and table",
+    "description": "(*) Breathing a Vein - spend 1 resource and roll 1d10. (1-3) Gain +1 understanding. Lose all survival. You cannot gain survival this settlement phase for any reason. (4-7) Syncope. Gain +3 insanity. (8+) Cured! Gain +6 insanity. You may remove one of the following: - 1 disorder of your choice. - Warped Pelvis severe waist injury. - Inetestinal Prolapse severe waist injury.",
     "isBase": false,
     "consequence": null,
     "tags": [
       "AMMONIA_CONSEQUENCE",
       "SCIENCE"
+    ]
+  },
+  {
+    "name": "Sacrification",
+    "description": "(*) Initiation - Once per lifetime, gain +1 courage and roll the hit location die. (head) Suffer the blinded severe head injury. (body) Gain the Tough fighting art. (waist) Suffer destoryed genitals severe injury. (arms) Gambler's scar. Gain +1 permanent luck. (legs) Roll 1d10, on a result of 6+ you lose some toes, -1 permanent movement.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "INNER_LANTERN_CONSEQUENCE",
+      "FAITH"
+    ]
+  },
+  {
+    "name": "Shrine",
+    "description": "May be used once per settlement phase. (*) Armor Ritual - roll 1d10. (1-3) Departing survivors gain +1 insanity. (4+) Final adjustments. Departing survivors add 1 (shield) to all hit locations.",
+    "isBase": false,
+    "consequence": "SHRINE_CONSEQUENCE",
+    "tags": [
+      "INNER_LANTERN_CONSEQUENCE",
+      "FAITH"
+    ]
+  },
+  {
+    "name": "Lantern Oven",
+    "description": "Heat. By agitating lantern, a source of Heat becomes available to the settlement. Departing Survivors gain +1 survival.",
+    "isBase": false,
+    "consequence": "LANTERN_OVEN_CONSEQUENCE",
+    "tags": [
+      "AMMONIA_CONSEQUENCE",
+      "SCIENCE"
+    ]
+  },
+  {
+    "name": "Forbidden Dance",
+    "description": "(*) Fever Dance - roll 1d10. (1) Clumsy. Suffer -1 permanent movement. (2-9) Give up. Gain +1 insanity. (10+) Forbidden Step. Spend 7 resources and gain +1 permanent evasion.",
+    "isBase": false,
+    "consequence": "FORBIDDEN_DANCE_CONSEQUENCE",
+    "tags": [
+      "MUSIC",
+      "DRUMS_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Saga",
+    "description": "A telling of the settlement's survival, set to a soft rhythmic beating of drums. All newborn surivors gain +2 hunt experience and +2 survival from knowing the epic.",
+    "isBase": false,
+    "consequence": null,
+    "tags": [
+      "MUSIC",
+      "SONG_OF_THE_BRAVE_CONSEQUENCE"
+    ]
+  },
+  {
+    "name": "Song of the Brave",
+    "description": "The survivors celebrate life by lifting their voices into the darkness. All non-deaf survivors add +1 t their roll results on the Overwhelming Darkness story event.",
+    "isBase": false,
+    "consequence": "SONG_OF_THE_BRAVE_CONSEQUENCE",
+    "tags": [
+      "MUSIC",
+      "DRUMS_CONSEQUENCE"
     ]
   }
 ]
