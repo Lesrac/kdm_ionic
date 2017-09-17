@@ -83,11 +83,189 @@
     "tags": []
   },
   {
+    "name": "Lion Tail",
+    "description": "It's surprisingly heavy.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 1,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
     "name": "White Fur",
-    "description": "",
+    "description": "Luxurious and soft to the touch.",
     "amount": 0,
     "type": "WhiteLion",
     "existingCards": 4,
-    "tags": []
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Curious Hand",
+    "description": "When you gain this a random survivor gains +1 insanity. Holding this fills you with sadness.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 1,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Great Cat Bones",
+    "description": "Strong and surprisingly light.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 4,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Eye of Cat",
+    "description": "A perfectly preserved eye.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Sinew",
+    "description": "These stringy guts are quite useful.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 2,
+    "tags": [
+      "organ"
+    ]
+  },
+  {
+    "name": "Lion Claw",
+    "description": "A razor-sharp, retractable claw.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 3,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Lion Testes",
+    "description": "A hefty pair of nuts.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Shimmering Mane",
+    "description": "Archive this to gain 2 basic hide resources. It shimmers in the lantern light.",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 1,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Golden Whiskers",
+    "description": "These whiskers are tough!",
+    "amount": 0,
+    "type": "WhiteLion",
+    "existingCards": 1,
+    "tags": [
+      "organ"
+    ]
+  },
+  {
+    "name": "Pelt",
+    "description": "Coarse and warm.",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 4,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Shank Bone",
+    "description": "Strangely jointed.",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 4,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Beast Steak",
+    "description": "Shockingly appetizing.",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 2,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Large Flat Tooth",
+    "description": "When you gain this, a survivor of your choice gains +1 insanity. Its surface is rough and bumpy.",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 2,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Spiral Horn",
+    "description": "Moans balefully when blown.",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 1,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Screaming Brain",
+    "description": "Consume: Archive this and gain survival up to the current limit",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Muscly Gums",
+    "description": "Difficult to pry apart",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Bladder",
+    "description": "Smells like urine",
+    "amount": 0,
+    "type": "ScreamingAntelope",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
   }
 ]

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Rawhide Drum",
+    "description": "When you depart, gain +1 insanity.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "item",
+      "instrument",
+      "rawhide",
+      "noisy"
+    ]
+  },
+  {
+    "name": "Bandages",
+    "description": "(lightning): Remove up to 2 bleeding tokens from yourself or an adjacent survivor.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "down"
+        ]
+      },
+      {
+        "affinity": "blue",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "item"
+    ]
+  }
+]

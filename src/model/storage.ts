@@ -1,4 +1,5 @@
 import { BaseModel } from './base_model';
+
 /**
  * Created by Daniel on 08.02.2017.
  */
@@ -15,6 +16,8 @@ export enum StorageTag {
   scrap,
   weapon,
   melee,
+  shield,
+  leather,
   sword,
   axe,
   armor,

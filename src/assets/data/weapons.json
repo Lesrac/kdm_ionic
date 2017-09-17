@@ -123,5 +123,62 @@
     "speed": 2,
     "accuracy": 8,
     "strength": 1
+  },
+  {
+    "name": "Round Leather Shield",
+    "description": "Add 1 (shield) to all  hit locations. Block 1: Spend (lightning) to ignore 1 hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "up"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "shield",
+      "leather"
+    ],
+    "speed": 1,
+    "accuracy": 8,
+    "strength": 1
+  },
+  {
+    "name": "Hunter Whip",
+    "description": "(puzzle blue)(puzzle blue) On a Perfect hit, discard 1 mood in play.",
+    "affinities": [
+      {
+        "affinity": "blue",
+        "direction": [
+          "up",
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "whip",
+      "leather"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 3
+  },
+  {
+    "name": "Rawhide Whip",
+    "description": "Provoke: When you wound with this weapon, gain the priority target token.",
+    "affinities": [],
+    "tags": [
+      "weapon",
+      "melee",
+      "whip",
+      "rawhide"
+    ],
+    "speed": 3,
+    "accuracy": 7,
+    "strength": 1
   }
 ]

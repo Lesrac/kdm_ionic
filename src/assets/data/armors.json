@@ -17,5 +17,200 @@
     ],
     "space": "head",
     "value": 3
+  },
+  {
+    "name": "Leather Skirt",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "down"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "leather"
+    ],
+    "space": "waist",
+    "value": 3
+  },
+  {
+    "name": "Leather Mask",
+    "description": "When you depart, gain +2 insanity.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "down"
+        ]
+      },
+      {
+        "affinity": "blue",
+        "direction": [
+          "up"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "leather"
+    ],
+    "space": "head",
+    "value": 3
+  },
+  {
+    "name": "Leather Cuirass",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "up"
+        ]
+      },
+      {
+        "affinity": "blue",
+        "direction": [
+          "down"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "leather"
+    ],
+    "space": "body",
+    "value": 3
+  },
+  {
+    "name": "Leather Bracers",
+    "description": "When you depart, gain +2 survival.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "leather"
+    ],
+    "space": "arms",
+    "value": 3
+  },
+  {
+    "name": "Leather Boots",
+    "description": "(puzzle green)(puzzle green) At the end of your act, you may move 1 space.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "right",
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "leather"
+    ],
+    "space": "legs",
+    "value": 3
+  },
+  {
+    "name": "Rawhide Boots",
+    "description": "When you depart, gain +1 survival.",
+    "affinities": [],
+    "tags": [
+      "armor",
+      "set",
+      "rawhide"
+    ],
+    "space": "legs",
+    "value": 1
+  },
+  {
+    "name": "Rawhide Gloves",
+    "description": "When you depart, gain +1 survival.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "rawhide"
+    ],
+    "space": "arms",
+    "value": 1
+  },
+  {
+    "name": "Rawhide Headband",
+    "description": "(puzzle blue)(lightning): Reveal the top 2 (AI). Place them back on top of the deck in any order",
+    "affinities": [
+      {
+        "affinity": "blue",
+        "direction": [
+          "down"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "rawhide"
+    ],
+    "space": "head",
+    "value": 1
+  },
+  {
+    "name": "Rawhide Pants",
+    "description": "",
+    "affinities": [],
+    "tags": [
+      "armor",
+      "set",
+      "rawhide"
+    ],
+    "space": "waist",
+    "value": 1
+  },
+  {
+    "name": "Rawhide Vest",
+    "description": "(puzzle blue)(puzzle red) +1 evasion",
+    "affinities": [
+      {
+        "affinity": "blue",
+        "direction": [
+          "up"
+        ]
+      },
+      {
+        "affinity": "red",
+        "direction": [
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "rawhide"
+    ],
+    "space": "body",
+    "value": 1
   }
 ]
