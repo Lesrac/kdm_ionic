@@ -3,6 +3,7 @@ import { NavParams, NavController } from 'ionic-angular';
 import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Settlement } from '../../model/settlement';
+
 /**
  * Created by Daniel on 14.02.2017.
  */
@@ -20,13 +21,17 @@ export class PrincipleChooserPageComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService) {
+    console.log('principle chooser');
     this.settlement = params.get('settlement');
     this.principleType = params.get('principleType');
+    console.log(this.principleType);
   }
 
   ngOnInit(): void {
+    console.log('init');
     this.kdmData.getPrinciplesWithType(this.principleType).then(principles => {
         this.allPrinciples = principles;
+        console.log(this.allPrinciples);
         if (principles.length > 1) {
           this.principleOne = principles[0];
           this.principleTwo = principles[1];

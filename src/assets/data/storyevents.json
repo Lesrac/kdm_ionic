@@ -17,11 +17,36 @@
   {
     "id": 4,
     "title": "The First Harvest",
-    "description": "The settlement decides to harvest the body for resources. The settlement gains the Death Principle: Cannibalize. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result 1 -s The settlement ritualistically divides the corpse with a sharp stone and grimly consumes the dead flesh. Gain a Founding Stone starting gear. All departing survivors gain +3 insanity. 6 - 10 Nominate a survivor. The survivor fanatically tears the corpse open and deeply drinks its blood. They decide that for every new creature they eat, they will become stronger. The survivor gains +1 permanent speed."
+    "description": "The settlement decides to harvest the body for resources. The settlement gains the Death Principle: Cannibalize. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result (1-5) The settlement ritualistically divides the corpse with a sharp stone and grimly consumes the dead flesh. Gain a Founding Stone starting gear. All departing survivors gain +3 insanity. (6-10) Nominate a survivor. The survivor fanatically tears the corpse open and deeply drinks its blood. They decide that for every new creature they eat, they will become stronger. The survivor gains +1 permanent speed."
   },
   {
     "id": 5,
     "title": "The First Grave",
-    "description": "The settlement decides to build a small monument to mark their loss. The settlement gains the Death Principle: Graves. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result 1 - 5 The settlement gathers around the grave, each taking a moment to reflect the loss and their place in the darkness. All departing survivors gain +l survival and +l understanding. 6 -10 Nominate a survivor. With tears in their eyes, the survivor takes a shard of rock from the grave and marks themselves with it. They cherish this mark forever. The survivor gains +l permanent luck."
+    "description": "The settlement decides to build a small monument to mark their loss. The settlement gains the Death Principle: Graves. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result (1-5) The settlement gathers around the grave, each taking a moment to reflect the loss and their place in the darkness. All departing survivors gain +l survival and +l understanding. (6-10) Nominate a survivor. With tears in their eyes, the survivor takes a shard of rock from the grave and marks themselves with it. They cherish this mark forever. The survivor gains +l permanent luck."
+  },
+  {
+    "id": 6,
+    "title": "Without Mercy",
+    "description": "The toys are taken from the child and replaced with a cold, stone face shard. Training begins immediately. The settlement gains the New Life Principle: Survival of the Fittest. Find and place the card on the settlement board and note it on the settlement records sheet. After adding the card to the settlement, roll 1d10. (1-5) The settlement celebrates with a rowdy party, filled with tests of strength and triumphant roaring. The parents each gain +1 permanent strength and +2 insanity. They must skip the next hunt to recover. (6-10) The child is raised as a pure warrior, leaving compassion and fear behind. The newborn survivor gains +2 courage, the Tough fighting art and one random disorder."
+  },
+  {
+    "id": 7,
+    "title": "With Affection",
+    "description": "The settlement embraces the child with warm arms. Nurturing new life is their highest calling. The settlement gains the New Life Principle: Protect the Young. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card tot the settlement, roll 1d10. (1-5) The settlement gathers around the newborn in ave. Never have they seen something so precious and meaningful. The parents each gain +2 survival and +1 permanent evasion. (6-10) The child is raised by the entire settlement and endowed with the hopes and wisdom of all. The newborn survivor gains +2 understanding and the Strategist fighting art."
+  },
+  {
+    "id": 8,
+    "title": "Collective Toil",
+    "description": "Tainted by darkness, a survivor nearly brought ruin to the settlement. On the day of her exile, the people decided that all must spend equal time hunting and working to avoid future disasters. -1 population. Add \"(book) Bone Witch\" to the timeline 3 years from now. The settlement gains the Society Principle: Collective Toil. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) Nominate up to 4 survivors. Each gain +5 survival. (6-10) Nominate a survivor. You have a secret. You will always know in your heart that the exile was banished for merely repeating what you taught her. Gain the Secretive disorder. It cannot be removed for any reason. In addition, gain the Timeless Eye fighting art."
+  },
+  {
+    "id": 9,
+    "title": "Accept Darkness",
+    "description": "The darkness spoke startling truths. It told the people they were monsters just like the ones they hunted. The people accepted their monstrosity and their place stalking in the darkness. The settlement gains the Society Principle: Accept Darkness. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) Nominate up to 4 survivors. Each gains +10 insanity. (6-10) Nominate a female survivor (if you can't, nominate a male instead). The survivor is heralded as the settlement's leader! Gain the Quixotic disorder. It cannot be removed for any reason. In addition, gain the Leader and Orator of Death fighting arts."
+  },
+  {
+    "id": 10,
+    "title": "Lost Settlements",
+    "description": "Start a new campaign by taking a settlement record sheet and filling in a box under the lost settlement section. Apply all milestone bonuses earned to your new campaign and begin the First Story. For every successive settlement you have lost, you may fill in a box and continue to earn new milestone bonuses for your future campaigns. (milestone) 1. Left Overs: At the start of the showdown with the First Story White Lion, set up 1 survivor Corpse terrain card. (milestone)(milestone) 2. Those before us: When the survivors reach the settlement, they find small traces of human life before them. Gain 1 skull basic resource and increase the survival limit by 1. (milestone)(milestone)(milestone) 3. Ocular Parasites: This new generation of survivors' eyes have better adapted to the darkness. All survivors gain +1 permanent accuracy. However, the First Story White Lion has grown fat from all the survivors it's eaten. At the start of the showdown, it gains +1 damage token and -1 movement token. (milestone)(milestone)(milestone)(milestone) 4. Rainy Season: The weather is extremely temperamental. Add the Acid Storm settlement event to the timeline years 3, 7 13, 19."
   }
 ]

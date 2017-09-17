@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { LanternEvent } from '../../model/lantern_event';
+
 /**
  * Created by Daniel on 04.02.2017.
  */

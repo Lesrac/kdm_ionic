@@ -4,6 +4,7 @@ import { ShowListAddModalComponent } from './show_list_add_modal.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { BaseModel } from '../../model/base_model';
 import { ShowListDetailComponent } from './show_list_detail.component';
+
 /**
  * Created by Daniel on 16.03.2017.
  */
@@ -59,6 +60,8 @@ export class ShowListComponent implements OnInit {
       case ShowListTypes.Location:
         this.title = 'Locations';
         break;
+      default:
+        console.error('Type doesn\'t exist in show list types: ' + this.type);
     }
   }
 

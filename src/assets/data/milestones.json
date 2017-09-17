@@ -4,7 +4,10 @@
     "name": "Principle: New Life",
     "tag": "First child is born",
     "todo": "The group must decide how to raise their young. Choose one.",
-    "storyEvents": [],
+    "storyEvents": [
+      6,
+      7
+    ],
     "value": 1,
     "comparator": "EQ",
     "observerTarget": ""
@@ -26,8 +29,11 @@
     "id": 3,
     "name": "Principle: Society",
     "tag": "Populations reaches 15",
-    "todo": "",
-    "storyEvents": [],
+    "todo": "There was once a mad woman who spent her days talking to the darkness. One day, it spoke back. The group must choose one.",
+    "storyEvents": [
+      8,
+      9
+    ],
     "value": 15,
     "comparator": "GE",
     "observerTarget": "POPULATION"
@@ -46,8 +52,10 @@
     "id": 5,
     "name": "Principle: Game Over",
     "tag": "Population reaches 0",
-    "todo": "",
-    "storyEvents": [],
+    "todo": "Your campaign has ended in death and magnificent hopelessness. The settlement is lost.",
+    "storyEvents": [
+      10
+    ],
     "value": 0,
     "comparator": "EQ",
     "observerTarget": "POPULATION"

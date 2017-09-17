@@ -102,6 +102,7 @@ export class JsonToObjectConverter {
     milestone.id = milestoneJSON.id;
     milestone.name = milestoneJSON.name;
     milestone.value = milestoneJSON.value;
+    milestone.todo = milestoneJSON.todo;
     milestone.observerTarget = milestoneJSON.observerTarget;
     milestone.tag = milestoneJSON.tag;
     milestone.storyEvents = storyEvents;
@@ -134,6 +135,7 @@ export class JsonToObjectConverter {
   }
 
   public static convertToPrincipleObject(principleJSON: any): Principle {
+    console.log(principleJSON);
     const principle: Principle = {
       name: principleJSON.name,
       description: principleJSON.description,
@@ -174,7 +176,7 @@ export class JsonToObjectConverter {
     const location: Location = {
       name: locationJSON.name,
       description: locationJSON.description,
-      storages: [], //TODO storages from location
+      storages: [], // TODO storages from location
       isStartLocation: locationJSON.isStartLocation,
     };
     return location;
