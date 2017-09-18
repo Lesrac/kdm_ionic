@@ -72,8 +72,6 @@ export class KDMDataService {
             });
             data.push(JsonToObjectConverter.converToResourceObject(resourceJson, tags));
           });
-          console.log('resources');
-          console.log(data);
           return data;
         },
       );
