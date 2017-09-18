@@ -51,8 +51,8 @@ export class JsonToObjectConverter {
       name: monsterJSON.name,
       level: monsterJSON.level,
       isNemesis: monsterJSON.isNemesis,
-      resources: null,
-      locations: null,
+      resources: [], // todo monster resources
+      locations: [], // todo monster locations
     };
     return monster;
   }
