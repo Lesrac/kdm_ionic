@@ -9,6 +9,22 @@
   },
   {
     "id": 2,
+    "name": "White Lion",
+    "level": 2,
+    "isNemesis": false,
+    "resources": [],
+    "locations": []
+  },
+  {
+    "id": 3,
+    "name": "White Lion",
+    "level": 3,
+    "isNemesis": false,
+    "resources": [],
+    "locations": []
+  },
+  {
+    "id": 4,
     "name": "Screaming Antelope",
     "level": 1,
     "isNemesis": false,
@@ -16,7 +32,23 @@
     "locations": []
   },
   {
-    "id": 3,
+    "id": 5,
+    "name": "Screaming Antelope",
+    "level": 2,
+    "isNemesis": false,
+    "resources": [],
+    "locations": []
+  },
+  {
+    "id": 6,
+    "name": "Screaming Antelope",
+    "level": 3,
+    "isNemesis": false,
+    "resources": [],
+    "locations": []
+  },
+  {
+    "id": 7,
     "name": "Phoenix",
     "level": 1,
     "isNemesis": false,
@@ -24,7 +56,23 @@
     "locations": []
   },
   {
-    "id": 4,
+    "id": 8,
+    "name": "Phoenix",
+    "level": 2,
+    "isNemesis": false,
+    "resources": [],
+    "locations": []
+  },
+  {
+    "id": 9,
+    "name": "Phoenix",
+    "level": 3,
+    "isNemesis": false,
+    "resources": [],
+    "locations": []
+  },
+  {
+    "id": 10,
     "name": "Butcher",
     "level": 1,
     "isNemesis": true,
@@ -32,7 +80,23 @@
     "locations": []
   },
   {
-    "id": 5,
+    "id": 12,
+    "name": "Butcher",
+    "level": 2,
+    "isNemesis": true,
+    "resources": null,
+    "locations": []
+  },
+  {
+    "id": 13,
+    "name": "Butcher",
+    "level": 3,
+    "isNemesis": true,
+    "resources": null,
+    "locations": []
+  },
+  {
+    "id": 13,
     "name": "King's Man",
     "level": 1,
     "isNemesis": true,
@@ -40,9 +104,41 @@
     "locations": []
   },
   {
-    "id": 6,
+    "id": 14,
+    "name": "King's Man",
+    "level": 2,
+    "isNemesis": true,
+    "resources": null,
+    "locations": []
+  },
+  {
+    "id": 15,
+    "name": "King's Man",
+    "level": 3,
+    "isNemesis": true,
+    "resources": null,
+    "locations": []
+  },
+  {
+    "id": 16,
     "name": "The Hand",
     "level": 1,
+    "isNemesis": true,
+    "resources": null,
+    "locations": []
+  },
+  {
+    "id": 17,
+    "name": "The Hand",
+    "level": 2,
+    "isNemesis": true,
+    "resources": null,
+    "locations": []
+  },
+  {
+    "id": 18,
+    "name": "The Hand",
+    "level": 3,
     "isNemesis": true,
     "resources": null,
     "locations": []
