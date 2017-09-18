@@ -37,5 +37,49 @@
     "tags": [
       "item"
     ]
+  },
+  {
+    "name": "Whisker Harp",
+    "description": "(lightning): Roll 1d10 to strum. On a result of 7+ (3+ if fighting White Lion), discard 1 mood currently in play.",
+    "affinities": [
+      {
+        "affinity": "blue",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "item",
+      "instrument",
+      "noisy"
+    ]
+  },
+  {
+    "name": "Cat Eye Circlet",
+    "description": "(lightning): Reveal the next 3 monster hit locations and put them back in any order.",
+    "affinities": [
+      {
+        "affinity": "blue",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "item",
+      "jewelry",
+      "other"
+    ]
+  },
+  {
+    "name": "Frenzy Drink",
+    "description": "(lightning) Consume: Suffer Frenzy brain trauma. Can be used once per showdown.",
+    "affinities": [],
+    "tags": [
+      "item",
+      "consumable",
+      "fragile"
+    ]
   }
 ]

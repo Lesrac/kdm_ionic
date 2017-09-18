@@ -212,5 +212,133 @@
     ],
     "space": "body",
     "value": 1
+  },
+  {
+    "name": "White Lion Skirt",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left",
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "fur",
+      "heavy"
+    ],
+    "space": "waist",
+    "value": 2
+  },
+  {
+    "name": "Lion Headdress",
+    "description": "Accessory: You may wear this in addition to 1 armor at this hit location.",
+    "affinities": [],
+    "tags": [
+      "item",
+      "flammable"
+    ],
+    "space": "head",
+    "value": 1
+  },
+  {
+    "name": "Lion Skin Cloak",
+    "description": "Reduce damage from every hit suffered by 1, to a minimum of 1.",
+    "affinities": [
+      {
+        "affinity": "green",
+        "direction": [
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "bone",
+      "fur",
+      "heavy",
+      "flammable"
+    ],
+    "space": "body",
+    "value": 0
+  },
+  {
+    "name": "White Lion Gauntlet",
+    "description": "When you Pounce, gain +1 accuracy for your next attack this turn.",
+    "affinities": [
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "fur",
+      "heavy"
+    ],
+    "space": "arms",
+    "value": 2
+  },
+  {
+    "name": "White Lion Coat",
+    "description": "Pounce: Spend (horse) and (lightning) to move 3 spaces in a straight line. Then, if you move 3 spaces, activate a melee weapon with +1 strength.",
+    "affinities": [
+      {
+        "affinity": "blue",
+        "direction": [
+          "up"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "fur",
+      "heavy"
+    ],
+    "space": "body",
+    "value": 2
+  },
+  {
+    "name": "White Lion Boots",
+    "description": "(puzzle red)(puzzle red) +1 movement",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "down",
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "fur",
+      "heavy"
+    ],
+    "space": "legs",
+    "value": 2
+  },
+  {
+    "name": "White Lion Helm",
+    "description": "(puzzle red)(square blue) (lightning) and 1 survival: Road. Non-Deaf Insane survivors gain +2 strength until end of round. All other survivors gain +1 insanity.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "down"
+        ]
+      }
+    ],
+    "tags": [
+      "armor",
+      "set",
+      "fur",
+      "heavy"
+    ],
+    "space": "head",
+    "value": 2
   }
 ]

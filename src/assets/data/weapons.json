@@ -180,5 +180,91 @@
     "speed": 3,
     "accuracy": 7,
     "strength": 1
+  },
+  {
+    "name": "Claw Head Arrow",
+    "description": "Slow, Ammo - Bow: You must have a bow in your gear grid to activate this. If you hit, monster gains -1 evasion token. Use once per showdown.",
+    "affinities": [],
+    "tags": [
+      "item",
+      "ammunition",
+      "arrow"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 6
+  },
+  {
+    "name": "Cat Gut Bow",
+    "description": "Range: 6. Cumbersome: Spend (horse) as an additional cost of activating this weapon.",
+    "affinities": [],
+    "tags": [
+      "weapon",
+      "ranged",
+      "bow",
+      "two_handed"
+    ],
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 3
+  },
+  {
+    "name": "Cat Fang Knife",
+    "description": "(square red)(square red)(square red) On a Perfect hit, gain +1 strength token. When knocked down, remove all your +1 strength tokens.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "up",
+          "down",
+          "right",
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "dagger",
+      "bone"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 2
+  },
+  {
+    "name": "Lion Beast Katar",
+    "description": "Deadly: +1 luck with this weapon. Paired: When you attack, add the speed of a second Lion Beast Katar in your gear grid.",
+    "affinities": [],
+    "tags": [
+      "weapon",
+      "melee",
+      "katar"
+    ],
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 3
+  },
+  {
+    "name": "King Spear",
+    "description": "Reach 2: May attack from 2 space away.",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "spear",
+      "heavy",
+      "two_handed"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 3
   }
 ]
