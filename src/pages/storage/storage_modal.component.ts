@@ -4,6 +4,7 @@ import { Settlement } from '../../model/settlement';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Storage } from '../../model/storage';
 import { Observable, Subject } from 'rxjs';
+
 /**
  * Created by Daniel on 19.02.2017.
  */
@@ -50,8 +51,13 @@ export class StorageModalComponent implements OnInit {
   }
 
   private getStorageItems(): void {
-    this.kdmData.getResources().then(resources =>
-      this.storageItems = resources.sort(this.kdmData.sortByName));
+    this.kdmData.getAllExistingStorageItems().then(resourceArrays => {
+      const resources = [];
+      resourceArrays.forEach(differentResourceTypesArray => {
+        differentResourceTypesArray.forEach(element => resources.push(element));
+      });
+      this.storageItems = resources.sort(this.kdmData.sortByName);
+    });
   }
 
   private getSearchedStorageItems(): void {

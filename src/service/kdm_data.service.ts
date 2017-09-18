@@ -13,7 +13,10 @@ import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
 import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { StoryEvent } from '../model/story_event';
-import { StorageTag } from '../model/storage';
+import { Storage, StorageTag } from '../model/storage';
+import { Weapon } from '../model/weapon';
+import { Armor } from '../model/armor';
+import { Affinity, Direction, Equipment } from '../model/equipment';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -75,6 +78,15 @@ export class KDMDataService {
           return data;
         },
       );
+  }
+
+  getAllExistingStorageItems(): Promise<Storage[][]> {
+    const promises: Promise<any>[] = [];
+    promises.push(this.getResources());
+    promises.push(this.getWeapons());
+    promises.push(this.getArmors());
+    promises.push(this.getEquipments());
+    return Promise.all(promises);
   }
 
   getLanternEvents(): Promise<LanternEvent[]> {
@@ -176,6 +188,85 @@ export class KDMDataService {
     return this.getPrinciples().then(principles =>
       principles.filter(principle => principle.type === principleType),
     );
+  }
+
+  getWeapons(): Promise<Weapon[]> {
+    return this.http.get('assets/data/weapons.json').toPromise()
+      .then(
+        res => {
+          let data: Weapon[] = [];
+          res.json().forEach(weaponJson => {
+            const tags: StorageTag[] = [];
+            let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+            weaponJson.tags.forEach((tagName: string) => {
+              tags.push(<StorageTag>StorageTag[tagName]);
+            });
+            weaponJson.affinities.forEach((mapElement) => {
+              const dir: Direction[] = [];
+              const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
+              mapElement.direction.forEach(
+                (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
+              );
+              affinities.set(affinity, dir);
+            });
+            data.push(JsonToObjectConverter.convertToWeaponObject(weaponJson, tags, affinities));
+          });
+          return data;
+        },
+      );
+
+  }
+
+  getArmors(): Promise<Armor[]> {
+    return this.http.get('assets/data/armors.json').toPromise()
+      .then(
+        res => {
+          let data: Armor[] = [];
+          res.json().forEach(armorJson => {
+            const tags: StorageTag[] = [];
+            let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+            armorJson.tags.forEach((tagName: string) => {
+              tags.push(<StorageTag>StorageTag[tagName]);
+            });
+            armorJson.affinities.forEach((mapElement) => {
+              const dir: Direction[] = [];
+              const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
+              mapElement.direction.forEach(
+                (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
+              );
+              affinities.set(affinity, dir);
+            });
+            data.push(JsonToObjectConverter.convertToArmorObject(armorJson, tags, affinities));
+          });
+          return data;
+        },
+      );
+  }
+
+  getEquipments(): Promise<Equipment[]> {
+    return this.http.get('assets/data/equipments.json').toPromise()
+      .then(
+        res => {
+          let data: Equipment[] = [];
+          res.json().forEach(equipmentJson => {
+            const tags: StorageTag[] = [];
+            let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+            equipmentJson.tags.forEach((tagName: string) => {
+              tags.push(<StorageTag>StorageTag[tagName]);
+            });
+            equipmentJson.affinities.forEach((mapElement) => {
+              const dir: Direction[] = [];
+              const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
+              mapElement.direction.forEach(
+                (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
+              );
+              affinities.set(affinity, dir);
+            });
+            data.push(JsonToObjectConverter.convertToEquipmentObject(equipmentJson, tags, affinities));
+          });
+          return data;
+        },
+      );
   }
 
   getGenericList(file: string, methodCall: JsonToObjectConverterMethod): Promise<any> {

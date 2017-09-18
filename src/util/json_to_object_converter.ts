@@ -14,6 +14,9 @@ import { Location } from '../model/location';
 import { StorageTag } from '../model/storage';
 import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
+import { Weapon } from '../model/weapon';
+import { Armor } from '../model/armor';
+import { Affinity, Direction, Equipment } from '../model/equipment';
 
 /**
  * Created by Daniel on 31.05.2017.
@@ -188,5 +191,46 @@ export class JsonToObjectConverter {
       lanternEvent: lanternEvent,
     };
     return timeline;
+  }
+
+  public static convertToWeaponObject(weaponJSON: any, tags: StorageTag[],
+                                      affinities: Map<Affinity, Direction[]>): Weapon {
+    const weapon: Weapon = {
+      amount: weaponJSON.amount,
+      tags: tags,
+      description: weaponJSON.description,
+      name: weaponJSON.name,
+      affinities: affinities,
+      speed: weaponJSON.speed,
+      accuracy: weaponJSON.accuracy,
+      strength: weaponJSON.strength,
+    };
+    return weapon;
+  }
+
+  public static convertToArmorObject(armorJSON: any, tags: StorageTag[],
+                                     affinities: Map<Affinity, Direction[]>): Armor {
+    const armor: Armor = {
+      amount: armorJSON.amount,
+      tags: tags,
+      description: armorJSON.description,
+      name: armorJSON.name,
+      affinities: affinities,
+      space: armorJSON.space,
+      value: armorJSON.value,
+    };
+    return armor;
+  }
+
+  public static convertToEquipmentObject(equipmentJSON: any, tags: StorageTag[],
+                                         affinities: Map<Affinity, Direction[]>): Equipment {
+    const equipeequipmentnt: Equipment = {
+      amount: equipmentJSON.amount,
+      tags: tags,
+      description: equipmentJSON.description,
+      name: equipmentJSON.name,
+      affinities: affinities,
+    };
+    return equipeequipmentnt;
   }
 }
