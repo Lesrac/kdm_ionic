@@ -47,7 +47,11 @@ export class KDMObserverService {
       case 'POPULATION':
         settlementMilestone.subscription = settlementPageComponent.population.subscribe(settlementMilestone.observer);
         break;
+      case 'INNOVATION':
+        settlementMilestone.subscription = settlementPageComponent.innovations.subscribe(settlementMilestone.observer);
+        break;
       default:
+        console.log('milestoneTarget doesn\'t exist: ' + milestoneTarget);
     }
   }
 }

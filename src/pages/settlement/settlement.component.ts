@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, KeyValueDiffers, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
@@ -13,6 +13,10 @@ import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_e
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
 import { KDMObserverService } from '../../service/kdm_observer.service';
+import { Innovation } from '../../model/innovation';
+import { Observable } from 'rxjs/Observable';
+import { DefaultKeyValueDiffer } from '@angular/core/src/change_detection/differs/default_keyvalue_differ';
+
 /**
  * Created by Daniel on 27.01.2017.
  */
@@ -20,23 +24,33 @@ import { KDMObserverService } from '../../service/kdm_observer.service';
   selector: 'kdmf-page-settlement',
   templateUrl: 'settlement.component.html',
 })
-export class SettlementPageComponent implements OnInit {
+export class SettlementPageComponent implements OnInit, DoCheck {
 
   population: Subject<number> = new Subject<number>();
   deathcount: Subject<number> = new Subject<number>();
+  innovations: Subject<number> = new Subject<number>();
+  differ;
 
   @Input()
   settlement: Settlement;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              private kdmObserver: KDMObserverService) {
+              public differs: KeyValueDiffers, private kdmObserver: KDMObserverService) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
+      this.differ = differs.find({}).create();
       this.settlement.milestones.forEach(milestone => kdmObserver.registerObserverForMilestone(this, milestone));
     }
   }
 
   ngOnInit(): void {
+  }
+
+  ngDoCheck(): void {
+    let changes = this.differ.diff(this.settlement.innovations);
+    if (changes) {
+      this.innovations.next(changes._records.size);
+    }
   }
 
   showTimeline(): void {
