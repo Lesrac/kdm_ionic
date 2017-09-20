@@ -6,7 +6,7 @@ import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
 import { Milestone } from '../model/milestone';
 import { Location } from '../model/location';
-import { Resource } from '../model/resource';
+import { Resource, ResourceType } from '../model/resource';
 import { Innovation, InnovationTag } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
@@ -17,6 +17,7 @@ import { Storage, StorageTag } from '../model/storage';
 import { Weapon } from '../model/weapon';
 import { Armor } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
+import { MonsterResource } from '../model/linking/monster_resource';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -52,7 +53,27 @@ export class KDMDataService {
   }
 
   getMonsters(): Promise<Monster[]> {
-    return this.getGenericList('assets/data/monsters.json', JsonToObjectConverter.convertToMonsterObject);
+    return this.http.get('assets/data/monsters.json').toPromise()
+      .then(
+        res => {
+          let data: Monster[] = [];
+          res.json().forEach(monsterJson => {
+            const monster: Monster = JsonToObjectConverter.convertToMonsterObject(monsterJson);
+            monsterJson.resources.forEach(resourceDefinition => {
+              const resourceType: ResourceType = <ResourceType>ResourceType[<string>resourceDefinition.name];
+              if (resourceType != null && resourceType >= 0) {
+                monster.resources.set(resourceType, resourceDefinition.amount);
+              } else {
+                this.getResourceByName(resourceDefinition.name).then(resource => {
+                  monster.resources.set(resource, resourceDefinition.amount);
+                });
+              }
+            });
+            data.push(monster);
+          });
+          return data;
+        },
+      );
   }
 
   getDefaultInitialHuntableNemesisMonsters(): Promise<Monster[]> {
@@ -78,6 +99,12 @@ export class KDMDataService {
           return data;
         },
       );
+  }
+
+  getResourceByName(name: string): Promise<Resource> {
+    return this.getResources().then(resources => resources.find(resource => {
+      return resource.name === name;
+    }));
   }
 
   getAllExistingStorageItems(): Promise<Storage[][]> {

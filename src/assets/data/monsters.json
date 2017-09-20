@@ -4,7 +4,20 @@
     "name": "White Lion",
     "level": 1,
     "isNemesis": false,
-    "resources": [],
+    "resources": [
+      {
+        "name": "Basic",
+        "amount": 2
+      },
+      {
+        "name": "WhiteLion",
+        "amount": 2
+      },
+      {
+        "name": "Monster Bone",
+        "amount": 1
+      }
+    ],
     "locations": []
   },
   {
@@ -76,7 +89,7 @@
     "name": "Butcher",
     "level": 1,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -84,7 +97,7 @@
     "name": "Butcher",
     "level": 2,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -92,7 +105,7 @@
     "name": "Butcher",
     "level": 3,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -100,7 +113,7 @@
     "name": "King's Man",
     "level": 1,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -108,7 +121,7 @@
     "name": "King's Man",
     "level": 2,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -116,7 +129,7 @@
     "name": "King's Man",
     "level": 3,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -124,7 +137,7 @@
     "name": "The Hand",
     "level": 1,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -132,7 +145,7 @@
     "name": "The Hand",
     "level": 2,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   },
   {
@@ -140,7 +153,7 @@
     "name": "The Hand",
     "level": 3,
     "isNemesis": true,
-    "resources": null,
+    "resources": [],
     "locations": []
   }
 ]

@@ -5,6 +5,7 @@ import { Monster } from '../../model/monster';
 import { KDMCalculationService } from '../../service/kdm_calculation.service';
 import { HuntableMonster } from '../../model/linking/huntable_monster';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
+
 /**
  * Created by Daniel on 07.02.2017.
  */
@@ -22,7 +23,6 @@ export class DefeatedMonsterModalComponent implements OnInit {
 
   constructor(public viewCtrl: ViewController, private params: NavParams,
               private kdmCalculation: KDMCalculationService) {
-    console.log('DefeatedMonsterModalComponent');
     this.settlement = this.params.get('settlement');
   }
 
@@ -37,7 +37,7 @@ export class DefeatedMonsterModalComponent implements OnInit {
   addClose(): void {
     if (this.monsterName != null && this.monsterLevel != null) {
       const monsterOrig = this.huntableMonsters.find(huntableMonster =>
-      huntableMonster.monster.name === this.monsterName).monster;
+        huntableMonster.monster.name === this.monsterName).monster;
       const mon = new Monster(this.monsterName);
       mon.level = +this.monsterLevel;
       const huntedMonster = new HuntedMonster(this.settlement, mon);

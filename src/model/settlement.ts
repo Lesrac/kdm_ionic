@@ -7,6 +7,7 @@ import { SettlementMilestone } from './linking/settlement_milestone';
 import { Principle } from './principle';
 import { HuntableMonster } from './linking/huntable_monster';
 import { HuntedMonster } from './linking/hunted_monster';
+
 /**
  * Created by Daniel on 27.01.2017.
  */

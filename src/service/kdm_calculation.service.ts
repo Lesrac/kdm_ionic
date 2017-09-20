@@ -4,29 +4,30 @@ import { Storage } from '../model/storage';
 import { KDMDataService } from './kdm_data.service';
 import { Resource, ResourceType } from '../model/resource';
 import { HuntedMonster } from '../model/linking/hunted_monster';
+
 /**
  * Created by Daniel on 18.02.2017.
  */
 @Injectable()
 export class KDMCalculationService {
-  factorials: number[] = [];
 
   constructor(private kdmData: KDMDataService) {
   }
 
   addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
-    originalMonster.resources.forEach(monsterResource => {
-      if (monsterResource.resource) {
-        huntedMonster.huntedResources = this.getAllStorageItems(monsterResource.resource, monsterResource.amount);
-        huntedMonster.huntedResources.forEach(str => {
-          huntedMonster.settlement.addStorageItem(str);
-        });
-      } else if (monsterResource.resource != null && monsterResource.resource.type >= 0) {
-        this.getAllResourceCardsFromType(monsterResource.resource.type).then(storages => {
-          huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, monsterResource.amount);
+    originalMonster.resources.forEach((amount: number, key: any) => {
+      const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
+      if (resourceType) {
+        this.getAllResourceCardsFromType(resourceType).then(storages => {
+          huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, amount);
           huntedMonster.huntedResources.forEach(storage => {
             huntedMonster.settlement.addStorageItem(storage);
           });
+        });
+      } else if (key) {
+        huntedMonster.huntedResources = this.getAllStorageItems(key, amount);
+        huntedMonster.huntedResources.forEach(str => {
+          huntedMonster.settlement.addStorageItem(str);
         });
       }
     });
@@ -52,11 +53,11 @@ export class KDMCalculationService {
    * @returns {Storage[]}
    */
   private getAllResourceCardsFromType(resourceType: ResourceType): Promise<Storage[]> {
-    const storages: Storage[] = [];
-    const resources: Resource[] = [];
-    this.kdmData.getResources().then(res => {
+    return this.kdmData.getResources().then(res => {
+        const storages: Storage[] = [];
+        const resources: Resource[] = [];
         res.forEach(resource => {
-          if (resource.type === resourceType) {
+          if (<ResourceType>ResourceType[resource.type.toString()] === resourceType) {
             resources.push(resource);
           }
         });
@@ -65,10 +66,9 @@ export class KDMCalculationService {
             storages.push(resource);
           }
         });
+        return storages;
       },
     );
-
-    return Promise.resolve(storages);
   }
 
   /**

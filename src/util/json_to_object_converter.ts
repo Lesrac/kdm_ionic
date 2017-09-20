@@ -51,10 +51,20 @@ export class JsonToObjectConverter {
       name: monsterJSON.name,
       level: monsterJSON.level,
       isNemesis: monsterJSON.isNemesis,
-      resources: [], // todo monster resources
+      resources: new Map<any, number>(),
       locations: [], // todo monster locations
     };
     return monster;
+  }
+
+  public static convertToMonsterResourceObject(monsterResourceJSON: any, monster: Monster,
+                                               resource: Resource): MonsterResource {
+    const monsterResource: MonsterResource = {
+      monster: monster,
+      amount: monsterResourceJSON.amount,
+      resource: resource,
+    };
+    return monsterResource;
   }
 
   public static convertToHuntableMonsterObject(huntableMonsterJSON: any): HuntableMonster {
@@ -89,15 +99,6 @@ export class JsonToObjectConverter {
       amount: resourceJSON.amount,
     };
     return resource;
-  }
-
-  public static convertToMonsterResourceObject(monsterResourceJSON: any): MonsterResource {
-    const monsterResource: MonsterResource = {
-      monster: null, // todo MonsterID
-      resource: null, // todo ResourceName
-      amount: monsterResourceJSON.Amount,
-    };
-    return monsterResource;
   }
 
   public static convertToMilestoneObject(milestoneJSON: any, storyEvents: StoryEvent[]): Milestone {
