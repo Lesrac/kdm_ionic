@@ -17,7 +17,7 @@ import { Storage, StorageTag } from '../model/storage';
 import { Weapon } from '../model/weapon';
 import { Armor } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
-import { MonsterResource } from '../model/linking/monster_resource';
+import { isUndefined } from 'ionic-angular/util/util';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -193,6 +193,21 @@ export class KDMDataService {
           return data;
         },
       );
+  }
+
+  getInnovationsThatAreNotAddedButAvailable(objects: Innovation[]): Promise<Innovation[]> {
+    return this.getInnovations().then(innovations => {
+      let existingObjects = innovations.filter(innovation =>
+        isUndefined(objects.find((innov: Innovation) => innov.name === innovation.name)) &&
+        innovation.tags.some(tag =>
+          objects.filter((innov: Innovation) =>
+            innov.consequence === tag).length > 0));
+      // when null/undefined get all Base Innovations and add them to the list
+      if (existingObjects == null || (existingObjects.length === 0 && objects.length === 0)) {
+        existingObjects = innovations.filter(innovation => innovation.isBase);
+      }
+      return existingObjects;
+    });
   }
 
   getDisorders(): Promise<Disorder[]> {

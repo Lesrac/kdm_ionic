@@ -12,7 +12,7 @@
     "name": "Paint",
     "description": "The settlement swells with creative energy. All survivors gain the Dash survival action.",
     "isBase": false,
-    "consequence": "LANGUAGE_CONSEQUENCE",
+    "consequence": "PAINT_CONSEQUENCE",
     "tags": [
       "LANGUAGE_CONSEQUENCE",
       "ART"

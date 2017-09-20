@@ -102,7 +102,7 @@ export class SettlementsPageComponent implements OnInit {
     this.kdmService.getInitialMilestones().then(
       milestones => {
         milestones.forEach(
-          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)))
+          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)));
       });
   }
 

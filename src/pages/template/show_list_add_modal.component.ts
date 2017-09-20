@@ -4,7 +4,8 @@ import { KDMDataService } from '../../service/kdm_data.service';
 import { BaseModel } from '../../model/base_model';
 import { ShowListTypes } from '../../model/show_list_types';
 import { Innovation } from '../../model/innovation';
-import { isUndefined } from 'ionic-angular/util/util';
+import { FightingArt } from '../../model/fighting_art';
+import { Disorder } from '../../model/disorder';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -38,6 +39,34 @@ export class ShowListAddModalComponent implements AfterViewInit {
     this.close();
   }
 
+  getRandom(): void {
+    switch (this.type) {
+      case ShowListTypes.FightingArt:
+        this.kdmData.getFightingArts().then(fightingArts => {
+          const start: number = Math.floor(Math.random() * fightingArts.length);
+          const rand: FightingArt[] = fightingArts.slice(start, start + 1);
+          this.objectName = rand[0].name;
+        });
+        break;
+      case ShowListTypes.Disorder:
+        this.kdmData.getDisorders().then(disorders => {
+          const start: number = Math.floor(Math.random() * disorders.length);
+          const rand: Disorder[] = disorders.slice(start, start + 1);
+          this.objectName = rand[0].name;
+        });
+        break;
+      case ShowListTypes.Innovation:
+        this.kdmData.getInnovationsThatAreNotAddedButAvailable(<Innovation[]>this.objects).then(innovations => {
+          const start: number = Math.floor(Math.random() * innovations.length);
+          const rand: Innovation[] = innovations.slice(start, start + 1);
+          this.objectName = rand[0].name;
+        });
+        break;
+      default:
+        console.log('no random element for type: ' + this.type);
+    }
+  }
+
   close(): void {
     this.viewCtrl.dismiss();
   }
@@ -58,16 +87,8 @@ export class ShowListAddModalComponent implements AfterViewInit {
         break;
       case ShowListTypes.Innovation:
         this.typename = 'Innovation';
-        this.kdmData.getInnovations().then(innovations => {
-          this.existingObjects = innovations.filter(innovation =>
-            isUndefined(this.objects.find((innov: Innovation) => innov.name === innovation.name)) &&
-            innovation.tags.some(tag =>
-              this.objects.filter((innov: Innovation) =>
-                innov.consequence === tag).length > 0)).sort(this.kdmData.sortByName);
-          // when null/undefined get all Base Innovations and add them to the list
-          if (this.existingObjects == null || (this.existingObjects.length === 0 && this.objects.length === 0)) {
-            this.existingObjects = innovations.filter(innovation => innovation.isBase);
-          }
+        this.kdmData.getInnovationsThatAreNotAddedButAvailable(<Innovation[]>this.objects).then(innovations => {
+          this.existingObjects = innovations;
         });
         break;
       case ShowListTypes.Location:

@@ -9,8 +9,8 @@
       7
     ],
     "value": 1,
-    "comparator": "EQ",
-    "observerTarget": ""
+    "comparator": "GE",
+    "observerTarget": "POPULATION"
   },
   {
     "id": 2,
