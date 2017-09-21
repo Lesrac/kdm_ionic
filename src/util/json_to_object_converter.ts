@@ -138,12 +138,11 @@ export class JsonToObjectConverter {
     return principleType;
   }
 
-  public static convertToPrincipleObject(principleJSON: any): Principle {
-    console.log(principleJSON);
+  public static convertToPrincipleObject(principleJSON: any, principleType: PrincipleType): Principle {
     const principle: Principle = {
       name: principleJSON.name,
       description: principleJSON.description,
-      type: principleJSON.type,
+      type: principleType,
     };
     return principle;
   }

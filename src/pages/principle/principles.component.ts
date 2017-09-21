@@ -29,7 +29,7 @@ export class PrinciplesPageComponent implements OnInit {
 
   principleIsChosen(type: PrincipleType): boolean {
     return this.settlement.principles.find(principle => {
-        return principle.type === type;
+        return principle.type.name === type.name;
       },
     ) != null;
   }
@@ -49,6 +49,6 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   getPrincipleName(type: PrincipleType): string {
-    return this.settlement.principles.find(principle => principle.type === type).name;
+    return this.settlement.principles.find(principle => principle.type.name === type.name).name;
   }
 }

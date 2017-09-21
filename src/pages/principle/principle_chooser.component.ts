@@ -21,17 +21,13 @@ export class PrincipleChooserPageComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService) {
-    console.log('principle chooser');
     this.settlement = params.get('settlement');
     this.principleType = params.get('principleType');
-    console.log(this.principleType);
   }
 
   ngOnInit(): void {
-    console.log('init');
     this.kdmData.getPrinciplesWithType(this.principleType).then(principles => {
         this.allPrinciples = principles;
-        console.log(this.allPrinciples);
         if (principles.length > 1) {
           this.principleOne = principles[0];
           this.principleTwo = principles[1];
@@ -42,7 +38,6 @@ export class PrincipleChooserPageComponent implements OnInit {
   }
 
   selectPrinciple(principle: Principle): void {
-    console.log(principle);
     this.settlement.principles.push(principle);
     this.navCtrl.pop();
   }

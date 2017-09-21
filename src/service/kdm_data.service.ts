@@ -219,7 +219,27 @@ export class KDMDataService {
   }
 
   getPrinciples(): Promise<Principle[]> {
-    return this.getGenericList('assets/data/principles.json', JsonToObjectConverter.convertToPrincipleObject);
+    let principleTypes: PrincipleType[] = [];
+    this.getPrincipleTypes().then(types =>
+      principleTypes = types,
+    );
+    return this.http.get('assets/data/principles.json').toPromise()
+      .then(
+        res => {
+          const data: Principle[] = [];
+          let principleType: PrincipleType;
+          res.json().forEach(principleJSON => {
+            principleType = principleTypes.find(type => {
+              if (type.name === principleJSON.type) {
+                principleType = type;
+                return true;
+              }
+            });
+            data.push(JsonToObjectConverter.convertToPrincipleObject(principleJSON, principleType));
+          });
+          return data;
+        },
+      );
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
@@ -227,9 +247,14 @@ export class KDMDataService {
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
-    return this.getPrinciples().then(principles =>
-      principles.filter(principle => principle.type === principleType),
-    );
+    return this.getPrinciples().then(principles => {
+      return principles.filter(principle => {
+        if (!principle.type) {
+          return false;
+        }
+        return principle.type.name === principleType.name;
+      });
+    });
   }
 
   getWeapons(): Promise<Weapon[]> {
