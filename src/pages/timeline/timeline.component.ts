@@ -11,7 +11,7 @@ import { SettlementTimeline } from '../../model/linking/settlement_timeline';
   templateUrl: 'timeline.component.html',
 })
 export class TimelinePageComponent {
-  timeline: SettlementTimeline;
+  timeline: SettlementTimeline[];
 
   constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
     this.timeline = params.get('settlementTimeline');
@@ -25,6 +25,21 @@ export class TimelinePageComponent {
       modal.present({
         ev: event,
       });
+    }
+    if (timeline.reached) {
+      this.timeline.forEach(settlementTimeline => {
+          if (settlementTimeline.timeline.position < timeline.timeline.position) {
+            settlementTimeline.reached = true;
+          }
+        },
+      );
+    } else {
+      this.timeline.forEach(settlementTimeline => {
+          if (settlementTimeline.timeline.position > timeline.timeline.position) {
+            settlementTimeline.reached = false;
+          }
+        },
+      );
     }
   }
 }

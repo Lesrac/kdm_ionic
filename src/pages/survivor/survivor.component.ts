@@ -23,8 +23,6 @@ export class SurvivorPageComponent implements OnInit {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public formBuilder: FormBuilder) {
     this.survivor = params.get('survivor');
-    console.log(this.survivor);
-    console.log(typeof this.survivor.isMale);
   }
 
   ngOnInit(): void {
