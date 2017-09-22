@@ -5,3 +5,6 @@
 - Add DB (when model structure is defined/final)
 - Survivors List with max Elements shown
 - allow to edit the timeline
+
+
+- it should not be needed to compare with principle.type.name instead of principle.type

@@ -1,13 +1,5 @@
 import { BaseModel } from './base_model';
 
-/**
- * Created by Daniel on 08.02.2017.
- */
-export class Storage extends BaseModel {
-  amount: number;
-  tags: StorageTag[];
-}
-
 export enum StorageTag {
   ammunition,
   armor,
@@ -43,4 +35,12 @@ export enum StorageTag {
   ranged,
   thrown,
   whip,
+}
+
+/**
+ * Created by Daniel on 08.02.2017.
+ */
+export class Storage extends BaseModel {
+  amount: number;
+  tags: StorageTag[];
 }

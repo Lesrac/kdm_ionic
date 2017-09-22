@@ -32,6 +32,7 @@ import { KDMDBService } from '../service/kdm_db.service';
 import { SQLite } from '@ionic-native/sqlite';
 import { KDMInitDBService } from '../service/kdm_init_db.service';
 import { HttpModule } from '@angular/http';
+import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HttpModule } from '@angular/http';
     DefeatedMonsterPageComponent,
     PrinciplesPageComponent,
     PrincipleChooserPageComponent,
+    PrincipleDetailComponent,
     StoragePageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,
@@ -73,6 +75,7 @@ import { HttpModule } from '@angular/http';
     DefeatedMonsterPageComponent,
     PrinciplesPageComponent,
     PrincipleChooserPageComponent,
+    PrincipleDetailComponent,
     StoragePageComponent,
     SurvivorsPageComponent,
     SurvivorPageComponent,

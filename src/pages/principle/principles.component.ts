@@ -4,6 +4,7 @@ import { Settlement } from '../../model/settlement';
 import { PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { PrincipleChooserPageComponent } from './principle_chooser.component';
+import { PrincipleDetailComponent } from './principle_detail.component';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -50,5 +51,13 @@ export class PrinciplesPageComponent implements OnInit {
 
   getPrincipleName(type: PrincipleType): string {
     return this.settlement.principles.find(principle => principle.type.name === type.name).name;
+  }
+
+  showDetail(principleType: PrincipleType): void {
+    this.navCtrl.push(PrincipleDetailComponent, {
+      principle: this.settlement.principles.find(principle => {
+        return principle.type.name === principleType.name;
+      }),
+    }).then();
   }
 }
