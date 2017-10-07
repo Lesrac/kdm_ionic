@@ -33,6 +33,7 @@ import { SQLite } from '@ionic-native/sqlite';
 import { KDMInitDBService } from '../service/kdm_init_db.service';
 import { HttpModule } from '@angular/http';
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
+import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { PrincipleDetailComponent } from '../pages/principle/principle_detail.co
     DefeatedMonsterModalComponent,
     StorageModalComponent,
     AddLinebreakToPunctuationPipe,
+    TextFormattingPipe,
     AutoresizeTextareaDirective,
   ],
   imports: [
