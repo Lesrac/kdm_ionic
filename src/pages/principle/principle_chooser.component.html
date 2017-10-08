@@ -15,9 +15,8 @@
                         [disabled]="isLoading"></ion-checkbox>
           <ion-label>{{principleOne.name}}</ion-label>
         </ion-item>
-        <ion-item>
-          <ion-textarea autoresize readonly
-                        [ngModel]="principleOne.description"></ion-textarea>
+        <ion-item text-wrap>
+          <div [innerHTML]="principleOne.description | kdmTextFormatting"></div>
         </ion-item>
       </ion-col>
       <ion-col col-sm-auto center text-center><-></ion-col>
@@ -27,9 +26,8 @@
                         [disabled]="isLoading"></ion-checkbox>
           <ion-label>{{principleTwo.name}}</ion-label>
         </ion-item>
-        <ion-item>
-          <ion-textarea autoresize readonly
-                        [ngModel]="principleTwo.description"></ion-textarea>
+        <ion-item text-wrap>
+          <div [innerHTML]="principleTwo.description | kdmTextFormatting"></div>
         </ion-item>
       </ion-col>
     </ion-row>

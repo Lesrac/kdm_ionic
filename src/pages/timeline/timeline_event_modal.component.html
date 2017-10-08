@@ -8,9 +8,8 @@
   </ion-item>
   <ion-item-group *ngFor="let storyEvent of lanternEvent.storyEvents">
     <ion-item-divider>{{storyEvent.title}}</ion-item-divider>
-    <ion-item>
-      <ion-textarea autoresize readonly
-                    [ngModel]="storyEvent.description"></ion-textarea>
+    <ion-item text-wrap>
+      <div [innerHTML]="storyEvent.description | kdmTextFormatting"></div>
     </ion-item>
   </ion-item-group>
   <ion-item>
