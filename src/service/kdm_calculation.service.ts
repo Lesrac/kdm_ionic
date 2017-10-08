@@ -19,15 +19,17 @@ export class KDMCalculationService {
       const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
       if (resourceType) {
         this.getAllResourceCardsFromType(resourceType).then(storages => {
-          huntedMonster.huntedResources = this.getRandomizedResourceCards(storages, amount);
-          huntedMonster.huntedResources.forEach(storage => {
+          const huntedResources = this.getRandomizedResourceCards(storages, amount);
+          huntedResources.forEach(storage => {
             huntedMonster.settlement.addStorageItem(storage);
+            huntedMonster.huntedResources.push(storage);
           });
         });
       } else if (key) {
-        huntedMonster.huntedResources = this.getAllStorageItems(key, amount);
-        huntedMonster.huntedResources.forEach(str => {
+        const huntedResources = this.getAllStorageItems(key, amount);
+        huntedResources.forEach(str => {
           huntedMonster.settlement.addStorageItem(str);
+          huntedMonster.huntedResources.push(str);
         });
       }
     });

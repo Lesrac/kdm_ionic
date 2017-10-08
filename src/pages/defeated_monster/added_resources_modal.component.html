@@ -1,0 +1,18 @@
+<ion-content>
+  <ion-item-group>
+    <ion-title>Added Resources for {{huntedMonster.monster.name}} level {{huntedMonster.monster.level}}</ion-title>
+  </ion-item-group>
+  <ion-item *ngFor="let storage of huntedMonster.huntedResources">
+    <ion-row (click)="showDetail(storage)">
+      <ion-col>
+        {{storage.name}}
+      </ion-col>
+      <ion-col>
+        x {{storage.amount}}
+      </ion-col>
+    </ion-row>
+  </ion-item>
+  <ion-item>
+    <button ion-button full (click)="close()">Close</button>
+  </ion-item>
+</ion-content>

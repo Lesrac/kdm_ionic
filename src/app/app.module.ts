@@ -34,6 +34,7 @@ import { KDMInitDBService } from '../service/kdm_init_db.service';
 import { HttpModule } from '@angular/http';
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
+import { AddedResourcesModalComponent } from '../pages/defeated_monster/added_resources_modal.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
     ShowListComponent,
     ShowListDetailComponent,
     ShowListAddModalComponent,
+    AddedResourcesModalComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
     TimelineEventModalComponent,
@@ -83,6 +85,7 @@ import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
     SurvivorPageComponent,
     ShowListComponent,
     ShowListAddModalComponent,
+    AddedResourcesModalComponent,
     ShowListDetailComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
