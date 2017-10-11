@@ -21,7 +21,8 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, '');
         } else if ('br' === matchesWithoutParenthesis) {
           text = text.replace(match, this.doubleBreak);
-        } else if (Number(matchesWithoutParenthesis[1]) || Number(matchesWithoutParenthesis[2])) {
+        } else if (Number(matchesWithoutParenthesis) || Number(matchesWithoutParenthesis[0]) ||
+          Number(matchesWithoutParenthesis[1]) || Number(matchesWithoutParenthesis[2])) {
           text = text.replace(match, this.doubleBreak + '<b>' + matchesWithoutParenthesis + '</b>');
         } else if ('milestone' === matchesWithoutParenthesis) {
           let replaceText: string = '';

@@ -10,7 +10,8 @@
     ],
     "value": 1,
     "comparator": "GE",
-    "observerTarget": "POPULATION"
+    "observerTarget": "POPULATION",
+    "milestoneType": "Basic"
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     ],
     "value": 1,
     "comparator": "GE",
-    "observerTarget": "DEATHCOUNT"
+    "observerTarget": "DEATHCOUNT",
+    "milestoneType": "Basic"
   },
   {
     "id": 3,
@@ -36,17 +38,24 @@
     ],
     "value": 15,
     "comparator": "GE",
-    "observerTarget": "POPULATION"
+    "observerTarget": "POPULATION",
+    "milestoneType": "Basic"
   },
   {
     "id": 4,
     "name": "Principle: Hooded Knight",
     "tag": "Settlement has 5 innovations",
-    "todo": "",
-    "storyEvents": [],
+    "todo": "A stranger emerges from the darkness. If any survivor has the Twilight Sword, they Duel the knight. Otherwise, his motives are inscrutable. Roll below on Mysterious Agenda.",
+    "storyEvents": [
+      11,
+      12,
+      13,
+      14
+    ],
     "value": 5,
     "comparator": "GE",
-    "observerTarget": "INNOVATION"
+    "observerTarget": "INNOVATION",
+    "milestoneType": "Basic"
   },
   {
     "id": 5,
@@ -58,6 +67,7 @@
     ],
     "value": 0,
     "comparator": "EQ",
-    "observerTarget": "POPULATION"
+    "observerTarget": "POPULATION",
+    "milestoneType": "Basic"
   }
 ]

@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
-import { Milestone } from '../model/milestone';
+import { Milestone, MilestoneType } from '../model/milestone';
 import { Location } from '../model/location';
 import { Resource, ResourceType } from '../model/resource';
 import { Innovation, InnovationTag } from '../model/innovation';
@@ -158,7 +158,10 @@ export class KDMDataService {
               this.getStoryEvent(storyEventId).then(storyEvent =>
                 storyEvents.push(storyEvent));
             });
-            data.push(JsonToObjectConverter.convertToMilestoneObject(milestoneJson, storyEvents));
+            const milestone: Milestone = JsonToObjectConverter.convertToMilestoneObject(milestoneJson, storyEvents);
+            if (milestone.milestoneType === MilestoneType.Basic) {
+              data.push(milestone);
+            }
           });
           return data;
         },

@@ -4,7 +4,7 @@ import { Resource, ResourceType } from '../model/resource';
 import { MonsterResource } from '../model/linking/monster_resource';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
-import { Milestone } from '../model/milestone';
+import { Milestone, MilestoneType } from '../model/milestone';
 import { StoryEvent } from '../model/story_event';
 import { Principle, PrincipleType } from '../model/principle';
 import { FightingArt } from '../model/fighting_art';
@@ -90,7 +90,7 @@ export class JsonToObjectConverter {
   }
 
   public static converToResourceObject(resourceJSON: any, tags: StorageTag[]): Resource {
-    let resourceType: ResourceType = <ResourceType>ResourceType[<string>resourceJSON.type];
+    const resourceType: ResourceType = <ResourceType>ResourceType[<string>resourceJSON.type];
     const resource: Resource = {
       name: resourceJSON.name,
       type: resourceType,
@@ -103,13 +103,14 @@ export class JsonToObjectConverter {
   }
 
   public static convertToMilestoneObject(milestoneJSON: any, storyEvents: StoryEvent[]): Milestone {
-    const milestone: Milestone = new Milestone(milestoneJSON.comparator);
+    const milestone: Milestone = new Milestone((milestoneJSON.comparator != null ? milestoneJSON.comparator : ''));
     milestone.id = milestoneJSON.id;
     milestone.name = milestoneJSON.name;
     milestone.value = milestoneJSON.value;
     milestone.todo = milestoneJSON.todo;
-    milestone.observerTarget = milestoneJSON.observerTarget;
+    milestone.observerTarget = milestoneJSON.observerTarget != null ? milestoneJSON.observerTarget : '';
     milestone.tag = milestoneJSON.tag;
+    milestone.milestoneType = <MilestoneType>MilestoneType[<string>milestoneJSON.milestoneType];
     milestone.storyEvents = storyEvents;
     return milestone;
   }
@@ -165,7 +166,7 @@ export class JsonToObjectConverter {
   }
 
   public static convertToInnovationObject(innovationJSON: any, tags: InnovationTag[]): Innovation {
-    let consequence: InnovationTag = <InnovationTag>InnovationTag[<string>innovationJSON.consequence];
+    const consequence: InnovationTag = <InnovationTag>InnovationTag[<string>innovationJSON.consequence];
     const innovation: Innovation = {
       name: innovationJSON.name,
       description: innovationJSON.description,

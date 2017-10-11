@@ -10,8 +10,11 @@
   },
   {
     "name": "Endless Screams",
-    "todo": "",
-    "storyEvents": []
+    "todo": "A scream pierces the silence around the settlement. As the noise fades, a chorus of horror rises up in answer.",
+    "storyEvents": [
+      15,
+      16
+    ]
   },
   {
     "name": "Nemesis Encounter - Butcher",

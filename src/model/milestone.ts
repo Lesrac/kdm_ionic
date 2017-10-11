@@ -16,6 +16,7 @@ export class Milestone extends LanternEvent implements Comparable {
   value: number;
   visitor: ComparableVisitor;
   observerTarget: string;
+  milestoneType: MilestoneType;
 
   constructor(comparator: ComparableVisitorValue) {
     super();
@@ -44,4 +45,10 @@ export class Milestone extends LanternEvent implements Comparable {
     return this.visitor.visit(this, compareValue);
   }
 
+}
+
+export enum MilestoneType {
+  Basic,
+  DragonKing,
+  Sunstalker,
 }
