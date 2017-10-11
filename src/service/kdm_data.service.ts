@@ -59,15 +59,21 @@ export class KDMDataService {
           let data: Monster[] = [];
           res.json().forEach(monsterJson => {
             const monster: Monster = JsonToObjectConverter.convertToMonsterObject(monsterJson);
-            monsterJson.resources.forEach(resourceDefinition => {
-              const resourceType: ResourceType = <ResourceType>ResourceType[<string>resourceDefinition.name];
-              if (resourceType != null && resourceType >= 0) {
-                monster.resources.set(resourceType, resourceDefinition.amount);
-              } else {
-                this.getResourceByName(resourceDefinition.name).then(resource => {
-                  monster.resources.set(resource, resourceDefinition.amount);
+            monsterJson.levelresources.forEach(levelresourceDefinitions => {
+              levelresourceDefinitions.forEach(levelresource => {
+                const map: Map<any, number> = new Map<any, number>();
+                levelresource.resources.forEach(resource => {
+                  const resourceType: ResourceType = <ResourceType>ResourceType[<string>resource.name];
+                  if (resourceType != null && resourceType >= 0) {
+                    map.set(resourceType, resource.amount);
+                  } else {
+                    this.getResourceByName(resource.name).then(rs => {
+                      map.set(rs, resource.amount);
+                    });
+                  }
                 });
-              }
+                monster.resources.set(Number(levelresource.level), map);
+              });
             });
             data.push(monster);
           });

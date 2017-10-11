@@ -50,6 +50,11 @@ export class DefeatedMonsterModalComponent implements OnInit {
     this.close();
   }
 
+  checkMonsterLevel(name: string, level: number): boolean {
+    return (this.huntableMonsters.find(huntableMonster => huntableMonster.monster.name === name &&
+      huntableMonster.monster.level === level)) != null;
+  }
+
   private setupHuntableMonsters(): void {
     this.settlement.huntableMonsters.filter(huntableMonster => huntableMonster.isHuntable).forEach(monster => {
         if (monster.isHuntable) {

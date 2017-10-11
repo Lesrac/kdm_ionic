@@ -51,7 +51,7 @@ export class JsonToObjectConverter {
       name: monsterJSON.name,
       level: monsterJSON.level,
       isNemesis: monsterJSON.isNemesis,
-      resources: new Map<any, number>(),
+      resources: new Map<number, Map<any, number>>(),
       locations: [], // todo monster locations
     };
     return monster;
@@ -84,6 +84,7 @@ export class JsonToObjectConverter {
       monster: null, // todo MonsterID
       settlement: null, // todo SettlementID
       huntedResources: null,
+      addStorageItem: null,
     };
     return huntedMonster;
   }

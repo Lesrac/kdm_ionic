@@ -28,12 +28,10 @@ export class DefeatedMonsterPageComponent {
     });
     modal.present();
     modal.onDidDismiss(() => {
-      console.log('dismissed');
       const huntedMonsters = this.settlement.huntedMonsters;
       const huntedMonstersCount: number = huntedMonsters.length;
       if (huntedMonstersCount > this.countedHuntedMonsters &&
         huntedMonsters[huntedMonstersCount - 1].huntedResources.length > 0) {
-        console.log('there where resources');
         modal = this.modalCtrl.create(AddedResourcesModalComponent, {
           huntedMonster: huntedMonsters[huntedMonstersCount - 1],
         });

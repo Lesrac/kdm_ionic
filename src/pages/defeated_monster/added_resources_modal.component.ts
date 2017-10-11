@@ -4,7 +4,7 @@ import { HuntedMonster } from '../../model/linking/hunted_monster';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
 
 /**
- * Created by Daniel on 07.02.2017.
+ * Created by Daniel on 09.10.2017.
  */
 @Component({
   selector: 'kdmf-added-resources-modal',

@@ -12,7 +12,7 @@
   {
     "name": "Monster Hide",
     "description": "The skin of a beast.",
-    "mount": 0,
+    "amount": 0,
     "type": "Basic",
     "existingCards": 6,
     "tags": [

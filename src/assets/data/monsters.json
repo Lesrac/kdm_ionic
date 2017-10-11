@@ -4,156 +4,323 @@
     "name": "White Lion",
     "level": 1,
     "isNemesis": false,
-    "resources": [
-      {
-        "name": "Basic",
-        "amount": 2
-      },
-      {
-        "name": "WhiteLion",
-        "amount": 2
-      },
-      {
-        "name": "Monster Bone",
-        "amount": 1
-      }
+    "levelresources": [
+      [
+        {
+          "level": "1",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "level": "3",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 8
+            },
+            {
+              "name": "Elder Cat Teeth",
+              "amount": 1
+            }
+          ]
+        }
+      ]
     ],
     "locations": []
   },
   {
     "id": 2,
-    "name": "White Lion",
-    "level": 2,
+    "name": "Screaming Antelope",
+    "level": 1,
     "isNemesis": false,
-    "resources": [],
+    "levelresources": [
+      [
+        {
+          "level": "1",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "level": "3",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 8
+            },
+            {
+              "name": "Elder Cat Teeth",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    ],
     "locations": []
   },
   {
     "id": 3,
-    "name": "White Lion",
-    "level": 3,
+    "name": "Phoenix",
+    "level": 1,
     "isNemesis": false,
-    "resources": [],
+    "levelresources": [
+      [
+        {
+          "level": "1",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "level": "3",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 8
+            },
+            {
+              "name": "Elder Cat Teeth",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    ],
     "locations": []
   },
   {
     "id": 4,
-    "name": "Screaming Antelope",
+    "name": "Butcher",
     "level": 1,
-    "isNemesis": false,
-    "resources": [],
+    "isNemesis": true,
+    "levelresources": [
+      [
+        {
+          "level": "1",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "level": "3",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 8
+            },
+            {
+              "name": "Elder Cat Teeth",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    ],
     "locations": []
   },
   {
     "id": 5,
-    "name": "Screaming Antelope",
-    "level": 2,
-    "isNemesis": false,
-    "resources": [],
+    "name": "King's Man",
+    "level": 1,
+    "isNemesis": true,
+    "levelresources": [
+      [
+        {
+          "level": "1",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "level": "3",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 8
+            },
+            {
+              "name": "Elder Cat Teeth",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    ],
     "locations": []
   },
   {
     "id": 6,
-    "name": "Screaming Antelope",
-    "level": 3,
-    "isNemesis": false,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 7,
-    "name": "Phoenix",
-    "level": 1,
-    "isNemesis": false,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 8,
-    "name": "Phoenix",
-    "level": 2,
-    "isNemesis": false,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 9,
-    "name": "Phoenix",
-    "level": 3,
-    "isNemesis": false,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 10,
-    "name": "Butcher",
-    "level": 1,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 12,
-    "name": "Butcher",
-    "level": 2,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 13,
-    "name": "Butcher",
-    "level": 3,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 13,
-    "name": "King's Man",
-    "level": 1,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 14,
-    "name": "King's Man",
-    "level": 2,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 15,
-    "name": "King's Man",
-    "level": 3,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 16,
     "name": "The Hand",
     "level": 1,
     "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 17,
-    "name": "The Hand",
-    "level": 2,
-    "isNemesis": true,
-    "resources": [],
-    "locations": []
-  },
-  {
-    "id": 18,
-    "name": "The Hand",
-    "level": 3,
-    "isNemesis": true,
-    "resources": [],
+    "levelresources": [
+      [
+        {
+          "level": "1",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 4
+            }
+          ]
+        },
+        {
+          "level": "2",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 6
+            }
+          ]
+        },
+        {
+          "level": "3",
+          "resources": [
+            {
+              "name": "Basic",
+              "amount": 4
+            },
+            {
+              "name": "WhiteLion",
+              "amount": 8
+            },
+            {
+              "name": "Elder Cat Teeth",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    ],
     "locations": []
   }
 ]

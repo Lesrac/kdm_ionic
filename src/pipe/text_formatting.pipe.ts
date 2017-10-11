@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Pipe({name: 'kdmTextFormatting'})
 export class TextFormattingPipe implements PipeTransform {
 
+  private doubleBreak: string = '<br/><br/>';
+
   constructor(private sanitizer: DomSanitizer) {
   }
 
@@ -17,17 +19,19 @@ export class TextFormattingPipe implements PipeTransform {
         const matchesWithoutParenthesis = match.replace(regexRemoveParenthesis, '');
         if (!matchesWithoutParenthesis) {
           text = text.replace(match, '');
+        } else if ('br' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.doubleBreak);
         } else if (Number(matchesWithoutParenthesis[1]) || Number(matchesWithoutParenthesis[2])) {
-          text = text.replace(match, '<br/><br/><b>' + matchesWithoutParenthesis + '</b>');
+          text = text.replace(match, this.doubleBreak + '<b>' + matchesWithoutParenthesis + '</b>');
         } else if ('milestone' === matchesWithoutParenthesis) {
           let replaceText: string = '';
           if (index > 1) {
             const previousMatchValue = matches[index - 1].replace(regexRemoveParenthesis, '');
             if (previousMatchValue !== matchesWithoutParenthesis) {
-              replaceText += '<br/><br/>';
+              replaceText += this.doubleBreak;
             }
           } else {
-            replaceText += '<br/><br/>';
+            replaceText += this.doubleBreak;
           }
           text = text.replace(match, replaceText +
             '<ion-icon name="book" role="img" class="icon icon-md ion-md-book" ' +
