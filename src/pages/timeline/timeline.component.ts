@@ -13,6 +13,8 @@ import { ReorderIndexes } from 'ionic-angular/components/item/item-reorder';
 })
 export class TimelinePageComponent {
   timeline: SettlementTimeline[];
+  reorderActivityName: string = 'Reorder';
+  reorderFlag: boolean = false;
 
   constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
     this.timeline = params.get('settlementTimeline');
@@ -44,6 +46,15 @@ export class TimelinePageComponent {
     }
   }
 
+  changeReorder(event): void {
+    this.reorderFlag = !this.reorderFlag;
+    if (this.reorderFlag) {
+      this.reorderActivityName = 'Disable';
+    } else {
+      this.reorderActivityName = 'Reorder';
+    }
+  }
+
   reorderItems(indexes: ReorderIndexes): void {
     // change element position number
     if (indexes.from < indexes.to) {
@@ -63,5 +74,18 @@ export class TimelinePageComponent {
     }
     this.timeline[indexes.from].timeline.position = indexes.to + 1;
     this.timeline = reorderArray(this.timeline, indexes);
+  }
+
+  changeTimelineEvent(timelineevent: SettlementTimeline): void {
+
+  }
+
+  removeTimelineEvent(timelineevent: SettlementTimeline): void {
+    const index: number = this.timeline.findIndex(event => event === timelineevent);
+    for (let i = index; i < this.timeline.length; i++) {
+      this.timeline[i].timeline.position--;
+    }
+    this.timeline.splice(this.timeline.findIndex(event => event === timelineevent), 1);
+
   }
 }

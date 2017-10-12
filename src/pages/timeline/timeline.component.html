@@ -3,17 +3,34 @@
     <ion-title>
       Timeline
     </ion-title>
+    <ion-buttons end>
+      <button ion-button small clear (click)="changeReorder()">
+        {{reorderActivityName}}
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
-    <ion-item *ngFor="let timelineevent of timeline">
-      <ion-checkbox [(ngModel)]="timelineevent.reached"
-                    (click)="timelineReached($event, timelineevent)"></ion-checkbox>
-      <ion-label>{{timelineevent.timeline.position}} <span *ngIf="timelineevent.timeline.lanternEvent"><ion-icon
-        name="book"></ion-icon>{{timelineevent.timeline.lanternEvent.name}}</span>
-      </ion-label>
-    </ion-item>
+  <ion-list>
+    <ion-item-group reorder="{{reorderFlag}}" (ionItemReorder)="reorderItems($event)">
+      <ion-item-sliding *ngFor="let timelineevent of timeline">
+        <ion-item>
+          <ion-checkbox [(ngModel)]="timelineevent.reached"
+                        (click)="timelineReached($event, timelineevent)"></ion-checkbox>
+          <ion-label>{{timelineevent.timeline.position}} <span *ngIf="timelineevent.timeline.lanternEvent"><ion-icon
+            name="book"></ion-icon>{{timelineevent.timeline.lanternEvent.name}}</span>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button (click)="changeTimelineEvent(timelineevent)">
+            <ion-icon name="swap"></ion-icon>
+          </button>
+          <button ion-button color="danger" (click)="removeTimelineEvent(timelineevent)">
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item-group>
   </ion-list>
 </ion-content>
