@@ -46,10 +46,19 @@ export class TimelinePageComponent {
 
   reorderItems(indexes: ReorderIndexes): void {
     // change element position number
-    for (let i = 0; i <= indexes.to; i++) {
-      const position = this.timeline[i].timeline.position;
-      if (position > indexes.from + 1 && position <= indexes.to + 1) {
-        this.timeline[i].timeline.position--;
+    if (indexes.from < indexes.to) {
+      for (let i = 0; i <= indexes.to; i++) {
+        const position = this.timeline[i].timeline.position;
+        if (position > indexes.from + 1 && position <= indexes.to + 1) {
+          this.timeline[i].timeline.position--;
+        }
+      }
+    } else {
+      for (let i = indexes.from; i >= indexes.to; i--) {
+        const position = this.timeline[i].timeline.position;
+        if (position < indexes.from + 1 && position >= indexes.to + 1) {
+          this.timeline[i].timeline.position++;
+        }
       }
     }
     this.timeline[indexes.from].timeline.position = indexes.to + 1;
