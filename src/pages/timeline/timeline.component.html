@@ -7,11 +7,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let timelineevent of timeline">
-    <ion-checkbox [(ngModel)]="timelineevent.reached"
-                  (click)="timelineReached($event, timelineevent)"></ion-checkbox>
-    <ion-label>{{timelineevent.timeline.position}} <span *ngIf="timelineevent.timeline.lanternEvent"><ion-icon
-      name="book"></ion-icon>{{timelineevent.timeline.lanternEvent.name}}</span>
-    </ion-label>
-  </ion-item>
+  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+    <ion-item *ngFor="let timelineevent of timeline">
+      <ion-checkbox [(ngModel)]="timelineevent.reached"
+                    (click)="timelineReached($event, timelineevent)"></ion-checkbox>
+      <ion-label>{{timelineevent.timeline.position}} <span *ngIf="timelineevent.timeline.lanternEvent"><ion-icon
+        name="book"></ion-icon>{{timelineevent.timeline.lanternEvent.name}}</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

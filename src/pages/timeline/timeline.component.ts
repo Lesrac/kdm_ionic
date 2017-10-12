@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, reorderArray } from 'ionic-angular';
 import { TimelineEventModalComponent } from './timeline_event_modal.component';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
+import { ReorderIndexes } from 'ionic-angular/components/item/item-reorder';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -41,5 +42,17 @@ export class TimelinePageComponent {
         },
       );
     }
+  }
+
+  reorderItems(indexes: ReorderIndexes): void {
+    // change element position number
+    for (let i = 0; i <= indexes.to; i++) {
+      const position = this.timeline[i].timeline.position;
+      if (position > indexes.from + 1 && position <= indexes.to + 1) {
+        this.timeline[i].timeline.position--;
+      }
+    }
+    this.timeline[indexes.from].timeline.position = indexes.to + 1;
+    this.timeline = reorderArray(this.timeline, indexes);
   }
 }
