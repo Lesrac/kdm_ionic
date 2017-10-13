@@ -4,6 +4,9 @@
       Timeline
     </ion-title>
     <ion-buttons end>
+      <button ion-button small clear (click)="addTimelineEvent()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
       <button ion-button small clear (click)="changeReorder()">
         {{reorderActivityName}}
       </button>

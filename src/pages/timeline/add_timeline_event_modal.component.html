@@ -1,0 +1,15 @@
+<ion-content>
+  <ion-item-group>
+    <ion-title>{{addChangeText}} Timeline Element</ion-title>
+  </ion-item-group>
+  <ion-item>
+    <ion-label>Event</ion-label>
+    <ion-select [(ngModel)]="eventName">
+      <ion-option *ngFor="let lanternEvent of lanternEvents">{{lanternEvent.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <button ion-button full (click)="addClose()">{{addChangeText}}</button>
+    <button ion-button full color="secondary" (click)="close()">Close</button>
+  </ion-item>
+</ion-content>

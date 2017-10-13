@@ -35,6 +35,7 @@ import { HttpModule } from '@angular/http';
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
 import { AddedResourcesModalComponent } from '../pages/defeated_monster/added_resources_modal.component';
+import { AddTimelineEventModalComponent } from '../pages/timeline/add_timeline_event_modal.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AddedResourcesModalComponent } from '../pages/defeated_monster/added_re
     TabsPageComponent,
     CreateSettlementPopoverComponent,
     TimelineEventModalComponent,
+    AddTimelineEventModalComponent,
     DefeatedMonsterModalComponent,
     StorageModalComponent,
     AddLinebreakToPunctuationPipe,
@@ -90,6 +92,7 @@ import { AddedResourcesModalComponent } from '../pages/defeated_monster/added_re
     TabsPageComponent,
     CreateSettlementPopoverComponent,
     TimelineEventModalComponent,
+    AddTimelineEventModalComponent,
     DefeatedMonsterModalComponent,
     StorageModalComponent,
   ],

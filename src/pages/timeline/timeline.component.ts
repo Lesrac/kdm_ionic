@@ -3,6 +3,7 @@ import { NavController, NavParams, ModalController, reorderArray } from 'ionic-a
 import { TimelineEventModalComponent } from './timeline_event_modal.component';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { ReorderIndexes } from 'ionic-angular/components/item/item-reorder';
+import { AddTimelineEventModalComponent } from './add_timeline_event_modal.component';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -76,8 +77,19 @@ export class TimelinePageComponent {
     this.timeline = reorderArray(this.timeline, indexes);
   }
 
-  changeTimelineEvent(timelineevent: SettlementTimeline): void {
+  addTimelineEvent(): void {
+    let modal = this.modalCtrl.create(AddTimelineEventModalComponent, {
+      settlementTimeline: this.timeline,
+    });
+    modal.present();
+  }
 
+  changeTimelineEvent(timelineevent: SettlementTimeline): void {
+    let modal = this.modalCtrl.create(AddTimelineEventModalComponent, {
+      settlementTimeline: this.timeline,
+      replaceableTimeline: timelineevent,
+    });
+    modal.present();
   }
 
   removeTimelineEvent(timelineevent: SettlementTimeline): void {
