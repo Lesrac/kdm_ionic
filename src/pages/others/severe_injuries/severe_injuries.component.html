@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Severe Injuries
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group>
+    <ion-item text-wrap="true">
+      {{text1}}<br/><br/>
+      {{text2}}<br/><br/>
+      {{text3}}
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-list>
+      <ion-item (click)="goToDetail('head')">Head</ion-item>
+      <ion-item (click)="goToDetail('arms')">Arms</ion-item>
+      <ion-item (click)="goToDetail('body')">Body</ion-item>
+      <ion-item (click)="goToDetail('waist')">Waist</ion-item>
+      <ion-item (click)="goToDetail('legs')">Legs</ion-item>
+    </ion-list>
+  </ion-item-group>
+</ion-content>

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
-import { ContactPage } from '../pages/contact/contact';
+import { OthersPage } from '../pages/others/others.component';
 import { TabsPageComponent } from '../pages/tabs/tabs.component';
 import { SettlementsPageComponent } from '../pages/settlements/settlements.component';
 import { SettlementPageComponent } from '../pages/settlement/settlement.component';
@@ -36,11 +36,17 @@ import { PrincipleDetailComponent } from '../pages/principle/principle_detail.co
 import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
 import { AddedResourcesModalComponent } from '../pages/defeated_monster/added_resources_modal.component';
 import { AddTimelineEventModalComponent } from '../pages/timeline/add_timeline_event_modal.component';
+import { BrainTraumaPageComponent } from '../pages/others/brain_trauma/brain_trauma.component';
+import { GlossaryPageComponent } from '../pages/others/glossary/glossary.component';
+import { HuntEventTablePageComponent } from '../pages/others/hunt_event_table/hunt_event_table.component';
+import { SevereInjuriesPageComponent } from '../pages/others/severe_injuries/severe_injuries.component';
+import { StoryEventsPageComponent } from '../pages/others/story_events/story_events.component';
+import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe_injuries_detail.component';
 
 @NgModule({
   declarations: [
     MyApp,
-    ContactPage,
+    OthersPage,
     SettlementsPageComponent,
     SettlementPageComponent,
     TimelinePageComponent,
@@ -65,6 +71,12 @@ import { AddTimelineEventModalComponent } from '../pages/timeline/add_timeline_e
     AddLinebreakToPunctuationPipe,
     TextFormattingPipe,
     AutoresizeTextareaDirective,
+    BrainTraumaPageComponent,
+    GlossaryPageComponent,
+    HuntEventTablePageComponent,
+    SevereInjuriesPageComponent,
+    SevereInjuriesDetailPageComponent,
+    StoryEventsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +86,7 @@ import { AddTimelineEventModalComponent } from '../pages/timeline/add_timeline_e
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ContactPage,
+    OthersPage,
     SettlementsPageComponent,
     SettlementPageComponent,
     TimelinePageComponent,
@@ -95,6 +107,12 @@ import { AddTimelineEventModalComponent } from '../pages/timeline/add_timeline_e
     AddTimelineEventModalComponent,
     DefeatedMonsterModalComponent,
     StorageModalComponent,
+    BrainTraumaPageComponent,
+    GlossaryPageComponent,
+    HuntEventTablePageComponent,
+    SevereInjuriesPageComponent,
+    SevereInjuriesDetailPageComponent,
+    StoryEventsPageComponent,
   ],
   providers: [{
     provide: ErrorHandler,
