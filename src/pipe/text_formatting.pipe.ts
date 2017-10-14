@@ -37,6 +37,9 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, replaceText +
             '<ion-icon name="book" role="img" class="icon icon-md ion-md-book" ' +
             'aria-label="book" ng-reflect-name="book"></ion-icon>');
+        } else if ('milestoneNL' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="book" role="img" class="icon icon-md ion-md-book" ' +
+            'aria-label="book" ng-reflect-name="book"></ion-icon>');
         } else if ('*' === matchesWithoutParenthesis) {
           text = text.replace(match, '<ion-icon name="star" role="img" ' +
             'class="icon icon-md ion-md-star" aria-label="star" ng-reflect-name="star"></ion-icon>');

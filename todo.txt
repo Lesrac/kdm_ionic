@@ -4,8 +4,9 @@
 - Better Event handling (doing)
 - Add DB (when model structure is defined/final)
 - Survivors List with max Elements shown
-- allow to edit the timeline
 
 
 - it should not be needed to compare with principle.type.name instead of principle.type
 - redo Monster Resource handling when defeated
+- Random innovation from existing innovations, that has to be removed
+- Random resources cards (with amount and type chosen)

@@ -16,7 +16,7 @@ export class TimelineEventModalComponent {
     this.lanternEvent = this.params.get('lanternEvent');
   }
 
-  close() {
+  close(): void {
     this.viewCtrl.dismiss();
   }
 }

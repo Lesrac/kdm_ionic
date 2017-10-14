@@ -37,7 +37,7 @@
   {
     "id": 8,
     "title": "Collective Toil",
-    "description": "Tainted by darkness, a survivor nearly brought ruin to the settlement. On the day of her exile, the people decided that all must spend equal time hunting and working to avoid future disasters. -1 population. Add \"(book) Bone Witch\" to the timeline 3 years from now. The settlement gains the Society Principle: Collective Toil. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) Nominate up to 4 survivors. Each gain +5 survival. (6-10) Nominate a survivor. You have a secret. You will always know in your heart that the exile was banished for merely repeating what you taught her. Gain the Secretive disorder. It cannot be removed for any reason. In addition, gain the Timeless Eye fighting art."
+    "description": "Tainted by darkness, a survivor nearly brought ruin to the settlement. On the day of her exile, the people decided that all must spend equal time hunting and working to avoid future disasters. -1 population. Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from now. The settlement gains the Society Principle: Collective Toil. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) Nominate up to 4 survivors. Each gain +5 survival. (6-10) Nominate a survivor. You have a secret. You will always know in your heart that the exile was banished for merely repeating what you taught her. Gain the Secretive disorder. It cannot be removed for any reason. In addition, gain the Timeless Eye fighting art."
   },
   {
     "id": 9,
@@ -62,7 +62,7 @@
   {
     "id": 13,
     "title": "Unfinished Business",
-    "description": "Add \"(milestone) Hooded Knight\" to the timeline 4 years from now."
+    "description": "Add \"(milestoneNL) Hooded Knight\" to the timeline 4 years from now."
   },
   {
     "id": 14,
@@ -78,5 +78,40 @@
     "id": 16,
     "title": "Voice of Reason",
     "description": "(1-2) The survivor's face turns pale and the courage drains from their eyes. Without hesitation, the survivor turns on their heels and dashes for the darkness. Sadly, their foot catches a stone face and they fall face-first into the floor. The survivor loses 1 courage and suffers the broken jaw severe head injury. (3-6) The survivor realizes the noise is most likely from another strange creature that lives out in the darkness. After some effort, they manage to calm the settlement.(br) The Survivor gains +1 understanding.(br) Returning survivors gain +1 insanity. (7-10) The survivor stands firm in the face of the screaming unknown. Slow and strong words change the settlement's fear into tingling excitement. After all, the endless screams might be an opportunity to gain knowledge and harness the darkness.(br) The survivor gains the Orator of Death fighting art.(br) Returning survivors gain +2 insanity."
+  },
+  {
+    "id": 17,
+    "title": "Inspection",
+    "description": "(1-3) In one swift motion The Hand draws its sword, cleaving the Lantern Oven and 4 survivors asunder. Suffer -4 population. Return the Lantern Oven to the innovation deck. Challenge The Hand to avoid this loss.(2-3) If the settlement has the Accept the Darkness Society Principle, The Hand presents 2 infants to the kneeling survivors, Gain +2 population. (4-7) The Hand rampages through the settlement. Lose any resources in settlement storage and suffer -1 population. Challenge The Hand to avoid this loss.(5-7) If the settlement has the Guidepost innovation, The Hand demonstrates sophisticated fighting arts. Gain 1 weapon mastery of your choice and add it to your settlement. (8-10) The Hand points at the survivor (survivors in case of a tie) with the most hunt experience. A warble trapped in their throat as their chest bursts open expelling their organs (killing them). Challenge the Hand to avoid this loss. (9-10) If the settlement has Survival of the Fittest New Life Principle, The Hand's voice sounds in all of the survivors' heads. None can recall what happened, but each feels profoundly changed. No (*) may be spent this settlement phase. All living survivors gain +1 permanent strength."
+  },
+  {
+    "id": 18,
+    "title": "Challenge",
+    "description": "The Hand accepts your challenge! Stop the settlement phase and depart for a special showdown with The Hand. After the showdown, resume the settlement phase. Do not gain (*), draw a settlement event card, or advance a lantern year."
+  },
+  {
+    "id": 19,
+    "title": "Hands of heat event",
+    "description": "If the settlement already innovated Lantern Oven, skip this event and roll on the Lantern Branding table. Otherwise, proceed with Hands of Heat, below:(br) One lucky day, a clumsy accidents knocks a lantern free from the towering Lantern Hoard. A sudden flash of heat bathes the survivors as the lantern crashes to the ground. Now shattered, the lantern light dies, but the seed of an idea begins to grow.(br) Nominate a survivor. They gain +1 courage and Experiment with Lanterns."
+  },
+  {
+    "id": 20,
+    "title": "Experiment with Lanterns",
+    "description": "(1-3) An agitated lantern shatters in the survivor's face. Badly burned and disfigured, the survivor is exiled from the settlement as an inhuman monster. However, the other survivors learn something from this tragedy. Your settlement gains the Lantern Oven innovation. -1 population. Add \"(milestoneNL) Bone Witch\" to the timeline 3 lantern years from now. (4-6) The survivor vigorously shakes a lantern and holds it watchfully. It bursts into blue light with a distinct hissing sound. The lantern grows hot in the survivor's clenched hands, burning their flesh. They bellow in primal triumph. Gain +1 permanent strength and the Red Fist secret fighting art. Your settlement gains the Lantern Oven innovation. (7+) The survivor discovers heat and the settlement gains the Lantern Oven innovation. The survivors gains the Red Fist secret fighting art, and rolls on the Lantern Branding table on this page!"
+  },
+  {
+    "id": 21,
+    "title": "Lantern Branding",
+    "description": "A feast, culminating in the ritual branding of the settlement's finest warriors by the heat of an agitated lantern.(br) Discard half the settlement's total resources (including storage), rounded down. Nominate a survivor and roll on the table below. (1-3) Tradition. All departing survivors gain +10 survival. Add \"(milestoneNL) Hands of Heat\" to the timeline 1d10 years from now. (4-7) Branded feet. Gain +1 permanent speed. (8-9) Branded hand. Gain +1 permanent strength. (10+) Accident! Suffer the blinded severe head injury and gain +1 permanent luck."
+  },
+  {
+    "id": 22,
+    "title": "Count People",
+    "description": "7 or less.(br) - Supportive Action -(br) Finally, one of them drives a lantern halberd into the ground. They leave without a word. Add the Guidepost innovation to the settlement.(br) The strangers plan to return. Add (milestoneNL) Armored Strangers to the timeline 4 years from the current year. Roll on the table below. (1-3) A survivor's ears fill with a painful static! A random returning survivor gains a random disorder. (4-7) The armored strangers dump a mangled, unidentifiable corpse on the ground. Gain 3 random basic resources. (8+) The armored strangers haul a massive, bountiful beast corpse. The survivors wonder at this boon. Gain 6 random basic resources. Departing survivors gain +1 survival.(br)(br) 8 or more(br) - Destructive Action -(br) The strangers finish their count and draw their blades. Roll on the table below.(1-4) The armored strangers wantonly execute survivors. Suffer -5 population. You may Resist to avoid this loss. (5-7) The bravest survivors are rounded up. Select the survivors with the highest courage (if case of a tie, select all) and execute them. You may Resist to avoid this loss. (8-9) The strangers destroy a random innovation. Return the lost innovation card to the settlement's innovation deck. The survivors may choose to Resist to avoid this loss.(10+) A halberd is left in the settlement with a survivor impaled on it as a reminder. Suffer -1 population. Add the Guidepost innovation to the settlement."
+  },
+  {
+    "id": 23,
+    "title": "Resist",
+    "description": "You rise up! Stop the settlement phase and prepare to depart for a special showdown with a King's Man. After the showdown, resume the settlement phase. After the showdown. resume the settlement phase. Do not gain (*), draw a settlement event card, or advance a lantern year."
   }
 ]

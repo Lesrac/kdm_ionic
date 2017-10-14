@@ -3,13 +3,13 @@
     <button ion-button (click)="close()">Close</button>
     <ion-title>{{lanternEvent.name}}</ion-title>
   </ion-item-group>
-  <ion-item>
-    <ion-textarea readonly [ngModel]="lanternEvent.todo"></ion-textarea>
+  <ion-item text-wrap>
+    {{lanternEvent.todo}}
   </ion-item>
   <ion-item-group *ngFor="let storyEvent of lanternEvent.storyEvents">
     <ion-item-divider>{{storyEvent.title}}</ion-item-divider>
     <ion-item text-wrap>
-      <div [innerHTML]="storyEvent.description | kdmTextFormatting"></div>
+      <span [innerHTML]="storyEvent.description | kdmTextFormatting"></span>
     </ion-item>
   </ion-item-group>
   <ion-item>

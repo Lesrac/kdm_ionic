@@ -18,18 +18,25 @@
   },
   {
     "name": "Nemesis Encounter - Butcher",
-    "todo": "",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the Butcher's monster level (it should be 1 greater than the last Butcher encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
     "name": "Hands of Heat",
-    "todo": "",
-    "storyEvents": []
+    "todo": "The mystery of the lantern's glow.",
+    "storyEvents": [
+      19,
+      20,
+      21
+    ]
   },
   {
     "name": "Armored Strangers",
-    "todo": "",
-    "storyEvents": []
+    "todo": "You are visited by enigmatic figures, fully-enclosed in armor. They march silently through the settlement. The only noise is a metallic clang, as they pause before each survivor and tap their lantern halberds against the ground. The survivors have no choice but to helplessly await their mute deliberations. Add King's Man to the nemesis encounter list. The Strangers Count People and take action based on the population total.",
+    "storyEvents": [
+      22,
+      23
+    ]
   },
   {
     "name": "Phoenix Feather",
@@ -38,13 +45,16 @@
   },
   {
     "name": "Nemesis Encounter - King's Man",
-    "todo": "",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the King's Man monster level (it should be 1 greater than the last King's Man encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
     "name": "Regal Visit",
-    "todo": "",
-    "storyEvents": []
+    "todo": "The Hand strides into the settlement. The survivors' thoughts vanish as they fall to their knees, struck dumb by its glorious, incomprehensible presence. Add The Hand to the nemesis encounter list. Add Nemesis Encounter - The Hand to the timeline 2 years from now. The Hand begins the Inspection.",
+    "storyEvents": [
+      17,
+      18
+    ]
   },
   {
     "name": "Principle: Conviction",
@@ -69,6 +79,21 @@
   {
     "name": "Nemesis Encounter - Watcher",
     "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - The Hand",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the The Hand's monster level (it should be 1 greater than the last The Hand encounter) and set up the showdown accordingly.",
+    "storyEvents": []
+  },
+  {
+    "name": "Bone Witch",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Age",
+    "todo": "Your time in the darkness changes you.",
     "storyEvents": []
   }
 ]
