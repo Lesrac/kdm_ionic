@@ -43,6 +43,10 @@ export class TextFormattingPipe implements PipeTransform {
         } else if ('*' === matchesWithoutParenthesis) {
           text = text.replace(match, '<ion-icon name="star" role="img" ' +
             'class="icon icon-md ion-md-star" aria-label="star" ng-reflect-name="star"></ion-icon>');
+        } else if ('shieldone' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-shieldone" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-shieldone" aria-label="kdmf shieldone" ' +
+            'ng-reflect-name="kdmf-shieldone"></ion-icon>');
         }
       });
     }

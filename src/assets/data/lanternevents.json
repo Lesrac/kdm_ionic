@@ -40,8 +40,11 @@
   },
   {
     "name": "Phoenix Feather",
-    "todo": "",
-    "storyEvents": []
+    "todo": "A fallen feather fills the settlement with dread.",
+    "storyEvents": [
+      24,
+      25
+    ]
   },
   {
     "name": "Nemesis Encounter - King's Man",
@@ -58,7 +61,7 @@
   },
   {
     "name": "Principle: Conviction",
-    "todo": "",
+    "todo": "The survivors must find a reason to be. Treasure the darkness in all its mystery, or seek to master it and grow strong.",
     "storyEvents": []
   },
   {
@@ -73,7 +76,7 @@
   },
   {
     "name": "Nemesis Encounter - Level 3",
-    "todo": "",
+    "todo": "Select a nemesis monster of your choice from the Nemesis Monster list on the settlement record sheet. You must fight the specific monster level listed, even if you have previously faced it.",
     "storyEvents": []
   },
   {
@@ -88,12 +91,40 @@
   },
   {
     "name": "Bone Witch",
-    "todo": "",
-    "storyEvents": []
+    "todo": "One day. the exile emerged from the darkness. The settlement worried at the sound of her wailing chants. Everyone feared what mystery kept her alive in the darkness all these years. Some could not resist asking.",
+    "storyEvents": [
+      38,
+      39
+    ]
   },
   {
     "name": "Age",
     "todo": "Your time in the darkness changes you.",
-    "storyEvents": []
+    "storyEvents": [
+      26,
+      27,
+      28,
+      29,
+      30
+    ]
+  },
+  {
+    "name": "Birth of a Savior",
+    "todo": "The newborn vanishes from the loving arms of the settlement for a fraction of a second. In that second, it spends a lifetime in the domain of the Ethereal Dreamer and returns with a dream. Choose one:",
+    "storyEvents": [
+      31,
+      32,
+      33
+    ]
+  },
+  {
+    "name": "Bold",
+    "todo": "In a single moment, your perspective changes profoundly.",
+    "storyEvents": [
+      34,
+      35,
+      36,
+      37
+    ]
   }
 ]

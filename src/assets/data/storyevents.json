@@ -113,5 +113,85 @@
     "id": 23,
     "title": "Resist",
     "description": "You rise up! Stop the settlement phase and prepare to depart for a special showdown with a King's Man. After the showdown, resume the settlement phase. After the showdown. resume the settlement phase. Do not gain (*), draw a settlement event card, or advance a lantern year."
+  },
+  {
+    "id": 24,
+    "title": "Phoenix Feather Event",
+    "description": "The skies bubble and murmur as a dark presence tears through the atmosphere like a negative lighting bolt, sucking the air and energy from all who gaze upon it.(br) A light rain begins . The survivors turn their eyes up to see a huge, iridescent feather slowly floating toward the ground. Their lantern lights reflect strange rainbows off the twisting feather. A primal fear takes root in the settlement.(br) You may now hunt the Phoenix. Add it to the quarry list on the settlement record sheet. Nominate a single survivor to speak. They gain + 1 courage and Break the Silence."
+  },
+  {
+    "id": 25,
+    "title": "Break the silence",
+    "description": "(1) The survivor attempts to speak, but before the words can leave their lips, they fall over dead from fright. The settlement panics and decides to banish the fallen feather into the darkness. (2-5) The survivor shoos everyone away from the feather. Alone in the rain , they examine it. The nominated survivor gains + 1 understanding and the Tail Feather Phoenix resource. (4-5) If the settlement chose Survival of the Fittest Birth Principle, the survivor raves to no one in particular about an oncoming trial. bursting in to laughter and tearing the feather apart! The survivor gains +1 permanent evasion and the Honorable disorder. (6-10) The survivor exclaims that the fallen feather is the most beautiful and dangerous thing they have ever laid eyes on . Each color runs perfectly into another, and gazing upon it imparts a strange sense of longing. They are convinced that there has never been something so perfect in this world.(br) The survivor greedily hides the feather from the others. They gain the Crazed fighting art, the Hoarder disorder, and + 1 courage (from stashing the feather)!(br) Returning survivors gain +2 insanity."
+  },
+  {
+    "id": 26,
+    "title": "Age Story Event",
+    "description": "Gain the benefits for the Hunt XP milestone you have reached. A survivor may only gain each milestone benefit once a lifetime."
+  },
+  {
+    "id": 27,
+    "title": "1 | Weapon Proficiency",
+    "description": "You may now select a weapon type for weapon proficiency. (If you wound a monster with the selected weapon type, you are now eligible to gain a proficiency level during the aftermath). Roll on the table below.(br) Available Weapon Types(br) axe, bow, club, dagger, fist & tooth, grand weapon, katar, shield, spear, sword, and whip.(br) 2d10 (2) Gain +1 permanent evasion. (3-6) Gain +1 permanent strength. (7-15) Gain 1 random fighting art. (16-19) Gain +1 permanent accuracy. (20) Gain +1 permanent luck."
+  },
+  {
+    "id": 28,
+    "title": "2 | Improved Reflexes",
+    "description": "The years sharpen your reflexes. Roll on the table below.(br) 2d10 (2) Gain +1 permanent movement. (3-6) Gain 1 random fighting art. (7-15) Gain +1 permanent strength. (16-19) Gain 1 random fighting art. (20) Gain +1 permanent speed."
+  },
+  {
+    "id": 29,
+    "title": "3 | Enhanced Senses",
+    "description": "Experience sharpens your instincts. Roll on the table below.(br) 2d10 (2) Gain +1 permanent speed. (3-6) Gain +1 permanent movement. (7-15) Gain 1 random fighting art. (16-19) Draw 2 random fighting arts and gain 1. (20) Gain +3 permanent strength."
+  },
+  {
+    "id": 30,
+    "title": "4 | Lucky Elder",
+    "description": "Age is the rarest resource of all. Roll on the table below.(br) 2d10 (2) Draw 5 random fighting arts and gain 1. (3-6) Gain +1 permanent evasion. (7-15) Gain +1 permanent evasion. (16-19) Gain +1 permanent speed. (20) Gain +1 permanent attribute of your choice."
+  },
+  {
+    "id": 31,
+    "title": "Dream of the Beast",
+    "description": "The newborn gains 1 permanent red affinity and the following abilities:(br) Caratosis: For each red affinity you have, 1 of your attack rolls hits automatically each attack.(br) Red Life Exchange: In the Aftermath, gain 3 additional Hunt XP. You may not place other gear in your grid. Gain+ 1 permanent strength with each Age milestone. When you retire, you cease to exist."
+  },
+  {
+    "id": 32,
+    "title": "Dream of the Crown",
+    "description": "The newborn gains 1 permanent green affinity and the following abilities:(br) Dormenatus: When you depart, gain (shieldone) to every hit location for each green affinity you have.(br) Green Life Exchange: In the Aftermath , gain 3 additional Hunt XP. You may not place other gear in your grid. Gain + 1 permanent evasion with each Age milestone. When you retire, you cease to exist."
+  },
+  {
+    "id": 33,
+    "title": "Dream of the Lantern",
+    "description": "The newborn gains 1 permanent blue affinity and the following abilities:(br) Lucernae: For every blue affinity you have, your ranged weapons gain this amount of range and your melee weapons gain this amount of reach.(br) Blue Life Exchange: In the Aftermath, gain 3 additional Hunt XP. You may not place other gear in your grid. Gain+ 1 permanent luck with each Age milestone. When you retire, you cease to exist."
+  },
+  {
+    "id": 34,
+    "title": "Bold Story Event",
+    "description": "Select the triumph corresponding to the current game phase. A survivor may only gain these benefits once a lifetime."
+  },
+  {
+    "id": 35,
+    "title": "Showdown Phase Triumph",
+    "description": "The essential difference between man and monster is a gap no human can overcome. You accept this and tap into a deep well of deranged fortitude. Gain the following ability and roll on the table below.(br) Stalwart: Ignore being knocked down by brain trauma and intimidation actions. (1-3) Gain +1 strength token. (4-7) Gain +3 survival and +3 insanity. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent speed."
+  },
+  {
+    "id": 36,
+    "title": "Hunt Phase Triumph",
+    "description": "Expect the unexpected. You are prepared to face any mind-bending trials at a moments notice. Where others may falter , you forge ahead, meeting the journey head on. Gain the following ability and roll on the table below.(br) Prepared: When rolling to determine a straggler, add your hunt experience to your roll result. (1-3) Gain +1 speed token for next showdown. (4-7) Gain +1 understanding. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent movement."
+  },
+  {
+    "id": 37,
+    "title": "Settlement Phase Triumph",
+    "description": "In this fleeting existence, every moment shared creates meaning. The bonds forged between survivors give you hope. Gain the following ability and roll on the table below.(br) Matchmaker: When you are a returning survivor, once per year you may spend (*) to (milestoneNL) Intimacy. (1-3) May reroll 1 (*) result this settlement phase. (4-7) Gain +1 (*) this settlement phase. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent accuracy."
+  },
+  {
+    "id": 38,
+    "title": "Bone Witch Story Event",
+    "description": "All non-deaf returning survivors gain 3 insanity.(br) Insane returning survivors are inexorably drawn to the Bone Witch and must endeavor at the Witch Camp. Otherwise, during this settlement phase, any survivor may endeavor at the Witch Camp if they choose."
+  },
+  {
+    "id": 39,
+    "title": "(*) Witch Camp - roll 1d10",
+    "description": "(1) The Bone Witch never forgave her exile. Her burning hatred lit the dark brighter than any lantern. With jagged teeth and gnarled claws, she attacks! You manage to escape, but the wounds she inflicted continue to burn. Suffer -1 permanent strength, -1 permanent accuracy and skip the next hunt.(br) Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from the current lantern year. (2-4) The secrets of the dark should not be seen. The last thing you see are the witch's outreached claws reaching for your eyes. Your eyes are scarred. Suffer -4 permanent accuracy and gain +4 permanent strength . If, for some reason , you gain this result twice, you die.(br) Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from the current lantern year. (5-7) The Bone Witch mutters of the alluring embrace of the awaiting darkness. Her stories stir strange yearnings in your bones. For being a patient listener, she offers to teach you something for the cost of 1d5 bone resources.(br) If you spend the resources, gain the Extra Sense fighting art and +3 survival. (8-10) The Bone Witch spends whispers of the horrors and wonders she has seen, arming you with valuable wisdom. Gain +2 insanity, +1 understanding, and the following ability.(br) Homing Instinct: Add +5 to your rolls on the Run Away story event. (9-10) If the settlement has the Guidepost innovation, the Bone Witch wanders over to it. The settlement is transfixed by a sense of danger. Effortlessly, the Which plucks the weapon from the ground. Archive the Guidepost innovation.(br) As a consolation. she offers to teach the settlement something in exchange for 1 bone.(br) If you spend 1 bone, nominate 4 survivors. They gain the Monster Claw Style fighting art."
   }
 ]

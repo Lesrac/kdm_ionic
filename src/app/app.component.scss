@@ -24,3 +24,20 @@
 .odd {
   background-color: #e0e0e5;
 }
+
+ion-icon {
+  &[class*="kdmf-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+  // custom icons
+  &[class*="kdmf-shieldone"] {
+    mask-image: url(../assets/img/shieldone.svg);
+  }
+}
