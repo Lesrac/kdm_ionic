@@ -18,6 +18,7 @@ import { Weapon } from '../model/weapon';
 import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
 import { SevereInjury } from '../model/severe_injury';
+import { BrainTrauma } from '../model/brain_trauma';
 
 /**
  * Created by Daniel on 31.05.2017.
@@ -249,4 +250,15 @@ export class JsonToObjectConverter {
     };
     return severeInjury;
   }
+
+  public static convertToBrainTraumaObject(brainTraumaJSON: any): BrainTrauma {
+    const brainTrauma: BrainTrauma = {
+      name: brainTraumaJSON.name,
+      description: brainTraumaJSON.description,
+      minRoll: brainTraumaJSON.minRoll,
+      maxRoll: brainTraumaJSON.maxRoll,
+    };
+    return brainTrauma;
+  }
+
 }

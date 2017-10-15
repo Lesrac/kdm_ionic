@@ -8,5 +8,25 @@
 
 <ion-content>
   <ion-list>
+    <ion-item-group *ngFor="let brainTrauma of brainTraumas">
+      <ion-row>
+        <ion-col col-3 *ngIf="brainTrauma.minRoll === brainTrauma.maxRoll">
+          <ion-item no-lines>{{brainTrauma.minRoll}}</ion-item>
+        </ion-col>
+        <ion-col col-3 *ngIf="brainTrauma.minRoll != brainTrauma.maxRoll && brainTrauma.maxRoll < 900">
+          <ion-item no-lines>{{brainTrauma.minRoll}}-{{brainTrauma.maxRoll}}</ion-item>
+        </ion-col>
+        <ion-col col-3 *ngIf="brainTrauma.minRoll != brainTrauma.maxRoll && brainTrauma.maxRoll > 900">
+          <ion-item no-lines>{{brainTrauma.minRoll}}+</ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item text-wrap>
+            <b>{{brainTrauma.name}}</b> {{brainTrauma.description}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item-divider></ion-item-divider>
+    </ion-item-group>
   </ion-list>
+
 </ion-content>

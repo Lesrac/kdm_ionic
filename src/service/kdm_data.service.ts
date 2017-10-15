@@ -369,6 +369,10 @@ export class KDMDataService {
       severeInjury.hitLocation === hitLocationEnum));
   }
 
+  getAllBrainTraumas(): Promise<SevereInjury[]> {
+    return this.getGenericList('assets/data/braintraumas.json', JsonToObjectConverter.convertToBrainTraumaObject);
+  }
+
   sortByName(l, r) {
     if (l.name < r.name) {
       return -1;

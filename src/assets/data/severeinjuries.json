@@ -117,5 +117,194 @@
     "hitLocation": "arms",
     "minRoll": "10",
     "maxRoll": "999"
+  },
+  {
+    "name": "Instant death.",
+    "description": "The blow sends a bone fragment directly into your heart, killing you instantly.",
+    "hitLocation": "body",
+    "minRoll": "1",
+    "maxRoll": "2"
+  },
+  {
+    "name": "Bleeding.",
+    "description": "Gain 2 bleeding tokens.",
+    "hitLocation": "body",
+    "minRoll": "3",
+    "maxRoll": "3"
+  },
+  {
+    "name": "Gaping chest wound.",
+    "description": "Suffer -1 permanent strength. This injury is permanent, and can be recorded multiple times. Gain 1 bleeding token.",
+    "hitLocation": "body",
+    "minRoll": "4",
+    "maxRoll": "4"
+  },
+  {
+    "name": "Destroyed back.",
+    "description": "A sharp cracking noise. Suffer -2 permanent movement. You can no longer activate any gear that has 2+ strength. This injury is permanent, and can be recorded once. Gain 1 bleeding token.",
+    "hitLocation": "body",
+    "minRoll": "5",
+    "maxRoll": "5"
+  },
+  {
+    "name": "Disemboweled.",
+    "description": "Your movement is reduced to 1 until the showdown ends. Gain 1 bleeding token. Skip the next hunt. If you suffer disemboweled during a showdown, at least one other survivor must live to the end of that showdown to carry you back to the settlement. Otherwise, at the end of the showdown, you are lost. Dead.",
+    "hitLocation": "body",
+    "minRoll": "6",
+    "maxRoll": "6"
+  },
+  {
+    "name": "Ruptured spleen.",
+    "description": "A vicious body blow. Skip the next hunt. Gain 2 bleeding tokens.",
+    "hitLocation": "body",
+    "minRoll": "7",
+    "maxRoll": "7"
+  },
+  {
+    "name": "Broken rib.",
+    "description": "It even hurts to breathe. Suffer -1 permanent speed. This injury is permanent, and can be recorded multiple times. Gain 1 bleeding token.",
+    "hitLocation": "body",
+    "minRoll": "8",
+    "maxRoll": "8"
+  },
+  {
+    "name": "Collapsed lung.",
+    "description": "You can't catch a breath. Gain -1 movement token. Gain 1 bleeding token.",
+    "hitLocation": "body",
+    "minRoll": "9",
+    "maxRoll": "9"
+  },
+  {
+    "name": "Bowled over.",
+    "description": "The blow sends you sprawling and you are knocked down.",
+    "hitLocation": "body",
+    "minRoll": "10",
+    "maxRoll": "999"
+  },
+  {
+    "name": "Final breath.",
+    "description": "With your last gasp, you utter final words of bravery. Adjacent survivors gain +1 survival. You are dead.",
+    "hitLocation": "waist",
+    "minRoll": "1",
+    "maxRoll": "2"
+  },
+  {
+    "name": "Bleeding kidneys.",
+    "description": "Gain 2 bleeding tokens.",
+    "hitLocation": "waist",
+    "minRoll": "3",
+    "maxRoll": "3"
+  },
+  {
+    "name": "Intestinal prolapse.",
+    "description": "Your gut is gravely injured. You can no longer equip any gear on your waist, as it is too painful to wear. This injury is permanent, and can be recorded once. Gain 1 bleeding token.",
+    "hitLocation": "waist",
+    "minRoll": "4",
+    "maxRoll": "4"
+  },
+  {
+    "name": "Warped pelvis.",
+    "description": "Your pelvis is disfigured. Suffer -1 permanent luck. This injury is permanent, and can be recorded multiple times. Gain 1 bleeding token.",
+    "hitLocation": "waist",
+    "minRoll": "5",
+    "maxRoll": "5"
+  },
+  {
+    "name": "Destroyed genitals.",
+    "description": "You cannot be nominated for the Intimacy story event. This injury is permanent, and can be recorded once. Gain a random disorder. You are knocked down. Gazing upwards, you wonder at the futility of your struggle. Gain +3 insanity. Gain 1 bleeding token.",
+    "hitLocation": "waist",
+    "minRoll": "6",
+    "maxRoll": "6"
+  },
+  {
+    "name": "Broken hip.",
+    "description": "Your hip is dislocated. You can no longer dodge. Suffer -1 permanent movement. This injury is permanent, and can be recorded once. Gain 1 bleeding token.",
+    "hitLocation": "waist",
+    "minRoll": "7",
+    "maxRoll": "7"
+  },
+  {
+    "name": "Slashed Back.",
+    "description": "Making sudden movement is excruciatingly painful. You cannot surge until showdown ends. Gain 1 bleeding token.",
+    "hitLocation": "waist",
+    "minRoll": "8",
+    "maxRoll": "8"
+  },
+  {
+    "name": "Bruised Tail-bone.",
+    "description": "The base of your spine is in agony. You cannot dash until showdown ends. You are knocked down. Gain 1 bleeding token.",
+    "hitLocation": "waist",
+    "minRoll": "9",
+    "maxRoll": "9"
+  },
+  {
+    "name": "Belly-up.",
+    "description": "The blow sends you sprawling and you are knocked down.",
+    "hitLocation": "waist",
+    "minRoll": "10",
+    "maxRoll": "999"
+  },
+  {
+    "name": "Blood Geyser.",
+    "description": "Blood shoots from your femoral artery at an alarming rate, killing you in seconds.",
+    "hitLocation": "legs",
+    "minRoll": "1",
+    "maxRoll": "1"
+  },
+  {
+    "name": "Bleeding.",
+    "description": "Gain 2 bleeding tokens.",
+    "hitLocation": "legs",
+    "minRoll": "2",
+    "maxRoll": "3"
+  },
+  {
+    "name": "Dismembered Leg.",
+    "description": "Lose a leg. You suffer -2 permanent movement, and can no longer dash. This injury is permanent, and can be recorded twice. A survivor with two dismembered leg severe injuries hast lost both of their legs and must retire at the end of the next showdown or settlement phase. Gain 1 bleeding token.",
+    "hitLocation": "legs",
+    "minRoll": "4",
+    "maxRoll": "4"
+  },
+  {
+    "name": "Hamstrung.",
+    "description": "A painful rip. The leg is unusable. You can no longer use any fighting arts or abilities. This injury is permanent, and can be recorded once. Gain 1 bleeding token.",
+    "hitLocation": "legs",
+    "minRoll": "5",
+    "maxRoll": "5"
+  },
+  {
+    "name": "Torn Achilles Tendon.",
+    "description": "Your leg cannot bear your weight. Until the end of the showdown, whenever you suffer light, heavy, or severe injury, you are also knocked down. Skip the next hunt. Gain 1 bleeding token.",
+    "hitLocation": "legs",
+    "minRoll": "6",
+    "maxRoll": "6"
+  },
+  {
+    "name": "Torn muscle.",
+    "description": "Your quadriceps is ripped to shreds. You cannot dash until the showdown ends. Skip the next hunt. Gain 1 bleeding token.",
+    "hitLocation": "legs",
+    "minRoll": "7",
+    "maxRoll": "7"
+  },
+  {
+    "name": "Broken Leg.",
+    "description": "An ear-shattering crunch! Adjacent survivors suffer 1 brain damage. Suffer -1 permanent movement. This injury is permanent, and can be recorded twice. Gain 1 bleeding token.",
+    "hitLocation": "legs",
+    "minRoll": "8",
+    "maxRoll": "8"
+  },
+  {
+    "name": "Bloody Tights.",
+    "description": "Gain 2 bleeding tokens.",
+    "hitLocation": "legs",
+    "minRoll": "9",
+    "maxRoll": "9"
+  },
+  {
+    "name": "Lost balance.",
+    "description": "The blow sends you sprawling and you are knocked down.",
+    "hitLocation": "legs",
+    "minRoll": "10",
+    "maxRoll": "999"
   }
 ]

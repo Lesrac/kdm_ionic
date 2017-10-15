@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Mortal Terror",
+    "description": "No ifs, ands, or buts, the survivor is dead.",
+    "minRoll": "1",
+    "maxRoll": "2"
+  },
+  {
+    "name": "Memory loss.",
+    "description": "Lose 2 levels of weapon proficiency.",
+    "minRoll": "3",
+    "maxRoll": "3"
+  },
+  {
+    "name": "Flee.",
+    "description": "You are knocked down and suffer knockback equal to your movement towards the closes board edge. Gain 1d5 insanity.",
+    "minRoll": "4",
+    "maxRoll": "4"
+  },
+  {
+    "name": "Danger seizure.",
+    "description": "You trash about wildfly, dealing 1 damage to yourself and every adjacent survivor. Gain random disorder and 1d5 insanity.",
+    "minRoll": "5",
+    "maxRoll": "6"
+  },
+  {
+    "name": "Lunacy.",
+    "description": "Gain a random disorder and 1d5 insanity.",
+    "minRoll": "7",
+    "maxRoll": "8"
+  },
+  {
+    "name": "New perspective.",
+    "description": "You are knocked down and gain 1d10 insanity.",
+    "minRoll": "9",
+    "maxRoll": "9"
+  },
+  {
+    "name": "Frenzy.",
+    "description": "Gain 1d5 insanity, +1 speed token and +1 strength token. Ignore slow on melee weapons. You may not spend survival. You may not use fighting arts. You may not use weapon specialization or weapon mastery. Can be gained multiple times. Lasts until end of showdown.",
+    "minRoll": "10",
+    "maxRoll": "10"
+  },
+  {
+    "name": "Maniacal laughter.",
+    "description": "You are knocked down. Gain -1 speed token, the priority target token, and 1d5 insanity.",
+    "minRoll": "11",
+    "maxRoll": "11"
+  },
+  {
+    "name": "Clarity",
+    "description": "You are knocked down. Add your current survival to insanity and reduce your survival to 0. Gain a random disorder. If you already have 3 disorders, you die.",
+    "minRoll": "12",
+    "maxRoll": "12"
+  },
+  {
+    "name": "Impossible!",
+    "description": "How could this happen! Gain +1d10 survival, +1d10 insanity and +2 luck tokens!",
+    "minRoll": "13",
+    "maxRoll": "13"
+  }
+]
