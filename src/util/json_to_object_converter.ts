@@ -15,8 +15,9 @@ import { StorageTag } from '../model/storage';
 import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
 import { Weapon } from '../model/weapon';
-import { Armor } from '../model/armor';
+import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
+import { SevereInjury } from '../model/severe_injury';
 
 /**
  * Created by Daniel on 31.05.2017.
@@ -212,13 +213,14 @@ export class JsonToObjectConverter {
 
   public static convertToArmorObject(armorJSON: any, tags: StorageTag[],
                                      affinities: Map<Affinity, Direction[]>): Armor {
+    const space: ArmorSpace = <ArmorSpace>ArmorSpace[<string>armorJSON.space];
     const armor: Armor = {
       amount: armorJSON.amount,
       tags: tags,
       description: armorJSON.description,
       name: armorJSON.name,
       affinities: affinities,
-      space: armorJSON.space,
+      space: space,
       value: armorJSON.value,
     };
     return armor;
@@ -226,13 +228,25 @@ export class JsonToObjectConverter {
 
   public static convertToEquipmentObject(equipmentJSON: any, tags: StorageTag[],
                                          affinities: Map<Affinity, Direction[]>): Equipment {
-    const equipeequipmentnt: Equipment = {
+    const equipeequipment: Equipment = {
       amount: equipmentJSON.amount,
       tags: tags,
       description: equipmentJSON.description,
       name: equipmentJSON.name,
       affinities: affinities,
     };
-    return equipeequipmentnt;
+    return equipeequipment;
+  }
+
+  public static convertToSevereInjuryObject(severeInjuryJSON: any): SevereInjury {
+    const hitLocation: ArmorSpace = <ArmorSpace>ArmorSpace[<string>severeInjuryJSON.hitLocation];
+    const severeInjury: SevereInjury = {
+      name: severeInjuryJSON.name,
+      description: severeInjuryJSON.description,
+      minRoll: severeInjuryJSON.minRoll,
+      maxRoll: severeInjuryJSON.maxRoll,
+      hitLocation: hitLocation,
+    };
+    return severeInjury;
   }
 }

@@ -15,9 +15,10 @@ import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { StoryEvent } from '../model/story_event';
 import { Storage, StorageTag } from '../model/storage';
 import { Weapon } from '../model/weapon';
-import { Armor } from '../model/armor';
+import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
 import { isUndefined } from 'ionic-angular/util/util';
+import { SevereInjury } from '../model/severe_injury';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -356,6 +357,16 @@ export class KDMDataService {
           return data;
         },
       );
+  }
+
+  getAllSevereInjuries(): Promise<SevereInjury[]> {
+    return this.getGenericList('assets/data/severeinjuries.json', JsonToObjectConverter.convertToSevereInjuryObject);
+  }
+
+  getSevereInjuriesToHitLocation(hitLocation: string): Promise<SevereInjury[]> {
+    const hitLocationEnum: ArmorSpace = <ArmorSpace>ArmorSpace[hitLocation];
+    return this.getAllSevereInjuries().then(severeInjuries => severeInjuries.filter(severeInjury =>
+      severeInjury.hitLocation === hitLocationEnum));
   }
 
   sortByName(l, r) {
