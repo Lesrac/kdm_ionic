@@ -370,7 +370,7 @@ export class KDMDataService {
   }
 
   getAllBrainTraumas(): Promise<SevereInjury[]> {
-    return this.getGenericList('assets/data/braintraumas.json', JsonToObjectConverter.convertToBrainTraumaObject);
+    return this.getGenericList('assets/data/braintraumas.json', JsonToObjectConverter.convertToDiceThrowObject);
   }
 
   sortByName(l, r) {

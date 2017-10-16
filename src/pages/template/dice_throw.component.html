@@ -1,0 +1,16 @@
+<ion-row>
+  <ion-col col-3 *ngIf="value.minRoll === value.maxRoll">
+    <ion-item no-lines>{{value.minRoll}}</ion-item>
+  </ion-col>
+  <ion-col col-3 *ngIf="value.minRoll != value.maxRoll && value.maxRoll < 900">
+    <ion-item no-lines>{{value.minRoll}}-{{value.maxRoll}}</ion-item>
+  </ion-col>
+  <ion-col col-3 *ngIf="value.minRoll != value.maxRoll && value.maxRoll > 900">
+    <ion-item no-lines>{{value.minRoll}}+</ion-item>
+  </ion-col>
+  <ion-col>
+    <ion-item text-wrap>
+      <b>{{value.name}}</b> {{value.description}}
+    </ion-item>
+  </ion-col>
+</ion-row>

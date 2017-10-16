@@ -1,10 +1,8 @@
-import { BaseModel } from './base_model';
 import { ArmorSpace } from './armor';
+import { DiceThrow } from './dice_throw';
 
-export class SevereInjury extends BaseModel {
+export class SevereInjury extends DiceThrow {
 
   hitLocation: ArmorSpace;
-  minRoll: number;
-  maxRoll: number;
 
 }

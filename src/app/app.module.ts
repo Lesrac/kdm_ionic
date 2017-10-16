@@ -42,6 +42,7 @@ import { HuntEventTablePageComponent } from '../pages/others/hunt_event_table/hu
 import { SevereInjuriesPageComponent } from '../pages/others/severe_injuries/severe_injuries.component';
 import { StoryEventsPageComponent } from '../pages/others/story_events/story_events.component';
 import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe_injuries_detail.component';
+import { DiceThrowComponent } from '../pages/template/dice_throw.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuri
     SurvivorsPageComponent,
     SurvivorPageComponent,
     InputNumberComponent,
+    DiceThrowComponent,
     ShowListComponent,
     ShowListDetailComponent,
     ShowListAddModalComponent,
