@@ -378,6 +378,10 @@ export class KDMDataService {
     return this.getGenericList('assets/data/huntevents.json', JsonToObjectConverter.convertToHuntEventObject);
   }
 
+  getAllGlossaryEntries(): Promise<HuntEvent[]> {
+    return this.getGenericList('assets/data/glossaryentries.json', JsonToObjectConverter.convertToBaseModelObject);
+  }
+
   sortByName(l, r) {
     if (l.name < r.name) {
       return -1;

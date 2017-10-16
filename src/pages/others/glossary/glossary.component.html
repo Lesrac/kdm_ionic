@@ -4,9 +4,14 @@
       Glossary
     </ion-title>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="filterGlossary($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngFor="let glossaryEntry of filteredGlossaryEntries">
+    <ion-item text-wrap no-lines><b>{{glossaryEntry.name}}:</b> {{glossaryEntry.description}}</ion-item>
+    <ion-item-divider small></ion-item-divider>
   </ion-list>
 </ion-content>

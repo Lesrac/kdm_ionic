@@ -21,6 +21,7 @@ import { SevereInjury } from '../model/severe_injury';
 import { BrainTrauma } from '../model/brain_trauma';
 import { DiceThrow } from '../model/dice_throw';
 import { HuntEvent } from '../model/hunte_event';
+import { BaseModel } from '../model/base_model';
 
 /**
  * Created by Daniel on 31.05.2017.
@@ -270,6 +271,14 @@ export class JsonToObjectConverter {
       rollResult: huntEventJSON.rollResult,
     };
     return huntEvent;
+  }
+
+  public static convertToBaseModelObject(baseModelJSON: any): BaseModel {
+    const baseModel: BaseModel = {
+      name: baseModelJSON.name,
+      description: baseModelJSON.description,
+    };
+    return baseModel;
   }
 
 }

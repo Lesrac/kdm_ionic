@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Abilities",
+    "description": "Skills and techniques learned by survivors, usually through story events, and recorded on the Survivor Record Sheet."
+  },
+  {
+    "name": "Absorb",
+    "description": "The Watchers instinct. Described on the Watcher show-down story event."
+  },
+  {
+    "name": "Accessory",
+    "description": "A gear special rule. Accessory gear may be worn in addition to armor on a hit location. Each accessory specifies the hit location it covers."
+  },
+  {
+    "name": "Accuracy (Attribute)",
+    "description": "Represents permanent changes to attack rolls. Positive attribute adds to the dice roll. while negative attribute subtracts from the dice roll."
+  },
+  {
+    "name": "Accuracy (Weapon/Attack Profile)",
+    "description": "The number that each attack roll result must meet or exceed In order to be considered a hit. Listed on monster attack profiles and weapon gear."
+  },
+  {
+    "name": "Acid Palms",
+    "description": "An ability. Add ldlO strength to wound attempts when attacking with Fist & Tooth."
+  },
+  {
+    "name": "Act",
+    "description": "The part of the survivors· turn in which an individual survivor gains movement and activation. Each survivor must complete their act before another may start theirs. and all unused movement and activations are lost when a survivor ends their act."
+  },
+  {
+    "name": "Action",
+    "description": "Most things a survivor or monster can do during the Showdown Phase, like moving and attacking, are actions."
+  },
+  {
+    "name": "Activation",
+    "description": "Activation can be spent to attack, activate some gear, and interact with terrain. Survivors gain one activation during that survivor's act."
+  },
+  {
+    "name": "Adjacent (Miniature)",
+    "description": "A miniature is adjacent to another when it occupies a space one space in a cardinal (non-diagonal} direction from a square occupied by the other miniature."
+  }
+]
