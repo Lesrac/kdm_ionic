@@ -19,6 +19,7 @@ import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
 import { isUndefined } from 'ionic-angular/util/util';
 import { SevereInjury } from '../model/severe_injury';
+import { HuntEvent } from '../model/hunte_event';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -371,6 +372,10 @@ export class KDMDataService {
 
   getAllBrainTraumas(): Promise<SevereInjury[]> {
     return this.getGenericList('assets/data/braintraumas.json', JsonToObjectConverter.convertToDiceThrowObject);
+  }
+
+  getAllHuntEvents(): Promise<HuntEvent[]> {
+    return this.getGenericList('assets/data/huntevents.json', JsonToObjectConverter.convertToHuntEventObject);
   }
 
   sortByName(l, r) {

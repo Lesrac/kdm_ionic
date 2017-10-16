@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Broken Lanterns",
+    "description": "The survivors hear the crunching of glass beneath their feet. The event revealer may choose to investigate or continue their journey. If they choose to investigate, the event revealer rolls on the table. Otherwise roll again on the hunt event table before moving on the hunt event board.",
+    "rollResult": "1"
+  },
+  {
+    "name": "Corpse",
+    "description": "",
+    "rollResult": "2"
+  },
+  {
+    "name": "Cancer Pigeons",
+    "description": "",
+    "rollResult": "3"
+  },
+  {
+    "name": "Famine",
+    "description": "",
+    "rollResult": "4"
+  },
+  {
+    "name": "Flesh Fields",
+    "description": "",
+    "rollResult": "5"
+  },
+  {
+    "name": "Faceless Statue",
+    "description": "",
+    "rollResult": "6"
+  },
+  {
+    "name": "Hungry Ground",
+    "description": "",
+    "rollResult": "7"
+  },
+  {
+    "name": "Wailing Smoke",
+    "description": "",
+    "rollResult": "8"
+  },
+  {
+    "name": "Golden Light",
+    "description": "",
+    "rollResult": "9"
+  },
+  {
+    "name": "Harvester",
+    "description": "",
+    "rollResult": "10"
+  },
+  {
+    "name": "Monster Droppings",
+    "description": "",
+    "rollResult": "11"
+  },
+  {
+    "name": "Destiny-Bound",
+    "description": "",
+    "rollResult": "12"
+  },
+  {
+    "name": "Overload",
+    "description": "",
+    "rollResult": "13"
+  },
+  {
+    "name": "Chance Encounter",
+    "description": "",
+    "rollResult": "14"
+  },
+  {
+    "name": "Man-trap",
+    "description": "",
+    "rollResult": "15"
+  },
+  {
+    "name": "Night Terrors",
+    "description": "",
+    "rollResult": "16"
+  },
+  {
+    "name": "Face-to-Face",
+    "description": "",
+    "rollResult": "17"
+  },
+  {
+    "name": "Dead Weed",
+    "description": "",
+    "rollResult": "18"
+  },
+  {
+    "name": "Exhalation of Darkness",
+    "description": "",
+    "rollResult": "19"
+  },
+  {
+    "name": "Dry Lands",
+    "description": "",
+    "rollResult": "20"
+  },
+  {
+    "name": "Drawings",
+    "description": "",
+    "rollResult": "21"
+  },
+  {
+    "name": "Acid Rain",
+    "description": "",
+    "rollResult": "22"
+  },
+  {
+    "name": "Clean Water",
+    "description": "",
+    "rollResult": "23"
+  },
+  {
+    "name": "Food from the Mouths of Others",
+    "description": "",
+    "rollResult": "24"
+  },
+  {
+    "name": "Titans in the Dark",
+    "description": "",
+    "rollResult": "25"
+  },
+  {
+    "name": "Pit",
+    "description": "",
+    "rollResult": "26"
+  },
+  {
+    "name": "Man-Stealers",
+    "description": "",
+    "rollResult": "27"
+  },
+  {
+    "name": "Trollbird",
+    "description": "",
+    "rollResult": "28"
+  },
+  {
+    "name": "Dark Blacksmith",
+    "description": "",
+    "rollResult": "29"
+  },
+  {
+    "name": "Rotten Faces",
+    "description": "",
+    "rollResult": "30"
+  },
+  {
+    "name": "Strange Path",
+    "description": "",
+    "rollResult": "31"
+  },
+  {
+    "name": "Sudden Madness",
+    "description": "",
+    "rollResult": "32"
+  },
+  {
+    "name": "lt Whispers Your Name",
+    "description": "",
+    "rollResult": "33"
+  },
+  {
+    "name": "Crippling Misery",
+    "description": "",
+    "rollResult": "34"
+  },
+  {
+    "name": "Broken Lantern Oven",
+    "description": "",
+    "rollResult": "35"
+  },
+  {
+    "name": "On the Trail",
+    "description": "",
+    "rollResult": "36"
+  },
+  {
+    "name": "Lost",
+    "description": "",
+    "rollResult": "37"
+  },
+  {
+    "name": "Gregalope",
+    "description": "",
+    "rollResult": "38"
+  },
+  {
+    "name": "Heavy Mist",
+    "description": "",
+    "rollResult": "39"
+  },
+  {
+    "name": "Dream",
+    "description": "The event revealer has a dream of the upcoming hunt. They stand before the great beast, weapon ready, but it strikes them down. If the event revealer has 3+ courage, emboldened by the dream, the event revealer gains +1 evasion token. Otherwise, the dream is merely rattling, suffer 1 brain event damage.",
+    "rollResult": "40"
+  },
+  {
+    "name": "Nightmare",
+    "description": "The event revealer has a dream of the upcoming hunt. They stand before the great beast, weapon ready, but it strikes them down. If the event revealer has 3+ courage, the dream is merely rattling. Suffer 1 brain event damage. Otherwise, crippled with anxiety, the event revealer gains -1 evasion token.",
+    "rollResult": "41"
+  },
+  {
+    "name": "Surgeon",
+    "description": "",
+    "rollResult": "42"
+  },
+  {
+    "name": "Fresh Kill",
+    "description": "",
+    "rollResult": "43"
+  },
+  {
+    "name": "Opportunists",
+    "description": "",
+    "rollResult": "44"
+  },
+  {
+    "name": "Jagged Valley",
+    "description": "",
+    "rollResult": "45"
+  },
+  {
+    "name": "River",
+    "description": "",
+    "rollResult": "46"
+  },
+  {
+    "name": "Banquet Trees",
+    "description": "",
+    "rollResult": "47"
+  },
+  {
+    "name": "Death Wager",
+    "description": "",
+    "rollResult": "48"
+  },
+  {
+    "name": "Oil Fields",
+    "description": "",
+    "rollResult": "49"
+  },
+  {
+    "name": "Gibbet",
+    "description": "",
+    "rollResult": "50"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "51"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "52"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "53"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "54"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "55"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "56"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "57"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "58"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "59"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "60"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "61"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "62"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "63"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "64"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "65"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "66"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "67"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "68"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "69"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "70"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "71"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "72"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "73"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "74"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "75"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "76"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "77"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "78"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "79"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "80"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "81"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "82"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "83"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "84"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "85"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "86"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "87"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "88"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "89"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "90"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "91"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "92"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "93"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "94"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "95"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "96"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "97"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "98"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "99"
+  },
+  {
+    "name": "",
+    "description": "",
+    "rollResult": "100"
+  }
+]

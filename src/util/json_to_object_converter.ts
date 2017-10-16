@@ -20,6 +20,7 @@ import { Affinity, Direction, Equipment } from '../model/equipment';
 import { SevereInjury } from '../model/severe_injury';
 import { BrainTrauma } from '../model/brain_trauma';
 import { DiceThrow } from '../model/dice_throw';
+import { HuntEvent } from '../model/hunte_event';
 
 /**
  * Created by Daniel on 31.05.2017.
@@ -260,6 +261,15 @@ export class JsonToObjectConverter {
       maxRoll: diceThrowJSON.maxRoll,
     };
     return diceThrow;
+  }
+
+  public static convertToHuntEventObject(huntEventJSON: any): HuntEvent {
+    const huntEvent: HuntEvent = {
+      name: huntEventJSON.name,
+      description: huntEventJSON.description,
+      rollResult: huntEventJSON.rollResult,
+    };
+    return huntEvent;
   }
 
 }

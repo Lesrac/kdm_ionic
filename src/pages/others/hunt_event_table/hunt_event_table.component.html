@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngFor="let huntEvent of huntEvents">
+    <ion-item no-lines>{{huntEvent.rollResult}} | {{huntEvent.name}}</ion-item>
+    <ion-item text-wrap no-lines>{{huntEvent.description}}</ion-item>
+    <ion-item-divider small></ion-item-divider>
   </ion-list>
 </ion-content>
