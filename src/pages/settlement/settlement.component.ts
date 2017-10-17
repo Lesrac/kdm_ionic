@@ -16,6 +16,7 @@ import { KDMObserverService } from '../../service/kdm_observer.service';
 import { Innovation } from '../../model/innovation';
 import { Observable } from 'rxjs/Observable';
 import { DefaultKeyValueDiffer } from '@angular/core/src/change_detection/differs/default_keyvalue_differ';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 27.01.2017.

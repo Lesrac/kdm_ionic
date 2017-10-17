@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { DefeatedMonsterModalComponent } from './defeated_monster_modal.component';
 import { Settlement } from '../../model/settlement';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
 import { AddedResourcesModalComponent } from './added_resources_modal.component';
+import { KDMDataService } from '../../service/kdm_data.service';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -12,13 +13,19 @@ import { AddedResourcesModalComponent } from './added_resources_modal.component'
   selector: 'kdmf-page-defeated-monster',
   templateUrl: 'defeated_monster.component.html',
 })
-export class DefeatedMonsterPageComponent {
+export class DefeatedMonsterPageComponent implements OnInit {
 
   settlement: Settlement;
   countedHuntedMonsters: number;
+  defeatedMonsters: Array<[number, string, number]> = [];
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
+              private kdmData: KDMDataService) {
     this.settlement = params.get('settlement');
+  }
+
+  ngOnInit(): void {
+    this.setup();
   }
 
   addDefeatedMonster(): void {
@@ -28,6 +35,7 @@ export class DefeatedMonsterPageComponent {
     });
     modal.present();
     modal.onDidDismiss(() => {
+      this.setup();
       const huntedMonsters = this.settlement.huntedMonsters;
       const huntedMonstersCount: number = huntedMonsters.length;
       if (huntedMonstersCount > this.countedHuntedMonsters &&
@@ -44,5 +52,13 @@ export class DefeatedMonsterPageComponent {
     const index = this.settlement.huntedMonsters.findIndex(hMonster => hMonster === huntedMonster);
     this.settlement.huntableMonsters.splice(index, 1);
     // todo check and change isDefeatedLvl
+  }
+
+  setup(): void {
+    this.defeatedMonsters = [];
+    this.settlement.huntedMonsters.forEach(huntedMonster =>
+      this.kdmData.getMonster(huntedMonster.monster).then(monster =>
+        this.defeatedMonsters.push([monster.id, monster.name, monster.level])),
+    );
   }
 }

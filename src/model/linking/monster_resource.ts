@@ -1,12 +1,11 @@
-import { Monster } from '../monster';
-import { Storage } from '../storage';
-import { Resource, ResourceType } from '../resource';
+import { Resource } from '../resource';
+
 /**
  * Created by Daniel on 17.02.2017.
  */
 export class MonsterResource {
 
-  monster: Monster;
+  monster: number;
   resource: Resource;
   amount: number;
 

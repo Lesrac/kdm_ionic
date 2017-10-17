@@ -4,6 +4,7 @@ import { Observer } from 'rxjs/Observer';
 import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
 import { ModalController } from 'ionic-angular';
 import { SettlementPageComponent } from '../pages/settlement/settlement.component';
+import { KDMDataService } from './kdm_data.service';
 
 /**
  * Created by Daniel on 01.05.2017.
@@ -11,12 +12,14 @@ import { SettlementPageComponent } from '../pages/settlement/settlement.componen
 @Injectable()
 export class KDMObserverService {
 
-  constructor(public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController, private kdmData: KDMDataService) {
   }
 
   registerObserverForMilestone(settlementPageComponent: SettlementPageComponent, milestone: SettlementMilestone) {
     milestone.observer = this.getObserver(milestone);
-    this.setMilestoneTarget(milestone, milestone.milestone.observerTarget, settlementPageComponent);
+    this.kdmData.getMilestone(milestone.milestone).then(ms =>
+      this.setMilestoneTarget(milestone, ms.observerTarget, settlementPageComponent),
+    );
   }
 
   private getObserver(milestone: SettlementMilestone): Observer<Object> {
@@ -34,8 +37,12 @@ export class KDMObserverService {
     };
   }
 
-  private checkMilestone(milestone: SettlementMilestone, value: any): boolean {
-    return (!milestone.reached && milestone.milestone.accept(value));
+  private checkMilestone(milestone: SettlementMilestone, value: any): Promise<boolean> {
+    return this.kdmData.getMilestone(milestone.milestone).then(ms => {
+        return (!milestone.reached && ms.accept(value));
+      },
+    );
+    //  return (!milestone.reached && milestone.milestone.accept(value));
   }
 
   private setMilestoneTarget(settlementMilestone: SettlementMilestone, milestoneTarget: string,

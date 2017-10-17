@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,8 +30,6 @@ import { PrinciplesPageComponent } from '../pages/principle/principles.component
 import { PrincipleChooserPageComponent } from '../pages/principle/principle_chooser.component';
 import { KDMObserverService } from '../service/kdm_observer.service';
 import { KDMDBService } from '../service/kdm_db.service';
-import { SQLite } from '@ionic-native/sqlite';
-import { KDMInitDBService } from '../service/kdm_init_db.service';
 import { HttpModule } from '@angular/http';
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
@@ -83,6 +82,7 @@ import { DiceThrowComponent } from '../pages/template/dice_throw.component';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpModule,
   ],
   bootstrap: [IonicApp],
@@ -126,8 +126,6 @@ import { DiceThrowComponent } from '../pages/template/dice_throw.component';
     StatusBar,
     SplashScreen,
     KDMDBService,
-    KDMInitDBService,
-    SQLite,
   ],
 })
 export class AppModule {

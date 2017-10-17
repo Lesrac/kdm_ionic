@@ -1,18 +1,19 @@
 import { Settlement } from '../settlement';
-import { Monster } from '../monster';
 import { Storage } from '../storage';
 
 /**
  * Created by Daniel on 26.05.2017.
  */
 export class HuntedMonster {
-  settlement: Settlement;
-  monster: Monster;
+  settlement: number;
+  monster: number;
+  monsterLevel: number;
   huntedResources: Storage[] = [];
 
-  constructor(settlement: Settlement, monster: Monster) {
-    this.settlement = settlement;
+  constructor(settlement: Settlement, monster: number, monsterLevel: number) {
+    this.settlement = settlement.id;
     this.monster = monster;
+    this.monsterLevel = monsterLevel;
   }
 
   public addStorageItem(storage: Storage): void {

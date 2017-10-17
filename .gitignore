@@ -34,5 +34,4 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-src/service/kdm_init_db.service.ts
 .sourcemaps/

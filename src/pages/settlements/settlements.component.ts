@@ -83,7 +83,7 @@ export class SettlementsPageComponent implements OnInit {
     this.kdmService.getDefaultInitialHuntableNemesisMonsters().then(nemesisMonsters =>
       nemesisMonsters.forEach(nemesisMonster => {
           const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-            huntableMonster.monster.name === nemesisMonster.name);
+            huntableMonster.monster === nemesisMonster.id);
           if (!existingMonster) {
             const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
             if (nemesisMonster.name === 'Butcher') {
@@ -102,14 +102,14 @@ export class SettlementsPageComponent implements OnInit {
     this.kdmService.getInitialMilestones().then(
       milestones => {
         milestones.forEach(
-          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)));
+          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone.id)));
       });
   }
 
   private createDefaultQuarries(settlement: Settlement): void {
     this.kdmService.getDefaultInitialHuntableQuarries().then(quarries => quarries.forEach(quarry => {
         const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-          huntableMonster.monster.name === quarry.name);
+          huntableMonster.monster === quarry.id);
         if (!existingMonster) {
           const settlementMonster = new HuntableMonster(settlement, quarry);
           if (quarry.name === 'White Lion') {

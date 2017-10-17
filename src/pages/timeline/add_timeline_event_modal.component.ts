@@ -20,7 +20,8 @@ export class AddTimelineEventModalComponent implements AfterViewInit {
   addChangeText: string;
   eventName: string;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
+  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService,
+              private kdmService: KDMDataService) {
     this.settlementTimeline = this.params.get('settlementTimeline');
     this.replaceableTimeline = this.params.get('replaceableTimeline');
     if (this.replaceableTimeline) {
@@ -39,7 +40,6 @@ export class AddTimelineEventModalComponent implements AfterViewInit {
   addClose(): void {
     const lanternEvent = this.lanternEvents.find((le: LanternEvent) => le.name === this.eventName);
     if (lanternEvent) {
-      const settlement: Settlement = this.settlementTimeline[0].settlement;
       if (this.replaceableTimeline) {
         this.replaceableTimeline.timeline.lanternEvent = lanternEvent;
       } else {
@@ -48,7 +48,9 @@ export class AddTimelineEventModalComponent implements AfterViewInit {
           position: maxPosition,
           lanternEvent: lanternEvent,
         };
-        this.settlementTimeline.push(new SettlementTimeline(settlement, timeline));
+        this.kdmService.getSettlement(this.settlementTimeline[0].settlement).then(settlement =>
+          this.settlementTimeline.push(new SettlementTimeline(settlement, timeline),
+          ));
       }
     }
     this.close();
