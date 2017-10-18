@@ -20,6 +20,8 @@ import { Affinity, Direction, Equipment } from '../model/equipment';
 import { isUndefined } from 'ionic-angular/util/util';
 import { SevereInjury } from '../model/severe_injury';
 import { HuntEvent } from '../model/hunte_event';
+import { DiceThrow } from '../model/dice_throw';
+import { BaseModel } from '../model/base_model';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -31,6 +33,25 @@ type JsonToObjectConverterMethod = (n: string) => any;
 export class KDMDataService {
 
   settlements: Settlement[] = [];
+  monsters: Monster[] = [];
+  resources: Resource[] = [];
+  lanternEvents: LanternEvent[] = [];
+  storyEvents: StoryEvent[] = [];
+  milestones: Milestone[] = [];
+  timeline: Timeline[] = [];
+  locations: Location[] = [];
+  innovations: Innovation[] = [];
+  disorders: Disorder[] = [];
+  fightingArts: FightingArt[] = [];
+  principles: Principle[] = [];
+  principleTypes: PrincipleType[] = [];
+  weapons: Weapon[] = [];
+  armors: Armor[] = [];
+  equipments: Equipment[] = [];
+  severeInjuries: SevereInjury[] = [];
+  brainTraumas: DiceThrow[] = [];
+  glossaryEntries: BaseModel[] = [];
+  huntEvents: HuntEvent[] = [];
 
   constructor(private http: Http) {
   }
@@ -55,33 +76,36 @@ export class KDMDataService {
   }
 
   getMonsters(): Promise<Monster[]> {
-    return this.http.get('assets/data/monsters.json').toPromise()
-      .then(
-        res => {
-          let data: Monster[] = [];
-          res.json().forEach(monsterJson => {
-            const monster: Monster = JsonToObjectConverter.convertToMonsterObject(monsterJson);
-            monsterJson.levelresources.forEach(levelresourceDefinitions => {
-              levelresourceDefinitions.forEach(levelresource => {
-                const map: Map<any, number> = new Map<any, number>();
-                levelresource.resources.forEach(resource => {
-                  const resourceType: ResourceType = <ResourceType>ResourceType[<string>resource.name];
-                  if (resourceType != null && resourceType >= 0) {
-                    map.set(resourceType, resource.amount);
-                  } else {
-                    this.getResourceByName(resource.name).then(rs => {
-                      map.set(rs, resource.amount);
-                    });
-                  }
+    if (this.monsters.length > 0) {
+      return Promise.resolve(this.monsters);
+    } else {
+      return this.http.get('assets/data/monsters.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(monsterJson => {
+              const monster: Monster = JsonToObjectConverter.convertToMonsterObject(monsterJson);
+              monsterJson.levelresources.forEach(levelresourceDefinitions => {
+                levelresourceDefinitions.forEach(levelresource => {
+                  const map: Map<any, number> = new Map<any, number>();
+                  levelresource.resources.forEach(resource => {
+                    const resourceType: ResourceType = <ResourceType>ResourceType[<string>resource.name];
+                    if (resourceType != null && resourceType >= 0) {
+                      map.set(resourceType, resource.amount);
+                    } else {
+                      this.getResourceByName(resource.name).then(rs => {
+                        map.set(rs, resource.amount);
+                      });
+                    }
+                  });
+                  monster.resources.set(Number(levelresource.level), map);
                 });
-                monster.resources.set(Number(levelresource.level), map);
               });
+              this.monsters.push(monster);
             });
-            data.push(monster);
-          });
-          return data;
-        },
-      );
+            return this.monsters;
+          },
+        );
+    }
   }
 
   getDefaultInitialHuntableNemesisMonsters(): Promise<Monster[]> {
@@ -93,20 +117,23 @@ export class KDMDataService {
   }
 
   getResources(): Promise<Resource[]> {
-    return this.http.get('assets/data/resources.json').toPromise()
-      .then(
-        res => {
-          let data: Resource[] = [];
-          res.json().forEach(resourceJson => {
-            const tags: StorageTag[] = [];
-            resourceJson.tags.forEach((tagName: string) => {
-              tags.push(<StorageTag>StorageTag[tagName]);
+    if (this.resources.length > 0) {
+      return Promise.resolve(this.resources);
+    } else {
+      return this.http.get('assets/data/resources.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(resourceJson => {
+              const tags: StorageTag[] = [];
+              resourceJson.tags.forEach((tagName: string) => {
+                tags.push(<StorageTag>StorageTag[tagName]);
+              });
+              this.resources.push(JsonToObjectConverter.converToResourceObject(resourceJson, tags));
             });
-            data.push(JsonToObjectConverter.converToResourceObject(resourceJson, tags));
-          });
-          return data;
-        },
-      );
+            return this.resources;
+          },
+        );
+    }
   }
 
   getResourceByName(name: string): Promise<Resource> {
@@ -125,24 +152,32 @@ export class KDMDataService {
   }
 
   getLanternEvents(): Promise<LanternEvent[]> {
-    return this.http.get('assets/data/lanternevents.json').toPromise()
-      .then(
-        res => {
-          let data: LanternEvent[] = [];
-          res.json().forEach(lanternEventJson => {
-            const storyEvents: StoryEvent[] = [];
-            lanternEventJson.storyEvents.forEach((storyEventId: number) => {
-              this.getStoryEvent(storyEventId).then(storyEvent => storyEvents.push(storyEvent));
+    if (this.lanternEvents.length > 0) {
+      return Promise.resolve(this.lanternEvents);
+    } else {
+      return this.http.get('assets/data/lanternevents.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(lanternEventJson => {
+              const storyEvents: StoryEvent[] = [];
+              lanternEventJson.storyEvents.forEach((storyEventId: number) => {
+                this.getStoryEvent(storyEventId).then(storyEvent => storyEvents.push(storyEvent));
+              });
+              this.lanternEvents.push(JsonToObjectConverter.convertToLanternEventObject(lanternEventJson, storyEvents));
             });
-            data.push(JsonToObjectConverter.convertToLanternEventObject(lanternEventJson, storyEvents));
-          });
-          return data;
-        },
-      );
+            return this.lanternEvents;
+          },
+        );
+    }
   }
 
   getStoryEvents(): Promise<StoryEvent[]> {
-    return this.getGenericList('assets/data/storyevents.json', JsonToObjectConverter.convertToStoryEventObject);
+    if (this.storyEvents.length > 0) {
+      return Promise.resolve(this.storyEvents);
+    } else {
+      return this.getGenericList('assets/data/storyevents.json', this.storyEvents,
+        JsonToObjectConverter.convertToStoryEventObject);
+    }
   }
 
   getStoryEvent(id: number): Promise<StoryEvent> {
@@ -150,60 +185,74 @@ export class KDMDataService {
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
-    return this.http.get('assets/data/milestones.json').toPromise()
-      .then(
-        res => {
-          let data: Milestone[] = [];
-          res.json().forEach(milestoneJson => {
-            const storyEvents: StoryEvent[] = [];
-            milestoneJson.storyEvents.forEach((storyEventId: number) => {
-              this.getStoryEvent(storyEventId).then(storyEvent =>
-                storyEvents.push(storyEvent));
+    if (this.milestones.length > 0) {
+      return Promise.resolve(this.milestones);
+    } else {
+      return this.http.get('assets/data/milestones.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(milestoneJson => {
+              const storyEvents: StoryEvent[] = [];
+              milestoneJson.storyEvents.forEach((storyEventId: number) => {
+                this.getStoryEvent(storyEventId).then(storyEvent =>
+                  storyEvents.push(storyEvent));
+              });
+              const milestone: Milestone = JsonToObjectConverter.convertToMilestoneObject(milestoneJson, storyEvents);
+              if (milestone.milestoneType === MilestoneType.Basic) {
+                this.milestones.push(milestone);
+              }
             });
-            const milestone: Milestone = JsonToObjectConverter.convertToMilestoneObject(milestoneJson, storyEvents);
-            if (milestone.milestoneType === MilestoneType.Basic) {
-              data.push(milestone);
-            }
-          });
-          return data;
-        },
-      );
+            return this.milestones;
+          },
+        );
+    }
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {
-    return this.getLanternEvents().then(lanternEvents =>
-      this.http.get('assets/data/defaulttimeline.json').toPromise()
-        .then(
-          res => {
-            let data: Timeline[] = [];
-            res.json().forEach(timelineJson => {
-              let event: LanternEvent = lanternEvents.find(x => x.name === timelineJson.lanternEvent);
-              data.push(JsonToObjectConverter.convertToTimelineObject(timelineJson, event));
-            });
-            return data;
-          }),
-    );
+    if (this.timeline.length > 0) {
+      return Promise.resolve(this.timeline);
+    } else {
+      return this.getLanternEvents().then(lanternEvents =>
+        this.http.get('assets/data/defaulttimeline.json').toPromise()
+          .then(
+            res => {
+              res.json().forEach(timelineJson => {
+                let event: LanternEvent = lanternEvents.find(x => x.name === timelineJson.lanternEvent);
+                this.timeline.push(JsonToObjectConverter.convertToTimelineObject(timelineJson, event));
+              });
+              return this.timeline;
+            }),
+      );
+    }
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    return this.getGenericList('assets/data/locations.json', JsonToObjectConverter.convertToLocationObject);
+    if (this.locations.length > 0) {
+      return Promise.resolve(this.locations);
+    } else {
+      return this.getGenericList('assets/data/locations.json',
+        this.locations, JsonToObjectConverter.convertToLocationObject);
+    }
   }
 
   getInnovations(): Promise<Innovation[]> {
-    return this.http.get('assets/data/innovations.json').toPromise()
-      .then(
-        res => {
-          let data: Innovation[] = [];
-          res.json().forEach(innovationJson => {
-            const tags: InnovationTag[] = [];
-            innovationJson.tags.forEach((tagName: string) => {
-              tags.push(<InnovationTag>InnovationTag[tagName]);
+    if (this.innovations.length > 0) {
+      return Promise.resolve(this.innovations);
+    } else {
+      return this.http.get('assets/data/innovations.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(innovationJson => {
+              const tags: InnovationTag[] = [];
+              innovationJson.tags.forEach((tagName: string) => {
+                tags.push(<InnovationTag>InnovationTag[tagName]);
+              });
+              this.innovations.push(JsonToObjectConverter.convertToInnovationObject(innovationJson, tags));
             });
-            data.push(JsonToObjectConverter.convertToInnovationObject(innovationJson, tags));
-          });
-          return data;
-        },
-      );
+            return this.innovations;
+          },
+        );
+    }
   }
 
   getInnovationsThatAreNotAddedButAvailable(objects: Innovation[]): Promise<Innovation[]> {
@@ -222,39 +271,57 @@ export class KDMDataService {
   }
 
   getDisorders(): Promise<Disorder[]> {
-    return this.getGenericList('assets/data/disorders.json', JsonToObjectConverter.convertToDisorderObject);
+    if (this.disorders.length > 0) {
+      return Promise.resolve(this.disorders);
+    } else {
+      return this.getGenericList('assets/data/disorders.json',
+        this.disorders, JsonToObjectConverter.convertToDisorderObject);
+    }
   }
 
   getFightingArts(): Promise<FightingArt[]> {
-    return this.getGenericList('assets/data/fightingarts.json', JsonToObjectConverter.convertToFightingArtObject);
+    if (this.fightingArts.length > 0) {
+      return Promise.resolve(this.fightingArts);
+    } else {
+      return this.getGenericList('assets/data/fightingarts.json',
+        this.fightingArts, JsonToObjectConverter.convertToFightingArtObject);
+    }
   }
 
   getPrinciples(): Promise<Principle[]> {
-    let principleTypes: PrincipleType[] = [];
-    this.getPrincipleTypes().then(types =>
-      principleTypes = types,
-    );
-    return this.http.get('assets/data/principles.json').toPromise()
-      .then(
-        res => {
-          const data: Principle[] = [];
-          let principleType: PrincipleType;
-          res.json().forEach(principleJSON => {
-            principleType = principleTypes.find(type => {
-              if (type.name === principleJSON.type) {
-                principleType = type;
-                return true;
-              }
-            });
-            data.push(JsonToObjectConverter.convertToPrincipleObject(principleJSON, principleType));
-          });
-          return data;
-        },
+    if (this.principles.length > 0) {
+      return Promise.resolve(this.principles);
+    } else {
+      let principleTypes: PrincipleType[] = [];
+      this.getPrincipleTypes().then(types =>
+        principleTypes = types,
       );
+      return this.http.get('assets/data/principles.json').toPromise()
+        .then(
+          res => {
+            let principleType: PrincipleType;
+            res.json().forEach(principleJSON => {
+              principleType = principleTypes.find(type => {
+                if (type.name === principleJSON.type) {
+                  principleType = type;
+                  return true;
+                }
+              });
+              this.principles.push(JsonToObjectConverter.convertToPrincipleObject(principleJSON, principleType));
+            });
+            return this.principles;
+          },
+        );
+    }
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
-    return this.getGenericList('assets/data/principletypes.json', JsonToObjectConverter.convertToPrincipleTypeObject);
+    if (this.principleTypes.length > 0) {
+      return Promise.resolve(this.principleTypes);
+    } else {
+      return this.getGenericList('assets/data/principletypes.json', this.principleTypes,
+        JsonToObjectConverter.convertToPrincipleTypeObject);
+    }
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
@@ -269,89 +336,96 @@ export class KDMDataService {
   }
 
   getWeapons(): Promise<Weapon[]> {
-    return this.http.get('assets/data/weapons.json').toPromise()
-      .then(
-        res => {
-          let data: Weapon[] = [];
-          res.json().forEach(weaponJson => {
-            const tags: StorageTag[] = [];
-            let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
-            weaponJson.tags.forEach((tagName: string) => {
-              tags.push(<StorageTag>StorageTag[tagName]);
+    if (this.weapons.length > 0) {
+      return Promise.resolve(this.weapons);
+    } else {
+      return this.http.get('assets/data/weapons.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(weaponJson => {
+              const tags: StorageTag[] = [];
+              let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+              weaponJson.tags.forEach((tagName: string) => {
+                tags.push(<StorageTag>StorageTag[tagName]);
+              });
+              weaponJson.affinities.forEach((mapElement) => {
+                const dir: Direction[] = [];
+                const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
+                mapElement.direction.forEach(
+                  (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
+                );
+                affinities.set(affinity, dir);
+              });
+              this.weapons.push(JsonToObjectConverter.convertToWeaponObject(weaponJson, tags, affinities));
             });
-            weaponJson.affinities.forEach((mapElement) => {
-              const dir: Direction[] = [];
-              const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
-              mapElement.direction.forEach(
-                (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
-              );
-              affinities.set(affinity, dir);
-            });
-            data.push(JsonToObjectConverter.convertToWeaponObject(weaponJson, tags, affinities));
-          });
-          return data;
-        },
-      );
-
+            return this.weapons;
+          },
+        );
+    }
   }
 
   getArmors(): Promise<Armor[]> {
-    return this.http.get('assets/data/armors.json').toPromise()
-      .then(
-        res => {
-          let data: Armor[] = [];
-          res.json().forEach(armorJson => {
-            const tags: StorageTag[] = [];
-            let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
-            armorJson.tags.forEach((tagName: string) => {
-              tags.push(<StorageTag>StorageTag[tagName]);
+    if (this.armors.length > 0) {
+      return Promise.resolve(this.armors);
+    } else {
+      return this.http.get('assets/data/armors.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(armorJson => {
+              const tags: StorageTag[] = [];
+              let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+              armorJson.tags.forEach((tagName: string) => {
+                tags.push(<StorageTag>StorageTag[tagName]);
+              });
+              armorJson.affinities.forEach((mapElement) => {
+                const dir: Direction[] = [];
+                const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
+                mapElement.direction.forEach(
+                  (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
+                );
+                affinities.set(affinity, dir);
+              });
+              this.armors.push(JsonToObjectConverter.convertToArmorObject(armorJson, tags, affinities));
             });
-            armorJson.affinities.forEach((mapElement) => {
-              const dir: Direction[] = [];
-              const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
-              mapElement.direction.forEach(
-                (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
-              );
-              affinities.set(affinity, dir);
-            });
-            data.push(JsonToObjectConverter.convertToArmorObject(armorJson, tags, affinities));
-          });
-          return data;
-        },
-      );
+            return this.armors;
+          },
+        );
+    }
   }
 
   getEquipments(): Promise<Equipment[]> {
-    return this.http.get('assets/data/equipments.json').toPromise()
-      .then(
-        res => {
-          let data: Equipment[] = [];
-          res.json().forEach(equipmentJson => {
-            const tags: StorageTag[] = [];
-            let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
-            equipmentJson.tags.forEach((tagName: string) => {
-              tags.push(<StorageTag>StorageTag[tagName]);
+    if (this.equipments.length > 0) {
+      return Promise.resolve(this.equipments);
+    } else {
+      return this.http.get('assets/data/equipments.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(equipmentJson => {
+              const tags: StorageTag[] = [];
+              let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+              equipmentJson.tags.forEach((tagName: string) => {
+                tags.push(<StorageTag>StorageTag[tagName]);
+              });
+              equipmentJson.affinities.forEach((mapElement) => {
+                const dir: Direction[] = [];
+                const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
+                mapElement.direction.forEach(
+                  (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
+                );
+                affinities.set(affinity, dir);
+              });
+              this.equipments.push(JsonToObjectConverter.convertToEquipmentObject(equipmentJson, tags, affinities));
             });
-            equipmentJson.affinities.forEach((mapElement) => {
-              const dir: Direction[] = [];
-              const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
-              mapElement.direction.forEach(
-                (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
-              );
-              affinities.set(affinity, dir);
-            });
-            data.push(JsonToObjectConverter.convertToEquipmentObject(equipmentJson, tags, affinities));
-          });
-          return data;
-        },
-      );
+            return this.equipments;
+          },
+        );
+    }
   }
 
-  getGenericList(file: string, methodCall: JsonToObjectConverterMethod): Promise<any> {
+  getGenericList(file: string, data: any[], methodCall: JsonToObjectConverterMethod): Promise<any> {
     return this.http.get(file).toPromise()
       .then(
         res => {
-          let data: any[] = [];
           res.json().forEach(json => {
             data.push(methodCall(json));
           });
@@ -361,7 +435,12 @@ export class KDMDataService {
   }
 
   getAllSevereInjuries(): Promise<SevereInjury[]> {
-    return this.getGenericList('assets/data/severeinjuries.json', JsonToObjectConverter.convertToSevereInjuryObject);
+    if (this.severeInjuries.length > 0) {
+      return Promise.resolve(this.severeInjuries);
+    } else {
+      return this.getGenericList('assets/data/severeinjuries.json',
+        this.severeInjuries, JsonToObjectConverter.convertToSevereInjuryObject);
+    }
   }
 
   getSevereInjuriesToHitLocation(hitLocation: string): Promise<SevereInjury[]> {
@@ -370,16 +449,31 @@ export class KDMDataService {
       severeInjury.hitLocation === hitLocationEnum));
   }
 
-  getAllBrainTraumas(): Promise<SevereInjury[]> {
-    return this.getGenericList('assets/data/braintraumas.json', JsonToObjectConverter.convertToDiceThrowObject);
+  getAllBrainTraumas(): Promise<DiceThrow[]> {
+    if (this.brainTraumas.length > 0) {
+      return Promise.resolve(this.brainTraumas);
+    } else {
+      return this.getGenericList('assets/data/braintraumas.json',
+        this.brainTraumas, JsonToObjectConverter.convertToDiceThrowObject);
+    }
   }
 
   getAllHuntEvents(): Promise<HuntEvent[]> {
-    return this.getGenericList('assets/data/huntevents.json', JsonToObjectConverter.convertToHuntEventObject);
+    if (this.huntEvents.length > 0) {
+      return Promise.resolve(this.huntEvents);
+    } else {
+      return this.getGenericList('assets/data/huntevents.json',
+        this.huntEvents, JsonToObjectConverter.convertToHuntEventObject);
+    }
   }
 
-  getAllGlossaryEntries(): Promise<HuntEvent[]> {
-    return this.getGenericList('assets/data/glossaryentries.json', JsonToObjectConverter.convertToBaseModelObject);
+  getAllGlossaryEntries(): Promise<BaseModel[]> {
+    if (this.glossaryEntries.length > 0) {
+      return Promise.resolve(this.glossaryEntries);
+    } else {
+      return this.getGenericList('assets/data/glossaryentries.json',
+        this.glossaryEntries, JsonToObjectConverter.convertToBaseModelObject);
+    }
   }
 
   sortByName(l, r) {

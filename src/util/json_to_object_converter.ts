@@ -130,12 +130,7 @@ export class JsonToObjectConverter {
   }
 
   public static convertToStoryEventObject(storyEventJSON: any): StoryEvent {
-    const storyEvent: StoryEvent = {
-      id: storyEventJSON.id,
-      title: storyEventJSON.title,
-      description: storyEventJSON.description,
-    };
-    return storyEvent;
+    return Object.assign({}, storyEventJSON);
   }
 
   public static convertToPrincipleTypeObject(principleTypeJSON: any): PrincipleType {
