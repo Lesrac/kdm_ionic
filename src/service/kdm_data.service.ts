@@ -22,6 +22,7 @@ import { SevereInjury } from '../model/severe_injury';
 import { HuntEvent } from '../model/hunte_event';
 import { DiceThrow } from '../model/dice_throw';
 import { BaseModel } from '../model/base_model';
+import { KDMDBService } from './kdm_db.service';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -53,7 +54,7 @@ export class KDMDataService {
   glossaryEntries: BaseModel[] = [];
   huntEvents: HuntEvent[] = [];
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private kdmDBService: KDMDBService) {
   }
 
   getSettlements(): Promise<Settlement[]> {
@@ -68,6 +69,7 @@ export class KDMDataService {
         settlement.id = 1;
       }
       this.settlements.push(settlement);
+      this.kdmDBService.saveSettlement(settlement);
     });
   }
 

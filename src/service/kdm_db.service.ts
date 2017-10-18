@@ -1,11 +1,12 @@
-/**
- * Created by Daniel on 18.05.2017.
- */
 import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import { Storage } from '@ionic/storage';
-import { SettlementMilestone } from '../model/linking/settlement_milestone';
+import { SettlementSimplified } from '../model/db/settlement_simplified';
+import { DeSimplifyObjects } from '../util/de_simplify_objects';
 
+/**
+ * Created by Daniel on 18.05.2017.
+ */
 @Injectable()
 export class KDMDBService {
   private settlements: string = 'settlements';
@@ -22,19 +23,18 @@ export class KDMDBService {
   }
 
   saveSettlements(settlements: Settlement[]): void {
-    console.log('saveSettlements');
-    console.log(JSON.stringify(settlements));
+    settlements.forEach(settlement => this.saveSettlement(settlement));
   }
 
   saveSettlement(settlement: Settlement): void {
     console.log('saveSettlement');
     console.log(settlement);
-    const settlementCopy: Settlement = Object.assign({}, settlement);
-    let settlementMilestonesJSONify: SettlementMilestone[] = [];
-    settlementCopy.milestones.forEach(milestone => {
-      settlementMilestonesJSONify.push(new SettlementMilestone(settlement, milestone.milestone));
+    const simplified: SettlementSimplified = DeSimplifyObjects.simplifySettlement(settlement);
+    console.log(JSON.stringify(simplified));
+    this.storage.set('settlement' + settlement.id, JSON.stringify(simplified)).then(what => {
+      console.log('set key value pair');
+      console.log(what);
     });
-    settlementCopy.milestones = settlementMilestonesJSONify;
-    console.log(JSON.stringify(settlementCopy));
   }
+
 }

@@ -4,6 +4,7 @@ import { TimelineEventModalComponent } from './timeline_event_modal.component';
 import { SettlementTimeline } from '../../model/linking/settlement_timeline';
 import { ReorderIndexes } from 'ionic-angular/components/item/item-reorder';
 import { AddTimelineEventModalComponent } from './add_timeline_event_modal.component';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -17,8 +18,14 @@ export class TimelinePageComponent {
   reorderActivityName: string = 'Reorder';
   reorderFlag: boolean = false;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
+              private kdmdbService: KDMDBService) {
     this.timeline = params.get('settlementTimeline');
+  }
+
+  ionViewDidLeave(): void {
+    console.log('I left!');
+    this.kdmdbService.saveSettlement(this.timeline[0].settlement);
   }
 
   timelineReached(event: Event, timeline: SettlementTimeline): void {
