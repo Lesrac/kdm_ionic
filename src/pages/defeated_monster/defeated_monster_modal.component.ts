@@ -3,8 +3,8 @@ import { ViewController, NavParams } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { Monster } from '../../model/monster';
 import { KDMCalculationService } from '../../service/kdm_calculation.service';
+import { HuntableMonster } from '../../model/linking/huntable_monster';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
-import { KDMDataService } from '../../service/kdm_data.service';
 
 /**
  * Created by Daniel on 07.02.2017.
@@ -16,14 +16,13 @@ import { KDMDataService } from '../../service/kdm_data.service';
 export class DefeatedMonsterModalComponent implements OnInit {
 
   settlement: Settlement;
-  monsters: Monster[] = [];
-  huntableMonstersNameId: Array<[number, string]> = [];
+  huntableMonsters: HuntableMonster[] = [];
   monsterLevel: number = 1;
-  monsterId: number;
+  monsterName: string;
   huntResources: boolean;
 
   constructor(public viewCtrl: ViewController, private params: NavParams,
-              private kdmCalculation: KDMCalculationService, private kdmData: KDMDataService) {
+              private kdmCalculation: KDMCalculationService) {
     this.settlement = this.params.get('settlement');
   }
 
@@ -36,14 +35,14 @@ export class DefeatedMonsterModalComponent implements OnInit {
   }
 
   addClose(): void {
-    if (this.monsterId != null && this.monsterLevel != null) {
-      const level = +this.monsterLevel;
-      const id = +this.monsterId;
-      const monsterOrig = this.monsters.find(monster =>
-        monster.id === id);
-      const huntedMonster = new HuntedMonster(this.settlement, id, level);
+    if (this.monsterName != null && this.monsterLevel != null) {
+      const monsterOrig = this.huntableMonsters.find(huntableMonster =>
+        huntableMonster.monster.name === this.monsterName).monster;
+      const mon = new Monster(this.monsterName);
+      mon.level = +this.monsterLevel;
+      const huntedMonster = new HuntedMonster(this.settlement, mon);
       if (this.huntResources) {
-        this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster, monsterOrig, level);
+        this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster, monsterOrig);
       }
       this.settlement.huntedMonsters.push(huntedMonster);
     }
@@ -51,13 +50,15 @@ export class DefeatedMonsterModalComponent implements OnInit {
     this.close();
   }
 
+  checkMonsterLevel(name: string, level: number): boolean {
+    return (this.huntableMonsters.find(huntableMonster => huntableMonster.monster.name === name &&
+      huntableMonster.monster.level === level)) != null;
+  }
+
   private setupHuntableMonsters(): void {
     this.settlement.huntableMonsters.filter(huntableMonster => huntableMonster.isHuntable).forEach(monster => {
         if (monster.isHuntable) {
-          this.kdmData.getMonster(monster.monster).then(mnstr => {
-            this.huntableMonstersNameId.push([monster.monster, mnstr.name]);
-            this.monsters.push(mnstr);
-          });
+          this.huntableMonsters.push(monster);
         }
       },
     );

@@ -65,7 +65,7 @@ export class JsonToObjectConverter {
   public static convertToMonsterResourceObject(monsterResourceJSON: any, monster: Monster,
                                                resource: Resource): MonsterResource {
     const monsterResource: MonsterResource = {
-      monster: monsterResourceJSON.id,
+      monster: monster,
       amount: monsterResourceJSON.amount,
       resource: resource,
     };
@@ -87,7 +87,6 @@ export class JsonToObjectConverter {
   public static convertToHuntedMonsterObject(huntedMonsterJSON: any): HuntedMonster {
     const huntedMonster: HuntedMonster = {
       monster: null, // todo MonsterID
-      monsterLevel: huntedMonsterJSON.monsterLevel,
       settlement: null, // todo SettlementID
       huntedResources: null,
       addStorageItem: null,
@@ -97,7 +96,15 @@ export class JsonToObjectConverter {
 
   public static converToResourceObject(resourceJSON: any, tags: StorageTag[]): Resource {
     const resourceType: ResourceType = <ResourceType>ResourceType[<string>resourceJSON.type];
-    return Object.assign({}, resourceJSON, {tags: tags}, {type: resourceType});
+    const resource: Resource = {
+      name: resourceJSON.name,
+      type: resourceType,
+      description: resourceJSON.description,
+      existingCards: resourceJSON.existingCards,
+      tags: tags,
+      amount: resourceJSON.amount,
+    };
+    return resource;
   }
 
   public static convertToMilestoneObject(milestoneJSON: any, storyEvents: StoryEvent[]): Milestone {
@@ -114,19 +121,37 @@ export class JsonToObjectConverter {
   }
 
   public static convertToLanternEventObject(lanternEventJSON: any, storyEvents: StoryEvent[]): LanternEvent {
-    return Object.assign({}, lanternEventJSON, {storyEvents: storyEvents});
+    const lanternEvent: LanternEvent = {
+      name: lanternEventJSON.name,
+      todo: lanternEventJSON.todo,
+      storyEvents: storyEvents,
+    };
+    return lanternEvent;
   }
 
   public static convertToStoryEventObject(storyEventJSON: any): StoryEvent {
-    return Object.assign({}, storyEventJSON);
+    const storyEvent: StoryEvent = {
+      id: storyEventJSON.id,
+      title: storyEventJSON.title,
+      description: storyEventJSON.description,
+    };
+    return storyEvent;
   }
 
   public static convertToPrincipleTypeObject(principleTypeJSON: any): PrincipleType {
-    return Object.assign({}, principleTypeJSON);
+    const principleType: PrincipleType = {
+      name: principleTypeJSON.name,
+    };
+    return principleType;
   }
 
   public static convertToPrincipleObject(principleJSON: any, principleType: PrincipleType): Principle {
-    return Object.assign({}, principleJSON, {type: principleType});
+    const principle: Principle = {
+      name: principleJSON.name,
+      description: principleJSON.description,
+      type: principleType,
+    };
+    return principle;
   }
 
   public static convertToFightingArtObject(fightingArtJSON: any): FightingArt {
@@ -138,12 +163,23 @@ export class JsonToObjectConverter {
   }
 
   public static convertToDisorderObject(disorderJSON: any): Disorder {
-    return Object.assign({}, disorderJSON);
+    const disorder: Disorder = {
+      name: disorderJSON.name,
+      description: disorderJSON.description,
+    };
+    return disorder;
   }
 
   public static convertToInnovationObject(innovationJSON: any, tags: InnovationTag[]): Innovation {
     const consequence: InnovationTag = <InnovationTag>InnovationTag[<string>innovationJSON.consequence];
-    return Object.assign({}, innovationJSON, {consequence: consequence}, {tags: tags});
+    const innovation: Innovation = {
+      name: innovationJSON.name,
+      description: innovationJSON.description,
+      consequence: consequence,
+      isBase: innovationJSON.isBase,
+      tags: tags,
+    };
+    return innovation;
   }
 
   public static convertToLocationObject(locationJSON: any): Location {
@@ -157,7 +193,11 @@ export class JsonToObjectConverter {
   }
 
   public static convertToTimelineObject(timelineJSON: any, lanternEvent: LanternEvent): Timeline {
-    return Object.assign({}, timelineJSON, {lanternEvent: lanternEvent});
+    const timeline: Timeline = {
+      position: timelineJSON.position,
+      lanternEvent: lanternEvent,
+    };
+    return timeline;
   }
 
   public static convertToWeaponObject(weaponJSON: any, tags: StorageTag[],
@@ -192,24 +232,53 @@ export class JsonToObjectConverter {
 
   public static convertToEquipmentObject(equipmentJSON: any, tags: StorageTag[],
                                          affinities: Map<Affinity, Direction[]>): Equipment {
-    return Object.assign({}, equipmentJSON, {affinities: affinities}, {tags: tags});
+    const equipeequipment: Equipment = {
+      amount: equipmentJSON.amount,
+      tags: tags,
+      description: equipmentJSON.description,
+      name: equipmentJSON.name,
+      affinities: affinities,
+    };
+    return equipeequipment;
   }
 
   public static convertToSevereInjuryObject(severeInjuryJSON: any): SevereInjury {
     const hitLocation: ArmorSpace = <ArmorSpace>ArmorSpace[<string>severeInjuryJSON.hitLocation];
-    return Object.assign({}, severeInjuryJSON, {hitLocation: hitLocation});
+    const severeInjury: SevereInjury = {
+      name: severeInjuryJSON.name,
+      description: severeInjuryJSON.description,
+      minRoll: severeInjuryJSON.minRoll,
+      maxRoll: severeInjuryJSON.maxRoll,
+      hitLocation: hitLocation,
+    };
+    return severeInjury;
   }
 
   public static convertToDiceThrowObject(diceThrowJSON: any): DiceThrow {
-    return Object.assign({}, diceThrowJSON);
+    const diceThrow: DiceThrow = {
+      name: diceThrowJSON.name,
+      description: diceThrowJSON.description,
+      minRoll: diceThrowJSON.minRoll,
+      maxRoll: diceThrowJSON.maxRoll,
+    };
+    return diceThrow;
   }
 
   public static convertToHuntEventObject(huntEventJSON: any): HuntEvent {
-    return Object.assign({}, huntEventJSON);
+    const huntEvent: HuntEvent = {
+      name: huntEventJSON.name,
+      description: huntEventJSON.description,
+      rollResult: huntEventJSON.rollResult,
+    };
+    return huntEvent;
   }
 
   public static convertToBaseModelObject(baseModelJSON: any): BaseModel {
-    return Object.assign({}, baseModelJSON);
+    const baseModel: BaseModel = {
+      name: baseModelJSON.name,
+      description: baseModelJSON.description,
+    };
+    return baseModel;
   }
 
 }

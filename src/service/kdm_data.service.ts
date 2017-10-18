@@ -20,7 +20,6 @@ import { Affinity, Direction, Equipment } from '../model/equipment';
 import { isUndefined } from 'ionic-angular/util/util';
 import { SevereInjury } from '../model/severe_injury';
 import { HuntEvent } from '../model/hunte_event';
-import { KDMDBService } from './kdm_db.service';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -33,17 +32,11 @@ export class KDMDataService {
 
   settlements: Settlement[] = [];
 
-  constructor(private http: Http, private kdmdbService: KDMDBService) {
+  constructor(private http: Http) {
   }
 
   getSettlements(): Promise<Settlement[]> {
-    this.kdmdbService.getSettlements();
     return Promise.resolve(this.settlements);
-  }
-
-  getSettlement(id: number): Promise<Settlement> {
-    return this.getSettlements().then(settlements =>
-      settlements.find(settlement => settlement.id === id));
   }
 
   addSettlement(settlement: Settlement): void {
@@ -54,7 +47,6 @@ export class KDMDataService {
         settlement.id = 1;
       }
       this.settlements.push(settlement);
-      this.kdmdbService.saveSettlement(settlement);
     });
   }
 
@@ -90,14 +82,6 @@ export class KDMDataService {
           return data;
         },
       );
-  }
-
-  getMonster(id: number): Promise<Monster> {
-    return this.getMonsters().then(monsters => monsters.find(monster => monster.id === id));
-  }
-
-  getMonsterByName(name: string): Promise<Monster> {
-    return this.getMonsters().then(monsters => monsters.find(monster => monster.name === name));
   }
 
   getDefaultInitialHuntableNemesisMonsters(): Promise<Monster[]> {
@@ -184,11 +168,6 @@ export class KDMDataService {
           return data;
         },
       );
-  }
-
-  // Todo not only initial milestones
-  getMilestone(id: number): Promise<Milestone> {
-    return this.getInitialMilestones().then(milestones => milestones.find(milestone => milestone.id === id));
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {

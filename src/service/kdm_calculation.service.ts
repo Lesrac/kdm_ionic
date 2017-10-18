@@ -14,9 +14,8 @@ export class KDMCalculationService {
   constructor(private kdmData: KDMDataService) {
   }
 
-  addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster, monsterLevel: number): void {
-    console.log(originalMonster);
-    originalMonster.resources.get(monsterLevel).forEach((amount: number, key: any) => {
+  addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
+    originalMonster.resources.get(huntedMonster.monster.level).forEach((amount: number, key: any) => {
       const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
       if (resourceType) {
         this.getAllResourceCardsFromType(resourceType).then(storages => {
@@ -24,8 +23,7 @@ export class KDMCalculationService {
           huntedResources.forEach(storage => {
             const storageCopy1 = Object.assign({}, storage);
             const storageCopy2 = Object.assign({}, storage);
-            this.kdmData.getSettlement(huntedMonster.settlement).then(settlement =>
-              settlement.addStorageItem(storageCopy1));
+            huntedMonster.settlement.addStorageItem(storageCopy1);
             huntedMonster.addStorageItem(storageCopy2);
           });
         });
@@ -34,8 +32,7 @@ export class KDMCalculationService {
         huntedResources.forEach(str => {
           const storageCopy1 = Object.assign({}, str);
           const storageCopy2 = Object.assign({}, str);
-          this.kdmData.getSettlement(huntedMonster.settlement).then(settlement =>
-            settlement.addStorageItem(storageCopy1));
+          huntedMonster.settlement.addStorageItem(storageCopy1);
           huntedMonster.addStorageItem(storageCopy2);
         });
       }
