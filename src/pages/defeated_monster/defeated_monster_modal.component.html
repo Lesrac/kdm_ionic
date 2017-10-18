@@ -4,8 +4,10 @@
   </ion-item-group>
   <ion-item>
     <ion-label>Monster</ion-label>
-    <ion-select [(ngModel)]="monsterName">
-      <ion-option *ngFor="let huntableMonster of huntableMonsters">{{huntableMonster.monster.name}}</ion-option>
+    <ion-select [(ngModel)]="monsterId">
+      <ion-option *ngFor="let huntableMonster of huntableMonsters" [value]="huntableMonster.monster.id">
+        {{huntableMonster.monster.name}}
+      </ion-option>
     </ion-select>
   </ion-item>
   <ion-item>

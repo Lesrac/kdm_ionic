@@ -18,7 +18,7 @@ export class DefeatedMonsterModalComponent implements OnInit {
   settlement: Settlement;
   huntableMonsters: HuntableMonster[] = [];
   monsterLevel: number = 1;
-  monsterName: string;
+  monsterId: number;
   huntResources: boolean;
 
   constructor(public viewCtrl: ViewController, private params: NavParams,
@@ -35,11 +35,13 @@ export class DefeatedMonsterModalComponent implements OnInit {
   }
 
   addClose(): void {
-    if (this.monsterName != null && this.monsterLevel != null) {
+    if (this.monsterId != null && this.monsterLevel != null) {
       const monsterOrig = this.huntableMonsters.find(huntableMonster =>
-        huntableMonster.monster.name === this.monsterName).monster;
-      const mon = new Monster(this.monsterName);
+        huntableMonster.monster.id === this.monsterId).monster;
+      const mon: Monster = Object.assign({}, monsterOrig);
       mon.level = +this.monsterLevel;
+      mon.resources = new Map<number, Map<any, number>>();
+      console.log(mon);
       const huntedMonster = new HuntedMonster(this.settlement, mon);
       if (this.huntResources) {
         this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster, monsterOrig);

@@ -11,8 +11,4 @@ export class Monster {
   resources: Map<number, Map<any, number>> = new Map<number, Map<any, number>>();
   locations: Location[] = [];
 
-  constructor(name: string, isNemesis = false) {
-    this.name = name;
-    this.isNemesis = isNemesis;
-  }
 }
