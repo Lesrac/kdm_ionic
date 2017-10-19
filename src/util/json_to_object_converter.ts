@@ -88,6 +88,7 @@ export class JsonToObjectConverter {
     const huntedMonster: HuntedMonster = {
       monster: null, // todo MonsterID
       settlement: null, // todo SettlementID
+      monsterLevel: huntedMonsterJSON.monsterLevel,
       huntedResources: null,
       addStorageItem: null,
     };

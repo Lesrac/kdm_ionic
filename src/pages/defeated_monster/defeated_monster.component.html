@@ -15,7 +15,7 @@
   <ion-item *ngFor="let huntedMonster of settlement.huntedMonsters">
     <ion-row>
       <ion-col>
-        {{huntedMonster.monster.name}} - Level {{huntedMonster.monster.level}}
+        {{huntedMonster.monster.name}} - Level {{huntedMonster.monsterLevel}}
       </ion-col>
       <ion-col col-3>
         <button ion-button icon-only full (click)="removeDefeatedMonster(huntedMonster)">

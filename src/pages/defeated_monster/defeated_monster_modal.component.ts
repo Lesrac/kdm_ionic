@@ -38,11 +38,8 @@ export class DefeatedMonsterModalComponent implements OnInit {
     if (this.monsterId != null && this.monsterLevel != null) {
       const monsterOrig = this.huntableMonsters.find(huntableMonster =>
         huntableMonster.monster.id === this.monsterId).monster;
-      const mon: Monster = Object.assign({}, monsterOrig);
-      mon.level = +this.monsterLevel;
-      mon.resources = new Map<number, Map<any, number>>();
-      console.log(mon);
-      const huntedMonster = new HuntedMonster(this.settlement, mon);
+      const huntedMonster = new HuntedMonster(this.settlement, monsterOrig);
+      huntedMonster.monsterLevel = +this.monsterLevel;
       if (this.huntResources) {
         this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster, monsterOrig);
       }

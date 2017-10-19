@@ -15,7 +15,7 @@ export class KDMCalculationService {
   }
 
   addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
-    originalMonster.resources.get(huntedMonster.monster.level).forEach((amount: number, key: any) => {
+    originalMonster.resources.get(huntedMonster.monsterLevel).forEach((amount: number, key: any) => {
       const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
       if (resourceType) {
         this.getAllResourceCardsFromType(resourceType).then(storages => {

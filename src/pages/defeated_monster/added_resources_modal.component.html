@@ -1,6 +1,6 @@
 <ion-content>
   <ion-item-group>
-    <ion-title>Added Resources for {{huntedMonster.monster.name}} level {{huntedMonster.monster.level}}</ion-title>
+    <ion-title>Added Resources for {{huntedMonster.monster.name}} level {{huntedMonster.monsterLevel}}</ion-title>
   </ion-item-group>
   <ion-item *ngFor="let storage of huntedMonster.huntedResources">
     <ion-row (click)="showDetail(storage)">

@@ -2,15 +2,17 @@
  * Created by Daniel on 18.10.2017.
  */
 export class HuntedMonsterDB {
-  settlement: number;
-  // id, level
-  monster: [number, number];
+  settlementId: number;
+  // id
+  monsterId: number;
   // resource_name, amount
   huntedResources: Array<[string, number]> = [];
+  monsterLevel: number;
 
-  constructor(settlementId: number, monster: [number, number], huntedResources: Array<[string, number]>) {
-    this.settlement = settlementId;
-    this.monster = monster;
+  constructor(settlementId: number, monsterId: number, monsterLevel: number, huntedResources: Array<[string, number]>) {
+    this.settlementId = settlementId;
+    this.monsterId = monsterId;
+    this.monsterLevel = monsterLevel;
     this.huntedResources = huntedResources;
   }
 

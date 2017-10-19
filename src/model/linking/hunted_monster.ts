@@ -9,6 +9,7 @@ export class HuntedMonster {
   settlement: Settlement;
   monster: Monster;
   huntedResources: Storage[] = [];
+  monsterLevel: number;
 
   constructor(settlement: Settlement, monster: Monster) {
     this.settlement = settlement;

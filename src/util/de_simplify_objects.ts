@@ -60,7 +60,7 @@ export class DeSimplifyObjects {
   public static simplifyHuntedMonster(huntedMonster: HuntedMonster): HuntedMonsterDB {
     const huntedResources: Array<[string, number]> = [];
     huntedMonster.huntedResources.forEach(storage => huntedResources.push([storage.name, storage.amount]));
-    return new HuntedMonsterDB(huntedMonster.settlement.id, [huntedMonster.monster.id, huntedMonster.monster.level],
+    return new HuntedMonsterDB(huntedMonster.settlement.id, huntedMonster.monster.id, huntedMonster.monsterLevel,
       huntedResources);
   }
 
