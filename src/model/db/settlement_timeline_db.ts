@@ -3,6 +3,7 @@
  */
 export class SettlementTimelineDB {
   settlementId: number;
+  // position, lanternEvent-name
   timeline: [number, string];
   reached: boolean = false;
 

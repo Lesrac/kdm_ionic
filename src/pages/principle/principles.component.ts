@@ -20,6 +20,7 @@ export class PrinciplesPageComponent implements OnInit {
 
   constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService) {
     this.settlement = params.get('settlement');
+    console.log(this.settlement);
   }
 
   ngOnInit(): void {

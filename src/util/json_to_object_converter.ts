@@ -1,7 +1,6 @@
 import { Settlement } from '../model/settlement';
 import { Monster } from '../model/monster';
 import { Resource, ResourceType } from '../model/resource';
-import { MonsterResource } from '../model/linking/monster_resource';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { Milestone, MilestoneType } from '../model/milestone';
@@ -60,16 +59,6 @@ export class JsonToObjectConverter {
       locations: [], // todo monster locationNames
     };
     return monster;
-  }
-
-  public static convertToMonsterResourceObject(monsterResourceJSON: any, monster: Monster,
-                                               resource: Resource): MonsterResource {
-    const monsterResource: MonsterResource = {
-      monster: monster,
-      amount: monsterResourceJSON.amount,
-      resource: resource,
-    };
-    return monsterResource;
   }
 
   public static convertToHuntableMonsterObject(huntableMonsterJSON: any): HuntableMonster {
@@ -131,6 +120,7 @@ export class JsonToObjectConverter {
   }
 
   public static convertToStoryEventObject(storyEventJSON: any): StoryEvent {
+    console.log('convertToStoryEventObject');
     return Object.assign({}, storyEventJSON);
   }
 

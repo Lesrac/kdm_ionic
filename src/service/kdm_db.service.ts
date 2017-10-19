@@ -10,16 +10,25 @@ import { DeSimplifyObjects } from '../util/de_simplify_objects';
 @Injectable()
 export class KDMDBService {
   private settlements: string = 'settlements';
+  private settlement: string = 'settlement';
 
   constructor(private storage: Storage) {
     console.log('Enter: KDMDBService');
   }
 
-  initDB(): void {
+  getSettlements(): Promise<SettlementSimplified[]> {
+    const settlements: SettlementSimplified[] = [];
+    this.storage.forEach((value, key, index) => {
+        if (key.startsWith(this.settlement)) {
+          this.getSettlementByStorageKey(key).then(settlement => settlements.push(JSON.parse(settlement)));
+        }
+      },
+    );
+    return new Promise<SettlementSimplified[]>(resolve => setTimeout(resolve, 2000)).then(() => settlements);
   }
 
-  getSettlements(): Promise<Settlement[]> {
-    return this.storage.get(this.settlements);
+  getSettlementById(id: number): Promise<SettlementSimplified> {
+    return this.storage.get(this.settlement + id);
   }
 
   saveSettlements(settlements: Settlement[]): void {
@@ -28,13 +37,15 @@ export class KDMDBService {
 
   saveSettlement(settlement: Settlement): void {
     console.log('saveSettlement');
-    console.log(settlement);
     const simplified: SettlementSimplified = DeSimplifyObjects.simplifySettlement(settlement);
-    console.log(JSON.stringify(simplified));
-    this.storage.set('settlement' + settlement.id, JSON.stringify(simplified)).then(what => {
-      console.log('set key value pair');
-      console.log(what);
-    });
+    this.storage.set(this.settlement + settlement.id, JSON.stringify(simplified));
   }
 
+  removeSettlement(settlementId: number): void {
+    this.storage.remove(this.settlement + settlementId);
+  }
+
+  private getSettlementByStorageKey(key: string): Promise<string> {
+    return this.storage.get(key);
+  }
 }
