@@ -43,6 +43,7 @@ export class DeSimplifyObjects {
     return {
       milestoneId: settlementMilestone.milestone.id,
       settlementId: settlementMilestone.settlement.id,
+      reached: settlementMilestone.reached,
     };
   }
 

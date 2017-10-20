@@ -90,6 +90,7 @@ export class KDMDataService {
   getSettlements(): Promise<Settlement[]> {
     if (this.settlements.length < 1 && this.isInnitRunning) {
       return this.kdmDBService.getSettlements().then(simplifiedSettlements => {
+        console.log(simplifiedSettlements);
         simplifiedSettlements.forEach(simplifiedSettlement =>
           this.settlements.push(this.desimplifySettlement(simplifiedSettlement)));
         return this.settlements;
@@ -655,8 +656,11 @@ export class KDMDataService {
 
     const settlementMilestones: SettlementMilestone[] = [];
     simplifiedSettlement.milestones.forEach(settlementMilestone => {
-      this.getMilestone(settlementMilestone.milestoneId).then(milestone =>
-        settlementMilestones.push(new SettlementMilestone(settlement, milestone)));
+      this.getMilestone(settlementMilestone.milestoneId).then(milestone => {
+        const sm: SettlementMilestone = new SettlementMilestone(settlement, milestone);
+        sm.reached = settlementMilestone.reached;
+        settlementMilestones.push(sm);
+      });
     });
     settlement.milestones = settlementMilestones;
 

@@ -4,9 +4,11 @@
 export class SettlementMilestoneDB {
   milestoneId: number;
   settlementId: number;
+  reached: boolean;
 
-  constructor(settlementId: number, milestoneId: number) {
+  constructor(settlementId: number, milestoneId: number, reached: boolean) {
     this.settlementId = settlementId;
     this.milestoneId = milestoneId;
+    this.reached = reached;
   }
 }
