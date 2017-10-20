@@ -24,7 +24,6 @@ export class TimelinePageComponent {
   }
 
   ionViewDidLeave(): void {
-    console.log('I left!');
     this.kdmdbService.saveSettlement(this.timeline[0].settlement);
   }
 
