@@ -59,7 +59,11 @@ export class KDMDataService {
   glossaryEntries: BaseModel[] = [];
   huntEvents: HuntEvent[] = [];
 
+  isInnitRunning: boolean = true;
+  private initPrincipleTypesOnceNotStarted: boolean = true;
+
   constructor(private http: Http, private kdmDBService: KDMDBService) {
+    this.isInnitRunning = true;
     this.getStoryEvents();
     this.getPrincipleTypes();
     this.getAllSevereInjuries();
@@ -79,17 +83,19 @@ export class KDMDataService {
     this.getWeapons();
     this.getArmors();
     this.getEquipments();
+    this.getSettlements();
+    this.isInnitRunning = false;
   }
 
   getSettlements(): Promise<Settlement[]> {
-    if (this.settlements.length > 0) {
-      return Promise.resolve(this.settlements);
-    } else {
+    if (this.settlements.length < 1 && this.isInnitRunning) {
       return this.kdmDBService.getSettlements().then(simplifiedSettlements => {
         simplifiedSettlements.forEach(simplifiedSettlement =>
           this.settlements.push(this.desimplifySettlement(simplifiedSettlement)));
         return this.settlements;
       });
+    } else {
+      return Promise.resolve(this.settlements);
     }
   }
 
@@ -111,9 +117,7 @@ export class KDMDataService {
   }
 
   getMonsters(): Promise<Monster[]> {
-    if (this.monsters.length > 0) {
-      return Promise.resolve(this.monsters);
-    } else {
+    if (this.monsters.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/monsters.json').toPromise()
         .then(
           res => {
@@ -140,6 +144,8 @@ export class KDMDataService {
             return this.monsters;
           },
         );
+    } else {
+      return Promise.resolve(this.monsters);
     }
   }
 
@@ -157,9 +163,7 @@ export class KDMDataService {
   }
 
   getResources(): Promise<Resource[]> {
-    if (this.resources.length > 0) {
-      return Promise.resolve(this.resources);
-    } else {
+    if (this.resources.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/resources.json').toPromise()
         .then(
           res => {
@@ -173,6 +177,8 @@ export class KDMDataService {
             return this.resources;
           },
         );
+    } else {
+      return Promise.resolve(this.resources);
     }
   }
 
@@ -206,9 +212,7 @@ export class KDMDataService {
   }
 
   getLanternEvents(): Promise<LanternEvent[]> {
-    if (this.lanternEvents.length > 0) {
-      return Promise.resolve(this.lanternEvents);
-    } else {
+    if (this.lanternEvents.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/lanternevents.json').toPromise()
         .then(
           res => {
@@ -222,6 +226,8 @@ export class KDMDataService {
             return this.lanternEvents;
           },
         );
+    } else {
+      return Promise.resolve(this.lanternEvents);
     }
   }
 
@@ -231,11 +237,11 @@ export class KDMDataService {
   }
 
   getStoryEvents(): Promise<StoryEvent[]> {
-    if (this.storyEvents.length > 0) {
-      return Promise.resolve(this.storyEvents);
-    } else {
+    if (this.storyEvents.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/storyevents.json', this.storyEvents,
         JsonToObjectConverter.convertToStoryEventObject);
+    } else {
+      return Promise.resolve(this.storyEvents);
     }
   }
 
@@ -244,9 +250,7 @@ export class KDMDataService {
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
-    if (this.milestones.length > 0) {
-      return Promise.resolve(this.milestones);
-    } else {
+    if (this.milestones.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/milestones.json').toPromise()
         .then(
           res => {
@@ -264,6 +268,8 @@ export class KDMDataService {
             return this.milestones;
           },
         );
+    } else {
+      return Promise.resolve(this.milestones);
     }
   }
 
@@ -272,9 +278,7 @@ export class KDMDataService {
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {
-    if (this.timeline.length > 0) {
-      return Promise.resolve(this.timeline);
-    } else {
+    if (this.timeline.length < 1 && this.isInnitRunning) {
       return this.getLanternEvents().then(lanternEvents =>
         this.http.get('assets/data/defaulttimeline.json').toPromise()
           .then(
@@ -286,15 +290,17 @@ export class KDMDataService {
               return this.timeline;
             }),
       );
+    } else {
+      return Promise.resolve(this.timeline);
     }
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    if (this.locations.length > 0) {
-      return Promise.resolve(this.locations);
-    } else {
+    if (this.locations.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/locations.json',
         this.locations, JsonToObjectConverter.convertToLocationObject);
+    } else {
+      return Promise.resolve(this.locations);
     }
   }
 
@@ -303,9 +309,7 @@ export class KDMDataService {
   }
 
   getInnovations(): Promise<Innovation[]> {
-    if (this.innovations.length > 0) {
-      return Promise.resolve(this.innovations);
-    } else {
+    if (this.innovations.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/innovations.json').toPromise()
         .then(
           res => {
@@ -319,6 +323,8 @@ export class KDMDataService {
             return this.innovations;
           },
         );
+    } else {
+      return Promise.resolve(this.innovations);
     }
   }
 
@@ -334,7 +340,7 @@ export class KDMDataService {
           objects.filter((innov: Innovation) =>
             innov.consequence === tag).length > 0));
       // when null/undefined get all Base Innovations and add them to the list
-      if (existingObjects == null || (existingObjects.length === 0 && objects.length === 0)) {
+      if (existingObjects == null && (existingObjects.length === 0 && objects.length === 0)) {
         existingObjects = innovations.filter(innovation => innovation.isBase);
       }
       return existingObjects;
@@ -342,27 +348,25 @@ export class KDMDataService {
   }
 
   getDisorders(): Promise<Disorder[]> {
-    if (this.disorders.length > 0) {
-      return Promise.resolve(this.disorders);
-    } else {
+    if (this.disorders.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/disorders.json',
         this.disorders, JsonToObjectConverter.convertToDisorderObject);
+    } else {
+      return Promise.resolve(this.disorders);
     }
   }
 
   getFightingArts(): Promise<FightingArt[]> {
-    if (this.fightingArts.length > 0) {
-      return Promise.resolve(this.fightingArts);
-    } else {
+    if (this.fightingArts.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/fightingarts.json',
         this.fightingArts, JsonToObjectConverter.convertToFightingArtObject);
+    } else {
+      return Promise.resolve(this.fightingArts);
     }
   }
 
   getPrinciples(): Promise<Principle[]> {
-    if (this.principles.length > 0) {
-      return Promise.resolve(this.principles);
-    } else {
+    if (this.principles.length < 1 && this.isInnitRunning) {
       let principleTypes: PrincipleType[] = [];
       this.getPrincipleTypes().then(types =>
         principleTypes = types,
@@ -383,6 +387,8 @@ export class KDMDataService {
             return this.principles;
           },
         );
+    } else {
+      return Promise.resolve(this.principles);
     }
   }
 
@@ -391,11 +397,12 @@ export class KDMDataService {
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
-    if (this.principleTypes.length > 0) {
-      return Promise.resolve(this.principleTypes);
-    } else {
+    if (this.principleTypes.length < 1 && this.isInnitRunning && this.initPrincipleTypesOnceNotStarted) {
+      this.initPrincipleTypesOnceNotStarted = false;
       return this.getGenericList('assets/data/principletypes.json', this.principleTypes,
         JsonToObjectConverter.convertToPrincipleTypeObject);
+    } else {
+      return Promise.resolve(this.principleTypes);
     }
   }
 
@@ -411,9 +418,7 @@ export class KDMDataService {
   }
 
   getWeapons(): Promise<Weapon[]> {
-    if (this.weapons.length > 0) {
-      return Promise.resolve(this.weapons);
-    } else {
+    if (this.weapons.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/weapons.json').toPromise()
         .then(
           res => {
@@ -436,13 +441,13 @@ export class KDMDataService {
             return this.weapons;
           },
         );
+    } else {
+      return Promise.resolve(this.weapons);
     }
   }
 
   getArmors(): Promise<Armor[]> {
-    if (this.armors.length > 0) {
-      return Promise.resolve(this.armors);
-    } else {
+    if (this.armors.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/armors.json').toPromise()
         .then(
           res => {
@@ -465,13 +470,13 @@ export class KDMDataService {
             return this.armors;
           },
         );
+    } else {
+      return Promise.resolve(this.armors);
     }
   }
 
   getEquipments(): Promise<Equipment[]> {
-    if (this.equipments.length > 0) {
-      return Promise.resolve(this.equipments);
-    } else {
+    if (this.equipments.length < 1 && this.isInnitRunning) {
       return this.http.get('assets/data/equipments.json').toPromise()
         .then(
           res => {
@@ -494,6 +499,8 @@ export class KDMDataService {
             return this.equipments;
           },
         );
+    } else {
+      return Promise.resolve(this.equipments);
     }
   }
 
@@ -510,11 +517,11 @@ export class KDMDataService {
   }
 
   getAllSevereInjuries(): Promise<SevereInjury[]> {
-    if (this.severeInjuries.length > 0) {
-      return Promise.resolve(this.severeInjuries);
-    } else {
+    if (this.severeInjuries.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/severeinjuries.json',
         this.severeInjuries, JsonToObjectConverter.convertToSevereInjuryObject);
+    } else {
+      return Promise.resolve(this.severeInjuries);
     }
   }
 
@@ -525,29 +532,29 @@ export class KDMDataService {
   }
 
   getAllBrainTraumas(): Promise<DiceThrow[]> {
-    if (this.brainTraumas.length > 0) {
-      return Promise.resolve(this.brainTraumas);
-    } else {
+    if (this.brainTraumas.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/braintraumas.json',
         this.brainTraumas, JsonToObjectConverter.convertToDiceThrowObject);
+    } else {
+      return Promise.resolve(this.brainTraumas);
     }
   }
 
   getAllHuntEvents(): Promise<HuntEvent[]> {
-    if (this.huntEvents.length > 0) {
-      return Promise.resolve(this.huntEvents);
-    } else {
+    if (this.huntEvents.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/huntevents.json',
         this.huntEvents, JsonToObjectConverter.convertToHuntEventObject);
+    } else {
+      return Promise.resolve(this.huntEvents);
     }
   }
 
   getAllGlossaryEntries(): Promise<BaseModel[]> {
-    if (this.glossaryEntries.length > 0) {
-      return Promise.resolve(this.glossaryEntries);
-    } else {
+    if (this.glossaryEntries.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/glossaryentries.json',
         this.glossaryEntries, JsonToObjectConverter.convertToBaseModelObject);
+    } else {
+      return Promise.resolve(this.glossaryEntries);
     }
   }
 
@@ -640,9 +647,7 @@ export class KDMDataService {
 
     const principles: Principle[] = [];
     simplifiedSettlement.principleNames.forEach(principleName => {
-      console.log(principleName);
       this.getPrinciple(principleName).then(principle => {
-        console.log(principle);
         principles.push(principle);
       });
     });
