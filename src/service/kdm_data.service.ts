@@ -454,7 +454,6 @@ export class KDMDataService {
   }
 
   private desimplifySettlement(simplifiedSettlement: SettlementSimplified): Settlement {
-    console.log(Date.now());
     const settlement = new Settlement(simplifiedSettlement.name);
     settlement.id = simplifiedSettlement.id;
     settlement.survivalLimit = simplifiedSettlement.survivalLimit;
@@ -462,7 +461,6 @@ export class KDMDataService {
     settlement.deathcount = simplifiedSettlement.deathcount;
     settlement.settlementLost = simplifiedSettlement.settlementLost;
     const timeline: SettlementTimeline[] = [];
-    console.log(simplifiedSettlement);
     simplifiedSettlement.timeline.forEach(timelineDB => {
       this.getLanternEvent(timelineDB.timeline[1]).then(lanternEvent => {
         const tl: Timeline = {
@@ -534,9 +532,7 @@ export class KDMDataService {
 
     const principles: Principle[] = [];
     simplifiedSettlement.principleNames.forEach(principleName => {
-      console.log(principleName);
       this.getPrinciple(principleName).then(principle => {
-        console.log(principle);
         principles.push(principle);
       });
     });
@@ -548,8 +544,6 @@ export class KDMDataService {
         settlementMilestones.push(new SettlementMilestone(settlement, milestone)));
     });
     settlement.milestones = settlementMilestones;
-
-    console.log(Date.now());
 
 // ToDo survivors
     return settlement;

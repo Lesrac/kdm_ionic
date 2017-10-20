@@ -36,7 +36,6 @@ export class KDMDBService {
   }
 
   saveSettlement(settlement: Settlement): void {
-    console.log('saveSettlement');
     const simplified: SettlementSimplified = DeSimplifyObjects.simplifySettlement(settlement);
     this.storage.set(this.settlement + settlement.id, JSON.stringify(simplified));
   }
