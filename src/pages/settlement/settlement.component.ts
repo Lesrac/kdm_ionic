@@ -13,9 +13,6 @@ import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_e
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
 import { KDMObserverService } from '../../service/kdm_observer.service';
-import { Innovation } from '../../model/innovation';
-import { Observable } from 'rxjs/Observable';
-import { DefaultKeyValueDiffer } from '@angular/core/src/change_detection/differs/default_keyvalue_differ';
 
 /**
  * Created by Daniel on 27.01.2017.

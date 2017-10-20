@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
-import { PrincipleType } from '../../model/principle';
+import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { PrincipleChooserPageComponent } from './principle_chooser.component';
 import { PrincipleDetailComponent } from './principle_detail.component';
@@ -51,14 +51,19 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   getPrincipleName(type: PrincipleType): string {
-    return this.settlement.principles.find(principle => principle.type.name === type.name).name;
+    const principle: Principle = this.settlement.principles.find(princ => princ.type.name === type.name);
+    if (principle) {
+      return principle.name;
+    }
+    return 'not chosen';
   }
 
   showDetail(principleType: PrincipleType): void {
-    this.navCtrl.push(PrincipleDetailComponent, {
-      principle: this.settlement.principles.find(principle => {
-        return principle.type.name === principleType.name;
-      }),
-    }).then();
+    const principle: Principle = this.settlement.principles.find(princ => princ.type.name === principleType.name);
+    if (principle) {
+      this.navCtrl.push(PrincipleDetailComponent, {
+        principle: principle,
+      }).then();
+    }
   }
 }
