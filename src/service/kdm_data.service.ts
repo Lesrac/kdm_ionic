@@ -89,9 +89,9 @@ export class KDMDataService {
 
   getSettlements(): Promise<Settlement[]> {
     if (this.settlements.length < 1 && this.isInnitRunning) {
-      return this.kdmDBService.getSettlements().then(simplifiedSettlements => {
-        console.log(simplifiedSettlements);
-        simplifiedSettlements.forEach(simplifiedSettlement =>
+      return this.kdmDBService.getSettlements().then((simplifiedSettlementsArray) => {
+        console.log(simplifiedSettlementsArray);
+        simplifiedSettlementsArray[0].forEach(simplifiedSettlement =>
           this.settlements.push(this.desimplifySettlement(simplifiedSettlement)));
         return this.settlements;
       });

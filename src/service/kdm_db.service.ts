@@ -16,15 +16,15 @@ export class KDMDBService {
     console.log('Enter: KDMDBService');
   }
 
-  getSettlements(): Promise<SettlementSimplified[]> {
+  getSettlements(): Promise<[SettlementSimplified[], undefined]> {
     const settlements: SettlementSimplified[] = [];
-    this.storage.forEach((value, key, index) => {
+    let storageForEach: Promise<null> = this.storage.forEach((value, key) => {
         if (key.startsWith(this.settlement)) {
           this.getSettlementByStorageKey(key).then(settlement => settlements.push(JSON.parse(settlement)));
         }
       },
     );
-    return new Promise<SettlementSimplified[]>(resolve => setTimeout(resolve, 2000)).then(() => settlements);
+    return Promise.all<SettlementSimplified[], null>([settlements, storageForEach]);
   }
 
   getSettlementById(id: number): Promise<SettlementSimplified> {
