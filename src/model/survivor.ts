@@ -1,11 +1,12 @@
 import { FightingArt } from './fighting_art';
 import { Disorder } from './disorder';
 import { Characteristic } from './characteristic';
+
 /**
  * Created by Daniel on 24.02.2017.
  */
 export class Survivor {
-  static counter: number = 0;
+  settlementId: number;
   id: number;
   name: string;
   isAlive: boolean = true;
@@ -43,10 +44,11 @@ export class Survivor {
   skipNextHunt: boolean = false;
   fightingArts: FightingArt[] = [];
   disorders: Disorder[] = [];
-  characteristics: Characteristic[];
+  characteristics: Characteristic[] = [];
 
-  constructor(name: string) {
-    this.name = name;
-    this.id = Survivor.counter++;
+  constructor(name: string, id: number, settlementId: number) {
+    this.name = name + ' ' + id;
+    this.id = id;
+    this.settlementId = settlementId;
   }
 }

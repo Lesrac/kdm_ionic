@@ -13,6 +13,7 @@ import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_e
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
 import { KDMObserverService } from '../../service/kdm_observer.service';
+import { KDMDataService } from '../../service/kdm_data.service';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -32,7 +33,8 @@ export class SettlementPageComponent implements OnInit, DoCheck {
   settlement: Settlement;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              public differs: KeyValueDiffers, private kdmObserver: KDMObserverService) {
+              public differs: KeyValueDiffers, private kdmObserver: KDMObserverService,
+              private kdmService: KDMDataService) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
       this.differ = differs.find({}).create();
@@ -131,7 +133,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
   }
 
   addSurvivor(): void {
-    this.settlement.survivors.push(new Survivor('Survivor ' + Survivor.counter));
+    this.settlement.survivors.push(this.kdmService.createSurvivor(this.settlement));
   }
 
   populationChecker(): void {

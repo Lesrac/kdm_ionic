@@ -28,6 +28,7 @@ import { SettlementTimeline } from '../model/linking/settlement_timeline';
 import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { SettlementMilestone } from '../model/linking/settlement_milestone';
+import { Survivor } from '../model/survivor';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -115,6 +116,11 @@ export class KDMDataService {
   removeSettlement(settlement: Settlement): void {
     this.settlements.splice(this.settlements.indexOf(settlement), 1);
     this.kdmDBService.removeSettlement(settlement.id);
+  }
+
+  createSurvivor(settlement: Settlement): Survivor {
+    const maxId: number = Math.max.apply(Math, settlement.survivors.map(s => s.id));
+    return new Survivor('Survivor', maxId, settlement.id);
   }
 
   getMonsters(): Promise<Monster[]> {
