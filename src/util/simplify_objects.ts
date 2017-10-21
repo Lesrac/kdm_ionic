@@ -12,20 +12,22 @@ import { SettlementTimeline } from '../model/linking/settlement_timeline';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { HuntedMonsterDB } from '../model/db/hunted_monster_db';
 import { Storage } from '../model/storage';
+import { Survivor } from '../model/survivor';
+import { SurvivorSimplified } from '../model/db/survivor_simplified';
 
-export class DeSimplifyObjects {
+export class SimplifyObjects {
 
   public static simplifySettlement(settlement: Settlement): SettlementSimplified {
     const simplifiedSettlement: SettlementSimplified = new SettlementSimplified(settlement.id, settlement.name,
       settlement.survivalLimit, settlement.population, settlement.deathcount, settlement.settlementLost);
     settlement.milestones.forEach(milestone =>
-      simplifiedSettlement.milestones.push(DeSimplifyObjects.simplifySettlementMilestone(milestone)));
+      simplifiedSettlement.milestones.push(SimplifyObjects.simplifySettlementMilestone(milestone)));
     settlement.timeline.forEach(timeline =>
-      simplifiedSettlement.timeline.push(DeSimplifyObjects.simplifySettlementTimeline(timeline)));
+      simplifiedSettlement.timeline.push(SimplifyObjects.simplifySettlementTimeline(timeline)));
     settlement.huntableMonsters.forEach(huntableMonster =>
-      simplifiedSettlement.huntableMonsters.push(DeSimplifyObjects.simplifyHuntableMonster(huntableMonster)));
+      simplifiedSettlement.huntableMonsters.push(SimplifyObjects.simplifyHuntableMonster(huntableMonster)));
     settlement.huntedMonsters.forEach(huntedMonster =>
-      simplifiedSettlement.huntedMonsters.push(DeSimplifyObjects.simplifyHuntedMonster(huntedMonster)));
+      simplifiedSettlement.huntedMonsters.push(SimplifyObjects.simplifyHuntedMonster(huntedMonster)));
     settlement.locations.forEach(location =>
       simplifiedSettlement.locationNames.push(location.name));
     settlement.innovations.forEach(innovation =>
@@ -34,9 +36,27 @@ export class DeSimplifyObjects {
       simplifiedSettlement.principleNames.push(principle.name));
     settlement.storages.forEach((storage: Storage) =>
       simplifiedSettlement.storagesNameAmount.push([storage.name, storage.amount]));
-
+    settlement.survivors.forEach(survivor =>
+      simplifiedSettlement.survivors.push(SimplifyObjects.simplifySurvivor(survivor)));
     // todo simplify survivors
     return simplifiedSettlement;
+  }
+
+  public static simplifySurvivor(survivor: Survivor): SurvivorSimplified {
+    const simplifiedSurvivor: SurvivorSimplified = new SurvivorSimplified(survivor.id, survivor.settlementId,
+      survivor.name, survivor.isAlive, survivor.isMale, survivor.experience, survivor.survival, survivor.canDodge,
+      survivor.canEncourage, survivor.canSurge, survivor.canDash, survivor.movement, survivor.accuracy,
+      survivor.strength, survivor.evasion, survivor.luck, survivor.speed, survivor.insanity, survivor.isBrainDamaged,
+      survivor.headArmor, survivor.headHeavyInjury, survivor.armsArmor, survivor.armsLightInjury,
+      survivor.armsHeavyInjury, survivor.bodyArmor, survivor.bodyLightInjury, survivor.bodyHeavyInjury,
+      survivor.waistArmor, survivor.waistLightInjury, survivor.waistHeavyInjury, survivor.legsArmor,
+      survivor.legsLightInjury, survivor.legsHeavyInjury, survivor.cannotUseFightingArts, survivor.cannotSpendSurvival,
+      survivor.skipNextHunt);
+    survivor.fightingArts.forEach(fightingArt => simplifiedSurvivor.fightingArtNames.push(fightingArt.name));
+    survivor.disorders.forEach(disorder => simplifiedSurvivor.disorderNames.push(disorder.name));
+    survivor.characteristics.forEach(characteristic =>
+      simplifiedSurvivor.characteristicNames.push(characteristic.name));
+    return simplifiedSurvivor;
   }
 
   public static simplifySettlementMilestone(settlementMilestone: SettlementMilestone): SettlementMilestoneDB {

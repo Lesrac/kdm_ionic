@@ -1,8 +1,8 @@
 import { SettlementTimelineDB } from './settlement_timeline_db';
 import { HuntableMonsterDB } from './huntable_monster_db';
 import { HuntedMonsterDB } from './hunted_monster_db';
-import { Survivor } from '../survivor';
 import { SettlementMilestoneDB } from './settlement_milestone_db';
+import { SurvivorSimplified } from './survivor_simplified';
 
 /**
  * Created by Daniel on 18.10.2017.
@@ -20,7 +20,7 @@ export class SettlementSimplified {
   locationNames: string[] = [];
   storagesNameAmount: Array<[string, number]> = [];
   innovationNames: string[] = [];
-  survivors: Survivor[] = [];
+  survivors: SurvivorSimplified[] = [];
   milestones: SettlementMilestoneDB[] = [];
   principleNames: string[] = [];
 

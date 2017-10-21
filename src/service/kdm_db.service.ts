@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import { Storage } from '@ionic/storage';
 import { SettlementSimplified } from '../model/db/settlement_simplified';
-import { DeSimplifyObjects } from '../util/de_simplify_objects';
+import { SimplifyObjects } from '../util/simplify_objects';
 
 /**
  * Created by Daniel on 18.05.2017.
@@ -36,7 +36,7 @@ export class KDMDBService {
   }
 
   saveSettlement(settlement: Settlement): void {
-    const simplified: SettlementSimplified = DeSimplifyObjects.simplifySettlement(settlement);
+    const simplified: SettlementSimplified = SimplifyObjects.simplifySettlement(settlement);
     this.storage.set(this.settlement + settlement.id, JSON.stringify(simplified));
   }
 

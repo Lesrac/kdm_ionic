@@ -6,8 +6,8 @@ import { Characteristic } from './characteristic';
  * Created by Daniel on 24.02.2017.
  */
 export class Survivor {
-  settlementId: number;
   id: number;
+  settlementId: number;
   name: string;
   isAlive: boolean = true;
   isMale: boolean = true;
