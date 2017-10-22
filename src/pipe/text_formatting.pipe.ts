@@ -5,6 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class TextFormattingPipe implements PipeTransform {
 
   private doubleBreak: string = '<br/><br/>';
+  private break: string = '<br/>';
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -21,6 +22,8 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, '');
         } else if ('br' === matchesWithoutParenthesis) {
           text = text.replace(match, this.doubleBreak);
+        } else if ('br1' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.break);
         } else if (Number(matchesWithoutParenthesis) || Number(matchesWithoutParenthesis[0]) ||
           Number(matchesWithoutParenthesis[1]) || Number(matchesWithoutParenthesis[2])) {
           text = text.replace(match, this.doubleBreak + '<b>' + matchesWithoutParenthesis + '</b>');
