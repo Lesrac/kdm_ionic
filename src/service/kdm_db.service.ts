@@ -17,9 +17,9 @@ export class KDMDBService {
 
   getSettlements(): Promise<[SettlementSimplified[], undefined]> {
     const settlements: SettlementSimplified[] = [];
-    let storageForEach: Promise<null> = this.storage.forEach((value, key) => {
+    let storageForEach: Promise<null> = this.storage.forEach((settlementSimplifiedJSON, key) => {
         if (key.startsWith(this.settlement)) {
-          this.getSettlementByStorageKey(key).then(settlement => settlements.push(JSON.parse(settlement)));
+          settlements.push(JSON.parse(settlementSimplifiedJSON));
         }
       },
     );
@@ -43,7 +43,4 @@ export class KDMDBService {
     this.storage.remove(this.settlement + settlementId);
   }
 
-  private getSettlementByStorageKey(key: string): Promise<string> {
-    return this.storage.get(key);
-  }
 }

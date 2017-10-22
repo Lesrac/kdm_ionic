@@ -710,7 +710,6 @@ export class KDMDataService {
       survivor.skipNextHunt = simplifiedSurvivor.skipNextHunt;
       settlement.survivors.push(survivor);
     });
-
     return settlement;
   }
 
