@@ -232,7 +232,12 @@ export class JsonToObjectConverter {
   }
 
   public static convertToHuntEventObject(huntEventJSON: any): HuntEvent {
-    return Object.assign({}, huntEventJSON);
+    const huntEvent: HuntEvent = {
+      name: huntEventJSON.name,
+      description: huntEventJSON.description,
+      rollResult: +huntEventJSON.rollResult,
+    };
+    return huntEvent;
   }
 
   public static convertToBaseModelObject(baseModelJSON: any): BaseModel {
