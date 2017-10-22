@@ -120,8 +120,6 @@ export class JsonToObjectConverter {
   }
 
   public static convertToStoryEventObject(storyEventJSON: any): StoryEvent {
-    console.log('convertToStoryEventObject');
-    console.log(Object.assign({}, storyEventJSON));
     return Object.assign({}, storyEventJSON);
   }
 

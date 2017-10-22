@@ -91,7 +91,6 @@ export class KDMDataService {
   getSettlements(): Promise<Settlement[]> {
     if (this.settlements.length < 1 && this.isInnitRunning) {
       return this.kdmDBService.getSettlements().then((simplifiedSettlementsArray) => {
-        console.log(simplifiedSettlementsArray);
         simplifiedSettlementsArray[0].forEach(simplifiedSettlement =>
           this.settlements.push(this.desimplifySettlement(simplifiedSettlement)));
         return this.settlements;
@@ -119,7 +118,10 @@ export class KDMDataService {
   }
 
   createSurvivor(settlement: Settlement): Survivor {
-    const maxId: number = Math.max.apply(Math, settlement.survivors.map(s => s.id));
+    let maxId: number = 1;
+    if (settlement.survivors.length > 0) {
+      maxId = Math.max.apply(Math, settlement.survivors.map((s: Survivor) => s.id)) + 1;
+    }
     return new Survivor('Survivor', maxId, settlement.id);
   }
 
@@ -670,7 +672,45 @@ export class KDMDataService {
     });
     settlement.milestones = settlementMilestones;
 
-// ToDo survivors
+    simplifiedSettlement.survivors.forEach(simplifiedSurvivor => {
+      const survivor: Survivor = new Survivor(simplifiedSurvivor.name, simplifiedSurvivor.id,
+        simplifiedSurvivor.settlementId);
+      survivor.isAlive = simplifiedSurvivor.isAlive;
+      survivor.isMale = simplifiedSurvivor.isMale;
+      survivor.experience = simplifiedSurvivor.experience;
+      survivor.survival = simplifiedSurvivor.survival;
+      survivor.canDodge = simplifiedSurvivor.canDodge;
+      survivor.canEncourage = simplifiedSurvivor.canEncourage;
+      survivor.canSurge = simplifiedSurvivor.canSurge;
+      survivor.canDash = simplifiedSurvivor.canDash;
+      survivor.movement = simplifiedSurvivor.movement;
+      survivor.accuracy = simplifiedSurvivor.accuracy;
+      survivor.strength = simplifiedSurvivor.strength;
+      survivor.evasion = simplifiedSurvivor.evasion;
+      survivor.luck = simplifiedSurvivor.luck;
+      survivor.speed = simplifiedSurvivor.speed;
+      survivor.insanity = simplifiedSurvivor.insanity;
+      survivor.isBrainDamaged = simplifiedSurvivor.isBrainDamaged;
+      survivor.headArmor = simplifiedSurvivor.headArmor;
+      survivor.headHeavyInjury = simplifiedSurvivor.headHeavyInjury;
+      survivor.armsArmor = simplifiedSurvivor.armsArmor;
+      survivor.armsLightInjury = simplifiedSurvivor.armsLightInjury;
+      survivor.armsHeavyInjury = simplifiedSurvivor.armsHeavyInjury;
+      survivor.bodyArmor = simplifiedSurvivor.bodyArmor;
+      survivor.bodyLightInjury = simplifiedSurvivor.bodyLightInjury;
+      survivor.bodyHeavyInjury = simplifiedSurvivor.bodyHeavyInjury;
+      survivor.waistArmor = simplifiedSurvivor.waistArmor;
+      survivor.waistLightInjury = simplifiedSurvivor.waistLightInjury;
+      survivor.waistHeavyInjury = simplifiedSurvivor.waistHeavyInjury;
+      survivor.legsArmor = simplifiedSurvivor.legsArmor;
+      survivor.legsLightInjury = simplifiedSurvivor.legsLightInjury;
+      survivor.legsHeavyInjury = simplifiedSurvivor.legsHeavyInjury;
+      survivor.cannotUseFightingArts = simplifiedSurvivor.cannotUseFightingArts;
+      survivor.cannotSpendSurvival = simplifiedSurvivor.cannotSpendSurvival;
+      survivor.skipNextHunt = simplifiedSurvivor.skipNextHunt;
+      settlement.survivors.push(survivor);
+    });
+
     return settlement;
   }
 

@@ -47,7 +47,7 @@ export class Survivor {
   characteristics: Characteristic[] = [];
 
   constructor(name: string, id: number, settlementId: number) {
-    this.name = name + ' ' + id;
+    this.name = name;
     this.id = id;
     this.settlementId = settlementId;
   }

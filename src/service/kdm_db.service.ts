@@ -13,7 +13,6 @@ export class KDMDBService {
   private settlement: string = 'settlement';
 
   constructor(private storage: Storage) {
-    console.log('Enter: KDMDBService');
   }
 
   getSettlements(): Promise<[SettlementSimplified[], undefined]> {
