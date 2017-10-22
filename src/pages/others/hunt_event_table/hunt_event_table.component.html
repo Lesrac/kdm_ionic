@@ -4,12 +4,17 @@
       Hunt Event Table
     </ion-title>
   </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="filterEventTable($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let huntEvent of huntEvents">
+  <ion-list *ngFor="let huntEvent of filteredHuntEvents">
     <ion-item no-lines>{{huntEvent.rollResult}} | {{huntEvent.name}}</ion-item>
-    <ion-item text-wrap no-lines>{{huntEvent.description}}</ion-item>
+    <ion-item text-wrap no-lines>
+      <div [innerHTML]="huntEvent.description | kdmTextFormatting"></div>
+    </ion-item>
     <ion-item-divider small></ion-item-divider>
   </ion-list>
 </ion-content>
