@@ -1400,7 +1400,7 @@
     "description": "Represents the variable ferocity of a survivor's hit. Roll 1d10 and add the result to the wound attempt. The result of this d10 (adding luck modifiers) determines whether or not a critical wound is caused on locations with critical wound effects."
   },
   {
-    "name": "Zone [ ]]/[ ] Zone",
+    "name": "Zone [ ]/[ ] Zone",
     "description": "The indicated area for actions and reactions on some monster Al and hit location cards."
   }
 ]
