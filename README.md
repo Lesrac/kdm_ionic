@@ -8,7 +8,7 @@ npm install --save @ionic-native/status-bar
 ionic plugin add cordova-plugin-splashscreen
 npm install --save @ionic-native/splash-screen
 ionic cordova plugin add cordova-sqlite-storage --save
-npm install --save @ionic-native/sqlite
+npm install --save @ionic/storage
 npm install
 
 

@@ -65,26 +65,25 @@ export class KDMDataService {
 
   constructor(private http: Http, private kdmDBService: KDMDBService) {
     this.isInnitRunning = true;
-    this.getStoryEvents();
-    this.getPrincipleTypes();
-    this.getAllSevereInjuries();
-    this.getAllBrainTraumas();
-    this.getAllGlossaryEntries();
-    this.getAllHuntEvents();
-    this.getSettlementLocations();
-    this.getLanternEvents();
-    this.getInitialMilestones();
-    this.getDefaultTimeline();
-    this.getInnovations();
-    this.getMonsters();
-    this.getResources();
-    this.getDisorders();
-    this.getFightingArts();
-    this.getPrinciples();
-    this.getWeapons();
-    this.getArmors();
-    this.getEquipments();
-    this.getSettlements();
+    this.getStoryEvents().then();
+    this.getPrincipleTypes().then();
+    this.getAllSevereInjuries().then();
+    this.getAllBrainTraumas().then();
+    this.getAllGlossaryEntries().then();
+    this.getAllHuntEvents().then();
+    this.getSettlementLocations().then();
+    this.getInitialMilestones().then();
+    this.getDefaultTimeline().then();
+    this.getInnovations().then();
+    this.getMonsters().then();
+    this.getResources().then();
+    this.getDisorders().then();
+    this.getFightingArts().then();
+    this.getPrinciples().then();
+    this.getWeapons().then();
+    this.getArmors().then();
+    this.getEquipments().then();
+    this.getSettlements().then();
     this.isInnitRunning = false;
   }
 
@@ -365,6 +364,10 @@ export class KDMDataService {
     }
   }
 
+  getDisorder(name: string): Promise<Disorder> {
+    return this.getDisorders().then(disorders => disorders.find(disorder => disorder.name === name));
+  }
+
   getFightingArts(): Promise<FightingArt[]> {
     if (this.fightingArts.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/fightingarts.json',
@@ -372,6 +375,10 @@ export class KDMDataService {
     } else {
       return Promise.resolve(this.fightingArts);
     }
+  }
+
+  getFightingArt(name: string): Promise<FightingArt> {
+    return this.getFightingArts().then(fightingArts => fightingArts.find(fightingArt => fightingArt.name === name));
   }
 
   getPrinciples(): Promise<Principle[]> {
@@ -708,6 +715,10 @@ export class KDMDataService {
       survivor.cannotUseFightingArts = simplifiedSurvivor.cannotUseFightingArts;
       survivor.cannotSpendSurvival = simplifiedSurvivor.cannotSpendSurvival;
       survivor.skipNextHunt = simplifiedSurvivor.skipNextHunt;
+      simplifiedSurvivor.fightingArtNames.forEach(fightingArtName =>
+        this.getFightingArt(fightingArtName).then(fightingArt => survivor.fightingArts.push(fightingArt)));
+      simplifiedSurvivor.disorderNames.forEach(disorderName =>
+        this.getDisorder(disorderName).then(disorder => survivor.disorders.push(disorder)));
       settlement.survivors.push(survivor);
     });
     return settlement;
