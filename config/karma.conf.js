@@ -1,64 +1,48 @@
-/**
- * Created by Daniel on 21.02.2017.
- */
+var webpackConfig = require('./webpack.test.js');
+
 module.exports = function (config) {
-  var testWebpackConfig = require('./webpack.test.js')({});
-  var configuration = {
-    // base path that will be used to resolve all patterns (e.g. files, exclude)
+  var _config = {
     basePath: '',
+
     frameworks: ['jasmine'],
+
     files: [
-      {pattern: './config/karma-shim.js', watched: false},
-      {pattern: './src/assets/**/*', watched: false, included: false, served: true, nocache: false}],
-    preprocessors: {'./config/karma-shim.js': ['coverage', 'webpack', 'sourcemap']},
-    webpack: testWebpackConfig,
-    webpackMiddleware: {
-      // webpack-dev-middleware configuration
-      // i.e.
-      noInfo: true,
-      // and use stats to turn off verbose output
-      stats: {
-        // options i.e.
-        chunks: false
-      }
+      {pattern: './karma-shim.js', watched: true}
+    ],
+
+    preprocessors: {
+      './karma-shim.js': ['webpack', 'sourcemap']
     },
-    reporters: ['mocha'],
+
+    webpack: webpackConfig,
+
+    webpackMiddleware: {
+      stats: 'errors-only'
+    },
+
+    webpackServer: {
+      noInfo: true
+    },
+
+    browserConsoleLogOptions: {
+      level: 'log',
+      format: '%b %T: %m',
+      terminal: true
+    },
+
+    coverageIstanbulReporter: {
+      reports: ['html', 'lcovonly'],
+      fixWebpackSourcePaths: true
+    },
+
+    reporters: config.coverage ? ['kjhtml', 'dots', 'coverage-istanbul', 'verbose'] : ['kjhtml', 'dots', 'verbose'],
     port: 9876,
     colors: true,
-    client: {
-      captureConsole: false
-    },
-    /*
-     * By default all assets are served at http://localhost:[PORT]/base/
-     */
-    proxies: {
-      "/assets/": "/base/src/assets/"
-    },
-    /*
-     * level of logging
-     * possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-     */
-    logLevel: config.LOG_WARN,
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
-    /*
-     * start these browsers
-     * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-     */
-    browsers: [
-      'Chrome'
-    ],
-    singleRun: true
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false
   };
-  if (process.env.NO_COVERAGE !== 'true') {
-    configuration.reporters.push('coverage', 'remap-coverage');
-    configuration.coverageReporter = {
-      type: 'in-memory'
-    };
-    configuration.remapCoverageReporter = {
-      'text-summary': null,
-      html: './coverage/istanbul'
-    };
-  }
-  config.set(configuration);
+
+  config.set(_config);
 };

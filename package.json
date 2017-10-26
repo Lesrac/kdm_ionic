@@ -15,7 +15,11 @@
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
-    "test": "karma start"
+    "test": "karma start ./config/karma.conf.js",
+    "test-coverage": "karma start ./config/karma.conf.js --coverage"
+  },
+  "config": {
+    "ionic_source_map": "source-map"
   },
   "dependencies": {
     "@angular/common": "4.4.6",
@@ -55,22 +59,28 @@
     "awesome-typescript-loader": "^3.2.3",
     "codelyzer": "^3.2.1",
     "istanbul-instrumenter-loader": "3.0.0",
+    "html-loader": "^0.4.5",
     "jasmine-core": "^2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",
+    "karma-coverage-istanbul-reporter": "^1.0.0",
     "karma-jasmine": "^1.1.0",
-    "karma-mocha-reporter": "^2.2.5",
-    "karma-remap-coverage": "^0.1.4",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
+    "karma-typescript": "^3.0.0",
+    "karma-verbose-reporter": "0.0.6",
     "karma-webpack": "2.0.5",
+    "null-loader": "^0.1.1",
     "protractor": "^5.2.0",
     "protractor-jasmine2-screenshot-reporter": "^0.5.0",
     "ts-helpers": "^1.1.2",
     "ts-node": "^3.3.0",
     "tslint": "5.8.0",
+    "tslint-ionic-rules": "0.0.8",
     "tslint-loader": "^3.5.3",
+    "ts-loader": "^2.0.3",
     "typescript": "~2.5.3",
     "webpack": "~3.8.1"
   },

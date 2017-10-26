@@ -3,8 +3,8 @@ import { NavParams, NavController, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { Storage } from '../../model/storage';
 import { StorageModalComponent } from './storage_modal.component';
-import { BaseModel } from '../../model/base_model';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
+
 /**
  * Created by Daniel on 14.02.2017.
  */
