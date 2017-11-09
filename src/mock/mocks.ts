@@ -1,24 +1,3 @@
-export class AppMock {
-  public getActiveNav(): NavMock {
-    return new NavMock();
-  }
-}
-
-export class NavParamsMock {
-  static returnParam = null;
-
-  static setParams(value) {
-    NavParamsMock.returnParam = value;
-  }
-
-  public get(key): any {
-    if (NavParamsMock.returnParam) {
-      return NavParamsMock.returnParam;
-    }
-    return 'default';
-  }
-}
-
 export class NavMock {
 
   public pop(): any {
@@ -47,6 +26,27 @@ export class NavMock {
 
   public popToRoot(): any {
     return true;
+  }
+}
+
+export class AppMock {
+  public getActiveNav(): NavMock {
+    return new NavMock();
+  }
+}
+
+export class NavParamsMock {
+  static returnParam = null;
+
+  static setParams(value) {
+    NavParamsMock.returnParam = value;
+  }
+
+  public get(key): any {
+    if (NavParamsMock.returnParam) {
+      return NavParamsMock.returnParam;
+    }
+    return 'default';
   }
 }
 
