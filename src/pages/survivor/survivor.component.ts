@@ -5,6 +5,7 @@ import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { Settlement } from '../../model/settlement';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 01.03.2017.
@@ -23,13 +24,17 @@ export class SurvivorPageComponent implements OnInit {
   xpGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              public formBuilder: FormBuilder) {
+              public formBuilder: FormBuilder, private kdmdbService: KDMDBService) {
     this.survivor = params.get('survivor');
     this.settlement = params.get('settlement');
   }
 
   ngOnInit(): void {
     this.setupXP();
+  }
+
+  ionViewDidLeave(): void {
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   survivalChange(event: number): void {
