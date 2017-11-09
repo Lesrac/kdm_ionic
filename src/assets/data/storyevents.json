@@ -1,197 +1,197 @@
 [
   {
     "id": 1,
-    "title": "First Words",
+    "name": "First Words",
     "description": "The nominated survivor steps forward and gains + 1 courage. They lead the other survivors to learn to speak to one another! They discuss their situation, realizing they must hunt to live. Add the White Lion to the Quarry list on the settlement record sheet.(br) Your settlement gains the Language innovation. Search the Innovation cards for Language and place it face up in your play area and record it on your settlement sheet.(br) Language is your first innovation, and it will spark the creation of the innovation deck.(br) Build the Innovation deck now ."
   },
   {
     "id": 2,
-    "title": "Build the Innovation Deck",
+    "name": "Build the Innovation Deck",
     "description": "The innovation deck represents the potential cultural and technological growth of your settlement. It will grow throughout the campaign as you gain new innovation cards.(br) Find the 6 innovation cards with language consequence listed under their title:(br) Ammonia, Drums, Hovel, Inner Lantern, Paint, and Symposium.(br) Shuffle these 6 cards together to form your settlement's innovation deck.  Place it face down in the designated space on the settlement board.(br) The innovation deck is persistent. Make sure to preserve the unique combination of cards in your deck between play sessions.(br) Finished with their work, the settlement gathers around its Glowing Center"
   },
   {
     "id": 3,
-    "title": "Glowing Center",
+    "name": "Glowing Center",
     "description": "Armed with language, the nominated survivor aptly names the glowing center of their home The Lantern Hoard. The settlement gains the Lantern Hoard Settlement Location.(br) Search the large Settlement Location cards for the Lantern Hoard and place it face up in your play area. The Lantern Hoard is the source of all innovations and further locations the settlement will develop.(br) The nominated survivor sits in front of the Lantern Hoard in awe and gains + 1 understanding. They must skip the next hunt phase as they ponder the meaning of existence. Check off the skip hunt box on the survivor's record sheet.  They cannot be selected as a departing survivor this phase.(br) Return to the First Story to complete the Settlement Phase."
   },
   {
     "id": 4,
-    "title": "The First Harvest",
+    "name": "The First Harvest",
     "description": "The settlement decides to harvest the body for resources. The settlement gains the Death Principle: Cannibalize. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result (1-5) The settlement ritualistically divides the corpse with a sharp stone and grimly consumes the dead flesh. Gain a Founding Stone starting gear. All departing survivors gain +3 insanity. (6-10) Nominate a survivor. The survivor fanatically tears the corpse open and deeply drinks its blood. They decide that for every new creature they eat, they will become stronger. The survivor gains +1 permanent speed."
   },
   {
     "id": 5,
-    "title": "The First Grave",
+    "name": "The First Grave",
     "description": "The settlement decides to build a small monument to mark their loss. The settlement gains the Death Principle: Graves. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, Roll 1d10. ldlO Result (1-5) The settlement gathers around the grave, each taking a moment to reflect the loss and their place in the darkness. All departing survivors gain +l survival and +l understanding. (6-10) Nominate a survivor. With tears in their eyes, the survivor takes a shard of rock from the grave and marks themselves with it. They cherish this mark forever. The survivor gains +l permanent luck."
   },
   {
     "id": 6,
-    "title": "Without Mercy",
+    "name": "Without Mercy",
     "description": "The toys are taken from the child and replaced with a cold, stone face shard. Training begins immediately. The settlement gains the New Life Principle: Survival of the Fittest. Find and place the card on the settlement board and note it on the settlement records sheet. After adding the card to the settlement, roll 1d10. (1-5) The settlement celebrates with a rowdy party, filled with tests of strength and triumphant roaring. The parents each gain +1 permanent strength and +2 insanity. They must skip the next hunt to recover. (6-10) The child is raised as a pure warrior, leaving compassion and fear behind. The newborn survivor gains +2 courage, the Tough fighting art and one random disorder."
   },
   {
     "id": 7,
-    "title": "With Affection",
+    "name": "With Affection",
     "description": "The settlement embraces the child with warm arms. Nurturing new life is their highest calling. The settlement gains the New Life Principle: Protect the Young. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) The settlement gathers around the newborn in ave. Never have they seen something so precious and meaningful. The parents each gain +2 survival and +1 permanent evasion. (6-10) The child is raised by the entire settlement and endowed with the hopes and wisdom of all. The newborn survivor gains +2 understanding and the Strategist fighting art."
   },
   {
     "id": 8,
-    "title": "Collective Toil",
+    "name": "Collective Toil",
     "description": "Tainted by darkness, a survivor nearly brought ruin to the settlement. On the day of her exile, the people decided that all must spend equal time hunting and working to avoid future disasters. -1 population. Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from now. The settlement gains the Society Principle: Collective Toil. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) Nominate up to 4 survivors. Each gain +5 survival. (6-10) Nominate a survivor. You have a secret. You will always know in your heart that the exile was banished for merely repeating what you taught her. Gain the Secretive disorder. It cannot be removed for any reason. In addition, gain the Timeless Eye fighting art."
   },
   {
     "id": 9,
-    "title": "Accept Darkness",
+    "name": "Accept Darkness",
     "description": "The darkness spoke startling truths. It told the people they were monsters just like the ones they hunted. The people accepted their monstrosity and their place stalking in the darkness. The settlement gains the Society Principle: Accept Darkness. Find and place the card on the settlement board and note it on the settlement record sheet. After adding the card to the settlement, roll 1d10. (1-5) Nominate up to 4 survivors. Each gains +10 insanity. (6-10) Nominate a female survivor (if you can't, nominate a male instead). The survivor is heralded as the settlement's leader! Gain the Quixotic disorder. It cannot be removed for any reason. In addition, gain the Leader and Orator of Death fighting arts."
   },
   {
     "id": 10,
-    "title": "Lost Settlements",
+    "name": "Lost Settlements",
     "description": "Start a new campaign by taking a settlement record sheet and filling in a box under the lost settlement section. Apply all milestone bonuses earned to your new campaign and begin the First Story. For every successive settlement you have lost, you may fill in a box and continue to earn new milestone bonuses for your future campaigns. (milestone) 1. Left Overs: At the start of the showdown with the First Story White Lion, set up 1 survivor Corpse terrain card. ()(milestone)(milestone) 2. Those before us: When the survivors reach the settlement, they find small traces of human life before them. Gain 1 skull basic resource and increase the survival limit by 1. ()(milestone)(milestone)(milestone) 3. Ocular Parasites: This new generation of survivors' eyes have better adapted to the darkness. All survivors gain +1 permanent accuracy. However, the First Story White Lion has grown fat from all the survivors it's eaten. At the start of the showdown, it gains +1 damage token and -1 movement token. ()(milestone)(milestone)(milestone)(milestone) 4. Rainy Season: The weather is extremely temperamental. Add the Acid Storm settlement event to the timeline years 3, 7 13, 19."
   },
   {
     "id": 11,
-    "title": "Duel",
+    "name": "Duel",
     "description": "The hooded knight confronts the bearer of the Twilight Sword, they roll on the table. Add +1 to the result for each Twilight Sword weapon proficiency level. (1-3) The survivor perishes quickly. Disappointed, the knight leaves, never to return. (4-7) The survivor is badly wounded. Suffer the gaping chest wound severe chest injury. The knight has Unfinished Business. (8-9) Gain 1 level of weapon proficiency. Lose all survival. You cannot gain survival this settlement phase. The knight has Unfinished Business. (10) Gain 1 level of weapon proficiency. The knight has Unfinished Business. (11+) Gain 2 level of weapon proficiency, +1 insanity, +1 survival. The knight has Unfinished Business."
   },
   {
     "id": 12,
-    "title": "Mysterious Agenda",
+    "name": "Mysterious Agenda",
     "description": "(1-2) As quickly as he arrived, the hooded knight vanishes in a flash of steel and blood. Suffer -2 population. The hooded knight leaves with Unfinished Business and will return later. (3-6) The hooded knight insists on training the uncouth survivors in martial combat. Up to 2 survivors may spend 3 resources each to learn the Mighty Strike fighting art. The hooded knight leaves with Unfinished Business and will return later. (7-10) The hooded knight forces a tattered parcel into the hands of the returning survivor with the most Hunt XP (if tied, randomize). The hooded knight leaves with Unfinished Business. If there are no returning survivors, then Unfinished Business. (10) The Hooded Knight seems disturbed. If settlement has Records, roll 1d10. (1-3) Destroy Records, return it to the innovation deck. (4+) If you haven't triggered (swords)Nemesis Encounter - Watcher, move it back 5 years on the timeline."
   },
   {
     "id": 13,
-    "title": "Unfinished Business",
+    "name": "Unfinished Business",
     "description": "Add \"(milestoneNL) Hooded Knight\" to the timeline 4 years from now."
   },
   {
     "id": 14,
-    "title": "Tattered Parcel",
+    "name": "Tattered Parcel",
     "description": "The survivor gains the Twilight Sword rare gear, place it in their grid now. The survivor may select Twilight Sword as a weapon proficiency type. The weapon is cursed. (br)Cursed: This may not be removed from your gear grid for any reason. When you die, archive this card."
   },
   {
     "id": 15,
-    "title": "Endless Screams Event",
+    "name": "Endless Screams Event",
     "description": "The settlement erupts into chaos trying to comprehend the source of the terrible wail. You may now hunt the Screaming Antelope. Add it to the quarry list on the settlement record sheet. Nominate a single survivor to stand amidst the madness. They gain +1 courage and become the Voice of Reason."
   },
   {
     "id": 16,
-    "title": "Voice of Reason",
+    "name": "Voice of Reason",
     "description": "(1-2) The survivor's face turns pale and the courage drains from their eyes. Without hesitation, the survivor turns on their heels and dashes for the darkness. Sadly, their foot catches a stone face and they fall face-first into the floor. The survivor loses 1 courage and suffers the broken jaw severe head injury. (3-6) The survivor realizes the noise is most likely from another strange creature that lives out in the darkness. After some effort, they manage to calm the settlement.(br) The Survivor gains +1 understanding.(br) Returning survivors gain +1 insanity. (7-10) The survivor stands firm in the face of the screaming unknown. Slow and strong words change the settlement's fear into tingling excitement. After all, the endless screams might be an opportunity to gain knowledge and harness the darkness.(br) The survivor gains the Orator of Death fighting art.(br) Returning survivors gain +2 insanity."
   },
   {
     "id": 17,
-    "title": "Inspection",
+    "name": "Inspection",
     "description": "(1-3) In one swift motion The Hand draws its sword, cleaving the Lantern Oven and 4 survivors asunder. Suffer -4 population. Return the Lantern Oven to the innovation deck. Challenge The Hand to avoid this loss.(2-3) If the settlement has the Accept the Darkness Society Principle, The Hand presents 2 infants to the kneeling survivors, Gain +2 population. (4-7) The Hand rampages through the settlement. Lose any resources in settlement storage and suffer -1 population. Challenge The Hand to avoid this loss.(5-7) If the settlement has the Guidepost innovation, The Hand demonstrates sophisticated fighting arts. Gain 1 weapon mastery of your choice and add it to your settlement. (8-10) The Hand points at the survivor (survivors in case of a tie) with the most hunt experience. A warble trapped in their throat as their chest bursts open expelling their organs (killing them). Challenge the Hand to avoid this loss. (9-10) If the settlement has Survival of the Fittest New Life Principle, The Hand's voice sounds in all of the survivors' heads. None can recall what happened, but each feels profoundly changed. No (*) may be spent this settlement phase. All living survivors gain +1 permanent strength."
   },
   {
     "id": 18,
-    "title": "Challenge",
+    "name": "Challenge",
     "description": "The Hand accepts your challenge! Stop the settlement phase and depart for a special showdown with The Hand. After the showdown, resume the settlement phase. Do not gain (*), draw a settlement event card, or advance a lantern year."
   },
   {
     "id": 19,
-    "title": "Hands of heat event",
+    "name": "Hands of heat event",
     "description": "If the settlement already innovated Lantern Oven, skip this event and roll on the Lantern Branding table. Otherwise, proceed with Hands of Heat, below:(br) One lucky day, a clumsy accidents knocks a lantern free from the towering Lantern Hoard. A sudden flash of heat bathes the survivors as the lantern crashes to the ground. Now shattered, the lantern light dies, but the seed of an idea begins to grow.(br) Nominate a survivor. They gain +1 courage and Experiment with Lanterns."
   },
   {
     "id": 20,
-    "title": "Experiment with Lanterns",
+    "name": "Experiment with Lanterns",
     "description": "(1-3) An agitated lantern shatters in the survivor's face. Badly burned and disfigured, the survivor is exiled from the settlement as an inhuman monster. However, the other survivors learn something from this tragedy. Your settlement gains the Lantern Oven innovation. -1 population. Add \"(milestoneNL) Bone Witch\" to the timeline 3 lantern years from now. (4-6) The survivor vigorously shakes a lantern and holds it watchfully. It bursts into blue light with a distinct hissing sound. The lantern grows hot in the survivor's clenched hands, burning their flesh. They bellow in primal triumph. Gain +1 permanent strength and the Red Fist secret fighting art. Your settlement gains the Lantern Oven innovation. (7+) The survivor discovers heat and the settlement gains the Lantern Oven innovation. The survivors gains the Red Fist secret fighting art, and rolls on the Lantern Branding table on this page!"
   },
   {
     "id": 21,
-    "title": "Lantern Branding",
+    "name": "Lantern Branding",
     "description": "A feast, culminating in the ritual branding of the settlement's finest warriors by the heat of an agitated lantern.(br) Discard half the settlement's total resources (including storage), rounded down. Nominate a survivor and roll on the table below. (1-3) Tradition. All departing survivors gain +10 survival. Add \"(milestoneNL) Hands of Heat\" to the timeline 1d10 years from now. (4-7) Branded feet. Gain +1 permanent speed. (8-9) Branded hand. Gain +1 permanent strength. (10+) Accident! Suffer the blinded severe head injury and gain +1 permanent luck."
   },
   {
     "id": 22,
-    "title": "Count People",
+    "name": "Count People",
     "description": "7 or less.(br) - Supportive Action -(br) Finally, one of them drives a lantern halberd into the ground. They leave without a word. Add the Guidepost innovation to the settlement.(br) The strangers plan to return. Add (milestoneNL) Armored Strangers to the timeline 4 years from the current year. Roll on the table below. (1-3) A survivor's ears fill with a painful static! A random returning survivor gains a random disorder. (4-7) The armored strangers dump a mangled, unidentifiable corpse on the ground. Gain 3 random basic resources. (8+) The armored strangers haul a massive, bountiful beast corpse. The survivors wonder at this boon. Gain 6 random basic resources. Departing survivors gain +1 survival.(br)(br) 8 or more(br) - Destructive Action -(br) The strangers finish their count and draw their blades. Roll on the table below.(1-4) The armored strangers wantonly execute survivors. Suffer -5 population. You may Resist to avoid this loss. (5-7) The bravest survivors are rounded up. Select the survivors with the highest courage (if case of a tie, select all) and execute them. You may Resist to avoid this loss. (8-9) The strangers destroy a random innovation. Return the lost innovation card to the settlement's innovation deck. The survivors may choose to Resist to avoid this loss.(10+) A halberd is left in the settlement with a survivor impaled on it as a reminder. Suffer -1 population. Add the Guidepost innovation to the settlement."
   },
   {
     "id": 23,
-    "title": "Resist",
+    "name": "Resist",
     "description": "You rise up! Stop the settlement phase and prepare to depart for a special showdown with a King's Man. After the showdown, resume the settlement phase. After the showdown. resume the settlement phase. Do not gain (*), draw a settlement event card, or advance a lantern year."
   },
   {
     "id": 24,
-    "title": "Phoenix Feather Event",
+    "name": "Phoenix Feather Event",
     "description": "The skies bubble and murmur as a dark presence tears through the atmosphere like a negative lighting bolt, sucking the air and energy from all who gaze upon it.(br) A light rain begins . The survivors turn their eyes up to see a huge, iridescent feather slowly floating toward the ground. Their lantern lights reflect strange rainbows off the twisting feather. A primal fear takes root in the settlement.(br) You may now hunt the Phoenix. Add it to the quarry list on the settlement record sheet. Nominate a single survivor to speak. They gain + 1 courage and Break the Silence."
   },
   {
     "id": 25,
-    "title": "Break the silence",
+    "name": "Break the silence",
     "description": "(1) The survivor attempts to speak, but before the words can leave their lips, they fall over dead from fright. The settlement panics and decides to banish the fallen feather into the darkness. (2-5) The survivor shoos everyone away from the feather. Alone in the rain , they examine it. The nominated survivor gains + 1 understanding and the Tail Feather Phoenix resource. (4-5) If the settlement chose Survival of the Fittest Birth Principle, the survivor raves to no one in particular about an oncoming trial. bursting in to laughter and tearing the feather apart! The survivor gains +1 permanent evasion and the Honorable disorder. (6-10) The survivor exclaims that the fallen feather is the most beautiful and dangerous thing they have ever laid eyes on . Each color runs perfectly into another, and gazing upon it imparts a strange sense of longing. They are convinced that there has never been something so perfect in this world.(br) The survivor greedily hides the feather from the others. They gain the Crazed fighting art, the Hoarder disorder, and + 1 courage (from stashing the feather)!(br) Returning survivors gain +2 insanity."
   },
   {
     "id": 26,
-    "title": "Age Story Event",
+    "name": "Age Story Event",
     "description": "Gain the benefits for the Hunt XP milestone you have reached. A survivor may only gain each milestone benefit once a lifetime."
   },
   {
     "id": 27,
-    "title": "1 | Weapon Proficiency",
+    "name": "1 | Weapon Proficiency",
     "description": "You may now select a weapon type for weapon proficiency. (If you wound a monster with the selected weapon type, you are now eligible to gain a proficiency level during the aftermath). Roll on the table below.(br) Available Weapon Types(br) axe, bow, club, dagger, fist & tooth, grand weapon, katar, shield, spear, sword, and whip.(br) 2d10 (2) Gain +1 permanent evasion. (3-6) Gain +1 permanent strength. (7-15) Gain 1 random fighting art. (16-19) Gain +1 permanent accuracy. (20) Gain +1 permanent luck."
   },
   {
     "id": 28,
-    "title": "2 | Improved Reflexes",
+    "name": "2 | Improved Reflexes",
     "description": "The years sharpen your reflexes. Roll on the table below.(br) 2d10 (2) Gain +1 permanent movement. (3-6) Gain 1 random fighting art. (7-15) Gain +1 permanent strength. (16-19) Gain 1 random fighting art. (20) Gain +1 permanent speed."
   },
   {
     "id": 29,
-    "title": "3 | Enhanced Senses",
+    "name": "3 | Enhanced Senses",
     "description": "Experience sharpens your instincts. Roll on the table below.(br) 2d10 (2) Gain +1 permanent speed. (3-6) Gain +1 permanent movement. (7-15) Gain 1 random fighting art. (16-19) Draw 2 random fighting arts and gain 1. (20) Gain +3 permanent strength."
   },
   {
     "id": 30,
-    "title": "4 | Lucky Elder",
+    "name": "4 | Lucky Elder",
     "description": "Age is the rarest resource of all. Roll on the table below.(br) 2d10 (2) Draw 5 random fighting arts and gain 1. (3-6) Gain +1 permanent evasion. (7-15) Gain +1 permanent evasion. (16-19) Gain +1 permanent speed. (20) Gain +1 permanent attribute of your choice."
   },
   {
     "id": 31,
-    "title": "Dream of the Beast",
+    "name": "Dream of the Beast",
     "description": "The newborn gains 1 permanent red affinity and the following abilities:(br) Caratosis: For each red affinity you have, 1 of your attack rolls hits automatically each attack.(br) Red Life Exchange: In the Aftermath, gain 3 additional Hunt XP. You may not place other gear in your grid. Gain+ 1 permanent strength with each Age milestone. When you retire, you cease to exist."
   },
   {
     "id": 32,
-    "title": "Dream of the Crown",
+    "name": "Dream of the Crown",
     "description": "The newborn gains 1 permanent green affinity and the following abilities:(br) Dormenatus: When you depart, gain (shieldone) to every hit location for each green affinity you have.(br) Green Life Exchange: In the Aftermath , gain 3 additional Hunt XP. You may not place other gear in your grid. Gain + 1 permanent evasion with each Age milestone. When you retire, you cease to exist."
   },
   {
     "id": 33,
-    "title": "Dream of the Lantern",
+    "name": "Dream of the Lantern",
     "description": "The newborn gains 1 permanent blue affinity and the following abilities:(br) Lucernae: For every blue affinity you have, your ranged weapons gain this amount of range and your melee weapons gain this amount of reach.(br) Blue Life Exchange: In the Aftermath, gain 3 additional Hunt XP. You may not place other gear in your grid. Gain+ 1 permanent luck with each Age milestone. When you retire, you cease to exist."
   },
   {
     "id": 34,
-    "title": "Bold Story Event",
+    "name": "Bold Story Event",
     "description": "Select the triumph corresponding to the current game phase. A survivor may only gain these benefits once a lifetime."
   },
   {
     "id": 35,
-    "title": "Showdown Phase Triumph",
+    "name": "Showdown Phase Triumph",
     "description": "The essential difference between man and monster is a gap no human can overcome. You accept this and tap into a deep well of deranged fortitude. Gain the following ability and roll on the table below.(br) Stalwart: Ignore being knocked down by brain trauma and intimidation actions. (1-3) Gain +1 strength token. (4-7) Gain +3 survival and +3 insanity. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent speed."
   },
   {
     "id": 36,
-    "title": "Hunt Phase Triumph",
+    "name": "Hunt Phase Triumph",
     "description": "Expect the unexpected. You are prepared to face any mind-bending trials at a moments notice. Where others may falter , you forge ahead, meeting the journey head on. Gain the following ability and roll on the table below.(br) Prepared: When rolling to determine a straggler, add your hunt experience to your roll result. (1-3) Gain +1 speed token for next showdown. (4-7) Gain +1 understanding. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent movement."
   },
   {
     "id": 37,
-    "title": "Settlement Phase Triumph",
+    "name": "Settlement Phase Triumph",
     "description": "In this fleeting existence, every moment shared creates meaning. The bonds forged between survivors give you hope. Gain the following ability and roll on the table below.(br) Matchmaker: When you are a returning survivor, once per year you may spend (*) to (milestoneNL) Intimacy. (1-3) May reroll 1 (*) result this settlement phase. (4-7) Gain +1 (*) this settlement phase. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent accuracy."
   },
   {
     "id": 38,
-    "title": "Bone Witch Story Event",
+    "name": "Bone Witch Story Event",
     "description": "All non-deaf returning survivors gain 3 insanity.(br) Insane returning survivors are inexorably drawn to the Bone Witch and must endeavor at the Witch Camp. Otherwise, during this settlement phase, any survivor may endeavor at the Witch Camp if they choose."
   },
   {
     "id": 39,
-    "title": "(*) Witch Camp - roll 1d10",
+    "name": "(*) Witch Camp - roll 1d10",
     "description": "(1) The Bone Witch never forgave her exile. Her burning hatred lit the dark brighter than any lantern. With jagged teeth and gnarled claws, she attacks! You manage to escape, but the wounds she inflicted continue to burn. Suffer -1 permanent strength, -1 permanent accuracy and skip the next hunt.(br) Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from the current lantern year. (2-4) The secrets of the dark should not be seen. The last thing you see are the witch's outreached claws reaching for your eyes. Your eyes are scarred. Suffer -4 permanent accuracy and gain +4 permanent strength . If, for some reason , you gain this result twice, you die.(br) Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from the current lantern year. (5-7) The Bone Witch mutters of the alluring embrace of the awaiting darkness. Her stories stir strange yearnings in your bones. For being a patient listener, she offers to teach you something for the cost of 1d5 bone resources.(br) If you spend the resources, gain the Extra Sense fighting art and +3 survival. (8-10) The Bone Witch spends whispers of the horrors and wonders she has seen, arming you with valuable wisdom. Gain +2 insanity, +1 understanding, and the following ability.(br) Homing Instinct: Add +5 to your rolls on the Run Away story event. (9-10) If the settlement has the Guidepost innovation, the Bone Witch wanders over to it. The settlement is transfixed by a sense of danger. Effortlessly, the Which plucks the weapon from the ground. Archive the Guidepost innovation.(br) As a consolation. she offers to teach the settlement something in exchange for 1 bone.(br) If you spend 1 bone, nominate 4 survivors. They gain the Monster Claw Style fighting art."
   }
 ]

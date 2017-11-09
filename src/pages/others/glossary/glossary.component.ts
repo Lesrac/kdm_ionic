@@ -15,12 +15,10 @@ export class GlossaryPageComponent implements OnInit {
   filteredGlossaryEntries: BaseModel[];
   allGlossaryEntries: BaseModel[];
 
-  query: string;
-
   constructor(public navCtrl: NavController, private kdmService: KDMDataService) {
   }
 
-  filterGlossary(event: any) {
+  filterGlossary(event: any): void {
     let val = event.target.value;
     if (val && val.trim() !== '') {
       this.filteredGlossaryEntries = this.allGlossaryEntries.filter(glossaryEntry =>

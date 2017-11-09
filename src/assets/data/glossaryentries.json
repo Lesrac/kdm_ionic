@@ -76,10 +76,6 @@
     "description": "Actions following an alert contain important conditional information that must he considered to determine if the action is performed. Continue to perform any further actions on the Al card unless stated otherwise. Survival may not be spent during an alert."
   },
   {
-    "name": "Adjacent (Miniature)",
-    "description": ""
-  },
-  {
     "name": "All Survivors",
     "description": "An effect during the showdown that refers to all survivors applies to all survivors currently on the showdown board."
   },

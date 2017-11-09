@@ -42,6 +42,7 @@ import { SevereInjuriesPageComponent } from '../pages/others/severe_injuries/sev
 import { StoryEventsPageComponent } from '../pages/others/story_events/story_events.component';
 import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe_injuries_detail.component';
 import { DiceThrowComponent } from '../pages/template/dice_throw.component';
+import { StoryEventDetailPageComponent } from '../pages/others/story_events/story_event_detail.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { DiceThrowComponent } from '../pages/template/dice_throw.component';
     SevereInjuriesPageComponent,
     SevereInjuriesDetailPageComponent,
     StoryEventsPageComponent,
+    StoryEventDetailPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,6 +117,7 @@ import { DiceThrowComponent } from '../pages/template/dice_throw.component';
     SevereInjuriesPageComponent,
     SevereInjuriesDetailPageComponent,
     StoryEventsPageComponent,
+    StoryEventDetailPageComponent,
   ],
   providers: [{
     provide: ErrorHandler,

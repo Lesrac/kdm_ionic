@@ -1,8 +1,8 @@
 /**
  * Created by Daniel on 05.02.2017.
  */
-export class StoryEvent {
+import { BaseModel } from './base_model';
+
+export class StoryEvent extends BaseModel {
   id: number;
-  title: string;
-  description: string;
 }

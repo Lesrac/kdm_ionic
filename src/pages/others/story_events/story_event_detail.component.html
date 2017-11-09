@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{storyEvent.name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item text-wrap>
+    <span [innerHTML]="storyEvent.description | kdmTextFormatting"></span>
+  </ion-item>
+</ion-content>

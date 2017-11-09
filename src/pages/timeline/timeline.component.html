@@ -22,7 +22,7 @@
           <ion-checkbox [(ngModel)]="timelineevent.reached"
                         (click)="timelineReached($event, timelineevent)"></ion-checkbox>
           <ion-label>{{timelineevent.timeline.position}} <span *ngIf="timelineevent.timeline.lanternEvent"><ion-icon
-            name="book"></ion-icon>{{timelineevent.timeline.lanternEvent.name}}</span>
+            name="book"></ion-icon> {{timelineevent.timeline.lanternEvent.name}}</span>
           </ion-label>
         </ion-item>
         <ion-item-options side="right">
