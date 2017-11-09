@@ -4,6 +4,7 @@ import { DefeatedMonsterModalComponent } from './defeated_monster_modal.componen
 import { Settlement } from '../../model/settlement';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
 import { AddedResourcesModalComponent } from './added_resources_modal.component';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -17,8 +18,13 @@ export class DefeatedMonsterPageComponent {
   settlement: Settlement;
   countedHuntedMonsters: number;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
+              private kdmdbService: KDMDBService) {
     this.settlement = params.get('settlement');
+  }
+
+  ionViewDidLeave(): void {
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   addDefeatedMonster(): void {

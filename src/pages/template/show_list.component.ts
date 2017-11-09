@@ -4,6 +4,8 @@ import { ShowListAddModalComponent } from './show_list_add_modal.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { BaseModel } from '../../model/base_model';
 import { ShowListDetailComponent } from './show_list_detail.component';
+import { Settlement } from '../../model/settlement';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -17,14 +19,21 @@ export class ShowListComponent implements OnInit {
   objects: BaseModel[];
   type: ShowListTypes;
   title: string;
+  settlement: Settlement;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
+              private kdmdbService: KDMDBService) {
     this.objects = params.get('objects');
     this.type = params.get('type');
+    this.settlement = params.get('settlement');
   }
 
   ngOnInit(): void {
     this.setup();
+  }
+
+  ionViewDidLeave(): void {
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   addObject(): void {

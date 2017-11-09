@@ -4,6 +4,7 @@ import { Settlement } from '../../model/settlement';
 import { Storage } from '../../model/storage';
 import { StorageModalComponent } from './storage_modal.component';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -16,8 +17,13 @@ export class StoragePageComponent {
 
   settlement: Settlement;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
+              private kdmdbService: KDMDBService) {
     this.settlement = params.get('settlement');
+  }
+
+  ionViewDidLeave(): void {
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   decreaseAmount(storage: Storage): void {

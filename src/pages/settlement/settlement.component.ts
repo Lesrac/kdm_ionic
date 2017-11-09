@@ -6,7 +6,6 @@ import { TimelinePageComponent } from '../timeline/timeline.component';
 import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated_monster.component';
 import { StoragePageComponent } from '../storage/storage.component';
 import { InnovationPageComponent } from '../innovation/innovation.component';
-import { Survivor } from '../../model/survivor';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
@@ -68,6 +67,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     this.navCtrl.push(ShowListComponent, {
       objects: this.settlement.innovations,
       type: ShowListTypes.Innovation,
+      settlement: this.settlement,
     }).then();
   }
 
@@ -81,6 +81,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     this.navCtrl.push(ShowListComponent, {
       objects: this.settlement.locations,
       type: ShowListTypes.Location,
+      settlement: this.settlement,
     }).then();
   }
 

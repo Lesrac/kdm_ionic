@@ -5,6 +5,7 @@ import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { PrincipleChooserPageComponent } from './principle_chooser.component';
 import { PrincipleDetailComponent } from './principle_detail.component';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -18,7 +19,8 @@ export class PrinciplesPageComponent implements OnInit {
   settlement: Settlement;
   allPrincipleTypes: PrincipleType[];
 
-  constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService) {
+  constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService,
+              private kdmdbService: KDMDBService) {
     this.settlement = params.get('settlement');
     console.log(this.settlement);
   }
@@ -27,6 +29,10 @@ export class PrinciplesPageComponent implements OnInit {
     this.kdmData.getPrincipleTypes().then(principleTypes =>
       this.allPrincipleTypes = principleTypes,
     );
+  }
+
+  ionViewDidLeave(): void {
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   principleIsChosen(type: PrincipleType): boolean {

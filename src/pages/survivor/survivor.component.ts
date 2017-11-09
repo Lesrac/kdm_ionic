@@ -4,6 +4,7 @@ import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
+import { Settlement } from '../../model/settlement';
 
 /**
  * Created by Daniel on 01.03.2017.
@@ -17,12 +18,14 @@ export class SurvivorPageComponent implements OnInit {
   private static MAX_XP: number = 16;
 
   survivor: Survivor;
+  settlement: Settlement;
 
   xpGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public formBuilder: FormBuilder) {
     this.survivor = params.get('survivor');
+    this.settlement = params.get('settlement');
   }
 
   ngOnInit(): void {
@@ -119,6 +122,7 @@ export class SurvivorPageComponent implements OnInit {
     this.navCtrl.push(ShowListComponent, {
       objects: this.survivor.disorders,
       type: ShowListTypes.Disorder,
+      settlement: this.settlement,
     }).then();
   }
 
@@ -126,6 +130,7 @@ export class SurvivorPageComponent implements OnInit {
     this.navCtrl.push(ShowListComponent, {
       objects: this.survivor.fightingArts,
       type: ShowListTypes.FightingArt,
+      settlement: this.settlement,
     }).then();
   }
 
