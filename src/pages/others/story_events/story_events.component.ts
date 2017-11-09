@@ -24,8 +24,6 @@ export class StoryEventsPageComponent implements OnInit {
     this.kdmService.getStoryEvents().then(storyEvents => {
       this.allStoryEvents = storyEvents.sort(this.kdmService.sortByName);
       this.filteredStoryEvents = this.allStoryEvents;
-      console.log(this.allStoryEvents);
-      console.log(this.filteredStoryEvents);
     });
   }
 

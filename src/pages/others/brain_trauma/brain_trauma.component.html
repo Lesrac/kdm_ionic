@@ -8,10 +8,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item-group *ngFor="let diceThrow of diceThrows">
+    <ion-item *ngFor="let diceThrow of diceThrows">
       <kdmf-dice-throw [value]="diceThrow"></kdmf-dice-throw>
-      <ion-item-divider></ion-item-divider>
-    </ion-item-group>
+    </ion-item>
   </ion-list>
-
 </ion-content>
