@@ -3,6 +3,7 @@ import { NavParams, NavController } from 'ionic-angular';
 import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Settlement } from '../../model/settlement';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -20,7 +21,8 @@ export class PrincipleChooserPageComponent implements OnInit {
   principleTwo: Principle = new Principle('Not loaded', 'Please return');
   isLoading: boolean = true;
 
-  constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService) {
+  constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService,
+              private kdmdbService: KDMDBService) {
     this.settlement = params.get('settlement');
     this.principleType = params.get('principleType');
   }
@@ -39,6 +41,7 @@ export class PrincipleChooserPageComponent implements OnInit {
 
   selectPrinciple(principle: Principle): void {
     this.settlement.principles.push(principle);
+    this.kdmdbService.saveSettlement(this.settlement);
     this.navCtrl.pop();
   }
 

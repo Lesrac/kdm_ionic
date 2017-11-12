@@ -5,6 +5,7 @@ import { Settlement } from '../../model/settlement';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
 import { AddedResourcesModalComponent } from './added_resources_modal.component';
 import { KDMDBService } from '../../service/kdm_db.service';
+import { FormattedTextModalComponent } from '../template/formatted_text_modal.component';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -23,10 +24,6 @@ export class DefeatedMonsterPageComponent {
     this.settlement = params.get('settlement');
   }
 
-  ionViewDidLeave(): void {
-    this.kdmdbService.saveSettlement(this.settlement);
-  }
-
   addDefeatedMonster(): void {
     this.countedHuntedMonsters = this.settlement.huntedMonsters.length;
     let modal = this.modalCtrl.create(DefeatedMonsterModalComponent, {
@@ -36,13 +33,21 @@ export class DefeatedMonsterPageComponent {
     modal.onDidDismiss(() => {
       const huntedMonsters = this.settlement.huntedMonsters;
       const huntedMonstersCount: number = huntedMonsters.length;
-      if (huntedMonstersCount > this.countedHuntedMonsters &&
-        huntedMonsters[huntedMonstersCount - 1].huntedResources.length > 0) {
-        modal = this.modalCtrl.create(AddedResourcesModalComponent, {
-          huntedMonster: huntedMonsters[huntedMonstersCount - 1],
+      if (huntedMonstersCount > this.countedHuntedMonsters) {
+        const huntedMonster: HuntedMonster = huntedMonsters[huntedMonstersCount - 1];
+        modal = this.modalCtrl.create(FormattedTextModalComponent, {
+          title: 'Defeated ' + huntedMonster.monster.name,
+          text: huntedMonster.monster.rewardText,
         });
         modal.present();
+        if (huntedMonsters[huntedMonstersCount - 1].huntedResources.length > 0) {
+          modal = this.modalCtrl.create(AddedResourcesModalComponent, {
+            huntedMonster: huntedMonster,
+          });
+          modal.present();
+        }
       }
+      this.kdmdbService.saveSettlement(this.settlement);
     });
   }
 

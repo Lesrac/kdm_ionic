@@ -1,8 +1,5 @@
-import { Settlement } from '../model/settlement';
 import { Monster } from '../model/monster';
 import { Resource, ResourceType } from '../model/resource';
-import { HuntableMonster } from '../model/linking/huntable_monster';
-import { HuntedMonster } from '../model/linking/hunted_monster';
 import { Milestone, MilestoneType } from '../model/milestone';
 import { StoryEvent } from '../model/story_event';
 import { Principle, PrincipleType } from '../model/principle';
@@ -27,61 +24,17 @@ import { BaseModel } from '../model/base_model';
  */
 export class JsonToObjectConverter {
 
-  public static convertToSettlementObject(settlementJSON: any): Settlement {
-    const settlement: Settlement = {
-      id: settlementJSON.ID,
-      name: settlementJSON.Name,
-      survivalLimit: settlementJSON.SurvivalLimit,
-      population: settlementJSON.Population,
-      deathcount: settlementJSON.DeathCount,
-      settlementLost: settlementJSON.SettlementLost,
-      timeline: null,
-      huntableMonsters: null,
-      huntedMonsters: null,
-      locations: null,
-      storages: null,
-      innovations: null,
-      survivors: null,
-      milestones: null,
-      principles: null,
-      addStorageItem: null,
-    };
-    return settlement;
-  }
-
   public static convertToMonsterObject(monsterJSON: any): Monster {
     const monster: Monster = {
-      id: monsterJSON.id,
+      id: +monsterJSON.id,
       name: monsterJSON.name,
-      level: monsterJSON.level,
+      level: +monsterJSON.level,
       isNemesis: monsterJSON.isNemesis,
+      rewardText: monsterJSON.rewardText,
       resources: new Map<number, Map<any, number>>(),
       locations: [], // todo monster locationNames
     };
     return monster;
-  }
-
-  public static convertToHuntableMonsterObject(huntableMonsterJSON: any): HuntableMonster {
-    const huntableMonster: HuntableMonster = {
-      monster: null, // todo MonsterID
-      settlement: null, // todo SettlementID
-      defeatedLevelOne: huntableMonsterJSON.DefeatedLevelOne === 'true',
-      defeatedLevelTwo: huntableMonsterJSON.DefeatedLevelTwo === 'true',
-      defeatedLevelThree: huntableMonsterJSON.DefeatedLevelThree === 'true',
-      isHuntable: huntableMonsterJSON.IsHuntable === 'true',
-    };
-    return huntableMonster;
-  }
-
-  public static convertToHuntedMonsterObject(huntedMonsterJSON: any): HuntedMonster {
-    const huntedMonster: HuntedMonster = {
-      monster: null, // todo MonsterID
-      settlement: null, // todo SettlementID
-      monsterLevel: huntedMonsterJSON.monsterLevel,
-      huntedResources: null,
-      addStorageItem: null,
-    };
-    return huntedMonster;
   }
 
   public static converToResourceObject(resourceJSON: any, tags: StorageTag[]): Resource {
@@ -92,16 +45,16 @@ export class JsonToObjectConverter {
       description: resourceJSON.description,
       existingCards: resourceJSON.existingCards,
       tags: tags,
-      amount: resourceJSON.amount,
+      amount: +resourceJSON.amount,
     };
     return resource;
   }
 
   public static convertToMilestoneObject(milestoneJSON: any, storyEvents: StoryEvent[]): Milestone {
     const milestone: Milestone = new Milestone((milestoneJSON.comparator != null ? milestoneJSON.comparator : ''));
-    milestone.id = milestoneJSON.id;
+    milestone.id = +milestoneJSON.id;
     milestone.name = milestoneJSON.name;
-    milestone.value = milestoneJSON.value;
+    milestone.value = +milestoneJSON.value;
     milestone.todo = milestoneJSON.todo;
     milestone.observerTarget = milestoneJSON.observerTarget != null ? milestoneJSON.observerTarget : '';
     milestone.tag = milestoneJSON.tag;
@@ -167,7 +120,7 @@ export class JsonToObjectConverter {
 
   public static convertToTimelineObject(timelineJSON: any, lanternEvent: LanternEvent): Timeline {
     const timeline: Timeline = {
-      position: timelineJSON.position,
+      position: +timelineJSON.position,
       lanternEvent: lanternEvent,
     };
     return timeline;
@@ -176,14 +129,14 @@ export class JsonToObjectConverter {
   public static convertToWeaponObject(weaponJSON: any, tags: StorageTag[],
                                       affinities: Map<Affinity, Direction[]>): Weapon {
     const weapon: Weapon = {
-      amount: weaponJSON.amount,
+      amount: +weaponJSON.amount,
       tags: tags,
       description: weaponJSON.description,
       name: weaponJSON.name,
       affinities: affinities,
-      speed: weaponJSON.speed,
-      accuracy: weaponJSON.accuracy,
-      strength: weaponJSON.strength,
+      speed: +weaponJSON.speed,
+      accuracy: +weaponJSON.accuracy,
+      strength: +weaponJSON.strength,
     };
     return weapon;
   }
@@ -192,13 +145,13 @@ export class JsonToObjectConverter {
                                      affinities: Map<Affinity, Direction[]>): Armor {
     const space: ArmorSpace = <ArmorSpace>ArmorSpace[<string>armorJSON.space];
     const armor: Armor = {
-      amount: armorJSON.amount,
+      amount: +armorJSON.amount,
       tags: tags,
       description: armorJSON.description,
       name: armorJSON.name,
       affinities: affinities,
       space: space,
-      value: armorJSON.value,
+      value: +armorJSON.value,
     };
     return armor;
   }
@@ -206,7 +159,7 @@ export class JsonToObjectConverter {
   public static convertToEquipmentObject(equipmentJSON: any, tags: StorageTag[],
                                          affinities: Map<Affinity, Direction[]>): Equipment {
     const equipeequipment: Equipment = {
-      amount: equipmentJSON.amount,
+      amount: +equipmentJSON.amount,
       tags: tags,
       description: equipmentJSON.description,
       name: equipmentJSON.name,
@@ -220,8 +173,8 @@ export class JsonToObjectConverter {
     const severeInjury: SevereInjury = {
       name: severeInjuryJSON.name,
       description: severeInjuryJSON.description,
-      minRoll: severeInjuryJSON.minRoll,
-      maxRoll: severeInjuryJSON.maxRoll,
+      minRoll: +severeInjuryJSON.minRoll,
+      maxRoll: +severeInjuryJSON.maxRoll,
       hitLocation: hitLocation,
     };
     return severeInjury;

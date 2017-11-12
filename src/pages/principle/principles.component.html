@@ -10,10 +10,10 @@
   <ion-item *ngFor="let principleType of allPrincipleTypes">
     <ion-row>
       <ion-col>
-        <ion-item>
+        <ion-item no-lines>
           {{principleType.name}} principle:
         </ion-item>
-        <ion-item *ngIf="principleIsChosen(principleType)" (click)="showDetail(principleType)">
+        <ion-item *ngIf="principleIsChosen(principleType)" (click)="showDetail(principleType)" no-lines>
           {{getPrincipleName(principleType)}}
         </ion-item>
       </ion-col>

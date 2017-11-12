@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KDMDataService } from '../../../service/kdm_data.service';
 import { NavController } from 'ionic-angular';
 import { StoryEvent } from '../../../model/story_event';
-import { StoryEventDetailPageComponent } from './story_event_detail.component';
+import { FormattedTextModalComponent } from '../../template/formatted_text_modal.component';
 
 /**
  * Created by Daniel on 15.10.2017.
@@ -39,8 +39,9 @@ export class StoryEventsPageComponent implements OnInit {
   }
 
   showDetail(storyEvent: StoryEvent): void {
-    this.navCtrl.push(StoryEventDetailPageComponent, {
-      storyEvent: storyEvent,
+    this.navCtrl.push(FormattedTextModalComponent, {
+      title: storyEvent.name,
+      text: storyEvent.description,
     }).then();
   }
 

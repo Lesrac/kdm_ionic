@@ -4,6 +4,7 @@
     "name": "White Lion",
     "level": 1,
     "isNemesis": false,
+    "rewardText": "",
     "levelresources": [
       [
         {
@@ -58,6 +59,7 @@
     "name": "Screaming Antelope",
     "level": 1,
     "isNemesis": false,
+    "rewardText": "",
     "levelresources": [
       [
         {
@@ -68,7 +70,7 @@
               "amount": 4
             },
             {
-              "name": "WhiteLion",
+              "name": "ScreamingAntelope",
               "amount": 4
             }
           ]
@@ -81,7 +83,7 @@
               "amount": 4
             },
             {
-              "name": "WhiteLion",
+              "name": "ScreamingAntelope",
               "amount": 6
             }
           ]
@@ -94,11 +96,11 @@
               "amount": 4
             },
             {
-              "name": "WhiteLion",
+              "name": "ScreamingAntelope",
               "amount": 8
             },
             {
-              "name": "Elder Cat Teeth",
+              "name": "Broken Lantern",
               "amount": 1
             }
           ]
@@ -112,6 +114,7 @@
     "name": "Phoenix",
     "level": 1,
     "isNemesis": false,
+    "rewardText": "",
     "levelresources": [
       [
         {
@@ -122,7 +125,7 @@
               "amount": 4
             },
             {
-              "name": "WhiteLion",
+              "name": "Phoenix",
               "amount": 4
             }
           ]
@@ -135,7 +138,7 @@
               "amount": 4
             },
             {
-              "name": "WhiteLion",
+              "name": "Phoenix",
               "amount": 6
             }
           ]
@@ -148,11 +151,11 @@
               "amount": 4
             },
             {
-              "name": "WhiteLion",
+              "name": "Phoenix",
               "amount": 8
             },
             {
-              "name": "Elder Cat Teeth",
+              "name": "Phoenix Crest",
               "amount": 1
             }
           ]
@@ -166,53 +169,8 @@
     "name": "Butcher",
     "level": 1,
     "isNemesis": true,
-    "levelresources": [
-      [
-        {
-          "level": "1",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 4
-            }
-          ]
-        },
-        {
-          "level": "2",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 6
-            }
-          ]
-        },
-        {
-          "level": "3",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 8
-            },
-            {
-              "name": "Elder Cat Teeth",
-              "amount": 1
-            }
-          ]
-        }
-      ]
-    ],
+    "rewardText": "",
+    "levelresources": [],
     "locations": []
   },
   {
@@ -220,53 +178,8 @@
     "name": "King's Man",
     "level": 1,
     "isNemesis": true,
-    "levelresources": [
-      [
-        {
-          "level": "1",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 4
-            }
-          ]
-        },
-        {
-          "level": "2",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 6
-            }
-          ]
-        },
-        {
-          "level": "3",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 8
-            },
-            {
-              "name": "Elder Cat Teeth",
-              "amount": 1
-            }
-          ]
-        }
-      ]
-    ],
+    "rewardText": "",
+    "levelresources": [],
     "locations": []
   },
   {
@@ -274,53 +187,8 @@
     "name": "The Hand",
     "level": 1,
     "isNemesis": true,
-    "levelresources": [
-      [
-        {
-          "level": "1",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 4
-            }
-          ]
-        },
-        {
-          "level": "2",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 6
-            }
-          ]
-        },
-        {
-          "level": "3",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 8
-            },
-            {
-              "name": "Elder Cat Teeth",
-              "amount": 1
-            }
-          ]
-        }
-      ]
-    ],
+    "rewardText": "",
+    "levelresources": [],
     "locations": []
   }
 ]

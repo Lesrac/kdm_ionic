@@ -31,10 +31,6 @@ export class PrinciplesPageComponent implements OnInit {
     );
   }
 
-  ionViewDidLeave(): void {
-    this.kdmdbService.saveSettlement(this.settlement);
-  }
-
   principleIsChosen(type: PrincipleType): boolean {
     return this.settlement.principles.find(principle => {
         return principle.type.name === type.name;
@@ -54,6 +50,7 @@ export class PrinciplesPageComponent implements OnInit {
       principle.type === type,
     );
     this.settlement.principles.splice(itemToRemove, 1);
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   getPrincipleName(type: PrincipleType): string {

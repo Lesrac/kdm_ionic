@@ -9,6 +9,7 @@ export class Monster {
   level: number = 1;
   isNemesis: boolean;
   resources: Map<number, Map<any, number>> = new Map<number, Map<any, number>>();
+  rewardText: string;
   locations: Location[] = [];
 
 }

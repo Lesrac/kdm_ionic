@@ -15,28 +15,31 @@ export class KDMCalculationService {
   }
 
   addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
-    originalMonster.resources.get(huntedMonster.monsterLevel).forEach((amount: number, key: any) => {
-      const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
-      if (resourceType) {
-        this.getAllResourceCardsFromType(resourceType).then(storages => {
-          const huntedResources = this.getRandomizedResourceCards(storages, amount);
-          huntedResources.forEach(storage => {
-            const storageCopy1 = Object.assign({}, storage);
-            const storageCopy2 = Object.assign({}, storage);
+    console.log(originalMonster.resources);
+    if (originalMonster.resources.size > 0) {
+      originalMonster.resources.get(huntedMonster.monsterLevel).forEach((amount: number, key: any) => {
+        const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
+        if (resourceType) {
+          this.getAllResourceCardsFromType(resourceType).then(storages => {
+            const huntedResources = this.getRandomizedResourceCards(storages, amount);
+            huntedResources.forEach(storage => {
+              const storageCopy1 = Object.assign({}, storage);
+              const storageCopy2 = Object.assign({}, storage);
+              huntedMonster.settlement.addStorageItem(storageCopy1);
+              huntedMonster.addStorageItem(storageCopy2);
+            });
+          });
+        } else if (key) {
+          const huntedResources = this.getAllStorageItems(key, amount);
+          huntedResources.forEach(str => {
+            const storageCopy1 = Object.assign({}, str);
+            const storageCopy2 = Object.assign({}, str);
             huntedMonster.settlement.addStorageItem(storageCopy1);
             huntedMonster.addStorageItem(storageCopy2);
           });
-        });
-      } else if (key) {
-        const huntedResources = this.getAllStorageItems(key, amount);
-        huntedResources.forEach(str => {
-          const storageCopy1 = Object.assign({}, str);
-          const storageCopy2 = Object.assign({}, str);
-          huntedMonster.settlement.addStorageItem(storageCopy1);
-          huntedMonster.addStorageItem(storageCopy2);
-        });
-      }
-    });
+        }
+      });
+    }
   }
 
   /**

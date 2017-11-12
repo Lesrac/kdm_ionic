@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item text-wrap>
+    <span [innerHTML]="text | kdmTextFormatting"></span>
+  </ion-item>
+  <ion-item>
+    <button ion-button full (click)="close()">Close</button>
+  </ion-item>
+</ion-content>

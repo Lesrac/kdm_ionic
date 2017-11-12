@@ -4,8 +4,8 @@
   </ion-item-group>
   <ion-item>
     <ion-label>Monster</ion-label>
-    <ion-select [(ngModel)]="monsterId">
-      <ion-option *ngFor="let huntableMonster of huntableMonsters" [value]="huntableMonster.monster.id">
+    <ion-select [(ngModel)]="monster">
+      <ion-option *ngFor="let huntableMonster of huntableMonsters" [value]="huntableMonster.monster">
         {{huntableMonster.monster.name}}
       </ion-option>
     </ion-select>
@@ -18,9 +18,13 @@
       <ion-option value="3">Level 3</ion-option>
     </ion-select>
   </ion-item>
-  <ion-item>
+  <ion-item *ngIf="monster !== undefined && !monster.isNemesis">
     <ion-checkbox [(ngModel)]="huntResources"></ion-checkbox>
     <ion-label>Add hunt resources</ion-label>
+  </ion-item>
+  <ion-item *ngIf="monster === undefined || monster.isNemesis">
+    <ion-checkbox disabled></ion-checkbox>
+    <ion-label>See Reward text after adding the Monster</ion-label>
   </ion-item>
   <ion-item>
     <button ion-button full (click)="addClose()">Add</button>

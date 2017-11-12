@@ -16,7 +16,6 @@ export class AddedResourcesModalComponent implements OnInit {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, private params: NavParams) {
     this.huntedMonster = this.params.get('huntedMonster');
-    console.log(this.huntedMonster);
   }
 
   ngOnInit(): void {
