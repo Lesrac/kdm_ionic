@@ -18,6 +18,8 @@ ionic serve
 On Android:
 ionic cordova run android --livereload
 
+list connected devices:
+adb devices
 
 Aims:
 Was will ich machen können:

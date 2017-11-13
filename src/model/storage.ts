@@ -8,6 +8,7 @@ export enum StorageTag {
   bone,
   bow,
   organ,
+  iron,
   consumable,
   hide,
   flammable,

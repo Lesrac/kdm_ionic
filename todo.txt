@@ -12,3 +12,4 @@
 - Random resources cards (with amount and type chosen)
 - 'Portcullis Key' Hunt Event 79
 - 'rock'-gear, Hunt Event 80
+- Monster Hunt Events

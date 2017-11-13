@@ -1,46 +1,82 @@
 [
   {
-    "name": "Abyssal Sadist",
-    "description": "The first time you wound the monster each attack, gain +1 survival and +1 insanity. Ignore the effects of the Fear of the Dark and Prey disorders."
-  },
-  {
-    "name": "Acanthus Doctor",
-    "description": "You may wear up to 3 Satchel gear cards. When you depart, if you are not wearing any armor, for each green affinity you have, gain +1 strength token and add 1 to all hit locations. Spend an action and a Flower or Fresh Acanthus resource to heal a permanent injury you or an adjacent survivor suffered this showdown."
-  },
-  {
-    "name": "Ageless Apprentice",
-    "description": "When you gain Hunt XP, you may decide not to gain it. When you depart, you may rotate up to 3 gear cards in your gear grid. This changes the location of their affinities and arrows. Otherwise, the gear functions normally."
-  },
-  {
-    "name": "Altered Destiny",
-    "description": "If you would gain a negative attribute token, gain a positive token of that type instead."
-  },
-  {
     "name": "Ambidextrous",
     "description": "All melee weapons in your gear grid gain paired. Ambidextrous cannot be used if there are any shields, two-handed, or heavy gear in your gear grid."
   },
   {
-    "name": "Beetle Strength",
-    "description": "1x/showdown, you may spend an action to shove an adjacent obstacle terrain. If you do, move the terrain ahead of you until you finish moving. If you pass over a monster, it takes 1 wound. Survivors are pushed out of the way to the side. You are knocked down at the end of your move."
-  },
-  {
     "name": "Berserker",
-    "description": "Once per showdown, you may spend an action to suffer bash and the frenzy brain trauma."
+    "description": "Once per showdown, you may spend an activation to suffer bash and the frenzy brain trauma."
   },
   {
-    "name": "Blotted Out",
-    "description": "When you suffer a brain trauma, instead gain a bleeding token."
+    "name": "Thrill Seeker",
+    "description": "Whenever you gain survival during the showdown phase, gain 1 additional survival."
   },
   {
-    "name": "Burning Ambition",
-    "description": "When you are instructed to skip the next hunt event, ignore it. The \"skip next hunt event\" box on your survivor sheet cannot be filled in."
+    "name": "Monster Claw Style",
+    "description": "Your Fist & Tooth attacks gain +1 accuracy, +1 strength and savage."
   },
   {
-    "name": "Burning Focus",
-    "description": "If you have 0 survival at the start of your act, gain 1 survival."
+    "name": "Clutch Fighter",
+    "description": "While you have 3 or more blood tokens, gain +1 strength and +1 accuracy."
   },
   {
-    "name": "Call Shadow Tentacles",
-    "description": "Once per showdown, you may call forth shadowy tentacles to hold the monster in place. From now until your next action, the monster is held in place. Ignore all monster movement on attacks, reactions, traps, and survivor attacks until your next act."
+    "name": "Tough",
+    "description": "When rolling on a severe injury table, unless you roll a 1, add +1 to the result. (This does not include brain trauma. The result total cannot exceed 10.)"
+  },
+  {
+    "name": "Timeless Eye",
+    "description": "Your attack roll is a perfect hit on a result of 9 or 10. You cannot use Timeless Eye if you have the blind severe head injury."
+  },
+  {
+    "name": "Leader",
+    "description": "Whenever you encourage a survivor, they gain +1 speed token until the end of the round."
+  },
+  {
+    "name": "Extra Sense",
+    "description": "You may doge 1 additional time per round."
+  },
+  {
+    "name": "Tumble",
+    "description": "When something would collide with you, roll 1d10. On a result of 6+, you successfully tumble out of harm's way. Instead, place your survivor standing on the closest free space outside of the collision path."
+  },
+  {
+    "name": "Unconscious Fighter",
+    "description": "It takes 7 bleeding tokens to kill you."
+  },
+  {
+    "name": "Crossarm Block",
+    "description": "Whenever you are hit, after hit locations are rolled, you may change 1 result to the arms hit location."
+  },
+  {
+    "name": "Last Man Standing",
+    "description": "While you are the only survivor on the showdown board, you may not gain bleeding tokens or be knocked down."
+  },
+  {
+    "name": "Crazed",
+    "description": "On a perfect hit, gain +1 insanity."
+  },
+  {
+    "name": "Strategist",
+    "description": "During the showdown setup, after placing terrain, you may add a Giant Stone Face or a Toppled Pillar terrain card on the showdown board."
+  },
+  {
+    "name": "Orator of Death",
+    "description": "Once per showdown, you may spend an activation to have all non-deaf survivors gain +2 insanity. When you die, you encourage all survivors with your last words."
+  },
+  {
+    "name": "Double Dash",
+    "description": "During your act, once per round, you may spend an activation to gain a movement."
+  },
+  {
+    "name": "Combo Master",
+    "description": "On a perfect hit, make 1 additional attack roll."
+  },
+  {
+    "name": "Mighty Strike",
+    "description": "On a Perfect hit, gain +2 strength until the end of the attack."
+  },
+  {
+    "name": "Rhythm Chaser",
+    "description": "Gain +1 evasion token the first time you critically wound during a showdown. Rhythm Chaser cannot be used if there are any shields or heavy gear in your grid."
   }
 ]

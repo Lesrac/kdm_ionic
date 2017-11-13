@@ -76,11 +76,13 @@
   },
   {
     "name": "Elder Cat Teeth",
-    "description": "",
+    "description": "As sharp as they are strange.",
     "amount": 0,
     "type": "Strange",
     "existingCards": 1,
-    "tags": []
+    "tags": [
+      "bone"
+    ]
   },
   {
     "name": "Lion Tail",
@@ -266,6 +268,223 @@
     "tags": [
       "organ",
       "consumable"
+    ]
+  },
+  {
+    "name": "Pustules",
+    "description": "The aroma is tempting.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 2,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Muculent Droppings",
+    "description": "Delicately scented, papery husk.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 3,
+    "tags": [
+      "organ"
+    ]
+  },
+  {
+    "name": "Hollow Wing Bones",
+    "description": "Delicate and finely balanced.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 3,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Tail Feathers",
+    "description": "Lighter than air.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 3,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Phoenix Finger",
+    "description": "When you gain this, a survivor of your choice gains +3 insanity.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 2,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Small Feathers",
+    "description": "Soft interior with razor sharp edges.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 3,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Phoenix Whisker",
+    "description": "Silky, yet robust.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Rainbow Droppings",
+    "description": "Consume: Archive this and roll 1d10. On 7+, gain +1 permanent speed. Otherwise, your heart explodes, killing you instantly.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "consumable"
+    ]
+  },
+  {
+    "name": "Phoenix Eye",
+    "description": "Filled with a thick, metallic liquid.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "scrap"
+    ]
+  },
+  {
+    "name": "Bird Beak",
+    "description": "Surprisingly toothy.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Wishbone",
+    "description": "A delicate bone with a strange aura.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "name": "Small Hand Parasites",
+    "description": "Still wriggling.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "organ"
+    ]
+  },
+  {
+    "name": "Black Skull",
+    "description": "Aged to perfection.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "iron",
+      "skull",
+      "bone"
+    ]
+  },
+  {
+    "name": "Shimmering Halo",
+    "description": "Curiously heavy.",
+    "amount": 0,
+    "type": "Phoenix",
+    "existingCards": 1,
+    "tags": [
+      "organ"
+    ]
+  },
+  {
+    "name": "Fresh Acanthus",
+    "description": "Archive this to fully heal 1 hit location, including injury level and armor points.",
+    "amount": 4,
+    "type": "Strange",
+    "existingCards": 1,
+    "tags": [
+      "herb"
+    ]
+  },
+  {
+    "name": "Legendary Horns",
+    "description": "Holding them fills you with power.",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 1,
+    "tags": [
+      "bone",
+      "scrap"
+    ]
+  },
+  {
+    "name": "Perfect Crucible",
+    "description": "When you craft with Perfect Crucible, an ancient bacteria is released into the air. Suffer -1d10 population and archive this card.",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 1,
+    "tags": [
+      "iron"
+    ]
+  },
+  {
+    "name": "Phoenix Crest",
+    "description": "Firm and supple.",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 1,
+    "tags": [
+      "organ"
+    ]
+  },
+  {
+    "name": "Second Heart",
+    "description": "It still tries to bite you.",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 1,
+    "tags": [
+      "organ",
+      "bone"
+    ]
+  },
+  {
+    "name": "Leather",
+    "description": "Never goes out of style.",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 4,
+    "tags": [
+      "hide"
+    ]
+  },
+  {
+    "name": "Iron",
+    "description": "Harder than bone.",
+    "amount": 0,
+    "type": "Strange",
+    "existingCards": 8,
+    "tags": [
+      "scrap"
     ]
   }
 ]
