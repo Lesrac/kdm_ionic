@@ -13,6 +13,8 @@ export enum StorageTag {
   hide,
   flammable,
   scrap,
+  sickle,
+  pickaxe,
   heavy,
   instrument,
   noisy,
@@ -35,6 +37,7 @@ export enum StorageTag {
   item,
   ranged,
   thrown,
+  skull,
   whip,
 }
 

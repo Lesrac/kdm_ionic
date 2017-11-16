@@ -1,7 +1,7 @@
 [
   {
     "name": "Bone Pickaxe",
-    "description": "Frail. After Hunt phase setup, place the Mineral Gathering event on any hunt space.",
+    "description": "After Hunt phase setup, place the Mineral Gathering event on any hunt space.",
     "affinities": [
       {
         "affinity": "green",
@@ -13,6 +13,7 @@
     "tags": [
       "item",
       "tool",
+      "pickaxe",
       "bone"
     ],
     "speed": 1,
@@ -62,8 +63,31 @@
     "strength": 3
   },
   {
+    "name": "Bone Club",
+    "description": "Cumbersome: Spend Movement as an additional cost to activate this weapon. Ignore Cumbersome if this weapon is activated indirectly (Pounce, Charge, etc).",
+    "affinities": [
+      {
+        "affinity": "red",
+        "direction": [
+          "left",
+          "right"
+        ]
+      }
+    ],
+    "tags": [
+      "weapon",
+      "melee",
+      "two-handed",
+      "heavy",
+      "bone"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 5
+  },
+  {
     "name": "Bone Blade",
-    "description": "Frail: When you attempt tp wound a super-dense hit location, this weapon breaks. Archive this card at the end of the attack.",
+    "description": "Frail: When you attempt to wound a super-dense hit location, this weapon breaks. Archive this card at the end of the attack.",
     "affinities": [
       {
         "affinity": "red",
@@ -106,7 +130,7 @@
   },
   {
     "name": "Bone Sickle",
-    "description": "Frail. After the Hunt phase setup, place the Herb Gathering event on any hunt space.",
+    "description": "After the Hunt phase setup, place the Herb Gathering event on any hunt space.",
     "affinities": [
       {
         "affinity": "green",
@@ -118,6 +142,7 @@
     "tags": [
       "item",
       "tool",
+      "sickle",
       "bone"
     ],
     "speed": 2,

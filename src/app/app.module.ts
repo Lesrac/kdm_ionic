@@ -43,6 +43,10 @@ import { StoryEventsPageComponent } from '../pages/others/story_events/story_eve
 import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe_injuries_detail.component';
 import { DiceThrowComponent } from '../pages/template/dice_throw.component';
 import { FormattedTextModalComponent } from '../pages/template/formatted_text_modal.component';
+import { ShowLocationDetailComponent } from '../pages/location/show_location_detail.component';
+import { MapValuesPipe } from '../pipe/map_values.pipe';
+import { FilterObjectsPipe } from '../pipe/filter_objects.pipe';
+import { FilterStringsPipe } from '../pipe/filter_strings.pipe';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,7 @@ import { FormattedTextModalComponent } from '../pages/template/formatted_text_mo
     ShowListComponent,
     ShowListDetailComponent,
     ShowListAddModalComponent,
+    ShowLocationDetailComponent,
     AddedResourcesModalComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
@@ -72,6 +77,9 @@ import { FormattedTextModalComponent } from '../pages/template/formatted_text_mo
     StorageModalComponent,
     AddLinebreakToPunctuationPipe,
     TextFormattingPipe,
+    MapValuesPipe,
+    FilterObjectsPipe,
+    FilterStringsPipe,
     AutoresizeTextareaDirective,
     BrainTraumaPageComponent,
     GlossaryPageComponent,
@@ -102,6 +110,7 @@ import { FormattedTextModalComponent } from '../pages/template/formatted_text_mo
     SurvivorsPageComponent,
     SurvivorPageComponent,
     ShowListComponent,
+    ShowLocationDetailComponent,
     ShowListAddModalComponent,
     AddedResourcesModalComponent,
     ShowListDetailComponent,

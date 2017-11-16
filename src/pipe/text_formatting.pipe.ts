@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Pipe({name: 'kdmTextFormatting'})
 export class TextFormattingPipe implements PipeTransform {
@@ -10,7 +10,7 @@ export class TextFormattingPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  transform(value: string, ...args: string[]): any {
+  transform(value: string, ...args: string[]): SafeHtml {
     const regex = new RegExp(/\((.*?)\)/, 'g');
     const regexRemoveParenthesis = new RegExp(/^\(|\)$/g);
     const matches = value.match(regex);

@@ -108,11 +108,12 @@ export class JsonToObjectConverter {
     return innovation;
   }
 
-  public static convertToLocationObject(locationJSON: any): Location {
+  public static convertToLocationObject(locationJSON: any,
+                                        storageCreation: Map<Equipment, Map<any, number>>): Location {
     const location: Location = {
       name: locationJSON.name,
       description: locationJSON.description,
-      storages: [], // TODO storages from location
+      storageCreation: storageCreation, // TODO storages from location
       isStartLocation: locationJSON.isStartLocation,
     };
     return location;

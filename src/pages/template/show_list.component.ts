@@ -6,6 +6,7 @@ import { BaseModel } from '../../model/base_model';
 import { ShowListDetailComponent } from './show_list_detail.component';
 import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm_db.service';
+import { ShowLocationDetailComponent } from '../location/show_location_detail.component';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -50,9 +51,15 @@ export class ShowListComponent implements OnInit {
   }
 
   showDetail(object: BaseModel): void {
-    this.navCtrl.push(ShowListDetailComponent, {
-      object: object,
-    }).then();
+    if (this.type === ShowListTypes.Location) {
+      this.navCtrl.push(ShowLocationDetailComponent, {
+        object: object,
+      }).then();
+    } else {
+      this.navCtrl.push(ShowListDetailComponent, {
+        object: object,
+      }).then();
+    }
   }
 
   private setup(): void {

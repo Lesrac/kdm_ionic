@@ -71,7 +71,6 @@ export class KDMDataService {
     this.getAllBrainTraumas().then();
     this.getAllGlossaryEntries().then();
     this.getAllHuntEvents().then();
-    this.getSettlementLocations().then();
     this.getInitialMilestones().then();
     this.getDefaultTimeline().then();
     this.getInnovations().then();
@@ -83,6 +82,7 @@ export class KDMDataService {
     this.getWeapons().then();
     this.getArmors().then();
     this.getEquipments().then();
+    this.getSettlementLocations().then();
     this.getSettlements().then();
     this.isInnitRunning = false;
   }
@@ -305,8 +305,45 @@ export class KDMDataService {
 
   getSettlementLocations(): Promise<Location[]> {
     if (this.locations.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/locations.json',
-        this.locations, JsonToObjectConverter.convertToLocationObject);
+      return this.http.get('assets/data/locations.json').toPromise()
+        .then(
+          res => {
+            res.json().forEach(locationJson => {
+              const storageCreation: Map<Equipment, Map<any, number>> = new Map<Equipment, Map<any, number>>();
+              locationJson.storageCreation.forEach(mapElement => {
+                this.getEquipment(mapElement.name).then(e => {
+                  const costs: Map<any, number> = new Map<any, number>();
+                  mapElement.toBuild.forEach(subMapElement => {
+                    switch (subMapElement.type) {
+                      case 'storageTag': {
+                        costs.set(<StorageTag>StorageTag[<string>subMapElement.name], subMapElement.amount);
+                        break;
+                      }
+                      case 'innovation': {
+                        this.getInnovation(subMapElement.name).then(innovation =>
+                          costs.set(innovation, subMapElement.amount));
+                        break;
+                      }
+                      case 'resource': {
+                        this.getResourceByName(subMapElement.name).then(resource =>
+                          costs.set(resource.name, subMapElement.amount));
+                        break;
+                      }
+                      default: {
+                        console.error('No element for type: ' +
+                          subMapElement.type + ', for Equipment: ' + mapElement.name);
+                        break;
+                      }
+                    }
+                  });
+                  storageCreation.set(e, costs);
+                });
+              });
+              this.locations.push(JsonToObjectConverter.convertToLocationObject(locationJson, storageCreation));
+            });
+            return this.locations;
+          },
+        );
     } else {
       return Promise.resolve(this.locations);
     }
@@ -518,6 +555,24 @@ export class KDMDataService {
     } else {
       return Promise.resolve(this.equipments);
     }
+  }
+
+  getAllExistingEquipmentItems(): Promise<[Weapon[], Armor[], Equipment[]]> {
+    return Promise.all<Weapon[], Armor[], Equipment[]>([this.getWeapons(), this.getArmors(), this.getEquipments()]);
+  }
+
+  getEquipment(name: string): Promise<Equipment> {
+    return this.getAllExistingEquipmentItems().then(arrayOfArrays => {
+      let equipment: Equipment = null;
+      arrayOfArrays.forEach((array: Equipment[]) => {
+        array.forEach(e => {
+          if (e.name === name) {
+            equipment = e;
+          }
+        });
+      });
+      return equipment;
+    });
   }
 
   getGenericList(file: string, data: any[], methodCall: JsonToObjectConverterMethod): Promise<any> {

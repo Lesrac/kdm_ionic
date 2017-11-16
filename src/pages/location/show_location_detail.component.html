@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{location.name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let element of location.storageCreation | kdmfMapValuesPipe">
+      <ion-row>
+        <ion-col>{{element.equipment.name}}</ion-col>
+        <ion-col>
+          <ng-container *ngFor="let cost of element.costs | kdmfFilterObjectsPipe">
+            <ion-row>
+              <ion-col>{{cost.what.name}}</ion-col>
+            </ion-row>
+          </ng-container>
+        </ion-col>
+        <ion-col>
+          <ng-container *ngFor="let cost of element.costs | kdmfFilterStringsPipe">
+            <ion-row>
+              <ion-col>{{cost.amount}}</ion-col>
+              <ion-col>x</ion-col>
+              <ion-col>{{cost.what}}</ion-col>
+            </ion-row>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+</ion-content>
