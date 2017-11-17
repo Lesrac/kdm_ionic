@@ -309,24 +309,34 @@ export class KDMDataService {
         .then(
           res => {
             res.json().forEach(locationJson => {
-              const storageCreation: Map<Equipment, Map<any, number>> = new Map<Equipment, Map<any, number>>();
+              const storageCreation: Map<Equipment, Map<any, [number]>> = new Map<Equipment, Map<any, [number]>>();
               locationJson.storageCreation.forEach(mapElement => {
                 this.getEquipment(mapElement.name).then(e => {
-                  const costs: Map<any, number> = new Map<any, number>();
+                  const costs: Map<any, [number]> = new Map<any, [number]>();
                   mapElement.toBuild.forEach(subMapElement => {
                     switch (subMapElement.type) {
                       case 'storageTag': {
-                        costs.set(<StorageTag>StorageTag[<string>subMapElement.name], subMapElement.amount);
+                        if (subMapElement.or) {
+                          costs.set(<StorageTag>StorageTag[<string>subMapElement.name],
+                            [subMapElement.amount, subMapElement.or]);
+                        } else {
+                          costs.set(<StorageTag>StorageTag[<string>subMapElement.name], [subMapElement.amount]);
+                        }
                         break;
                       }
                       case 'innovation': {
                         this.getInnovation(subMapElement.name).then(innovation =>
-                          costs.set(innovation, subMapElement.amount));
+                          costs.set(innovation, [subMapElement.amount]));
                         break;
                       }
                       case 'resource': {
-                        this.getResourceByName(subMapElement.name).then(resource =>
-                          costs.set(resource.name, subMapElement.amount));
+                        if (subMapElement.or) {
+                          this.getResourceByName(subMapElement.name).then(resource =>
+                            costs.set(resource.name, [subMapElement.amount, subMapElement.or]));
+                        } else {
+                          this.getResourceByName(subMapElement.name).then(resource =>
+                            costs.set(resource.name, [subMapElement.amount]));
+                        }
                         break;
                       }
                       default: {

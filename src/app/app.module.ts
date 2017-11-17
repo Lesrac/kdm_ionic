@@ -45,8 +45,7 @@ import { DiceThrowComponent } from '../pages/template/dice_throw.component';
 import { FormattedTextModalComponent } from '../pages/template/formatted_text_modal.component';
 import { ShowLocationDetailComponent } from '../pages/location/show_location_detail.component';
 import { MapValuesPipe } from '../pipe/map_values.pipe';
-import { FilterObjectsPipe } from '../pipe/filter_objects.pipe';
-import { FilterStringsPipe } from '../pipe/filter_strings.pipe';
+import { FilterElementsPipe } from '../pipe/filter_elements.pipe';
 
 @NgModule({
   declarations: [
@@ -78,8 +77,7 @@ import { FilterStringsPipe } from '../pipe/filter_strings.pipe';
     AddLinebreakToPunctuationPipe,
     TextFormattingPipe,
     MapValuesPipe,
-    FilterObjectsPipe,
-    FilterStringsPipe,
+    FilterElementsPipe,
     AutoresizeTextareaDirective,
     BrainTraumaPageComponent,
     GlossaryPageComponent,

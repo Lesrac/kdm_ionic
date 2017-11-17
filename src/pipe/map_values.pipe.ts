@@ -30,7 +30,6 @@ export class MapValuesPipe implements PipeTransform {
       });
       returnArray.push(dummyObject);
     });
-    console.log(returnArray);
     return returnArray;
   }
 

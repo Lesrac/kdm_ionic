@@ -8,7 +8,7 @@ import { Innovation } from './innovation';
  */
 export class Location extends BaseModel {
   // Equipment --> Innovation/ResourceName/StorageTag & amount
-  storageCreation: Map<Equipment, Map<Innovation | string | StorageTag, number>> = new Map<Equipment,
-    Map<Innovation | string | StorageTag, number>>();
+  storageCreation: Map<Equipment, Map<Innovation | string | StorageTag, [number]>> = new Map<Equipment,
+    Map<Innovation | string | StorageTag, [number]>>();
   isStartLocation: boolean;
 }

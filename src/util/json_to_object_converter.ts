@@ -109,7 +109,7 @@ export class JsonToObjectConverter {
   }
 
   public static convertToLocationObject(locationJSON: any,
-                                        storageCreation: Map<Equipment, Map<any, number>>): Location {
+                                        storageCreation: Map<Equipment, Map<any, [number]>>): Location {
     const location: Location = {
       name: locationJSON.name,
       description: locationJSON.description,

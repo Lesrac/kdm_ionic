@@ -68,19 +68,16 @@
         "name": "Skull Helm",
         "toBuild": [
           {
-            "name": "bone",
-            "amount": 2,
-            "type": "storageTag"
-          }
-        ]
-      },
-      {
-        "name": "Skull Helm",
-        "toBuild": [
-          {
             "name": "skull",
             "amount": 1,
-            "type": "storageTag"
+            "type": "storageTag",
+            "or": 2
+          },
+          {
+            "name": "bone",
+            "amount": 2,
+            "type": "storageTag",
+            "or": 1
           }
         ]
       },

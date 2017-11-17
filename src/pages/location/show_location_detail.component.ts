@@ -15,12 +15,18 @@ export class ShowLocationDetailComponent {
 
   constructor(public viewCtrl: ViewController, private params: NavParams) {
     this.location = this.params.get('object') as Location;
-    console.log(this.location.storageCreation.values());
   }
 
-  isString(val: any): boolean {
-    console.log(typeof val);
-    return typeof val === 'string';
+  containsOrElement(value): boolean {
+    let isOrElement: boolean = false;
+    for (let i = 0; i < value.costs.length; i++) {
+      const val = value.costs[i];
+      if (val.amount.length > 1) {
+        isOrElement = true;
+        break;
+      }
+    }
+    return isOrElement;
   }
 
 }
