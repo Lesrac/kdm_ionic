@@ -34,84 +34,118 @@ export class SurvivorPageComponent implements OnInit {
   }
 
   ionViewDidLeave(): void {
-    this.kdmdbService.saveSettlement(this.settlement);
+    this.saveData();
   }
 
   survivalChange(event: number): void {
     if (typeof event === 'number') {
       this.survivor.survival = event;
+      this.saveData();
     }
   }
 
   movementChange(event): void {
     if (typeof event === 'number') {
       this.survivor.movement = event;
+      this.saveData();
     }
   }
 
   accuracyChange(event): void {
     if (typeof event === 'number') {
       this.survivor.accuracy = event;
+      this.saveData();
     }
   }
 
   strengthChange(event): void {
     if (typeof event === 'number') {
       this.survivor.strength = event;
+      this.saveData();
     }
   }
 
   evasionChange(event): void {
     if (typeof event === 'number') {
       this.survivor.evasion = event;
+      this.saveData();
     }
   }
 
   luckChange(event): void {
     if (typeof event === 'number') {
       this.survivor.luck = event;
+      this.saveData();
     }
   }
 
   speedChange(event): void {
     if (typeof event === 'number') {
       this.survivor.speed = event;
+      this.saveData();
     }
   }
 
   insanityChange(event): void {
     if (typeof event === 'number') {
       this.survivor.insanity = event;
+      this.saveData();
     }
   }
 
   headArmorChange(event): void {
     if (typeof event === 'number') {
       this.survivor.headArmor = event;
+      this.saveData();
     }
   }
 
   armsArmorChange(event): void {
     if (typeof event === 'number') {
       this.survivor.armsArmor = event;
+      this.saveData();
     }
   }
 
   bodyArmorChange(event): void {
     if (typeof event === 'number') {
       this.survivor.bodyArmor = event;
+      this.saveData();
     }
   }
 
   waistArmorChange(event): void {
     if (typeof event === 'number') {
       this.survivor.waistArmor = event;
+      this.saveData();
     }
   }
 
   legsArmorChange(event): void {
     if (typeof event === 'number') {
       this.survivor.legsArmor = event;
+      this.saveData();
+    }
+  }
+
+  understandingChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.understanding = event;
+      this.saveData();
+    }
+  }
+
+  courageChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.courage = event;
+      this.saveData();
+    }
+  }
+
+  weaponProficiencyXPChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.weaponProficiencyXP = event;
+      this.saveData();
     }
   }
 
@@ -121,6 +155,7 @@ export class SurvivorPageComponent implements OnInit {
     } else {
       this.survivor.experience--;
     }
+    this.saveData();
   }
 
   showDisorders(): void {
@@ -149,6 +184,10 @@ export class SurvivorPageComponent implements OnInit {
       }
     }
     this.xpGroup = this.formBuilder.group({xps: checkboxArray});
+  }
+
+  private saveData(): void {
+    this.kdmdbService.saveSettlement(this.settlement);
   }
 
 }

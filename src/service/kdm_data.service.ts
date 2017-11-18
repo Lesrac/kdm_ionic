@@ -780,6 +780,11 @@ export class KDMDataService {
       survivor.cannotUseFightingArts = simplifiedSurvivor.cannotUseFightingArts;
       survivor.cannotSpendSurvival = simplifiedSurvivor.cannotSpendSurvival;
       survivor.skipNextHunt = simplifiedSurvivor.skipNextHunt;
+      survivor.oncePerLifetime = simplifiedSurvivor.oncePerLifetime;
+      survivor.understanding = simplifiedSurvivor.understanding;
+      survivor.courage = simplifiedSurvivor.courage;
+      survivor.weaponProficiencyType = simplifiedSurvivor.weaponProficiencyType;
+      survivor.weaponProficiencyXP = simplifiedSurvivor.weaponProficiencyXP;
       simplifiedSurvivor.fightingArtNames.forEach(fightingArtName =>
         this.getFightingArt(fightingArtName).then(fightingArt => survivor.fightingArts.push(fightingArt)));
       simplifiedSurvivor.disorderNames.forEach(disorderName =>

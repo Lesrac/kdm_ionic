@@ -1,6 +1,6 @@
 import { FightingArt } from './fighting_art';
 import { Disorder } from './disorder';
-import { Characteristic } from './characteristic';
+import { BaseModel } from './base_model';
 
 /**
  * Created by Daniel on 24.02.2017.
@@ -44,7 +44,12 @@ export class Survivor {
   skipNextHunt: boolean = false;
   fightingArts: FightingArt[] = [];
   disorders: Disorder[] = [];
-  characteristics: Characteristic[] = [];
+  characteristics: BaseModel[] = [];
+  oncePerLifetime: string = '';
+  courage: number = 0;
+  understanding: number = 0;
+  weaponProficiencyType: string = '';
+  weaponProficiencyXP: number = 0;
 
   constructor(name: string, id: number, settlementId: number) {
     this.name = name;

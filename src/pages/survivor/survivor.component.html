@@ -251,6 +251,46 @@
     </ion-item-group>
 
     <ion-item-group>
+      <ion-item-divider>
+        Weapon Proficiency
+      </ion-item-divider>
+      <ion-row>
+        <ion-col>
+          Type:
+          <ion-input [(ngModel)]="survivor.weaponProficiencyType"></ion-input>
+        </ion-col>
+        <ion-col>
+          <kdmf-input-number [value]="survivor.weaponProficiencyXP" (change)="weaponProficiencyXPChange($event)">
+          </kdmf-input-number>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Courage
+      </ion-item-divider>
+      <ion-row>
+        <ion-col>
+          <kdmf-input-number [value]="survivor.courage" (change)="courageChange($event)">
+          </kdmf-input-number>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        Understanding
+      </ion-item-divider>
+      <ion-row>
+        <ion-col>
+          <kdmf-input-number [value]="survivor.understanding" (change)="understandingChange($event)">
+          </kdmf-input-number>
+        </ion-col>
+      </ion-row>
+    </ion-item-group>
+
+    <ion-item-group>
       <ion-grid>
         <ion-row>
           <ion-col>
