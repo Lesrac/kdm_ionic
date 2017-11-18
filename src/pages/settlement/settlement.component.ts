@@ -13,6 +13,7 @@ import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
 import { KDMObserverService } from '../../service/kdm_observer.service';
 import { KDMDataService } from '../../service/kdm_data.service';
+import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -33,7 +34,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public differs: KeyValueDiffers, private kdmObserver: KDMObserverService,
-              private kdmService: KDMDataService) {
+              private kdmService: KDMDataService, private kdmDBService: KDMDBService) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
       this.differ = differs.find({}).create();
@@ -96,6 +97,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
       let popover = this.modalCtrl.create(TimelineEventModalComponent, {
         lanternEvent: lanternEvent.lanternEvent,
       });
+      this.kdmDBService.saveSettlement(this.settlement);
       popover.present({
         ev: event,
       });
@@ -105,12 +107,14 @@ export class SettlementPageComponent implements OnInit, DoCheck {
   survivalLimitChange(event): void {
     if (typeof event === 'number') {
       this.settlement.survivalLimit = event;
+      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
   settlementLostChange(event): void {
     if (typeof event === 'number') {
       this.settlement.settlementLost = event;
+      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
@@ -118,6 +122,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     if (typeof event === 'number') {
       this.deathcount.next(event);
       this.settlement.deathcount = event;
+      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
@@ -130,11 +135,13 @@ export class SettlementPageComponent implements OnInit, DoCheck {
         this.addSurvivor();
       }
       this.populationChecker();
+      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
   addSurvivor(): void {
     this.settlement.survivors.push(this.kdmService.createSurvivor(this.settlement));
+    this.kdmDBService.saveSettlement(this.settlement);
   }
 
   populationChecker(): void {
