@@ -11,7 +11,7 @@
   },
   {
     "name": "Cancer Pigeons",
-    "description": "",
+    "description": "The survivors are surrounded by an echoing coo of infant babble. Strange baby-faced birds circle overhead. Gripped with instinctual horror, the survivors break into a run! Every survivor must roll 1d10. The lowest scoring survivor (or survivors, in case of ties) becomes a straggler. If any survivor has noisy gear, -2 to the roll result. Each straggler rolls on the table. (1-3) Running and flailing wildly, you suddenly find yourself panicked and alone. The waiting cancer pigeons descend and mercilessly peck your back, their happy cooing filling your head with horror. Your body is stricken with cancerous illness. You cannot gain survival. Record this impairment. The other survivors find you balled up and weeping on the ground. (4-6) A cancer pigeon latches onto your back! Shake it free by spending 1 survival. Otherwise, your body is stricken with cancerous illness. You cannot gain survival. Record this impairment. (7-8) You escape the terrible creatures. (9+) You manage to strike one of the foul creatures down. Gain 1 random basic resource.",
     "rollResult": "3"
   },
   {
@@ -21,7 +21,7 @@
   },
   {
     "name": "Flesh Fields",
-    "description": "",
+    "description": "Ahead, the stone faces on the ground give way to a field of man-sized fleshy boils sprouting thick black hair. The fleshy fields radiate moist heat. As they travel, every survivor suffers heat exhaustion, losing 1 survival. The event revealer rolls on the table. (1) The event revealer contracts a flesh-eating disease brushing past the giant boils! A random limb is affected and must be amputated immediately! Roll 1d10. 1-5: arms. 6-10: legs. Suffer the dismembered severe injury at this location. (2-3) If any survivor is insane (3+ insanity), they imagine the flesh fields are attacking! They become hysterical. flailing and tangling themselves in the thick hair. Each insane survivor suffers 1 event damage to a random location. (4-7) It's hot and gross. but the survivors pass through the flesh fields with no complications. (8-9) The event revealer makes the best of a bad situation and cuts a portion of the flesh free. Gain 1 hide basic resource. (10+) Each survivor harvests 1 hide basic resource from the flesh fields.",
     "rollResult": "5"
   },
   {
@@ -31,17 +31,17 @@
   },
   {
     "name": "Hungry Ground",
-    "description": "",
+    "description": "The ground suddenly splits and a gaping stone mouth attempts to devour the event revealer whole! The event revealer rolls on the table. (1) With a muffled scream, the survivor disappears into the ground. Bones crunch between stone teeth. The event revealer is devoured whole. The event revealer is dead. (2-5) The event revealer scrambles but their leg is caught in the terrible maw. Suffer 2 event damage to the legs. (6-9) The survivor manages to leap away in time! (10+) Burp! Gurgle! The floor vomits a shiny piece of scrap. The event revealer gains 1 broken lantern basic resource.",
     "rollResult": "7"
   },
   {
     "name": "Wailing Smoke",
-    "description": "",
+    "description": "A constant moan follows the survivors. Eventually, they enter an area shrouded in thick fog and the wailing reaches a fevered pitch. Every survivor must roll 1d10. The lowest scoring survivor (or survivors, in case of ties) becomes a straggler. Each straggler rolls on the table. If any survivor has noisy gear, the straggler adds +2 to their roll. (1-3) The fog around the straggler turns black and fills with shapes of tormented faces. The straggler is driven to madness and gains a random disorder. Ignore this if the survivor is deaf. (4-6) The fog grows soupy and begins to wail. The straggler plugs their ears with their fingers, but it's hopeless. Suffer 1 brain event damage. Ignore this if the survivor is deaf. (7-9) The straggler sticks their thumbs into their ears and breaks into a run, leaving the wailing smoke. (10+) Mimicking the disturbing smoke, the straggler starts to wail and gains +1 insanity.",
     "rollResult": "8"
   },
   {
     "name": "Golden Light",
-    "description": "",
+    "description": "A golden light blinds lhe survivors, stopping them in their tracks. The light shines from a single source. The event revealer may investigate or wait for the light to fade. If they wait, roll again on the hunt event table before moving ahead on the hunt board. If the event revealer decides to investigate, they gain +1 courage then roll on the table. (1-3) The light is overpowering. The fragile mind cannot understand what it is saying. Gain 1 random disorder. (4-8) You wander through the light, bathed in a warm, awful feeling. You don't find anything. but suffer 1 brain event damage from exposure. (9+) Something about the light stirs you. and your resolve intensifies. Gain +1 survival.",
     "rollResult": "9"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "name": "Monster Droppings",
-    "description": "",
+    "description": "The survivors find some monster droppings. They might be from the beast you are hunting. The event revealer must choose to either investigate or consume the droppings (choose only one). If the event revealer investigates, roll on the table and gain +1 understanding. (1-3) You have no idea what feces this is, but it's sickening. Suffer -1 survival and roll again on the hunt event table before moving on the hunt board. (4-6) The droppings tell a story. The survivors are on the right track. continue on the hunt board normally. (7+) You know these droppings well. You may skip the next hunt space. (br)If the event revealer consumes, roll on the table and gain +1 courage. (1-3) Bad idea. Gain -1 evasion token. (4-6) It's repulsive. Replace your name with 'Scat Man.' Everyone in the settlement calls you by that name from now on. (7+) There was something quite special about these feces. Gain +1 speed and +1 strength token until the end of the showdown.",
     "rollResult": "11"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "name": "Man-trap",
-    "description": "",
+    "description": "The event revealer has sprung a terrible trap! Roll on the table. (1-2) With a terrible crash, the steel jaws of the man-trap cleanly sever your foot. Suffer the dismembered leg severe injury. (3-6) Mangled leg. Reduce armor points at the legs location too and suffer 1 event damage to the legs. (7-9) The trap is quite old and weak. suffer 1 event damage to the legs. (10+) The event revealer's foot knocks into the trap, giving everyone a scare! The trap was already sprung. leaving an unfortunate prize in its jaws. Gain 1 random basic resource.",
     "rollResult": "15"
   },
   {
@@ -81,47 +81,47 @@
   },
   {
     "name": "Face-to-Face",
-    "description": "",
+    "description": "One stone face In the sea of many catches the event revealer's eye. The even t revealer may investigate. Gain +1 courage and roll on the table. Otherwise, roll again on the hunt event table before moving on the hunt board. (1) The face is identical to your own. Spend 1 survival or reduce your understanding to 0. (2-7) The face reminds you of someone dear. your heart aches with loneliness. If your survival is higher than your insanity. suffer 1 brain event damage. (8+) The face is your own. but older and wiser. Gain 1 survival and 1 understanding.",
     "rollResult": "17"
   },
   {
     "name": "Dead Weed",
-    "description": "",
+    "description": "You find a strange plant growing from the eyes of a stone face. The survivors try to harvest it by rolling on the table below. If any survivor has the Bone Sickle, add +2 to the result. (1-7) Try as you might, you cannot pull out the deeply-rooted weed. (8+) You pull the weed free! It has strange regenerative power and may be used to cure all instances of 1 severe injury. eve n dismembered limbs. It m ust be used immediately. otherwise it crumples into dust in your hands when you move on. Each survivor may use the curative power once. curing one severe injury.",
     "rollResult": "18"
   },
   {
     "name": "Exhalation of Darkness",
-    "description": "",
+    "description": "The survivors are enveloped in a steamy darkness that dims their lantern lights. While stumbling in the muggy dark, each survivor suffers from heat exhaustion, losing 1 survival. If any survivor has 0 survival they suffer 1 event damage to a random location. Every survivor must roll 1 d1 0. The lowest scoring survivor (or survivors, in case of ties) becomes a straggler. Each straggler rolls on the table below. (1-2) A piece of armor Is destroyed by the corrosive heat. Archive a gear card of your choice. (3-5) Somethi ng unseen attacks you. suffer 1 brain event damage and 1 event damage to a random location. (6-8) You're struck from behind by a flailing survivor, suffer 1 event damage to the head. (9+) You're not sure how, but you leave the darkness with your hands full, gain 1 random basic resource.",
     "rollResult": "19"
   },
   {
     "name": "Dry Lands",
-    "description": "",
+    "description": "As the survivors press forward, the a ir turns dry and the ground cracks. Each survivor will suffer from heat exhaustion and lose 1 survival unless they have a piece of gear or resource that is consumable to refresh themselves. Do not archive the item.",
     "rollResult": "20"
   },
   {
     "name": "Drawings",
-    "description": "",
+    "description": "Cowering in a cave, the survivors find strange drawings decorating the walls. They appear to carry a message. Any survivor with 3+ understanding may try to decipher the drawings by rolling on the table. If your settlement has innovated Pictographs, add +2 to the result. (1-3) Your nose begins to bleed. Suffer 1 brain event damage. (4-7) The true meaning escapes you. Gain+ 1 insanity. (8+) The drawings teach you a secret way to fight monsters! Gain 2 survival.",
     "rollResult": "21"
   },
   {
     "name": "Acid Rain",
-    "description": "",
+    "description": "The darkness above is suddenly alight with a storm of acid rain. It smells terrible, burns flesh, and begins to form hissing pools in the upturned mouths of the stone faces. All survivors suffer 1 event damage to every hit location as they scramble to find shelter.",
     "rollResult": "22"
   },
   {
     "name": "Clean Water",
-    "description": "",
+    "description": "The survivors pass a forlorn fountain in the shape of a lion face. A stream of crystal clear water flows from its mouth. Each survivor consumes the water. Gain 1 courage and 1 survival. In addition, each survivor may douse their head in the water and roll on the table. (1-2) Your hair turns white the instant it is wet. Gain 1 random disorder. (3-5) Your head is wet. Nothing else happens. (6-8) The water is bracing. Gain +1 understanding or remove a disorder. (9+) The water is shockingly cold- it rushes over you like a tidal wave and leaves you awestruck. Set your insanity to 0 and remove all disorders.",
     "rollResult": "23"
   },
   {
     "name": "Food from the Mouths of Others",
-    "description": "",
+    "description": "The survivors pass a stone face that appears to be holding something in its mouth. The event revealer investigates. Gain 1 courage and roll on the table. (1-2) You yell out in pain and pull your hand back, revealing a bloody gash. Did the stone face just bite? Suffer 1 brain event damage and 1 event arm damage. (3-5) Just a trick of the lantern light. (6-8) More rocks. what did you expect? Gain a Founding Stone card. (9+) You pull out a masticated mass. Gain 1 random basic resource and 2 insanity.",
     "rollResult": "24"
   },
   {
     "name": "Titans in the Dark",
-    "description": "",
+    "description": "An ear-shattering bell ow marks the passing of a truly titanic beast. All survivors suffer 1 brain event damage. The survivors cower on the ground, lyi ng as flat as possible and hoping they are simply too small to be worth eating. Every survivor must roll 1d10. The lowest scoring survivor (or survivors, in case of ties) becomes a straggler. If any survivor has noisy gear, -2 to the roll result. Each straggler rolls on the table below. (1) You're plucked from the ground and eaten whole. Dead. (2-4) Something snatches you in its great maw and chews you for 1 event damage to 1d5 random hit locations. (5-6) The clamping jaws barely nip you! Suffer 1 event damage to a random hit location. (7-9) You make yourself extra flat against the ground and avoid anything terrible. (10+) You never stop running from what you saw. Gain +1 permanent movement.",
     "rollResult": "25"
   },
   {
