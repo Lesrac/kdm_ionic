@@ -376,7 +376,7 @@
   },
   {
     "name": "Dream the Way",
-    "description": "The survivors dream vivid fevered visions of the hunt ahead. All at once, they awake with a st art and frantically compare the horrors they foresaw. (br1)Each survivor rolls 1d10. If a ny result is the same, those survivors discover they had the very same dream. Each gain +1 insanity. (br1)If the duplicate results are also 10, once during this hunt phase the survivors may re -roll a roll result.",
+    "description": "The survivors dream vivid fevered visions of the hunt ahead. All at once, they awake with a start and frantically compare the horrors they foresaw. (br1)Each survivor rolls 1d10. If any result is the same, those survivors discover they had the very same dream. Each gain +1 insanity. (br1)If the duplicate results are also 10, once during this hunt phase the survivors may re-roll a roll result.",
     "rollResult": "76"
   },
   {

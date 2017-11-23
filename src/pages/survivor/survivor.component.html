@@ -256,8 +256,10 @@
       </ion-item-divider>
       <ion-row>
         <ion-col>
-          Type:
-          <ion-input [(ngModel)]="survivor.weaponProficiencyType"></ion-input>
+          <ion-item>
+            <ion-label>Type:</ion-label>
+            <ion-input [(ngModel)]="survivor.weaponProficiencyType"></ion-input>
+          </ion-item>
         </ion-col>
         <ion-col>
           <kdmf-input-number [value]="survivor.weaponProficiencyXP" (change)="weaponProficiencyXPChange($event)">
