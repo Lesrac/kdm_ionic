@@ -15,15 +15,15 @@ export class KDMDBService {
   constructor(private storage: Storage) {
   }
 
-  getSettlements(): Promise<[SettlementSimplified[], undefined]> {
+  getSettlements(): Promise<[SettlementSimplified[], void]> {
     const settlements: SettlementSimplified[] = [];
-    let storageForEach: Promise<null> = this.storage.forEach((settlementSimplifiedJSON, key) => {
+    let storageForEach: Promise<void> = this.storage.forEach((settlementSimplifiedJSON, key) => {
         if (key.startsWith(this.settlement)) {
           settlements.push(JSON.parse(settlementSimplifiedJSON));
         }
       },
     );
-    return Promise.all<SettlementSimplified[], null>([settlements, storageForEach]);
+    return Promise.all<SettlementSimplified[], void>([settlements, storageForEach]);
   }
 
   getSettlementById(id: number): Promise<SettlementSimplified> {
