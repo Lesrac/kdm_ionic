@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'kdmfFilterElementsPipe'})
 export class FilterElementsPipe implements PipeTransform {
-  transform(value: any, ...args: any[]): Object[] {
+  transform(value: any, ...args: any[]): { amount: number[], what: any }[] {
     const returnArray = [];
     const filterWhat = args[0];
     switch (filterWhat) {
@@ -19,7 +19,6 @@ export class FilterElementsPipe implements PipeTransform {
         break;
       }
       case 'or_one': {
-        console.log(value);
         value.forEach(val => {
           if (val.amount[1] === 1) {
             returnArray.push(val);

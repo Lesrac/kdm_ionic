@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Innovation } from '../model/innovation';
 import { StorageTag } from '../model/storage';
+import { Equipment } from '../model/equipment';
 
 /**
  * Created by Daniel on 15.11.2017.
@@ -8,7 +9,7 @@ import { StorageTag } from '../model/storage';
 
 @Pipe({name: 'kdmfMapValuesPipe'})
 export class MapValuesPipe implements PipeTransform {
-  transform(value: any, ...args: any[]): Object[] {
+  transform(value: any, ...args: any[]): { equipment: Equipment, costs: [{ amount: number, what: any }] }[] {
     const returnArray = [];
     value.forEach((entryVal, entryKey) => {
       const dummyObject = {

@@ -6,6 +6,8 @@ export class TextFormattingPipe implements PipeTransform {
 
   private doubleBreak: string = '<br/><br/>';
   private break: string = '<br/>';
+  private milestone: string = '<ion-icon name="book" role="img" class="icon icon-md ion-md-book" ' +
+    'aria-label="book" ng-reflect-name="book"></ion-icon>';
 
   constructor(private sanitizer: DomSanitizer) {
   }
@@ -29,7 +31,7 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, this.doubleBreak + '<b>' + matchesWithoutParenthesis + '</b>');
         } else if ('milestone' === matchesWithoutParenthesis) {
           let replaceText: string = '';
-          if (index > 1) {
+          if (index > 0) {
             const previousMatchValue = matches[index - 1].replace(regexRemoveParenthesis, '');
             if (previousMatchValue !== matchesWithoutParenthesis) {
               replaceText += this.doubleBreak;
@@ -37,12 +39,9 @@ export class TextFormattingPipe implements PipeTransform {
           } else {
             replaceText += this.doubleBreak;
           }
-          text = text.replace(match, replaceText +
-            '<ion-icon name="book" role="img" class="icon icon-md ion-md-book" ' +
-            'aria-label="book" ng-reflect-name="book"></ion-icon>');
+          text = text.replace(match, replaceText + this.milestone);
         } else if ('milestoneNL' === matchesWithoutParenthesis) {
-          text = text.replace(match, '<ion-icon name="book" role="img" class="icon icon-md ion-md-book" ' +
-            'aria-label="book" ng-reflect-name="book"></ion-icon>');
+          text = text.replace(match, this.milestone);
         } else if ('*' === matchesWithoutParenthesis) {
           text = text.replace(match, '<ion-icon name="star" role="img" ' +
             'class="icon icon-md ion-md-star" aria-label="star" ng-reflect-name="star"></ion-icon>');

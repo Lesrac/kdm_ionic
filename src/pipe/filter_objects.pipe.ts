@@ -1,6 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Innovation } from '../model/innovation';
-import { StorageTag } from '../model/storage';
 
 /**
  * Created by Daniel on 15.11.2017.

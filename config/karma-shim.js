@@ -31,6 +31,3 @@ testing.TestBed.initTestEnvironment(
   browser.BrowserDynamicTestingModule,
   browser.platformBrowserDynamicTesting()
 );
-
-console.log('whats this');
-console.log(testContext);
