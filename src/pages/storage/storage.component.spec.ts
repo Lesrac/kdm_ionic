@@ -8,7 +8,8 @@ import {
 } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock, NavParamsMock,
+  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock,
+  NavParamsMock,
   PlatformMock,
 } from '../../mock/mocks';
 import { KDMDBService } from '../../service/kdm_db.service';
@@ -16,6 +17,7 @@ import { Storage } from '../../model/storage';
 import { DebugElement } from '@angular/core';
 import { StorageModalComponent } from './storage_modal.component';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
+import { KDMDataService } from '../../service/kdm_data.service';
 
 describe('StorageComponent', () => {
   let storageComponent: StoragePageComponent;
@@ -23,11 +25,13 @@ describe('StorageComponent', () => {
 
   let modalControllerMock;
   let kdmdbServiceMock: KDMDBServiceMock;
+  let kdmServiceMock: KDMDataServiceMock;
   let settlement: Settlement;
 
   beforeEach(() => {
     modalControllerMock = new ModalControllerMock();
     kdmdbServiceMock = new KDMDBServiceMock();
+    kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [StoragePageComponent],
       providers: [DomController, Keyboard, Form,
@@ -40,6 +44,7 @@ describe('StorageComponent', () => {
         {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDBService, useValue: kdmdbServiceMock},
+        {provide: KDMDataService, useValue: kdmServiceMock},
       ],
       imports: [IonicModule],
     });
@@ -94,18 +99,26 @@ describe('StorageComponent', () => {
     expect(storageComponent.settlement.storages[0].amount).toEqual(storageAmountChangeElement);
   });
 
-  it('Show Segments', () => {
-    const storage = new Storage('Storage 1', 'storage item');
-    const storage2 = new Storage('Storage 2', 'storage item 2');
+  it('Show Segments contains all added storage elements', () => {
+    const storage = new Storage('XKCD', 'storage item');
+    const storage2 = new Storage('ABCD', 'storage item 2');
     storageComponent.settlement.addStorageItem(storage);
     storageComponent.settlement.addStorageItem(storage2);
     fixture.detectChanges();
-    let de: DebugElement = fixture.debugElement.query(By.css('ion-segment'));
+    let de: DebugElement = fixture.debugElement.query(By.css('#' + storage.name));
     let el: HTMLElement = de.nativeElement;
     expect(el.id).toBe(storage.name);
     expect(el.children.namedItem(storage.name).textContent).toContain(storage.name);
     expect(el.children.namedItem(storage.name + ' ' + storage.amount)
       .getAttribute('ng-reflect-model')).toBe(storage.amount.toString());
+    fixture.detectChanges();
+    let de2: DebugElement = fixture.debugElement.query(By.css('#' + storage2.name));
+    let el2: HTMLElement = de2.nativeElement;
+    console.log(de2);
+    expect(el2.id).toBe(storage2.name);
+    expect(el2.children.namedItem(storage2.name).textContent).toContain(storage2.name);
+    expect(el2.children.namedItem(storage2.name + ' ' + storage2.amount)
+      .getAttribute('ng-reflect-model')).toBe(storage2.amount.toString());
   });
 
   it('open modal StorageModalComponent', () => {

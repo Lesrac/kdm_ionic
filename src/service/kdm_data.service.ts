@@ -585,18 +585,6 @@ export class KDMDataService {
     });
   }
 
-  getGenericList(file: string, data: any[], methodCall: JsonToObjectConverterMethod): Promise<any> {
-    return this.http.get(file).toPromise()
-      .then(
-        res => {
-          res.json().forEach(json => {
-            data.push(methodCall(json));
-          });
-          return data;
-        },
-      );
-  }
-
   getAllSevereInjuries(): Promise<SevereInjury[]> {
     if (this.severeInjuries.length < 1 && this.isInnitRunning) {
       return this.getGenericList('assets/data/severeinjuries.json',
@@ -647,6 +635,18 @@ export class KDMDataService {
       return 1;
     }
     return 0;
+  }
+
+  private getGenericList(file: string, data: any[], methodCall: JsonToObjectConverterMethod): Promise<any> {
+    return this.http.get(file).toPromise()
+      .then(
+        res => {
+          res.json().forEach(json => {
+            data.push(methodCall(json));
+          });
+          return data;
+        },
+      );
   }
 
   private desimplifySettlement(simplifiedSettlement: SettlementSimplified): Settlement {

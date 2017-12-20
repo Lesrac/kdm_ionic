@@ -2,6 +2,35 @@ import { SettlementSimplified } from '../model/db/settlement_simplified';
 import { Settlement } from '../model/settlement';
 import { mockApp, mockConfig, mockDeepLinker } from 'ionic-angular/util/mock-providers';
 import { ModalController } from 'ionic-angular';
+import { KDMDBService } from '../service/kdm_db.service';
+import { StoryEvent } from '../model/story_event';
+import { Armor, ArmorSpace } from '../model/armor';
+import { Principle, PrincipleType } from '../model/principle';
+import { FightingArt } from '../model/fighting_art';
+import { isUndefined } from 'ionic-angular/util/util';
+import { Monster } from '../model/monster';
+import { HuntableMonster } from '../model/linking/huntable_monster';
+import { Timeline } from '../model/timeline';
+import { Storage, StorageTag } from '../model/storage';
+import { Affinity, Direction, Equipment } from '../model/equipment';
+import { Resource, ResourceType } from '../model/resource';
+import { Http } from '@angular/http';
+import { BaseModel } from '../model/base_model';
+import { Weapon } from '../model/weapon';
+import { Location } from '../model/location';
+import { SevereInjury } from '../model/severe_injury';
+import { JsonToObjectConverter } from '../util/json_to_object_converter';
+import { HuntedMonster } from '../model/linking/hunted_monster';
+import { DiceThrow } from '../model/dice_throw';
+import { Disorder } from '../model/disorder';
+import { Innovation, InnovationTag } from '../model/innovation';
+import { HuntEvent } from '../model/hunte_event';
+import { SettlementMilestone } from '../model/linking/settlement_milestone';
+import { SettlementTimeline } from '../model/linking/settlement_timeline';
+import { Milestone, MilestoneType } from '../model/milestone';
+import { Survivor } from '../model/survivor';
+import { LanternEvent } from '../model/lantern_event';
+import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
 
 export class NavMock {
 
@@ -176,4 +205,183 @@ export class KDMDBServiceMock {
   removeSettlement(settlementId: number): void {
   }
 
+}
+
+export class KDMDataServiceMock {
+
+  getSettlements(): Promise<Settlement[]> {
+    return Promise.resolve([new Settlement('dummy settlement')]);
+  }
+
+  addSettlement(settlement: Settlement): void {
+  }
+
+  removeSettlement(settlement: Settlement): void {
+  }
+
+  createSurvivor(settlement: Settlement): Survivor {
+    return new Survivor('Survivor', 1, settlement.id);
+  }
+
+  getMonsters(): Promise<Monster[]> {
+    return Promise.resolve([new Monster()]);
+  }
+
+  getMonster(id: number): Promise<Monster> {
+    return Promise.resolve(new Monster());
+  }
+
+  getDefaultInitialHuntableNemesisMonsters(): Promise<Monster[]> {
+    return Promise.resolve([new Monster()]);
+  }
+
+  getDefaultInitialHuntableQuarries(): Promise<Monster[]> {
+    return Promise.resolve([new Monster()]);
+  }
+
+  getResources(): Promise<Resource[]> {
+    return Promise.resolve([new Resource('Resource', 'dummy')]);
+  }
+
+  getResourceByName(name: string): Promise<Resource> {
+    return Promise.resolve(new Resource(name, 'dummy'));
+  }
+
+  getAllExistingStorageItems(): Promise<Storage[][]> {
+    return Promise.resolve([[new Storage('Storage', 'dummy')]]);
+  }
+
+  getStorageItem(name: string): Promise<Storage> {
+    return Promise.resolve(new Storage(name, 'dummy'));
+  }
+
+  getLanternEvents(): Promise<LanternEvent[]> {
+    return Promise.resolve([new LanternEvent()]);
+  }
+
+  getLanternEvent(name: string): Promise<LanternEvent> {
+    return Promise.resolve(new LanternEvent(name));
+  }
+
+  getStoryEvents(): Promise<StoryEvent[]> {
+    return Promise.resolve([new StoryEvent('Story Event', 'dummy')]);
+  }
+
+  getStoryEvent(id: number): Promise<StoryEvent> {
+    return Promise.resolve(new StoryEvent('Story Event', 'dummy'));
+  }
+
+  getInitialMilestones(): Promise<Milestone[]> {
+    return Promise.resolve([new Milestone(ComparableVisitorValue.EQ)]);
+  }
+
+  getMilestone(id: number): Promise<Milestone> {
+    return Promise.resolve(new Milestone(ComparableVisitorValue.EQ));
+  }
+
+  getDefaultTimeline(): Promise<Timeline[]> {
+    return Promise.resolve([new Timeline()]);
+  }
+
+  getSettlementLocations(): Promise<Location[]> {
+    return Promise.resolve([new Location('Location', 'dummy')]);
+  }
+
+  getLocation(name: string): Promise<Location> {
+    return Promise.resolve(new Location(name, 'dummy'));
+  }
+
+  getInnovations(): Promise<Innovation[]> {
+    return Promise.resolve([new Innovation('Innovation', 'dummy')]);
+  }
+
+  getInnovation(name: string): Promise<Innovation> {
+    return Promise.resolve(new Innovation(name, 'dummy'));
+  }
+
+  getInnovationsThatAreNotAddedButAvailable(objects: Innovation[]): Promise<Innovation[]> {
+    return Promise.resolve(objects);
+  }
+
+  getDisorders(): Promise<Disorder[]> {
+    return Promise.resolve([new Disorder('Disorder', 'dummy')]);
+  }
+
+  getDisorder(name: string): Promise<Disorder> {
+    return Promise.resolve(new Disorder(name, 'dummy'));
+  }
+
+  getFightingArts(): Promise<FightingArt[]> {
+    return Promise.resolve([new FightingArt('FightingArt', 'dummy')]);
+  }
+
+  getFightingArt(name: string): Promise<FightingArt> {
+    return Promise.resolve(new FightingArt(name, 'dummy'));
+  }
+
+  getPrinciples(): Promise<Principle[]> {
+    return Promise.resolve([new Principle('Principle', 'dummy')]);
+  }
+
+  getPrinciple(name: string): Promise<Principle> {
+    return Promise.resolve(new Principle(name, 'dummy'));
+  }
+
+  getPrincipleTypes(): Promise<PrincipleType[]> {
+    return Promise.resolve([new PrincipleType()]);
+  }
+
+  getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
+    return this.getPrinciples();
+  }
+
+  getWeapons(): Promise<Weapon[]> {
+    return Promise.resolve([new Weapon('Weapon', 'dummy')]);
+  }
+
+  getArmors(): Promise<Armor[]> {
+    return Promise.resolve([new Armor('Armor', 'dummy')]);
+  }
+
+  getEquipments(): Promise<Equipment[]> {
+    return Promise.resolve([new Equipment('Armor', 'dummy')]);
+  }
+
+  getAllExistingEquipmentItems(): Promise<[Weapon[], Armor[], Equipment[]]> {
+    return Promise.all<Weapon[], Armor[], Equipment[]>([this.getWeapons(), this.getArmors(), this.getEquipments()]);
+  }
+
+  getEquipment(name: string): Promise<Equipment> {
+    return Promise.resolve(new Equipment(name, 'dummy'));
+  }
+
+  getAllSevereInjuries(): Promise<SevereInjury[]> {
+    return Promise.resolve([new SevereInjury('SevereInjury', 'dummy')]);
+  }
+
+  getSevereInjuriesToHitLocation(hitLocation: string): Promise<SevereInjury[]> {
+    return this.getAllSevereInjuries();
+  }
+
+  getAllBrainTraumas(): Promise<DiceThrow[]> {
+    return Promise.resolve([new DiceThrow('DiceThrow', 'dummy')]);
+  }
+
+  getAllHuntEvents(): Promise<HuntEvent[]> {
+    return Promise.resolve([new HuntEvent('HuntEvent', 'dummy')]);
+  }
+
+  getAllGlossaryEntries(): Promise<BaseModel[]> {
+    return Promise.resolve([new BaseModel('BaseModel', 'dummy')]);
+  }
+
+  sortByName(l, r) {
+    if (l.name < r.name) {
+      return -1;
+    }
+    if (l.name > r.name) {
+      return 1;
+    }
+    return 0;
+  }
 }
