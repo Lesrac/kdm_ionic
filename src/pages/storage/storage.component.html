@@ -12,14 +12,15 @@
       <ion-icon name="add-circle"></ion-icon>
     </button>
   </ion-item>
-  <ion-segment *ngFor="let storage of settlement.storages">
+  <ion-segment *ngFor="let storage of settlement.storages" attr.id="{{storage.name}}">
     <button ion-button icon-only (click)="increaseAmount(storage)">
       <ion-icon name="add-circle"></ion-icon>
     </button>
     <button ion-button icon-only (click)="decreaseAmount(storage)">
       <ion-icon name="remove-circle"></ion-icon>
     </button>
-    <ion-input type="number" (change)="changedAmount(storage)" [(ngModel)]="storage.amount"></ion-input>
-    <ion-label (click)="showDetail(storage)">{{storage.name}}</ion-label>
+    <ion-input attr.name="{{storage.name}} {{storage.amount}}" type="number" (change)="changedAmount(storage)"
+               [(ngModel)]="storage.amount"></ion-input>
+    <ion-label attr.name="{{storage.name}}" (click)="showDetail(storage)">{{storage.name}}</ion-label>
   </ion-segment>
 </ion-content>

@@ -1,3 +1,8 @@
+import { SettlementSimplified } from '../model/db/settlement_simplified';
+import { Settlement } from '../model/settlement';
+import { mockApp, mockConfig, mockDeepLinker } from 'ionic-angular/util/mock-providers';
+import { ModalController } from 'ionic-angular';
+
 export class NavMock {
 
   public pop(): any {
@@ -130,4 +135,45 @@ export class PlatformMock {
   public getActiveElement(): any {
     return document['activeElement'];
   }
+}
+
+export class ModalControllerMock {
+  constructor() {
+    return new ModalController(mockApp(), mockConfig(), mockDeepLinker());
+  }
+}
+
+export class ModalMock {
+
+  public present(): any {
+    return new Promise(function (resolve: Function): void {
+      resolve();
+    });
+  }
+}
+
+export class KDMDBServiceMock {
+  private settlements: string = 'settlements';
+  private settlement: string = 'settlement';
+
+  getSettlements(): Promise<[SettlementSimplified[], void]> {
+    const settlements: SettlementSimplified[] = [];
+    let x: void;
+    return Promise.all<SettlementSimplified[], void>([settlements, x]);
+  }
+
+  getSettlementById(id: number): Promise<SettlementSimplified> {
+    return Promise.resolve(new SettlementSimplified(id, 'Dummy simplified settlement', 1, 1, 0, 0));
+  }
+
+  saveSettlements(settlements: Settlement[]): void {
+    settlements.forEach(settlement => this.saveSettlement(settlement));
+  }
+
+  saveSettlement(settlement: Settlement): void {
+  }
+
+  removeSettlement(settlementId: number): void {
+  }
+
 }
