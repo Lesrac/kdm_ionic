@@ -5,6 +5,7 @@ import { Storage } from '../../model/storage';
 import { StorageModalComponent } from './storage_modal.component';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
 import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMDataService } from '../../service/kdm_data.service';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -18,8 +19,9 @@ export class StoragePageComponent {
   settlement: Settlement;
 
   constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
-              private kdmdbService: KDMDBService) {
+              private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
     this.settlement = params.get('settlement');
+    this.settlement.storages.sort(kdmService.sortByName);
   }
 
   ionViewDidLeave(): void {
