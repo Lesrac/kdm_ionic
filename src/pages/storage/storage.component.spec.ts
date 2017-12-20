@@ -114,7 +114,6 @@ describe('StorageComponent', () => {
     fixture.detectChanges();
     let de2: DebugElement = fixture.debugElement.query(By.css('#' + storage2.name));
     let el2: HTMLElement = de2.nativeElement;
-    console.log(de2);
     expect(el2.id).toBe(storage2.name);
     expect(el2.children.namedItem(storage2.name).textContent).toContain(storage2.name);
     expect(el2.children.namedItem(storage2.name + ' ' + storage2.amount)
