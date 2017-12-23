@@ -209,6 +209,8 @@ export class KDMDBServiceMock {
 
 export class KDMDataServiceMock {
 
+  storageItems: Storage[] = [new Storage('Kosh', 'dummy'), new Storage('Barbal', 'dummy')];
+
   getSettlements(): Promise<Settlement[]> {
     return Promise.resolve([new Settlement('dummy settlement')]);
   }
@@ -248,7 +250,7 @@ export class KDMDataServiceMock {
   }
 
   getAllExistingStorageItems(): Promise<Storage[][]> {
-    return Promise.resolve([[new Storage('Storage', 'dummy')]]);
+    return Promise.resolve([this.storageItems]);
   }
 
   getStorageItem(name: string): Promise<Storage> {
@@ -383,5 +385,32 @@ export class KDMDataServiceMock {
       return 1;
     }
     return 0;
+  }
+}
+
+export class ViewControllerMock {
+  readReady = {
+    subscribe() {
+    },
+  };
+  writeReady = {
+    subscribe() {
+    },
+  };
+
+  dismiss() {
+    console.log('View Controller Dismiss Called');
+  }
+
+  _setHeader() {
+  }
+
+  _setNavbar() {
+  }
+
+  _setIONContent() {
+  }
+
+  _setIONContentRef() {
   }
 }

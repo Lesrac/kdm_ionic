@@ -15,10 +15,10 @@ import { Observable, Subject } from 'rxjs';
 export class StorageModalComponent implements OnInit {
 
   settlement: Settlement;
-  storageItems: Storage[];
+  storageItems: Storage[] = [];
   storageItemName: string;
   searchName: string;
-  foundStorageItems: Observable<Storage[]>;
+  foundStorageItems: Observable<Storage[]> = Observable.of<Storage[]>([]);
   private searchNames = new Subject<string>();
 
   constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
@@ -39,7 +39,7 @@ export class StorageModalComponent implements OnInit {
   }
 
   addClose(): void {
-    const storageItem = this.storageItems.find(item => item.name === this.storageItemName);
+    const storageItem: Storage = this.storageItems.find(item => item.name === this.storageItemName);
     if (storageItem) {
       this.settlement.addStorageItem(storageItem);
       this.settlement.storages.sort(this.kdmData.sortByName);
@@ -53,7 +53,7 @@ export class StorageModalComponent implements OnInit {
 
   private getStorageItems(): void {
     this.kdmData.getAllExistingStorageItems().then(resourceArrays => {
-      const resources = [];
+      const resources: Storage[] = [];
       resourceArrays.forEach(differentResourceTypesArray => {
         differentResourceTypesArray.forEach(element => resources.push(element));
       });
