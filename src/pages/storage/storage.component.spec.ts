@@ -8,7 +8,8 @@ import {
 } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock,
+  AppMock, ConfigMock, DeepLinkerMock, DummyMockElements, KDMDataServiceMock, KDMDBServiceMock, ModalControllerMock,
+  ModalMock, NavMock,
   NavParamsMock,
   PlatformMock,
 } from '../../mock/mocks';
@@ -23,13 +24,11 @@ describe('StorageComponent', () => {
   let storageComponent: StoragePageComponent;
   let fixture: ComponentFixture<StoragePageComponent>;
 
-  let modalControllerMock;
   let kdmdbServiceMock: KDMDBServiceMock;
   let kdmServiceMock: KDMDataServiceMock;
   let settlement: Settlement;
 
   beforeEach(() => {
-    modalControllerMock = new ModalControllerMock();
     kdmdbServiceMock = new KDMDBServiceMock();
     kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
@@ -66,7 +65,6 @@ describe('StorageComponent', () => {
   });
 
   it('Decrease and increase storage amount', () => {
-    expect(typeof storageComponent.settlement).toBe('object');
     const storage = new Storage('Storage 1', 'storage item');
     const storage2 = new Storage('Storage 2', 'storage item 2');
     storageComponent.settlement.addStorageItem(storage);
@@ -132,11 +130,10 @@ describe('StorageComponent', () => {
   });
 
   it('open NavContoller with ShowListDetailComponent', () => {
-    const storage = new Storage('Storage 1', 'storage item');
     const spy = spyOn(storageComponent.navCtrl, 'push').and.callThrough();
-    storageComponent.showDetail(storage);
+    storageComponent.showDetail(DummyMockElements.storage);
     expect(spy).toHaveBeenCalledWith(ShowListDetailComponent, {
-        object: storage,
+        object: DummyMockElements.storage,
       },
     );
   });

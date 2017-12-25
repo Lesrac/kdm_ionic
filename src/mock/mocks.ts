@@ -31,6 +31,13 @@ import { Milestone, MilestoneType } from '../model/milestone';
 import { Survivor } from '../model/survivor';
 import { LanternEvent } from '../model/lantern_event';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
+import { ComponentFactory } from '@angular/core';
+import { KDMDataService } from '../service/kdm_data.service';
+
+export class DummyMockElements {
+  public static storage: Storage = new Storage('Storage Dummy', 'dummy');
+
+}
 
 export class NavMock {
 
@@ -104,7 +111,6 @@ export class ConfigMock {
 }
 
 export class DeepLinkerMock {
-
 }
 
 export class PlatformMock {
@@ -179,11 +185,14 @@ export class ModalMock {
       resolve();
     });
   }
+
+  public onDidDismiss(callback: (data: any, role: string) => void): void {
+
+  }
 }
 
 export class KDMDBServiceMock {
   private settlements: string = 'settlements';
-  private settlement: string = 'settlement';
 
   getSettlements(): Promise<[SettlementSimplified[], void]> {
     const settlements: SettlementSimplified[] = [];
@@ -385,6 +394,11 @@ export class KDMDataServiceMock {
       return 1;
     }
     return 0;
+  }
+}
+
+export class KDMCalculationServiceMock {
+  addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
   }
 }
 

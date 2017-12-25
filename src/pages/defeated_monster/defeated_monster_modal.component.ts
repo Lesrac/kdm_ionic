@@ -50,9 +50,7 @@ export class DefeatedMonsterModalComponent implements OnInit {
 
   private setupHuntableMonsters(): void {
     this.settlement.huntableMonsters.filter(huntableMonster => huntableMonster.isHuntable).forEach(monster => {
-        if (monster.isHuntable) {
-          this.huntableMonsters.push(monster);
-        }
+        this.huntableMonsters.push(monster);
       },
     );
   }

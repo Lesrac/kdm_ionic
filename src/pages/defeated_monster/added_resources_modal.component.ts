@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ViewController, NavParams, NavController } from 'ionic-angular';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
+import { Storage } from '../../model/storage';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
 
 /**
@@ -10,15 +11,12 @@ import { ShowListDetailComponent } from '../template/show_list_detail.component'
   selector: 'kdmf-added-resources-modal',
   templateUrl: 'added_resources_modal.component.html',
 })
-export class AddedResourcesModalComponent implements OnInit {
+export class AddedResourcesModalComponent {
 
   huntedMonster: HuntedMonster;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, private params: NavParams) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public params: NavParams) {
     this.huntedMonster = this.params.get('huntedMonster');
-  }
-
-  ngOnInit(): void {
   }
 
   close(): void {

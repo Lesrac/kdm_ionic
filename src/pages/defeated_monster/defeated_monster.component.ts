@@ -53,7 +53,7 @@ export class DefeatedMonsterPageComponent {
 
   removeDefeatedMonster(huntedMonster: HuntedMonster): void {
     const index = this.settlement.huntedMonsters.findIndex(hMonster => hMonster === huntedMonster);
-    this.settlement.huntableMonsters.splice(index, 1);
+    this.settlement.huntedMonsters.splice(index, 1);
     // todo check and change isDefeatedLvl
   }
 }
