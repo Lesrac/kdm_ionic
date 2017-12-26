@@ -8,6 +8,11 @@ import {
   AppMock, ConfigMock, DeepLinkerMock, NavMock, NavParamsMock,
   PlatformMock,
 } from '../../mock/mocks';
+import { BrainTraumaPageComponent } from './brain_trauma/brain_trauma.component';
+import { GlossaryPageComponent } from './glossary/glossary.component';
+import { HuntEventTablePageComponent } from './hunt_event_table/hunt_event_table.component';
+import { SevereInjuriesPageComponent } from './severe_injuries/severe_injuries.component';
+import { StoryEventsPageComponent } from './story_events/story_events.component';
 
 describe('Others Component', () => {
 
@@ -39,6 +44,44 @@ describe('Others Component', () => {
   it('is created', () => {
     expect(fixture).toBeTruthy();
     expect(othersPage).toBeTruthy();
+  });
+
+  it('default: open nothing', () => {
+    let spy = spyOn(othersPage.navCtrl, 'push');
+    othersPage.goToDetail('dummy');
+    expect(spy).toHaveBeenCalledTimes(0);
+    othersPage.goToDetail(undefined);
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
+
+  it('open brain trauma page', () => {
+    let spy = spyOn(othersPage.navCtrl, 'push').and.callThrough();
+    othersPage.goToDetail('braintrauma');
+    expect(spy).toHaveBeenCalledWith(BrainTraumaPageComponent, {});
+  });
+
+  it('open glossary page', () => {
+    let spy = spyOn(othersPage.navCtrl, 'push').and.callThrough();
+    othersPage.goToDetail('glossary');
+    expect(spy).toHaveBeenCalledWith(GlossaryPageComponent, {});
+  });
+
+  it('open hunt event table page', () => {
+    let spy = spyOn(othersPage.navCtrl, 'push').and.callThrough();
+    othersPage.goToDetail('hunteventtable');
+    expect(spy).toHaveBeenCalledWith(HuntEventTablePageComponent, {});
+  });
+
+  it('open severe injuries page', () => {
+    let spy = spyOn(othersPage.navCtrl, 'push').and.callThrough();
+    othersPage.goToDetail('severeinjuries');
+    expect(spy).toHaveBeenCalledWith(SevereInjuriesPageComponent, {});
+  });
+
+  it('open story events page', () => {
+    let spy = spyOn(othersPage.navCtrl, 'push').and.callThrough();
+    othersPage.goToDetail('storyevents');
+    expect(spy).toHaveBeenCalledWith(StoryEventsPageComponent, {});
   });
 
 });

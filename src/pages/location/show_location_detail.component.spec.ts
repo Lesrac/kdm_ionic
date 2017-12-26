@@ -6,7 +6,7 @@ import {
   ViewController,
 } from 'ionic-angular';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, NavMock, NavParamsMock, PipeMock, PlatformMock,
+  AppMock, ConfigMock, DeepLinkerMock, NavMock, NavParamsMock, PlatformMock,
   ViewControllerMock,
 } from '../../mock/mocks';
 import { FilterElementsPipe } from '../../pipe/filter_elements.pipe';
