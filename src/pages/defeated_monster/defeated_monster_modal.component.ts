@@ -35,7 +35,6 @@ export class DefeatedMonsterModalComponent implements OnInit {
   }
 
   addClose(): void {
-    console.log(this.monster);
     if (this.monster != null && this.monsterLevel != null) {
       const huntedMonster = new HuntedMonster(this.settlement, this.monster);
       huntedMonster.monsterLevel = +this.monsterLevel;

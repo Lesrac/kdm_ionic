@@ -93,10 +93,27 @@ describe('Defeated Monster Modal', () => {
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     defeatedMonsterModalComponent.addClose();
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
+    expect(spy).toHaveBeenCalled();
     defeatedMonsterModalComponent.monster = monster;
     defeatedMonsterModalComponent.monsterLevel = null;
     defeatedMonsterModalComponent.addClose();
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('addClose add hunt resources', () => {
+    const spy = spyOn(defeatedMonsterModalComponent, 'close');
+    const spyCalculation = spyOn(kdmCalculationServiceMock, 'addResourcesFromKilledMonster');
+    const monsterLevel = 1;
+    const monster = new Monster();
+    monster.isNemesis = false;
+    monster.level = monsterLevel;
+    defeatedMonsterModalComponent.monster = monster;
+    defeatedMonsterModalComponent.huntResources = true;
+    expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
+    defeatedMonsterModalComponent.addClose();
+    expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(1);
+    expect(spy).toHaveBeenCalled();
+    expect(spyCalculation).toHaveBeenCalledWith(jasmine.anything(), monster);
   });
 });

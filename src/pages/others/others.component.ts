@@ -14,7 +14,6 @@ import { StoryEventsPageComponent } from './story_events/story_events.component'
 export class OthersPage {
 
   constructor(public navCtrl: NavController) {
-
   }
 
   goToDetail(otherElement: string): void {
