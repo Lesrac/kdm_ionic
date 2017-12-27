@@ -27,33 +27,33 @@ export class TimelinePageComponent {
     this.kdmdbService.saveSettlement(this.timeline[0].settlement);
   }
 
-  timelineReached(event: Event, timeline: SettlementTimeline): void {
-    if (timeline.timeline.lanternEvent != null && timeline.reached) {
+  timelineReached(event: Event, settlementTimeline: SettlementTimeline): void {
+    if (settlementTimeline.timeline.lanternEvent != null && settlementTimeline.reached) {
       let modal = this.modalCtrl.create(TimelineEventModalComponent, {
-        lanternEvent: timeline.timeline.lanternEvent,
+        lanternEvent: settlementTimeline.timeline.lanternEvent,
       });
       modal.present({
         ev: event,
       });
     }
-    if (timeline.reached) {
-      this.timeline.forEach(settlementTimeline => {
-          if (settlementTimeline.timeline.position < timeline.timeline.position) {
-            settlementTimeline.reached = true;
+    if (settlementTimeline.reached) {
+      this.timeline.forEach(settlementTimelineInternal => {
+          if (settlementTimelineInternal.timeline.position < settlementTimeline.timeline.position) {
+            settlementTimelineInternal.reached = true;
           }
         },
       );
     } else {
-      this.timeline.forEach(settlementTimeline => {
-          if (settlementTimeline.timeline.position > timeline.timeline.position) {
-            settlementTimeline.reached = false;
+      this.timeline.forEach(settlementTimelineInternal => {
+          if (settlementTimelineInternal.timeline.position > settlementTimeline.timeline.position) {
+            settlementTimelineInternal.reached = false;
           }
         },
       );
     }
   }
 
-  changeReorder(event): void {
+  changeReorder(): void {
     this.reorderFlag = !this.reorderFlag;
     if (this.reorderFlag) {
       this.reorderActivityName = 'Disable';
