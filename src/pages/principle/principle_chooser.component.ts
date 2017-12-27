@@ -33,8 +33,8 @@ export class PrincipleChooserPageComponent implements OnInit {
         if (principles.length > 1) {
           this.principleOne = principles[0];
           this.principleTwo = principles[1];
-          this.isLoading = false;
         }
+        this.isLoading = false;
       },
     );
   }

@@ -322,7 +322,7 @@ export class KDMDataServiceMock {
   }
 
   getPrinciples(): Promise<Principle[]> {
-    return Promise.resolve([new Principle('Principle', 'dummy')]);
+    return Promise.resolve([new Principle('Principle', 'dummy'), new Principle('Principle 2', 'dummy')]);
   }
 
   getPrinciple(name: string): Promise<Principle> {

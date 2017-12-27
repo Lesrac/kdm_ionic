@@ -22,7 +22,6 @@ export class PrinciplesPageComponent implements OnInit {
   constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService,
               private kdmdbService: KDMDBService) {
     this.settlement = params.get('settlement');
-    console.log(this.settlement);
   }
 
   ngOnInit(): void {
@@ -32,10 +31,7 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   principleIsChosen(type: PrincipleType): boolean {
-    return this.settlement.principles.find(principle => {
-        return principle.type.name === type.name;
-      },
-    ) != null;
+    return this.settlement.principles.find(principle => principle.type.name === type.name) != null;
   }
 
   selectPrinciple(type: PrincipleType): void {
@@ -46,11 +42,13 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   removePrinciple(type: PrincipleType): void {
-    let itemToRemove: number = this.settlement.principles.findIndex(principle =>
+    const indexOfItemToRemove: number = this.settlement.principles.findIndex(principle =>
       principle.type === type,
     );
-    this.settlement.principles.splice(itemToRemove, 1);
-    this.kdmdbService.saveSettlement(this.settlement);
+    if (indexOfItemToRemove >= 0) {
+      this.settlement.principles.splice(indexOfItemToRemove, 1);
+      this.kdmdbService.saveSettlement(this.settlement);
+    }
   }
 
   getPrincipleName(type: PrincipleType): string {
