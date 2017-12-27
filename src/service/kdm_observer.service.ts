@@ -14,7 +14,7 @@ export class KDMObserverService {
   constructor(public modalCtrl: ModalController) {
   }
 
-  registerObserverForMilestone(settlementPageComponent: SettlementPageComponent, milestone: SettlementMilestone) {
+  registerObserverForMilestone(settlementPageComponent: SettlementPageComponent, milestone: SettlementMilestone): void {
     milestone.observer = this.getObserver(milestone);
     this.setMilestoneTarget(milestone, milestone.milestone.observerTarget, settlementPageComponent);
   }

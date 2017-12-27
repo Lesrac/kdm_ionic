@@ -1,4 +1,4 @@
-import { Component, DoCheck, Input, KeyValueDiffers, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, KeyValueDiffers } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
@@ -22,7 +22,7 @@ import { KDMDBService } from '../../service/kdm_db.service';
   selector: 'kdmf-page-settlement',
   templateUrl: 'settlement.component.html',
 })
-export class SettlementPageComponent implements OnInit, DoCheck {
+export class SettlementPageComponent implements DoCheck {
 
   population: Subject<number> = new Subject<number>();
   deathcount: Subject<number> = new Subject<number>();
@@ -40,9 +40,6 @@ export class SettlementPageComponent implements OnInit, DoCheck {
       this.differ = differs.find({}).create();
       this.settlement.milestones.forEach(milestone => kdmObserver.registerObserverForMilestone(this, milestone));
     }
-  }
-
-  ngOnInit(): void {
   }
 
   ngDoCheck(): void {
@@ -92,10 +89,10 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     }).then();
   }
 
-  eventReached(event: Event, lanternEvent: SettlementLanternEvent): void {
-    if (lanternEvent.reached) {
+  eventReached(event: Event, settlementLanternEvent: SettlementLanternEvent): void {
+    if (settlementLanternEvent.reached) {
       let popover = this.modalCtrl.create(TimelineEventModalComponent, {
-        lanternEvent: lanternEvent.lanternEvent,
+        lanternEvent: settlementLanternEvent.lanternEvent,
       });
       this.kdmDBService.saveSettlement(this.settlement);
       popover.present({

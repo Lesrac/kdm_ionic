@@ -24,6 +24,11 @@ import { Milestone } from '../model/milestone';
 import { Survivor } from '../model/survivor';
 import { LanternEvent } from '../model/lantern_event';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
+import { Observer } from 'rxjs/Observer';
+import { SettlementPageComponent } from '../pages/settlement/settlement.component';
+import { SettlementMilestone } from '../model/linking/settlement_milestone';
+import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
+import { StaticProvider } from '@angular/core/src/di';
 
 export class DummyMockElements {
   public static storage: Storage = new Storage('Storage Dummy', 'dummy');
@@ -393,6 +398,11 @@ export class KDMCalculationServiceMock {
   }
 }
 
+export class KDMObserverServiceMock {
+  registerObserverForMilestone(settlementPageComponent: SettlementPageComponent, milestone: SettlementMilestone): void {
+  }
+}
+
 export class ViewControllerMock {
   readReady = {
     subscribe() {
@@ -417,5 +427,52 @@ export class ViewControllerMock {
   }
 
   _setIONContentRef() {
+  }
+}
+
+export class KeyValueChangesMock<K, V> {
+  forEachItem(fn: (r: any) => void): void {
+  }
+
+  forEachPreviousItem(fn: (r: any) => void): void {
+  }
+
+  forEachChangedItem(fn: (r: any) => void): void {
+  }
+
+  forEachAddedItem(fn: (r: any) => void): void {
+  }
+
+  forEachRemovedItem(fn: (r: any) => void): void {
+  }
+}
+
+export class KeyValueDifferMock<K, V> {
+  diff(object: Map<K, V>): KeyValueChangesMock<K, V> {
+    return new KeyValueChangesMock<K, V>();
+  }
+}
+
+export class KeyValueDifferFactoryMock {
+  supports(objects: any): boolean {
+    return true;
+  }
+
+  create<K, V>(): KeyValueDifferMock<K, V> {
+    return new KeyValueDifferMock<K, V>();
+  }
+}
+
+export class KeyValueDiffersMock {
+  static create<S>(factories: KeyValueDifferFactoryMock[], parent?: KeyValueDiffersMock): KeyValueDiffersMock {
+    return new KeyValueDiffersMock();
+  }
+
+  static extend<S>(factories: KeyValueDifferFactoryMock[]): StaticProvider {
+    return [];
+  }
+
+  find(kv: any): KeyValueDifferFactoryMock {
+    return new KeyValueDifferFactoryMock();
   }
 }
