@@ -14,9 +14,9 @@ export class KDMCalculationService {
   constructor(private kdmData: KDMDataService) {
   }
 
+//TODO change how this whole thing works
   addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
-    console.log(originalMonster.resources);
-    if (originalMonster.resources.size > 0) {
+    if (originalMonster.resources.size > 0 && huntedMonster.monsterLevel > 0) {
       originalMonster.resources.get(huntedMonster.monsterLevel).forEach((amount: number, key: any) => {
         const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
         if (resourceType) {
@@ -39,6 +39,9 @@ export class KDMCalculationService {
           });
         }
       });
+    } else {
+      console.log('there are no resources or the monsterLevel was not set', originalMonster.resources,
+        huntedMonster.monsterLevel);
     }
   }
 
@@ -66,7 +69,7 @@ export class KDMCalculationService {
         const storages: Storage[] = [];
         const resources: Resource[] = [];
         res.forEach(resource => {
-          if (<ResourceType>ResourceType[resource.type.toString()] === resourceType) {
+          if (resource.type !== undefined && <ResourceType>ResourceType[resource.type.toString()] === resourceType) {
             resources.push(resource);
           }
         });

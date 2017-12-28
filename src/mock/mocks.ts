@@ -476,3 +476,38 @@ export class KeyValueDiffersMock {
     return new KeyValueDifferFactoryMock();
   }
 }
+
+export class StorageMock {
+  store = {};
+
+  public ready(): Promise<{}> {
+    return new Promise((resolve: Function) => {
+      resolve({});
+    });
+  }
+
+  public get(key: string): Promise<string> {
+    return Promise.resolve(key in this.store ? this.store[key] : null);
+  }
+
+  public set(key: string, value: string): Promise<{}> {
+    this.store[key] = value;
+    return Promise.resolve({});
+  }
+
+  public remove(key: string): Promise<{}> {
+    return new Promise((resolve: Function) => {
+      resolve({key: key});
+    });
+  }
+
+  public query(): Promise<{ res: { rows: Array<{}> } }> {
+    return new Promise((resolve) => {
+      resolve({
+        res: {
+          rows: [{}]
+        }
+      });
+    });
+  }
+}
