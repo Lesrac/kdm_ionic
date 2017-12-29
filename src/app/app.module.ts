@@ -30,7 +30,6 @@ import { PrinciplesPageComponent } from '../pages/principle/principles.component
 import { PrincipleChooserPageComponent } from '../pages/principle/principle_chooser.component';
 import { KDMObserverService } from '../service/kdm_observer.service';
 import { KDMDBService } from '../service/kdm_db.service';
-import { HttpModule } from '@angular/http';
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 import { TextFormattingPipe } from '../pipe/text_formatting.pipe';
 import { AddedResourcesModalComponent } from '../pages/defeated_monster/added_resources_modal.component';
@@ -46,6 +45,7 @@ import { FormattedTextModalComponent } from '../pages/template/formatted_text_mo
 import { ShowLocationDetailComponent } from '../pages/location/show_location_detail.component';
 import { MapValuesPipe } from '../pipe/map_values.pipe';
 import { FilterElementsPipe } from '../pipe/filter_elements.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -91,7 +91,7 @@ import { FilterElementsPipe } from '../pipe/filter_elements.pipe';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpModule,
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

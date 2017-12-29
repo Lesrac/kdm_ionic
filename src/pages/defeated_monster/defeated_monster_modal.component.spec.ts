@@ -74,22 +74,18 @@ describe('Defeated Monster Modal', () => {
     const spy = spyOn(defeatedMonsterModalComponent, 'close');
     const monsterLevel = 1;
     const monster = new Monster();
-    monster.level = monsterLevel;
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     defeatedMonsterModalComponent.monster = monster;
     defeatedMonsterModalComponent.monsterLevel = monsterLevel;
     defeatedMonsterModalComponent.addClose();
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(1);
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters[0].monsterLevel).toBe(monsterLevel);
-    expect(defeatedMonsterModalComponent.settlement.huntedMonsters[0].monster.level).toBe(monsterLevel);
     expect(spy).toHaveBeenCalled();
   });
 
   it('addClose not correctly chosen', () => {
     const spy = spyOn(defeatedMonsterModalComponent, 'close');
-    const monsterLevel = 1;
     const monster = new Monster();
-    monster.level = monsterLevel;
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     defeatedMonsterModalComponent.addClose();
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
@@ -104,16 +100,14 @@ describe('Defeated Monster Modal', () => {
   it('addClose add hunt resources', () => {
     const spy = spyOn(defeatedMonsterModalComponent, 'close');
     const spyCalculation = spyOn(kdmCalculationServiceMock, 'addResourcesFromKilledMonster');
-    const monsterLevel = 1;
     const monster = new Monster();
     monster.isNemesis = false;
-    monster.level = monsterLevel;
     defeatedMonsterModalComponent.monster = monster;
     defeatedMonsterModalComponent.huntResources = true;
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     defeatedMonsterModalComponent.addClose();
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(1);
     expect(spy).toHaveBeenCalled();
-    expect(spyCalculation).toHaveBeenCalledWith(jasmine.anything(), monster);
+    expect(spyCalculation).toHaveBeenCalled();
   });
 });

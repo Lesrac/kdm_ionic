@@ -20,8 +20,7 @@ export class Milestone extends LanternEvent implements Comparable {
 
   constructor(comparator: ComparableVisitorValue) {
     super();
-    let compare: ComparableVisitorValue = <ComparableVisitorValue>ComparableVisitorValue[comparator.toString()];
-    switch (compare) {
+    switch (comparator) {
       case ComparableVisitorValue.L:
         this.visitor = new LessThan();
         break;
@@ -38,6 +37,7 @@ export class Milestone extends LanternEvent implements Comparable {
         this.visitor = new GreaterThan();
         break;
       default:
+        console.log('No ComparableVisitorValue found for: ' + comparator);
     }
   }
 
@@ -48,7 +48,7 @@ export class Milestone extends LanternEvent implements Comparable {
 }
 
 export enum MilestoneType {
-  Basic,
-  DragonKing,
-  Sunstalker,
+  Basic = 'BASIC',
+  DragonKing = 'DRAGONKING',
+  Sunstalker = 'SUNSTALKER',
 }

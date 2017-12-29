@@ -1,4 +1,5 @@
 import { Storage } from './storage';
+
 /**
  * Created by Daniel on 08.02.2017.
  */
@@ -8,9 +9,9 @@ export class Resource extends Storage {
 }
 
 export enum ResourceType {
-  Basic,
-  WhiteLion,
-  Phoenix,
-  ScreamingAntelope,
-  Strange,
+  Basic = 'BASIC',
+  WhiteLion = 'WHITELION',
+  Phoenix = 'PHOENIX',
+  ScreamingAntelope = 'SCREAMINGANTELOPE',
+  Strange = 'STRANGE',
 }

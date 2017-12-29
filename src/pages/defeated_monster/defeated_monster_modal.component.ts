@@ -39,11 +39,10 @@ export class DefeatedMonsterModalComponent implements OnInit {
       const huntedMonster = new HuntedMonster(this.settlement, this.monster);
       huntedMonster.monsterLevel = +this.monsterLevel;
       if (!this.monster.isNemesis && this.huntResources) {
-        this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster, this.monster);
+        this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster);
       }
       this.settlement.huntedMonsters.push(huntedMonster);
     }
-
     this.close();
   }
 

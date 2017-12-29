@@ -6,10 +6,19 @@ import { Location } from './location';
 export class Monster {
   id: number;
   name: string;
-  level: number = 1;
   isNemesis: boolean;
-  resources: Map<number, Map<any, number>> = new Map<number, Map<any, number>>();
+  resources: MonsterLevelResources[];
   rewardText: string;
   locations: Location[] = [];
 
+}
+
+export class MonsterLevelResources {
+  level: number;
+  resources: MonsterResourceAmount[];
+}
+
+export class MonsterResourceAmount {
+  name: string;
+  amount: number;
 }

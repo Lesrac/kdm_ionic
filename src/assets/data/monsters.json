@@ -5,52 +5,50 @@
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
-    "levelresources": [
-      [
-        {
-          "level": "1",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 4
-            }
-          ]
-        },
-        {
-          "level": "2",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 6
-            }
-          ]
-        },
-        {
-          "level": "3",
-          "resources": [
-            {
-              "name": "Basic",
-              "amount": 4
-            },
-            {
-              "name": "WhiteLion",
-              "amount": 8
-            },
-            {
-              "name": "Elder Cat Teeth",
-              "amount": 1
-            }
-          ]
-        }
-      ]
+    "resources": [
+      {
+        "level": 1,
+        "resources": [
+          {
+            "name": "Basic",
+            "amount": 4
+          },
+          {
+            "name": "WhiteLion",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "resources": [
+          {
+            "name": "Basic",
+            "amount": 4
+          },
+          {
+            "name": "WhiteLion",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "resources": [
+          {
+            "name": "Basic",
+            "amount": 4
+          },
+          {
+            "name": "WhiteLion",
+            "amount": 8
+          },
+          {
+            "name": "Elder Cat Teeth",
+            "amount": 1
+          }
+        ]
+      }
     ],
     "locations": []
   },
@@ -60,10 +58,10 @@
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
-    "levelresources": [
+    "resources": [
       [
         {
-          "level": "1",
+          "level": 1,
           "resources": [
             {
               "name": "Basic",
@@ -76,7 +74,7 @@
           ]
         },
         {
-          "level": "2",
+          "level": 2,
           "resources": [
             {
               "name": "Basic",
@@ -89,7 +87,7 @@
           ]
         },
         {
-          "level": "3",
+          "level": 3,
           "resources": [
             {
               "name": "Basic",
@@ -115,10 +113,10 @@
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
-    "levelresources": [
+    "resources": [
       [
         {
-          "level": "1",
+          "level": 1,
           "resources": [
             {
               "name": "Basic",
@@ -131,7 +129,7 @@
           ]
         },
         {
-          "level": "2",
+          "level": 2,
           "resources": [
             {
               "name": "Basic",
@@ -144,7 +142,7 @@
           ]
         },
         {
-          "level": "3",
+          "level": 3,
           "resources": [
             {
               "name": "Basic",
@@ -170,7 +168,7 @@
     "level": 1,
     "isNemesis": true,
     "rewardText": "",
-    "levelresources": [],
+    "resources": [],
     "locations": []
   },
   {
@@ -179,7 +177,7 @@
     "level": 1,
     "isNemesis": true,
     "rewardText": "",
-    "levelresources": [],
+    "resources": [],
     "locations": []
   },
   {
@@ -188,7 +186,7 @@
     "level": 1,
     "isNemesis": true,
     "rewardText": "",
-    "levelresources": [],
+    "resources": [],
     "locations": []
   }
 ]

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Settlement } from '../model/settlement';
-import { Http } from '@angular/http';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
 import { Timeline } from '../model/timeline';
@@ -11,7 +10,6 @@ import { Innovation, InnovationTag } from '../model/innovation';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { Principle, PrincipleType } from '../model/principle';
-import { JsonToObjectConverter } from '../util/json_to_object_converter';
 import { StoryEvent } from '../model/story_event';
 import { Storage, StorageTag } from '../model/storage';
 import { Weapon } from '../model/weapon';
@@ -29,6 +27,12 @@ import { HuntableMonster } from '../model/linking/huntable_monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { SettlementMilestone } from '../model/linking/settlement_milestone';
 import { Survivor } from '../model/survivor';
+import { HttpClient } from '@angular/common/http';
+import { TimelineJSON } from '../model/jsonData/timeline_json';
+import { LanternEventJSON } from '../model/jsonData/lantern_event_json';
+import { MilestoneJSON } from '../model/jsonData/milestone_json';
+import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
+import { PrincipleJSON } from '../model/jsonData/principle_json';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -63,7 +67,7 @@ export class KDMDataService {
   isInnitRunning: boolean = true;
   private initPrincipleTypesOnceNotStarted: boolean = true;
 
-  constructor(private http: Http, private kdmDBService: KDMDBService) {
+  constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
     this.isInnitRunning = true;
     this.getStoryEvents().then();
     this.getPrincipleTypes().then();
@@ -126,32 +130,12 @@ export class KDMDataService {
 
   getMonsters(): Promise<Monster[]> {
     if (this.monsters.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/monsters.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(monsterJson => {
-              const monster: Monster = JsonToObjectConverter.convertToMonsterObject(monsterJson);
-              monsterJson.levelresources.forEach(levelresourceDefinitions => {
-                levelresourceDefinitions.forEach(levelresource => {
-                  const map: Map<any, number> = new Map<any, number>();
-                  levelresource.resources.forEach(resource => {
-                    const resourceType: ResourceType = <ResourceType>ResourceType[<string>resource.name];
-                    if (resourceType != null && resourceType >= 0) {
-                      map.set(resourceType, resource.amount);
-                    } else {
-                      this.getResourceByName(resource.name).then(rs => {
-                        map.set(rs, resource.amount);
-                      });
-                    }
-                  });
-                  monster.resources.set(Number(levelresource.level), map);
-                });
-              });
-              this.monsters.push(monster);
-            });
-            return this.monsters;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get<Monster[]>('assets/data/monsters.json').subscribe((res: any[]) => {
+          this.monsters = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.monsters);
     }
@@ -172,19 +156,12 @@ export class KDMDataService {
 
   getResources(): Promise<Resource[]> {
     if (this.resources.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/resources.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(resourceJson => {
-              const tags: StorageTag[] = [];
-              resourceJson.tags.forEach((tagName: string) => {
-                tags.push(<StorageTag>StorageTag[tagName]);
-              });
-              this.resources.push(JsonToObjectConverter.converToResourceObject(resourceJson, tags));
-            });
-            return this.resources;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get<Resource[]>('assets/data/resources.json').subscribe(res => {
+          this.resources = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.resources);
     }
@@ -221,19 +198,21 @@ export class KDMDataService {
 
   getLanternEvents(): Promise<LanternEvent[]> {
     if (this.lanternEvents.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/lanternevents.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(lanternEventJson => {
-              const storyEvents: StoryEvent[] = [];
-              lanternEventJson.storyEvents.forEach((storyEventId: number) => {
-                this.getStoryEvent(storyEventId).then(storyEvent => storyEvents.push(storyEvent));
-              });
-              this.lanternEvents.push(JsonToObjectConverter.convertToLanternEventObject(lanternEventJson, storyEvents));
+      return new Promise(resolve => {
+        this.http.get<LanternEventJSON[]>('assets/data/lanternevents.json').subscribe(res => {
+          const lanternEvents: LanternEvent[] = [];
+          res.forEach(lanternEventJSON => {
+            const lanternEvent = new LanternEvent(lanternEventJSON.name);
+            lanternEvent.todo = lanternEventJSON.todo;
+            lanternEventJSON.storyEvents.forEach(storyEventID => {
+              this.getStoryEvent(storyEventID).then(storyEvent => lanternEvent.storyEvents.push(storyEvent));
             });
-            return this.lanternEvents;
-          },
-        );
+            lanternEvents.push(lanternEvent);
+          });
+          this.lanternEvents = lanternEvents;
+          resolve(lanternEvents);
+        });
+      });
     } else {
       return Promise.resolve(this.lanternEvents);
     }
@@ -246,36 +225,47 @@ export class KDMDataService {
 
   getStoryEvents(): Promise<StoryEvent[]> {
     if (this.storyEvents.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/storyevents.json', this.storyEvents,
-        JsonToObjectConverter.convertToStoryEventObject);
+      return new Promise(resolve => {
+        this.http.get<StoryEvent[]>('assets/data/storyevents.json').subscribe(res => {
+          this.storyEvents = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.storyEvents);
     }
   }
 
   getStoryEvent(id: number): Promise<StoryEvent> {
-    return this.getStoryEvents().then(storyEvents => storyEvents.find(storyEvent => storyEvent.id === id));
+    return this.getStoryEvents().then(storyEvents => storyEvents.find(storyEvent => {
+      return storyEvent.id === id;
+    }));
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
     if (this.milestones.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/milestones.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(milestoneJson => {
-              const storyEvents: StoryEvent[] = [];
-              milestoneJson.storyEvents.forEach((storyEventId: number) => {
-                this.getStoryEvent(storyEventId).then(storyEvent =>
-                  storyEvents.push(storyEvent));
-              });
-              const milestone: Milestone = JsonToObjectConverter.convertToMilestoneObject(milestoneJson, storyEvents);
-              if (milestone.milestoneType === MilestoneType.Basic) {
-                this.milestones.push(milestone);
-              }
+      return new Promise(resolve => {
+        this.http.get<MilestoneJSON[]>('assets/data/milestones.json').subscribe(res => {
+          const milestones: Milestone[] = [];
+          res.forEach(milestoneJSON => {
+            const milestone = new Milestone(milestoneJSON.comparator != null ?
+              ComparableVisitorValue[milestoneJSON.comparator] : '');
+            milestone.id = milestoneJSON.id;
+            milestone.tag = milestoneJSON.tag;
+            milestone.value = milestoneJSON.value;
+            milestone.name = milestoneJSON.name;
+            milestone.todo = milestoneJSON.todo;
+            milestoneJSON.storyEvents.forEach(storyEventID => {
+              this.getStoryEvent(storyEventID).then(storyEvent => milestone.storyEvents.push(storyEvent));
             });
-            return this.milestones;
-          },
-        );
+            milestone.milestoneType = MilestoneType[milestoneJSON.milestoneType];
+            milestone.observerTarget = milestoneJSON.observerTarget;
+            milestones.push(milestone);
+          });
+          this.milestones = milestones;
+          resolve(milestones);
+        });
+      });
     } else {
       return Promise.resolve(this.milestones);
     }
@@ -288,16 +278,20 @@ export class KDMDataService {
   getDefaultTimeline(): Promise<Timeline[]> {
     if (this.timeline.length < 1 && this.isInnitRunning) {
       return this.getLanternEvents().then(lanternEvents =>
-        this.http.get('assets/data/defaulttimeline.json').toPromise()
-          .then(
-            res => {
-              res.json().forEach(timelineJson => {
-                let event: LanternEvent = lanternEvents.find(x => x.name === timelineJson.lanternEvent);
-                this.timeline.push(JsonToObjectConverter.convertToTimelineObject(timelineJson, event));
-              });
-              return this.timeline;
-            }),
-      );
+        new Promise<Timeline[]>(resolve => {
+          this.http.get<TimelineJSON[]>('assets/data/defaulttimeline.json').subscribe(res => {
+            const timelines: Timeline[] = [];
+            res.forEach(timelineJson => {
+              const timeline = new Timeline();
+              timeline.lanternEvent = lanternEvents.find(lanternEvent =>
+                lanternEvent.name === timelineJson.lanternEvent);
+              timeline.position = timelineJson.position;
+              timelines.push(timeline);
+            });
+            this.timeline = timelines;
+            resolve(timelines);
+          });
+        }));
     } else {
       return Promise.resolve(this.timeline);
     }
@@ -305,55 +299,12 @@ export class KDMDataService {
 
   getSettlementLocations(): Promise<Location[]> {
     if (this.locations.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/locations.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(locationJson => {
-              const storageCreation: Map<Equipment, Map<any, [number]>> = new Map<Equipment, Map<any, [number]>>();
-              locationJson.storageCreation.forEach(mapElement => {
-                this.getEquipment(mapElement.name).then(e => {
-                  const costs: Map<any, [number]> = new Map<any, [number]>();
-                  mapElement.toBuild.forEach(subMapElement => {
-                    switch (subMapElement.type) {
-                      case 'storageTag': {
-                        if (subMapElement.or) {
-                          costs.set(<StorageTag>StorageTag[<string>subMapElement.name],
-                            [subMapElement.amount, subMapElement.or]);
-                        } else {
-                          costs.set(<StorageTag>StorageTag[<string>subMapElement.name], [subMapElement.amount]);
-                        }
-                        break;
-                      }
-                      case 'innovation': {
-                        this.getInnovation(subMapElement.name).then(innovation =>
-                          costs.set(innovation, [subMapElement.amount]));
-                        break;
-                      }
-                      case 'resource': {
-                        if (subMapElement.or) {
-                          this.getResourceByName(subMapElement.name).then(resource =>
-                            costs.set(resource.name, [subMapElement.amount, subMapElement.or]));
-                        } else {
-                          this.getResourceByName(subMapElement.name).then(resource =>
-                            costs.set(resource.name, [subMapElement.amount]));
-                        }
-                        break;
-                      }
-                      default: {
-                        console.error('No element for type: ' +
-                          subMapElement.type + ', for Equipment: ' + mapElement.name);
-                        break;
-                      }
-                    }
-                  });
-                  storageCreation.set(e, costs);
-                });
-              });
-              this.locations.push(JsonToObjectConverter.convertToLocationObject(locationJson, storageCreation));
-            });
-            return this.locations;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get('assets/data/locations.json').subscribe(res => {
+          this.locations = <Location[]>res;
+          resolve(<Location[]>res);
+        });
+      });
     } else {
       return Promise.resolve(this.locations);
     }
@@ -365,19 +316,12 @@ export class KDMDataService {
 
   getInnovations(): Promise<Innovation[]> {
     if (this.innovations.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/innovations.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(innovationJson => {
-              const tags: InnovationTag[] = [];
-              innovationJson.tags.forEach((tagName: string) => {
-                tags.push(<InnovationTag>InnovationTag[tagName]);
-              });
-              this.innovations.push(JsonToObjectConverter.convertToInnovationObject(innovationJson, tags));
-            });
-            return this.innovations;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get<Innovation[]>('assets/data/innovations.json').subscribe(res => {
+          this.innovations = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.innovations);
     }
@@ -404,8 +348,12 @@ export class KDMDataService {
 
   getDisorders(): Promise<Disorder[]> {
     if (this.disorders.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/disorders.json',
-        this.disorders, JsonToObjectConverter.convertToDisorderObject);
+      return new Promise<Disorder[]>(resolve => {
+        this.http.get<Disorder[]>('assets/data/disorders.json').subscribe(res => {
+          this.disorders = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.disorders);
     }
@@ -417,8 +365,12 @@ export class KDMDataService {
 
   getFightingArts(): Promise<FightingArt[]> {
     if (this.fightingArts.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/fightingarts.json',
-        this.fightingArts, JsonToObjectConverter.convertToFightingArtObject);
+      return new Promise<FightingArt[]>(resolve => {
+        this.http.get<FightingArt[]>('assets/data/fightingarts.json').subscribe(res => {
+          this.fightingArts = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.fightingArts);
     }
@@ -430,26 +382,18 @@ export class KDMDataService {
 
   getPrinciples(): Promise<Principle[]> {
     if (this.principles.length < 1 && this.isInnitRunning) {
-      let principleTypes: PrincipleType[] = [];
-      this.getPrincipleTypes().then(types =>
-        principleTypes = types,
-      );
-      return this.http.get('assets/data/principles.json').toPromise()
-        .then(
-          res => {
-            let principleType: PrincipleType;
-            res.json().forEach(principleJSON => {
-              principleType = principleTypes.find(type => {
-                if (type.name === principleJSON.type) {
-                  principleType = type;
-                  return true;
-                }
-              });
-              this.principles.push(JsonToObjectConverter.convertToPrincipleObject(principleJSON, principleType));
-            });
-            return this.principles;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get<PrincipleJSON[]>('assets/data/principles.json').subscribe(res => {
+          const principles: Principle[] = [];
+          res.forEach(principleJSON => {
+            const principle = new Principle(principleJSON.name, principleJSON.description);
+            this.getPrincipleType(principleJSON.type).then(principleType => principle.type = principleType);
+            principles.push(principle);
+          });
+          this.principles = principles;
+          resolve(principles);
+        });
+      });
     } else {
       return Promise.resolve(this.principles);
     }
@@ -462,11 +406,23 @@ export class KDMDataService {
   getPrincipleTypes(): Promise<PrincipleType[]> {
     if (this.principleTypes.length < 1 && this.isInnitRunning && this.initPrincipleTypesOnceNotStarted) {
       this.initPrincipleTypesOnceNotStarted = false;
-      return this.getGenericList('assets/data/principletypes.json', this.principleTypes,
-        JsonToObjectConverter.convertToPrincipleTypeObject);
+      return new Promise<PrincipleType[]>(resolve => {
+        this.http.get<PrincipleType[]>('assets/data/principletypes.json').subscribe(res => {
+          this.principleTypes = res;
+          resolve(this.principleTypes);
+        });
+      });
     } else {
       return Promise.resolve(this.principleTypes);
     }
+  }
+
+  getPrincipleType(name: string): Promise<PrincipleType> {
+    return this.getPrincipleTypes().then(pts => {
+      return pts.find(principleType => {
+        return principleType.name === name;
+      });
+    });
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
@@ -482,28 +438,12 @@ export class KDMDataService {
 
   getWeapons(): Promise<Weapon[]> {
     if (this.weapons.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/weapons.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(weaponJson => {
-              const tags: StorageTag[] = [];
-              let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
-              weaponJson.tags.forEach((tagName: string) => {
-                tags.push(<StorageTag>StorageTag[tagName]);
-              });
-              weaponJson.affinities.forEach((mapElement) => {
-                const dir: Direction[] = [];
-                const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
-                mapElement.direction.forEach(
-                  (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
-                );
-                affinities.set(affinity, dir);
-              });
-              this.weapons.push(JsonToObjectConverter.convertToWeaponObject(weaponJson, tags, affinities));
-            });
-            return this.weapons;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get('assets/data/weapons.json').subscribe(res => {
+          this.weapons = <Weapon[]>res;
+          resolve(<Weapon[]>res);
+        });
+      });
     } else {
       return Promise.resolve(this.weapons);
     }
@@ -511,28 +451,12 @@ export class KDMDataService {
 
   getArmors(): Promise<Armor[]> {
     if (this.armors.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/armors.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(armorJson => {
-              const tags: StorageTag[] = [];
-              let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
-              armorJson.tags.forEach((tagName: string) => {
-                tags.push(<StorageTag>StorageTag[tagName]);
-              });
-              armorJson.affinities.forEach((mapElement) => {
-                const dir: Direction[] = [];
-                const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
-                mapElement.direction.forEach(
-                  (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
-                );
-                affinities.set(affinity, dir);
-              });
-              this.armors.push(JsonToObjectConverter.convertToArmorObject(armorJson, tags, affinities));
-            });
-            return this.armors;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get('assets/data/armors.json').subscribe(res => {
+          this.armors = <Armor[]>res;
+          resolve(<Armor[]>res);
+        });
+      });
     } else {
       return Promise.resolve(this.armors);
     }
@@ -540,28 +464,12 @@ export class KDMDataService {
 
   getEquipments(): Promise<Equipment[]> {
     if (this.equipments.length < 1 && this.isInnitRunning) {
-      return this.http.get('assets/data/equipments.json').toPromise()
-        .then(
-          res => {
-            res.json().forEach(equipmentJson => {
-              const tags: StorageTag[] = [];
-              let affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
-              equipmentJson.tags.forEach((tagName: string) => {
-                tags.push(<StorageTag>StorageTag[tagName]);
-              });
-              equipmentJson.affinities.forEach((mapElement) => {
-                const dir: Direction[] = [];
-                const affinity: Affinity = <Affinity>Affinity[<string>mapElement.affinity];
-                mapElement.direction.forEach(
-                  (stringDirection) => dir.push(<Direction>Direction[<string>stringDirection]),
-                );
-                affinities.set(affinity, dir);
-              });
-              this.equipments.push(JsonToObjectConverter.convertToEquipmentObject(equipmentJson, tags, affinities));
-            });
-            return this.equipments;
-          },
-        );
+      return new Promise(resolve => {
+        this.http.get('assets/data/equipments.json').subscribe(res => {
+          this.equipments = <Equipment[]>res;
+          resolve(<Equipment[]>res);
+        });
+      });
     } else {
       return Promise.resolve(this.equipments);
     }
@@ -587,8 +495,12 @@ export class KDMDataService {
 
   getAllSevereInjuries(): Promise<SevereInjury[]> {
     if (this.severeInjuries.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/severeinjuries.json',
-        this.severeInjuries, JsonToObjectConverter.convertToSevereInjuryObject);
+      return new Promise<SevereInjury[]>(resolve => {
+        this.http.get<SevereInjury[]>('assets/data/severeinjuries.json').subscribe(res => {
+          this.severeInjuries = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.severeInjuries);
     }
@@ -602,8 +514,12 @@ export class KDMDataService {
 
   getAllBrainTraumas(): Promise<DiceThrow[]> {
     if (this.brainTraumas.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/braintraumas.json',
-        this.brainTraumas, JsonToObjectConverter.convertToDiceThrowObject);
+      return new Promise<DiceThrow[]>(resolve => {
+        this.http.get<DiceThrow[]>('assets/data/braintraumas.json').subscribe(res => {
+          this.brainTraumas = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.brainTraumas);
     }
@@ -611,8 +527,12 @@ export class KDMDataService {
 
   getAllHuntEvents(): Promise<HuntEvent[]> {
     if (this.huntEvents.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/huntevents.json',
-        this.huntEvents, JsonToObjectConverter.convertToHuntEventObject);
+      return new Promise<HuntEvent[]>(resolve => {
+        this.http.get<HuntEvent[]>('assets/data/huntevents.json').subscribe(res => {
+          this.huntEvents = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.huntEvents);
     }
@@ -620,8 +540,12 @@ export class KDMDataService {
 
   getAllGlossaryEntries(): Promise<BaseModel[]> {
     if (this.glossaryEntries.length < 1 && this.isInnitRunning) {
-      return this.getGenericList('assets/data/glossaryentries.json',
-        this.glossaryEntries, JsonToObjectConverter.convertToBaseModelObject);
+      return new Promise<BaseModel[]>(resolve => {
+        this.http.get<BaseModel[]>('assets/data/glossaryentries.json').subscribe(res => {
+          this.glossaryEntries = res;
+          resolve(res);
+        });
+      });
     } else {
       return Promise.resolve(this.glossaryEntries);
     }
@@ -635,18 +559,6 @@ export class KDMDataService {
       return 1;
     }
     return 0;
-  }
-
-  private getGenericList(file: string, data: any[], methodCall: JsonToObjectConverterMethod): Promise<any> {
-    return this.http.get(file).toPromise()
-      .then(
-        res => {
-          res.json().forEach(json => {
-            data.push(methodCall(json));
-          });
-          return data;
-        },
-      );
   }
 
   private desimplifySettlement(simplifiedSettlement: SettlementSimplified): Settlement {

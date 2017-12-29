@@ -4,7 +4,7 @@ import { KDMCalculationService } from './kdm_calculation.service';
 import { KDMDataServiceMock, PlatformMock, StorageMock } from '../mock/mocks';
 import { Platform } from 'ionic-angular';
 import { BaseRequestOptions, Http, HttpModule } from '@angular/http';
-import { Monster } from '../model/monster';
+import { Monster, MonsterLevelResources, MonsterResourceAmount } from '../model/monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { Settlement } from '../model/settlement';
 import { Resource, ResourceType } from '../model/resource';
@@ -28,12 +28,7 @@ describe('Service: Calculation', () => {
         {provide: KDMDataService, useValue: kdmDataServiceMock},
         {provide: Storage, useClass: StorageMock},
         {provide: Platform, useClass: PlatformMock},
-        {
-          provide: Http,
-          deps: [BaseRequestOptions]
-        }
       ],
-      imports: [HttpModule]
     });
     basicResource1 = new Resource('Resource 1', 'first');
     basicResource1.type = ResourceType.Basic;
@@ -54,23 +49,32 @@ describe('Service: Calculation', () => {
     resources.push(whiteLionResource1);
   });
 
-  it('addResourcesFromKilledMonster', fakeAsync(inject([KDMCalculationService], (kdmCalculationService: KDMCalculationService) => {
-    const spy = spyOn(kdmDataServiceMock, 'getResources').and.returnValue(Promise.resolve(resources));
+  it('addResourcesFromKilledMonster',
+    fakeAsync(inject([KDMCalculationService], (kdmCalculationService: KDMCalculationService) => {
+      spyOn(kdmDataServiceMock, 'getResources').and.returnValue(new Promise(resolve => resolve(resources)));
 
-    const settlement: Settlement = new Settlement('Dummy Settlement');
-    const resource: Resource = new Resource('Dummy Resource', 'dummy');
-    resource.type = ResourceType.Basic;
-    const originalMonster: Monster = new Monster();
-    originalMonster.name = 'White Lion';
-    const map: Map<any, number> = new Map<any, number>();
-    map.set(resource.type, 3);
-    originalMonster.resources.set(1, map);
-    console.log(originalMonster.resources.has(1));
-    const huntedMonster: HuntedMonster = new HuntedMonster(settlement, originalMonster);
-    huntedMonster.monsterLevel = 1;
-    kdmCalculationService.addResourcesFromKilledMonster(huntedMonster, originalMonster);
-    tick();
-    expect(huntedMonster.huntedResources.length).toBe(2);
-  })));
+      const settlement: Settlement = new Settlement('Dummy Settlement');
+      const resource: Resource = new Resource('Dummy Resource', 'dummy');
+      resource.type = ResourceType.Basic;
+      const originalMonster: Monster = new Monster();
+      originalMonster.name = 'White Lion';
+
+      const monsterLevelResource = new MonsterLevelResources();
+      monsterLevelResource.level = 1;
+      const monsterResourceAmount = new MonsterResourceAmount();
+      monsterResourceAmount.name = resource.type;
+      monsterResourceAmount.amount = 3;
+      monsterLevelResource.resources = [monsterResourceAmount];
+
+      originalMonster.resources = [monsterLevelResource];
+      const huntedMonster: HuntedMonster = new HuntedMonster(settlement, originalMonster);
+      huntedMonster.monsterLevel = 1;
+      kdmCalculationService.addResourcesFromKilledMonster(huntedMonster);
+      tick();
+      expect(huntedMonster.huntedResources.length).toBe(1);
+      let amount = 0;
+      huntedMonster.huntedResources.forEach(rs => amount += rs.amount);
+      expect(amount).toBe(3);
+    })));
 
 });

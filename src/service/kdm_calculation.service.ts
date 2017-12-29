@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Monster } from '../model/monster';
+import { Monster, MonsterLevelResources, MonsterResourceAmount } from '../model/monster';
 import { Storage } from '../model/storage';
 import { KDMDataService } from './kdm_data.service';
 import { Resource, ResourceType } from '../model/resource';
@@ -14,33 +14,38 @@ export class KDMCalculationService {
   constructor(private kdmData: KDMDataService) {
   }
 
-//TODO change how this whole thing works
-  addResourcesFromKilledMonster(huntedMonster: HuntedMonster, originalMonster: Monster): void {
-    if (originalMonster.resources.size > 0 && huntedMonster.monsterLevel > 0) {
-      originalMonster.resources.get(huntedMonster.monsterLevel).forEach((amount: number, key: any) => {
-        const resourceType: ResourceType = <ResourceType>ResourceType[<string>key];
-        if (resourceType) {
-          this.getAllResourceCardsFromType(resourceType).then(storages => {
-            const huntedResources = this.getRandomizedResourceCards(storages, amount);
-            huntedResources.forEach(storage => {
-              const storageCopy1 = Object.assign({}, storage);
-              const storageCopy2 = Object.assign({}, storage);
-              huntedMonster.settlement.addStorageItem(storageCopy1);
-              huntedMonster.addStorageItem(storageCopy2);
-            });
+  // TODO change how this whole thing works
+  addResourcesFromKilledMonster(huntedMonster: HuntedMonster): void {
+    if (huntedMonster.monster.resources.length > 0 && huntedMonster.monsterLevel > 0) {
+      huntedMonster.monster.resources.filter(monsterResource => monsterResource.level === huntedMonster.monsterLevel)
+        .forEach((monsterLevelResources: MonsterLevelResources) => {
+          monsterLevelResources.resources.forEach((monsterResourceAmount: MonsterResourceAmount) => {
+            const resourceType: ResourceType = ResourceType[monsterResourceAmount.name];
+            if (resourceType) {
+              this.getAllResourceCardsFromType(resourceType).then(storages => {
+                const huntedResources = this.getRandomizedResourceCards(storages, monsterResourceAmount.amount);
+                huntedResources.forEach(storage => {
+                  const storageCopy1 = Object.assign({}, storage);
+                  const storageCopy2 = Object.assign({}, storage);
+                  huntedMonster.settlement.addStorageItem(storageCopy1);
+                  huntedMonster.addStorageItem(storageCopy2);
+                });
+              });
+            } else if (monsterResourceAmount.name) {
+              this.kdmData.getStorageItem(monsterResourceAmount.name).then(storageItem => {
+                const huntedResources = this.getAllStorageItems(storageItem, monsterResourceAmount.amount);
+                huntedResources.forEach(str => {
+                  const storageCopy1 = Object.assign({}, str);
+                  const storageCopy2 = Object.assign({}, str);
+                  huntedMonster.settlement.addStorageItem(storageCopy1);
+                  huntedMonster.addStorageItem(storageCopy2);
+                });
+              });
+            }
           });
-        } else if (key) {
-          const huntedResources = this.getAllStorageItems(key, amount);
-          huntedResources.forEach(str => {
-            const storageCopy1 = Object.assign({}, str);
-            const storageCopy2 = Object.assign({}, str);
-            huntedMonster.settlement.addStorageItem(storageCopy1);
-            huntedMonster.addStorageItem(storageCopy2);
-          });
-        }
-      });
+        });
     } else {
-      console.log('there are no resources or the monsterLevel was not set', originalMonster.resources,
+      console.log('there are no resources or the monsterLevel was not set', huntedMonster.monster.resources,
         huntedMonster.monsterLevel);
     }
   }

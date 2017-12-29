@@ -505,8 +505,8 @@ export class StorageMock {
     return new Promise((resolve) => {
       resolve({
         res: {
-          rows: [{}]
-        }
+          rows: [{}],
+        },
       });
     });
   }
