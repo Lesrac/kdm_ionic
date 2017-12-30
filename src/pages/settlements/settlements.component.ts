@@ -37,9 +37,11 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   goToDetail(settlement: Settlement): void {
-    this.navCtrl.push(SettlementPageComponent, {
-      settlement,
-    }).then();
+    this.kdmService.getSettlement(settlement.id).then(settlementDesimplified => {
+      this.navCtrl.push(SettlementPageComponent, {
+        'settlement': settlementDesimplified,
+      }).then();
+    });
   }
 
   removeSettlement(settlement: Settlement): void {

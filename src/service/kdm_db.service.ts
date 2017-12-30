@@ -27,7 +27,9 @@ export class KDMDBService {
   }
 
   getSettlementById(id: number): Promise<SettlementSimplified> {
-    return this.storage.get(this.settlement + id);
+    return this.storage.get(this.settlement + id).then(settlementSimplified => {
+      return new Promise<SettlementSimplified>(resolve => resolve(JSON.parse(settlementSimplified)));
+    });
   }
 
   saveSettlements(settlements: Settlement[]): void {

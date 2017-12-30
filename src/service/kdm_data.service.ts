@@ -33,6 +33,7 @@ import { LanternEventJSON } from '../model/jsonData/lantern_event_json';
 import { MilestoneJSON } from '../model/jsonData/milestone_json';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
 import { PrincipleJSON } from '../model/jsonData/principle_json';
+import { JSONtoObject } from '../util/json_to_object';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -61,43 +62,29 @@ export class KDMDataService {
   glossaryEntries: BaseModel[] = [];
   huntEvents: HuntEvent[] = [];
 
-  isInnitRunning: boolean = true;
   private initPrincipleTypesOnceNotStarted: boolean = true;
 
   constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
-    this.isInnitRunning = true;
-    this.getStoryEvents().then();
-    this.getPrincipleTypes().then();
-    this.getAllSevereInjuries().then();
-    this.getAllBrainTraumas().then();
-    this.getAllGlossaryEntries().then();
-    this.getAllHuntEvents().then();
-    this.getInitialMilestones().then();
-    this.getDefaultTimeline().then();
-    this.getInnovations().then();
-    this.getMonsters().then();
-    this.getResources().then();
-    this.getDisorders().then();
-    this.getFightingArts().then();
-    this.getPrinciples().then();
-    this.getWeapons().then();
-    this.getArmors().then();
-    this.getEquipments().then();
-    this.getSettlementLocations().then();
-    this.getSettlements().then();
-    this.isInnitRunning = false;
   }
 
   getSettlements(): Promise<Settlement[]> {
-    if (this.settlements.length < 1 && this.isInnitRunning) {
-      return this.kdmDBService.getSettlements().then((simplifiedSettlementsArray) => {
+    if (this.settlements.length < 1) {
+      return this.kdmDBService.getSettlements().then(simplifiedSettlementsArray => {
         simplifiedSettlementsArray[0].forEach(simplifiedSettlement =>
-          this.settlements.push(this.desimplifySettlement(simplifiedSettlement)));
+          this.settlements.push(this.desimplifySettlements(simplifiedSettlement)));
         return this.settlements;
       });
     } else {
       return Promise.resolve(this.settlements);
     }
+  }
+
+  getSettlement(id: number): Promise<Settlement> {
+    this.getStoryEvents();
+    this.getLanternEvents();
+    return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
+      return this.desimplifySettlement(settlementSimplified);
+    });
   }
 
   addSettlement(settlement: Settlement): void {
@@ -126,7 +113,7 @@ export class KDMDataService {
   }
 
   getMonsters(): Promise<Monster[]> {
-    if (this.monsters.length < 1 && this.isInnitRunning) {
+    if (this.monsters.length < 1) {
       return new Promise(resolve => {
         this.http.get<Monster[]>('assets/data/monsters.json').subscribe((res: any[]) => {
           this.monsters = res;
@@ -152,7 +139,7 @@ export class KDMDataService {
   }
 
   getResources(): Promise<Resource[]> {
-    if (this.resources.length < 1 && this.isInnitRunning) {
+    if (this.resources.length < 1) {
       return new Promise(resolve => {
         this.http.get<Resource[]>('assets/data/resources.json').subscribe(res => {
           this.resources = res;
@@ -194,7 +181,7 @@ export class KDMDataService {
   }
 
   getLanternEvents(): Promise<LanternEvent[]> {
-    if (this.lanternEvents.length < 1 && this.isInnitRunning) {
+    if (this.lanternEvents.length < 1) {
       return new Promise(resolve => {
         this.http.get<LanternEventJSON[]>('assets/data/lanternevents.json').subscribe(res => {
           const lanternEvents: LanternEvent[] = [];
@@ -221,7 +208,7 @@ export class KDMDataService {
   }
 
   getStoryEvents(): Promise<StoryEvent[]> {
-    if (this.storyEvents.length < 1 && this.isInnitRunning) {
+    if (this.storyEvents.length < 1) {
       return new Promise(resolve => {
         this.http.get<StoryEvent[]>('assets/data/storyevents.json').subscribe(res => {
           this.storyEvents = res;
@@ -240,7 +227,7 @@ export class KDMDataService {
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
-    if (this.milestones.length < 1 && this.isInnitRunning) {
+    if (this.milestones.length < 1) {
       return new Promise(resolve => {
         this.http.get<MilestoneJSON[]>('assets/data/milestones.json').subscribe(res => {
           const milestones: Milestone[] = [];
@@ -273,7 +260,7 @@ export class KDMDataService {
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {
-    if (this.timeline.length < 1 && this.isInnitRunning) {
+    if (this.timeline.length < 1) {
       return this.getLanternEvents().then(lanternEvents =>
         new Promise<Timeline[]>(resolve => {
           this.http.get<TimelineJSON[]>('assets/data/defaulttimeline.json').subscribe(res => {
@@ -295,7 +282,7 @@ export class KDMDataService {
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    if (this.locations.length < 1 && this.isInnitRunning) {
+    if (this.locations.length < 1) {
       return new Promise(resolve => {
         this.http.get('assets/data/locations.json').subscribe(res => {
           this.locations = <Location[]>res;
@@ -312,7 +299,7 @@ export class KDMDataService {
   }
 
   getInnovations(): Promise<Innovation[]> {
-    if (this.innovations.length < 1 && this.isInnitRunning) {
+    if (this.innovations.length < 1) {
       return new Promise(resolve => {
         this.http.get<Innovation[]>('assets/data/innovations.json').subscribe(res => {
           this.innovations = res;
@@ -344,7 +331,7 @@ export class KDMDataService {
   }
 
   getDisorders(): Promise<Disorder[]> {
-    if (this.disorders.length < 1 && this.isInnitRunning) {
+    if (this.disorders.length < 1) {
       return new Promise<Disorder[]>(resolve => {
         this.http.get<Disorder[]>('assets/data/disorders.json').subscribe(res => {
           this.disorders = res;
@@ -361,7 +348,7 @@ export class KDMDataService {
   }
 
   getFightingArts(): Promise<FightingArt[]> {
-    if (this.fightingArts.length < 1 && this.isInnitRunning) {
+    if (this.fightingArts.length < 1) {
       return new Promise<FightingArt[]>(resolve => {
         this.http.get<FightingArt[]>('assets/data/fightingarts.json').subscribe(res => {
           this.fightingArts = res;
@@ -378,13 +365,15 @@ export class KDMDataService {
   }
 
   getPrinciples(): Promise<Principle[]> {
-    if (this.principles.length < 1 && this.isInnitRunning) {
+    if (this.principles.length < 1) {
+      let principleTypes: PrincipleType[] = [];
+      this.getPrincipleTypes().then(pts => principleTypes = pts);
       return new Promise(resolve => {
         this.http.get<PrincipleJSON[]>('assets/data/principles.json').subscribe(res => {
           const principles: Principle[] = [];
           res.forEach(principleJSON => {
             const principle = new Principle(principleJSON.name, principleJSON.description);
-            this.getPrincipleType(principleJSON.type).then(principleType => principle.type = principleType);
+            principle.type = principleTypes.find(principleType => principleJSON.type === principleType.name);
             principles.push(principle);
           });
           this.principles = principles;
@@ -401,7 +390,7 @@ export class KDMDataService {
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
-    if (this.principleTypes.length < 1 && this.isInnitRunning && this.initPrincipleTypesOnceNotStarted) {
+    if (this.principleTypes.length < 1 && this.initPrincipleTypesOnceNotStarted) {
       this.initPrincipleTypesOnceNotStarted = false;
       return new Promise<PrincipleType[]>(resolve => {
         this.http.get<PrincipleType[]>('assets/data/principletypes.json').subscribe(res => {
@@ -434,7 +423,7 @@ export class KDMDataService {
   }
 
   getWeapons(): Promise<Weapon[]> {
-    if (this.weapons.length < 1 && this.isInnitRunning) {
+    if (this.weapons.length < 1) {
       return new Promise(resolve => {
         this.http.get<Weapon[]>('assets/data/weapons.json').subscribe(res => {
           this.weapons = res;
@@ -447,7 +436,7 @@ export class KDMDataService {
   }
 
   getArmors(): Promise<Armor[]> {
-    if (this.armors.length < 1 && this.isInnitRunning) {
+    if (this.armors.length < 1) {
       return new Promise(resolve => {
         this.http.get<Armor[]>('assets/data/armors.json').subscribe(res => {
           this.armors = res;
@@ -460,7 +449,7 @@ export class KDMDataService {
   }
 
   getEquipments(): Promise<Equipment[]> {
-    if (this.equipments.length < 1 && this.isInnitRunning) {
+    if (this.equipments.length < 1) {
       return new Promise(resolve => {
         this.http.get<Equipment[]>('assets/data/equipments.json').subscribe(res => {
           this.equipments = res;
@@ -491,7 +480,7 @@ export class KDMDataService {
   }
 
   getAllSevereInjuries(): Promise<SevereInjury[]> {
-    if (this.severeInjuries.length < 1 && this.isInnitRunning) {
+    if (this.severeInjuries.length < 1) {
       return new Promise<SevereInjury[]>(resolve => {
         this.http.get<SevereInjury[]>('assets/data/severeinjuries.json').subscribe(res => {
           this.severeInjuries = res;
@@ -510,7 +499,7 @@ export class KDMDataService {
   }
 
   getAllBrainTraumas(): Promise<DiceThrow[]> {
-    if (this.brainTraumas.length < 1 && this.isInnitRunning) {
+    if (this.brainTraumas.length < 1) {
       return new Promise<DiceThrow[]>(resolve => {
         this.http.get<DiceThrow[]>('assets/data/braintraumas.json').subscribe(res => {
           this.brainTraumas = res;
@@ -523,7 +512,7 @@ export class KDMDataService {
   }
 
   getAllHuntEvents(): Promise<HuntEvent[]> {
-    if (this.huntEvents.length < 1 && this.isInnitRunning) {
+    if (this.huntEvents.length < 1) {
       return new Promise<HuntEvent[]>(resolve => {
         this.http.get<HuntEvent[]>('assets/data/huntevents.json').subscribe(res => {
           this.huntEvents = res;
@@ -536,7 +525,7 @@ export class KDMDataService {
   }
 
   getAllGlossaryEntries(): Promise<BaseModel[]> {
-    if (this.glossaryEntries.length < 1 && this.isInnitRunning) {
+    if (this.glossaryEntries.length < 1) {
       return new Promise<BaseModel[]>(resolve => {
         this.http.get<BaseModel[]>('assets/data/glossaryentries.json').subscribe(res => {
           this.glossaryEntries = res;
@@ -556,6 +545,16 @@ export class KDMDataService {
       return 1;
     }
     return 0;
+  }
+
+  private desimplifySettlements(simplifiedSettlement: SettlementSimplified): Settlement {
+    const settlement = new Settlement(simplifiedSettlement.name);
+    settlement.id = simplifiedSettlement.id;
+    settlement.survivalLimit = simplifiedSettlement.survivalLimit;
+    settlement.population = simplifiedSettlement.population;
+    settlement.deathcount = simplifiedSettlement.deathcount;
+    settlement.settlementLost = simplifiedSettlement.settlementLost;
+    return settlement;
   }
 
   private desimplifySettlement(simplifiedSettlement: SettlementSimplified): Settlement {

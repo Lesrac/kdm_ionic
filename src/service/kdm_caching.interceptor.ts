@@ -14,7 +14,6 @@ export class KDMCachingInterceptor implements HttpInterceptor {
     if (cachedResponse) {
       return Observable.of(cachedResponse);
     }
-
     return next.handle(request).do(event => {
       if (event instanceof HttpResponse) {
         this.cache[request.urlWithParams] = event;
