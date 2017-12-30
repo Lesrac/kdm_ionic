@@ -45,7 +45,8 @@ import { FormattedTextModalComponent } from '../pages/template/formatted_text_mo
 import { ShowLocationDetailComponent } from '../pages/location/show_location_detail.component';
 import { MapValuesPipe } from '../pipe/map_values.pipe';
 import { FilterElementsPipe } from '../pipe/filter_elements.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { KDMCachingInterceptor } from '../service/kdm_caching.interceptor';
 
 @NgModule({
   declarations: [
@@ -130,6 +131,11 @@ import { HttpClientModule } from '@angular/common/http';
     provide: ErrorHandler,
     useClass: IonicErrorHandler,
   },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: KDMCachingInterceptor,
+      multi: true,
+    },
     KDMDataService,
     KDMCalculationService,
     KDMObserverService,

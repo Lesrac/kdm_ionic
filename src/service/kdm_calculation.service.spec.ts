@@ -3,7 +3,6 @@ import { Storage } from '@ionic/storage';
 import { KDMCalculationService } from './kdm_calculation.service';
 import { KDMDataServiceMock, PlatformMock, StorageMock } from '../mock/mocks';
 import { Platform } from 'ionic-angular';
-import { BaseRequestOptions, Http, HttpModule } from '@angular/http';
 import { Monster, MonsterLevelResources, MonsterResourceAmount } from '../model/monster';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { Settlement } from '../model/settlement';
@@ -51,7 +50,7 @@ describe('Service: Calculation', () => {
 
   it('addResourcesFromKilledMonster',
     fakeAsync(inject([KDMCalculationService], (kdmCalculationService: KDMCalculationService) => {
-      spyOn(kdmDataServiceMock, 'getResources').and.returnValue(new Promise(resolve => resolve(resources)));
+      spyOn(kdmDataServiceMock, 'getResources').and.returnValue(Promise.resolve(resources));
 
       const settlement: Settlement = new Settlement('Dummy Settlement');
       const resource: Resource = new Resource('Dummy Resource', 'dummy');

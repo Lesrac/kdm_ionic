@@ -37,9 +37,6 @@ import { PrincipleJSON } from '../model/jsonData/principle_json';
 /**
  * Created by Daniel on 28.01.2017.
  */
-
-type JsonToObjectConverterMethod = (n: string) => any;
-
 @Injectable()
 export class KDMDataService {
 
@@ -409,7 +406,7 @@ export class KDMDataService {
       return new Promise<PrincipleType[]>(resolve => {
         this.http.get<PrincipleType[]>('assets/data/principletypes.json').subscribe(res => {
           this.principleTypes = res;
-          resolve(this.principleTypes);
+          resolve(res);
         });
       });
     } else {
@@ -439,9 +436,9 @@ export class KDMDataService {
   getWeapons(): Promise<Weapon[]> {
     if (this.weapons.length < 1 && this.isInnitRunning) {
       return new Promise(resolve => {
-        this.http.get('assets/data/weapons.json').subscribe(res => {
-          this.weapons = <Weapon[]>res;
-          resolve(<Weapon[]>res);
+        this.http.get<Weapon[]>('assets/data/weapons.json').subscribe(res => {
+          this.weapons = res;
+          resolve(res);
         });
       });
     } else {
@@ -452,9 +449,9 @@ export class KDMDataService {
   getArmors(): Promise<Armor[]> {
     if (this.armors.length < 1 && this.isInnitRunning) {
       return new Promise(resolve => {
-        this.http.get('assets/data/armors.json').subscribe(res => {
-          this.armors = <Armor[]>res;
-          resolve(<Armor[]>res);
+        this.http.get<Armor[]>('assets/data/armors.json').subscribe(res => {
+          this.armors = res;
+          resolve(res);
         });
       });
     } else {
@@ -465,9 +462,9 @@ export class KDMDataService {
   getEquipments(): Promise<Equipment[]> {
     if (this.equipments.length < 1 && this.isInnitRunning) {
       return new Promise(resolve => {
-        this.http.get('assets/data/equipments.json').subscribe(res => {
-          this.equipments = <Equipment[]>res;
-          resolve(<Equipment[]>res);
+        this.http.get<Equipment[]>('assets/data/equipments.json').subscribe(res => {
+          this.equipments = res;
+          resolve(res);
         });
       });
     } else {
