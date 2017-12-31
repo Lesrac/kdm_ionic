@@ -32,7 +32,7 @@ describe('Severe Injuries Detail Component', () => {
       ],
       imports: [IonicModule],
     });
-    bodypart = 'waist';
+    bodypart = 'WAIST';
     NavParamsMock.setParams(bodypart);
     fixture = TestBed.createComponent(SevereInjuriesDetailPageComponent);
     severeInjuriesDetailPageComponent = fixture.componentInstance;

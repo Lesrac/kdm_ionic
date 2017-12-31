@@ -7,7 +7,7 @@ import {
 import {
   AppMock, ConfigMock, DeepLinkerMock, NavMock, NavParamsMock, PlatformMock, ViewControllerMock,
 } from '../../mock/mocks';
-import { Principle } from '../../model/principle';
+import { Principle, PrincipleType } from '../../model/principle';
 import { TextFormattingPipe } from '../../pipe/text_formatting.pipe';
 import { PrincipleDetailComponent } from './principle_detail.component';
 
@@ -32,7 +32,7 @@ describe('Principle Detail Component', () => {
       ],
       imports: [IonicModule],
     });
-    principle = new Principle('Dummy Principle', 'dummy');
+    principle = new Principle('Dummy Principle', 'dummy', new PrincipleType('Dummy'));
     NavParamsMock.setParams(principle);
     fixture = TestBed.createComponent(PrincipleDetailComponent);
     principleDetailComponent = fixture.componentInstance;

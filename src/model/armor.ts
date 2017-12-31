@@ -9,9 +9,9 @@ export class Armor extends Equipment {
 }
 
 export enum ArmorSpace {
-  head,
-  waist,
-  body,
-  legs,
-  arms,
+  HEAD = 'HEAD',
+  WAIST = 'WAIST',
+  BODY = 'BODY',
+  LEGS = 'LEGS',
+  ARMS = 'ARMS',
 }

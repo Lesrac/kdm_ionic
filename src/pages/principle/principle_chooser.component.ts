@@ -17,8 +17,8 @@ export class PrincipleChooserPageComponent implements OnInit {
   settlement: Settlement;
   principleType: PrincipleType;
   allPrinciples: Principle[];
-  principleOne: Principle = new Principle('Not loaded', 'Please return');
-  principleTwo: Principle = new Principle('Not loaded', 'Please return');
+  principleOne: Principle = new Principle('Not loaded', 'Please return', new PrincipleType('Dummy Type'));
+  principleTwo: Principle = new Principle('Not loaded', 'Please return', new PrincipleType('Dummy Type'));
   isLoading: boolean = true;
 
   constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService,

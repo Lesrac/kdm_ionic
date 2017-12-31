@@ -33,7 +33,7 @@ import { LanternEventJSON } from '../model/jsonData/lantern_event_json';
 import { MilestoneJSON } from '../model/jsonData/milestone_json';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
 import { PrincipleJSON } from '../model/jsonData/principle_json';
-import { JSONtoObject } from '../util/json_to_object';
+import { SevereInjuryJSON } from '../model/jsonData/severe_injury_json';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -82,7 +82,6 @@ export class KDMDataService {
   readonly braintraumasURL: string = this.baseURL + '/braintraumas.json';
   readonly hunteventsURL: string = this.baseURL + '/huntevents.json';
   readonly glossaryentriesURL: string = this.baseURL + '/glossaryentries.json';
-  private initPrincipleTypesOnceNotStarted: boolean = true;
 
   constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
   }
@@ -200,8 +199,7 @@ export class KDMDataService {
         this.http.get<LanternEventJSON[]>(this.lanterneventsURL).subscribe(res => {
           const lanternEvents: LanternEvent[] = [];
           res.forEach(lanternEventJSON => {
-            const lanternEvent = new LanternEvent(lanternEventJSON.name);
-            lanternEvent.todo = lanternEventJSON.todo;
+            const lanternEvent = new LanternEvent(lanternEventJSON.name, lanternEventJSON.todo);
             lanternEventJSON.storyEvents.forEach(storyEventID => {
               this.getStoryEvent(storyEventID).then(storyEvent => lanternEvent.storyEvents.push(storyEvent));
             });
@@ -245,18 +243,12 @@ export class KDMDataService {
         this.http.get<MilestoneJSON[]>(this.milestonesURL).subscribe(res => {
           const milestones: Milestone[] = [];
           res.forEach(milestoneJSON => {
-            const milestone = new Milestone(milestoneJSON.comparator != null ?
-              ComparableVisitorValue[milestoneJSON.comparator] : '');
-            milestone.id = milestoneJSON.id;
-            milestone.tag = milestoneJSON.tag;
-            milestone.value = milestoneJSON.value;
-            milestone.name = milestoneJSON.name;
-            milestone.todo = milestoneJSON.todo;
+            const milestone = new Milestone(milestoneJSON.id, milestoneJSON.tag, milestoneJSON.value,
+              milestoneJSON.comparator != null ? ComparableVisitorValue[milestoneJSON.comparator] : '',
+              milestoneJSON.observerTarget, MilestoneType[milestoneJSON.milestoneType], milestoneJSON.name, milestoneJSON.todo);
             milestoneJSON.storyEvents.forEach(storyEventID => {
               this.getStoryEvent(storyEventID).then(storyEvent => milestone.storyEvents.push(storyEvent));
             });
-            milestone.milestoneType = MilestoneType[milestoneJSON.milestoneType];
-            milestone.observerTarget = milestoneJSON.observerTarget;
             milestones.push(milestone);
           });
           this.milestones = milestones;
@@ -274,21 +266,20 @@ export class KDMDataService {
 
   getDefaultTimeline(): Promise<Timeline[]> {
     if (this.timeline.length < 1) {
-      return this.getLanternEvents().then(lanternEvents =>
-        new Promise<Timeline[]>(resolve => {
+      return this.getLanternEvents().then(lntrnEvents => {
+        return new Promise<Timeline[]>(resolve => {
           this.http.get<TimelineJSON[]>(this.defaulttimelineURL).subscribe(res => {
             const timelines: Timeline[] = [];
             res.forEach(timelineJson => {
-              const timeline = new Timeline();
-              timeline.lanternEvent = lanternEvents.find(lanternEvent =>
-                lanternEvent.name === timelineJson.lanternEvent);
-              timeline.position = timelineJson.position;
-              timelines.push(timeline);
+              const tl = new Timeline(timelineJson.position, lntrnEvents.find(lanternEvent =>
+                lanternEvent.name === timelineJson.lanternEvent));
+              timelines.push(tl);
             });
             this.timeline = timelines;
             resolve(timelines);
           });
-        }));
+        })
+      });
     } else {
       return Promise.resolve(this.timeline);
     }
@@ -385,8 +376,8 @@ export class KDMDataService {
         this.http.get<PrincipleJSON[]>(this.principlesURL).subscribe(res => {
           const principles: Principle[] = [];
           res.forEach(principleJSON => {
-            const principle = new Principle(principleJSON.name, principleJSON.description);
-            principle.type = principleTypes.find(principleType => principleJSON.type === principleType.name);
+            const principle = new Principle(principleJSON.name, principleJSON.description,
+              principleTypes.find(principleType => principleJSON.type === principleType.name));
             principles.push(principle);
           });
           this.principles = principles;
@@ -403,8 +394,7 @@ export class KDMDataService {
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
-    if (this.principleTypes.length < 1 && this.initPrincipleTypesOnceNotStarted) {
-      this.initPrincipleTypesOnceNotStarted = false;
+    if (this.principleTypes.length < 1) {
       return new Promise<PrincipleType[]>(resolve => {
         this.http.get<PrincipleType[]>(this.principletypesURL).subscribe(res => {
           this.principleTypes = res;
@@ -486,9 +476,15 @@ export class KDMDataService {
   getAllSevereInjuries(): Promise<SevereInjury[]> {
     if (this.severeInjuries.length < 1) {
       return new Promise<SevereInjury[]>(resolve => {
-        this.http.get<SevereInjury[]>(this.severeinjuriesURL).subscribe(res => {
-          this.severeInjuries = res;
-          resolve(res);
+        this.http.get<SevereInjuryJSON[]>(this.severeinjuriesURL).subscribe(res => {
+          const injuries: SevereInjury[] = [];
+          res.forEach(injuryJSON => {
+            const severeInjury = new SevereInjury(injuryJSON.name, injuryJSON.description,
+              injuryJSON.minRoll, injuryJSON.maxRoll, ArmorSpace[injuryJSON.hitLocation]);
+            injuries.push(severeInjury);
+          });
+          this.severeInjuries = injuries;
+          resolve(injuries);
         });
       });
     } else {
@@ -497,9 +493,10 @@ export class KDMDataService {
   }
 
   getSevereInjuriesToHitLocation(hitLocation: string): Promise<SevereInjury[]> {
-    const hitLocationEnum: ArmorSpace = <ArmorSpace>ArmorSpace[hitLocation];
-    return this.getAllSevereInjuries().then(severeInjuries => severeInjuries.filter(severeInjury =>
-      severeInjury.hitLocation === hitLocationEnum));
+    const hitLocationEnum: ArmorSpace = ArmorSpace[hitLocation];
+    return this.getAllSevereInjuries().then(severeInjuries => severeInjuries.filter(severeInjury => {
+      return severeInjury.hitLocation === hitLocationEnum;
+    }));
   }
 
   getAllBrainTraumas(): Promise<DiceThrow[]> {

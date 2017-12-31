@@ -3,7 +3,7 @@ import { Settlement } from '../model/settlement';
 import { mockApp, mockConfig, mockDeepLinker } from 'ionic-angular/util/mock-providers';
 import { ModalController } from 'ionic-angular';
 import { StoryEvent } from '../model/story_event';
-import { Armor } from '../model/armor';
+import { Armor, ArmorSpace } from '../model/armor';
 import { Principle, PrincipleType } from '../model/principle';
 import { FightingArt } from '../model/fighting_art';
 import { Monster } from '../model/monster';
@@ -20,7 +20,7 @@ import { DiceThrow } from '../model/dice_throw';
 import { Disorder } from '../model/disorder';
 import { Innovation } from '../model/innovation';
 import { HuntEvent } from '../model/hunte_event';
-import { Milestone } from '../model/milestone';
+import { Milestone, MilestoneType } from '../model/milestone';
 import { Survivor } from '../model/survivor';
 import { LanternEvent } from '../model/lantern_event';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
@@ -279,15 +279,15 @@ export class KDMDataServiceMock {
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
-    return Promise.resolve([new Milestone(ComparableVisitorValue.EQ)]);
+    return Promise.resolve([new Milestone(1, 'Milestone', 1, ComparableVisitorValue.EQ, 'test', MilestoneType.Basic)]);
   }
 
   getMilestone(id: number): Promise<Milestone> {
-    return Promise.resolve(new Milestone(ComparableVisitorValue.EQ));
+    return Promise.resolve(new Milestone(1, 'Milestone', 1, ComparableVisitorValue.EQ, 'test', MilestoneType.Basic));
   }
 
   getDefaultTimeline(): Promise<Timeline[]> {
-    return Promise.resolve([new Timeline()]);
+    return Promise.resolve([new Timeline(1, new LanternEvent())]);
   }
 
   getSettlementLocations(): Promise<Location[]> {
@@ -327,15 +327,16 @@ export class KDMDataServiceMock {
   }
 
   getPrinciples(): Promise<Principle[]> {
-    return Promise.resolve([new Principle('Principle', 'dummy'), new Principle('Principle 2', 'dummy')]);
+    return Promise.resolve([new Principle('Principle', 'dummy', new PrincipleType('Dummy Type')),
+      new Principle('Principle 2', 'dummy', new PrincipleType('Dummy Type'))]);
   }
 
   getPrinciple(name: string): Promise<Principle> {
-    return Promise.resolve(new Principle(name, 'dummy'));
+    return Promise.resolve(new Principle(name, 'dummy', new PrincipleType('Dummy Type')));
   }
 
   getPrincipleTypes(): Promise<PrincipleType[]> {
-    return Promise.resolve([new PrincipleType()]);
+    return Promise.resolve([new PrincipleType('Dummy Type')]);
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
@@ -363,7 +364,7 @@ export class KDMDataServiceMock {
   }
 
   getAllSevereInjuries(): Promise<SevereInjury[]> {
-    return Promise.resolve([new SevereInjury('SevereInjury', 'dummy')]);
+    return Promise.resolve([new SevereInjury('SevereInjury', 'dummy', 1, 2, ArmorSpace.BODY)]);
   }
 
   getSevereInjuriesToHitLocation(hitLocation: string): Promise<SevereInjury[]> {
@@ -371,7 +372,7 @@ export class KDMDataServiceMock {
   }
 
   getAllBrainTraumas(): Promise<DiceThrow[]> {
-    return Promise.resolve([new DiceThrow('DiceThrow', 'dummy')]);
+    return Promise.resolve([new DiceThrow('DiceThrow', 'dummy', 1, 2)]);
   }
 
   getAllHuntEvents(): Promise<HuntEvent[]> {

@@ -18,7 +18,7 @@ import { SettlementPageComponent } from './settlement.component';
 import { KDMObserverService } from '../../service/kdm_observer.service';
 import { KeyValueDiffers } from '@angular/core';
 import { InputNumberComponent } from '../template/input_number.component';
-import { Milestone } from '../../model/milestone';
+import { Milestone, MilestoneType } from '../../model/milestone';
 import { ComparableVisitorValue } from '../../model/visitor/comparable_visitor';
 import { SettlementMilestone } from '../../model/linking/settlement_milestone';
 import { TimelinePageComponent } from '../timeline/timeline.component';
@@ -66,8 +66,8 @@ describe('Settlement Component', () => {
       ],
       imports: [IonicModule],
     });
-    const milestone = new Milestone(ComparableVisitorValue.EQ);
-    const timeline = new Timeline();
+    const milestone = new Milestone(1, 'Milestone', 2, ComparableVisitorValue.EQ, 'POPULATION', MilestoneType.Basic);
+    const timeline = new Timeline(1, new LanternEvent());
     settlement = new Settlement('Dummy Settlement');
     settlementMilestone = new SettlementMilestone(settlement, milestone);
     settlement.milestones.push(settlementMilestone);

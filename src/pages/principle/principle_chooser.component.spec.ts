@@ -9,7 +9,7 @@ import {
   AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, KDMDBServiceMock, NavMock, NavParamsMock, PlatformMock,
 } from '../../mock/mocks';
 import { Settlement } from '../../model/settlement';
-import { Principle } from '../../model/principle';
+import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { KDMDBService } from '../../service/kdm_db.service';
 import { TextFormattingPipe } from '../../pipe/text_formatting.pipe';
@@ -70,7 +70,7 @@ describe('Principle Chooser Component', () => {
   it('select principle', () => {
     const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     const spyNav = spyOn(principleChooserPageComponent.navCtrl, 'pop');
-    const principle = new Principle('Dummy Principle', 'dummy');
+    const principle = new Principle('Dummy Principle', 'dummy', new PrincipleType('Dummy Principle Type'));
     principleChooserPageComponent.selectPrinciple(principle);
     expect(principleChooserPageComponent.settlement.principles).toContain(principle);
     expect(spy).toHaveBeenCalledWith(principleChooserPageComponent.settlement);

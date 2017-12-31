@@ -5,8 +5,17 @@ import { BaseModel } from './base_model';
  */
 export class Principle extends BaseModel {
   type: PrincipleType;
+
+  constructor(name: string, description: string, type: PrincipleType) {
+    super(name, description);
+    this.type = type;
+  }
 }
 
 export class PrincipleType {
   name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
 }

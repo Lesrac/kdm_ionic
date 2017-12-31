@@ -43,7 +43,7 @@ describe('Severe Injuries Component', () => {
 
   it('open detail Page', () => {
     const spy = spyOn(severeInjuriesPageComponent.navCtrl, 'push').and.callThrough();
-    const bodypart = 'waist';
+    const bodypart = 'WAIST';
     severeInjuriesPageComponent.goToDetail(bodypart);
     expect(spy).toHaveBeenCalledWith(SevereInjuriesDetailPageComponent, {bodypart: bodypart});
   });

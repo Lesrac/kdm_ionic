@@ -53,20 +53,15 @@ describe('TimelinePageComponent', () => {
       imports: [IonicModule],
     });
     const settlement = new Settlement('Dummy Settlement');
-    const timeline = new Timeline();
-    timeline.position = 1;
+    const timeline = new Timeline(1, null);
     settlementTimelinePosition1 = new SettlementTimeline(settlement, timeline);
-    const timeline2 = new Timeline();
-    timeline2.position = 2;
+    const timeline2 = new Timeline(2, null);
     settlementTimelinePosition2 = new SettlementTimeline(settlement, timeline2);
-    const timeline3 = new Timeline();
-    timeline3.position = 3;
+    const timeline3 = new Timeline(3, null);
     settlementTimelinePosition3 = new SettlementTimeline(settlement, timeline3);
-    const timeline4 = new Timeline();
-    timeline4.position = 4;
-    timeline4.lanternEvent = new LanternEvent();
+    const timeline4 = new Timeline(4, new LanternEvent());
     settlementTimelinePosition4 = new SettlementTimeline(settlement, timeline4);
-    const timeline5 = new Timeline();
+    const timeline5 = new Timeline(5, null);
     timeline5.position = 5;
     settlementTimelinePosition5 = new SettlementTimeline(settlement, timeline5);
     NavParamsMock.setParams([settlementTimelinePosition1, settlementTimelinePosition2,
