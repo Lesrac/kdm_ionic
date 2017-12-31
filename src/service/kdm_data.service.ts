@@ -62,6 +62,26 @@ export class KDMDataService {
   glossaryEntries: BaseModel[] = [];
   huntEvents: HuntEvent[] = [];
 
+  readonly baseURL: string = 'assets/data';
+  readonly monstersURL: string = this.baseURL + '/monsters.json';
+  readonly resourcesURL: string = this.baseURL + '/resources.json';
+  readonly lanterneventsURL: string = this.baseURL + '/lanternevents.json';
+  readonly storyeventsURL: string = this.baseURL + '/storyevents.json';
+  readonly milestonesURL: string = this.baseURL + '/milestones.json';
+  readonly defaulttimelineURL: string = this.baseURL + '/defaulttimeline.json';
+  readonly locationsURL: string = this.baseURL + '/locations.json';
+  readonly innovationsURL: string = this.baseURL + '/innovations.json';
+  readonly disordersURL: string = this.baseURL + '/disorders.json';
+  readonly fightingartsURL: string = this.baseURL + '/fightingarts.json';
+  readonly principlesURL: string = this.baseURL + '/principles.json';
+  readonly principletypesURL: string = this.baseURL + '/principletypes.json';
+  readonly weaponsURL: string = this.baseURL + '/weapons.json';
+  readonly armorsURL: string = this.baseURL + '/armors.json';
+  readonly equipmentsURL: string = this.baseURL + '/equipments.json';
+  readonly severeinjuriesURL: string = this.baseURL + '/severeinjuries.json';
+  readonly braintraumasURL: string = this.baseURL + '/braintraumas.json';
+  readonly hunteventsURL: string = this.baseURL + '/huntevents.json';
+  readonly glossaryentriesURL: string = this.baseURL + '/glossaryentries.json';
   private initPrincipleTypesOnceNotStarted: boolean = true;
 
   constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
@@ -115,7 +135,7 @@ export class KDMDataService {
   getMonsters(): Promise<Monster[]> {
     if (this.monsters.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Monster[]>('assets/data/monsters.json').subscribe((res: any[]) => {
+        this.http.get<Monster[]>(this.monstersURL).subscribe((res: any[]) => {
           this.monsters = res;
           resolve(res);
         });
@@ -141,7 +161,7 @@ export class KDMDataService {
   getResources(): Promise<Resource[]> {
     if (this.resources.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Resource[]>('assets/data/resources.json').subscribe(res => {
+        this.http.get<Resource[]>(this.resourcesURL).subscribe(res => {
           this.resources = res;
           resolve(res);
         });
@@ -152,30 +172,24 @@ export class KDMDataService {
   }
 
   getResourceByName(name: string): Promise<Resource> {
-    return this.getResources().then(resources => resources.find(resource => {
-      return resource.name === name;
-    }));
+    return this.getResources().then(resources => resources.find(resource =>
+      resource.name === name));
   }
 
-  getAllExistingStorageItems(): Promise<Storage[][]> {
-    const promises: Promise<any>[] = [];
-    promises.push(this.getResources());
-    promises.push(this.getWeapons());
-    promises.push(this.getArmors());
-    promises.push(this.getEquipments());
-    return Promise.all(promises);
+  getAllExistingStorageItems(): Promise<[Storage[]]> {
+    return Promise.all<Resource[], Weapon[], Armor[], Equipment[]>(
+      [this.getResources(), this.getWeapons(), this.getArmors(), this.getEquipments()]);
   }
 
   getStorageItem(name: string): Promise<Storage> {
     return this.getAllExistingStorageItems().then(array => {
       let element: Storage = new Storage('placeholder', 'placeholder');
-      array.forEach(typearray =>
-        typearray.forEach(type => {
-          if (type.name === name) {
-            element = type;
-          }
-        }),
-      );
+      array.forEach(typearray => {
+        const finding = typearray.find(type => type.name === name);
+        if (finding !== undefined) {
+          element = finding;
+        }
+      });
       return element;
     });
   }
@@ -183,7 +197,7 @@ export class KDMDataService {
   getLanternEvents(): Promise<LanternEvent[]> {
     if (this.lanternEvents.length < 1) {
       return new Promise(resolve => {
-        this.http.get<LanternEventJSON[]>('assets/data/lanternevents.json').subscribe(res => {
+        this.http.get<LanternEventJSON[]>(this.lanterneventsURL).subscribe(res => {
           const lanternEvents: LanternEvent[] = [];
           res.forEach(lanternEventJSON => {
             const lanternEvent = new LanternEvent(lanternEventJSON.name);
@@ -210,7 +224,7 @@ export class KDMDataService {
   getStoryEvents(): Promise<StoryEvent[]> {
     if (this.storyEvents.length < 1) {
       return new Promise(resolve => {
-        this.http.get<StoryEvent[]>('assets/data/storyevents.json').subscribe(res => {
+        this.http.get<StoryEvent[]>(this.storyeventsURL).subscribe(res => {
           this.storyEvents = res;
           resolve(res);
         });
@@ -221,15 +235,14 @@ export class KDMDataService {
   }
 
   getStoryEvent(id: number): Promise<StoryEvent> {
-    return this.getStoryEvents().then(storyEvents => storyEvents.find(storyEvent => {
-      return storyEvent.id === id;
-    }));
+    return this.getStoryEvents().then(storyEvents => storyEvents.find(storyEvent =>
+      storyEvent.id === id));
   }
 
   getInitialMilestones(): Promise<Milestone[]> {
     if (this.milestones.length < 1) {
       return new Promise(resolve => {
-        this.http.get<MilestoneJSON[]>('assets/data/milestones.json').subscribe(res => {
+        this.http.get<MilestoneJSON[]>(this.milestonesURL).subscribe(res => {
           const milestones: Milestone[] = [];
           res.forEach(milestoneJSON => {
             const milestone = new Milestone(milestoneJSON.comparator != null ?
@@ -263,7 +276,7 @@ export class KDMDataService {
     if (this.timeline.length < 1) {
       return this.getLanternEvents().then(lanternEvents =>
         new Promise<Timeline[]>(resolve => {
-          this.http.get<TimelineJSON[]>('assets/data/defaulttimeline.json').subscribe(res => {
+          this.http.get<TimelineJSON[]>(this.defaulttimelineURL).subscribe(res => {
             const timelines: Timeline[] = [];
             res.forEach(timelineJson => {
               const timeline = new Timeline();
@@ -284,7 +297,7 @@ export class KDMDataService {
   getSettlementLocations(): Promise<Location[]> {
     if (this.locations.length < 1) {
       return new Promise(resolve => {
-        this.http.get('assets/data/locations.json').subscribe(res => {
+        this.http.get(this.locationsURL).subscribe(res => {
           this.locations = <Location[]>res;
           resolve(<Location[]>res);
         });
@@ -301,7 +314,7 @@ export class KDMDataService {
   getInnovations(): Promise<Innovation[]> {
     if (this.innovations.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Innovation[]>('assets/data/innovations.json').subscribe(res => {
+        this.http.get<Innovation[]>(this.innovationsURL).subscribe(res => {
           this.innovations = res;
           resolve(res);
         });
@@ -333,7 +346,7 @@ export class KDMDataService {
   getDisorders(): Promise<Disorder[]> {
     if (this.disorders.length < 1) {
       return new Promise<Disorder[]>(resolve => {
-        this.http.get<Disorder[]>('assets/data/disorders.json').subscribe(res => {
+        this.http.get<Disorder[]>(this.disordersURL).subscribe(res => {
           this.disorders = res;
           resolve(res);
         });
@@ -350,7 +363,7 @@ export class KDMDataService {
   getFightingArts(): Promise<FightingArt[]> {
     if (this.fightingArts.length < 1) {
       return new Promise<FightingArt[]>(resolve => {
-        this.http.get<FightingArt[]>('assets/data/fightingarts.json').subscribe(res => {
+        this.http.get<FightingArt[]>(this.fightingartsURL).subscribe(res => {
           this.fightingArts = res;
           resolve(res);
         });
@@ -369,7 +382,7 @@ export class KDMDataService {
       let principleTypes: PrincipleType[] = [];
       this.getPrincipleTypes().then(pts => principleTypes = pts);
       return new Promise(resolve => {
-        this.http.get<PrincipleJSON[]>('assets/data/principles.json').subscribe(res => {
+        this.http.get<PrincipleJSON[]>(this.principlesURL).subscribe(res => {
           const principles: Principle[] = [];
           res.forEach(principleJSON => {
             const principle = new Principle(principleJSON.name, principleJSON.description);
@@ -393,7 +406,7 @@ export class KDMDataService {
     if (this.principleTypes.length < 1 && this.initPrincipleTypesOnceNotStarted) {
       this.initPrincipleTypesOnceNotStarted = false;
       return new Promise<PrincipleType[]>(resolve => {
-        this.http.get<PrincipleType[]>('assets/data/principletypes.json').subscribe(res => {
+        this.http.get<PrincipleType[]>(this.principletypesURL).subscribe(res => {
           this.principleTypes = res;
           resolve(res);
         });
@@ -401,14 +414,6 @@ export class KDMDataService {
     } else {
       return Promise.resolve(this.principleTypes);
     }
-  }
-
-  getPrincipleType(name: string): Promise<PrincipleType> {
-    return this.getPrincipleTypes().then(pts => {
-      return pts.find(principleType => {
-        return principleType.name === name;
-      });
-    });
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
@@ -425,7 +430,7 @@ export class KDMDataService {
   getWeapons(): Promise<Weapon[]> {
     if (this.weapons.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Weapon[]>('assets/data/weapons.json').subscribe(res => {
+        this.http.get<Weapon[]>(this.weaponsURL).subscribe(res => {
           this.weapons = res;
           resolve(res);
         });
@@ -438,7 +443,7 @@ export class KDMDataService {
   getArmors(): Promise<Armor[]> {
     if (this.armors.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Armor[]>('assets/data/armors.json').subscribe(res => {
+        this.http.get<Armor[]>(this.armorsURL).subscribe(res => {
           this.armors = res;
           resolve(res);
         });
@@ -451,7 +456,7 @@ export class KDMDataService {
   getEquipments(): Promise<Equipment[]> {
     if (this.equipments.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Equipment[]>('assets/data/equipments.json').subscribe(res => {
+        this.http.get<Equipment[]>(this.equipmentsURL).subscribe(res => {
           this.equipments = res;
           resolve(res);
         });
@@ -469,11 +474,10 @@ export class KDMDataService {
     return this.getAllExistingEquipmentItems().then(arrayOfArrays => {
       let equipment: Equipment = null;
       arrayOfArrays.forEach((array: Equipment[]) => {
-        array.forEach(e => {
-          if (e.name === name) {
-            equipment = e;
-          }
-        });
+        const finding = array.find(e => e.name === name);
+        if (finding !== undefined) {
+          equipment = finding;
+        }
       });
       return equipment;
     });
@@ -482,7 +486,7 @@ export class KDMDataService {
   getAllSevereInjuries(): Promise<SevereInjury[]> {
     if (this.severeInjuries.length < 1) {
       return new Promise<SevereInjury[]>(resolve => {
-        this.http.get<SevereInjury[]>('assets/data/severeinjuries.json').subscribe(res => {
+        this.http.get<SevereInjury[]>(this.severeinjuriesURL).subscribe(res => {
           this.severeInjuries = res;
           resolve(res);
         });
@@ -501,7 +505,7 @@ export class KDMDataService {
   getAllBrainTraumas(): Promise<DiceThrow[]> {
     if (this.brainTraumas.length < 1) {
       return new Promise<DiceThrow[]>(resolve => {
-        this.http.get<DiceThrow[]>('assets/data/braintraumas.json').subscribe(res => {
+        this.http.get<DiceThrow[]>(this.braintraumasURL).subscribe(res => {
           this.brainTraumas = res;
           resolve(res);
         });
@@ -514,7 +518,7 @@ export class KDMDataService {
   getAllHuntEvents(): Promise<HuntEvent[]> {
     if (this.huntEvents.length < 1) {
       return new Promise<HuntEvent[]>(resolve => {
-        this.http.get<HuntEvent[]>('assets/data/huntevents.json').subscribe(res => {
+        this.http.get<HuntEvent[]>(this.hunteventsURL).subscribe(res => {
           this.huntEvents = res;
           resolve(res);
         });
@@ -527,7 +531,7 @@ export class KDMDataService {
   getAllGlossaryEntries(): Promise<BaseModel[]> {
     if (this.glossaryEntries.length < 1) {
       return new Promise<BaseModel[]>(resolve => {
-        this.http.get<BaseModel[]>('assets/data/glossaryentries.json').subscribe(res => {
+        this.http.get<BaseModel[]>(this.glossaryentriesURL).subscribe(res => {
           this.glossaryEntries = res;
           resolve(res);
         });
