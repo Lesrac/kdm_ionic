@@ -8,7 +8,7 @@ import {
 import { KDMDataService } from '../../service/kdm_data.service';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Settlement } from '../../model/settlement';
-import { Storage } from '../../model/storage';
+import { Storage, StorageTag } from '../../model/storage';
 import { StorageModalComponent } from './storage_modal.component';
 
 describe('StorageModalComponent', () => {
@@ -49,7 +49,7 @@ describe('StorageModalComponent', () => {
   it('select item', () => {
     expect(storageModalComponent.storageItemName).toBe(undefined);
     const storageItemName: string = 'Dummy Storage';
-    storageModalComponent.selectItem(new Storage(storageItemName, 'dummy test'));
+    storageModalComponent.selectItem(new Storage(storageItemName, 'dummy test', 1, [StorageTag.ITEM]));
     expect(storageModalComponent.storageItemName).toEqual(storageItemName);
   });
 
@@ -68,9 +68,9 @@ describe('StorageModalComponent', () => {
   }));
 
   it('add on close', () => {
-    const storageItem = new Storage('Storage dummy', 'dummy');
+    const storageItem = new Storage('Storage dummy', 'dummy', 1, [StorageTag.ITEM]);
     storageModalComponent.storageItems = [storageItem,
-      new Storage('Storage dummy2', 'dummy')];
+      new Storage('Storage dummy2', 'dummy', 1, [StorageTag.ITEM])];
     const spy = spyOn(storageModalComponent, 'close').and.returnValue(true);
     storageModalComponent.storageItemName = 'Storage dummy';
     expect(storageModalComponent.settlement.storages.length).toBe(0);
@@ -81,8 +81,8 @@ describe('StorageModalComponent', () => {
   });
 
   it('add on close with no item found', () => {
-    storageModalComponent.storageItems = [new Storage('Storage dummy', 'dummy'),
-      new Storage('Storage dummy2', 'dummy')];
+    storageModalComponent.storageItems = [new Storage('Storage dummy', 'dummy', 1, [StorageTag.ITEM]),
+      new Storage('Storage dummy2', 'dummy', 1, [StorageTag.ITEM])];
     const spy = spyOn(storageModalComponent, 'close').and.returnValue(true);
     storageModalComponent.storageItemName = 'Hommy';
     expect(storageModalComponent.settlement.storages.length).toBe(0);

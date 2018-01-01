@@ -29,18 +29,9 @@ describe('Service: Calculation', () => {
         {provide: Platform, useClass: PlatformMock},
       ],
     });
-    basicResource1 = new Resource('Resource 1', 'first');
-    basicResource1.type = ResourceType.Basic;
-    basicResource1.existingCards = 2;
-    basicResource1.tags = [StorageTag.ARMOR];
-    basicResource2 = new Resource('Resource 2', 'second');
-    basicResource2.type = ResourceType.Basic;
-    basicResource2.existingCards = 1;
-    basicResource2.tags = [StorageTag.FUR, StorageTag.HIDE];
-    whiteLionResource1 = new Resource('Resource 3', 'third');
-    whiteLionResource1.type = ResourceType.WhiteLion;
-    whiteLionResource1.existingCards = 4;
-    whiteLionResource1.tags = [StorageTag.KATAR, StorageTag.MELEE];
+    basicResource1 = new Resource('Resource 1', 'first', 1, [StorageTag.ARMOR], ResourceType.BASIC, 2);
+    basicResource2 = new Resource('Resource 2', 'second', 1, [StorageTag.FUR, StorageTag.HIDE], ResourceType.BASIC, 1);
+    whiteLionResource1 = new Resource('Resource 3', 'third', 1, [StorageTag.KATAR, StorageTag.MELEE], ResourceType.WHITELION, 4);
 
     resources = [];
     resources.push(basicResource1);
@@ -53,8 +44,7 @@ describe('Service: Calculation', () => {
       spyOn(kdmDataServiceMock, 'getResources').and.returnValue(Promise.resolve(resources));
 
       const settlement: Settlement = new Settlement('Dummy Settlement');
-      const resource: Resource = new Resource('Dummy Resource', 'dummy');
-      resource.type = ResourceType.Basic;
+      const resource: Resource = new Resource('Dummy Resource', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 2);
       const originalMonster: Monster = new Monster();
       originalMonster.name = 'White Lion';
 

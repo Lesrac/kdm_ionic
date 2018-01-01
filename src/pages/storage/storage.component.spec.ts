@@ -14,7 +14,7 @@ import {
   PlatformMock,
 } from '../../mock/mocks';
 import { KDMDBService } from '../../service/kdm_db.service';
-import { Storage } from '../../model/storage';
+import { Storage, StorageTag } from '../../model/storage';
 import { DebugElement } from '@angular/core';
 import { StorageModalComponent } from './storage_modal.component';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
@@ -67,8 +67,8 @@ describe('StorageComponent', () => {
   });
 
   it('Decrease and increase storage amount', () => {
-    const storage = new Storage('Storage 1', 'storage item');
-    const storage2 = new Storage('Storage 2', 'storage item 2');
+    const storage = new Storage('Storage 1', 'storage item', 1, [StorageTag.ITEM]);
+    const storage2 = new Storage('Storage 2', 'storage item 2', 1, [StorageTag.ITEM]);
     storageComponent.settlement.addStorageItem(storage);
     storageComponent.settlement.addStorageItem(storage2);
     const storageAmountChangeElement = storageComponent.settlement.storages[0].amount;
@@ -85,8 +85,8 @@ describe('StorageComponent', () => {
 
   it('Change storage amount', () => {
     expect(typeof storageComponent.settlement).toBe('object');
-    const storage = new Storage('Storage 1', 'storage item');
-    const storage2 = new Storage('Storage 2', 'storage item 2');
+    const storage = new Storage('Storage 1', 'storage item', 1, [StorageTag.ITEM]);
+    const storage2 = new Storage('Storage 2', 'storage item 2', 1, [StorageTag.ITEM]);
     storageComponent.settlement.addStorageItem(storage);
     storageComponent.settlement.addStorageItem(storage2);
     const storageAmountChangeElement = storageComponent.settlement.storages[0].amount;
@@ -100,8 +100,8 @@ describe('StorageComponent', () => {
   });
 
   xit('Show Segments contains all added storage elements', () => {
-    const storage = new Storage('XKCD', 'storage item');
-    const storage2 = new Storage('ABCD', 'storage item 2');
+    const storage = new Storage('XKCD', 'storage item', 1, [StorageTag.ITEM]);
+    const storage2 = new Storage('ABCD', 'storage item 2', 1, [StorageTag.ITEM]);
     storageComponent.settlement.addStorageItem(storage);
     storageComponent.settlement.addStorageItem(storage2);
     fixture.detectChanges();

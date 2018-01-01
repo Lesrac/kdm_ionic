@@ -5,11 +5,11 @@ import { KDMDBService } from './kdm_db.service';
 import { Monster } from '../model/monster';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { Resource } from '../model/resource';
+import { Resource, ResourceType } from '../model/resource';
 import { Weapon } from '../model/weapon';
 import { Armor, ArmorSpace } from '../model/armor';
-import { Equipment } from '../model/equipment';
-import { Storage } from '../model/storage';
+import { Affinity, Direction, Equipment } from '../model/equipment';
+import { Storage, StorageTag } from '../model/storage';
 import { LanternEvent } from '../model/lantern_event';
 import { StoryEvent } from '../model/story_event';
 import { LanternEventJSON } from '../model/jsonData/lantern_event_json';
@@ -29,6 +29,10 @@ import { Principle, PrincipleType } from '../model/principle';
 import { PrincipleJSON } from '../model/jsonData/principle_json';
 import { Settlement } from '../model/settlement';
 import { SettlementSimplified } from '../model/db/settlement_simplified';
+import { ResourceJSON } from '../model/jsonData/resource_json';
+import { WeaponJSON } from '../model/jsonData/weapon_json';
+import { ArmorJSON } from '../model/jsonData/armor_json';
+import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
 
 describe('KDM Data Service', () => {
 
@@ -124,43 +128,90 @@ describe('KDM Data Service', () => {
   });
 
   describe('Items/Resources', () => {
+    let resourceJSON1: ResourceJSON;
+    let resourceJSON2: ResourceJSON;
+    let resourceJSONs: ResourceJSON[];
     let resource1: Resource;
     let resource2: Resource;
     let resources: Resource[];
+    let weaponJSON1: WeaponJSON;
+    let weaponJSON2: WeaponJSON;
+    let weaponJSONs: WeaponJSON[];
     let weapon1: Weapon;
     let weapon2: Weapon;
     let weapons: Weapon[];
+    let armorJSON1: ArmorJSON;
+    let armorJSON2: ArmorJSON;
+    let armorJSONs: ArmorJSON[];
     let armor1: Armor;
     let armor2: Armor;
     let armors: Armor[];
+    let equipmentJSON1: EquipmentJSON;
+    let equipmentJSON2: EquipmentJSON;
+    let equipmentJSONs: EquipmentJSON[];
     let equipment1: Equipment;
     let equipment2: Equipment;
     let equipments: Equipment[];
 
     beforeEach(() => {
-      resource1 = new Resource('Dummy Resource', 'dummy');
-      resource2 = new Resource('Dummy Resource 2', 'dummy');
+      resourceJSON1 = new ResourceJSON('Dummy Resource 1', 'dummy', 1, ['ITEM'], 'BASIC', 1);
+      resourceJSON2 = new ResourceJSON('Dummy Resource 2', 'dummy 2', 2, ['ITEM', 'FUR'], 'WHITELION', 5);
+      resourceJSONs = [resourceJSON1, resourceJSON2];
+      resource1 = new Resource('Dummy Resource 1', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 1);
+      resource2 = new Resource('Dummy Resource 2', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 1);
       resources = [resource1, resource2];
-      weapon1 = new Weapon('Dummy Weapon', 'Dummy');
-      weapon2 = new Weapon('Dummy Weapon 2', 'Dummy');
+      const map = new Map<Affinity, Direction[]>();
+      map.set(Affinity.BLUE, [Direction.DOWN]);
+      weaponJSON1 = new WeaponJSON('Dummy Weapon 1', 'dummy', 1, ['ITEM'], [new AffinityJSON('BLUE', ['DOWN', 'UP'])],
+        1, 1, 1);
+      weaponJSON2 = new WeaponJSON('Dummy Weapon 2', 'dummy', 2, ['DAGGER', 'FLAMMABLE'],
+        [new AffinityJSON('GREEN', ['LEFT']), new AffinityJSON('RED', ['LEFT', 'RIGHT'])],
+        2, 2, 2);
+      weaponJSONs = [weaponJSON1, weaponJSON2];
+      weapon1 = new Weapon('Dummy Weapon 1', 'Dummy', 1, [StorageTag.ITEM],
+        map, 1, 1, 1);
+      weapon2 = new Weapon('Dummy Weapon 2', 'Dummy', 1, [StorageTag.ITEM],
+        map, 1, 1, 1);
       weapons = [weapon1, weapon2];
-      armor1 = new Armor('Dummy Armor', 'Dummy');
-      armor2 = new Armor('Dummy Armor 2', 'Dummy');
+      armorJSON1 = new ArmorJSON('Dummy Armor 1', 'dummy', 1, ['ITEM'], [new AffinityJSON('BLUE', ['DOWN', 'UP'])],
+        1, 'HEAD');
+      armorJSON2 = new ArmorJSON('Dummy Armor 2', 'dummy', 2, ['DAGGER', 'FLAMMABLE'],
+        [new AffinityJSON('GREEN', ['LEFT']), new AffinityJSON('RED', ['LEFT', 'RIGHT'])], 2, 'BODY');
+      armorJSONs = [armorJSON1, armorJSON2];
+      armor1 = new Armor('Dummy Armor 1', 'Dummy', 1, [StorageTag.ITEM],
+        map, 1, ArmorSpace.HEAD);
+      armor2 = new Armor('Dummy Armor 2', 'Dummy', 1, [StorageTag.ITEM],
+        map, 1, ArmorSpace.ARMS);
       armors = [armor1, armor2];
-      equipment1 = new Equipment('Dummy Equipment', 'Dummy');
-      equipment2 = new Equipment('Dummy Equipment 2', 'Dummy');
+      equipmentJSON1 = new EquipmentJSON('Dummy Equipment 1', 'dummy', 1, ['ITEM'], [new AffinityJSON('BLUE', ['DOWN', 'UP'])]);
+      equipmentJSON2 = new EquipmentJSON('Dummy Equipment 2', 'dummy', 2, ['DAGGER', 'FLAMMABLE'],
+        [new AffinityJSON('GREEN', ['LEFT']), new AffinityJSON('RED', ['LEFT', 'RIGHT'])]);
+      equipmentJSONs = [equipmentJSON1, equipmentJSON2];
+      equipment1 = new Equipment('Dummy Equipment 1', 'Dummy', 1, [StorageTag.ITEM], map);
+      equipment2 = new Equipment('Dummy Equipment 2', 'Dummy', 1, [StorageTag.ITEM], map);
       equipments = [equipment1, equipment2];
     });
 
     it('get Resources', inject([KDMDataService, HttpClient, HttpTestingController],
       (kdmDataService: KDMDataService, http: HttpClient, httpMock: HttpTestingController) => {
-        const mockResponse = resources;
+        const mockResponse = resourceJSONs;
         kdmDataService.getResources();
         const res = httpMock.expectOne(kdmDataService.resourcesURL);
         res.flush(mockResponse);
-        expect(kdmDataService.resources.length).toBe(resources.length);
-        expect(kdmDataService.resources).toContain(resource1);
-        expect(kdmDataService.resources).toContain(resource2);
+        expect(kdmDataService.resources.length).toBe(resourceJSONs.length);
+        expect(kdmDataService.resources[0].name).toBe(resourceJSON1.name);
+        expect(kdmDataService.resources[0].description).toBe(resourceJSON1.description);
+        expect(kdmDataService.resources[0].amount).toBe(resourceJSON1.amount);
+        expect(kdmDataService.resources[0].existingCards).toBe(resourceJSON1.existingCards);
+        expect(kdmDataService.resources[0].type).toBe(ResourceType[resourceJSON1.type]);
+        expect(kdmDataService.resources[0].tags).toContain(StorageTag[resourceJSON1.tags[0]]);
+        expect(kdmDataService.resources[1].name).toBe(resourceJSON2.name);
+        expect(kdmDataService.resources[1].description).toBe(resourceJSON2.description);
+        expect(kdmDataService.resources[1].amount).toBe(resourceJSON2.amount);
+        expect(kdmDataService.resources[1].existingCards).toBe(resourceJSON2.existingCards);
+        expect(kdmDataService.resources[1].type).toBe(ResourceType[resourceJSON2.type]);
+        expect(kdmDataService.resources[1].tags).toContain(StorageTag[resourceJSON2.tags[0]]);
+        expect(kdmDataService.resources[1].tags).toContain(StorageTag[resourceJSON2.tags[1]]);
       }));
 
     it('get Resources from cache', inject([KDMDataService],
@@ -183,13 +234,36 @@ describe('KDM Data Service', () => {
 
     it('get Weapons', inject([KDMDataService, HttpClient, HttpTestingController],
       (kdmDataService: KDMDataService, http: HttpClient, httpMock: HttpTestingController) => {
-        const mockResponse = weapons;
+        const mockResponse = weaponJSONs;
         kdmDataService.getWeapons();
         const res = httpMock.expectOne(kdmDataService.weaponsURL);
         res.flush(mockResponse);
-        expect(kdmDataService.weapons.length).toBe(weapons.length);
-        expect(kdmDataService.weapons).toContain(weapon1);
-        expect(kdmDataService.weapons).toContain(weapon2);
+        expect(kdmDataService.weapons.length).toBe(weaponJSONs.length);
+        expect(kdmDataService.weapons[0].name).toBe(weaponJSON1.name);
+        expect(kdmDataService.weapons[0].description).toBe(weaponJSON1.description);
+        expect(kdmDataService.weapons[0].amount).toBe(weaponJSON1.amount);
+        expect(kdmDataService.weapons[0].speed).toBe(weaponJSON1.speed);
+        expect(kdmDataService.weapons[0].accuracy).toBe(weaponJSON1.accuracy);
+        expect(kdmDataService.weapons[0].strength).toBe(weaponJSON1.strength);
+        expect(kdmDataService.weapons[0].tags).toContain(StorageTag[weaponJSON1.tags[0]]);
+        expect(kdmDataService.weapons[0].affinities.get(Affinity[weaponJSON1.affinities[0].affinity]))
+          .toContain(Direction[weaponJSON1.affinities[0].directions[0]]);
+        expect(kdmDataService.weapons[0].affinities.get(Affinity[weaponJSON1.affinities[0].affinity]))
+          .toContain(Direction[weaponJSON1.affinities[0].directions[1]]);
+        expect(kdmDataService.weapons[1].name).toBe(weaponJSON2.name);
+        expect(kdmDataService.weapons[1].description).toBe(weaponJSON2.description);
+        expect(kdmDataService.weapons[1].amount).toBe(weaponJSON2.amount);
+        expect(kdmDataService.weapons[1].speed).toBe(weaponJSON2.speed);
+        expect(kdmDataService.weapons[1].accuracy).toBe(weaponJSON2.accuracy);
+        expect(kdmDataService.weapons[1].strength).toBe(weaponJSON2.strength);
+        expect(kdmDataService.weapons[1].tags).toContain(StorageTag[weaponJSON2.tags[0]]);
+        expect(kdmDataService.weapons[1].tags).toContain(StorageTag[weaponJSON2.tags[1]]);
+        expect(kdmDataService.weapons[1].affinities.get(Affinity[weaponJSON2.affinities[0].affinity]))
+          .toContain(Direction[weaponJSON2.affinities[0].directions[0]]);
+        expect(kdmDataService.weapons[1].affinities.get(Affinity[weaponJSON2.affinities[1].affinity]))
+          .toContain(Direction[weaponJSON2.affinities[1].directions[0]]);
+        expect(kdmDataService.weapons[1].affinities.get(Affinity[weaponJSON2.affinities[1].affinity]))
+          .toContain(Direction[weaponJSON2.affinities[1].directions[1]]);
       }));
 
     it('get Weapons from cache', inject([KDMDataService],
@@ -204,13 +278,34 @@ describe('KDM Data Service', () => {
 
     it('get Armors', inject([KDMDataService, HttpClient, HttpTestingController],
       (kdmDataService: KDMDataService, http: HttpClient, httpMock: HttpTestingController) => {
-        const mockResponse = armors;
+        const mockResponse = armorJSONs;
         kdmDataService.getArmors();
         const res = httpMock.expectOne(kdmDataService.armorsURL);
         res.flush(mockResponse);
-        expect(kdmDataService.armors.length).toBe(armors.length);
-        expect(kdmDataService.armors).toContain(armor1);
-        expect(kdmDataService.armors).toContain(armor2);
+        expect(kdmDataService.armors.length).toBe(armorJSONs.length);
+        expect(kdmDataService.armors[0].name).toBe(armorJSON1.name);
+        expect(kdmDataService.armors[0].description).toBe(armorJSON1.description);
+        expect(kdmDataService.armors[0].amount).toBe(armorJSON1.amount);
+        expect(kdmDataService.armors[0].value).toBe(armorJSON1.value);
+        expect(kdmDataService.armors[0].space).toBe(ArmorSpace[armorJSON1.space]);
+        expect(kdmDataService.armors[0].tags).toContain(StorageTag[armorJSON1.tags[0]]);
+        expect(kdmDataService.armors[0].affinities.get(Affinity[armorJSON1.affinities[0].affinity]))
+          .toContain(Direction[armorJSON1.affinities[0].directions[0]]);
+        expect(kdmDataService.armors[0].affinities.get(Affinity[armorJSON1.affinities[0].affinity]))
+          .toContain(Direction[armorJSON1.affinities[0].directions[1]]);
+        expect(kdmDataService.armors[1].name).toBe(armorJSON2.name);
+        expect(kdmDataService.armors[1].description).toBe(armorJSON2.description);
+        expect(kdmDataService.armors[1].amount).toBe(armorJSON2.amount);
+        expect(kdmDataService.armors[1].value).toBe(armorJSON2.value);
+        expect(kdmDataService.armors[1].space).toBe(ArmorSpace[armorJSON2.space]);
+        expect(kdmDataService.armors[1].tags).toContain(StorageTag[armorJSON2.tags[0]]);
+        expect(kdmDataService.armors[1].tags).toContain(StorageTag[armorJSON2.tags[1]]);
+        expect(kdmDataService.armors[1].affinities.get(Affinity[armorJSON2.affinities[0].affinity]))
+          .toContain(Direction[armorJSON2.affinities[0].directions[0]]);
+        expect(kdmDataService.armors[1].affinities.get(Affinity[armorJSON2.affinities[1].affinity]))
+          .toContain(Direction[armorJSON2.affinities[1].directions[0]]);
+        expect(kdmDataService.armors[1].affinities.get(Affinity[armorJSON2.affinities[1].affinity]))
+          .toContain(Direction[armorJSON2.affinities[1].directions[1]]);
       }));
 
     it('get Armors from cache', inject([KDMDataService],
@@ -225,13 +320,30 @@ describe('KDM Data Service', () => {
 
     it('get Equipments', inject([KDMDataService, HttpClient, HttpTestingController],
       (kdmDataService: KDMDataService, http: HttpClient, httpMock: HttpTestingController) => {
-        const mockResponse = equipments;
+        const mockResponse = equipmentJSONs;
         kdmDataService.getEquipments();
         const res = httpMock.expectOne(kdmDataService.equipmentsURL);
         res.flush(mockResponse);
-        expect(kdmDataService.equipments.length).toBe(equipments.length);
-        expect(kdmDataService.equipments).toContain(equipment1);
-        expect(kdmDataService.equipments).toContain(equipment2);
+        expect(kdmDataService.equipments.length).toBe(equipmentJSONs.length);
+        expect(kdmDataService.equipments[0].name).toBe(equipmentJSON1.name);
+        expect(kdmDataService.equipments[0].description).toBe(equipmentJSON1.description);
+        expect(kdmDataService.equipments[0].amount).toBe(equipmentJSON1.amount);
+        expect(kdmDataService.equipments[0].tags).toContain(StorageTag[equipmentJSON1.tags[0]]);
+        expect(kdmDataService.equipments[0].affinities.get(Affinity[equipmentJSON1.affinities[0].affinity]))
+          .toContain(Direction[equipmentJSON1.affinities[0].directions[0]]);
+        expect(kdmDataService.equipments[0].affinities.get(Affinity[equipmentJSON1.affinities[0].affinity]))
+          .toContain(Direction[equipmentJSON1.affinities[0].directions[1]]);
+        expect(kdmDataService.equipments[1].name).toBe(equipmentJSON2.name);
+        expect(kdmDataService.equipments[1].description).toBe(equipmentJSON2.description);
+        expect(kdmDataService.equipments[1].amount).toBe(equipmentJSON2.amount);
+        expect(kdmDataService.equipments[1].tags).toContain(StorageTag[equipmentJSON2.tags[0]]);
+        expect(kdmDataService.equipments[1].tags).toContain(StorageTag[equipmentJSON2.tags[1]]);
+        expect(kdmDataService.equipments[1].affinities.get(Affinity[equipmentJSON2.affinities[0].affinity]))
+          .toContain(Direction[equipmentJSON2.affinities[0].directions[0]]);
+        expect(kdmDataService.equipments[1].affinities.get(Affinity[equipmentJSON2.affinities[1].affinity]))
+          .toContain(Direction[equipmentJSON2.affinities[1].directions[0]]);
+        expect(kdmDataService.equipments[1].affinities.get(Affinity[equipmentJSON2.affinities[1].affinity]))
+          .toContain(Direction[equipmentJSON2.affinities[1].directions[1]]);
       }));
 
     it('get Equipments from cache', inject([KDMDataService],

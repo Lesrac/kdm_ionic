@@ -1,5 +1,5 @@
 import { MapValuesPipe } from './map_values.pipe';
-import { Equipment } from '../model/equipment';
+import { Affinity, Direction, Equipment } from '../model/equipment';
 import { Innovation } from '../model/innovation';
 import { StorageTag } from '../model/storage';
 
@@ -8,12 +8,16 @@ describe('Pipe: mapValuesPipe', () => {
   let fullMap: Map<Equipment, Map<Innovation | string | StorageTag, [number]>>;
   let map1: Map<Innovation | string | StorageTag, [number]>;
   let map2: Map<Innovation | string | StorageTag, [number]>;
+  let equipment1: Equipment;
+  let equipment2: Equipment;
 
   beforeEach(() => {
     pipe = new MapValuesPipe();
     fullMap = new Map<Equipment, Map<Innovation | string | StorageTag, [number]>>();
     map1 = new Map<Innovation | string | StorageTag, [number]>();
     map2 = new Map<Innovation | string | StorageTag, [number]>();
+    equipment1 = new Equipment('to do', 'nothing', 1, [StorageTag.ITEM], new Map<Affinity, Direction[]>());
+    equipment2 = new Equipment('done', 'everything', 1, [StorageTag.ITEM], new Map<Affinity, Direction[]>());
   });
 
   it('Map with strings', () => {
@@ -24,9 +28,6 @@ describe('Pipe: mapValuesPipe', () => {
     map1.set(arrow, [4]);
 
     map2.set(ammunition, [1]);
-
-    const equipment1: Equipment = new Equipment('to do', 'nothing');
-    const equipment2: Equipment = new Equipment('done', 'everything');
 
     fullMap.set(equipment1, map1);
     fullMap.set(equipment2, map2);
@@ -51,19 +52,16 @@ describe('Pipe: mapValuesPipe', () => {
 
     map2.set(innovation1, [1]);
 
-    const eq1: Equipment = new Equipment('to do', 'nothing');
-    const eq2: Equipment = new Equipment('done', 'everything');
-
-    fullMap.set(eq1, map1);
-    fullMap.set(eq2, map2);
+    fullMap.set(equipment1, map1);
+    fullMap.set(equipment2, map2);
 
     const dummyObjects: { equipment: Equipment, costs: [{ amount: number, what: any }] }[] = pipe.transform(fullMap);
     expect(dummyObjects.length).toEqual(2);
-    expect(dummyObjects[0].equipment).toBe(eq1);
+    expect(dummyObjects[0].equipment).toBe(equipment1);
     expect(dummyObjects[0].costs.length).toEqual(2);
     expect(dummyObjects[0].costs[0].what).toEqual(innovation1);
     expect(dummyObjects[0].costs[1].what).toEqual(innovation2);
-    expect(dummyObjects[1].equipment).toBe(eq2);
+    expect(dummyObjects[1].equipment).toBe(equipment2);
     expect(dummyObjects[1].costs.length).toEqual(1);
     expect(dummyObjects[1].costs[0].what).toEqual(innovation1);
   });
@@ -77,19 +75,16 @@ describe('Pipe: mapValuesPipe', () => {
 
     map2.set(storageTag1, [1]);
 
-    const eq1: Equipment = new Equipment('to do', 'nothing');
-    const eq2: Equipment = new Equipment('done', 'everything');
-
-    fullMap.set(eq1, map1);
-    fullMap.set(eq2, map2);
+    fullMap.set(equipment1, map1);
+    fullMap.set(equipment2, map2);
 
     const dummyObjects: { equipment: Equipment, costs: [{ amount: number, what: any }] }[] = pipe.transform(fullMap);
     expect(dummyObjects.length).toEqual(2);
-    expect(dummyObjects[0].equipment).toBe(eq1);
+    expect(dummyObjects[0].equipment).toBe(equipment1);
     expect(dummyObjects[0].costs.length).toEqual(2);
     expect(dummyObjects[0].costs[0].what).toEqual(StorageTag[StorageTag.AXE]);
     expect(dummyObjects[0].costs[1].what).toEqual(StorageTag[StorageTag.AMMUNITION]);
-    expect(dummyObjects[1].equipment).toBe(eq2);
+    expect(dummyObjects[1].equipment).toBe(equipment2);
     expect(dummyObjects[1].costs.length).toEqual(1);
     expect(dummyObjects[1].costs[0].what).toEqual(StorageTag[StorageTag.AXE]);
   });
@@ -104,19 +99,16 @@ describe('Pipe: mapValuesPipe', () => {
 
     map2.set(arrow, [1]);
 
-    const eq1: Equipment = new Equipment('to do', 'nothing');
-    const eq2: Equipment = new Equipment('done', 'everything');
-
-    fullMap.set(eq1, map1);
-    fullMap.set(eq2, map2);
+    fullMap.set(equipment1, map1);
+    fullMap.set(equipment2, map2);
 
     const dummyObjects: { equipment: Equipment, costs: [{ amount: number, what: any }] }[] = pipe.transform(fullMap);
     expect(dummyObjects.length).toEqual(2);
-    expect(dummyObjects[0].equipment).toBe(eq1);
+    expect(dummyObjects[0].equipment).toBe(equipment1);
     expect(dummyObjects[0].costs.length).toEqual(2);
     expect(dummyObjects[0].costs[0].what).toEqual(StorageTag[StorageTag.AXE]);
     expect(dummyObjects[0].costs[1].what).toEqual(innovation);
-    expect(dummyObjects[1].equipment).toBe(eq2);
+    expect(dummyObjects[1].equipment).toBe(equipment2);
     expect(dummyObjects[1].costs.length).toEqual(1);
     expect(dummyObjects[1].costs[0].what).toEqual(<StorageTag>StorageTag[<string>arrow]);
   });

@@ -8,9 +8,9 @@ import { Principle, PrincipleType } from '../model/principle';
 import { FightingArt } from '../model/fighting_art';
 import { Monster } from '../model/monster';
 import { Timeline } from '../model/timeline';
-import { Storage } from '../model/storage';
-import { Equipment } from '../model/equipment';
-import { Resource } from '../model/resource';
+import { Storage, StorageTag } from '../model/storage';
+import { Affinity, Direction, Equipment } from '../model/equipment';
+import { Resource, ResourceType } from '../model/resource';
 import { BaseModel } from '../model/base_model';
 import { Weapon } from '../model/weapon';
 import { Location } from '../model/location';
@@ -24,14 +24,12 @@ import { Milestone, MilestoneType } from '../model/milestone';
 import { Survivor } from '../model/survivor';
 import { LanternEvent } from '../model/lantern_event';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
-import { Observer } from 'rxjs/Observer';
 import { SettlementPageComponent } from '../pages/settlement/settlement.component';
 import { SettlementMilestone } from '../model/linking/settlement_milestone';
-import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
 import { StaticProvider } from '@angular/core/src/di';
 
 export class DummyMockElements {
-  public static storage: Storage = new Storage('Storage Dummy', 'dummy');
+  public static storage: Storage = new Storage('Storage Dummy', 'dummy', 1, [StorageTag.ITEM]);
 
 }
 
@@ -214,7 +212,8 @@ export class KDMDBServiceMock {
 
 export class KDMDataServiceMock {
 
-  storageItems: Storage[] = [new Storage('Kosh', 'dummy'), new Storage('Barbal', 'dummy')];
+  storageItems: Storage[] = [new Storage('Kosh', 'dummy', 1, [StorageTag.ITEM]),
+    new Storage('Barbal', 'dummy', 1, [StorageTag.ITEM])];
 
   getSettlements(): Promise<Settlement[]> {
     return Promise.resolve([new Settlement('dummy settlement')]);
@@ -247,11 +246,11 @@ export class KDMDataServiceMock {
   }
 
   getResources(): Promise<Resource[]> {
-    return Promise.resolve([new Resource('Resource', 'dummy')]);
+    return Promise.resolve([new Resource('Resource', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 1)]);
   }
 
   getResourceByName(name: string): Promise<Resource> {
-    return Promise.resolve(new Resource(name, 'dummy'));
+    return Promise.resolve(new Resource(name, 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 1));
   }
 
   getAllExistingStorageItems(): Promise<Storage[][]> {
@@ -259,7 +258,7 @@ export class KDMDataServiceMock {
   }
 
   getStorageItem(name: string): Promise<Storage> {
-    return Promise.resolve(new Storage(name, 'dummy'));
+    return Promise.resolve(new Storage(name, 'dummy', 1, [StorageTag.ITEM]));
   }
 
   getLanternEvents(): Promise<LanternEvent[]> {
@@ -344,15 +343,18 @@ export class KDMDataServiceMock {
   }
 
   getWeapons(): Promise<Weapon[]> {
-    return Promise.resolve([new Weapon('Weapon', 'dummy')]);
+    return Promise.resolve([new Weapon('Weapon', 'dummy', 1, [StorageTag.ITEM],
+      new Map<Affinity, Direction[]>(), 1, 1, 1)]);
   }
 
   getArmors(): Promise<Armor[]> {
-    return Promise.resolve([new Armor('Armor', 'dummy')]);
+    return Promise.resolve([new Armor('Armor', 'dummy', 1, [StorageTag.ITEM],
+      new Map<Affinity, Direction[]>(), 1, ArmorSpace.HEAD)]);
   }
 
   getEquipments(): Promise<Equipment[]> {
-    return Promise.resolve([new Equipment('Armor', 'dummy')]);
+    return Promise.resolve([new Equipment('Armor', 'dummy', 1, [StorageTag.ITEM],
+      new Map<Affinity, Direction[]>())]);
   }
 
   getAllExistingEquipmentItems(): Promise<[Weapon[], Armor[], Equipment[]]> {
@@ -360,7 +362,8 @@ export class KDMDataServiceMock {
   }
 
   getEquipment(name: string): Promise<Equipment> {
-    return Promise.resolve(new Equipment(name, 'dummy'));
+    return Promise.resolve(new Equipment(name, 'dummy', 1, [StorageTag.ITEM],
+      new Map<Affinity, Direction[]>()));
   }
 
   getAllSevereInjuries(): Promise<SevereInjury[]> {

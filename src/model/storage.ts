@@ -47,4 +47,10 @@ export enum StorageTag {
 export class Storage extends BaseModel {
   amount: number;
   tags: StorageTag[];
+
+  constructor(name: string, description: string, amount: number, tags: StorageTag[]) {
+    super(name, description);
+    this.amount = amount;
+    this.tags = tags;
+  }
 }

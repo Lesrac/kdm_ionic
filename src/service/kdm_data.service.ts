@@ -34,6 +34,10 @@ import { MilestoneJSON } from '../model/jsonData/milestone_json';
 import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
 import { PrincipleJSON } from '../model/jsonData/principle_json';
 import { SevereInjuryJSON } from '../model/jsonData/severe_injury_json';
+import { ResourceJSON } from '../model/jsonData/resource_json';
+import { WeaponJSON } from '../model/jsonData/weapon_json';
+import { ArmorJSON } from '../model/jsonData/armor_json';
+import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -160,9 +164,16 @@ export class KDMDataService {
   getResources(): Promise<Resource[]> {
     if (this.resources.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Resource[]>(this.resourcesURL).subscribe(res => {
-          this.resources = res;
-          resolve(res);
+        this.http.get<ResourceJSON[]>(this.resourcesURL).subscribe(res => {
+          const resources: Resource[] = [];
+          res.forEach(resourceJSON => {
+            const resource = new Resource(resourceJSON.name, resourceJSON.description, resourceJSON.amount,
+              this.createStorageTagArray(resourceJSON.tags), ResourceType[resourceJSON.type], resourceJSON.existingCards
+            );
+            resources.push(resource);
+          });
+          this.resources = resources;
+          resolve(resources);
         });
       });
     } else {
@@ -182,7 +193,7 @@ export class KDMDataService {
 
   getStorageItem(name: string): Promise<Storage> {
     return this.getAllExistingStorageItems().then(array => {
-      let element: Storage = new Storage('placeholder', 'placeholder');
+      let element: Storage = new Storage('placeholder', 'placeholder', 1, [StorageTag.ITEM]);
       array.forEach(typearray => {
         const finding = typearray.find(type => type.name === name);
         if (finding !== undefined) {
@@ -420,9 +431,16 @@ export class KDMDataService {
   getWeapons(): Promise<Weapon[]> {
     if (this.weapons.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Weapon[]>(this.weaponsURL).subscribe(res => {
-          this.weapons = res;
-          resolve(res);
+        this.http.get<WeaponJSON[]>(this.weaponsURL).subscribe(res => {
+          const weapons: Weapon[] = [];
+          res.forEach(weaponJSON => {
+            const weapon = new Weapon(weaponJSON.name, weaponJSON.description, weaponJSON.amount,
+              this.createStorageTagArray(weaponJSON.tags), this.createAffinitMap(weaponJSON.affinities),
+              weaponJSON.speed, weaponJSON.accuracy, weaponJSON.strength);
+            weapons.push(weapon);
+          });
+          this.weapons = weapons;
+          resolve(weapons);
         });
       });
     } else {
@@ -433,9 +451,16 @@ export class KDMDataService {
   getArmors(): Promise<Armor[]> {
     if (this.armors.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Armor[]>(this.armorsURL).subscribe(res => {
-          this.armors = res;
-          resolve(res);
+        this.http.get<ArmorJSON[]>(this.armorsURL).subscribe(res => {
+          const armors: Armor[] = [];
+          res.forEach(armorJSON => {
+            const armor = new Armor(armorJSON.name, armorJSON.description, armorJSON.amount,
+              this.createStorageTagArray(armorJSON.tags), this.createAffinitMap(armorJSON.affinities),
+              armorJSON.value, ArmorSpace[armorJSON.space]);
+            armors.push(armor);
+          });
+          this.armors = armors;
+          resolve(armors);
         });
       });
     } else {
@@ -446,9 +471,15 @@ export class KDMDataService {
   getEquipments(): Promise<Equipment[]> {
     if (this.equipments.length < 1) {
       return new Promise(resolve => {
-        this.http.get<Equipment[]>(this.equipmentsURL).subscribe(res => {
-          this.equipments = res;
-          resolve(res);
+        this.http.get<EquipmentJSON[]>(this.equipmentsURL).subscribe(res => {
+          const equipments: Equipment[] = [];
+          res.forEach(equipmentJSON => {
+            const equipment = new Equipment(equipmentJSON.name, equipmentJSON.description, equipmentJSON.amount,
+              this.createStorageTagArray(equipmentJSON.tags), this.createAffinitMap(equipmentJSON.affinities));
+            equipments.push(equipment);
+          });
+          this.equipments = equipments;
+          resolve(equipments);
         });
       });
     } else {
@@ -546,6 +577,26 @@ export class KDMDataService {
       return 1;
     }
     return 0;
+  }
+
+  private createAffinitMap(affinityJSON: AffinityJSON[]): Map<Affinity, Direction[]> {
+    const affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
+    affinityJSON.forEach(affinity => {
+      const directions: Direction[] = [];
+      affinity.directions.forEach(directionString => {
+        directions.push(Direction[directionString]);
+      });
+      affinities.set(Affinity[affinity.affinity], directions);
+    });
+    return affinities;
+  }
+
+  private createStorageTagArray(tags: string[]): StorageTag[] {
+    const storageTags: StorageTag[] = [];
+    tags.forEach(tagString => {
+      storageTags.push(StorageTag[tagString]);
+    });
+    return storageTags;
   }
 
   private desimplifySettlements(simplifiedSettlement: SettlementSimplified): Settlement {
