@@ -38,6 +38,7 @@ import { ResourceJSON } from '../model/jsonData/resource_json';
 import { WeaponJSON } from '../model/jsonData/weapon_json';
 import { ArmorJSON } from '../model/jsonData/armor_json';
 import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
+import { InnovationJSON } from '../model/jsonData/innovation_json';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -319,10 +320,17 @@ export class KDMDataService {
 
   getInnovations(): Promise<Innovation[]> {
     if (this.innovations.length < 1) {
-      return new Promise(resolve => {
-        this.http.get<Innovation[]>(this.innovationsURL).subscribe(res => {
-          this.innovations = res;
-          resolve(res);
+      return new Promise<Innovation[]>(resolve => {
+        this.http.get<InnovationJSON[]>(this.innovationsURL).subscribe(res => {
+          const innovations: Innovation[] = [];
+          res.forEach(innovationJSON => {
+            const tags: InnovationTag[] = [];
+            innovationJSON.tags.forEach(tagString => tags.push(InnovationTag[tagString]));
+            const innovation = new Innovation(innovationJSON.name, innovationJSON.description, InnovationTag[innovationJSON.consequence], tags, innovationJSON.isBase);
+            innovations.push(innovation);
+          });
+          this.innovations = innovations;
+          resolve(innovations);
         });
       });
     } else {
@@ -342,7 +350,7 @@ export class KDMDataService {
           objects.filter((innov: Innovation) =>
             innov.consequence === tag).length > 0));
       // when null/undefined get all Base Innovations and add them to the list
-      if (existingObjects == null && (existingObjects.length === 0 && objects.length === 0)) {
+      if (existingObjects == null || (existingObjects.length === 0 && objects.length === 0)) {
         existingObjects = innovations.filter(innovation => innovation.isBase);
       }
       return existingObjects;

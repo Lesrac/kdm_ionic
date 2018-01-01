@@ -1,12 +1,12 @@
 import { FilterElementsPipe } from './filter_elements.pipe';
-import { Innovation } from '../model/innovation';
+import { Innovation, InnovationTag } from '../model/innovation';
 
 describe('Pipe: filterElementsPipe', () => {
   let pipe: FilterElementsPipe;
   let testList: { amount: number[], what: any }[];
   const ammunition: String = 'AMMUNITION';
   const arrow: String = 'ARROW';
-  const innovation: Innovation = new Innovation('Innovation 1', 'innovated');
+  const innovation: Innovation = new Innovation('Innovation 1', 'innovated', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
 
   beforeEach(() => {
     pipe = new FilterElementsPipe();

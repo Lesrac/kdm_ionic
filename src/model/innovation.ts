@@ -7,6 +7,13 @@ export class Innovation extends BaseModel {
   consequence: InnovationTag;
   tags: InnovationTag[];
   isBase: boolean;
+
+  constructor(name: string, description: string, consequence: InnovationTag, tags: InnovationTag[], isBase: boolean) {
+    super(name, description);
+    this.consequence = consequence;
+    this.tags = tags;
+    this.isBase = isBase;
+  }
 }
 
 export enum InnovationTag {

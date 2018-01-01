@@ -1,6 +1,6 @@
 import { MapValuesPipe } from './map_values.pipe';
 import { Affinity, Direction, Equipment } from '../model/equipment';
-import { Innovation } from '../model/innovation';
+import { Innovation, InnovationTag } from '../model/innovation';
 import { StorageTag } from '../model/storage';
 
 describe('Pipe: mapValuesPipe', () => {
@@ -44,8 +44,8 @@ describe('Pipe: mapValuesPipe', () => {
   });
 
   it('Map with Innovations', () => {
-    const innovation1: Innovation = new Innovation('Innovation 1', 'to use');
-    const innovation2: Innovation = new Innovation('Innovation 2', 'used');
+    const innovation1: Innovation = new Innovation('Innovation 1', 'to use', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
+    const innovation2: Innovation = new Innovation('Innovation 2', 'used', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
 
     map1.set(innovation1, [2]);
     map1.set(innovation2, [4]);
@@ -91,7 +91,7 @@ describe('Pipe: mapValuesPipe', () => {
 
   it('Map with Mixed Elements', () => {
     const storageTag: StorageTag = StorageTag.AXE;
-    const innovation: Innovation = new Innovation('Innovation 1', 'to use');
+    const innovation: Innovation = new Innovation('Innovation 1', 'to use', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
     const arrow: string = 'ARROW';
 
     map1.set(storageTag, [2]);

@@ -47,19 +47,14 @@ describe('Service: Calculation', () => {
       const originalMonster: Monster = new Monster();
       originalMonster.name = 'White Lion';
 
-      const monsterLevelResource = new MonsterLevelResources();
-      monsterLevelResource.level = 1;
-      const monsterResourceAmount = new MonsterResourceAmount();
-      monsterResourceAmount.name = ResourceType.BASIC;
-      monsterResourceAmount.amount = 3;
-      monsterLevelResource.resources = [monsterResourceAmount];
+      const monsterResourceAmount = new MonsterResourceAmount(ResourceType.BASIC, 3);
+      const monsterLevelResource = new MonsterLevelResources(1, [monsterResourceAmount]);
 
       originalMonster.resources = [monsterLevelResource];
       const huntedMonster: HuntedMonster = new HuntedMonster(settlement, originalMonster);
       huntedMonster.monsterLevel = 1;
       kdmCalculationService.addResourcesFromKilledMonster(huntedMonster);
       tick();
-      expect(huntedMonster.huntedResources.length).toBe(1);
       let amount = 0;
       huntedMonster.huntedResources.forEach(rs => amount += rs.amount);
       expect(amount).toBe(3);

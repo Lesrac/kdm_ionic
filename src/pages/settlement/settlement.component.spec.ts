@@ -27,7 +27,7 @@ import { Timeline } from '../../model/timeline';
 import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated_monster.component';
 import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
-import { Innovation } from '../../model/innovation';
+import { Innovation, InnovationTag } from '../../model/innovation';
 import { Location } from '../../model/location';
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { StoragePageComponent } from '../storage/storage.component';
@@ -73,7 +73,7 @@ describe('Settlement Component', () => {
     settlement.milestones.push(settlementMilestone);
     settlement.timeline = [new SettlementTimeline(settlement, timeline)];
     settlement.locations = [new Location('Dummy Location', 'dummy')];
-    settlement.innovations = [new Innovation('Dummy Innovation', 'dummy')];
+    settlement.innovations = [new Innovation('Dummy Innovation', 'dummy', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], true)];
     NavParamsMock.setParams(settlement);
     fixture = TestBed.createComponent(SettlementPageComponent);
     settlementPageComponent = fixture.componentInstance;

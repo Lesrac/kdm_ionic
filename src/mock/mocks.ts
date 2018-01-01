@@ -18,7 +18,7 @@ import { SevereInjury } from '../model/severe_injury';
 import { HuntedMonster } from '../model/linking/hunted_monster';
 import { DiceThrow } from '../model/dice_throw';
 import { Disorder } from '../model/disorder';
-import { Innovation } from '../model/innovation';
+import { Innovation, InnovationTag } from '../model/innovation';
 import { HuntEvent } from '../model/hunte_event';
 import { Milestone, MilestoneType } from '../model/milestone';
 import { Survivor } from '../model/survivor';
@@ -300,11 +300,11 @@ export class KDMDataServiceMock {
   }
 
   getInnovations(): Promise<Innovation[]> {
-    return Promise.resolve([new Innovation('Innovation', 'dummy')]);
+    return Promise.resolve([new Innovation('Innovation', 'dummy', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false)]);
   }
 
   getInnovation(name: string): Promise<Innovation> {
-    return Promise.resolve(new Innovation(name, 'dummy'));
+    return Promise.resolve(new Innovation(name, 'dummy', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false));
   }
 
   getInnovationsThatAreNotAddedButAvailable(objects: Innovation[]): Promise<Innovation[]> {

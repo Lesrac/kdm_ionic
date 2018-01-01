@@ -33,6 +33,8 @@ import { ResourceJSON } from '../model/jsonData/resource_json';
 import { WeaponJSON } from '../model/jsonData/weapon_json';
 import { ArmorJSON } from '../model/jsonData/armor_json';
 import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
+import { InnovationJSON } from '../model/jsonData/innovation_json';
+import { Innovation, InnovationTag } from '../model/innovation';
 
 describe('KDM Data Service', () => {
 
@@ -893,6 +895,12 @@ describe('KDM Data Service', () => {
     let simpleSettlement2: SettlementSimplified;
     let simpleSettlement3: SettlementSimplified;
     let simpleSettlements: SettlementSimplified[];
+    let innovationJSON1: InnovationJSON;
+    let innovationJSON2: InnovationJSON;
+    let innovationJSONs: InnovationJSON[];
+    let innovation1: Innovation;
+    let innovation2: Innovation;
+    let innovations: Innovation[];
 
     beforeEach(() => {
       principleType1 = new PrincipleType('Dummy Principle Type 1');
@@ -920,6 +928,12 @@ describe('KDM Data Service', () => {
       simpleSettlement2 = new SettlementSimplified(2, 'Settlement 2', 3, 3, 3, 3);
       simpleSettlement3 = new SettlementSimplified(3, 'Settlement 3', 3, 3, 3, 3);
       simpleSettlements = [simpleSettlement1, simpleSettlement2, simpleSettlement3];
+      innovationJSON1 = new InnovationJSON('Dummy Innovation 1', 'description', 'FAMILY_CONSEQUENCE', ['ART'], true);
+      innovationJSON2 = new InnovationJSON('Dummy Innovation 2', 'description', 'FORBIDDEN_DANCE_CONSEQUENCE', ['EDUCATION', 'HOME'], false);
+      innovationJSONs = [innovationJSON1, innovationJSON2];
+      innovation1 = new Innovation('Dummy Innovation 1', 'description', InnovationTag.AMMONIA_CONSEQUENCE, [InnovationTag.ART], true);
+      innovation2 = new Innovation('Dummy Innovation 2', 'description', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.EDUCATION, InnovationTag.FAITH], false);
+      innovations = [innovation1, innovation2];
     });
 
     it('get Principles from http', fakeAsync(inject([KDMDataService, HttpClient, HttpTestingController],
@@ -996,10 +1010,6 @@ describe('KDM Data Service', () => {
 
     it('get settlements', fakeAsync(inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
-        const simpleSettlement1 = new SettlementSimplified(1, 'Settlement 1', 2, 15, 5, 1);
-        const simpleSettlement2 = new SettlementSimplified(1, 'Settlement 2', 2, 15, 5, 1);
-        const simpleSettlement3 = new SettlementSimplified(1, 'Settlement 3', 2, 15, 5, 1);
-        const simpleSettlements = [simpleSettlement1, simpleSettlement2, simpleSettlement3];
         const spy = spyOn(kdmDBServiceMock, 'getSettlements').and.callThrough().and.returnValue(Promise.resolve([simpleSettlements, undefined]));
         kdmDataService.getSettlements();
         tick();
@@ -1071,6 +1081,54 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.settlements).toContain(settlement3);
         expect(settlement3.id).toBe(3);
       })));
+
+
+    it('get Innovations from http', inject([KDMDataService, HttpClient, HttpTestingController],
+      (kdmDataService: KDMDataService, http: HttpClient, httpMock: HttpTestingController) => {
+        const mockResponse = innovationJSONs;
+        kdmDataService.getInnovations();
+        const res = httpMock.expectOne(kdmDataService.innovationsURL);
+        res.flush(mockResponse);
+        expect(kdmDataService.innovations.length).toBe(innovationJSONs.length);
+        expect(kdmDataService.innovations[0].name).toBe(innovationJSON1.name);
+        expect(kdmDataService.innovations[0].description).toBe(innovationJSON1.description);
+        expect(kdmDataService.innovations[0].isBase).toBe(innovationJSON1.isBase);
+        expect(kdmDataService.innovations[0].consequence).toBe(InnovationTag[innovationJSON1.consequence]);
+        expect(kdmDataService.innovations[0].tags).toContain(InnovationTag[innovationJSON1.tags[0]]);
+        expect(kdmDataService.innovations[1].name).toBe(innovationJSON2.name);
+        expect(kdmDataService.innovations[1].description).toBe(innovationJSON2.description);
+        expect(kdmDataService.innovations[1].isBase).toBe(innovationJSON2.isBase);
+        expect(kdmDataService.innovations[1].consequence).toBe(InnovationTag[innovationJSON2.consequence]);
+        expect(kdmDataService.innovations[1].tags).toContain(InnovationTag[innovationJSON2.tags[0]]);
+        expect(kdmDataService.innovations[1].tags).toContain(InnovationTag[innovationJSON2.tags[1]]);
+      }));
+
+    it('get Innovations from cache', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        kdmDataService.innovations = innovations;
+        kdmDataService.getInnovations().then(novtns => {
+          expect(novtns.length).toBe(innovations.length);
+          expect(novtns).toContain(innovation1);
+          expect(novtns).toContain(innovation2);
+        });
+      }));
+
+    it('get Innovation from cache', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        kdmDataService.innovations = innovations;
+        kdmDataService.getInnovation(innovation2.name).then(innovation => {
+          expect(innovation).toBe(innovation2);
+        });
+      }));
+
+    it('get Innovation that are not added but available from cache', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        kdmDataService.innovations = innovations;
+        kdmDataService.getInnovationsThatAreNotAddedButAvailable([]).then(novations => {
+          expect(novations.length).toBe(1);
+          expect(novations).toContain(innovation1);
+        });
+      }));
 
   });
 
