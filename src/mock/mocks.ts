@@ -225,8 +225,10 @@ export class KDMDataServiceMock {
   removeSettlement(settlement: Settlement): void {
   }
 
-  createSurvivor(settlement: Settlement): Survivor {
-    return new Survivor('Survivor', 1, settlement.id);
+  createAndAddSurvivor(settlement: Settlement): Survivor {
+    const survivor = new Survivor('Survivor', 1, settlement.id);
+    settlement.survivors.push(survivor);
+    return survivor;
   }
 
   getMonsters(): Promise<Monster[]> {

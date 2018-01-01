@@ -137,7 +137,7 @@ export class SettlementPageComponent implements DoCheck {
   }
 
   addSurvivor(): void {
-    this.settlement.survivors.push(this.kdmService.createSurvivor(this.settlement));
+    this.kdmService.createAndAddSurvivor(this.settlement);
     this.kdmDBService.saveSettlement(this.settlement);
   }
 

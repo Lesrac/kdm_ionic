@@ -87,6 +87,8 @@ export class KDMDataService {
   readonly hunteventsURL: string = this.baseURL + '/huntevents.json';
   readonly glossaryentriesURL: string = this.baseURL + '/glossaryentries.json';
 
+  readonly initSurvivorName: string = 'Survivor';
+
   constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
   }
 
@@ -127,12 +129,14 @@ export class KDMDataService {
     this.kdmDBService.removeSettlement(settlement.id);
   }
 
-  createSurvivor(settlement: Settlement): Survivor {
+  createAndAddSurvivor(settlement: Settlement): Survivor {
     let maxId: number = 1;
     if (settlement.survivors.length > 0) {
       maxId = Math.max.apply(Math, settlement.survivors.map((s: Survivor) => s.id)) + 1;
     }
-    return new Survivor('Survivor', maxId, settlement.id);
+    const survivor = new Survivor(this.initSurvivorName, maxId, settlement.id);
+    settlement.survivors.push(survivor);
+    return survivor;
   }
 
   getMonsters(): Promise<Monster[]> {

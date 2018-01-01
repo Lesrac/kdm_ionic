@@ -44,14 +44,13 @@ describe('Service: Calculation', () => {
       spyOn(kdmDataServiceMock, 'getResources').and.returnValue(Promise.resolve(resources));
 
       const settlement: Settlement = new Settlement('Dummy Settlement');
-      const resource: Resource = new Resource('Dummy Resource', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 2);
       const originalMonster: Monster = new Monster();
       originalMonster.name = 'White Lion';
 
       const monsterLevelResource = new MonsterLevelResources();
       monsterLevelResource.level = 1;
       const monsterResourceAmount = new MonsterResourceAmount();
-      monsterResourceAmount.name = resource.type;
+      monsterResourceAmount.name = ResourceType.BASIC;
       monsterResourceAmount.amount = 3;
       monsterLevelResource.resources = [monsterResourceAmount];
 

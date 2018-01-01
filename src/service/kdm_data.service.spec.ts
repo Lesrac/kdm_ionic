@@ -701,6 +701,19 @@ describe('KDM Data Service', () => {
         });
       }));
 
+    it('create Survivor', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        const settlement = new Settlement('Dummy Settlement');
+        let survivor = kdmDataService.createAndAddSurvivor(settlement);
+        expect(survivor.id).toBe(1);
+        expect(survivor.name).toBe(kdmDataService.initSurvivorName);
+        expect(settlement.survivors.length).toBe(1);
+        survivor = kdmDataService.createAndAddSurvivor(settlement);
+        expect(survivor.id).toBe(2);
+        expect(survivor.name).toBe(kdmDataService.initSurvivorName);
+        expect(settlement.survivors.length).toBe(2);
+      }));
+
   });
 
   describe('Others', () => {
@@ -846,6 +859,15 @@ describe('KDM Data Service', () => {
         kdmDataService.getSevereInjuriesToHitLocation(ArmorSpace.HEAD).then(svrnjrs => {
           expect(svrnjrs.length).toBe(severeInjuries.filter(injury => injury.hitLocation === ArmorSpace.HEAD).length);
         });
+      }));
+
+    it('check Sort By name', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        const baseModel1 = new BaseModel('Aaaa', 'dummy');
+        const baseModel2 = new BaseModel('Zzzz', 'dummy');
+        expect(kdmDataService.sortByName(baseModel1, baseModel2)).toBe(-1);
+        expect(kdmDataService.sortByName(baseModel1, baseModel1)).toBe(0);
+        expect(kdmDataService.sortByName(baseModel2, baseModel1)).toBe(1);
       }));
   });
 
