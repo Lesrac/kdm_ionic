@@ -32,15 +32,15 @@ describe('Service: Calculation', () => {
     basicResource1 = new Resource('Resource 1', 'first');
     basicResource1.type = ResourceType.Basic;
     basicResource1.existingCards = 2;
-    basicResource1.tags = [StorageTag.armor];
+    basicResource1.tags = [StorageTag.ARMOR];
     basicResource2 = new Resource('Resource 2', 'second');
     basicResource2.type = ResourceType.Basic;
     basicResource2.existingCards = 1;
-    basicResource2.tags = [StorageTag.fur, StorageTag.hide];
+    basicResource2.tags = [StorageTag.FUR, StorageTag.HIDE];
     whiteLionResource1 = new Resource('Resource 3', 'third');
     whiteLionResource1.type = ResourceType.WhiteLion;
     whiteLionResource1.existingCards = 4;
-    whiteLionResource1.tags = [StorageTag.katar, StorageTag.melee];
+    whiteLionResource1.tags = [StorageTag.KATAR, StorageTag.MELEE];
 
     resources = [];
     resources.push(basicResource1);

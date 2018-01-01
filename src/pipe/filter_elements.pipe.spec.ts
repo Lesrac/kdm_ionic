@@ -4,8 +4,8 @@ import { Innovation } from '../model/innovation';
 describe('Pipe: filterElementsPipe', () => {
   let pipe: FilterElementsPipe;
   let testList: { amount: number[], what: any }[];
-  const ammunition: String = 'ammunition';
-  const arrow: String = 'arrow';
+  const ammunition: String = 'AMMUNITION';
+  const arrow: String = 'ARROW';
   const innovation: Innovation = new Innovation('Innovation 1', 'innovated');
 
   beforeEach(() => {

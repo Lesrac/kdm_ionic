@@ -4,16 +4,16 @@
     "description": "When you suffer a severe head injury, the Skull Helm is destroyed. Archive this card.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "down"
+          "DOWN"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "fragile",
-      "bone"
+      "ARMOR",
+      "FRAGILE",
+      "BONE"
     ],
     "space": "head",
     "value": 3
@@ -23,16 +23,16 @@
     "description": "",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "down"
+          "DOWN"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "leather"
+      "ARMOR",
+      "SET",
+      "LEATHER"
     ],
     "space": "waist",
     "value": 3
@@ -42,22 +42,22 @@
     "description": "When you depart, gain +2 insanity.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "down"
+          "DOWN"
         ]
       },
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "up"
+          "UP"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "leather"
+      "ARMOR",
+      "SET",
+      "LEATHER"
     ],
     "space": "head",
     "value": 3
@@ -67,22 +67,22 @@
     "description": "",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "up"
+          "UP"
         ]
       },
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "down"
+          "DOWN"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "leather"
+      "ARMOR",
+      "SET",
+      "LEATHER"
     ],
     "space": "body",
     "value": 3
@@ -92,16 +92,16 @@
     "description": "When you depart, gain +2 survival.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "right"
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "leather"
+      "ARMOR",
+      "SET",
+      "LEATHER"
     ],
     "space": "arms",
     "value": 3
@@ -111,17 +111,17 @@
     "description": "(puzzle green)(puzzle green) At the end of your act, you may move 1 space.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "right",
-          "left"
+          "RIGHT",
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "leather"
+      "ARMOR",
+      "SET",
+      "LEATHER"
     ],
     "space": "legs",
     "value": 3
@@ -131,9 +131,9 @@
     "description": "When you depart, gain +1 survival.",
     "affinities": [],
     "tags": [
-      "armor",
-      "set",
-      "rawhide"
+      "ARMOR",
+      "SET",
+      "RAWHIDE"
     ],
     "space": "legs",
     "value": 1
@@ -143,16 +143,16 @@
     "description": "When you depart, gain +1 survival.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "rawhide"
+      "ARMOR",
+      "SET",
+      "RAWHIDE"
     ],
     "space": "arms",
     "value": 1
@@ -162,16 +162,16 @@
     "description": "(puzzle blue)(lightning): Reveal the top 2 (AI). Place them back on top of the deck in any order",
     "affinities": [
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "down"
+          "DOWN"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "rawhide"
+      "ARMOR",
+      "SET",
+      "RAWHIDE"
     ],
     "space": "head",
     "value": 1
@@ -181,9 +181,9 @@
     "description": "",
     "affinities": [],
     "tags": [
-      "armor",
-      "set",
-      "rawhide"
+      "ARMOR",
+      "SET",
+      "RAWHIDE"
     ],
     "space": "waist",
     "value": 1
@@ -193,22 +193,22 @@
     "description": "(puzzle blue)(puzzle red) +1 evasion",
     "affinities": [
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "up"
+          "UP"
         ]
       },
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "right"
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "rawhide"
+      "ARMOR",
+      "SET",
+      "RAWHIDE"
     ],
     "space": "body",
     "value": 1
@@ -218,18 +218,18 @@
     "description": "",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left",
-          "right"
+          "LEFT",
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "fur",
-      "heavy"
+      "ARMOR",
+      "SET",
+      "FUR",
+      "HEAVY"
     ],
     "space": "waist",
     "value": 2
@@ -239,8 +239,8 @@
     "description": "Accessory: You may wear this in addition to 1 armor at this hit location.",
     "affinities": [],
     "tags": [
-      "item",
-      "flammable"
+      "ITEM",
+      "FLAMMABLE"
     ],
     "space": "head",
     "value": 1
@@ -250,18 +250,18 @@
     "description": "Reduce damage from every hit suffered by 1, to a minimum of 1.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "right"
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "bone",
-      "fur",
-      "heavy",
-      "flammable"
+      "ARMOR",
+      "BONE",
+      "FUR",
+      "HEAVY",
+      "FLAMMABLE"
     ],
     "space": "body",
     "value": 0
@@ -272,10 +272,10 @@
     "affinities": [
     ],
     "tags": [
-      "armor",
-      "set",
-      "fur",
-      "heavy"
+      "ARMOR",
+      "SET",
+      "FUR",
+      "HEAVY"
     ],
     "space": "arms",
     "value": 2
@@ -285,17 +285,17 @@
     "description": "Pounce: Spend (horse) and (lightning) to move 3 spaces in a straight line. Then, if you move 3 spaces, activate a melee weapon with +1 strength.",
     "affinities": [
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "up"
+          "UP"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "fur",
-      "heavy"
+      "ARMOR",
+      "SET",
+      "FUR",
+      "HEAVY"
     ],
     "space": "body",
     "value": 2
@@ -305,18 +305,18 @@
     "description": "(puzzle red)(puzzle red) +1 movement",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "down",
-          "right"
+          "DOWN",
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "fur",
-      "heavy"
+      "ARMOR",
+      "SET",
+      "FUR",
+      "HEAVY"
     ],
     "space": "legs",
     "value": 2
@@ -326,17 +326,17 @@
     "description": "(puzzle red)(square blue) (lightning) and 1 survival: Road. Non-Deaf Insane survivors gain +2 strength until end of round. All other survivors gain +1 insanity.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "down"
+          "DOWN"
         ]
       }
     ],
     "tags": [
-      "armor",
-      "set",
-      "fur",
-      "heavy"
+      "ARMOR",
+      "SET",
+      "FUR",
+      "HEAVY"
     ],
     "space": "head",
     "value": 2

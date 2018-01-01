@@ -10,14 +10,14 @@ export class Equipment extends Storage {
 }
 
 export enum Affinity {
-  green,
-  blue,
-  red,
+  GREEN = 'GREEN',
+  BLUE = 'BLUE',
+  RED = 'RED',
 }
 
 export enum Direction {
-  up,
-  down,
-  left,
-  right,
+  UP = 'UP',
+  DOWN = 'DOWN',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
 }

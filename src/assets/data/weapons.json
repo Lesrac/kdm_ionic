@@ -4,17 +4,17 @@
     "description": "After Hunt phase setup, place the Mineral Gathering event on any hunt space.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "up"
+          "UP"
         ]
       }
     ],
     "tags": [
-      "item",
-      "tool",
-      "pickaxe",
-      "bone"
+      "ITEM",
+      "TOOL",
+      "PICKAXE",
+      "BONE"
     ],
     "speed": 1,
     "accuracy": 8,
@@ -25,17 +25,17 @@
     "description": "Range: 6. Frail: When you attempt tp wound a super-dense hit location, this weapon breaks. Archive this card at the end of the attack.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "ranged",
-      "thrown",
-      "bone"
+      "WEAPON",
+      "RANGED",
+      "THROWN",
+      "BONE"
     ],
     "speed": 1,
     "accuracy": 7,
@@ -46,17 +46,17 @@
     "description": "Frail. Savage: Once per attack, if you critically wound, cause 1 additional wound. This effect does not apply to impervious hit locations.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "axe",
-      "bone"
+      "WEAPON",
+      "MELEE",
+      "AXE",
+      "BONE"
     ],
     "speed": 2,
     "accuracy": 6,
@@ -67,19 +67,19 @@
     "description": "Cumbersome: Spend Movement as an additional cost to activate this weapon. Ignore Cumbersome if this weapon is activated indirectly (Pounce, Charge, etc).",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left",
-          "right"
+          "LEFT",
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "two-handed",
-      "heavy",
-      "bone"
+      "WEAPON",
+      "MELEE",
+      "TWO_HANDED",
+      "HEAVY",
+      "BONE"
     ],
     "speed": 2,
     "accuracy": 6,
@@ -90,17 +90,17 @@
     "description": "Frail: When you attempt to wound a super-dense hit location, this weapon breaks. Archive this card at the end of the attack.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "sword",
-      "bone"
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "BONE"
     ],
     "speed": 2,
     "accuracy": 6,
@@ -111,18 +111,18 @@
     "description": "On a Perfect hit, gain +1 survival. Perfect hit: An attack roll result of a lantern 10.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left",
-          "up"
+          "LEFT",
+          "UP"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "dagger",
-      "bone"
+      "WEAPON",
+      "MELEE",
+      "DAGGER",
+      "BONE"
     ],
     "speed": 3,
     "accuracy": 7,
@@ -133,17 +133,17 @@
     "description": "After the Hunt phase setup, place the Herb Gathering event on any hunt space.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "up"
+          "UP"
         ]
       }
     ],
     "tags": [
-      "item",
-      "tool",
-      "sickle",
-      "bone"
+      "ITEM",
+      "TOOL",
+      "SICKLE",
+      "BONE"
     ],
     "speed": 2,
     "accuracy": 8,
@@ -154,17 +154,17 @@
     "description": "Add 1 (shield) to all  hit locations. Block 1: Spend (lightning) to ignore 1 hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "up"
+          "UP"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "shield",
-      "leather"
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "LEATHER"
     ],
     "speed": 1,
     "accuracy": 8,
@@ -175,18 +175,18 @@
     "description": "(puzzle blue)(puzzle blue) On a Perfect hit, discard 1 mood in play.",
     "affinities": [
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "up",
-          "right"
+          "UP",
+          "RIGHT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "whip",
-      "leather"
+      "WEAPON",
+      "MELEE",
+      "WHIP",
+      "LEATHER"
     ],
     "speed": 3,
     "accuracy": 6,
@@ -197,10 +197,10 @@
     "description": "Provoke: When you wound with this weapon, gain the priority target token.",
     "affinities": [],
     "tags": [
-      "weapon",
-      "melee",
-      "whip",
-      "rawhide"
+      "WEAPON",
+      "MELEE",
+      "WHIP",
+      "RAWHIDE"
     ],
     "speed": 3,
     "accuracy": 7,
@@ -211,9 +211,9 @@
     "description": "Slow, Ammo - Bow: You must have a bow in your gear grid to activate this. If you hit, monster gains -1 evasion token. Use once per showdown.",
     "affinities": [],
     "tags": [
-      "item",
-      "ammunition",
-      "arrow"
+      "ITEM",
+      "AMMUNITION",
+      "ARROW"
     ],
     "speed": 1,
     "accuracy": 6,
@@ -224,10 +224,10 @@
     "description": "Range: 6. Cumbersome: Spend (horse) as an additional cost of activating this weapon.",
     "affinities": [],
     "tags": [
-      "weapon",
-      "ranged",
-      "bow",
-      "two_handed"
+      "WEAPON",
+      "RANGED",
+      "BOW",
+      "TWO_HANDED"
     ],
     "speed": 2,
     "accuracy": 7,
@@ -238,20 +238,20 @@
     "description": "(square red)(square red)(square red) On a Perfect hit, gain +1 strength token. When knocked down, remove all your +1 strength tokens.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "up",
-          "down",
-          "right",
-          "left"
+          "UP",
+          "DOWN",
+          "RIGHT",
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "dagger",
-      "bone"
+      "WEAPON",
+      "MELEE",
+      "DAGGER",
+      "BONE"
     ],
     "speed": 3,
     "accuracy": 6,
@@ -262,9 +262,9 @@
     "description": "Deadly: +1 luck with this weapon. Paired: When you attack, add the speed of a second Lion Beast Katar in your gear grid.",
     "affinities": [],
     "tags": [
-      "weapon",
-      "melee",
-      "katar"
+      "WEAPON",
+      "MELEE",
+      "KATAR"
     ],
     "speed": 2,
     "accuracy": 7,
@@ -275,18 +275,18 @@
     "description": "Reach 2: May attack from 2 space away.",
     "affinities": [
       {
-        "affinity": "red",
+        "affinity": "RED",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "weapon",
-      "melee",
-      "spear",
-      "heavy",
-      "two_handed"
+      "WEAPON",
+      "MELEE",
+      "SPEAR",
+      "HEAVY",
+      "TWO_HANDED"
     ],
     "speed": 2,
     "accuracy": 6,

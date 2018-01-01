@@ -4,17 +4,17 @@
     "description": "When you depart, gain +1 insanity.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "item",
-      "instrument",
-      "rawhide",
-      "noisy"
+      "ITEM",
+      "INSTRUMENT",
+      "RAWHIDE",
+      "NOISY"
     ]
   },
   {
@@ -22,20 +22,20 @@
     "description": "(lightning): Remove up to 2 bleeding tokens from yourself or an adjacent survivor.",
     "affinities": [
       {
-        "affinity": "green",
+        "affinity": "GREEN",
         "direction": [
-          "down"
+          "DOWN"
         ]
       },
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "item"
+      "ITEM"
     ]
   },
   {
@@ -43,16 +43,16 @@
     "description": "(lightning): Roll 1d10 to strum. On a result of 7+ (3+ if fighting White Lion), discard 1 mood currently in play.",
     "affinities": [
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "item",
-      "instrument",
-      "noisy"
+      "ITEM",
+      "INSTRUMENT",
+      "NOISY"
     ]
   },
   {
@@ -60,16 +60,16 @@
     "description": "(lightning): Reveal the next 3 monster hit locations and put them back in any order.",
     "affinities": [
       {
-        "affinity": "blue",
+        "affinity": "BLUE",
         "direction": [
-          "left"
+          "LEFT"
         ]
       }
     ],
     "tags": [
-      "item",
-      "jewelry",
-      "other"
+      "ITEM",
+      "JEWELRY",
+      "OTHER"
     ]
   },
   {
@@ -77,9 +77,9 @@
     "description": "(lightning) Consume: Suffer Frenzy brain trauma. Can be used once per showdown.",
     "affinities": [],
     "tags": [
-      "item",
-      "consumable",
-      "fragile"
+      "ITEM",
+      "CONSUMABLE",
+      "FRAGILE"
     ]
   }
 ]
