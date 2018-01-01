@@ -300,11 +300,13 @@ export class KDMDataServiceMock {
   }
 
   getInnovations(): Promise<Innovation[]> {
-    return Promise.resolve([new Innovation('Innovation', 'dummy', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false)]);
+    return Promise.resolve([new Innovation('Innovation', 'dummy',
+      InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false)]);
   }
 
   getInnovation(name: string): Promise<Innovation> {
-    return Promise.resolve(new Innovation(name, 'dummy', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false));
+    return Promise.resolve(new Innovation(name, 'dummy', InnovationTag.SCULPURE_CONSEQUENCE,
+      [InnovationTag.FAITH], false));
   }
 
   getInnovationsThatAreNotAddedButAvailable(objects: Innovation[]): Promise<Innovation[]> {

@@ -173,7 +173,8 @@ export class KDMDataService {
           const resources: Resource[] = [];
           res.forEach(resourceJSON => {
             const resource = new Resource(resourceJSON.name, resourceJSON.description, resourceJSON.amount,
-              this.createStorageTagArray(resourceJSON.tags), ResourceType[resourceJSON.type], resourceJSON.existingCards
+              this.createStorageTagArray(resourceJSON.tags), ResourceType[resourceJSON.type],
+              resourceJSON.existingCards,
             );
             resources.push(resource);
           });
@@ -261,7 +262,8 @@ export class KDMDataService {
           res.forEach(milestoneJSON => {
             const milestone = new Milestone(milestoneJSON.id, milestoneJSON.tag, milestoneJSON.value,
               milestoneJSON.comparator != null ? ComparableVisitorValue[milestoneJSON.comparator] : '',
-              milestoneJSON.observerTarget, MilestoneType[milestoneJSON.milestoneType], milestoneJSON.name, milestoneJSON.todo);
+              milestoneJSON.observerTarget, MilestoneType[milestoneJSON.milestoneType], milestoneJSON.name,
+              milestoneJSON.todo);
             milestoneJSON.storyEvents.forEach(storyEventID => {
               this.getStoryEvent(storyEventID).then(storyEvent => milestone.storyEvents.push(storyEvent));
             });
@@ -294,7 +296,7 @@ export class KDMDataService {
             this.timeline = timelines;
             resolve(timelines);
           });
-        })
+        });
       });
     } else {
       return Promise.resolve(this.timeline);
@@ -326,7 +328,8 @@ export class KDMDataService {
           res.forEach(innovationJSON => {
             const tags: InnovationTag[] = [];
             innovationJSON.tags.forEach(tagString => tags.push(InnovationTag[tagString]));
-            const innovation = new Innovation(innovationJSON.name, innovationJSON.description, InnovationTag[innovationJSON.consequence], tags, innovationJSON.isBase);
+            const innovation = new Innovation(innovationJSON.name, innovationJSON.description,
+              InnovationTag[innovationJSON.consequence], tags, innovationJSON.isBase);
             innovations.push(innovation);
           });
           this.innovations = innovations;

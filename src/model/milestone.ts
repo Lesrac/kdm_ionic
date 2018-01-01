@@ -18,7 +18,6 @@ export class Milestone extends LanternEvent implements Comparable {
   observerTarget: string;
   milestoneType: MilestoneType;
 
-
   constructor(id: number, tag: string, value: number, comparator: ComparableVisitorValue,
               observerTarget: string, milestoneType: MilestoneType, name: string = '', todo: string = '') {
     super(name, todo);

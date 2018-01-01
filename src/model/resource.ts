@@ -7,7 +7,8 @@ export class Resource extends Storage {
   type: ResourceType;
   existingCards: number;
 
-  constructor(name: string, description: string, amount: number, tags: StorageTag[], type: ResourceType, existingCards: number) {
+  constructor(name: string, description: string, amount: number, tags: StorageTag[], type: ResourceType,
+              existingCards: number) {
     super(name, description, amount, tags);
     this.type = type;
     this.existingCards = existingCards;
