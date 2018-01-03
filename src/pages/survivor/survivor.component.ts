@@ -161,7 +161,7 @@ export class SurvivorPageComponent implements OnInit {
   showDisorders(): void {
     this.navCtrl.push(ShowListComponent, {
       objects: this.survivor.disorders,
-      type: ShowListTypes.Disorder,
+      type: ShowListTypes.DISORDER,
       settlement: this.settlement,
     }).then();
   }
@@ -169,7 +169,7 @@ export class SurvivorPageComponent implements OnInit {
   showFightingArts(): void {
     this.navCtrl.push(ShowListComponent, {
       objects: this.survivor.fightingArts,
-      type: ShowListTypes.FightingArt,
+      type: ShowListTypes.FIGHTINGART,
       settlement: this.settlement,
     }).then();
   }

@@ -5,7 +5,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -23,13 +23,13 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       },
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -44,7 +44,7 @@
     "affinities": [
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -61,7 +61,7 @@
     "affinities": [
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }

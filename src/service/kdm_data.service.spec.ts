@@ -21,7 +21,7 @@ import { Timeline } from '../model/timeline';
 import { Disorder } from '../model/disorder';
 import { FightingArt } from '../model/fighting_art';
 import { BaseModel } from '../model/base_model';
-import { HuntEvent } from '../model/hunte_event';
+import { HuntEvent } from '../model/hunt_event';
 import { DiceThrow } from '../model/dice_throw';
 import { SevereInjury } from '../model/severe_injury';
 import { SevereInjuryJSON } from '../model/jsonData/severe_injury_json';
@@ -35,6 +35,8 @@ import { ArmorJSON } from '../model/jsonData/armor_json';
 import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
 import { InnovationJSON } from '../model/jsonData/innovation_json';
 import { Innovation, InnovationTag } from '../model/innovation';
+import { BuildCost, LocationJSON, ManufacturingObject } from '../model/jsonData/location_json';
+import { Location } from '../model/location';
 
 describe('KDM Data Service', () => {
 
@@ -642,8 +644,8 @@ describe('KDM Data Service', () => {
     let fightingArts: FightingArt[];
 
     beforeEach(() => {
-      disorder1 = new Disorder('Dummy Disorder 1', 'dummy');
-      disorder2 = new Disorder('Dummy Disorder 1', 'dummy');
+      disorder1 = new Disorder('Dummy DISORDER 1', 'dummy');
+      disorder2 = new Disorder('Dummy DISORDER 1', 'dummy');
       disorders = [disorder1, disorder2];
       fightingArt1 = new FightingArt('Dummy Fighting Art 1', 'dummy');
       fightingArt2 = new FightingArt('Dummy Fighting Art 2', 'dummy');
@@ -669,7 +671,7 @@ describe('KDM Data Service', () => {
         });
       }));
 
-    it('get Disorder from cache', inject([KDMDataService],
+    it('get DISORDER from cache', inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         kdmDataService.disorders = disorders;
         kdmDataService.getDisorder(disorder1.name).then(disorder => {
@@ -1157,6 +1159,114 @@ describe('KDM Data Service', () => {
         });
       }));
 
+  });
+
+  describe('Location', () => {
+    let locationJSONInnovation: LocationJSON;
+    let locationJSONStorageTag: LocationJSON;
+    let locationJSONResource: LocationJSON;
+    let locationJSONDefault: LocationJSON;
+    let locationJSONs: LocationJSON[];
+    let equipment1: Equipment;
+    let equipment2: Equipment;
+    let equipments: Equipment[];
+    let location1: Location;
+    let location2: Location;
+    let locations: Location[];
+    let innovation: Innovation;
+    let resource: Resource;
+
+    beforeEach(() => {
+      locationJSONInnovation = new LocationJSON('Lantern Hort', 'dummy',
+        [new ManufacturingObject('Bone Dagger', [new BuildCost('Ammonia', 1, 'innovation')])], true);
+      locationJSONStorageTag = new LocationJSON('Bone Smith', 'dummy',
+        [new ManufacturingObject('Bone Dagger', [new BuildCost('BONE', 1, 'storageTag')]),
+          new ManufacturingObject('Skull Helm', [new BuildCost('SKULL', 1, 'storageTag', 2),
+            new BuildCost('BONE', 2, 'storageTag', 1)])], true);
+      locationJSONResource = new LocationJSON('Lantern Hort', 'dummy',
+        [new ManufacturingObject('Bone Dagger', [new BuildCost('Dummy Resource', 1, 'resource'),
+          new BuildCost('Dummy Resource', 1, 'resource', 2)])], true);
+      locationJSONDefault = new LocationJSON('Lantern Hort', 'dummy',
+        [new ManufacturingObject('Bone Dagger', [new BuildCost('Ammonia', 1, undefined)])], true);
+      locationJSONs = [locationJSONInnovation, locationJSONStorageTag, locationJSONResource, locationJSONDefault];
+      location1 = new Location('Dummy Location 1', 'dummy',
+        new Map<Equipment, Map<Innovation | string | StorageTag, [number]>>(), false);
+      location2 = new Location('Dummy Location 2', 'dummy',
+        new Map<Equipment, Map<Innovation | string | StorageTag, [number]>>(), false);
+      locations = [location1, location2];
+      equipment1 = new Equipment('Bone Dagger', 'dummy', 4, [StorageTag.BONE],
+        new Map<Affinity, Direction[]>());
+      equipment2 = new Equipment('Skull Helm', 'dummy', 4, [StorageTag.BONE],
+        new Map<Affinity, Direction[]>());
+      equipments = [equipment1, equipment2];
+      innovation = new Innovation('Ammonia', 'dummy', InnovationTag.AMMONIA_CONSEQUENCE,
+        [InnovationTag.LANGUAGE_CONSEQUENCE], false);
+      resource = new Resource('Dummy Resource', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 1);
+    });
+
+    it('get Settlement Locations from http', fakeAsync(inject([KDMDataService, HttpClient, HttpTestingController],
+      (kdmDataService: KDMDataService, http: HttpClient, httpMock: HttpTestingController) => {
+        const mockResponse = locationJSONs;
+        kdmDataService.equipments = equipments;
+        kdmDataService.innovations = [innovation];
+        kdmDataService.resources = [resource];
+        kdmDataService.weapons = [new Weapon('Bone Dagger', 'dummy', 4, [StorageTag.BONE],
+          new Map<Affinity, Direction[]>(), 1, 1, 1)];
+        kdmDataService.armors = [new Armor('Bone Dagger', 'dummy', 4, [StorageTag.BONE],
+          new Map<Affinity, Direction[]>(), 1, ArmorSpace.BODY)];
+        kdmDataService.getSettlementLocations();
+        const res = httpMock.expectOne(kdmDataService.locationsURL);
+        res.flush(mockResponse);
+        tick();
+        expect(kdmDataService.locations.length).toBe(locationJSONs.length);
+        expect(kdmDataService.locations[0].name).toBe(locationJSONInnovation.name);
+        expect(kdmDataService.locations[0].description).toBe(locationJSONInnovation.description);
+        expect(kdmDataService.locations[0].isStartLocation).toBe(locationJSONInnovation.isStartLocation);
+        expect(kdmDataService.locations[0].manufacturingObjects.size)
+          .toBe(locationJSONInnovation.manufacturingObjects.length);
+        expect(kdmDataService.locations[0].manufacturingObjects.has(equipment1)).toBeTruthy();
+        expect(kdmDataService.locations[0].manufacturingObjects.get(equipment1).size)
+          .toBe(locationJSONInnovation.manufacturingObjects[0].buildCosts.length);
+        expect(kdmDataService.locations[0].manufacturingObjects.get(equipment1).get(innovation)).toBeTruthy();
+        expect(kdmDataService.locations[0].manufacturingObjects.get(equipment1).get(innovation)[0])
+          .toBe(locationJSONInnovation.manufacturingObjects[0].buildCosts[0].amount);
+
+        expect(kdmDataService.locations[1].name).toBe(locationJSONStorageTag.name);
+        expect(kdmDataService.locations[1].description).toBe(locationJSONStorageTag.description);
+        expect(kdmDataService.locations[1].isStartLocation).toBe(locationJSONStorageTag.isStartLocation);
+        expect(kdmDataService.locations[1].manufacturingObjects.size)
+          .toBe(locationJSONStorageTag.manufacturingObjects.length);
+        expect(kdmDataService.locations[1].manufacturingObjects.has(equipment1)).toBeTruthy();
+        expect(kdmDataService.locations[1].manufacturingObjects.get(equipment1).size)
+          .toBe(locationJSONStorageTag.manufacturingObjects[0].buildCosts.length);
+        expect(kdmDataService.locations[1].manufacturingObjects.get(equipment1).get(StorageTag.BONE)).toBeTruthy();
+        expect(kdmDataService.locations[1].manufacturingObjects.get(equipment1).get(StorageTag.BONE)[0])
+          .toBe(locationJSONStorageTag.manufacturingObjects[0].buildCosts[0].amount);
+
+        expect(kdmDataService.locations[2].name).toBe(locationJSONResource.name);
+        expect(kdmDataService.locations[2].description).toBe(locationJSONResource.description);
+        expect(kdmDataService.locations[2].isStartLocation).toBe(locationJSONResource.isStartLocation);
+        expect(kdmDataService.locations[2].manufacturingObjects.size)
+          .toBe(locationJSONResource.manufacturingObjects.length);
+      })));
+
+    it('get Settlement Locations from cache', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        kdmDataService.locations = locations;
+        kdmDataService.getSettlementLocations().then(lctns => {
+          expect(lctns.length).toBe(locations.length);
+          expect(lctns).toContain(location1);
+          expect(lctns).toContain(location2);
+        });
+      }));
+
+    it('get Location from cache', inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        kdmDataService.locations = locations;
+        kdmDataService.getLocation(location1.name).then(location => {
+          expect(location).toBe(location1);
+        });
+      }));
   });
 
 });

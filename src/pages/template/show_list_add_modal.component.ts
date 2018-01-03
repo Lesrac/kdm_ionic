@@ -41,21 +41,21 @@ export class ShowListAddModalComponent implements AfterViewInit {
 
   getRandom(): void {
     switch (this.type) {
-      case ShowListTypes.FightingArt:
+      case ShowListTypes.FIGHTINGART:
         this.kdmData.getFightingArts().then(fightingArts => {
           const start: number = Math.floor(Math.random() * fightingArts.length);
           const rand: FightingArt[] = fightingArts.slice(start, start + 1);
           this.objectName = rand[0].name;
         });
         break;
-      case ShowListTypes.Disorder:
+      case ShowListTypes.DISORDER:
         this.kdmData.getDisorders().then(disorders => {
           const start: number = Math.floor(Math.random() * disorders.length);
           const rand: Disorder[] = disorders.slice(start, start + 1);
           this.objectName = rand[0].name;
         });
         break;
-      case ShowListTypes.Innovation:
+      case ShowListTypes.INNOVATION:
         this.kdmData.getInnovationsThatAreNotAddedButAvailable(<Innovation[]>this.objects).then(innovations => {
           const start: number = Math.floor(Math.random() * innovations.length);
           const rand: Innovation[] = innovations.slice(start, start + 1);
@@ -73,25 +73,25 @@ export class ShowListAddModalComponent implements AfterViewInit {
 
   private setup(): void {
     switch (this.type) {
-      case ShowListTypes.FightingArt:
+      case ShowListTypes.FIGHTINGART:
         this.typename = 'Fighting Art';
         this.kdmData.getFightingArts().then(fightingArt =>
           this.existingObjects = fightingArt.filter(art =>
             this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
         break;
-      case ShowListTypes.Disorder:
-        this.typename = 'Disorder';
+      case ShowListTypes.DISORDER:
+        this.typename = 'DISORDER';
         this.kdmData.getDisorders().then(disorders =>
           this.existingObjects = disorders.filter(disorder =>
             this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
         break;
-      case ShowListTypes.Innovation:
+      case ShowListTypes.INNOVATION:
         this.typename = 'Innovation';
         this.kdmData.getInnovationsThatAreNotAddedButAvailable(<Innovation[]>this.objects).then(innovations => {
           this.existingObjects = innovations;
         });
         break;
-      case ShowListTypes.Location:
+      case ShowListTypes.LOCATION:
         this.typename = 'Location';
         this.kdmData.getSettlementLocations().then(locations =>
           this.existingObjects = locations.filter(location =>

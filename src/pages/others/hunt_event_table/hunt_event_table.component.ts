@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { KDMDataService } from '../../../service/kdm_data.service';
-import { HuntEvent } from '../../../model/hunte_event';
+import { HuntEvent } from '../../../model/hunt_event';
 
 /**
  * Created by Daniel on 15.10.2017.

@@ -34,6 +34,7 @@ import { StoragePageComponent } from '../storage/storage.component';
 import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
 import { LanternEvent } from '../../model/lantern_event';
 import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
+import { Equipment } from '../../model/equipment';
 
 describe('Settlement Component', () => {
 
@@ -72,8 +73,10 @@ describe('Settlement Component', () => {
     settlementMilestone = new SettlementMilestone(settlement, milestone);
     settlement.milestones.push(settlementMilestone);
     settlement.timeline = [new SettlementTimeline(settlement, timeline)];
-    settlement.locations = [new Location('Dummy Location', 'dummy')];
-    settlement.innovations = [new Innovation('Dummy Innovation', 'dummy', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], true)];
+    settlement.locations = [new Location('Dummy Location', 'dummy',
+      new Map<Equipment, Map<string | Innovation, [number]>>(), false)];
+    settlement.innovations = [new Innovation('Dummy Innovation', 'dummy',
+      InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], true)];
     NavParamsMock.setParams(settlement);
     fixture = TestBed.createComponent(SettlementPageComponent);
     settlementPageComponent = fixture.componentInstance;
@@ -124,7 +127,7 @@ describe('Settlement Component', () => {
     settlementPageComponent.showInnovations();
     expect(spy).toHaveBeenCalledWith(ShowListComponent, {
       objects: settlementPageComponent.settlement.innovations,
-      type: ShowListTypes.Innovation,
+      type: ShowListTypes.INNOVATION,
       settlement: settlementPageComponent.settlement,
     });
   });
@@ -142,7 +145,7 @@ describe('Settlement Component', () => {
     settlementPageComponent.showSettlementLocations();
     expect(spy).toHaveBeenCalledWith(ShowListComponent, {
       objects: settlementPageComponent.settlement.locations,
-      type: ShowListTypes.Location,
+      type: ShowListTypes.LOCATION,
       settlement: settlementPageComponent.settlement,
     });
   });

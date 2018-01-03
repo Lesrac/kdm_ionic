@@ -5,7 +5,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "UP"
         ]
       }
@@ -26,7 +26,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -47,7 +47,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -68,7 +68,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT",
           "RIGHT"
         ]
@@ -91,7 +91,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -112,7 +112,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT",
           "UP"
         ]
@@ -134,7 +134,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "UP"
         ]
       }
@@ -155,7 +155,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "UP"
         ]
       }
@@ -176,7 +176,7 @@
     "affinities": [
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "UP",
           "RIGHT"
         ]
@@ -239,7 +239,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "UP",
           "DOWN",
           "RIGHT",
@@ -276,7 +276,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }

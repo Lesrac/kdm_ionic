@@ -2,18 +2,18 @@
   {
     "name": "Lantern Hoard",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": true
   },
   {
     "name": "Bone Smith",
     "description": "",
-    "storageCreation": [
+    "manufacturingObjects": [
       {
         "name": "Bone Dagger",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 1,
             "type": "storageTag"
           }
@@ -21,9 +21,9 @@
       },
       {
         "name": "Bone Blade",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 1,
             "type": "storageTag"
           }
@@ -31,14 +31,14 @@
       },
       {
         "name": "Bone Axe",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 1,
             "type": "storageTag"
           },
           {
-            "name": "organ",
+            "name": "ORGAN",
             "amount": 1,
             "type": "storageTag"
           }
@@ -46,9 +46,9 @@
       },
       {
         "name": "Bone Darts",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 1,
             "type": "storageTag"
           }
@@ -56,9 +56,9 @@
       },
       {
         "name": "Bone Club",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 3,
             "type": "storageTag"
           }
@@ -66,15 +66,15 @@
       },
       {
         "name": "Skull Helm",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "skull",
+            "name": "SKULL",
             "amount": 1,
             "type": "storageTag",
             "or": 2
           },
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 2,
             "type": "storageTag",
             "or": 1
@@ -83,9 +83,9 @@
       },
       {
         "name": "Bone Pickaxe",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 1,
             "type": "storageTag"
           },
@@ -103,9 +103,9 @@
       },
       {
         "name": "Bone Sickle",
-        "toBuild": [
+        "buildCosts": [
           {
-            "name": "bone",
+            "name": "BONE",
             "amount": 1,
             "type": "storageTag"
           },
@@ -127,55 +127,55 @@
   {
     "name": "Skinnery",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Organ Grinder",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Weapon Crafter",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Leather Worker",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Stone Circle",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Barber Surgeon",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Plumery",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Blacksmith",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   },
   {
     "name": "Mask Maker",
     "description": "",
-    "storageCreation": [],
+    "manufacturingObjects": [],
     "isStartLocation": false
   }
 ]

@@ -9,7 +9,7 @@ import {
 } from '../../../mock/mocks';
 import { HuntEventTablePageComponent } from './hunt_event_table.component';
 import { KDMDataService } from '../../../service/kdm_data.service';
-import { HuntEvent } from '../../../model/hunte_event';
+import { HuntEvent } from '../../../model/hunt_event';
 import { TextFormattingPipe } from '../../../pipe/text_formatting.pipe';
 
 describe('Hunt Event Table Component', () => {

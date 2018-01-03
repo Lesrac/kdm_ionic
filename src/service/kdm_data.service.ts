@@ -17,7 +17,7 @@ import { Armor, ArmorSpace } from '../model/armor';
 import { Affinity, Direction, Equipment } from '../model/equipment';
 import { isUndefined } from 'ionic-angular/util/util';
 import { SevereInjury } from '../model/severe_injury';
-import { HuntEvent } from '../model/hunte_event';
+import { HuntEvent } from '../model/hunt_event';
 import { DiceThrow } from '../model/dice_throw';
 import { BaseModel } from '../model/base_model';
 import { KDMDBService } from './kdm_db.service';
@@ -39,6 +39,7 @@ import { WeaponJSON } from '../model/jsonData/weapon_json';
 import { ArmorJSON } from '../model/jsonData/armor_json';
 import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
 import { InnovationJSON } from '../model/jsonData/innovation_json';
+import { LocationJSON } from '../model/jsonData/location_json';
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -305,10 +306,55 @@ export class KDMDataService {
 
   getSettlementLocations(): Promise<Location[]> {
     if (this.locations.length < 1) {
-      return new Promise(resolve => {
-        this.http.get(this.locationsURL).subscribe(res => {
-          this.locations = <Location[]>res;
-          resolve(<Location[]>res);
+      return new Promise<Location[]>(resolve => {
+        this.http.get<LocationJSON[]>(this.locationsURL).subscribe(res => {
+          const locations: Location[] = [];
+          res.forEach(locationJSON => {
+            const manufacturingObjects = new Map<Equipment, Map<Innovation | string | StorageTag, [number]>>();
+            locationJSON.manufacturingObjects.forEach(manufacturingObject => {
+              this.getEquipment(manufacturingObject.name).then(equipment => {
+                const costs = new Map<Innovation | string | StorageTag, [number]>();
+                manufacturingObject.buildCosts.forEach(buildCost => {
+                  switch (buildCost.type) {
+                    case 'storageTag': {
+                      if (buildCost.or) {
+                        costs.set(StorageTag[buildCost.name],
+                          [buildCost.amount, buildCost.or]);
+                      } else {
+                        costs.set(StorageTag[buildCost.name], [buildCost.amount]);
+                      }
+                      break;
+                    }
+                    case 'innovation': {
+                      this.getInnovation(buildCost.name).then(innovation =>
+                        costs.set(innovation, [buildCost.amount]));
+                      break;
+                    }
+                    case 'resource': {
+                      if (buildCost.or) {
+                        this.getResourceByName(buildCost.name).then(resource =>
+                          costs.set(resource.name, [buildCost.amount, buildCost.or]));
+                      } else {
+                        this.getResourceByName(buildCost.name).then(resource =>
+                          costs.set(resource.name, [buildCost.amount]));
+                      }
+                      break;
+                    }
+                    default: {
+                      console.error('No element for type: ' + buildCost.type + ', for Equipment: ' + buildCost.name);
+                      break;
+                    }
+                  }
+                });
+                manufacturingObjects.set(equipment, costs);
+              });
+            });
+            const location = new Location(locationJSON.name, locationJSON.description, manufacturingObjects,
+              locationJSON.isStartLocation);
+            locations.push(location);
+          });
+          this.locations = locations;
+          resolve(locations);
         });
       });
     } else {
@@ -450,7 +496,7 @@ export class KDMDataService {
           const weapons: Weapon[] = [];
           res.forEach(weaponJSON => {
             const weapon = new Weapon(weaponJSON.name, weaponJSON.description, weaponJSON.amount,
-              this.createStorageTagArray(weaponJSON.tags), this.createAffinitMap(weaponJSON.affinities),
+              this.createStorageTagArray(weaponJSON.tags), this.createAffinityMap(weaponJSON.affinities),
               weaponJSON.speed, weaponJSON.accuracy, weaponJSON.strength);
             weapons.push(weapon);
           });
@@ -470,7 +516,7 @@ export class KDMDataService {
           const armors: Armor[] = [];
           res.forEach(armorJSON => {
             const armor = new Armor(armorJSON.name, armorJSON.description, armorJSON.amount,
-              this.createStorageTagArray(armorJSON.tags), this.createAffinitMap(armorJSON.affinities),
+              this.createStorageTagArray(armorJSON.tags), this.createAffinityMap(armorJSON.affinities),
               armorJSON.value, ArmorSpace[armorJSON.space]);
             armors.push(armor);
           });
@@ -490,7 +536,7 @@ export class KDMDataService {
           const equipments: Equipment[] = [];
           res.forEach(equipmentJSON => {
             const equipment = new Equipment(equipmentJSON.name, equipmentJSON.description, equipmentJSON.amount,
-              this.createStorageTagArray(equipmentJSON.tags), this.createAffinitMap(equipmentJSON.affinities));
+              this.createStorageTagArray(equipmentJSON.tags), this.createAffinityMap(equipmentJSON.affinities));
             equipments.push(equipment);
           });
           this.equipments = equipments;
@@ -594,7 +640,7 @@ export class KDMDataService {
     return 0;
   }
 
-  private createAffinitMap(affinityJSON: AffinityJSON[]): Map<Affinity, Direction[]> {
+  private createAffinityMap(affinityJSON: AffinityJSON[]): Map<Affinity, Direction[]> {
     const affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
     affinityJSON.forEach(affinity => {
       const directions: Direction[] = [];

@@ -12,6 +12,8 @@ import {
 import { FilterElementsPipe } from '../../pipe/filter_elements.pipe';
 import { MapValuesPipe } from '../../pipe/map_values.pipe';
 import { Location } from '../../model/location';
+import { Equipment } from '../../model/equipment';
+import { Innovation } from '../../model/innovation';
 
 describe('Show Location Detail', () => {
 
@@ -34,7 +36,8 @@ describe('Show Location Detail', () => {
       ],
       imports: [IonicModule],
     });
-    object = new Location('Dummy Location', 'dummy');
+    object = new Location('Dummy Location', 'dummy',
+      new Map<Equipment, Map<string | Innovation, [number]>>(), false);
     NavParamsMock.setParams(object);
 
     fixture = TestBed.createComponent(ShowLocationDetailComponent);

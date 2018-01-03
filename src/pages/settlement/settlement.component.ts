@@ -64,7 +64,7 @@ export class SettlementPageComponent implements DoCheck {
   showInnovations(): void {
     this.navCtrl.push(ShowListComponent, {
       objects: this.settlement.innovations,
-      type: ShowListTypes.Innovation,
+      type: ShowListTypes.INNOVATION,
       settlement: this.settlement,
     }).then();
   }
@@ -78,7 +78,7 @@ export class SettlementPageComponent implements DoCheck {
   showSettlementLocations(): void {
     this.navCtrl.push(ShowListComponent, {
       objects: this.settlement.locations,
-      type: ShowListTypes.Location,
+      type: ShowListTypes.LOCATION,
       settlement: this.settlement,
     }).then();
   }

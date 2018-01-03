@@ -19,7 +19,7 @@ import { HuntedMonster } from '../model/linking/hunted_monster';
 import { DiceThrow } from '../model/dice_throw';
 import { Disorder } from '../model/disorder';
 import { Innovation, InnovationTag } from '../model/innovation';
-import { HuntEvent } from '../model/hunte_event';
+import { HuntEvent } from '../model/hunt_event';
 import { Milestone, MilestoneType } from '../model/milestone';
 import { Survivor } from '../model/survivor';
 import { LanternEvent } from '../model/lantern_event';
@@ -292,11 +292,13 @@ export class KDMDataServiceMock {
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    return Promise.resolve([new Location('Location', 'dummy')]);
+    return Promise.resolve([new Location('Location', 'dummy',
+      new Map<Equipment, Map<string | Innovation, [number]>>(), false)]);
   }
 
   getLocation(name: string): Promise<Location> {
-    return Promise.resolve(new Location(name, 'dummy'));
+    return Promise.resolve(new Location(name, 'dummy',
+      new Map<Equipment, Map<string | Innovation, [number]>>(), false));
   }
 
   getInnovations(): Promise<Innovation[]> {
@@ -314,7 +316,7 @@ export class KDMDataServiceMock {
   }
 
   getDisorders(): Promise<Disorder[]> {
-    return Promise.resolve([new Disorder('Disorder', 'dummy')]);
+    return Promise.resolve([new Disorder('DISORDER', 'dummy')]);
   }
 
   getDisorder(name: string): Promise<Disorder> {
@@ -322,7 +324,7 @@ export class KDMDataServiceMock {
   }
 
   getFightingArts(): Promise<FightingArt[]> {
-    return Promise.resolve([new FightingArt('FightingArt', 'dummy')]);
+    return Promise.resolve([new FightingArt('FIGHTINGART', 'dummy')]);
   }
 
   getFightingArt(name: string): Promise<FightingArt> {

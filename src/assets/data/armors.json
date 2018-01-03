@@ -5,7 +5,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       }
@@ -24,7 +24,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       }
@@ -43,13 +43,13 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       },
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "UP"
         ]
       }
@@ -68,13 +68,13 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "UP"
         ]
       },
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       }
@@ -93,7 +93,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "RIGHT"
         ]
       }
@@ -112,7 +112,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "RIGHT",
           "LEFT"
         ]
@@ -144,7 +144,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT"
         ]
       }
@@ -163,7 +163,7 @@
     "affinities": [
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       }
@@ -194,13 +194,13 @@
     "affinities": [
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "UP"
         ]
       },
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "RIGHT"
         ]
       }
@@ -219,7 +219,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "LEFT",
           "RIGHT"
         ]
@@ -251,7 +251,7 @@
     "affinities": [
       {
         "affinity": "GREEN",
-        "direction": [
+        "directions": [
           "RIGHT"
         ]
       }
@@ -286,7 +286,7 @@
     "affinities": [
       {
         "affinity": "BLUE",
-        "direction": [
+        "directions": [
           "UP"
         ]
       }
@@ -306,7 +306,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "DOWN",
           "RIGHT"
         ]
@@ -327,7 +327,7 @@
     "affinities": [
       {
         "affinity": "RED",
-        "direction": [
+        "directions": [
           "DOWN"
         ]
       }

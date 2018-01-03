@@ -51,7 +51,7 @@ export class ShowListComponent implements OnInit {
   }
 
   showDetail(object: BaseModel): void {
-    if (this.type === ShowListTypes.Location) {
+    if (this.type === ShowListTypes.LOCATION) {
       this.navCtrl.push(ShowLocationDetailComponent, {
         object: object,
       }).then();
@@ -64,16 +64,16 @@ export class ShowListComponent implements OnInit {
 
   private setup(): void {
     switch (this.type) {
-      case ShowListTypes.FightingArt:
+      case ShowListTypes.FIGHTINGART:
         this.title = 'Fighting Arts';
         break;
-      case ShowListTypes.Disorder:
+      case ShowListTypes.DISORDER:
         this.title = 'Disorders';
         break;
-      case ShowListTypes.Innovation:
+      case ShowListTypes.INNOVATION:
         this.title = 'Innovations';
         break;
-      case ShowListTypes.Location:
+      case ShowListTypes.LOCATION:
         this.title = 'Locations';
         break;
       default:
