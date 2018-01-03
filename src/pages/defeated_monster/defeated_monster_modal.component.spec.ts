@@ -59,7 +59,7 @@ describe('Defeated Monster Modal', () => {
   });
 
   it('ngOnInit', () => {
-    const monster = new Monster();
+    const monster = new Monster(1, 'Dummy Monster', false);
     const huntableMonster = new HuntableMonster(settlement, monster);
     huntableMonster.isHuntable = true;
     const notHuntableMonster = new HuntableMonster(settlement, monster);
@@ -73,7 +73,7 @@ describe('Defeated Monster Modal', () => {
   it('addClose success', () => {
     const spy = spyOn(defeatedMonsterModalComponent, 'close');
     const monsterLevel = 1;
-    const monster = new Monster();
+    const monster = new Monster(1, 'Dummy Monster', false);
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     defeatedMonsterModalComponent.monster = monster;
     defeatedMonsterModalComponent.monsterLevel = monsterLevel;
@@ -85,7 +85,7 @@ describe('Defeated Monster Modal', () => {
 
   it('addClose not correctly chosen', () => {
     const spy = spyOn(defeatedMonsterModalComponent, 'close');
-    const monster = new Monster();
+    const monster = new Monster(1, 'Dummy Monster', false);
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
     defeatedMonsterModalComponent.addClose();
     expect(defeatedMonsterModalComponent.settlement.huntedMonsters.length).toBe(0);
@@ -100,7 +100,7 @@ describe('Defeated Monster Modal', () => {
   it('addClose add hunt resources', () => {
     const spy = spyOn(defeatedMonsterModalComponent, 'close');
     const spyCalculation = spyOn(kdmCalculationServiceMock, 'addResourcesFromKilledMonster');
-    const monster = new Monster();
+    const monster = new Monster(1, 'Dummy Monster', false);
     monster.isNemesis = false;
     defeatedMonsterModalComponent.monster = monster;
     defeatedMonsterModalComponent.huntResources = true;

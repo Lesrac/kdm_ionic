@@ -37,6 +37,11 @@ import { InnovationJSON } from '../model/jsonData/innovation_json';
 import { Innovation, InnovationTag } from '../model/innovation';
 import { BuildCost, LocationJSON, ManufacturingObject } from '../model/jsonData/location_json';
 import { Location } from '../model/location';
+import { SettlementTimelineDB } from '../model/db/settlement_timeline_db';
+import { HuntableMonsterDB } from '../model/db/huntable_monster_db';
+import { HuntedMonsterDB } from '../model/db/hunted_monster_db';
+import { SurvivorSimplified } from '../model/db/survivor_simplified';
+import { SettlementMilestoneDB } from '../model/db/settlement_milestone_db';
 
 describe('KDM Data Service', () => {
 
@@ -66,26 +71,11 @@ describe('KDM Data Service', () => {
     let monsters: Monster[];
 
     beforeEach(() => {
-      monster1 = new Monster();
-      monster1.id = 1;
-      monster1.isNemesis = false;
-      monster1.name = 'Monster Dummy';
-      monster2 = new Monster();
-      monster2.id = 2;
-      monster2.isNemesis = false;
-      monster2.name = 'Monster Dummy 2';
-      monster3 = new Monster();
-      monster3.id = 3;
-      monster3.isNemesis = false;
-      monster3.name = 'Monster Dummy 3';
-      monster4 = new Monster();
-      monster4.id = 4;
-      monster4.isNemesis = true;
-      monster4.name = 'Monster Nemesis Dummy';
-      monster5 = new Monster();
-      monster5.id = 5;
-      monster5.isNemesis = true;
-      monster5.name = 'Monster Nemesis Dummy 2';
+      monster1 = new Monster(1, 'Monster Dummy', false);
+      monster2 = new Monster(2, 'Monster Dummy 2', false);
+      monster3 = new Monster(3, 'Monster Dummy 3', false);
+      monster4 = new Monster(4, 'Monster Dummy 4', true);
+      monster5 = new Monster(5, 'Monster Dummy 5', true);
       monsters = [monster1, monster2, monster3, monster4, monster5];
     });
 
@@ -453,10 +443,8 @@ describe('KDM Data Service', () => {
     let timelines: Timeline[];
 
     beforeEach(() => {
-      storyEvent1 = new StoryEvent('Dummy Story Event 1', 'Dummy');
-      storyEvent1.id = 1;
-      storyEvent2 = new StoryEvent('Dummy Story Event 2', 'Dummy');
-      storyEvent2.id = 2;
+      storyEvent1 = new StoryEvent('Dummy Story Event 1', 'Dummy', 1);
+      storyEvent2 = new StoryEvent('Dummy Story Event 2', 'Dummy', 2);
       storyEvents = [storyEvent1, storyEvent2];
       lanternEvent1 = new LanternEvent('Dummy Lantern Event 1', 'dummy todo');
       lanternEvent1.storyEvents.push(storyEvent1);
@@ -1042,7 +1030,7 @@ describe('KDM Data Service', () => {
       (kdmDataService: KDMDataService) => {
         const spy = spyOn(kdmDBServiceMock, 'getSettlementById').and.callThrough()
           .and.returnValue(Promise.resolve(simpleSettlements));
-        kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy')];
+        kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];
         kdmDataService.lanternEvents = [new LanternEvent()];
         kdmDataService.getSettlement(2).then(settlement => {
           expect(settlement.id).toBe(simpleSettlement2.id);
@@ -1267,6 +1255,90 @@ describe('KDM Data Service', () => {
           expect(location).toBe(location1);
         });
       }));
+  });
+
+  describe('Desimplify Settlement', () => {
+    let storyEvent = new StoryEvent('Dummy Story Event 1', 'Dummy', 1);
+    let lanternEvent1 = new LanternEvent('Dummy Lantern Event 1', 'dummy todo');
+    let lanternEvent2 = new LanternEvent('Dummy Lantern Event 2', 'dummy todo');
+    let location = new Location('Dummy Location 1', 'dummy',
+      new Map<Equipment, Map<Innovation | string | StorageTag, [number]>>(), false);
+    let monster = new Monster(1, 'Monster Dummy', false);
+    let nemesisMonster = new Monster(2, 'Monster Dummy', true);
+    let innovation = new Innovation('Dummy Innovation 1', 'description',
+      InnovationTag.AMMONIA_CONSEQUENCE, [InnovationTag.ART], true);
+    let principleType = new PrincipleType('Dummy Principle Type 1');
+    let principle = new Principle('Dummy Principle 1', 'dummy', principleType);
+    let milestone = new Milestone(1, 'Milestone', 2, ComparableVisitorValue.EQ, 'POPULATION', MilestoneType.Basic);
+    let resource = new Resource('Dummy Resource 1', 'dummy', 1, [StorageTag.ITEM], ResourceType.BASIC, 1);
+    let weapon = new Weapon('Dummy Weapon 1', 'Dummy', 1, [StorageTag.ITEM], undefined, 1, 1, 1);
+    let armor = new Armor('Dummy Armor 1', 'Dummy', 1, [StorageTag.ITEM],
+      undefined, 1, ArmorSpace.HEAD);
+    let equipment = new Equipment('Dummy Equipment 1', 'Dummy', 1, [StorageTag.ITEM], undefined);
+    let map = new Map<Affinity, Direction[]>();
+
+    beforeEach(() => {
+      map.set(Affinity.BLUE, [Direction.DOWN]);
+      weapon.affinities = map;
+      armor.affinities = map;
+      equipment.affinities = map;
+    });
+
+    it('Desimplify a Settlement with all elements', fakeAsync(inject([KDMDataService],
+      (kdmDataService: KDMDataService) => {
+        const settlementTimelineDB = new SettlementTimelineDB(1, [1, lanternEvent1.name], true);
+        const settlementTimelineDB2 = new SettlementTimelineDB(1, [2, lanternEvent2.name], false);
+        const huntableMonsterDB = new HuntableMonsterDB(1, 1, true, true, true, false);
+        const huntedMonsterDB = new HuntedMonsterDB(1, 1, 2, [[resource.name, 2]]);
+        const survivorSimplified = new SurvivorSimplified(1, 1, 'Hugo', true, true, 17,
+          16, true, false, true, false, 1, 2, 3, 4, 5, 6,
+          7, false, 8, false, 9, true, false, 10, false,
+          false, 11, false, true, 12, true, false, false,
+          true, true, 'Stand Up', 13, 14, 'Sword', 15);
+        const settlementMilestoneDB = new SettlementMilestoneDB(1, 1, false);
+        const simplifiedSettlement = new SettlementSimplified(1, 'Simple Settlement', 2, 3, 4, 5);
+        simplifiedSettlement.timeline = [settlementTimelineDB, settlementTimelineDB2];
+        simplifiedSettlement.huntedMonsters = [huntedMonsterDB];
+        simplifiedSettlement.huntableMonsters = [huntableMonsterDB];
+        simplifiedSettlement.survivors = [survivorSimplified];
+        simplifiedSettlement.milestones = [settlementMilestoneDB];
+        simplifiedSettlement.locationNames = [location.name];
+        simplifiedSettlement.storagesNameAmount = [[weapon.name, 4], [armor.name, 2]];
+        simplifiedSettlement.principleNames = [principle.name];
+        simplifiedSettlement.innovationNames = [innovation.name];
+        const spy = spyOn(kdmDBServiceMock, 'getSettlementById')
+          .and.callThrough().and.returnValue(Promise.resolve(simplifiedSettlement));
+        kdmDataService.storyEvents = [storyEvent];
+        kdmDataService.locations = [location];
+        kdmDataService.lanternEvents = [lanternEvent1, lanternEvent2];
+        kdmDataService.monsters = [monster, nemesisMonster];
+        kdmDataService.innovations = [innovation];
+        kdmDataService.principles = [principle];
+        kdmDataService.principleTypes = [principleType];
+        kdmDataService.milestones = [milestone];
+        kdmDataService.resources = [resource];
+        kdmDataService.weapons = [weapon];
+        kdmDataService.armors = [armor];
+        kdmDataService.equipments = [equipment];
+
+        kdmDataService.getSettlement(simplifiedSettlement.id).then(settlement => {
+          tick();
+          expect(spy).toHaveBeenCalledWith(simplifiedSettlement.id);
+          expect(settlement.id).toBe(simplifiedSettlement.id);
+          expect(settlement.name).toBe(simplifiedSettlement.name);
+          expect(settlement.survivalLimit).toBe(simplifiedSettlement.survivalLimit);
+          expect(settlement.population).toBe(simplifiedSettlement.population);
+          expect(settlement.settlementLost).toBe(simplifiedSettlement.settlementLost);
+          expect(settlement.deathcount).toBe(simplifiedSettlement.deathcount);
+          expect(settlement.milestones.length).toBe(simplifiedSettlement.milestones.length);
+          expect(settlement.principles.length).toBe(simplifiedSettlement.principleNames.length);
+          expect(settlement.innovations.length).toBe(simplifiedSettlement.innovationNames.length);
+          expect(settlement.locations.length).toBe(simplifiedSettlement.locationNames.length);
+          expect(settlement.huntedMonsters.length).toBe(simplifiedSettlement.huntedMonsters.length);
+          expect(settlement.huntableMonsters.length).toBe(simplifiedSettlement.huntableMonsters.length);
+          expect(settlement.timeline.length).toBe(simplifiedSettlement.timeline.length);
+        });
+      })));
   });
 
 });

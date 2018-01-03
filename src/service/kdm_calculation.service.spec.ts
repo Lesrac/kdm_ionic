@@ -31,7 +31,8 @@ describe('Service: Calculation', () => {
     });
     basicResource1 = new Resource('Resource 1', 'first', 1, [StorageTag.ARMOR], ResourceType.BASIC, 2);
     basicResource2 = new Resource('Resource 2', 'second', 1, [StorageTag.FUR, StorageTag.HIDE], ResourceType.BASIC, 1);
-    whiteLionResource1 = new Resource('Resource 3', 'third', 1, [StorageTag.KATAR, StorageTag.MELEE], ResourceType.WHITELION, 4);
+    whiteLionResource1 = new Resource('Resource 3', 'third', 1,
+      [StorageTag.KATAR, StorageTag.MELEE], ResourceType.WHITELION, 4);
 
     resources = [];
     resources.push(basicResource1);
@@ -44,8 +45,7 @@ describe('Service: Calculation', () => {
       spyOn(kdmDataServiceMock, 'getResources').and.returnValue(Promise.resolve(resources));
 
       const settlement: Settlement = new Settlement('Dummy Settlement');
-      const originalMonster: Monster = new Monster();
-      originalMonster.name = 'White Lion';
+      const originalMonster: Monster = new Monster(1, 'White Lion', false);
 
       const monsterResourceAmount = new MonsterResourceAmount(ResourceType.BASIC, 3);
       const monsterLevelResource = new MonsterLevelResources(1, [monsterResourceAmount]);

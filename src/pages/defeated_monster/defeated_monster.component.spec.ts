@@ -58,8 +58,7 @@ describe('Defeated Monster Component', () => {
   });
 
   it('remove hunted monster', () => {
-    const monster = new Monster();
-    monster.name = 'Dummy Monster';
+    const monster = new Monster(1, 'Dummy Monster', false);
     const huntedMonster1 = new HuntedMonster(settlement, monster);
     const huntedMonster2 = new HuntedMonster(settlement, monster);
     const huntedMonster3 = new HuntedMonster(settlement, monster);

@@ -58,11 +58,11 @@ describe('Hunt Event Table Component', () => {
   it('filter story events empty value', () => {
     const event = {
       target: {
-        value: ''
-      }
+        value: '',
+      },
     };
-    storyEventsPageComponent.allStoryEvents = [new StoryEvent('Story Event', 'dummy')];
-    storyEventsPageComponent.filteredStoryEvents = [new StoryEvent('Dummy', 'dummy')];
+    storyEventsPageComponent.allStoryEvents = [new StoryEvent('Story Event', 'dummy', 1)];
+    storyEventsPageComponent.filteredStoryEvents = [new StoryEvent('Dummy', 'dummy', 2)];
     storyEventsPageComponent.filterStoryEvents(event);
     expect(storyEventsPageComponent.filteredStoryEvents).toEqual(storyEventsPageComponent.allStoryEvents);
   });
@@ -70,12 +70,12 @@ describe('Hunt Event Table Component', () => {
   it('filter story events filter value with found object', () => {
     const event = {
       target: {
-        value: 'Story event'
-      }
+        value: 'Story event',
+      },
     };
-    const storyEvent = new StoryEvent('Story Event 1', 'dummy');
-    const storyEvent2 = new StoryEvent('Story Event 2', 'dummy');
-    const storyEvent3 = new StoryEvent('Whaka', 'dummy');
+    const storyEvent = new StoryEvent('Story Event 1', 'dummy', 1);
+    const storyEvent2 = new StoryEvent('Story Event 2', 'dummy', 2);
+    const storyEvent3 = new StoryEvent('Whaka', 'dummy', 3);
     storyEventsPageComponent.allStoryEvents = [storyEvent, storyEvent2, storyEvent3];
     storyEventsPageComponent.filterStoryEvents(event);
     expect(storyEventsPageComponent.filteredStoryEvents.length).toBe(2);
@@ -86,12 +86,12 @@ describe('Hunt Event Table Component', () => {
   it('filter story events filter value with no object found', () => {
     const event = {
       target: {
-        value: 'bar'
-      }
+        value: 'bar',
+      },
     };
-    const storyEvent = new StoryEvent('Story Event 1', 'dummy');
-    const storyEvent2 = new StoryEvent('Story Event 2', 'dummy');
-    const storyEvent3 = new StoryEvent('Whaka', 'dummy');
+    const storyEvent = new StoryEvent('Story Event 1', 'dummy', 1);
+    const storyEvent2 = new StoryEvent('Story Event 2', 'dummy', 2);
+    const storyEvent3 = new StoryEvent('Whaka', 'dummy', 3);
     storyEventsPageComponent.allStoryEvents = [storyEvent, storyEvent2, storyEvent3];
     storyEventsPageComponent.filterStoryEvents(event);
     expect(storyEventsPageComponent.filteredStoryEvents.length).toBe(0);
@@ -99,12 +99,12 @@ describe('Hunt Event Table Component', () => {
 
   it('show detail', () => {
     const spy = spyOn(storyEventsPageComponent.navCtrl, 'push').and.callThrough();
-    const storyEvent = new StoryEvent('Story Event', 'description');
+    const storyEvent = new StoryEvent('Story Event', 'description', 1);
     storyEventsPageComponent.showDetail(storyEvent);
     expect(spy).toHaveBeenCalledWith(FormattedTextModalComponent, {
       title: storyEvent.name,
       text: storyEvent.description,
-    })
+    });
   });
 
 });

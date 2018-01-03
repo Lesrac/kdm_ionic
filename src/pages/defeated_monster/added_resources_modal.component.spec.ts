@@ -10,7 +10,6 @@ import { AddedResourcesModalComponent } from './added_resources_modal.component'
 import { Settlement } from '../../model/settlement';
 import { HuntedMonster } from '../../model/linking/hunted_monster';
 import { Monster } from '../../model/monster';
-import { Storage } from '../../model/storage';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
 
 describe('Added Resources Modal', () => {
@@ -34,8 +33,7 @@ describe('Added Resources Modal', () => {
       imports: [IonicModule],
     });
     const settlement = new Settlement('Dummy Settlement');
-    const monster = new Monster();
-    monster.name = 'Dummy Monster';
+    const monster = new Monster(1, 'Dummy Monster', false);
     huntedMonster = new HuntedMonster(settlement, monster);
     NavParamsMock.setParams(huntedMonster);
     fixture = TestBed.createComponent(AddedResourcesModalComponent);

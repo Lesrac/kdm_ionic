@@ -232,19 +232,19 @@ export class KDMDataServiceMock {
   }
 
   getMonsters(): Promise<Monster[]> {
-    return Promise.resolve([new Monster()]);
+    return Promise.resolve([new Monster(1, 'Dummy Monster', false)]);
   }
 
   getMonster(id: number): Promise<Monster> {
-    return Promise.resolve(new Monster());
+    return Promise.resolve(new Monster(1, 'Dummy Monster', false));
   }
 
   getDefaultInitialHuntableNemesisMonsters(): Promise<Monster[]> {
-    return Promise.resolve([new Monster()]);
+    return Promise.resolve([new Monster(1, 'Dummy Monster', true)]);
   }
 
   getDefaultInitialHuntableQuarries(): Promise<Monster[]> {
-    return Promise.resolve([new Monster()]);
+    return Promise.resolve([new Monster(1, 'Dummy Monster', false)]);
   }
 
   getResources(): Promise<Resource[]> {
@@ -272,11 +272,11 @@ export class KDMDataServiceMock {
   }
 
   getStoryEvents(): Promise<StoryEvent[]> {
-    return Promise.resolve([new StoryEvent('Story Event', 'dummy')]);
+    return Promise.resolve([new StoryEvent('Story Event', 'dummy', 1)]);
   }
 
   getStoryEvent(id: number): Promise<StoryEvent> {
-    return Promise.resolve(new StoryEvent('Story Event', 'dummy'));
+    return Promise.resolve(new StoryEvent('Story Event', 'dummy', 1));
   }
 
   getInitialMilestones(): Promise<Milestone[]> {

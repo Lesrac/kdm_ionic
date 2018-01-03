@@ -11,6 +11,11 @@ export class Monster {
   rewardText: string;
   locations: Location[] = [];
 
+  constructor(id: number, name: string, isNemesis: boolean) {
+    this.id = id;
+    this.name = name;
+    this.isNemesis = isNemesis;
+  }
 }
 
 export class MonsterLevelResources {
