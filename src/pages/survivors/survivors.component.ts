@@ -30,14 +30,14 @@ export class SurvivorsPageComponent implements OnInit {
 
   goToDetail(survivor: Survivor): void {
     this.navCtrl.push(SurvivorPageComponent, {
-      survivor,
+      survivor: survivor,
       settlement: this.settlement,
     }).then();
   }
 
   selectedSettlement(settlement: Settlement): void {
     if (settlement) {
-      this.tempSettlement = settlement;
+      this.kdmService.getSettlement(settlement.id).then(stlmnt => this.tempSettlement = stlmnt);
     }
   }
 

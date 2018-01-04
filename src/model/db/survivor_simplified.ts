@@ -41,11 +41,13 @@ export class SurvivorSimplified {
   fightingArtNames: string[] = [];
   disorderNames: string[] = [];
   characteristicNames: string[];
+  oncePerLifetime: string;
   courage: number;
   understanding: number;
-  oncePerLifetime: string;
   weaponProficiencyType: string;
   weaponProficiencyXP: number;
+  chosenBoldCourage: string;
+  chosenInsightUnderstanding: string;
 
   constructor(id: number, settlementId: number, name: string, isAlive: boolean, isMale: boolean, experience: number,
               survival: number, canDodge: boolean, canEncourage: boolean, canSurge: boolean, canDash: boolean,
@@ -55,7 +57,8 @@ export class SurvivorSimplified {
               bodyHeavyInjury: boolean, waistArmor: number, waistLightInjury: boolean, waistHeavyInjury: boolean,
               legsArmor: number, legsLightInjury: boolean, legsHeavyInjury: boolean, cannotUseFightingArts: boolean,
               cannotSpendSurvival: boolean, skipNextHunt: boolean, oncePerLifetime: string, courage: number,
-              understanding: number, weaponProficiencyType: string, weaponProficiencyXP: number) {
+              understanding: number, weaponProficiencyType: string, weaponProficiencyXP: number,
+              chosenBoldCourage: string, chosenInsightUnderstanding: string) {
     this.id = id;
     this.settlementId = settlementId;
     this.name = name;
@@ -92,10 +95,12 @@ export class SurvivorSimplified {
     this.cannotUseFightingArts = cannotUseFightingArts;
     this.cannotSpendSurvival = cannotSpendSurvival;
     this.skipNextHunt = skipNextHunt;
-    this.oncePerLifetime = oncePerLifetime;
     this.courage = courage;
     this.understanding = understanding;
+    this.oncePerLifetime = oncePerLifetime;
     this.weaponProficiencyType = weaponProficiencyType;
     this.weaponProficiencyXP = weaponProficiencyXP;
+    this.chosenBoldCourage = chosenBoldCourage;
+    this.chosenInsightUnderstanding = chosenInsightUnderstanding;
   }
 }

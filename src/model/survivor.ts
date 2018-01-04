@@ -1,6 +1,8 @@
 import { FightingArt } from './fighting_art';
 import { Disorder } from './disorder';
 import { BaseModel } from './base_model';
+import { Observer } from 'rxjs/Observer';
+import { Subscription } from 'rxjs/Subscription';
 
 /**
  * Created by Daniel on 24.02.2017.
@@ -50,6 +52,17 @@ export class Survivor {
   understanding: number = 0;
   weaponProficiencyType: string = '';
   weaponProficiencyXP: number = 0;
+  chosenBoldCourage: string;
+  chosenInsightUnderstanding: string;
+  huntXPObserver1: Observer<Object>;
+  huntXPObserver2: Observer<Object>;
+  huntXPObserver3: Observer<Object>;
+  huntXPObserver4: Observer<Object>;
+  huntXPObserver5: Observer<Object>;
+  courageObserver1: Observer<Object>;
+  courageObserver2: Observer<Object>;
+  understandingObserver1: Observer<Object>;
+  understandingObserver2: Observer<Object>;
 
   constructor(name: string, id: number, settlementId: number) {
     this.name = name;

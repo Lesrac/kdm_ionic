@@ -6,6 +6,8 @@ import { ShowListComponent } from '../template/show_list.component';
 import { ShowListTypes } from '../../model/show_list_types';
 import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMObserverService } from '../../service/kdm_observer.service';
+import { Subject } from 'rxjs/Subject';
 
 /**
  * Created by Daniel on 01.03.2017.
@@ -17,6 +19,9 @@ import { KDMDBService } from '../../service/kdm_db.service';
 export class SurvivorPageComponent implements OnInit {
 
   private static MAX_XP: number = 16;
+  courage: Subject<number> = new Subject<number>();
+  understanding: Subject<number> = new Subject<number>();
+  xp: Subject<number> = new Subject<number>();
 
   survivor: Survivor;
   settlement: Settlement;
@@ -24,9 +29,11 @@ export class SurvivorPageComponent implements OnInit {
   xpGroup: FormGroup;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              public formBuilder: FormBuilder, private kdmdbService: KDMDBService) {
+              public formBuilder: FormBuilder, private kdmdbService: KDMDBService,
+              private kdmObserver: KDMObserverService) {
     this.survivor = params.get('survivor');
     this.settlement = params.get('settlement');
+    this.kdmObserver.registerObserverForSurvivorHappenings(this);
   }
 
   ngOnInit(): void {
@@ -131,6 +138,7 @@ export class SurvivorPageComponent implements OnInit {
   understandingChange(event): void {
     if (typeof event === 'number') {
       this.survivor.understanding = event;
+      this.understanding.next(event);
       this.saveData();
     }
   }
@@ -138,6 +146,7 @@ export class SurvivorPageComponent implements OnInit {
   courageChange(event): void {
     if (typeof event === 'number') {
       this.survivor.courage = event;
+      this.courage.next(event);
       this.saveData();
     }
   }
@@ -155,6 +164,7 @@ export class SurvivorPageComponent implements OnInit {
     } else {
       this.survivor.experience--;
     }
+    this.xp.next(this.survivor.experience);
     this.saveData();
   }
 

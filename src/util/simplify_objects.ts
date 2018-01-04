@@ -52,7 +52,8 @@ export class SimplifyObjects {
       survivor.waistArmor, survivor.waistLightInjury, survivor.waistHeavyInjury, survivor.legsArmor,
       survivor.legsLightInjury, survivor.legsHeavyInjury, survivor.cannotUseFightingArts, survivor.cannotSpendSurvival,
       survivor.skipNextHunt, survivor.oncePerLifetime, survivor.courage, survivor.understanding,
-      survivor.weaponProficiencyType, survivor.weaponProficiencyXP);
+      survivor.weaponProficiencyType, survivor.weaponProficiencyXP, survivor.chosenBoldCourage,
+      survivor.chosenInsightUnderstanding);
     survivor.fightingArts.forEach(fightingArt => simplifiedSurvivor.fightingArtNames.push(fightingArt.name));
     survivor.disorders.forEach(disorder => simplifiedSurvivor.disorderNames.push(disorder.name));
     survivor.characteristics.forEach(characteristic =>
