@@ -1,9 +1,9 @@
 <ion-content>
   <ion-item-group>
-    <ion-title>Add {{typename}}</ion-title>
+    <ion-title>Add {{typename | titlecase}}</ion-title>
   </ion-item-group>
   <ion-item>
-    <ion-label>{{typename}}</ion-label>
+    <ion-label>{{typename | titlecase}}</ion-label>
     <ion-select [(ngModel)]="objectName">
       <ion-option *ngFor="let object of existingObjects">{{object.name}}</ion-option>
     </ion-select>
