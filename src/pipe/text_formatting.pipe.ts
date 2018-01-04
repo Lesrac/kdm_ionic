@@ -49,6 +49,9 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, '<ion-icon name="kdmf-shieldone" role="img" ' +
             'class="icon icon-md ion-md-kdmf-shieldone" aria-label="kdmf shieldone" ' +
             'ng-reflect-name="kdmf-shieldone"></ion-icon>');
+        } else if ('flash' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="flash" role="img" ' +
+            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         }
       });
     }
