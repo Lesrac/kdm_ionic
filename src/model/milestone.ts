@@ -53,6 +53,7 @@ export class Milestone extends LanternEvent implements Comparable {
 
 }
 
+// TODO UPPERCASE
 export enum MilestoneType {
   Basic = 'BASIC',
   DragonKing = 'DRAGONKING',
