@@ -126,5 +126,36 @@
       36,
       37
     ]
+  },
+  {
+    "name": "See the Truth",
+    "todo": "The greatest courage is achiever when the past and future are abandoned. The void that remains is a dark, endless well of strength. Fear and pain are your nourishment, and you will feast.",
+    "storyEvents": [
+      40,
+      41
+    ]
+  },
+  {
+    "name": "Insight",
+    "todo": "In a single moment, the curtain of the world pulls back.",
+    "storyEvents": [
+      42,
+      43,
+      44,
+      45
+    ]
+  },
+  {
+    "name": "White Secret",
+    "todo": "A dream. buried deep in memory. suddenly surfaces. You feel her hot breath bathing your ear. hissing whispers. She had come to you bearing the secrets of the world and you had merely forgotten, until now.",
+    "storyEvents": [
+      46,
+      47
+    ]
+  },
+  {
+    "name": "Retirement",
+    "todo": "In rare instances, survivors retire, rather than perish. When the last Hunt XP box is filled , the survivor retires. A survivor may also be forced into early retirement by some severe injuries Retired survivors cannot hunt or participate in showdowns. When a survivor retires, they still contribute to the total population of the settlement, and may participate in settlement events and endeavors.",
+    "storyEvents": []
   }
 ]

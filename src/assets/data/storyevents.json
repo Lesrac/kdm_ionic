@@ -172,17 +172,17 @@
   {
     "id": 35,
     "name": "Showdown Phase Triumph",
-    "description": "The essential difference between man and monster is a gap no human can overcome. You accept this and tap into a deep well of deranged fortitude. Gain the following ability and roll on the table below.(br) Stalwart: Ignore being knocked down by brain trauma and intimidation actions. (1-3) Gain +1 strength token. (4-7) Gain +3 survival and +3 insanity. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent speed."
+    "description": "<b>Showdown Phase Triumph</b>(br)The essential difference between man and monster is a gap no human can overcome. You accept this and tap into a deep well of deranged fortitude. Gain the following ability and roll on the table below.(br) Stalwart: Ignore being knocked down by brain trauma and intimidation actions. (1-3) Gain +1 strength token. (4-7) Gain +3 survival and +3 insanity. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent speed."
   },
   {
     "id": 36,
     "name": "Hunt Phase Triumph",
-    "description": "Expect the unexpected. You are prepared to face any mind-bending trials at a moments notice. Where others may falter , you forge ahead, meeting the journey head on. Gain the following ability and roll on the table below.(br) Prepared: When rolling to determine a straggler, add your hunt experience to your roll result. (1-3) Gain +1 speed token for next showdown. (4-7) Gain +1 understanding. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent movement."
+    "description": "<b>Hunt Phase Triumph</b>(br)Expect the unexpected. You are prepared to face any mind-bending trials at a moments notice. Where others may falter , you forge ahead, meeting the journey head on. Gain the following ability and roll on the table below.(br) Prepared: When rolling to determine a straggler, add your hunt experience to your roll result. (1-3) Gain +1 speed token for next showdown. (4-7) Gain +1 understanding. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent movement."
   },
   {
     "id": 37,
     "name": "Settlement Phase Triumph",
-    "description": "In this fleeting existence, every moment shared creates meaning. The bonds forged between survivors give you hope. Gain the following ability and roll on the table below.(br) Matchmaker: When you are a returning survivor, once per year you may spend (*) to (milestoneNL) Intimacy. (1-3) May reroll 1 (*) result this settlement phase. (4-7) Gain +1 (*) this settlement phase. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent accuracy."
+    "description": "<b>Settlement Phase Triumph</b>(br)In this fleeting existence, every moment shared creates meaning. The bonds forged between survivors give you hope. Gain the following ability and roll on the table below.(br) Matchmaker: When you are a returning survivor, once per year you may spend (*) to (milestoneNL) Intimacy. (1-3) May reroll 1 (*) result this settlement phase. (4-7) Gain +1 (*) this settlement phase. (8-9) Gain +1 permanent strength. (10+) Gain +1 permanent accuracy."
   },
   {
     "id": 38,
@@ -193,5 +193,45 @@
     "id": 39,
     "name": "(*) Witch Camp - roll 1d10",
     "description": "(1) The Bone Witch never forgave her exile. Her burning hatred lit the dark brighter than any lantern. With jagged teeth and gnarled claws, she attacks! You manage to escape, but the wounds she inflicted continue to burn. Suffer -1 permanent strength, -1 permanent accuracy and skip the next hunt.(br) Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from the current lantern year. (2-4) The secrets of the dark should not be seen. The last thing you see are the witch's outreached claws reaching for your eyes. Your eyes are scarred. Suffer -4 permanent accuracy and gain +4 permanent strength . If, for some reason , you gain this result twice, you die.(br) Add \"(milestoneNL) Bone Witch\" to the timeline 3 years from the current lantern year. (5-7) The Bone Witch mutters of the alluring embrace of the awaiting darkness. Her stories stir strange yearnings in your bones. For being a patient listener, she offers to teach you something for the cost of 1d5 bone resources.(br) If you spend the resources, gain the Extra Sense fighting art and +3 survival. (8-10) The Bone Witch spends whispers of the horrors and wonders she has seen, arming you with valuable wisdom. Gain +2 insanity, +1 understanding, and the following ability.(br) Homing Instinct: Add +5 to your rolls on the Run Away story event. (9-10) If the settlement has the Guidepost innovation, the Bone Witch wanders over to it. The settlement is transfixed by a sense of danger. Effortlessly, the Which plucks the weapon from the ground. Archive the Guidepost innovation.(br) As a consolation. she offers to teach the settlement something in exchange for 1 bone.(br) If you spend 1 bone, nominate 4 survivors. They gain the Monster Claw Style fighting art."
+  },
+  {
+    "id": 40,
+    "name": "See the Truth Story Event",
+    "description": "You suddenly recall meeting a strange masked man, who, for a moment, opened your second eyelids. What you saw filled your mouth with the taste of your own death. Suffer the blinded severe head injury and Taste Death. If you are already blinded at least once, do not suffer it again."
+  },
+  {
+    "id": 41,
+    "name": "Taste Death - roll 1d10",
+    "description": "(1-2) <b>Sweet</b>(br)When your second eyelids opened, the veil of darkness was lifted. You recall looking to the sky and viewing a horizon of titanic faces. Each face is different and peers at a different part of your body. Death was upon you, and a strangely sweet flavor swirled around in your mouth. Gain the <b>Weak Spot</b> disorder and the following ability.(br1)<b>Sweet Battle</b>: You may surge without spending survival. If you do, the (flash) must be used to activate a weapon. (3-4) Use <b>Bitter</b>. If the settlement has the Graves Death Principle, the survivor's death tastes <b>Sweet</b> instead.(5-6) <b>Bitter</b>(br)When your second eyelids opened, everything looked the same. There was no wonder and no mystery. Death was simply everywhere. A bitter flavor filled your mouth as you accepted your harsh reality. Gain the <b>Berserker</b> fighting art and the following ability. <b>Bitter Frenzy</b>: You may spend survival and use fighting arts, weapon specialization, and weapon mastery while <b>Frenzied</b>.(7-8) Use <b>Bitter</b>. If the settlement has the <b>Cannibalize</b> Death Principle, your death tastes <b>Sour</b> instead. (9-10) <b>Sour</b>When your second eyelids opened, you saw thousands of small lifeforms swimming through the air. They crawled over you, stealing tastes of your sweat and blood. Death was near- you wondered how your fear tastes. A puckering, sour flavor filled your mouth and you deaded that you must never die. Gain the following ability:(br)<b>Sour Death</b>: When you are knocked down, you may encourage yourself. If you do, gain +1 strength token."
+  },
+  {
+    "id": 42,
+    "name": "Insight Story Event",
+    "description": "Select the epiphany corresponding to the current game phase. A survivor may only gain these benefits once a lifetime."
+  },
+  {
+    "id": 43,
+    "name": "Showdown Phase Epiphany",
+    "description": "<b>Showdown Phase Epiphany</b>(br)Watching the chaotic movements of monsters, you perceive a pattern. Perhaps its motives are not so different from your own. You can imagine yourself in the monster's place. Gain the following ability and roll on the table below.(br1) <b>Analyze</b>: At the start of the Survivors' turn, if you are adjacent to the monster, reveal the top AI card, then place it back on top of the deck.(1-3) Ignore the next severe injury this showdown.(4-7) Gain +3 survival and +3 insanity.(8-9) Gain +1 permanent accuracy.(10+) Gain +1 permanent movement."
+  },
+  {
+    "id": 44,
+    "name": "Hunt Phase Epiphany",
+    "description": "<b>Hunt Phase Epiphany</b>(br)You dream. Before you, toiling silently, a strange creature with the imprint of a human face sculpts stone faces into the ground. You meet its concave gaze and wake. Gain the following ability and roll on the table below. <b>Explore</b>: When you roll on an <b>investigate</b> table, add +2 to your roll result.(1-3) Reroll one hunt event result this hunt phase.(4-7) Gain +3 survival and +3 insanity.(8-9) Gain +1 permanent accuracy.(10+) Gain +1 permanent evasion."
+  },
+  {
+    "id": 45,
+    "name": "Settlement Phase Epiphany",
+    "description": "<b>Settlement Phase Epiphany</b>(br)The hunt, which once filled you with inexorable dread, takes on a new dimension. Your expeditions outside the settlement inspire you with curiosity and wonder. Gain the following ability and roll on the table below.(br1) <b>Tinker</b>: When you are a returning survivor, gain +1 (*) to use this settlement phase.(1-3) If you innovate this phase, draw +1 card.(4-7) Gain +1 (*) this settlement phase.(8-9) Gain +1 permanent accuracy.(10+) Gain +1 permanent strength."
+  },
+  {
+    "id": 46,
+    "name": "White Secret Story Event",
+    "description": "Your brain swells and you scream out in pain. Suffer the <b>Lunacy</b> brain trauma and Remember the Story."
+  },
+  {
+    "id": 47,
+    "name": "Remember the Story",
+    "description": "(1-2) <b>Story of the Ageless man</b>(br)You remember the story of a young man in his prime. The man was so grateful for his body's ability to protect his loved ones. He decided to honor it by punching the dark sky above 1 million times. As long as he never finished his vow, he never aged a single day again.(br1) Your body transforms to its physical peak. Permanently ga1n +1 accuracy and +1 strength. Gain the following ability:(br1) <b>Ageless</b>: You may hunt if you are retired. When you gain Hunt XP, you may decide not to gain it.(3-4) Do <b>Story of the Survivor</b>. If the settlement has the <b>Romantic</b> Conviction Principle, the survivor remembers the <b>Story of the Ageless Man.</b> (5-6) <b>Story of the Survivor</b>You remember the story of a smart young girl that, despite all odds, constantly outwitted the superior beings she encountered. You also recall that her own vanity lead to her death. Gain the <b>Quixotic</b> disorder and the following ability:(br1) <b>Peerless</b>: When you gain insanity, you may gain an equal amount of survival.(7-8) Do <Story of the Survivor>. If the settlement has the <b>Barbaric</b> Conviction Principle, the survivor remembers the <b>Story of the Invisible Hair</b>.(9-10) <b>Story of the Invisible Hair</b>(br)You remember the story of a woman with long hair so fine it couldn't even be seen. She claimed she could feel anything her hair touched. On her deathbed, she cut it all off and gifted a single strand to any who visited her. What was left over was scattered, and hangs floating in the wind, waiting to be grasp by those who learn this story. Gain the following ability.(br1) <b>Leyline Walker</b>: While there is no armor or accessory gear in your gear grid, gain +3 evasion."
   }
 ]
