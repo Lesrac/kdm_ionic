@@ -67,6 +67,12 @@ export class ShowListAddModalComponent implements AfterViewInit {
     }
   }
 
+  selectedDescription(): string | undefined {
+    if (this.existingObjects && this.objectName) {
+      return (<BaseModel>this.existingObjects.find((item: BaseModel) => item.name === this.objectName)).description;
+    }
+  }
+
   close(): void {
     this.viewCtrl.dismiss();
   }

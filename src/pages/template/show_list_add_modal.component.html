@@ -8,6 +8,9 @@
       <ion-option *ngFor="let object of existingObjects">{{object.name}}</ion-option>
     </ion-select>
   </ion-item>
+  <ion-item *ngIf="selectedDescription()">
+    <ion-textarea text-wrap="true" value="{{selectedDescription()}}"></ion-textarea>
+  </ion-item>
   <ion-item>
     <button ion-button full (click)="addClose()">Add</button>
     <button ion-button full (click)="getRandom()">Random</button>
