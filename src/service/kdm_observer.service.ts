@@ -141,13 +141,13 @@ export class KDMObserverService {
                              settlementPageComponent: SettlementPageComponent): void {
     switch (milestoneTarget.toUpperCase()) {
       case 'DEATHCOUNT':
-        settlementMilestone.subscription = settlementPageComponent.deathcount.subscribe(settlementMilestone.observer);
+        settlementPageComponent.deathcount.subscribe(settlementMilestone.observer);
         break;
       case 'POPULATION':
-        settlementMilestone.subscription = settlementPageComponent.population.subscribe(settlementMilestone.observer);
+        settlementPageComponent.population.subscribe(settlementMilestone.observer);
         break;
       case 'INNOVATION':
-        settlementMilestone.subscription = settlementPageComponent.innovations.subscribe(settlementMilestone.observer);
+        settlementPageComponent.innovations.subscribe(settlementMilestone.observer);
         break;
       default:
         console.log('milestoneTarget doesn\'t exist: ' + milestoneTarget);
