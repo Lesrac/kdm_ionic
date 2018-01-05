@@ -291,5 +291,182 @@
     "speed": 2,
     "accuracy": 6,
     "strength": 3
+  },
+  {
+    "name": "Whistling Mace",
+    "description": "On a Perfect hit, reveal the next AI card. Place it on top or bottom of the AI deck. Unwieldy: If any attack roll results are 1, you hit yourself and suffer 1 damage.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "CLUB",
+      "BONE"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 3
+  },
+  {
+    "name": "Rainbow Katana",
+    "description": "Frail",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "KATANA",
+      "FINESSE",
+      "TWO_HANDED"
+    ],
+    "speed": 4,
+    "accuracy": 4,
+    "strength": 4
+  },
+  {
+    "name": "Finger of God",
+    "description": "Reach 2.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SPEAR",
+      "TWO_HANDED"
+    ],
+    "speed": 2,
+    "accuracy": 5,
+    "strength": 5
+  },
+  {
+    "name": "Zanbato",
+    "description": "Slow, Frail, Deadly",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "UP"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "GRAND_WEAPON",
+      "TWO_HANDED",
+      "BONE"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 6
+  },
+  {
+    "name": "Counterweighted Axe",
+    "description": "Reach 2",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "AXE",
+      "TWO_HANDED"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 4
+  },
+  {
+    "name": "Scrap Sword",
+    "description": "On a Perfect hit, the edge sharpens. Gain +4 strength fro the rest of the attack.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 5,
+    "strength": 3
+  },
+  {
+    "name": "Scrap Dagger",
+    "description": "On a Perfect hit, the edge sharpens. Gain +2 strength fro the rest of the attack.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT",
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "DAGGER",
+      "METAL"
+    ],
+    "speed": 3,
+    "accuracy": 7,
+    "strength": 2
+  },
+  {
+    "name": "Skullcap Hammer",
+    "description": "On a Perfect hit, the monster is dazed, and gains -1 speed token until the end of its turn. A Monster can be dazed once per round.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "CLUB",
+      "BONE"
+    ],
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 3
   }
 ]

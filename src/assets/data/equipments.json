@@ -81,5 +81,15 @@
       "CONSUMABLE",
       "FRAGILE"
     ]
+  },
+  {
+    "name": "Blood Sheath",
+    "description": "Block 1. When Rainbow Katana is left of Blood Sheath, it loses Frail and gains Sharp (add 1d10 strength to each wound attempt).",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "BONE",
+      "OTHER"
+    ]
   }
 ]

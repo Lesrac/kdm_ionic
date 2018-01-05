@@ -655,6 +655,11 @@ export class KDMDataService {
   private createStorageTagArray(tags: string[]): StorageTag[] {
     const storageTags: StorageTag[] = [];
     tags.forEach(tagString => {
+      if (StorageTag[tagString] === undefined) {
+        // TODO remove when all storage elements are added
+        console.log('StorageTag: ' + tagString);
+        console.log(StorageTag[tagString]);
+      }
       storageTags.push(StorageTag[tagString]);
     });
     return storageTags;

@@ -90,7 +90,7 @@
             "type": "storageTag"
           },
           {
-            "name": "leather",
+            "name": "LEATHER",
             "amount": 1,
             "type": "storageTag"
           },
@@ -110,7 +110,7 @@
             "type": "storageTag"
           },
           {
-            "name": "leather",
+            "name": "LEATHER",
             "amount": 1,
             "type": "storageTag"
           },
@@ -139,7 +139,178 @@
   {
     "name": "Weapon Crafter",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Counterweighted Axe",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Skullcap Hammer",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Whistling Mace",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Scrap Sword",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Lantern Oven",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      },
+      {
+        "name": "Zanbato",
+        "buildCosts": [
+          {
+            "name": "Great Cat Bones",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "HIDE",
+            "amount": 2,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Scrap Dagger",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Lantern Oven",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      },
+      {
+        "name": "Blood Sheath",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "Hollow Wing Bones",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Muculent Droppings",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Finger of God",
+        "buildCosts": [
+          {
+            "name": "Phoenix Finger",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 4,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rainbow Katana",
+        "buildCosts": [
+          {
+            "name": "Bird Beak",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Rainbow Droppings",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "Lantern Oven",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
