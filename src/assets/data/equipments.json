@@ -1,7 +1,7 @@
 [
   {
     "name": "Rawhide Drum",
-    "description": "When you depart, gain +1 insanity.",
+    "description": "On Arrival, all survivors gain +1 insanity. Inspirational Drumming! When you perform encourage, all non-deaf survivors are affected.",
     "affinities": [
       {
         "affinity": "GREEN",
@@ -19,7 +19,7 @@
   },
   {
     "name": "Bandages",
-    "description": "(lightning): Remove up to 2 bleeding tokens from yourself or an adjacent survivor.",
+    "description": "(flash): Remove up to 2 bleeding tokens from yourself or an adjacent survivor.",
     "affinities": [
       {
         "affinity": "GREEN",
@@ -40,7 +40,7 @@
   },
   {
     "name": "Whisker Harp",
-    "description": "(lightning): Roll 1d10 to strum. On a result of 7+ (3+ if fighting White Lion), discard 1 mood currently in play.",
+    "description": "On Arrival, all survivors gain +1 survival. (flash): Strum. Roll 1d10. On a result of 6+ discard 1 mood currently in play.",
     "affinities": [
       {
         "affinity": "BLUE",
@@ -57,7 +57,7 @@
   },
   {
     "name": "Cat Eye Circlet",
-    "description": "(lightning): Reveal the next 3 monster hit locations and put them back in any order.",
+    "description": "(flash): Reveal the next 3 monster hit locations and put them back in any order.",
     "affinities": [
       {
         "affinity": "BLUE",
@@ -74,7 +74,7 @@
   },
   {
     "name": "Frenzy Drink",
-    "description": "(lightning) Consume: Suffer Frenzy brain trauma. Can be used once per showdown.",
+    "description": "(flash) Consume: Suffer Frenzy brain trauma. Can be used once per showdown.",
     "affinities": [],
     "tags": [
       "ITEM",

@@ -151,7 +151,7 @@
   },
   {
     "name": "Round Leather Shield",
-    "description": "Add 1 (shield) to all  hit locations. Block 1: Spend (lightning) to ignore 1 hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
+    "description": "Add 1 (shield) to all  hit locations. Block 1: Spend (flash) to ignore 1 hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
     "affinities": [
       {
         "affinity": "GREEN",
@@ -209,7 +209,14 @@
   {
     "name": "Claw Head Arrow",
     "description": "Slow, Ammo - Bow: You must have a bow in your gear grid to activate this. If you hit, monster gains -1 evasion token. Use once per showdown.",
-    "affinities": [],
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
     "tags": [
       "ITEM",
       "AMMUNITION",
@@ -221,8 +228,15 @@
   },
   {
     "name": "Cat Gut Bow",
-    "description": "Range: 6. Cumbersome: Spend (horse) as an additional cost of activating this weapon.",
-    "affinities": [],
+    "description": "Cumbersome, Range: 6. Aim: When you attack, before rolling to hit, you may reduce the speed of this weapon by 1 to gain +2 accuracy for that attack.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
     "tags": [
       "WEAPON",
       "RANGED",

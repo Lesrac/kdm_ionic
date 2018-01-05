@@ -159,7 +159,7 @@
   },
   {
     "name": "Rawhide Headband",
-    "description": "(puzzle blue)(lightning): Reveal the top 2 (AI). Place them back on top of the deck in any order",
+    "description": "(puzzle blue)(flash): Reveal the top 2 (AI). Place them back on top of the deck in any order",
     "affinities": [
       {
         "affinity": "BLUE",
@@ -282,7 +282,7 @@
   },
   {
     "name": "White Lion Coat",
-    "description": "Pounce: Spend (horse) and (lightning) to move 3 spaces in a straight line. Then, if you move 3 spaces, activate a melee weapon with +1 strength.",
+    "description": "Pounce: Spend (horse) and (flash) to move 3 spaces in a straight line. Then, if you move 3 spaces, activate a melee weapon with +1 strength.",
     "affinities": [
       {
         "affinity": "BLUE",
@@ -323,7 +323,7 @@
   },
   {
     "name": "White Lion Helm",
-    "description": "(puzzle red)(square blue) (lightning) and 1 survival: Road. Non-Deaf Insane survivors gain +2 strength until end of round. All other survivors gain +1 insanity.",
+    "description": "(puzzle red)(square blue) (flash) and 1 survival: Road. Non-Deaf Insane survivors gain +2 strength until end of round. All other survivors gain +1 insanity.",
     "affinities": [
       {
         "affinity": "RED",
