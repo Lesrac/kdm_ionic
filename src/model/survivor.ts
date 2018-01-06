@@ -3,6 +3,7 @@ import { Disorder } from './disorder';
 import { BaseModel } from './base_model';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
+import { Equipment } from './equipment';
 
 /**
  * Created by Daniel on 24.02.2017.
@@ -47,6 +48,7 @@ export class Survivor {
   fightingArts: FightingArt[] = [];
   disorders: Disorder[] = [];
   characteristics: BaseModel[] = [];
+  equipments: Map<number, Equipment> = new Map<number, Equipment>();
   oncePerLifetime: string = '';
   courage: number = 0;
   understanding: number = 0;
@@ -56,9 +58,6 @@ export class Survivor {
   chosenInsightUnderstanding: string;
   huntXPObserver1: Observer<Object>;
   huntXPObserver2: Observer<Object>;
-  huntXPObserver3: Observer<Object>;
-  huntXPObserver4: Observer<Object>;
-  huntXPObserver5: Observer<Object>;
   courageObserver1: Observer<Object>;
   courageObserver2: Observer<Object>;
   understandingObserver1: Observer<Object>;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
-import { KDMDataService } from '../../service/kdm_data.service';
 import { BaseModel } from '../../model/base_model';
+
 /**
  * Created by Daniel on 16.03.2017.
  */
@@ -13,7 +13,7 @@ export class ShowListDetailComponent {
 
   object: BaseModel;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
+  constructor(public viewCtrl: ViewController, private params: NavParams) {
     this.object = this.params.get('object');
   }
 

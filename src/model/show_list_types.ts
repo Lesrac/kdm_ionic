@@ -6,4 +6,5 @@ export enum ShowListTypes {
   DISORDER = 'DISORDER',
   INNOVATION = 'INNOVATION',
   LOCATION = 'LOCATION',
+  EQUIPMENT = 'EQUIPMENT',
 }

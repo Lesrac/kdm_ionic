@@ -6,6 +6,9 @@ import { ShowListTypes } from '../../model/show_list_types';
 import { Innovation } from '../../model/innovation';
 import { FightingArt } from '../../model/fighting_art';
 import { Disorder } from '../../model/disorder';
+import { Armor } from '../../model/armor';
+import { Equipment } from '../../model/equipment';
+import { Weapon } from '../../model/weapon';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -16,8 +19,8 @@ import { Disorder } from '../../model/disorder';
 })
 export class ShowListAddModalComponent implements AfterViewInit {
 
-  objects: Object[];
-  existingObjects: Object[];
+  objects: Object[] = [];
+  existingObjects: Object[] = [];
   typename: string = 'Non selected';
   objectName: string;
   type: ShowListTypes;
@@ -62,6 +65,9 @@ export class ShowListAddModalComponent implements AfterViewInit {
           this.objectName = rand[0].name;
         });
         break;
+      case ShowListTypes.EQUIPMENT:
+        // TODO
+        break;
       default:
         console.log('no random element for type: ' + this.type);
     }
@@ -102,6 +108,17 @@ export class ShowListAddModalComponent implements AfterViewInit {
         this.kdmData.getSettlementLocations().then(locations =>
           this.existingObjects = locations.filter(location =>
             this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
+        break;
+      case ShowListTypes.EQUIPMENT:
+        this.typename = 'Equipment';
+        this.kdmData.getAllExistingEquipmentItems().then((itemsArray: [Weapon[], Armor[], Equipment[]]) =>
+          itemsArray.forEach((items: Weapon[] | Armor[] | Equipment[]) => {
+              for (let i = 0; i < items.length; i++) {
+                this.existingObjects.push(items[i]);
+              }
+              this.existingObjects.sort(this.kdmData.sortByName);
+            },
+          ));
         break;
       default:
         console.error('unexpected type to setup add_modal: ' + this.type);

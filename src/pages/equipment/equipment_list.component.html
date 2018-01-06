@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Equipments
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <button ion-button icon-only full (click)="addObject()">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item *ngFor="let eq of equipments">
+    <ion-row>
+      <ion-col (click)="setEquipment(eq)">
+        {{eq.name}}
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>

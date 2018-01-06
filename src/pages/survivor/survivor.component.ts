@@ -8,6 +8,7 @@ import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm_db.service';
 import { KDMObserverService } from '../../service/kdm_observer.service';
 import { Subject } from 'rxjs/Subject';
+import { EquipmentGridPageComponent } from '../equipment/equipment_grid.component';
 
 /**
  * Created by Daniel on 01.03.2017.
@@ -180,6 +181,13 @@ export class SurvivorPageComponent implements OnInit {
     this.navCtrl.push(ShowListComponent, {
       objects: this.survivor.fightingArts,
       type: ShowListTypes.FIGHTINGART,
+      settlement: this.settlement,
+    }).then();
+  }
+
+  showEquipmentGrid(): void {
+    this.navCtrl.push(EquipmentGridPageComponent, {
+      survivor: this.survivor,
       settlement: this.settlement,
     }).then();
   }

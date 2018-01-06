@@ -76,6 +76,9 @@ export class ShowListComponent implements OnInit {
       case ShowListTypes.LOCATION:
         this.title = 'Locations';
         break;
+      case ShowListTypes.EQUIPMENT:
+        this.title = 'Equipments';
+        break;
       default:
         console.error('Type doesn\'t exist in show list types: ' + this.type);
     }

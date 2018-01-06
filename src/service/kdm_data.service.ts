@@ -340,6 +340,10 @@ export class KDMDataService {
                       }
                       break;
                     }
+                    case 'text': {
+                      costs.set(buildCost.name, [buildCost.amount]);
+                      break;
+                    }
                     default: {
                       console.error('No element for type: ' + buildCost.type + ', for Equipment: ' + buildCost.name);
                       break;
@@ -815,6 +819,11 @@ export class KDMDataService {
         this.getFightingArt(fightingArtName).then(fightingArt => survivor.fightingArts.push(fightingArt)));
       simplifiedSurvivor.disorderNames.forEach(disorderName =>
         this.getDisorder(disorderName).then(disorder => survivor.disorders.push(disorder)));
+      simplifiedSurvivor.equipments.forEach(survivorEquipmentSimplified =>
+        this.getEquipment(survivorEquipmentSimplified.equipmentName).then(equipment =>
+          survivor.equipments.set(survivorEquipmentSimplified.position, equipment),
+        ),
+      );
       settlement.survivors.push(survivor);
     });
     return settlement;

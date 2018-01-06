@@ -40,7 +40,8 @@ export class SurvivorSimplified {
   skipNextHunt: boolean = false;
   fightingArtNames: string[] = [];
   disorderNames: string[] = [];
-  characteristicNames: string[];
+  characteristicNames: string[] = [];
+  equipments: SurvivorEquipmentSimplified[] = [];
   oncePerLifetime: string;
   courage: number;
   understanding: number;
@@ -102,5 +103,15 @@ export class SurvivorSimplified {
     this.weaponProficiencyXP = weaponProficiencyXP;
     this.chosenBoldCourage = chosenBoldCourage;
     this.chosenInsightUnderstanding = chosenInsightUnderstanding;
+  }
+}
+
+export class SurvivorEquipmentSimplified {
+  position: number;
+  equipmentName: string;
+
+  constructor(position: number, equipmentName: string) {
+    this.position = position;
+    this.equipmentName = equipmentName;
   }
 }

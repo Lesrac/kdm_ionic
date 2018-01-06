@@ -13,7 +13,8 @@ import { HuntedMonster } from '../model/linking/hunted_monster';
 import { HuntedMonsterDB } from '../model/db/hunted_monster_db';
 import { Storage } from '../model/storage';
 import { Survivor } from '../model/survivor';
-import { SurvivorSimplified } from '../model/db/survivor_simplified';
+import { SurvivorEquipmentSimplified, SurvivorSimplified } from '../model/db/survivor_simplified';
+import { Equipment } from '../model/equipment';
 
 export class SimplifyObjects {
 
@@ -58,6 +59,9 @@ export class SimplifyObjects {
     survivor.disorders.forEach(disorder => simplifiedSurvivor.disorderNames.push(disorder.name));
     survivor.characteristics.forEach(characteristic =>
       simplifiedSurvivor.characteristicNames.push(characteristic.name));
+    survivor.equipments.forEach((value: Equipment, key: number) => {
+      simplifiedSurvivor.equipments.push(new SurvivorEquipmentSimplified(key, value.name));
+    });
     return simplifiedSurvivor;
   }
 
