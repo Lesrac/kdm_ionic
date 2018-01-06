@@ -8,13 +8,6 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
 
-  entry: {
-    vendor: [
-      'dragula',
-      'ng2-dragula/ng2-dragula'
-    ]
-  },
-
   module: {
     rules: [
       {
