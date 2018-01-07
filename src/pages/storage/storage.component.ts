@@ -24,10 +24,6 @@ export class StoragePageComponent {
     this.settlement.storages.sort(kdmService.sortByName);
   }
 
-  ionViewDidLeave(): void {
-    this.kdmdbService.saveSettlement(this.settlement);
-  }
-
   decreaseAmount(storage: Storage): void {
     storage.amount--;
     if (storage.amount === 0) {

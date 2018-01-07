@@ -138,11 +138,4 @@ describe('StorageComponent', () => {
     );
   });
 
-  it('check save on leave', () => {
-    const spy = spyOn(kdmdbServiceMock, 'saveSettlement');
-    storageComponent.ionViewDidLeave();
-    expect(spy).toHaveBeenCalledWith(settlement);
-  });
-
-})
-;
+});

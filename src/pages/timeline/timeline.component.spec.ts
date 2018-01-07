@@ -81,12 +81,6 @@ describe('TimelinePageComponent', () => {
     expect(timelinePageComponent).toBeTruthy();
   });
 
-  it('ionViewDidLeave', () => {
-    const spy = spyOn(kdmdbServiceMock, 'saveSettlement');
-    timelinePageComponent.ionViewDidLeave();
-    expect(spy).toHaveBeenCalledWith(timelinePageComponent.timeline[0].settlement);
-  });
-
   it('change reorder', () => {
     expect(timelinePageComponent.reorderActivityName).toEqual('Reorder');
     expect(timelinePageComponent.reorderFlag).toBeFalsy();
@@ -136,7 +130,7 @@ describe('TimelinePageComponent', () => {
     expect(settlementTimelinePosition5.reached).toBeFalsy();
     expect(spy).toHaveBeenCalledWith(TimelineEventModalComponent, {
       lanternEvent: settlementTimelinePosition4.timeline.lanternEvent
-    })
+    });
   });
 
   it('timeline reached deactivate with lantern event', () => {

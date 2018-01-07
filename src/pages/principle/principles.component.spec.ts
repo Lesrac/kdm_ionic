@@ -94,12 +94,10 @@ describe('Principle Page Component', () => {
     const principleType2 = new PrincipleType('Principle Type');
     const principle = new Principle('Dummy Principle', 'dummy', principleType2);
     principlesPageComponent.settlement.principles.push(principle);
-    const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     expect(principlesPageComponent.settlement.principles.length).toBe(1);
     principlesPageComponent.removePrinciple(principleType);
     expect(principlesPageComponent.settlement.principles.length).toBe(1);
     principlesPageComponent.removePrinciple(principleType2);
-    expect(spy).toHaveBeenCalledWith(principlesPageComponent.settlement);
     expect(principlesPageComponent.settlement.principles.length).toBe(0);
   });
 

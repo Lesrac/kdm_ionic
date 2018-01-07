@@ -1,6 +1,6 @@
 import { KDMDataService } from './kdm_data.service';
 import { KDMDBServiceMock } from '../mock/mocks';
-import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { KDMDBService } from './kdm_db.service';
 import { Monster } from '../model/monster';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -609,6 +609,8 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.timeline[2].lanternEvent).toBe(lanternEvent2);
         expect(kdmDataService.timeline[3].position).toBe(timelineJSON4.position);
         expect(kdmDataService.timeline[3].lanternEvent).toBe(lanternEvent2);
+        // TODO find ohter solution for discardPeriodicTasks();
+        discardPeriodicTasks();
       })));
 
     it('get Default Timeline from cache', inject([KDMDataService],
@@ -954,6 +956,8 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.principles[2].type).toBe(principleTypes.find(principle =>
           principle.name === principleJSON3.type));
         expect(typeof kdmDataService.principles[2]).toBe(typeof principle1);
+        // TODO find ohter solution for discardPeriodicTasks();
+        discardPeriodicTasks();
       })));
 
     it('get Principles from cache', inject([KDMDataService],
@@ -1013,6 +1017,8 @@ describe('KDM Data Service', () => {
         tick();
         expect(kdmDataService.settlements.length).toBe(simpleSettlements.length);
         expect(spy).toHaveBeenCalled();
+        // TODO find ohter solution for discardPeriodicTasks();
+        discardPeriodicTasks();
       })));
 
     it('get settlements from cache', inject([KDMDataService],
@@ -1079,6 +1085,8 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.settlements).toContain(settlement2);
         expect(kdmDataService.settlements).toContain(settlement3);
         expect(settlement3.id).toBe(3);
+        // TODO find ohter solution for discardPeriodicTasks();
+        discardPeriodicTasks();
       })));
 
     it('get Innovations from http', inject([KDMDataService, HttpClient, HttpTestingController],
@@ -1236,6 +1244,8 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.locations[2].isStartLocation).toBe(locationJSONResource.isStartLocation);
         expect(kdmDataService.locations[2].manufacturingObjects.size)
           .toBe(locationJSONResource.manufacturingObjects.length);
+        // TODO find ohter solution for discardPeriodicTasks();
+        discardPeriodicTasks();
       })));
 
     it('get Settlement Locations from cache', inject([KDMDataService],
@@ -1294,7 +1304,7 @@ describe('KDM Data Service', () => {
           16, true, false, true, false, 1, 2, 3, 4, 5, 6,
           7, false, 8, false, 9, true, false, 10, false,
           false, 11, false, true, 12, true, false, false,
-          true, true, 'Stand Up', 13, 14, 'Sword', 15);
+          true, true, 'Stand Up', 13, 14, 'Sword', 15, '', '');
         const settlementMilestoneDB = new SettlementMilestoneDB(1, 1, false);
         const simplifiedSettlement = new SettlementSimplified(1, 'Simple Settlement', 2, 3, 4, 5);
         simplifiedSettlement.timeline = [settlementTimelineDB, settlementTimelineDB2];
@@ -1338,6 +1348,8 @@ describe('KDM Data Service', () => {
           expect(settlement.huntableMonsters.length).toBe(simplifiedSettlement.huntableMonsters.length);
           expect(settlement.timeline.length).toBe(simplifiedSettlement.timeline.length);
         });
+        // TODO find ohter solution for discardPeriodicTasks();
+        discardPeriodicTasks();
       })));
   });
 

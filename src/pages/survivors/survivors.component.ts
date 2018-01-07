@@ -50,7 +50,6 @@ export class SurvivorsPageComponent implements OnInit {
 
   addSurvivor(): void {
     this.kdmService.createAndAddSurvivor(this.settlement);
-    this.kdmdbService.saveSettlement(this.settlement);
   }
 
   survivorsCheck(): boolean {

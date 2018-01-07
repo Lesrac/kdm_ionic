@@ -33,10 +33,6 @@ export class ShowListComponent implements OnInit {
     this.setup();
   }
 
-  ionViewDidLeave(): void {
-    this.kdmdbService.saveSettlement(this.settlement);
-  }
-
   addObject(): void {
     let modal = this.modalCtrl.create(ShowListAddModalComponent, {
       objects: this.objects,

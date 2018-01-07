@@ -159,61 +159,46 @@ describe('Settlement Component', () => {
   });
 
   it('change survival limit', () => {
-    const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     settlementPageComponent.settlement.survivalLimit = 2;
     settlementPageComponent.survivalLimitChange('not a number');
     expect(settlementPageComponent.settlement.survivalLimit).toBe(2);
-    expect(spy).toHaveBeenCalledTimes(0);
     settlementPageComponent.survivalLimitChange(3);
-    expect(spy).toHaveBeenCalledWith(settlementPageComponent.settlement);
     expect(settlementPageComponent.settlement.survivalLimit).toBe(3);
   });
 
   it('change settlement lost', () => {
-    const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     settlementPageComponent.settlement.settlementLost = 2;
     settlementPageComponent.settlementLostChange('not a number');
     expect(settlementPageComponent.settlement.settlementLost).toBe(2);
-    expect(spy).toHaveBeenCalledTimes(0);
     settlementPageComponent.settlementLostChange(3);
-    expect(spy).toHaveBeenCalledWith(settlementPageComponent.settlement);
     expect(settlementPageComponent.settlement.settlementLost).toBe(3);
   });
 
   it('change deathcount', () => {
-    const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     settlementPageComponent.settlement.deathcount = 2;
     settlementPageComponent.deathcountChange('not a number');
     expect(settlementPageComponent.settlement.deathcount).toBe(2);
-    expect(spy).toHaveBeenCalledTimes(0);
     settlementPageComponent.deathcountChange(3);
-    expect(spy).toHaveBeenCalledWith(settlementPageComponent.settlement);
     expect(settlementPageComponent.settlement.deathcount).toBe(3);
   });
 
   it('change population', () => {
-    const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     settlementPageComponent.settlement.population = 2;
     settlementPageComponent.populationChange('not a number');
     expect(settlementPageComponent.settlement.population).toBe(2);
-    expect(spy).toHaveBeenCalledTimes(0);
     settlementPageComponent.populationChange(3);
-    expect(spy).toHaveBeenCalledWith(settlementPageComponent.settlement);
     expect(settlementPageComponent.settlement.population).toBe(3);
     expect(settlementPageComponent.settlement.survivors.length).toBe(3);
     settlementPageComponent.populationChange(3);
-    expect(spy).toHaveBeenCalledWith(settlementPageComponent.settlement);
     expect(settlementPageComponent.settlement.population).toBe(3);
     expect(settlementPageComponent.settlement.survivors.length).toBe(3);
     settlementPageComponent.populationChange(2);
-    expect(spy).toHaveBeenCalledWith(settlementPageComponent.settlement);
     expect(settlementPageComponent.settlement.population).toBe(2);
     expect(settlementPageComponent.settlement.survivors.length).toBe(3);
   });
 
   it('event reached', () => {
     const spy = spyOn(settlementPageComponent.modalCtrl, 'create').and.returnValue(new ModalMock());
-    const spySave = spyOn(kdmDBServiceMock, 'saveSettlement');
     const lanternEvent = new LanternEvent();
     const settlementLanternEvent = new SettlementLanternEvent(settlement, lanternEvent);
     settlementLanternEvent.reached = true;
@@ -222,19 +207,16 @@ describe('Settlement Component', () => {
     expect(spy).toHaveBeenCalledWith(TimelineEventModalComponent, {
       lanternEvent: lanternEvent,
     });
-    expect(spySave).toHaveBeenCalledWith(settlementPageComponent.settlement);
   });
 
   it('event not reached', () => {
     const spy = spyOn(settlementPageComponent.modalCtrl, 'create').and.returnValue(new ModalMock());
-    const spySave = spyOn(kdmDBServiceMock, 'saveSettlement');
     const lanternEvent = new LanternEvent();
     const settlementLanternEvent = new SettlementLanternEvent(settlement, lanternEvent);
     settlementLanternEvent.reached = false;
     const event = new Event('click');
     settlementPageComponent.eventReached(event, settlementLanternEvent);
     expect(spy).toHaveBeenCalledTimes(0);
-    expect(spySave).toHaveBeenCalledTimes(0);
   });
 
 });

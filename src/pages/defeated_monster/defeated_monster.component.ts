@@ -47,7 +47,6 @@ export class DefeatedMonsterPageComponent {
           modal.present();
         }
       }
-      this.kdmdbService.saveSettlement(this.settlement);
     });
   }
 

@@ -40,6 +40,17 @@ import { ArmorJSON } from '../model/jsonData/armor_json';
 import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
 import { InnovationJSON } from '../model/jsonData/innovation_json';
 import { LocationJSON } from '../model/jsonData/location_json';
+import { Observable } from 'rxjs/Observable';
+
+class SettlementWatcher {
+  settlement: Settlement;
+  lastUpdated: number;
+
+  constructor(settlement: Settlement, lastUpdated: number) {
+    this.settlement = settlement;
+    this.lastUpdated = lastUpdated;
+  }
+}
 
 /**
  * Created by Daniel on 28.01.2017.
@@ -91,7 +102,19 @@ export class KDMDataService {
 
   readonly initSurvivorName: string = 'Survivor';
 
+  private watchedSettlements: SettlementWatcher[] = [];
+
   constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
+    new Observable(() => {
+      setInterval(() => {
+        const dateNow = Date.now();
+        // TODO only update, when younger then... ?
+        this.watchedSettlements.forEach(watchedSettlement => {
+          console.log('diff: ' + (dateNow - watchedSettlement.lastUpdated));
+          this.kdmDBService.saveSettlement(watchedSettlement.settlement);
+        });
+      }, 30000);
+    }).subscribe();
   }
 
   getSettlements(): Promise<Settlement[]> {
@@ -110,7 +133,13 @@ export class KDMDataService {
     this.getStoryEvents();
     this.getLanternEvents();
     return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
-      return this.desimplifySettlement(settlementSimplified);
+      const settlement: Settlement = this.desimplifySettlement(settlementSimplified);
+      console.log('settlement watching');
+      const indexCount = this.watchedSettlements.findIndex(watchedSettlement =>
+        watchedSettlement.settlement.id === settlement.id);
+      this.watchedSettlements.splice(indexCount, 1);
+      this.watchedSettlements.push(new SettlementWatcher(settlement, Date.now()));
+      return settlement;
     });
   }
 

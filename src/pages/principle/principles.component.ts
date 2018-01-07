@@ -47,7 +47,6 @@ export class PrinciplesPageComponent implements OnInit {
     );
     if (indexOfItemToRemove >= 0) {
       this.settlement.principles.splice(indexOfItemToRemove, 1);
-      this.kdmdbService.saveSettlement(this.settlement);
     }
   }
 

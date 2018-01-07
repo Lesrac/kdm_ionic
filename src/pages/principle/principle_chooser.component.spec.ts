@@ -68,12 +68,10 @@ describe('Principle Chooser Component', () => {
   }));
 
   it('select principle', () => {
-    const spy = spyOn(kdmDBServiceMock, 'saveSettlement');
     const spyNav = spyOn(principleChooserPageComponent.navCtrl, 'pop');
     const principle = new Principle('Dummy Principle', 'dummy', new PrincipleType('Dummy Principle Type'));
     principleChooserPageComponent.selectPrinciple(principle);
     expect(principleChooserPageComponent.settlement.principles).toContain(principle);
-    expect(spy).toHaveBeenCalledWith(principleChooserPageComponent.settlement);
     expect(spyNav).toHaveBeenCalled();
   });
 

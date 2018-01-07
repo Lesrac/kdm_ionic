@@ -15,6 +15,5 @@ export class TabsPageComponent {
   tab3Root: any = OthersPage;
 
   constructor() {
-
   }
 }

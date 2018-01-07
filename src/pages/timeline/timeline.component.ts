@@ -23,10 +23,6 @@ export class TimelinePageComponent {
     this.timeline = params.get('settlementTimeline');
   }
 
-  ionViewDidLeave(): void {
-    this.kdmdbService.saveSettlement(this.timeline[0].settlement);
-  }
-
   timelineReached(event: Event, settlementTimeline: SettlementTimeline): void {
     if (settlementTimeline.timeline.lanternEvent != null && settlementTimeline.reached) {
       let modal = this.modalCtrl.create(TimelineEventModalComponent, {

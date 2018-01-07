@@ -94,7 +94,6 @@ export class SettlementPageComponent implements DoCheck {
       let popover = this.modalCtrl.create(TimelineEventModalComponent, {
         lanternEvent: settlementLanternEvent.lanternEvent,
       });
-      this.kdmDBService.saveSettlement(this.settlement);
       popover.present({
         ev: event,
       });
@@ -104,14 +103,12 @@ export class SettlementPageComponent implements DoCheck {
   survivalLimitChange(event): void {
     if (typeof event === 'number') {
       this.settlement.survivalLimit = event;
-      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
   settlementLostChange(event): void {
     if (typeof event === 'number') {
       this.settlement.settlementLost = event;
-      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
@@ -119,7 +116,6 @@ export class SettlementPageComponent implements DoCheck {
     if (typeof event === 'number') {
       this.deathcount.next(event);
       this.settlement.deathcount = event;
-      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
@@ -132,13 +128,11 @@ export class SettlementPageComponent implements DoCheck {
         this.addSurvivor();
       }
       this.populationChecker();
-      this.kdmDBService.saveSettlement(this.settlement);
     }
   }
 
   addSurvivor(): void {
     this.kdmService.createAndAddSurvivor(this.settlement);
-    this.kdmDBService.saveSettlement(this.settlement);
   }
 
   populationChecker(): void {
