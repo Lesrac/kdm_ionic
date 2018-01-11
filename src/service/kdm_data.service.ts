@@ -110,7 +110,6 @@ export class KDMDataService {
         const dateNow = Date.now();
         // TODO only update, when younger then... ?
         this.watchedSettlements.forEach(watchedSettlement => {
-          console.log('diff: ' + (dateNow - watchedSettlement.lastUpdated));
           this.kdmDBService.saveSettlement(watchedSettlement.settlement);
         });
       }, 30000);
@@ -134,7 +133,6 @@ export class KDMDataService {
     this.getLanternEvents();
     return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
       const settlement: Settlement = this.desimplifySettlement(settlementSimplified);
-      console.log('settlement watching');
       const indexCount = this.watchedSettlements.findIndex(watchedSettlement =>
         watchedSettlement.settlement.id === settlement.id);
       this.watchedSettlements.splice(indexCount, 1);

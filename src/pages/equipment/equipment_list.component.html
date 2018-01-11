@@ -8,9 +8,15 @@
 
 <ion-content padding>
   <ion-item>
-    <button ion-button icon-only full (click)="addObject()">
+    <button ion-button icon-only full (click)="pushEquipment()">
       <ion-icon name="add-circle"></ion-icon>
     </button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Equipments</ion-label>
+    <ion-select [(ngModel)]="equipmentName">
+      <ion-option *ngFor="let equipment of allEquipments">{{equipment.name}}</ion-option>
+    </ion-select>
   </ion-item>
   <ion-item *ngFor="let eq of equipments">
     <ion-row>

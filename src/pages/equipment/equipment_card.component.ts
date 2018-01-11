@@ -46,6 +46,10 @@ export class EquipmentCardComponent implements OnInit, DoCheck {
 
   setupColors() {
     const equipment: Equipment = this.survivor.equipments.get(this.position);
+    this.backgroundUp = {};
+    this.backgroundDown = {};
+    this.backgroundLeft = {};
+    this.backgroundRight = {};
     if (equipment) {
       if (equipment.affinities.get(Affinity.BLUE)) {
         this.setAffinityColour(equipment, Affinity.BLUE, 'blue');
@@ -56,11 +60,6 @@ export class EquipmentCardComponent implements OnInit, DoCheck {
       if (equipment.affinities.get(Affinity.RED)) {
         this.setAffinityColour(equipment, Affinity.RED, 'red');
       }
-    } else {
-      this.backgroundUp = {};
-      this.backgroundDown = {};
-      this.backgroundLeft = {};
-      this.backgroundRight = {};
     }
   }
 
