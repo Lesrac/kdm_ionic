@@ -74,7 +74,7 @@ describe('StorageModalComponent', () => {
     const spy = spyOn(storageModalComponent, 'close').and.returnValue(true);
     storageModalComponent.storageItemName = 'Storage dummy';
     expect(storageModalComponent.settlement.storages.length).toBe(0);
-    storageModalComponent.addClose();
+    storageModalComponent.addAndClose();
     expect(storageModalComponent.settlement.storages.length).toBe(1);
     expect(storageModalComponent.settlement.storages).toContain(storageItem);
     expect(spy).toHaveBeenCalled();
@@ -86,7 +86,7 @@ describe('StorageModalComponent', () => {
     const spy = spyOn(storageModalComponent, 'close').and.returnValue(true);
     storageModalComponent.storageItemName = 'Hommy';
     expect(storageModalComponent.settlement.storages.length).toBe(0);
-    storageModalComponent.addClose();
+    storageModalComponent.addAndClose();
     expect(storageModalComponent.settlement.storages.length).toBe(0);
     expect(spy).toHaveBeenCalled();
   });
