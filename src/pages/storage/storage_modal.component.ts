@@ -38,12 +38,16 @@ export class StorageModalComponent implements OnInit {
     this.storageItemName = storage.name;
   }
 
-  addClose(): void {
+  add(): void {
     const storageItem: Storage = this.storageItems.find(item => item.name === this.storageItemName);
     if (storageItem) {
       this.settlement.addStorageItem(storageItem);
       this.settlement.storages.sort(this.kdmData.sortByName);
     }
+  }
+
+  addAndClose(): void {
+    this.add();
     this.close();
   }
 
