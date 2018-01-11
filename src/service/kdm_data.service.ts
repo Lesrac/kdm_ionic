@@ -118,6 +118,9 @@ export class KDMDataService {
 
   getSettlements(): Promise<Settlement[]> {
     if (this.settlements.length < 1) {
+      this.getStoryEvents();
+      this.getLanternEvents();
+      this.getInitialMilestones();
       return this.kdmDBService.getSettlements().then(simplifiedSettlementsArray => {
         simplifiedSettlementsArray[0].forEach(simplifiedSettlement =>
           this.settlements.push(this.desimplifySettlements(simplifiedSettlement)));
@@ -129,8 +132,6 @@ export class KDMDataService {
   }
 
   getSettlement(id: number): Promise<Settlement> {
-    this.getStoryEvents();
-    this.getLanternEvents();
     return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
       const settlement: Settlement = this.desimplifySettlement(settlementSimplified);
       const indexCount = this.watchedSettlements.findIndex(watchedSettlement =>

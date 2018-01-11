@@ -609,7 +609,7 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.timeline[2].lanternEvent).toBe(lanternEvent2);
         expect(kdmDataService.timeline[3].position).toBe(timelineJSON4.position);
         expect(kdmDataService.timeline[3].lanternEvent).toBe(lanternEvent2);
-        // TODO find ohter solution for discardPeriodicTasks();
+        // TODO find other solution for discardPeriodicTasks();
         discardPeriodicTasks();
       })));
 
@@ -956,7 +956,7 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.principles[2].type).toBe(principleTypes.find(principle =>
           principle.name === principleJSON3.type));
         expect(typeof kdmDataService.principles[2]).toBe(typeof principle1);
-        // TODO find ohter solution for discardPeriodicTasks();
+        // TODO find other solution for discardPeriodicTasks();
         discardPeriodicTasks();
       })));
 
@@ -1013,11 +1013,15 @@ describe('KDM Data Service', () => {
       (kdmDataService: KDMDataService) => {
         const spy = spyOn(kdmDBServiceMock, 'getSettlements').and.callThrough()
           .and.returnValue(Promise.resolve([simpleSettlements, undefined]));
+        kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];
+        kdmDataService.lanternEvents = [new LanternEvent()];
+        kdmDataService.milestones = [new Milestone(1, 'Milestone', 2, ComparableVisitorValue.EQ,
+          'POPULATION', MilestoneType.Basic)];
         kdmDataService.getSettlements();
         tick();
         expect(kdmDataService.settlements.length).toBe(simpleSettlements.length);
         expect(spy).toHaveBeenCalled();
-        // TODO find ohter solution for discardPeriodicTasks();
+        // TODO find other solution for discardPeriodicTasks();
         discardPeriodicTasks();
       })));
 
@@ -1034,10 +1038,8 @@ describe('KDM Data Service', () => {
 
     it('get settlement from cache', inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
-        const spy = spyOn(kdmDBServiceMock, 'getSettlementById').and.callThrough()
+        spyOn(kdmDBServiceMock, 'getSettlementById').and.callThrough()
           .and.returnValue(Promise.resolve(simpleSettlements));
-        kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];
-        kdmDataService.lanternEvents = [new LanternEvent()];
         kdmDataService.getSettlement(2).then(settlement => {
           expect(settlement.id).toBe(simpleSettlement2.id);
           expect(settlement.name).toBe(simpleSettlement2.name);
@@ -1065,6 +1067,10 @@ describe('KDM Data Service', () => {
     it('add settlement', fakeAsync(inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         const spy = spyOn(kdmDBServiceMock, 'saveSettlement').and.returnValue(true);
+        kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];
+        kdmDataService.lanternEvents = [new LanternEvent()];
+        kdmDataService.milestones = [new Milestone(1, 'Milestone', 2, ComparableVisitorValue.EQ,
+          'POPULATION', MilestoneType.Basic)];
         kdmDataService.addSettlement(settlement1);
         tick();
         expect(kdmDataService.settlements.length).toBe(1);
@@ -1085,7 +1091,7 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.settlements).toContain(settlement2);
         expect(kdmDataService.settlements).toContain(settlement3);
         expect(settlement3.id).toBe(3);
-        // TODO find ohter solution for discardPeriodicTasks();
+        // TODO find other solution for discardPeriodicTasks();
         discardPeriodicTasks();
       })));
 
@@ -1244,7 +1250,7 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.locations[2].isStartLocation).toBe(locationJSONResource.isStartLocation);
         expect(kdmDataService.locations[2].manufacturingObjects.size)
           .toBe(locationJSONResource.manufacturingObjects.length);
-        // TODO find ohter solution for discardPeriodicTasks();
+        // TODO find other solution for discardPeriodicTasks();
         discardPeriodicTasks();
       })));
 
@@ -1348,7 +1354,7 @@ describe('KDM Data Service', () => {
           expect(settlement.huntableMonsters.length).toBe(simplifiedSettlement.huntableMonsters.length);
           expect(settlement.timeline.length).toBe(simplifiedSettlement.timeline.length);
         });
-        // TODO find ohter solution for discardPeriodicTasks();
+        // TODO find other solution for discardPeriodicTasks();
         discardPeriodicTasks();
       })));
   });
