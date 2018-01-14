@@ -348,5 +348,11 @@
     "description": "",
     "manufacturingObjects": [],
     "isStartLocation": false
+  },
+  {
+    "name": "Catarium",
+    "description": "",
+    "manufacturingObjects": [],
+    "isStartLocation": false
   }
 ]
