@@ -10,11 +10,11 @@
         "level": 1,
         "resources": [
           {
-            "name": "Basic",
+            "name": "BASIC",
             "amount": 4
           },
           {
-            "name": "WhiteLion",
+            "name": "WHITELION",
             "amount": 4
           }
         ]
@@ -23,11 +23,11 @@
         "level": 2,
         "resources": [
           {
-            "name": "Basic",
+            "name": "BASIC",
             "amount": 4
           },
           {
-            "name": "WhiteLion",
+            "name": "WHITELION",
             "amount": 6
           }
         ]
@@ -36,11 +36,11 @@
         "level": 3,
         "resources": [
           {
-            "name": "Basic",
+            "name": "BASIC",
             "amount": 4
           },
           {
-            "name": "WhiteLion",
+            "name": "WHITELION",
             "amount": 8
           },
           {
@@ -64,11 +64,11 @@
           "level": 1,
           "resources": [
             {
-              "name": "Basic",
+              "name": "BASIC",
               "amount": 4
             },
             {
-              "name": "ScreamingAntelope",
+              "name": "SCREAMINGANTELOPE",
               "amount": 4
             }
           ]
@@ -77,11 +77,11 @@
           "level": 2,
           "resources": [
             {
-              "name": "Basic",
+              "name": "BASIC",
               "amount": 4
             },
             {
-              "name": "ScreamingAntelope",
+              "name": "SCREAMINGANTELOPE",
               "amount": 6
             }
           ]
@@ -90,11 +90,11 @@
           "level": 3,
           "resources": [
             {
-              "name": "Basic",
+              "name": "BASIC",
               "amount": 4
             },
             {
-              "name": "ScreamingAntelope",
+              "name": "SCREAMINGANTELOPE",
               "amount": 8
             },
             {
@@ -109,7 +109,7 @@
   },
   {
     "id": 3,
-    "name": "Phoenix",
+    "name": "PHOENIX",
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
@@ -119,11 +119,11 @@
           "level": 1,
           "resources": [
             {
-              "name": "Basic",
+              "name": "BASIC",
               "amount": 4
             },
             {
-              "name": "Phoenix",
+              "name": "PHOENIX",
               "amount": 4
             }
           ]
@@ -132,11 +132,11 @@
           "level": 2,
           "resources": [
             {
-              "name": "Basic",
+              "name": "BASIC",
               "amount": 4
             },
             {
-              "name": "Phoenix",
+              "name": "PHOENIX",
               "amount": 6
             }
           ]
@@ -145,11 +145,11 @@
           "level": 3,
           "resources": [
             {
-              "name": "Basic",
+              "name": "BASIC",
               "amount": 4
             },
             {
-              "name": "Phoenix",
+              "name": "PHOENIX",
               "amount": 8
             },
             {
