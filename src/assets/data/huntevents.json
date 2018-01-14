@@ -251,7 +251,7 @@
   },
   {
     "name": "Refugees",
-    "description": "The survivors encounter a group of fleeing settlers. If the survivors have innovated <b>Symposium</b>, they may offer the refugees a piece of gear or a resou rce. If they do, archive the offering. (br1)If the suvivors gave the refug ees an offering, they will stop to te ll their mournful tale about the monster that besieged them. Now prepared for what lies ahead , at the start of the showdown, reveal the first 5 AI ca rd s from the quarry's AI deck and put them back in any order.",
+    "description": "The survivors encounter a group of fleeing settlers. If the survivors have innovated <b>Symposium</b>, they may offer the refugees a piece of gear or a resource. If they do, archive the offering. (br1)If the suvivors gave the refugees an offering, they will stop to tell their mournful tale about the monster that besieged them. Now prepared for what lies ahead, at the start of the showdown, reveal the first 5 AI card s from the quarry's AI deck and put them back in any order.",
     "rollResult": "51"
   },
   {
