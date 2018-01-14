@@ -247,7 +247,10 @@ export class KDMDataService {
           res.forEach(lanternEventJSON => {
             const lanternEvent = new LanternEvent(lanternEventJSON.name, lanternEventJSON.todo);
             lanternEventJSON.storyEvents.forEach(storyEventID => {
-              this.getStoryEvent(storyEventID).then(storyEvent => lanternEvent.storyEvents.push(storyEvent));
+              this.getStoryEvent(storyEventID).then(storyEvent => {
+                lanternEvent.storyEvents.push(storyEvent);
+                lanternEvent.storyEvents.sort(this.sortById);
+              });
             });
             lanternEvents.push(lanternEvent);
           });
@@ -667,6 +670,16 @@ export class KDMDataService {
       return -1;
     }
     if (l.name > r.name) {
+      return 1;
+    }
+    return 0;
+  }
+
+  sortById(l, r) {
+    if (l.id < r.id) {
+      return -1;
+    }
+    if (l.id > r.id) {
       return 1;
     }
     return 0;
