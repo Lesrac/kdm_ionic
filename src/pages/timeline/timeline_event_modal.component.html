@@ -7,7 +7,7 @@
     {{lanternEvent.todo}}
   </ion-item>
   <ion-item-group *ngFor="let storyEvent of lanternEvent.storyEvents">
-    <ion-item-divider>{{storyEvent.title}}</ion-item-divider>
+    <ion-item-divider>{{storyEvent.name}}</ion-item-divider>
     <ion-item text-wrap>
       <span [innerHTML]="storyEvent.description | kdmTextFormatting"></span>
     </ion-item>
