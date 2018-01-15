@@ -17,11 +17,6 @@
     ]
   },
   {
-    "name": "Nemesis Encounter - Butcher",
-    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the Butcher's monster level (it should be 1 greater than the last Butcher encounter) and set up the showdown accordingly.",
-    "storyEvents": []
-  },
-  {
     "name": "Hands of Heat",
     "todo": "The mystery of the lantern's glow.",
     "storyEvents": [
@@ -47,8 +42,48 @@
     ]
   },
   {
-    "name": "Nemesis Encounter - King's Man",
+    "name": "Nemesis Encounter - Butcher Lvl 1",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the Butcher's monster level (it should be 1 greater than the last Butcher encounter) and set up the showdown accordingly.",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Butcher Lvl 2",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Butcher Lvl 3",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - King's Man Lvl 1",
     "todo": "Departing survivors do not have a Hunt Phase. Instead, select the King's Man monster level (it should be 1 greater than the last King's Man encounter) and set up the showdown accordingly.",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - King's Man Lvl 2",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - King's Man Lvl 3",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Watcher",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - The Hand Lvl 1",
+    "todo": "",
+    "storyEvents": []
+  },
+  {
+    "name": "Nemesis Encounter - Gold Smoke Knight",
+    "todo": "",
     "storyEvents": []
   },
   {
@@ -65,28 +100,8 @@
     "storyEvents": []
   },
   {
-    "name": "Nemesis Encounter",
-    "todo": "",
-    "storyEvents": []
-  },
-  {
     "name": "Watched",
     "todo": "",
-    "storyEvents": []
-  },
-  {
-    "name": "Nemesis Encounter - Level 3",
-    "todo": "Select a nemesis monster of your choice from the Nemesis Monster list on the settlement record sheet. You must fight the specific monster level listed, even if you have previously faced it.",
-    "storyEvents": []
-  },
-  {
-    "name": "Nemesis Encounter - Watcher",
-    "todo": "",
-    "storyEvents": []
-  },
-  {
-    "name": "Nemesis Encounter - The Hand",
-    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the The Hand's monster level (it should be 1 greater than the last The Hand encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
