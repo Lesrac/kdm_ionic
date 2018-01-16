@@ -15,7 +15,7 @@
       "FRAGILE",
       "BONE"
     ],
-    "space": "head",
+    "space": "HEAD",
     "value": 3
   },
   {
@@ -34,7 +34,7 @@
       "SET",
       "LEATHER"
     ],
-    "space": "waist",
+    "space": "WAIST",
     "value": 3
   },
   {
@@ -59,7 +59,7 @@
       "SET",
       "LEATHER"
     ],
-    "space": "head",
+    "space": "HEAD",
     "value": 3
   },
   {
@@ -84,7 +84,7 @@
       "SET",
       "LEATHER"
     ],
-    "space": "body",
+    "space": "BODY",
     "value": 3
   },
   {
@@ -103,7 +103,7 @@
       "SET",
       "LEATHER"
     ],
-    "space": "arms",
+    "space": "ARMS",
     "value": 3
   },
   {
@@ -123,7 +123,7 @@
       "SET",
       "LEATHER"
     ],
-    "space": "legs",
+    "space": "LEGS",
     "value": 3
   },
   {
@@ -135,7 +135,7 @@
       "SET",
       "RAWHIDE"
     ],
-    "space": "legs",
+    "space": "LEGS",
     "value": 1
   },
   {
@@ -154,7 +154,7 @@
       "SET",
       "RAWHIDE"
     ],
-    "space": "arms",
+    "space": "ARMS",
     "value": 1
   },
   {
@@ -173,7 +173,7 @@
       "SET",
       "RAWHIDE"
     ],
-    "space": "head",
+    "space": "HEAD",
     "value": 1
   },
   {
@@ -185,7 +185,7 @@
       "SET",
       "RAWHIDE"
     ],
-    "space": "waist",
+    "space": "WAIST",
     "value": 1
   },
   {
@@ -210,7 +210,7 @@
       "SET",
       "RAWHIDE"
     ],
-    "space": "body",
+    "space": "BODY",
     "value": 1
   },
   {
@@ -231,7 +231,7 @@
       "FUR",
       "HEAVY"
     ],
-    "space": "waist",
+    "space": "WAIST",
     "value": 2
   },
   {
@@ -242,7 +242,7 @@
       "ITEM",
       "FLAMMABLE"
     ],
-    "space": "head",
+    "space": "HEAD",
     "value": 1
   },
   {
@@ -263,7 +263,7 @@
       "HEAVY",
       "FLAMMABLE"
     ],
-    "space": "body",
+    "space": "BODY",
     "value": 0
   },
   {
@@ -277,7 +277,7 @@
       "FUR",
       "HEAVY"
     ],
-    "space": "arms",
+    "space": "ARMS",
     "value": 2
   },
   {
@@ -297,7 +297,7 @@
       "FUR",
       "HEAVY"
     ],
-    "space": "body",
+    "space": "BODY",
     "value": 2
   },
   {
@@ -318,7 +318,7 @@
       "FUR",
       "HEAVY"
     ],
-    "space": "legs",
+    "space": "LEGS",
     "value": 2
   },
   {
@@ -338,7 +338,17 @@
       "FUR",
       "HEAVY"
     ],
-    "space": "head",
+    "space": "HEAD",
     "value": 2
+  },
+  {
+    "name": "Cloth",
+    "description": "The Cloth protects your waist. Gain 1 armor point at the waist hit location.",
+    "affinities": [],
+    "tags": [
+      "ARMOR"
+    ],
+    "space": "WAIST",
+    "value": 1
   }
 ]
