@@ -18,6 +18,7 @@ export enum Affinity {
   GREEN = 'GREEN',
   BLUE = 'BLUE',
   RED = 'RED',
+  ARROW = 'ARROW',
 }
 
 export enum Direction {

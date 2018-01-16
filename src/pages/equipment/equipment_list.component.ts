@@ -50,9 +50,7 @@ export class EquipmentListPageComponent implements AfterViewInit {
   }
 
   setEquipment(eq: Equipment): void {
-    console.log('set equipment: ${eq}');
     this.survivor.equipments.set(this.position, eq);
-    console.log(this.survivor.equipments.get(this.position));
     this.navCtrl.pop();
   }
 

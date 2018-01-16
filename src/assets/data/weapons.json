@@ -482,5 +482,600 @@
     "speed": 2,
     "accuracy": 7,
     "strength": 3
+  },
+  {
+    "name": "Founding Stone",
+    "description": "Spend (flash) to sling the stone from anywhere on the board! Archive this card for 1 automatic hit that inflicts a critical wound. Archive: Return the card to the game box.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "STONE"
+    ],
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 1
+  },
+  {
+    "name": "Oxidized Ring Whip",
+    "description": "Sharp, Reach 2. (puzzle blue)(square red)(square red)(square red) Gains Provoke (see Rawhide Whip).",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "WHIP",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 5,
+    "strength": 3
+  },
+  {
+    "name": "Oxidized Lantern Sword",
+    "description": "Sharp. Deflect 1: Spend (flash), you now have exactly 1 deflect token. The next 1 time you are hit, ignore that hit and lose 1 deflect token.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 3,
+    "accuracy": 5,
+    "strength": 5
+  },
+  {
+    "name": "Oxidized Lantern Glaive",
+    "description": "Sharp, Reach 2. (puzzle blue)(square red) On a Perfect hit, the edge sharpens. This weapon gains +4 strength for this attack.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SPEAR",
+      "AXE",
+      "TWO_HANDED",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 5,
+    "strength": 6
+  },
+  {
+    "name": "Oxidized Lantern Dagger",
+    "description": "Sharp, Paired. (puzzle red)(square red) On a Perfect hit, gain +1 survival.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT",
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "DAGGER",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 4
+  },
+  {
+    "name": "Oxidized Beacon Shield",
+    "description": "Add (shieldtwo) to all hit locations. Deflect 2: Spend (flash), you now have exactly 2 deflect tokens. The next 2 times you are hit, ignore a hit and lose 1 deflect token.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "METAL",
+      "HEAVY"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 6
+  },
+  {
+    "name": "Butcher Cleaver",
+    "description": "Paired. Sentient: Must be insane to activate. Irreplaceable: When you die, archive this card.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "AXE",
+      "OTHER"
+    ],
+    "speed": 2,
+    "accuracy": 5,
+    "strength": 5
+  },
+  {
+    "name": "Thunder Maul",
+    "description": "Irreplaceable, Unique, Cursed. On a Perfect hit, the monster is knocked down. Suffer a severe arm injury. All non-deaf survivors suffer 1 brain damage.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "CLUB",
+      "TWO_HANDED",
+      "OTHER"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 10
+  },
+  {
+    "name": "Lantern Halberd",
+    "description": "Reach 2, Irreplaceable, Unique. After attacking, if standing, you may move up to 2 spaces directly away from the monster.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SPEAR",
+      "TWO_HANDED",
+      "OTHER"
+    ],
+    "speed": 2,
+    "accuracy": 4,
+    "strength": 7
+  },
+  {
+    "name": "Muramasa",
+    "description": "Frail, Sharp, Sentient, Deadly 2, Unique. When you critically wound with this weapon, gain 2 bleeding tokens.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "KATANA",
+      "TWO_HANDED",
+      "FINESSE",
+      "OTHER"
+    ],
+    "speed": 6,
+    "accuracy": 6,
+    "strength": 6
+  },
+  {
+    "name": "Adventure Sword",
+    "description": "Unique, Irreplaceable. Your courage is added to this weapon's strength.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "FINESSE",
+      "OTHER"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 0
+  },
+  {
+    "name": "Steel Shield",
+    "description": "Irreplaceable. -3 movement. Spend (flash) or 1 survival to ignore a hit.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "METAL",
+      "HEAVY"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 6
+  },
+  {
+    "name": "Steel Sword",
+    "description": "Irreplaceable, Slow, Sharp. On a Perfect hit, the edge sharpens. Gain +1d10 strength for the rest of the attack.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 1,
+    "accuracy": 4,
+    "strength": 5
+  },
+  {
+    "name": "Twilight Sword",
+    "description": "Slow, Cursed, Cumbersome, Sentient, Irreplaceable. Gains Devastating 2 when fighting the Watcher. *Accuracy is 9 - Twilight Sword proficiency level.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "TWO_HANDED",
+      "FINESSE",
+      "OTHER"
+    ],
+    "speed": 1,
+    "accuracy": "*",
+    "strength": 9
+  },
+  {
+    "name": "Hunter Whip",
+    "description": "(puzzle blue)(puzzle blue) On a Perfect hit, discard 1 mood in play.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP",
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "WHIP",
+      "LEATHER"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 3
+  },
+  {
+    "name": "Round Leather Shield",
+    "description": "Add (shieldone) to all hit locations. Block 1: Spend (flash) to ignore 1 hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "LEATHER"
+    ],
+    "speed": 1,
+    "accuracy": 8,
+    "strength": 1
+  },
+  {
+    "name": "Dragon Slayer",
+    "description": "Frail, Slow, Sharp, Devastating 1. Early Iron: When an attack roll result is 1, cancel any hits and end the attack.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "GRAND_WEAPON",
+      "TWO_HANDED",
+      "HEAVY",
+      "METAL"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 9
+  },
+  {
+    "name": "Perfect Slayer",
+    "description": "Slow, Sharp, Devastating 2, Irreplaceable. -2 movement.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "GRAND_WEAPON",
+      "TWO_HANDED",
+      "SWORD",
+      "HEAVY",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 3,
+    "accuracy": 6,
+    "strength": 14
+  },
+  {
+    "name": "Scrap Shield",
+    "description": "Add (shieldone) to all hit locations. Block 1: Spend (flash) to ignore a hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "BONE",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 3
+  },
+  {
+    "name": "Lantern Dagger",
+    "description": "Paired. Sharp: Add 1d10 Strength to each wound attempt. Early Iron: When an attack roll result is 1, cancel any hits and end the attack.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "DAGGER",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 1
+  },
+  {
+    "name": "Lantern Sword",
+    "description": "Sharp: Add 1d10 Strength to each wound attempt. Early Iron: When an attack roll result is 1, cancel any hits and end the attack.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 3,
+    "accuracy": 5,
+    "strength": 3
+  },
+  {
+    "name": "Lantern Glaive",
+    "description": "Reach 2. Sharp: Add 1d10 Strength to each wound attempt. Early Iron: When an attack roll result is 1, cancel any hits and end the attack.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SPEAR",
+      "AXE",
+      "TWO_HANDED",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 4
+  },
+  {
+    "name": "Ring Whip",
+    "description": "Sharp, Reach 2. Early Iron: When an attack roll result is 1, cancel any hits and end the attack.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "WHIP",
+      "FINESSE",
+      "METAL"
+    ],
+    "speed": 2,
+    "accuracy": 5,
+    "strength": 0
+  },
+  {
+    "name": "Beacon Shield",
+    "description": "Add (shieldtwo) to all hit locations. Block 2: Spend (flash) to ignore 2 hits the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "METAL",
+      "HEAVY"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 5
+  },
+  {
+    "name": "Bone Knuckle",
+    "description": "Paired. When you wound with this weapon, monster gains -1 toughness until end of the attack.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "KATAR",
+      "BONE"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 4
+  },
+  {
+    "name": "Lance of Longinus",
+    "description": "Irreplaceable, Reach 2. Each showdown, the first time you wound, the monster gains a -1 toughness token.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SPEAR",
+      "TWO_HANDED",
+      "BONE"
+    ],
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 9
+  },
+  {
+    "name": "Hollow Sword",
+    "description": "Frail, Paired. On a Perfect hit, make 1 additional attack roll.",
+    "affinities": [],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SWORD",
+      "BONE"
+    ],
+    "speed": 3,
+    "accuracy": 5,
+    "strength": 3
+  },
+  {
+    "name": "Hollowpoint Arrow",
+    "description": "Slow, Ammo - Bow. On a hit, monster gains -1 movement token. Use once per showdown.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "AMMUNITION",
+      "ARROW"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 11
+  },
+  {
+    "name": "Sonic Tomahawk",
+    "description": "On a Perfect hit, make 1 additional attack roll. (puzzle red)(square green)(square green)(square blue) Gain Savage and Paired.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "AXE",
+      "METAL"
+    ],
+    "speed": 3,
+    "accuracy": 5,
+    "strength": 2
+  },
+  {
+    "name": "Feather Shield",
+    "description": "Block 1. (square green)(square red)(square blue) Reduce any suffered brain damage by 1 to a minimum of 1.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "MELEE",
+      "SHIELD",
+      "FLAMMABLE"
+    ],
+    "speed": 3,
+    "accuracy": 7,
+    "strength": 0
+  },
+  {
+    "name": "Arc Bow",
+    "description": "Slow, Ranged 6. Cumbersome: Spend (horse) as an additional cost of activating this weapon. (puzzle red)(puzzle green)(square blue) Range +2.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "WEAPON",
+      "RANGED",
+      "BOW",
+      "TWO_HANDED"
+    ],
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 9
   }
 ]

@@ -91,5 +91,453 @@
       "BONE",
       "OTHER"
     ]
+  },
+  {
+    "name": "Survivors' Lantern",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "LANTERN"
+    ]
+  },
+  {
+    "name": "Monster Tooth Necklace",
+    "description": "Gain +1 strength. (square red)(square red) +1 strength",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "JEWELRY",
+      "BONE"
+    ]
+  },
+  {
+    "name": "Monster Grease",
+    "description": "Gain +1 evasion. (square green)(square green)(square green) +1 evasion",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "CONSUMABLE",
+      "SOLUBLE",
+      "STINKY"
+    ]
+  },
+  {
+    "name": "Lucky Charm",
+    "description": "(square blue)(square blue) +1 luck",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT",
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "JEWELRY"
+    ]
+  },
+  {
+    "name": "Fecal Salve",
+    "description": "When you depart, gain +1 survival. (flash): You are not a threat until you attack. If you have the priority target token, remove it.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "BALM",
+      "STINKY"
+    ]
+  },
+  {
+    "name": "Dried Acanthus",
+    "description": "When you depart, gain +2 survival. When you suffer a severe injury, ignore it and archive this card instead.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "HERB",
+      "CONSUMABLE"
+    ]
+  },
+  {
+    "name": "Stone Noses",
+    "description": "On Arrival, gain +1 survival, +1 insanity. Arrival: At the start of the showdown.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "JEWELRY"
+    ]
+  },
+  {
+    "name": "Almanac",
+    "description": "When you depart, gain +2 insanity. You cannot gain disorders.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "SOLUBLE",
+      "FLAMMABLE"
+    ]
+  },
+  {
+    "name": "Brain Mint",
+    "description": "(flash)Consume: Remove all your tokens and stand up. You may use this while knocked down. Use once per showdown.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "CONSUMABLE"
+    ]
+  },
+  {
+    "name": "Elder Earrings",
+    "description": "At start of showdown, gain +2 survival. +1 Hunt XP after a showdown.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "JEWELRY"
+    ]
+  },
+  {
+    "name": "First Aid Kit",
+    "description": "On Arrival, all survivors gain +3 survival. (flash): Remove 1 bleeding or negative attribute token from yourself or an adjacent survivor.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT",
+          "LEFT",
+          "UP",
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "HEAVY"
+    ]
+  },
+  {
+    "name": "Scavenger Kit",
+    "description": "Unique. When you defeat a monster, gain either 1 random basic resource or 1 random monster resource from that monsters's resource deck.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "HEAVY"
+    ]
+  },
+  {
+    "name": "Speed Powder",
+    "description": "(flash): Suffer 2 brain damage. Gain +1 speed token. Use once per showdown.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "SOLUBLE"
+    ]
+  },
+  {
+    "name": "Bug Trap",
+    "description": "At the start of the showdown, roll 1d10. On a 3+, add a Bug Patch terrain card to the showdown board.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "SOLUBLE"
+    ]
+  },
+  {
+    "name": "Musk Bomb",
+    "description": "If adjacent to monster when it draws AI Card, you may spend 2 survival and archive Musk bomb to roll 1d10. On a 3+, discard AI Card without playing it.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "STINKY",
+      "THROWN",
+      "FRAGILE"
+    ]
+  },
+  {
+    "name": "Final Lantern",
+    "description": "Vital. On Arrival, all survivors gain the Horripilation survivor status card. (See the Watcher's AI deck). When not insane, flip this card.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "OTHER"
+    ]
+  },
+  {
+    "name": "Blood Paint",
+    "description": "(flash): Activate weapon gear to the left and right of this card. These are two separate attacks. Cannot be used with two-handed weapons.",
+    "affinities": [
+      {
+        "affinity": "ARROW",
+        "directions": [
+          "LEFT",
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "SOLUBLE"
+    ]
+  },
+  {
+    "name": "Red Charm",
+    "description": "(square red)(square red)(square red)(square red)(square red) Unstoppable: When you attempt to wound, instead roll 1d10. On 1-5, fail. On 6-10, wound.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "JEWELRY",
+      "FRAGILE"
+    ]
+  },
+  {
+    "name": "Green Charm",
+    "description": "(square green)(square green)(square green)(square green)(square green) Undeathable: If you would die, roll 1d10. On a 6+, you inexplicably survive.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "JEWELRY",
+      "FRAGILE"
+    ]
+  },
+  {
+    "name": "Blue Charm",
+    "description": "(square blue)(square blue)(square blue)(square blue)(square blue) Unshakeable: If you draw a Trap, roll 1d10. On a 6+, discard the Trap and reshuffle the deck.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "JEWELRY",
+      "FRAGILE"
+    ]
+  },
+  {
+    "name": "Bone Earrings",
+    "description": "At the start of the showdown, gain +2 speed and +2 strength tokens if insane and all gear in your gear grid has the bone keyword.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "JEWELRY",
+      "BONE"
+    ]
+  },
+  {
+    "name": "Boss Mehndi",
+    "description": "Boss is brave. While adjacent to you, insane survivors gain +1 speed.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "SOLUBLE"
+    ]
+  },
+  {
+    "name": "Bloom Sphere",
+    "description": "(puzzle green)(puzzle blue) When you are picked as target, roll 1d10. On a 6+, the monster must pick a new target if possible.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "LEFT"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "STINKY",
+      "OTHER"
+    ]
+  },
+  {
+    "name": "Bird Bread",
+    "description": "(flash) Consume: Once per showdown, add (shieldone) to all hit locations. Gain priority target token. Roll 1d10. On a 1, reduce your survival to 0.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "CONSUMABLE",
+      "SOLUBLE"
+    ]
+  },
+  {
+    "name": "Crest Crown",
+    "description": "(flash): if insane, reshuffle hit location deck. (puzzle green)(puzzle blue)(puzzle red) When you depart, gain +1 insanity and +1 survival for every (square blue) you have.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP",
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "OTHER"
+    ]
+  },
+  {
+    "name": "Hours Ring",
+    "description": "Unique. During the aftermath, if you died or ceased to exist, you may archive the Hours Ring and reset the campaign to the previous Settlement Phase's develop step before you departed.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "OTHER"
+    ]
+  },
+  {
+    "name": "Feather Mantle",
+    "description": "When you suffer knockback, you may ignore collision with other survivors and reduce the movement by up to 3 spaces.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "DOWN"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ITEM",
+      "FLAMMABLE"
+    ]
   }
 ]

@@ -350,5 +350,622 @@
     ],
     "space": "WAIST",
     "value": 1
+  },
+  {
+    "name": "Oxidized Lantern Helm",
+    "description": "Outfit. (puzzle blue)(square red) If you are not deaf, you may ignore effects that target non-deaf survivors.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "METAL",
+      "HEAVY"
+    ],
+    "space": "HEAD",
+    "value": 6
+  },
+  {
+    "name": "Death Mask",
+    "description": "Unique, Irreplaceable, Accessory. If you have no affinities, gain +4 luck and suffer -4 to all severe injury rolls.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "BONE",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "Man Mask",
+    "description": "Unique, Irreplaceable, Accessory. (square red)(square green) If insane, you may spend negative attribute tokens in place of survival.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "BONE",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "God Mask",
+    "description": "Unique, Irreplaceable, Accessory. (square red)(square red)(square green)(square green)(square blue)(square blue) At the start of your act, if insane, gain +1 survival.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "BONE",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "White Lion Mask",
+    "description": "Unique, Irreplaceable, Accessory. (square green)(square green) If insane, spend (flash) to lose all your survival and gain that many +1 strength tokens.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "BONE",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "Phoenix Mask",
+    "description": "Unique, Irreplaceable, Accessory. (square red)(square red)(square red)(square red) If insane, you may dodge 1 additional time per round.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "BONE",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "Antelope Mask",
+    "description": "Unique, Irreplaceable, Accessory. (square red)(square red)(square blue)(square blue) At the start of your act, if insane, gain +1(horse).",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "BONE",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "Forsaker Mask",
+    "description": "Unique, Irreplaceable, Accessory. During the Aftermath, you run off into the darkness never to be seen again. During the Settlement Phase, you may archive this item to build the Mask Maker location.",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "MASK",
+      "METAL",
+      "OTHER"
+    ],
+    "space": "HEAD",
+    "value": 2
+  },
+  {
+    "name": "Regal Gauntlet",
+    "description": "Cursed. At the Aftermath, (milestone) King's Curse.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "BONE",
+      "METAL"
+    ],
+    "space": "ARMS",
+    "value": 4
+  },
+  {
+    "name": "Regal Plackart",
+    "description": "Cursed. At the Aftermath, (milestone) King's Curse.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "BONE",
+      "METAL"
+    ],
+    "space": "BODY",
+    "value": 4
+  },
+  {
+    "name": "Regal Greaves",
+    "description": "Cursed. At the Aftermath, (milestone) King's Curse.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "BONE",
+      "METAL"
+    ],
+    "space": "LEGS",
+    "value": 4
+  },
+  {
+    "name": "Regal Helm",
+    "description": "Cursed. At the Aftermath, (milestone) King's Curse.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "BONE",
+      "METAL"
+    ],
+    "space": "HEAD",
+    "value": 4
+  },
+  {
+    "name": "Regal Faulds",
+    "description": "Cursed. At the Aftermath, (milestone) King's Curse.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "BONE",
+      "METAL"
+    ],
+    "space": "WAIST",
+    "value": 4
+  },
+  {
+    "name": "Leather Bracers",
+    "description": "When you depart, gain +1 survival.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "LEATHER"
+    ],
+    "space": "ARMS",
+    "value": 3
+  },
+  {
+    "name": "Leather Boots",
+    "description": "(puzzle green)(puzzle green) At the end of your act, you may move 1 space.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT",
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "LEATHER"
+    ],
+    "space": "LEGS",
+    "value": 3
+  },
+  {
+    "name": "Leather Skirt",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "LEATHER"
+    ],
+    "space": "WAIST",
+    "value": 3
+  },
+  {
+    "name": "Leather Cuirass",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "UP"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "LEATHER"
+    ],
+    "space": "BODY",
+    "value": 3
+  },
+  {
+    "name": "Leather Mask",
+    "description": "When you depart, gain +2 insanity.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "DOWN"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "LEATHER"
+    ],
+    "space": "HEAD",
+    "value": 3
+  },
+  {
+    "name": "Lantern Greaves",
+    "description": "(puzzle red)(puzzle red)(puzzle blue) +2 Movement",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT",
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "METAL",
+      "HEAVY"
+    ],
+    "space": "LEGS",
+    "value": 5
+  },
+  {
+    "name": "Lantern Cuirass",
+    "description": "-2 movement. (puzzle blue)(puzzle green)(puzzle green)(puzzle blue) When you depart, add (shieldthree) to all hit locations with metal armor.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "LEFT",
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP",
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "METAL",
+      "HEAVY"
+    ],
+    "space": "BODY",
+    "value": 5
+  },
+  {
+    "name": "Lantern Gauntlets",
+    "description": "(puzzle green) +2 Accuracy with club weapons.",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "METAL",
+      "HEAVY"
+    ],
+    "space": "ARMS",
+    "value": 5
+  },
+  {
+    "name": "Lantern Helm",
+    "description": "(puzzle blue) Ear plugs. You are deaf. -1 accuracy.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "METAL",
+      "HEAVY"
+    ],
+    "space": "HEAD",
+    "value": 5
+  },
+  {
+    "name": "Lantern Mail",
+    "description": "",
+    "affinities": [
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "METAL",
+      "HEAVY"
+    ],
+    "space": "WAIST",
+    "value": 5
+  },
+  {
+    "name": "Screaming Bracers",
+    "description": "On Arrival, if possible, add an Acanthus Plant terrain card to the showdown. When you activate terrain, you may add +2 to your roll result.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "LEFT"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "UP"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FUR"
+    ],
+    "space": "ARMS",
+    "value": 2
+  },
+  {
+    "name": "Screaming Coat",
+    "description": "Slam: Spend (horse) to full move forward in a straight line. If you move 4+ spaces and stop adjacent to a monster, it suffers knockback 1 and -1 toughness until the end of the round.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP",
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "DOWN",
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FUR"
+    ],
+    "space": "BODY",
+    "value": 2
+  },
+  {
+    "name": "Screaming Horns",
+    "description": "(flash): Scream. Non-deaf insane survivors gain +1 movement until end of round. All other survivors gain +1 insanity.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "BONE"
+    ],
+    "space": "HEAD",
+    "value": 3
+  },
+  {
+    "name": "Screaming Skirt",
+    "description": "Thick, protective fur protects your parts. Add +1 to severe waist injury roll results.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FUR"
+    ],
+    "space": "WAIST",
+    "value": 3
+  },
+  {
+    "name": "Screaming Leg Warmers",
+    "description": "On Arrival your feet hurt, gain +3 insanity.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FUR"
+    ],
+    "space": "LEGS",
+    "value": 2
+  },
+  {
+    "name": "Phoenix Helm",
+    "description": "(puzzle blue)(square green)(square red) If insane at the start of the showdown, gain +1 evasion token.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "DOWN"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FEATHER",
+      "METAL",
+      "FLAMMABLE"
+    ],
+    "space": "HEAD",
+    "value": 4
+  },
+  {
+    "name": "Phoenix Faulds",
+    "description": "When you depart, gain +1 insanity.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FEATHER",
+      "METAL",
+      "FLAMMABLE"
+    ],
+    "space": "WAIST",
+    "value": 4
+  },
+  {
+    "name": "Phoenix Plackart",
+    "description": "(puzzle blue)(puzzle green)(puzzle red) If insane, ignore the first hit each round and suffer 1 brain damage instead.",
+    "affinities": [
+      {
+        "affinity": "BLUE",
+        "directions": [
+          "UP"
+        ]
+      },
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT"
+        ]
+      },
+      {
+        "affinity": "GREEN",
+        "directions": [
+          "LEFT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FEATHER",
+      "METAL",
+      "FLAMMABLE"
+    ],
+    "space": "BODY",
+    "value": 4
+  },
+  {
+    "name": "Phoenix Greaves",
+    "description": "If insane, gain +2 movement.",
+    "affinities": [
+      {
+        "affinity": "RED",
+        "directions": [
+          "RIGHT"
+        ]
+      }
+    ],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FEATHER",
+      "METAL",
+      "FLAMMABLE"
+    ],
+    "space": "LEGS",
+    "value": 4
+  },
+  {
+    "name": "Phoenix Gauntlet",
+    "description": "When you depart, gain +1 insanity.",
+    "affinities": [],
+    "tags": [
+      "ARMOR",
+      "SET",
+      "FEATHER",
+      "METAL",
+      "FLAMMABLE"
+    ],
+    "space": "ARMS",
+    "value": 4
   }
 ]
