@@ -41,6 +41,7 @@ export class PrincipleChooserPageComponent implements OnInit {
 
   selectPrinciple(principle: Principle): void {
     this.settlement.principles.push(principle);
+    this.kdmdbService.saveSettlement(this.settlement);
     this.navCtrl.pop();
   }
 

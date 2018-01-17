@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Settlement } from '../model/settlement';
 import { Monster } from '../model/monster';
 import { LanternEvent } from '../model/lantern_event';
@@ -104,23 +104,43 @@ export class KDMDataService {
 
   private watchedSettlements: SettlementWatcher[] = [];
 
-  constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
-    new Observable(() => {
-      setInterval(() => {
-        const dateNow = Date.now();
-        // TODO only update, when younger then... ?
-        this.watchedSettlements.forEach(watchedSettlement => {
-          this.kdmDBService.saveSettlement(watchedSettlement.settlement);
-        });
-      }, 30000);
-    }).subscribe();
+  constructor(private http: HttpClient, private kdmDBService: KDMDBService, private ngZone: NgZone) {
+    ngZone.runOutsideAngular(() => {
+      new Observable(() => {
+        setInterval(() => {
+          const dateNow = Date.now();
+          // TODO only update, when younger then... ?
+          this.watchedSettlements.forEach(watchedSettlement => {
+            this.kdmDBService.saveSettlement(watchedSettlement.settlement);
+          });
+        }, 30000);
+      }).subscribe();
+    });
+  }
+
+  initData(): void {
+    this.getStoryEvents().then();
+    this.getPrincipleTypes().then();
+    this.getAllSevereInjuries().then();
+    this.getAllBrainTraumas().then();
+    this.getAllGlossaryEntries().then();
+    this.getAllHuntEvents().then();
+    this.getInitialMilestones().then();
+    this.getDefaultTimeline().then();
+    this.getInnovations().then();
+    this.getMonsters().then();
+    this.getResources().then();
+    this.getDisorders().then();
+    this.getFightingArts().then();
+    this.getPrinciples().then();
+    this.getWeapons().then();
+    this.getArmors().then();
+    this.getEquipments().then();
+    this.getSettlementLocations().then();
   }
 
   getSettlements(): Promise<Settlement[]> {
     if (this.settlements.length < 1) {
-      this.getStoryEvents();
-      this.getLanternEvents();
-      this.getInitialMilestones();
       return this.kdmDBService.getSettlements().then(simplifiedSettlementsArray => {
         simplifiedSettlementsArray[0].forEach(simplifiedSettlement =>
           this.settlements.push(this.desimplifySettlements(simplifiedSettlement)));
@@ -134,6 +154,7 @@ export class KDMDataService {
   getSettlement(id: number): Promise<Settlement> {
     return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
       const settlement: Settlement = this.desimplifySettlement(settlementSimplified);
+      this.settlements[this.settlements.findIndex(stlmnt => stlmnt.id === id)] = settlement;
       const indexCount = this.watchedSettlements.findIndex(watchedSettlement =>
         watchedSettlement.settlement.id === settlement.id);
       this.watchedSettlements.splice(indexCount, 1);

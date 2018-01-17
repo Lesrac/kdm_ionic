@@ -28,8 +28,6 @@ export class AddTimelineEventModalComponent implements AfterViewInit {
     } else {
       this.addChangeText = 'Add';
     }
-    console.log(this.settlementTimeline);
-    console.log(this.replaceableTimeline);
   }
 
   ngAfterViewInit(): void {
