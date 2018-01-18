@@ -54,12 +54,12 @@
       </ion-item>
     </ion-item-group>
 
-    <ion-item-group>
+    <ion-item-group id="nemesis_monsters_group">
       <ion-item-divider>
         Nemesis Monsters
       </ion-item-divider>
-      <ion-row *ngFor="let settlementNemesis of settlement.huntableMonsters" class="container">
-        <ng-container *ngIf="settlementNemesis.monster.isNemesis">
+      <ng-container *ngFor="let settlementNemesis of settlement.huntableMonsters" class="container">
+        <ion-row *ngIf="settlementNemesis.monster.isNemesis">
           <ion-col>
             <ion-item>
               <ion-checkbox [(ngModel)]="settlementNemesis.isHuntable">
@@ -88,8 +88,8 @@
               <ion-label>Lvl 3</ion-label>
             </ion-item>
           </ion-col>
-        </ng-container>
-      </ion-row>
+        </ion-row>
+      </ng-container>
     </ion-item-group>
 
     <ion-item-group>
@@ -110,7 +110,7 @@
       </button>
     </ion-item-group>
 
-    <ion-item-group>
+    <ion-item-group id="quarries_group">
       <ion-item-divider>
         Quarries
       </ion-item-divider>
