@@ -2,14 +2,13 @@
   <ion-navbar>
     <ion-title>
       <ion-item>
-        Settlement
-        <ion-input required [(ngModel)]="settlement.name"></ion-input>
+        <ion-input required [(ngModel)]="settlement.name" no-lines></ion-input>
       </ion-item>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="settlement">
   <ion-list>
     <ion-item-group>
       <ion-row class="container">
@@ -17,33 +16,34 @@
           <ion-item-divider>
             Survival Limit
           </ion-item-divider>
-          <kdmf-input-number [value]="settlement.survivalLimit" (change)="survivalLimitChange($event)">
+          <kdmf-input-number id="survivalLimit" [value]="settlement.survivalLimit"
+                             (change)="survivalLimitChange($event)">
           </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item-divider>
             Population
           </ion-item-divider>
-          <kdmf-input-number [value]="settlement.population" (change)="populationChange($event)">
+          <kdmf-input-number id="population" [value]="settlement.population" (change)="populationChange($event)">
           </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item-divider>
             Death Count
           </ion-item-divider>
-          <kdmf-input-number [value]="settlement.deathcount" (change)="deathcountChange($event)">
+          <kdmf-input-number id="deathcount" [value]="settlement.deathcount" (change)="deathcountChange($event)">
           </kdmf-input-number>
         </ion-col>
       </ion-row>
     </ion-item-group>
 
     <ion-item-group>
-      <button ion-button full (click)="showTimeline()">
+      <button id="button_show_timeline" ion-button full (click)="showTimeline()">
         Timeline
       </button>
     </ion-item-group>
 
-    <ion-item-group>
+    <ion-item-group id="milestones_group">
       <ion-item-divider>
         Milestone Story Events
       </ion-item-divider>
@@ -93,19 +93,19 @@
     </ion-item-group>
 
     <ion-item-group>
-      <button ion-button full (click)="showInnovations()">
+      <button id="button_show_innovations" ion-button full (click)="showInnovations()">
         Innovations
       </button>
     </ion-item-group>
 
     <ion-item-group>
-      <button ion-button full (click)="showPrinciples()">
+      <button id="button_show_principles" ion-button full (click)="showPrinciples()">
         Principles
       </button>
     </ion-item-group>
 
     <ion-item-group>
-      <button ion-button full (click)="showSettlementLocations()">
+      <button id="button_show_settlement_locations" ion-button full (click)="showSettlementLocations()">
         Settlement Locations
       </button>
     </ion-item-group>
@@ -123,13 +123,13 @@
     </ion-item-group>
 
     <ion-item-group>
-      <button ion-button full (click)="showStorage()">
+      <button id="button_show_storage" ion-button full (click)="showStorage()">
         Storage
       </button>
     </ion-item-group>
 
     <ion-item-group>
-      <button ion-button full (click)="showDefeatedMonsters()">
+      <button id="button_show_defeated_monsters" ion-button full (click)="showDefeatedMonsters()">
         Defeated Monsters
       </button>
     </ion-item-group>
@@ -138,7 +138,8 @@
       <ion-item-divider>
         Lost Settlements
       </ion-item-divider>
-      <kdmf-input-number [value]="settlement.settlementLost" (change)="settlementLostChange($event)">
+      <kdmf-input-number id="settlementLost" [value]="settlement.settlementLost"
+                         (change)="settlementLostChange($event)">
       </kdmf-input-number>
     </ion-item-group>
 
