@@ -20,7 +20,8 @@ export class StoragePageObject {
     this.alertRadioGroup.all(by.className('alert-tappable')).first().click();
     this.alertButtonGroup.all(by.className('alert-button')).last().click();
     this.waitSettlementPageLoaded();
-    this.storageChooser.element(by.className('select-text')).getText().then(text => storageItemName = text);
+    this.storageChooser.element(by.className('select')).getAttribute('ng-reflect-model')
+      .then(text => storageItemName = text);
     this.addAndCloseButton.click();
     this.waitSettlementPageLoaded();
     return storageItemName;

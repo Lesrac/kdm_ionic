@@ -89,6 +89,7 @@ export class KDMObserverService {
             }
             break;
           case this.courage2:
+          case this.understanding2:
             if (x === 9) {
               this.modalCtrl.create(TimelineEventModalComponent, {
                 lanternEvent: lanternEvent,
@@ -97,13 +98,6 @@ export class KDMObserverService {
             break;
           case this.understanding1:
             if (x === 3) {
-              this.modalCtrl.create(TimelineEventModalComponent, {
-                lanternEvent: lanternEvent,
-              }).present();
-            }
-            break;
-          case this.understanding2:
-            if (x === 9) {
               this.modalCtrl.create(TimelineEventModalComponent, {
                 lanternEvent: lanternEvent,
               }).present();
