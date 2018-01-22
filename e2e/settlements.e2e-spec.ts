@@ -1,5 +1,5 @@
 import { element, by, browser } from 'protractor';
-import { SettlementsPageObject } from './page-objects/SettlementsPageObject';
+import { SettlementsPageObject } from './page-objects/settlements_page_object';
 
 const settlementsPage = new SettlementsPageObject();
 describe('testing settlements view', () => {
@@ -29,13 +29,13 @@ describe('testing settlements view', () => {
 
   it('click add settlement button', () => {
     expect(settlementsPage.settlementsListFirstElement.isPresent()).toBeFalsy();
-    expect(settlementsPage.settlementsList.count()).toEqual(0);
+    expect<any>(settlementsPage.settlementsList.count()).toEqual(0);
     settlementsPage.clickAddSettlementButton();
     expect(settlementsPage.settlementsListFirstElement.isPresent()).toBeTruthy();
-    expect(settlementsPage.settlementsList.count()).toEqual(1);
+    expect<any>(settlementsPage.settlementsList.count()).toEqual(1);
     settlementsPage.clickAddSettlementButton();
     settlementsPage.clickAddSettlementButton();
-    expect(settlementsPage.settlementsList.count()).toEqual(3);
+    expect<any>(settlementsPage.settlementsList.count()).toEqual(3);
   });
 
 });

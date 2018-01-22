@@ -18,7 +18,8 @@
     "ionic:serve": "ionic-app-scripts serve",
     "test": "karma start ./config/karma.conf.js",
     "test-coverage": "karma start ./config/karma.conf.js --coverage",
-    "e2e": "npm run clean && npm run build && node node_modules/protractor/bin/webdriver-manager update && node node_modules/protractor/bin/protractor"
+    "e2e": "npm run clean && npm run build && node node_modules/protractor/bin/webdriver-manager update && node node_modules/protractor/bin/protractor",
+    "lint": "tslint ."
   },
   "config": {
     "ionic_source_map": "source-map"
@@ -60,7 +61,7 @@
     "@types/jasmine": "^2.8.4",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.4.1",
-    "codelyzer": "^4.0.2",
+    "codelyzer": "^4.1.0",
     "connect": "^3.6.5",
     "html-loader": "^0.5.1",
     "istanbul-instrumenter-loader": "3.0.0",

@@ -1,5 +1,5 @@
 import { $, browser, by, element, ElementFinder, ExpectedConditions } from 'protractor';
-import { SettlementsPageObject } from './SettlementsPageObject';
+import { SettlementsPageObject } from './settlements_page_object';
 
 const settlementsPage = new SettlementsPageObject();
 
@@ -16,10 +16,17 @@ export class SettlementPageObject {
   public readonly populationNumberInput: ElementFinder = element(by.id('population'));
   public readonly settlementLostNumberInput: ElementFinder = element(by.id('settlementLost'));
   public readonly milestonesGroup: ElementFinder = element(by.id('milestones_group'));
+  public readonly quarriesGroup: ElementFinder = element(by.id('quarries_group'));
+  public readonly nemesisMonstersGroup: ElementFinder = element(by.id('nemesis_monsters_group'));
 
   public openSettlement(): void {
     settlementsPage.clickAddSettlementButton();
     settlementsPage.settlementsListFirstElement.click();
+    this.waitSettlementPageLoaded();
+  }
+
+  public openButtonElement(button: ElementFinder): void {
+    button.click();
     this.waitSettlementPageLoaded();
   }
 
