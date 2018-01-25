@@ -47,8 +47,8 @@ export class Milestone extends LanternEvent implements Comparable {
     this.milestoneType = milestoneType;
   }
 
-  accept(compareValue: string | number): boolean {
-    return this.visitor.visit(this, compareValue);
+  accept(compareValue: string | number, oldValue: string | number): boolean {
+    return this.visitor.visit(this, compareValue, oldValue);
   }
 
 }

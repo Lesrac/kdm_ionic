@@ -63,13 +63,14 @@ export class KDMObserverService {
 
   private getObserver(milestone: SettlementMilestone): Observer<Object> {
     return {
-      next: x => {
+      next: (x: string | number) => {
         if (this.checkMilestone(milestone, x)) {
           milestone.reached = !milestone.reached;
           this.modalCtrl.create(TimelineEventModalComponent, {
             lanternEvent: milestone.milestone,
           }).present();
         }
+        milestone.oldValue = x;
       },
       error: err => console.error('Observer got an error: ' + err),
       complete: () => console.log('Observer got a complete notification'),
@@ -126,8 +127,8 @@ export class KDMObserverService {
     };
   }
 
-  private checkMilestone(milestone: SettlementMilestone, value: any): boolean {
-    return (!milestone.reached && milestone.milestone.accept(value));
+  private checkMilestone(milestone: SettlementMilestone, value: string | number): boolean {
+    return (!milestone.reached && milestone.milestone.accept(value, milestone.oldValue));
   }
 
   private setMilestoneTarget(settlementMilestone: SettlementMilestone, milestoneTarget: string,
@@ -135,12 +136,15 @@ export class KDMObserverService {
     switch (milestoneTarget.toUpperCase()) {
       case 'DEATHCOUNT':
         settlementPageComponent.deathcount.subscribe(settlementMilestone.observer);
+        settlementMilestone.oldValue = settlementPageComponent.settlement.deathcount;
         break;
       case 'POPULATION':
         settlementPageComponent.population.subscribe(settlementMilestone.observer);
+        settlementMilestone.oldValue = settlementPageComponent.settlement.population;
         break;
       case 'INNOVATION':
         settlementPageComponent.innovations.subscribe(settlementMilestone.observer);
+        settlementMilestone.oldValue = settlementPageComponent.settlement.innovations.length;
         break;
       default:
         console.log('milestoneTarget doesn\'t exist: ' + milestoneTarget);

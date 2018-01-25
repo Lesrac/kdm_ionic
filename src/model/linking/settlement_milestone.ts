@@ -9,6 +9,7 @@ import { Observer } from 'rxjs/Observer';
 export class SettlementMilestone extends SettlementLanternEvent {
   milestone: Milestone;
   observer: Observer<Object>;
+  oldValue: string | number;
 
   constructor(settlement: Settlement, milestone: Milestone) {
     super(settlement, milestone);
