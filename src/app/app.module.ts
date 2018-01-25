@@ -47,7 +47,6 @@ import { MapValuesPipe } from '../pipe/map_values.pipe';
 import { FilterElementsPipe } from '../pipe/filter_elements.pipe';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { KDMCachingInterceptor } from '../service/kdm_caching.interceptor';
-import { DragulaModule } from 'ng2-dragula';
 import { EquipmentGridPageComponent } from '../pages/equipment/equipment_grid.component';
 import { EquipmentCardComponent } from '../pages/equipment/equipment_card.component';
 import { EquipmentListPageComponent } from '../pages/equipment/equipment_list.component';
@@ -99,7 +98,6 @@ import { EquipmentListPageComponent } from '../pages/equipment/equipment_list.co
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    DragulaModule,
     HttpClientModule,
   ],
   bootstrap: [IonicApp],

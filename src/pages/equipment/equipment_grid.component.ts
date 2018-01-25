@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Survivor } from '../../model/survivor';
-import { dragula, DragulaService } from 'ng2-dragula';
 import { Settlement } from '../../model/settlement';
 
 /**
@@ -16,28 +15,8 @@ export class EquipmentGridPageComponent {
   survivor: Survivor;
   settlement: Settlement;
 
-  constructor(public params: NavParams, private dragulaService: DragulaService) {
+  constructor(public params: NavParams) {
     this.survivor = params.get('survivor');
     this.settlement = params.get('settlement');
-    this.dragulaService.drop.subscribe((value: any[]) => {
-      console.log('dropped');
-      console.log(value);
-      let drake = this.dragulaService.find('my-bag').drake;
-      let models = drake.models;
-      console.log(drake);
-      console.log(models);
-      drake.cancel(true);
-      this.onDropModel(value);
-    });
-    this.dragulaService.setOptions('my-bag', {
-      revertOnSpill: true,
-    });
-
   }
-
-  private onDropModel(args) {
-    console.log(args);
-    // Here, this.playlists contains the elements reordered
-  }
-
 }

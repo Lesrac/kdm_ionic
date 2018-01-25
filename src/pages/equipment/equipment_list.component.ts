@@ -1,8 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ModalController, NavController, NavParams } from 'ionic-angular';
 import { Equipment } from '../../model/equipment';
-import { ShowListAddModalComponent } from '../template/show_list_add_modal.component';
-import { ShowListTypes } from '../../model/show_list_types';
 import { Survivor } from '../../model/survivor';
 import { KDMDataService } from '../../service/kdm_data.service';
 
