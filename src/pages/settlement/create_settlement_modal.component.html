@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add new Settlement</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" floating>Settlement Name</ion-label>
+      <ion-input [(ngModel)]="settlementName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Number of Survivors</ion-label>
+      <ion-input type="number" min="0" [(ngModel)]="population"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <button ion-button full id="button-add" (click)="addClose()">Add</button>
+    <button ion-button full color="secondary" (click)="close()">Cancel</button>
+  </ion-item>
+</ion-content>

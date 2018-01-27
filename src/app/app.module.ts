@@ -50,6 +50,7 @@ import { KDMCachingInterceptor } from '../service/kdm_caching.interceptor';
 import { EquipmentGridPageComponent } from '../pages/equipment/equipment_grid.component';
 import { EquipmentCardComponent } from '../pages/equipment/equipment_card.component';
 import { EquipmentListPageComponent } from '../pages/equipment/equipment_list.component';
+import { CreateSettlementModalComponent } from '../pages/settlement/create_settlement_modal.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { EquipmentListPageComponent } from '../pages/equipment/equipment_list.co
     ShowListDetailComponent,
     ShowListAddModalComponent,
     ShowLocationDetailComponent,
+    CreateSettlementModalComponent,
     AddedResourcesModalComponent,
     TabsPageComponent,
     CreateSettlementPopoverComponent,
@@ -119,6 +121,7 @@ import { EquipmentListPageComponent } from '../pages/equipment/equipment_list.co
     ShowListComponent,
     ShowLocationDetailComponent,
     ShowListAddModalComponent,
+    CreateSettlementModalComponent,
     AddedResourcesModalComponent,
     ShowListDetailComponent,
     TabsPageComponent,

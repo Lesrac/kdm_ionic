@@ -84,7 +84,7 @@ describe('testing settlement view', () => {
     });
   });
 
-  fit('checking storage adding', () => {
+  it('checking storage adding', () => {
     settlementPage.openSettlement();
     settlementPage.openButtonElement(settlementPage.storageButton);
     expect(storagePage.addStorageButton.isPresent()).toBeTruthy('add button not available');

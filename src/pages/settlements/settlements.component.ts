@@ -1,4 +1,4 @@
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, ModalController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
@@ -11,6 +11,8 @@ import { Timeline } from '../../model/timeline';
 import { Monster } from '../../model/monster';
 import { Milestone } from '../../model/milestone';
 import { Location } from '../../model/location';
+import { CreateSettlementModalComponent } from '../settlement/create_settlement_modal.component';
+import { ShowListAddModalComponent } from '../template/show_list_add_modal.component';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -23,13 +25,14 @@ import { Location } from '../../model/location';
 export class SettlementsPageComponent implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private kdmService: KDMDataService) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private alertCtrl: AlertController,
+              private kdmService: KDMDataService) {
   }
 
   addSettlement(): void {
-    this.createDefaultSettlement().then(settlement =>
-      this.kdmService.addSettlement(settlement),
-    );
+    console.log('add Settlement');
+    let modal = this.modalCtrl.create(CreateSettlementModalComponent, {});
+    modal.present().then();
   }
 
   ngOnInit(): void {
@@ -66,92 +69,4 @@ export class SettlementsPageComponent implements OnInit {
     alert.present();
   }
 
-  private createDefaultSettlement(): Promise<Settlement> {
-    // TODO probably export settlement creation to wizard or something similar
-    let settlement: Settlement = new Settlement('New Settlement');
-    return Promise.all([
-      this.createDefaultTimeline(settlement),
-      this.createDefaultNemesisMonsters(settlement),
-      this.createDefaultMilestoneStoryEvents(settlement),
-      this.createDefaultQuarries(settlement),
-      this.createDefaultSettlementLocations(settlement),
-      this.createDefaultInnovations(settlement)]).then(() => settlement);
-  }
-
-  private createDefaultTimeline(settlement: Settlement): Promise<Timeline[]> {
-    return this.kdmService.getDefaultTimeline().then(timelines => {
-      timelines.forEach(timeline => {
-        settlement.timeline.push(new SettlementTimeline(settlement, timeline));
-      });
-      return timelines;
-    });
-  }
-
-  private createDefaultNemesisMonsters(settlement: Settlement): Promise<Monster[]> {
-    return this.kdmService.getDefaultInitialHuntableNemesisMonsters().then(nemesisMonsters => {
-      nemesisMonsters.forEach(nemesisMonster => {
-          const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-            huntableMonster.monster.name === nemesisMonster.name);
-          if (!existingMonster) {
-            const settlementMonster = new HuntableMonster(settlement, nemesisMonster);
-            if (nemesisMonster.name === 'Butcher') {
-              settlementMonster.isHuntable = true;
-            }
-            settlement.huntableMonsters.push(settlementMonster);
-          }
-        },
-      );
-      return nemesisMonsters;
-    }).catch(error => {
-      console.log('Error in default nemesis');
-      console.log(error);
-      return [];
-    });
-  }
-
-  private createDefaultMilestoneStoryEvents(settlement: Settlement): Promise<Milestone[]> {
-    return this.kdmService.getInitialMilestones().then(
-      milestones => {
-        milestones.forEach(
-          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)));
-        return milestones;
-      });
-  }
-
-  private createDefaultQuarries(settlement: Settlement): Promise<Monster[]> {
-    return this.kdmService.getDefaultInitialHuntableQuarries().then(quarries => {
-      quarries.forEach(quarry => {
-          const existingMonster = settlement.huntableMonsters.find(huntableMonster =>
-            huntableMonster.monster.name === quarry.name);
-          if (!existingMonster) {
-            const settlementMonster = new HuntableMonster(settlement, quarry);
-            if (quarry.name === 'White Lion') {
-              settlementMonster.isHuntable = true;
-            }
-            settlement.huntableMonsters.push(settlementMonster);
-          }
-        },
-      );
-      return quarries;
-    }).catch(error => {
-      console.log('Error in default quarries');
-      console.log(error);
-      return [];
-    });
-  }
-
-  private createDefaultSettlementLocations(settlement: Settlement): Promise<Location[]> {
-    return this.kdmService.getSettlementLocations().then(locations => {
-      settlement.locations = locations.filter(location => location.isStartLocation);
-      return locations;
-    });
-  }
-
-  private createDefaultInnovations(settlement: Settlement): Promise<Innovation[]> {
-    return this.kdmService.getInnovations().then(innovations => {
-      settlement.innovations = innovations.filter(innovation =>
-        innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1);
-      return innovations;
-    });
-  }
 }

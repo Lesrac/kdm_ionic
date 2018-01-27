@@ -13,7 +13,6 @@ import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
 import { KDMObserverService } from '../../service/kdm_observer.service';
 import { KDMDataService } from '../../service/kdm_data.service';
-import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -34,7 +33,7 @@ export class SettlementPageComponent implements DoCheck {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public differs: KeyValueDiffers, private kdmObserver: KDMObserverService,
-              private kdmService: KDMDataService, private kdmDBService: KDMDBService) {
+              private kdmService: KDMDataService) {
     if (params.get('settlement')) {
       this.settlement = params.get('settlement');
       this.differ = differs.find({}).create();

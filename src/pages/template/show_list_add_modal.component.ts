@@ -80,7 +80,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
   }
 
   close(): void {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss().then();
   }
 
   private setup(): void {

@@ -15,6 +15,7 @@ log.txt
 npm-debug.log*
 
 .idea/
+.scannerwork/
 .sass-cache/
 .tmp/
 .versions/

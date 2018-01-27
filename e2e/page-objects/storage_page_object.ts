@@ -10,24 +10,24 @@ export class StoragePageObject {
 
   public openAddView(): void {
     this.addStorageButton.click();
-    this.waitSettlementPageLoaded();
+    this.waitStoragePageLoaded();
   }
 
   public selectStorageElementToAdd(): string {
     let storageItemName: string = '';
     this.storageChooser.click();
-    this.waitSettlementPageLoaded();
+    this.waitStoragePageLoaded();
     this.alertRadioGroup.all(by.className('alert-tappable')).first().click();
     this.alertButtonGroup.all(by.className('alert-button')).last().click();
-    this.waitSettlementPageLoaded();
+    this.waitStoragePageLoaded();
     this.storageChooser.element(by.className('select')).getAttribute('ng-reflect-model')
       .then(text => storageItemName = text);
     this.addAndCloseButton.click();
-    this.waitSettlementPageLoaded();
+    this.waitStoragePageLoaded();
     return storageItemName;
   }
 
-  private waitSettlementPageLoaded(): void {
+  private waitStoragePageLoaded(): void {
     this.waitIonViewDidLoad();
     this.waitIonViewDidEnter();
   }

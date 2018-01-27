@@ -5,7 +5,6 @@ import { ShowListTypes } from '../../model/show_list_types';
 import { BaseModel } from '../../model/base_model';
 import { ShowListDetailComponent } from './show_list_detail.component';
 import { Settlement } from '../../model/settlement';
-import { KDMDBService } from '../../service/kdm_db.service';
 import { ShowLocationDetailComponent } from '../location/show_location_detail.component';
 
 /**
@@ -22,8 +21,7 @@ export class ShowListComponent implements OnInit {
   title: string;
   settlement: Settlement;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
-              private kdmdbService: KDMDBService) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
     this.objects = params.get('objects');
     this.type = params.get('type');
     this.settlement = params.get('settlement');
@@ -38,7 +36,7 @@ export class ShowListComponent implements OnInit {
       objects: this.objects,
       type: this.type,
     });
-    modal.present();
+    modal.present().then();
   }
 
   removeObject(object: BaseModel): void {

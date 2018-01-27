@@ -3,7 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoragePageComponent } from './storage.component';
 import { By } from '@angular/platform-browser';
 import {
-  App, Config, DeepLinker, DomController, Form, IonicModule, Keyboard, Modal, ModalController, NavController, NavParams,
+  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, Modal, ModalController,
+  NavController, NavParams,
   Platform,
 } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
@@ -35,7 +36,7 @@ describe('StorageComponent', () => {
     modalMock = new ModalMock();
     TestBed.configureTestingModule({
       declarations: [StoragePageComponent],
-      providers: [DomController, Keyboard, Form,
+      providers: [DomController, Keyboard, GestureController, Form,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: ModalController, useClass: ModalControllerMock},

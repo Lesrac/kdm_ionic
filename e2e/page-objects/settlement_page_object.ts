@@ -21,6 +21,7 @@ export class SettlementPageObject {
 
   public openSettlement(): void {
     settlementsPage.clickAddSettlementButton();
+    this.waitSettlementPageLoaded();
     settlementsPage.settlementsListFirstElement.click();
     this.waitSettlementPageLoaded();
   }
