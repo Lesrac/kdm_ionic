@@ -723,49 +723,6 @@
     "strength": 9
   },
   {
-    "name": "Hunter Whip",
-    "description": "(puzzle blue)(puzzle blue) On a Perfect hit, discard 1 mood in play.",
-    "affinities": [
-      {
-        "affinity": "BLUE",
-        "directions": [
-          "UP",
-          "RIGHT"
-        ]
-      }
-    ],
-    "tags": [
-      "WEAPON",
-      "MELEE",
-      "WHIP",
-      "LEATHER"
-    ],
-    "speed": 3,
-    "accuracy": 6,
-    "strength": 3
-  },
-  {
-    "name": "Round Leather Shield",
-    "description": "Add (shieldone) to all hit locations. Block 1: Spend (flash) to ignore 1 hit the next time you are attacked. Lasts until your next act. You cannot use block more than once per attack.",
-    "affinities": [
-      {
-        "affinity": "GREEN",
-        "directions": [
-          "UP"
-        ]
-      }
-    ],
-    "tags": [
-      "WEAPON",
-      "MELEE",
-      "SHIELD",
-      "LEATHER"
-    ],
-    "speed": 1,
-    "accuracy": 8,
-    "strength": 1
-  },
-  {
     "name": "Dragon Slayer",
     "description": "Frail, Slow, Sharp, Devastating 1. Early Iron: When an attack roll result is 1, cancel any hits and end the attack.",
     "affinities": [
