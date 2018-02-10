@@ -70,13 +70,13 @@ describe('Principle Page Component', () => {
 
   it('principle is chosen', () => {
     const principle = new Principle('Dummy Principle', 'dummy', principleType);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     expect(principlesPageComponent.principleIsChosen(principleType)).toBeTruthy();
   });
 
   it('principle is not chosen', () => {
     const principle = new Principle('Dummy Principle', 'dummy', principleType);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     const principleType2 = new PrincipleType('Dummy Principle Type 2');
     expect(principlesPageComponent.principleIsChosen(principleType2)).toBeFalsy();
   });
@@ -93,7 +93,7 @@ describe('Principle Page Component', () => {
   it('remove principle', () => {
     const principleType2 = new PrincipleType('Principle Type');
     const principle = new Principle('Dummy Principle', 'dummy', principleType2);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     expect(principlesPageComponent.settlement.principles.length).toBe(1);
     principlesPageComponent.removePrinciple(principleType);
     expect(principlesPageComponent.settlement.principles.length).toBe(1);
@@ -103,21 +103,21 @@ describe('Principle Page Component', () => {
 
   it('get existing principle name', () => {
     const principle = new Principle('Dummy Principle', 'dummy', principleType);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     expect(principlesPageComponent.getPrincipleName(principleType)).toEqual(principle.name);
   });
 
   it('get not existing principle name', () => {
     const principleType2 = new PrincipleType('Principle Type');
     const principle = new Principle('Dummy Principle', 'dummy', principleType2);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     expect(principlesPageComponent.getPrincipleName(principleType)).toEqual('not chosen');
   });
 
   it('show detail: principle found', () => {
     const spy = spyOn(principlesPageComponent.navCtrl, 'push').and.callThrough();
     const principle = new Principle('Dummy Principle', 'dummy', principleType);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     principlesPageComponent.showDetail(principleType);
     expect(spy).toHaveBeenCalledWith(PrincipleDetailComponent, {principle: principle});
   });
@@ -125,7 +125,7 @@ describe('Principle Page Component', () => {
   it('show detail: principle not found', () => {
     const principleType2 = new PrincipleType('Principle Type');
     const principle = new Principle('Dummy Principle', 'dummy', principleType2);
-    principlesPageComponent.settlement.principles.push(principle);
+    principlesPageComponent.settlement.addPrinciple(principle);
     const spy = spyOn(principlesPageComponent.navCtrl, 'push').and.callThrough();
     principlesPageComponent.showDetail(principleType);
     expect(spy).toHaveBeenCalledTimes(0);

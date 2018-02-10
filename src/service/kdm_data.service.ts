@@ -40,7 +40,7 @@ import { ArmorJSON } from '../model/jsonData/armor_json';
 import { AffinityJSON, EquipmentJSON } from '../model/jsonData/equipment_json';
 import { InnovationJSON } from '../model/jsonData/innovation_json';
 import { LocationJSON } from '../model/jsonData/location_json';
-import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 class SettlementWatcher {
   settlement: Settlement;
@@ -104,18 +104,7 @@ export class KDMDataService {
 
   private watchedSettlements: SettlementWatcher[] = [];
 
-  constructor(private http: HttpClient, private kdmDBService: KDMDBService, private ngZone: NgZone) {
-    ngZone.runOutsideAngular(() => {
-      new Observable(() => {
-        setInterval(() => {
-          const dateNow = Date.now();
-          // TODO only update, when younger then... ?
-          this.watchedSettlements.forEach(watchedSettlement => {
-            this.kdmDBService.saveSettlement(watchedSettlement.settlement);
-          });
-        }, 30000);
-      }).subscribe();
-    });
+  constructor(private http: HttpClient, private kdmDBService: KDMDBService) {
   }
 
   initData(): void {
@@ -186,7 +175,8 @@ export class KDMDataService {
       maxId = Math.max.apply(Math, settlement.survivors.map((s: Survivor) => s.id)) + 1;
     }
     const survivor = new Survivor(this.initSurvivorName, maxId, settlement.id);
-    settlement.survivors.push(survivor);
+    settlement.addSurvivor(survivor);
+    this.setSurvivorObservers(survivor, settlement);
     return survivor;
   }
 
@@ -706,6 +696,17 @@ export class KDMDataService {
     return 0;
   }
 
+  saveSettlementObserver(settlement: Settlement): Observer<any> {
+    return {
+      next: x => {
+        console.log('next: ' + x);
+        this.kdmDBService.saveSettlement(settlement);
+      },
+      error: err => console.error('Observer got an error: ' + err),
+      complete: () => console.log('Observer got a complete notification'),
+    };
+  }
+
   private createAffinityMap(affinityJSON: AffinityJSON[]): Map<Affinity, Direction[]> {
     const affinities: Map<Affinity, Direction[]> = new Map<Affinity, Direction[]>();
     affinityJSON.forEach(affinity => {
@@ -743,12 +744,16 @@ export class KDMDataService {
 
   private desimplifySettlement(simplifiedSettlement: SettlementSimplified): Settlement {
     const settlement = new Settlement(simplifiedSettlement.name);
+    settlement.nameChange.subscribe(this.saveSettlementObserver(settlement));
     settlement.id = simplifiedSettlement.id;
     settlement.survivalLimit = simplifiedSettlement.survivalLimit;
+    settlement.survivalLimitChange.subscribe(this.saveSettlementObserver(settlement));
     settlement.population = simplifiedSettlement.population;
+    settlement.populationChange.subscribe(this.saveSettlementObserver(settlement));
     settlement.deathcount = simplifiedSettlement.deathcount;
+    settlement.deathcountChange.subscribe(this.saveSettlementObserver(settlement));
     settlement.settlementLost = simplifiedSettlement.settlementLost;
-    const timeline: SettlementTimeline[] = [];
+    settlement.settlementLostChange.subscribe(this.saveSettlementObserver(settlement));
     simplifiedSettlement.timeline.forEach(timelineDB => {
       this.getLanternEvent(timelineDB.timeline[1]).then(lanternEvent => {
         const tl: Timeline = {
@@ -757,25 +762,28 @@ export class KDMDataService {
         };
         const stl: SettlementTimeline = new SettlementTimeline(settlement, tl);
         stl.reached = timelineDB.reached;
-        timeline.push(stl);
+        stl.reachedChanged.subscribe(this.saveSettlementObserver(settlement));
+        settlement.addTimelineItem(stl);
       });
     });
-    settlement.timeline = timeline;
+    settlement.timelineSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const huntableMonsters: HuntableMonster[] = [];
     simplifiedSettlement.huntableMonsters.forEach(huntableMonsterDB => {
       this.getMonster(huntableMonsterDB.monsterId).then(monster => {
         const huntableMonster = new HuntableMonster(settlement, monster);
         huntableMonster.isHuntable = huntableMonsterDB.isHuntable;
+        huntableMonster.isHuntableChanged.subscribe(this.saveSettlementObserver(settlement));
         huntableMonster.defeatedLevelThree = huntableMonsterDB.defeatedLevelThree;
+        huntableMonster.defeatedLevelThreeChanged.subscribe(this.saveSettlementObserver(settlement));
         huntableMonster.defeatedLevelTwo = huntableMonsterDB.defeatedLevelTwo;
+        huntableMonster.defeatedLevelTwoChanged.subscribe(this.saveSettlementObserver(settlement));
         huntableMonster.defeatedLevelOne = huntableMonsterDB.defeatedLevelOne;
-        huntableMonsters.push(huntableMonster);
+        huntableMonster.defeatedLevelOneChanged.subscribe(this.saveSettlementObserver(settlement));
+        settlement.addHuntableMonster(huntableMonster);
       });
     });
-    settlement.huntableMonsters = huntableMonsters;
+    settlement.huntableMonstersSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const huntedMonsters: HuntedMonster[] = [];
     simplifiedSettlement.huntedMonsters.forEach(huntedMonsterDB => {
       this.getMonster(huntedMonsterDB.monsterId).then(monster => {
         const huntedMonster = new HuntedMonster(settlement, monster);
@@ -789,52 +797,48 @@ export class KDMDataService {
             );
           },
         );
-        huntedMonsters.push(huntedMonster);
+        settlement.addHuntedMonster(huntedMonster);
       });
     });
-    settlement.huntedMonsters = huntedMonsters;
+    settlement.huntedMonstersSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const locations: Location[] = [];
     simplifiedSettlement.locationNames.forEach(locationName => {
-      this.getLocation(locationName).then(location => locations.push(location));
+      this.getLocation(locationName).then(location => settlement.addLocation(location));
     });
-    settlement.locations = locations;
+    settlement.locationsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const storages: Storage[] = [];
     simplifiedSettlement.storagesNameAmount.forEach((value: [string, number]) => {
       this.getStorageItem(value[0]).then(storage => {
         const s: Storage = Object.assign(storage);
         s.amount = value[1];
-        storages.push(s);
+        s.amountChanged.subscribe(this.saveSettlementObserver(settlement));
+        settlement.addStorageItem(s);
       });
     });
-    settlement.storages = storages;
+    settlement.storagesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const innovations: Innovation[] = [];
     simplifiedSettlement.innovationNames.forEach(innovationName => {
       this.getInnovation(innovationName).then(innovation => {
-        innovations.push(innovation);
+        settlement.addInnovation(innovation);
       });
     });
-    settlement.innovations = innovations;
+    settlement.innovationsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const principles: Principle[] = [];
     simplifiedSettlement.principleNames.forEach(principleName => {
       this.getPrinciple(principleName).then(principle => {
-        principles.push(principle);
+        settlement.addPrinciple(principle);
       });
     });
-    settlement.principles = principles;
+    settlement.principlesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    const settlementMilestones: SettlementMilestone[] = [];
     simplifiedSettlement.milestones.forEach(settlementMilestone => {
       this.getMilestone(settlementMilestone.milestoneId).then(milestone => {
         const sm: SettlementMilestone = new SettlementMilestone(settlement, milestone);
         sm.reached = settlementMilestone.reached;
-        settlementMilestones.push(sm);
+        settlement.addMilestone(sm);
       });
     });
-    settlement.milestones = settlementMilestones;
+    settlement.milestonesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
     simplifiedSettlement.survivors.forEach(simplifiedSurvivor => {
       const survivor: Survivor = new Survivor(simplifiedSurvivor.name, simplifiedSurvivor.id,
@@ -878,17 +882,67 @@ export class KDMDataService {
       survivor.weaponProficiencyType = simplifiedSurvivor.weaponProficiencyType;
       survivor.weaponProficiencyXP = simplifiedSurvivor.weaponProficiencyXP;
       simplifiedSurvivor.fightingArtNames.forEach(fightingArtName =>
-        this.getFightingArt(fightingArtName).then(fightingArt => survivor.fightingArts.push(fightingArt)));
+        this.getFightingArt(fightingArtName).then(fightingArt => survivor.addFightingArt(fightingArt)));
       simplifiedSurvivor.disorderNames.forEach(disorderName =>
-        this.getDisorder(disorderName).then(disorder => survivor.disorders.push(disorder)));
+        this.getDisorder(disorderName).then(disorder => survivor.addDisorder(disorder)));
       simplifiedSurvivor.equipments.forEach(survivorEquipmentSimplified =>
         this.getEquipment(survivorEquipmentSimplified.equipmentName).then(equipment =>
-          survivor.equipments.set(survivorEquipmentSimplified.position, equipment),
+          survivor.addEquipment(survivorEquipmentSimplified.position, equipment),
         ),
       );
-      settlement.survivors.push(survivor);
+      this.setSurvivorObservers(survivor, settlement);
+      settlement.addSurvivor(survivor);
     });
+    settlement.survivorsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
     return settlement;
+  }
+
+  private setSurvivorObservers(survivor: Survivor, settlement: Settlement): void {
+    survivor.nameChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.isAliveChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.isMaleChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.experienceChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.survivalChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.canDodgeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.canEncourageChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.canSurgeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.canDashChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.movementChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.accuracyChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.strengthChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.evasionChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.luckChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.speedChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.insanityChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.isBrainDamagedChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.headArmorChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.headHeavyInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.armsArmorChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.armsLightInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.armsHeavyInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.bodyArmorChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.bodyLightInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.bodyHeavyInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.waistArmorChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.waistLightInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.waistHeavyInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.legsArmorChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.legsLightInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.legsHeavyInjuryChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.cannotUseFightingArtsChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.cannotSpendSurvivalChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.skipNextHuntChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.fightingArtsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.disordersSizeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.characteristicsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.equipmentsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.oncePerLifetimeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.courageChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.understandingChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.weaponProficiencyTypeChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.weaponProficiencyXPChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.chosenBoldCourageChanged.subscribe(this.saveSettlementObserver(settlement));
+    survivor.chosenInsightUnderstandingChanged.subscribe(this.saveSettlementObserver(settlement));
   }
 
 }

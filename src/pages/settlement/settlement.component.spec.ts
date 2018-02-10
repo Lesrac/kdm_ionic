@@ -71,12 +71,12 @@ describe('Settlement Component', () => {
     const timeline = new Timeline(1, new LanternEvent());
     settlement = new Settlement('Dummy Settlement');
     settlementMilestone = new SettlementMilestone(settlement, milestone);
-    settlement.milestones.push(settlementMilestone);
-    settlement.timeline = [new SettlementTimeline(settlement, timeline)];
-    settlement.locations = [new Location('Dummy Location', 'dummy',
-      new Map<Equipment, Map<string | Innovation, [number]>>(), false)];
-    settlement.innovations = [new Innovation('Dummy Innovation', 'dummy',
-      InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], true)];
+    settlement.addMilestone(settlementMilestone);
+    settlement.addTimelineItem(new SettlementTimeline(settlement, timeline));
+    settlement.addLocation(new Location('Dummy Location', 'dummy',
+      new Map<Equipment, Map<string | Innovation, [number]>>(), false));
+    settlement.addInnovation(new Innovation('Dummy Innovation', 'dummy',
+      InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], true));
     NavParamsMock.setParams(settlement);
     fixture = TestBed.createComponent(SettlementPageComponent);
     settlementPageComponent = fixture.componentInstance;

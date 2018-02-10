@@ -1,4 +1,5 @@
 import { BaseModel } from './base_model';
+import { Subject } from 'rxjs/Subject';
 
 export enum StorageTag {
   AMMUNITION = 'AMMUNITION',
@@ -58,12 +59,22 @@ export enum StorageTag {
  * Created by Daniel on 08.02.2017.
  */
 export class Storage extends BaseModel {
-  amount: number;
+  amountChanged: Subject<number> = new Subject<number>();
   tags: StorageTag[];
+  private _amount: number;
 
   constructor(name: string, description: string, amount: number, tags: StorageTag[]) {
     super(name, description);
-    this.amount = amount;
+    this._amount = amount;
     this.tags = tags;
+  }
+
+  get amount(): number {
+    return this._amount;
+  }
+
+  set amount(value: number) {
+    this._amount = value;
+    this.amountChanged.next(value);
   }
 }

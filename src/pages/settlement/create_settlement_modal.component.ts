@@ -50,13 +50,17 @@ export class CreateSettlementModalComponent {
       this.createDefaultMilestoneStoryEvents(settlement),
       this.createDefaultQuarries(settlement),
       this.createDefaultSettlementLocations(settlement),
-      this.createDefaultInnovations(settlement)]).then(() => settlement);
+      this.createDefaultInnovations(settlement)])
+      .then(() => {
+        this.setObservers(settlement);
+        return settlement;
+      });
   }
 
   private createDefaultTimeline(settlement: Settlement): Promise<Timeline[]> {
     return this.kdmService.getDefaultTimeline().then(timelines => {
       timelines.forEach(timeline => {
-        settlement.timeline.push(new SettlementTimeline(settlement, timeline));
+        settlement.addTimelineItem(new SettlementTimeline(settlement, timeline));
       });
       return timelines;
     });
@@ -72,7 +76,7 @@ export class CreateSettlementModalComponent {
             if (nemesisMonster.name === 'Butcher') {
               settlementMonster.isHuntable = true;
             }
-            settlement.huntableMonsters.push(settlementMonster);
+            settlement.addHuntableMonster(settlementMonster);
           }
         },
       );
@@ -88,7 +92,7 @@ export class CreateSettlementModalComponent {
     return this.kdmService.getInitialMilestones().then(
       milestones => {
         milestones.forEach(
-          milestone => settlement.milestones.push(new SettlementMilestone(settlement, milestone)));
+          milestone => settlement.addMilestone(new SettlementMilestone(settlement, milestone)));
         return milestones;
       });
   }
@@ -103,7 +107,7 @@ export class CreateSettlementModalComponent {
             if (quarry.name === 'White Lion') {
               settlementMonster.isHuntable = true;
             }
-            settlement.huntableMonsters.push(settlementMonster);
+            settlement.addHuntableMonster(settlementMonster);
           }
         },
       );
@@ -117,17 +121,34 @@ export class CreateSettlementModalComponent {
 
   private createDefaultSettlementLocations(settlement: Settlement): Promise<Location[]> {
     return this.kdmService.getSettlementLocations().then(locations => {
-      settlement.locations = locations.filter(location => location.isStartLocation);
+      locations.filter(location => location.isStartLocation).forEach(location => settlement.addLocation(location));
       return locations;
     });
   }
 
   private createDefaultInnovations(settlement: Settlement): Promise<Innovation[]> {
     return this.kdmService.getInnovations().then(innovations => {
-      settlement.innovations = innovations.filter(innovation =>
-        innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1);
+      innovations.filter(innovation =>
+        innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1).forEach(innovation => settlement.addInnovation(innovation));
       return innovations;
     });
+  }
+
+  private setObservers(settlement: Settlement): void {
+    settlement.nameChange.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.survivalLimitChange.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.populationChange.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.deathcountChange.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.settlementLostChange.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.timelineSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.huntableMonstersSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.huntedMonstersSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.locationsSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.storagesSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.innovationsSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.survivorsSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.milestonesSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
+    settlement.principlesSizeChanged.subscribe(this.kdmService.saveSettlementObserver(settlement));
   }
 
 }

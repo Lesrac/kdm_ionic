@@ -62,9 +62,9 @@ describe('Defeated Monster Component', () => {
     const huntedMonster1 = new HuntedMonster(settlement, monster);
     const huntedMonster2 = new HuntedMonster(settlement, monster);
     const huntedMonster3 = new HuntedMonster(settlement, monster);
-    settlement.huntedMonsters.push(huntedMonster1);
-    settlement.huntedMonsters.push(huntedMonster2);
-    settlement.huntedMonsters.push(huntedMonster3);
+    settlement.addHuntedMonster(huntedMonster1);
+    settlement.addHuntedMonster(huntedMonster2);
+    settlement.addHuntedMonster(huntedMonster3);
     defeatedMonsterComponent.removeDefeatedMonster(huntedMonster2);
     expect(defeatedMonsterComponent.settlement.huntedMonsters.length).toBe(2);
     expect(defeatedMonsterComponent.settlement.huntedMonsters).toContain(huntedMonster1);

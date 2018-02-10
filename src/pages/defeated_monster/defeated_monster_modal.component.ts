@@ -41,7 +41,7 @@ export class DefeatedMonsterModalComponent implements OnInit {
       if (!this.monster.isNemesis && this.huntResources) {
         this.kdmCalculation.addResourcesFromKilledMonster(huntedMonster);
       }
-      this.settlement.huntedMonsters.push(huntedMonster);
+      this.settlement.addHuntedMonster(huntedMonster);
     }
     this.close();
   }

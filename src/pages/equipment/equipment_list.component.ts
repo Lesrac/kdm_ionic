@@ -42,13 +42,13 @@ export class EquipmentListPageComponent implements AfterViewInit {
   pushEquipment(): void {
     const eq = this.allEquipments.find(equipment => equipment.name === this.equipmentName);
     if (eq) {
-      this.survivor.equipments.set(this.position, eq);
+      this.survivor.addEquipment(this.position, eq);
       this.navCtrl.pop();
     }
   }
 
   setEquipment(eq: Equipment): void {
-    this.survivor.equipments.set(this.position, eq);
+    this.survivor.addEquipment(this.position, eq);
     this.navCtrl.pop();
   }
 

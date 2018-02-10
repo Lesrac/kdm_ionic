@@ -63,8 +63,8 @@ describe('Defeated Monster Modal', () => {
     const huntableMonster = new HuntableMonster(settlement, monster);
     huntableMonster.isHuntable = true;
     const notHuntableMonster = new HuntableMonster(settlement, monster);
-    defeatedMonsterModalComponent.settlement.huntableMonsters.push(huntableMonster);
-    defeatedMonsterModalComponent.settlement.huntableMonsters.push(notHuntableMonster);
+    defeatedMonsterModalComponent.settlement.addHuntableMonster(huntableMonster);
+    defeatedMonsterModalComponent.settlement.addHuntableMonster(notHuntableMonster);
     expect(defeatedMonsterModalComponent.huntableMonsters.length).toBe(0);
     defeatedMonsterModalComponent.ngOnInit();
     expect(defeatedMonsterModalComponent.huntableMonsters.length).toBe(1);

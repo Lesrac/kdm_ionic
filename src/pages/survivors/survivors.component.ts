@@ -4,7 +4,6 @@ import { AlertController, NavController } from 'ionic-angular';
 import { KDMDataService } from '../../service/kdm_data.service';
 import { Survivor } from '../../model/survivor';
 import { SurvivorPageComponent } from '../survivor/survivor.component';
-import { KDMDBService } from '../../service/kdm_db.service';
 
 /**
  * Created by Daniel on 24.02.2017.
@@ -20,8 +19,7 @@ export class SurvivorsPageComponent implements OnInit {
   settlement: Settlement;
   tempSettlement: Settlement;
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private kdmService: KDMDataService,
-              private kdmdbService: KDMDBService) {
+  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private kdmService: KDMDataService) {
   }
 
   ngOnInit(): void {
