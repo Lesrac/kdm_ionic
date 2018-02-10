@@ -27,6 +27,7 @@ import { ComparableVisitorValue } from '../model/visitor/comparable_visitor';
 import { SettlementPageComponent } from '../pages/settlement/settlement.component';
 import { SettlementMilestone } from '../model/linking/settlement_milestone';
 import { StaticProvider } from '@angular/core/src/di';
+import { SurvivorPageComponent } from '../pages/survivor/survivor.component';
 
 export class DummyMockElements {
   public static storage: Storage = new Storage('Storage Dummy', 'dummy', 1, [StorageTag.ITEM]);
@@ -410,6 +411,9 @@ export class KDMCalculationServiceMock {
 
 export class KDMObserverServiceMock {
   registerObserverForMilestone(settlementPageComponent: SettlementPageComponent, milestone: SettlementMilestone): void {
+  }
+
+  registerObserverForSurvivorHappenings(survivorPageComponent: SurvivorPageComponent): void {
   }
 }
 

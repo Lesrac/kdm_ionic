@@ -33,7 +33,10 @@
         <ion-col>
           <ion-item no-lines>
             <ion-toggle [(ngModel)]="survivor.isAlive"></ion-toggle>
-            <ion-label>is alive</ion-label>
+            <ng-template #isDead>
+              <ion-label>is dead</ion-label>
+            </ng-template>
+            <ion-label *ngIf="survivor.isAlive; else isDead">is alive</ion-label>
           </ion-item>
         </ion-col>
         <ion-col style="width: 20%">
