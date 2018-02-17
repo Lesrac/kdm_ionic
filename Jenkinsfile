@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	agent { dockerfile true }
   environment {
     MAIN_BRANCH = 'master'
     BUILD_NAME = 'kdmf'
