@@ -12,14 +12,14 @@ pipeline {
           sh 'npm run test-coverage'
         }
       }
-      post {
+ /*     post {
         always {
           script {
             // if the testing command creates a test report, parse it with the junit command
             junit 'coverage/Icov.info'
           }
         }
-      }
+      } */
     }
     stage('build') {
       steps {
