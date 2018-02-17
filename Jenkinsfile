@@ -5,6 +5,13 @@ pipeline {
     BUILD_NAME = 'kdmf'
   }
   stages {
+		 stage('build') {
+      steps {
+        script {
+          sh 'npm run build'
+        }
+      }
+    }
     stage('test') {
       steps {
         script {
@@ -20,14 +27,7 @@ pipeline {
           }
         }
       } */
-    }
-    stage('build') {
-      steps {
-        script {
-          sh 'npm run build'
-        }
-      }
-    }
+    }   
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
   }
   post {
