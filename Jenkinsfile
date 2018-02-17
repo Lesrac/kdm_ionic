@@ -9,12 +9,11 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("getintodevops/hellonode")
+        app = docker.build("kdmf")
     }
 
     stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
+        /* Ideally, we would run a test framework against our image. */
 
         app.inside {
             sh 'echo "Tests passed"'
