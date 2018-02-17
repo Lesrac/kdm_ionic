@@ -5,7 +5,6 @@ node {
     MAIN_BRANCH = 'master'
     BUILD_NAME = 'kdmf'
   }
-  stages {
 		stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
         checkout scm
@@ -31,7 +30,6 @@ node {
       }
     }
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
-  }
   post {
     always {
       deleteDir()
