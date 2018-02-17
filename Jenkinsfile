@@ -1,33 +1,37 @@
-node {
-    def app
-
-    stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-        checkout scm
-    }
-
-    stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        app = docker.build("kdmf")
-    }
-
-    stage('Test image') {
-        /* Ideally, we would run a test framework against our image. */
-
-        app.inside {
-            sh 'echo "Tests passed"'
+pipeline {
+  environment {
+    MAIN_BRANCH = 'master'
+    BUILD_NAME = 'kdmf'
+  }
+  stages {
+    stage('test') {
+      steps {
+        script {
+          // run the command to run tests with the sh command
+          sh 'npm run test-coverage'
         }
+      }
+      post {
+        always {
+          script {
+            // if the testing command creates a test report, parse it with the junit command
+            junit 'coverage/Icov.info'
+          }
+        }
+      }
     }
-
-    stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. 
-        * docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-        *     app.push("${env.BUILD_NUMBER}")
-        *     app.push("latest")
-        }*/
+    stage('build') {
+      steps {
+        script {
+          sh 'npm run build'
+        }
+      }
     }
+    // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
+  }
+  post {
+    always {
+      deleteDir()
+    }
+  }
 }
