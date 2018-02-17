@@ -1,9 +1,19 @@
-pipeline {
+node {
+	def app
+	
   environment {
     MAIN_BRANCH = 'master'
     BUILD_NAME = 'kdmf'
   }
   stages {
+		stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
+        checkout scm
+    }
+    stage('build') {
+      app = docker.build("kdmf")
+    }
+	
     stage('test') {
       steps {
         script {
@@ -17,13 +27,6 @@ pipeline {
             // if the testing command creates a test report, parse it with the junit command
             junit 'coverage/Icov.info'
           }
-        }
-      }
-    }
-    stage('build') {
-      steps {
-        script {
-          sh 'npm run build'
         }
       }
     }
