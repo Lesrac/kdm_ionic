@@ -1,18 +1,14 @@
-node {
-	def app
-	
+pipeline {
+	agent {
+    dockerfile {
+      label 'JENKINS_SLAVE'
+    }
+  }
   environment {
     MAIN_BRANCH = 'master'
     BUILD_NAME = 'kdmf'
   }
-		stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-        checkout scm
-    }
-    stage('build') {
-      app = docker.build("kdmf")
-    }
-	
+  stages {
     stage('test') {
       steps {
         script {
@@ -29,7 +25,15 @@ node {
         }
       }
     }
+    stage('build') {
+      steps {
+        script {
+          sh 'npm run build'
+        }
+      }
+    }
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
+  }
   post {
     always {
       deleteDir()
