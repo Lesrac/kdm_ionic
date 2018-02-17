@@ -1,9 +1,5 @@
 pipeline {
-	agent {
-    dockerfile {
-      label 'JENKINS_SLAVE'
-    }
-  }
+	agent any
   environment {
     MAIN_BRANCH = 'master'
     BUILD_NAME = 'kdmf'
