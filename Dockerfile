@@ -25,8 +25,6 @@ RUN npm install --save @ionic/storage
 # If you are building your code for production
 # RUN npm install --only=production
 
-# Bundle app source
-COPY . .
 
 RUN npm install
 
