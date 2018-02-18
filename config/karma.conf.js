@@ -35,6 +35,9 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
 
+    browserDisconnectTolerance: 2,
+    browserNoActivityTimeout: 50000,
+
     reporters: config.coverage ? ['kjhtml', 'dots', 'coverage-istanbul', 'verbose'] : ['kjhtml', 'dots', 'verbose'],
     port: 9876,
     colors: true,
