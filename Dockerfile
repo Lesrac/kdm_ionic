@@ -14,13 +14,6 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm install -g ionic cordova
-RUN npm install --save @ionic-native/core
-RUN ionic plugin add cordova-plugin-statusbar
-RUN npm install --save @ionic-native/status-bar
-RUN ionic plugin add cordova-plugin-splashscreen
-RUN npm install --save @ionic-native/splash-screen
-RUN ionic cordova plugin add cordova-sqlite-storage --save
-RUN npm install --save @ionic/storage
 
 # If you are building your code for production
 # RUN npm install --only=production

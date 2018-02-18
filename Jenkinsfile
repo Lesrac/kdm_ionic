@@ -8,6 +8,7 @@ pipeline {
 		 stage('build') {
       steps {
         script {
+					sh 'npm i'
           sh 'npm run build'
         }
       }
