@@ -31,7 +31,7 @@ module.exports = function (config) {
     },
 
     coverageIstanbulReporter: {
-      reports: ['html', 'lcovonly'],
+      reports: ['html', 'lcovonly', 'cobertura'],
       fixWebpackSourcePaths: true
     },
 

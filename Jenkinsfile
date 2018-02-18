@@ -24,7 +24,7 @@ pipeline {
         always {
           script {
             // if the testing command creates a test report, parse it with the junit command
-            junit 'coverage/Icov.info'
+            junit 'coverage/*.xml'
           }
         }
       } */
