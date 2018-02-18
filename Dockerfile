@@ -14,7 +14,6 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN npm install -g ionic cordova
-RUN ionic cordova platform add android
 RUN npm install --save @ionic-native/core
 RUN ionic plugin add cordova-plugin-statusbar
 RUN npm install --save @ionic-native/status-bar
