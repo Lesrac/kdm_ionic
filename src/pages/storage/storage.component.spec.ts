@@ -16,7 +16,6 @@ import {
 } from '../../mock/mocks';
 import { KDMDBService } from '../../service/kdm_db.service';
 import { Storage, StorageTag } from '../../model/storage';
-import { DebugElement } from '@angular/core';
 import { StorageModalComponent } from './storage_modal.component';
 import { ShowListDetailComponent } from '../template/show_list_detail.component';
 import { KDMDataService } from '../../service/kdm_data.service';
