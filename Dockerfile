@@ -21,12 +21,14 @@ RUN ionic plugin add cordova-plugin-splashscreen
 RUN npm install --save @ionic-native/splash-screen
 RUN ionic cordova plugin add cordova-sqlite-storage --save
 RUN npm install --save @ionic/storage
-RUN npm install
+
 # If you are building your code for production
 # RUN npm install --only=production
 
 # Bundle app source
 COPY . .
+
+RUN npm install
 
 EXPOSE 8080
 CMD [ "npm", "start" ]
