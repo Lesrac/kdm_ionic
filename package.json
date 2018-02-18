@@ -18,7 +18,7 @@
     "ionic:serve": "ionic-app-scripts serve",
     "test": "karma start ./config/karma.conf.js",
     "test-coverage": "karma start ./config/karma.conf.js --coverage",
-    "test-coverage-headless": "karma start --browsers ChromeHeadless ./config/karma.conf.js --coverage",
+    "test-coverage-headless": "karma start --browsers ChromeHeadless_custom ./config/karma.conf.js --coverage",
     "e2e": "npm run clean && npm run build && node node_modules/protractor/bin/webdriver-manager update && node node_modules/protractor/bin/protractor",
     "lint": "tslint ."
   },

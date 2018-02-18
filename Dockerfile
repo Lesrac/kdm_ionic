@@ -15,11 +15,5 @@ COPY . .
 
 RUN npm install -g ionic cordova
 
-# If you are building your code for production
-# RUN npm install --only=production
-
-
-RUN npm install
-
 EXPOSE 8080
 CMD [ "npm", "start" ]
