@@ -20,14 +20,14 @@ pipeline {
           sh 'npm run test-coverage-headless'
         }
       }
- /*     post {
+      post {
         always {
           script {
             // if the testing command creates a test report, parse it with the junit command
             junit 'coverage/*.xml'
           }
         }
-      } */
+      }
     }
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
   }
