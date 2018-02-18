@@ -17,7 +17,7 @@ pipeline {
       steps {
         script {
           // run the command to run tests with the sh command
-          sh 'npm run test-coverage'
+          sh 'npm run test-coverage-headless'
         }
       }
  /*     post {
@@ -28,7 +28,7 @@ pipeline {
           }
         }
       } */
-    }   
+    }
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
   }
   post {
