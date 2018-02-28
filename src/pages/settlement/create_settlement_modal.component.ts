@@ -129,7 +129,8 @@ export class CreateSettlementModalComponent {
   private createDefaultInnovations(settlement: Settlement): Promise<Innovation[]> {
     return this.kdmService.getInnovations().then(innovations => {
       innovations.filter(innovation =>
-        innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1).forEach(innovation => settlement.addInnovation(innovation));
+        innovation.tags.indexOf(InnovationTag.STARTING_INNOVATION) > -1).forEach(innovation =>
+        settlement.addInnovation(innovation));
       return innovations;
     });
   }

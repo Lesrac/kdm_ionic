@@ -32,13 +32,17 @@ module.exports = function (config) {
 
     coverageIstanbulReporter: {
       reports: ['html', 'lcovonly', 'cobertura'],
-      fixWebpackSourcePaths: true
+      fixWebpackSourcePaths: true,
+    },
+
+    junitReporter: {
+      outputFile: 'test-results.xml',
     },
 
     browserDisconnectTolerance: 2,
     browserNoActivityTimeout: 50000,
 
-    reporters: config.coverage ? ['kjhtml', 'dots', 'coverage-istanbul', 'verbose'] : ['kjhtml', 'dots', 'verbose'],
+    reporters: config.coverage ? ['kjhtml', 'dots', 'coverage-istanbul', 'verbose', 'junit'] : ['kjhtml', 'dots', 'verbose'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
