@@ -51,7 +51,6 @@ pipeline {
           }
         }
       }
-    }
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
   }
   post {
