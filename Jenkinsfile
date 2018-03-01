@@ -37,6 +37,21 @@ pipeline {
         }
       }
     }
+    stage('e2e') {
+      steps {
+        script {
+          // run the command to run tests with the sh command
+          sh 'npm run e2e'
+        }
+      }
+      post {
+        always {
+            // if the testing command creates a test report, parse it with the junit command
+            junit 'coverage/e2e/*.xml'
+          }
+        }
+      }
+    }
     // Example used: https://github.com/JFrogDev/project-examples/blob/master/jenkins-pipeline-examples/declarative-example/Jenkinsfile
   }
   post {

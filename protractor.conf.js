@@ -1,4 +1,4 @@
-var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
+var reporters = require('jasmine-reporters');
 
 exports.config = {
   allScriptsTimeout: 100000,
@@ -11,7 +11,7 @@ exports.config = {
       args: ["--headless", "--disable-gpu"]
     }
   },
-  framework: 'jasmine',
+  framework: 'jasmine2',
   specs: ['./e2e/**/*.e2e-spec.ts'],
   baseUrl: 'http://localhost:8100',
   useAllAngular2AppRoots: true,
@@ -25,6 +25,13 @@ exports.config = {
 
   },
   onPrepare: function () {
-    jasmine.getEnv().addReporter(new SpecReporter());
+    jasmine
+      .getEnv()
+      .addReporter(new reporters.JUnitXmlReporter({
+        'savePath': 'coverage/e2e',
+        'filePrefix': 'e2e_output',
+        'consolidate': true,
+        'consolidateAll': true
+      }));
   }
 };
