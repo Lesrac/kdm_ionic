@@ -22,6 +22,8 @@ pipeline {
       }
       post {
         always {
+          // if the testing command creates a test report, parse it with the junit command
+          junit 'config/coverage/**/*.xml'
           script {
 						publishHTML (target: [
 							allowMissing: false,
@@ -31,8 +33,6 @@ pipeline {
 							reportFiles: 'index.html',
 							reportName: "Coverage Report"
 						])
-            // if the testing command creates a test report, parse it with the junit command
-            junit 'config/coverage/*.xml'
           }
         }
       }
