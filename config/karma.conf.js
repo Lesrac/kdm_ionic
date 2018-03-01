@@ -31,13 +31,15 @@ module.exports = function (config) {
     },
 
     coverageIstanbulReporter: {
-      reports: ['html', 'lcovonly', 'cobertura', 'junit'],
+      reports: ['html', 'lcovonly', 'cobertura'],
       fixWebpackSourcePaths: true,
     },
 
     junitReporter: {
       outputDir: 'coverage',
       outputFile: 'test-results.xml',
+      suite: '',
+      useBrowserName: false,
     },
 
     browserDisconnectTolerance: 2,
