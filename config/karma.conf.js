@@ -31,11 +31,12 @@ module.exports = function (config) {
     },
 
     coverageIstanbulReporter: {
-      reports: ['html', 'lcovonly', 'cobertura'],
+      reports: ['html', 'lcovonly', 'cobertura', 'junit'],
       fixWebpackSourcePaths: true,
     },
 
     junitReporter: {
+      outputDir: 'coverage',
       outputFile: 'test-results.xml',
     },
 
