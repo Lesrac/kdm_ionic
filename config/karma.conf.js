@@ -39,7 +39,6 @@ module.exports = function (config) {
       outputDir: 'coverage',
       outputFile: 'test-results.xml',
       suite: '',
-      useBrowserName: false,
     },
 
     browserDisconnectTolerance: 2,

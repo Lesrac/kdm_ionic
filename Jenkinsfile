@@ -23,6 +23,14 @@ pipeline {
       post {
         always {
           script {
+						publishHTML (target: [
+							allowMissing: false,
+							alwaysLinkToLastBuild: false,
+							keepAll: true,
+							reportDir: 'coverage',
+							reportFiles: 'index.html',
+							reportName: "Coverage Report"
+						])
             // if the testing command creates a test report, parse it with the junit command
             junit '**/test-results.xml'
           }
