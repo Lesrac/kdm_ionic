@@ -32,7 +32,7 @@ pipeline {
 							reportName: "Coverage Report"
 						])
             // if the testing command creates a test report, parse it with the junit command
-            junit '**/test-results.xml'
+            junit 'config/coverage/*.xml'
           }
         }
       }
