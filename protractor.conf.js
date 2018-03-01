@@ -5,7 +5,11 @@ exports.config = {
   getPageTimeout: 100000,
   directConnect: true,
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+
+    chromeOptions: {
+      args: ["--headless", "--disable-gpu"]
+    }
   },
   framework: 'jasmine',
   specs: ['./e2e/**/*.e2e-spec.ts'],
