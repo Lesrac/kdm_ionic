@@ -9,6 +9,10 @@ export class Monster {
   isNemesis: boolean;
   resources: MonsterLevelResources[];
   rewardText: string;
+  terrainDeployment: string;
+  aftermath: string;
+  aftermathVictory: string;
+  aftermathDefeat: string;
   locations: Location[] = [];
 
   constructor(id: number, name: string, isNemesis: boolean) {

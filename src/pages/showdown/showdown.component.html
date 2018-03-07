@@ -8,11 +8,44 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-group>
+    <ion-item-group *ngIf="!monster.isNemesis">
+      <ion-item text-wrap no-lines>
+        Select an encounter level and set up the hunt board.
+      </ion-item>
       <img src="assets/img/HuntBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG" alt="Hunt Board"/>
     </ion-item-group>
+
     <ion-item-group>
+      <ion-item-divider>Showdown Setup</ion-item-divider>
       <img src="assets/img/ShowdownBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG" alt="Hunt Board"/>
+      <ion-item text-wrap no-lines>
+        <b>Terrain & Deployment</b>
+      </ion-item>
+      <ion-item text-wrap no-lines>
+        <span [innerHTML]="monster.terrainDeployment | kdmTextFormatting"></span>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>Aftermath</ion-item-divider>
+      <ion-item *ngIf="monster.aftermath && monster.aftermath.length > 0" text-wrap no-lines>
+        <span [innerHTML]="monster.aftermath | kdmTextFormatting"></span>
+      </ion-item>
+      <b>Victory</b>
+      <ion-item text-wrap no-lines>
+        <span [innerHTML]="monster.aftermathVictory | kdmTextFormatting"></span>
+      </ion-item>
+      <b>Defeat</b>
+      <ion-item text-wrap no-lines>
+        <span [innerHTML]="monster.aftermathDefeat | kdmTextFormatting"></span>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>Rewards</ion-item-divider>
+      <ion-item text-wrap no-lines>
+        <span [innerHTML]="monster.rewardText | kdmTextFormatting"></span>
+      </ion-item>
     </ion-item-group>
   </ion-list>
 </ion-content>

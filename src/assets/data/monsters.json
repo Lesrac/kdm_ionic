@@ -5,6 +5,10 @@
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
+    "terrainDeployment": "",
+    "aftermath": "",
+    "aftermathVictory": "",
+    "aftermathDefeat": "",
     "resources": [
       {
         "level": 1,
@@ -58,6 +62,10 @@
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
+    "terrainDeployment": "",
+    "aftermath": "",
+    "aftermathVictory": "",
+    "aftermathDefeat": "",
     "resources": [
       [
         {
@@ -113,6 +121,10 @@
     "level": 1,
     "isNemesis": false,
     "rewardText": "",
+    "terrainDeployment": "",
+    "aftermath": "",
+    "aftermathVictory": "",
+    "aftermathDefeat": "",
     "resources": [
       [
         {
@@ -167,7 +179,11 @@
     "name": "Butcher",
     "level": 1,
     "isNemesis": true,
-    "rewardText": "",
+    "rewardText": "Roll 1d10 and add the Butcher's level to the result. The group gains any listed resources or gear. Add them to the settlement's storage. (1-3) The Butcher vanishes in a flash of blinding light. (4-6) The Butcher lets loose a final roar. Its body explodes, scattering 1d5 Broken Lantern resources. (7-9) Butcher's Cleaver rare gear and 1 Broken Lantern resource. (10-12) Butcher's Cleaver rare gear and 1d5 Broken Lantern resources, and Hunk of living Flesh (use to regrow 1 dismembered limb right now only). (13+) The Forsaker Mask rare gear falls to the ground.(br) If the settlement has Memento Mori when they defeat a level 3+ Butcher, roll 1d10. On a result of 2+, nominate a survivor. The survivor cuts off their own face and fashions it into a mask. Gain the Forsaker Mask rare gear. You may gain this benefit once per campaign.",
+    "terrainDeployment": "<ul><li>1 Stone Column terrain card, [3 columns] place in green spaces.</li><li>1 random terrain card, set up normally.</li><li>Place the nemesis in the center of the board.</li><li>Place survivors in the blue zone.</li></ul>The survivors are defending their home. They go first",
+    "aftermath": "",
+    "aftermathVictory": "The Butcher is an inspiration. Any victorious survivor may immediately select Axe weapon proficiency, regardless of age milestones. (Any accrued ranks of weapon proficiency are lost when switching to a new weapon type.)(br)Level 1 + <ul><li>+1 Hunt XP</li><li>+1 Weapon Proficiency Level or +(*) Axe Proficiency Levels</li><li>Rewards</li></ul>",
+    "aftermathDefeat": "The Butcher rampages through the settlement! Everyone escapes into the darkness until it leaves, but all resources in the settlement's storage are lost repairing the destruction.",
     "resources": [],
     "locations": []
   },
@@ -177,6 +193,10 @@
     "level": 1,
     "isNemesis": true,
     "rewardText": "",
+    "terrainDeployment": "",
+    "aftermath": "",
+    "aftermathVictory": "",
+    "aftermathDefeat": "",
     "resources": [],
     "locations": []
   },
@@ -186,6 +206,10 @@
     "level": 1,
     "isNemesis": true,
     "rewardText": "",
+    "terrainDeployment": "",
+    "aftermath": "",
+    "aftermathVictory": "",
+    "aftermathDefeat": "",
     "resources": [],
     "locations": []
   }
