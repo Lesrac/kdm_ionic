@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Showdown: {{monster.name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-group>
+      <img src="assets/img/HuntBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG" alt="Hunt Board"/>
+    </ion-item-group>
+    <ion-item-group>
+      <img src="assets/img/ShowdownBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG" alt="Hunt Board"/>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

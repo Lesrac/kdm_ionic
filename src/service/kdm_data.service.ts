@@ -699,7 +699,6 @@ export class KDMDataService {
   saveSettlementObserver(settlement: Settlement): Observer<any> {
     return {
       next: x => {
-        console.log('next: ' + x);
         this.kdmDBService.saveSettlement(settlement);
       },
       error: err => console.error('Observer got an error: ' + err),

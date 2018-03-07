@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Showdowns
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let showdown of showdownMonsters; let even=even; let odd=odd"
+            [ngClass]="{ odd: odd, even: even }" no-lines>
+    <ion-row class="container">
+      <ion-col (click)="goToDetail(showdown)">
+        {{showdown.name}}
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>

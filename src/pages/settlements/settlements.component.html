@@ -11,7 +11,7 @@
   </div>
   <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
     <ion-item *ngFor="let settlement of settlements; let even=even; let odd=odd"
-              [ngClass]="{ odd: odd, even: even }">
+              [ngClass]="{ odd: odd, even: even }" no-lines>
       <ion-row class="container">
         <ion-col (click)="goToDetail(settlement)">
           {{settlement.name}}

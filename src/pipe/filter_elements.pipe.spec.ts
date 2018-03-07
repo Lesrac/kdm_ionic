@@ -6,7 +6,8 @@ describe('Pipe: filterElementsPipe', () => {
   let testList: { amount: number[], what: any }[];
   const ammunition: String = 'AMMUNITION';
   const arrow: String = 'ARROW';
-  const innovation: Innovation = new Innovation('Innovation 1', 'innovated', InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
+  const innovation: Innovation = new Innovation('Innovation 1', 'innovated',
+    InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
 
   beforeEach(() => {
     pipe = new FilterElementsPipe();

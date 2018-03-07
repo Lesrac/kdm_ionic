@@ -51,6 +51,9 @@ import { EquipmentGridPageComponent } from '../pages/equipment/equipment_grid.co
 import { EquipmentCardComponent } from '../pages/equipment/equipment_card.component';
 import { EquipmentListPageComponent } from '../pages/equipment/equipment_list.component';
 import { CreateSettlementModalComponent } from '../pages/settlement/create_settlement_modal.component';
+import { ShowdownPageComponent } from '../pages/showdown/showdown.component';
+import { ShowdownsPageComponent } from '../pages/showdown/showdowns.component';
+import { RemoveWhitespacePipe } from '../pipe/remove_whitespace.pipe';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,8 @@ import { CreateSettlementModalComponent } from '../pages/settlement/create_settl
     ShowListDetailComponent,
     ShowListAddModalComponent,
     ShowLocationDetailComponent,
+    ShowdownsPageComponent,
+    ShowdownPageComponent,
     CreateSettlementModalComponent,
     AddedResourcesModalComponent,
     TabsPageComponent,
@@ -87,6 +92,7 @@ import { CreateSettlementModalComponent } from '../pages/settlement/create_settl
     TextFormattingPipe,
     MapValuesPipe,
     FilterElementsPipe,
+    RemoveWhitespacePipe,
     AutoresizeTextareaDirective,
     BrainTraumaPageComponent,
     GlossaryPageComponent,
@@ -121,6 +127,8 @@ import { CreateSettlementModalComponent } from '../pages/settlement/create_settl
     ShowListComponent,
     ShowLocationDetailComponent,
     ShowListAddModalComponent,
+    ShowdownsPageComponent,
+    ShowdownPageComponent,
     CreateSettlementModalComponent,
     AddedResourcesModalComponent,
     ShowListDetailComponent,

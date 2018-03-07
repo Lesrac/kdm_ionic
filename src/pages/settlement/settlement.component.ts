@@ -13,6 +13,7 @@ import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
 import { KDMObserverService } from '../../service/kdm_observer.service';
 import { KDMDataService } from '../../service/kdm_data.service';
+import { ShowdownsPageComponent } from '../showdown/showdowns.component';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -80,6 +81,10 @@ export class SettlementPageComponent implements DoCheck {
       type: ShowListTypes.LOCATION,
       settlement: this.settlement,
     }).then();
+  }
+
+  showShowdowns(): void {
+    this.navCtrl.push(ShowdownsPageComponent, {}).then();
   }
 
   showStorage(): void {
