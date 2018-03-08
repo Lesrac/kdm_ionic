@@ -169,6 +169,15 @@
     ]
   },
   {
+    "name": "Herb Gathering",
+    "todo": "Each survivor must make a special gathering roll. To make gathering roll, a survivor nominates any number of d10's and then rolls them. If two or more die results are the same, your score is 0. Otherwise, add all your die results to determine your gathering score. Add all the survivors' gathering scores to make a single final score and consult the Herb Exploration table. Add +10 to the final score if the survivors have passed the Overwhelming Darkness space on the hunt board.",
+    "storyEvents": [
+      48,
+      49,
+      50
+    ]
+  },
+  {
     "name": "Retirement",
     "todo": "In rare instances, survivors retire, rather than perish. When the last Hunt XP box is filled , the survivor retires. A survivor may also be forced into early retirement by some severe injuries Retired survivors cannot hunt or participate in showdowns. When a survivor retires, they still contribute to the total population of the settlement, and may participate in settlement events and endeavors.",
     "storyEvents": []
