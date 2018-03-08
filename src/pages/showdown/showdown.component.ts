@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController, ModalController } from 'ionic-angular';
-import { KDMDBService } from '../../service/kdm_db.service';
-import { KDMDataService } from '../../service/kdm_data.service';
 import { Monster } from '../../model/monster';
 
 /**
@@ -15,8 +13,7 @@ export class ShowdownPageComponent implements OnInit {
 
   monster: Monster;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
-              private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
+  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
     this.monster = params.get('monster');
   }
 

@@ -14,10 +14,16 @@
       </ion-item>
       <img src="assets/img/HuntBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG" alt="Hunt Board"/>
     </ion-item-group>
+    <ion-item-group *ngIf="monster.isNemesis && monster.otherInformation.length > 0">
+      <ion-item text-wrap no-lines>
+        {{monster.otherInformation}}
+      </ion-item>
+    </ion-item-group>
 
     <ion-item-group>
       <ion-item-divider>Showdown Setup</ion-item-divider>
-      <img src="assets/img/ShowdownBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG" alt="Hunt Board"/>
+      <img src="assets/img/ShowdownBoard_{{monster.name | uppercase | kdmfRemoveWhitespacePipe}}.PNG"
+           alt="Showdown Board"/>
       <ion-item text-wrap no-lines>
         <b>Terrain & Deployment</b>
       </ion-item>

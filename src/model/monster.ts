@@ -13,6 +13,7 @@ export class Monster {
   aftermath: string;
   aftermathVictory: string;
   aftermathDefeat: string;
+  otherInformation: string;
   locations: Location[] = [];
 
   constructor(id: number, name: string, isNemesis: boolean) {
