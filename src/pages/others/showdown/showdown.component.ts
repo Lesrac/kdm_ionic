@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController, ModalController } from 'ionic-angular';
-import { Monster } from '../../model/monster';
+import { Monster } from '../../../model/monster';
 
 /**
  * Created by Daniel on 14.02.2017.
