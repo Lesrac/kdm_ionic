@@ -6,6 +6,7 @@ import { GlossaryPageComponent } from './glossary/glossary.component';
 import { HuntEventTablePageComponent } from './hunt_event_table/hunt_event_table.component';
 import { SevereInjuriesPageComponent } from './severe_injuries/severe_injuries.component';
 import { StoryEventsPageComponent } from './story_events/story_events.component';
+import { ShowdownsPageComponent } from './showdown/showdowns.component';
 
 @Component({
   selector: 'kdmf-page-others',
@@ -32,6 +33,9 @@ export class OthersPage {
         break;
       case 'storyevents':
         this.navCtrl.push(StoryEventsPageComponent, {}).then();
+        break;
+      case 'showdowns':
+        this.navCtrl.push(ShowdownsPageComponent, {}).then();
         break;
       default:
         console.log('no view defined for: ', otherElement);
