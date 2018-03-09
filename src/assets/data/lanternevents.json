@@ -181,5 +181,24 @@
     "name": "Retirement",
     "todo": "In rare instances, survivors retire, rather than perish. When the last Hunt XP box is filled , the survivor retires. A survivor may also be forced into early retirement by some severe injuries Retired survivors cannot hunt or participate in showdowns. When a survivor retires, they still contribute to the total population of the settlement, and may participate in settlement events and endeavors.",
     "storyEvents": []
+  },
+  {
+    "name": "Cooking",
+    "todo": "The survivors experiment with scraps of foodstuffs. The savory discovery is palatable .",
+    "storyEvents": [
+      51,
+      52,
+      53,
+      54,
+      55
+    ]
+  },
+  {
+    "name": "Crush & Devour",
+    "todo": "The survivor disappears, shrieking, into the Screaming Antelopes giant under-maw.",
+    "storyEvents": [
+      56,
+      57
+    ]
   }
 ]

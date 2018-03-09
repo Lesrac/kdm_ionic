@@ -248,5 +248,40 @@
     "id": 50,
     "name": "Eat the Fruit",
     "description": "If a survivor consumes a second shining fruit, they die instantly. Otherwise, roll on the table. (1) Razor maggots explode from the survivor. killing them instantly. (2-4) An explosion of tiny, red seeds bursts in your mouth. You stagger, blinded by the overwhelming sensation. You are forever changed. Gain 1 permanent red affinity. (5-7) Tart, sticky, green seeds scorch your sinuses before settling into a deliciously refreshing feeling. Your are forever changed. Gain 1 permanent green affinity. (8+) Bitter, blue seeds stain your mouth with thick black juice. Their powerful flavor awakens you. You are forever changed. Gain 1 permanent blue affinity."
+  },
+  {
+    "id": 51,
+    "name": "Cooking Story Event",
+    "description": "Select 1 cooking recipe and archive the listed resources to create a dish. This settlement phase, any survivor may consume the resulting dish and gain the benefit. Any uneaten dishes are lost."
+  },
+  {
+    "id": 52,
+    "name": "Venison Oso Buco",
+    "description": "<ul><li>1 Nightmare Tick</li><li>1 Shank Bone</li><li>1 Beast Steak</li><li>1 Fresh Acanthus</li></ul>Feed the tick a beast steak. When the nightmare tick is full, simmer it in the bone marrow of the shank bone over medium lantern heat. Season with fresh acanthus. Yum!(br)Benefit : +1 permanent evasion, +10 survival"
+  },
+  {
+    "id": 53,
+    "name": "3 Eye Stew",
+    "description": "<ul><li>1 Cyclopse Fly</li><li>1 Eye of Cat</li><li>1 Phoenix Eye</li><li>1 Fresh Acanthus</li></ul>Sauté the monster eyes until soft and releasing moisture. Add the cyclops fly and fresh acanthus. Cook at a bare simmer until cyclops fly is tender. Serve warm. (br)Benefit: +1 permanent accuracy, +10 survival"
+  },
+  {
+    "id": 54,
+    "name": "Sword Beetle Skewer",
+    "description": "<ul><li>1 Sword Beetle</li><li>1 Bladder</li><li>1 Lion Testes</li><li>1 Fresh Acanthus</li></ul>Cube sword beetle, antelope Bladder, and lion testes into bite-size pieces. Season cubes with fresh acanthus. Thread the cubes onto straightened scrap pieces. Roast over lantern heat. (br)Benefit: +1 permanent strength, +10 survival"
+  },
+  {
+    "id": 55,
+    "name": "Stuffed Cockroach",
+    "description": "<ul><li>1 Hissing Cockroach</li><li>1 Beast Steak</li><li>1 Pustules</li><li>1 Fresh Acanthus</li></ul>Grind beast steak. Combine with fresh acanthus and phoenix pustules. Hollow the hissing cockroach carcass and stuff with mixture. Bake in lantern oven. Delicious!(br) Benefit: Remove all disorders, +10 survival"
+  },
+  {
+    "id": 56,
+    "name": "Masticated",
+    "description": "You are Masticated. Roll 1d10. (1-2)Swallowed whole. You are dead. The monster happily digests you, heals 1 wound, and gains +1 speed token. (3-4) You struggle frantically, stuck in a thick and sticky mucus. Your leg slips between the monster's teeth. Suffer the dismembered severe leg injury. The monster heals 1 wound. (5-6) The monster's mouth hangs slack, and fresh air brushes your face. You try to wriggle free, your arm reaching recklessly past the teeth. Suffer the dismembered severe arm injury. The monster heals 1 wound. (7-10) With a burst of ferocity, you fight back. Roll 1d10 on the table below.(br1)(1-3) Your efforts are useless. suffer 1 brain damage per monster level. (4-7) You fight. but are chewed helplessly. Suffer 1 damage to every hit location. (8+) You are suddenly bitten by a pulsing organ. You tear it free! The monster suffers 1 wound. Gain the Second Heart strange resource and Regurgitate. Suffer 1 damage to the arms location."
+  },
+  {
+    "id": 57,
+    "name": "Regurgitate",
+    "description": "Place Gobbled Up survivors in a free space adjacent to the monster. Archive Gobbled Up and roll on the table below lor each survivor.(1-3) You wonder if you are dead. You are knocked down and suffer 1 brain damage. (4-7) Covered in vomit, but alive. You are knocked down and gain +1 insanity. (8-9) The experience gives you a new pe rspective. Gain +1 understanding. (10+) You vindictively attack on your way out. Gain the Flat Tooth Screaming Antelope resource. The Screaming Antelope suffers 1 wound."
   }
 ]

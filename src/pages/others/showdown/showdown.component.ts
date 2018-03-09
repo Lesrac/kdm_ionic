@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavParams, NavController, ModalController } from 'ionic-angular';
 import { Monster } from '../../../model/monster';
 
@@ -9,16 +9,12 @@ import { Monster } from '../../../model/monster';
   selector: 'kdmf-page-showdown',
   templateUrl: 'showdown.component.html',
 })
-export class ShowdownPageComponent implements OnInit {
+export class ShowdownPageComponent {
 
   monster: Monster;
 
   constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
     this.monster = params.get('monster');
-  }
-
-  ngOnInit(): void {
-
   }
 
 }
