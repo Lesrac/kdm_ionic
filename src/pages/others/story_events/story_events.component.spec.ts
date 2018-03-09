@@ -52,7 +52,7 @@ describe('Hunt Event Table Component', () => {
     storyEventsPageComponent.ngOnInit();
     tick();
     expect(spy).toHaveBeenCalled();
-    expect(storyEventsPageComponent.allStoryEvents).toEqual(storyEventsPageComponent.filteredStoryEvents);
+    expect(storyEventsPageComponent.allLanternEvents).toEqual(storyEventsPageComponent.filteredLanternEvents);
   }));
 
   it('filter story events empty value', () => {
@@ -61,10 +61,10 @@ describe('Hunt Event Table Component', () => {
         value: '',
       },
     };
-    storyEventsPageComponent.allStoryEvents = [new StoryEvent('Story Event', 'dummy', 1)];
-    storyEventsPageComponent.filteredStoryEvents = [new StoryEvent('Dummy', 'dummy', 2)];
-    storyEventsPageComponent.filterStoryEvents(event);
-    expect(storyEventsPageComponent.filteredStoryEvents).toEqual(storyEventsPageComponent.allStoryEvents);
+    storyEventsPageComponent.allLanternEvents = [new StoryEvent('Story Event', 'dummy', 1)];
+    storyEventsPageComponent.filteredLanternEvents = [new StoryEvent('Dummy', 'dummy', 2)];
+    storyEventsPageComponent.filterLanternEvents(event);
+    expect(storyEventsPageComponent.filteredLanternEvents).toEqual(storyEventsPageComponent.allLanternEvents);
   });
 
   it('filter story events filter value with found object', () => {
@@ -76,11 +76,11 @@ describe('Hunt Event Table Component', () => {
     const storyEvent = new StoryEvent('Story Event 1', 'dummy', 1);
     const storyEvent2 = new StoryEvent('Story Event 2', 'dummy', 2);
     const storyEvent3 = new StoryEvent('Whaka', 'dummy', 3);
-    storyEventsPageComponent.allStoryEvents = [storyEvent, storyEvent2, storyEvent3];
-    storyEventsPageComponent.filterStoryEvents(event);
-    expect(storyEventsPageComponent.filteredStoryEvents.length).toBe(2);
-    expect(storyEventsPageComponent.filteredStoryEvents).toContain(storyEvent);
-    expect(storyEventsPageComponent.filteredStoryEvents).toContain(storyEvent2);
+    storyEventsPageComponent.allLanternEvents = [storyEvent, storyEvent2, storyEvent3];
+    storyEventsPageComponent.filterLanternEvents(event);
+    expect(storyEventsPageComponent.filteredLanternEvents.length).toBe(2);
+    expect(storyEventsPageComponent.filteredLanternEvents).toContain(storyEvent);
+    expect(storyEventsPageComponent.filteredLanternEvents).toContain(storyEvent2);
   });
 
   it('filter story events filter value with no object found', () => {
@@ -92,9 +92,9 @@ describe('Hunt Event Table Component', () => {
     const storyEvent = new StoryEvent('Story Event 1', 'dummy', 1);
     const storyEvent2 = new StoryEvent('Story Event 2', 'dummy', 2);
     const storyEvent3 = new StoryEvent('Whaka', 'dummy', 3);
-    storyEventsPageComponent.allStoryEvents = [storyEvent, storyEvent2, storyEvent3];
-    storyEventsPageComponent.filterStoryEvents(event);
-    expect(storyEventsPageComponent.filteredStoryEvents.length).toBe(0);
+    storyEventsPageComponent.allLanternEvents = [storyEvent, storyEvent2, storyEvent3];
+    storyEventsPageComponent.filterLanternEvents(event);
+    expect(storyEventsPageComponent.filteredLanternEvents.length).toBe(0);
   });
 
   it('show detail', () => {

@@ -5,13 +5,13 @@
     </ion-title>
   </ion-navbar>
   <ion-toolbar>
-    <ion-searchbar (ionInput)="filterStoryEvents($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="filterLanternEvents($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let storyEvent of filteredStoryEvents" text-wrap (click)="showDetail(storyEvent)">
+    <ion-item *ngFor="let storyEvent of filteredLanternEvents" text-wrap (click)="showDetail(storyEvent)">
       {{storyEvent.name}}
     </ion-item>
   </ion-list>
