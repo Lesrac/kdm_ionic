@@ -353,5 +353,40 @@
     "id": 71,
     "name": "Learn",
     "description": "(1-2) Sadly, your mind is simply adrift. Lost somewhere between the physical pain and the fear of further punishment, you learn nothing from the experience. (3-7) You feel as if on the cusp of realizing something big. It teases your mind before vanishing. Gain +3 survival. (br1)(4-7) If the settlement innovated <b>Drums</b>, the rhythmic pounding in your chest gives you insight. Proceed to the 8, 9, 10 result! (8-10) <b>Deep Breath</b> It seems crazy, but it makes perfect sense to you- the secret to the monster's attack is its amazing control over its breathing! Despite its anger, the rise and fall of it s chest keeps a constant, steady rhythm, even at the height of its brutal fury. Gain the <b>Legendary Lungs</b> secret fighting art and +3 survival."
+  },
+  {
+    "id": 72,
+    "name": "Mineral Gathering",
+    "description": "(1-3) A newly-opened crack releases a toxic cloud. You flee, leaving your tools behind. Archive any tool gear in your gear grid. (4-5) Gain 1 <b>Broken Lantern</b> basic resource. A sudden rock slide catches everyone off-guard. All survivors take 2 event damage to a random hit location. (6-7) You find 1 Iron strange resource among the unyielding stone faces. As you free it, you hear a snap. If your Pickaxe is frail, archive it. (8+) Gain 1 Scrap basic resource. If this event occurs after Overwhelming Darkness, you find a cave. Once per Mineral Gathering, all survivors must descend to the Worm Tunnels."
+  },
+  {
+    "id": 73,
+    "name": "Worm Tunnels",
+    "description": "Roll 1d10. Add +1 to the result if you have a Pickaxe. (1-3) You spend too much time lost in the tunnels. Move your quarry 1 space toward the survivors on the hunt board. If the monster enters the survivors' space it ambushes them. (4-7) You blunder in the darkness, lost and separated from the other survivors. A voice whispers to you, leading you back. Lose 2 survival and gain +2 insanity. If you are deaf, you do not heed the voice, and disappear into the dark. You are dead. (8+) You find 1 Iron strange resource next to a passageway that leads deeper into the cave. Choose to either gain the Iron or spend 2 survival and descend to the Crystal Lake."
+  },
+  {
+    "id": 74,
+    "name": "Crystal Lake",
+    "description": "(1-2) Drifting, phosphorescent spores infect your pores. Record all armor gear in your gear grid in the settlement storage and archive it. Gain (shieldtwo) to all hit locations and the following ability: <b>Crystal Skin</b>: You cannot place armor in your gear grid. When you depart, gain (shieldtwo) to all hit locations. Suffer -1 to the result of all severe injury rolls. (3-4) A reflection speaks to you. Lose 3 survival and gain +3 insanity. (5-6) Caked in slime and weird crystals, you find 1 Iron strange resource. (7+) Choose to either gain 2 Iron strange resources or gain +3 insanity and spend 4 survival to descend to the Lantern City."
+  },
+  {
+    "id": 75,
+    "name": "Lantern City",
+    "description": "(1-4) A single light shines from a window in the otherwise darkened city. A pleasing aroma beckons you into a lit house. Inside, a welcoming family invites you to join them for a meal. If you are insane, you gratefully accept their invitation to stay. Forever. Your survivor perishes. Otherwise, your memory grows hazy after this point. Lose all your survival, gain +6 insanity and 1 random disorder. (5-9) A yawning forge stands cold in the center of the city. Dismantling it, you gain 4 Iron strange resources and 3 Scrap basic resources. (10+) You meet a dark stranger. It hisses, and your mind washes over in white noise. You awake with 1 piece of armor gear of your choice from the Blacksmith settlement location."
+  },
+  {
+    "id": 76,
+    "name": "Insane survivors walk the Path of the Insane.",
+    "description": "(1-3) You envision a strange fruit that pulses with your heartbeat. You smash it. Spend all your survival (at least 1) or die. (4) You shriek 1nto the darkness, dealing 1 brain event damage to all non-deaf survivors. (5-6) You lash out at the unseen. All other survivors suffer 1 event damage to a random hit location. (7) Startling visions. Gain a random disorder. (8-9) You find a strange peace. Lose all insanity. (10+) Hysterical. Suffer the <b>Frenzy</b> brain trauma."
+  },
+  {
+    "id": 77,
+    "name": "If no other path applies, walk the Path of the Doomed.",
+    "description": "(1) Your lantern light fades into the darkness. Spend all your survival (at least 1) or die. (2-3) A pall of doom falls over you. Gain -3 luck tokens for the duration of the showdown. (4-6) An unseen monster attacks. Suffer event damage equal to the quarry's l evel to 3 random hit locations. (7) Disoriented. Gain -1 evasion token. (8+) Hope. Gain +1 insanity and +1 courage."
+  },
+  {
+    "id": 78,
+    "name": "Sane survivors with 3+ courage walk the Path of the Brave.",
+    "description": "(1) You boldly walk into a monster's maw and are consumed whole. Spend all your survival (at least 1) or die. (2-3) You emerge from the darkness crippled w1th doubt. Gain -1 speed token. (4-7) The darkness drowns out your lantern light. Gain -1 accuracy token. (8-9) Foolish bravery. Gain +1 strength token and -1 evasion token. (10+) You will survive, no matter what it takes. Gain +1 survival and +1 evasion token."
   }
 ]

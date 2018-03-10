@@ -244,5 +244,24 @@
       70,
       71
     ]
+  },
+  {
+    "name": "Mineral Gathering",
+    "todo": "Every survivor with a Pickaxe rolls on the Mineral Gathering table.",
+    "storyEvents": [
+      72,
+      73,
+      74,
+      75
+    ]
+  },
+  {
+    "name": "Overwhelming Darkness",
+    "todo": "All survivors must determine Path and walk them simultaneously.",
+    "storyEvents": [
+      76,
+      77,
+      78
+    ]
   }
 ]
