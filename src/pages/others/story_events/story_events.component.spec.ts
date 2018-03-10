@@ -9,8 +9,8 @@ import {
 } from '../../../mock/mocks';
 import { KDMDataService } from '../../../service/kdm_data.service';
 import { StoryEventsPageComponent } from './story_events.component';
-import { StoryEvent } from '../../../model/story_event';
-import { FormattedTextModalComponent } from '../../template/formatted_text_modal.component';
+import { LanternEvent } from '../../../model/lantern_event';
+import { TimelineEventModalComponent } from '../../timeline/timeline_event_modal.component';
 
 describe('Hunt Event Table Component', () => {
 
@@ -61,8 +61,8 @@ describe('Hunt Event Table Component', () => {
         value: '',
       },
     };
-    storyEventsPageComponent.allLanternEvents = [new StoryEvent('Story Event', 'dummy', 1)];
-    storyEventsPageComponent.filteredLanternEvents = [new StoryEvent('Dummy', 'dummy', 2)];
+    storyEventsPageComponent.allLanternEvents = [new LanternEvent('Story Event', 'dummy')];
+    storyEventsPageComponent.filteredLanternEvents = [new LanternEvent('Dummy', 'dummy')];
     storyEventsPageComponent.filterLanternEvents(event);
     expect(storyEventsPageComponent.filteredLanternEvents).toEqual(storyEventsPageComponent.allLanternEvents);
   });
@@ -73,9 +73,9 @@ describe('Hunt Event Table Component', () => {
         value: 'Story event',
       },
     };
-    const storyEvent = new StoryEvent('Story Event 1', 'dummy', 1);
-    const storyEvent2 = new StoryEvent('Story Event 2', 'dummy', 2);
-    const storyEvent3 = new StoryEvent('Whaka', 'dummy', 3);
+    const storyEvent = new LanternEvent('Story Event 1', 'dummy');
+    const storyEvent2 = new LanternEvent('Story Event 2', 'dummy');
+    const storyEvent3 = new LanternEvent('Whaka', 'dummy');
     storyEventsPageComponent.allLanternEvents = [storyEvent, storyEvent2, storyEvent3];
     storyEventsPageComponent.filterLanternEvents(event);
     expect(storyEventsPageComponent.filteredLanternEvents.length).toBe(2);
@@ -89,9 +89,9 @@ describe('Hunt Event Table Component', () => {
         value: 'bar',
       },
     };
-    const storyEvent = new StoryEvent('Story Event 1', 'dummy', 1);
-    const storyEvent2 = new StoryEvent('Story Event 2', 'dummy', 2);
-    const storyEvent3 = new StoryEvent('Whaka', 'dummy', 3);
+    const storyEvent = new LanternEvent('Story Event 1', 'dummy');
+    const storyEvent2 = new LanternEvent('Story Event 2', 'dummy');
+    const storyEvent3 = new LanternEvent('Whaka', 'dummy');
     storyEventsPageComponent.allLanternEvents = [storyEvent, storyEvent2, storyEvent3];
     storyEventsPageComponent.filterLanternEvents(event);
     expect(storyEventsPageComponent.filteredLanternEvents.length).toBe(0);
@@ -99,11 +99,10 @@ describe('Hunt Event Table Component', () => {
 
   it('show detail', () => {
     const spy = spyOn(storyEventsPageComponent.navCtrl, 'push').and.callThrough();
-    const storyEvent = new StoryEvent('Story Event', 'description', 1);
+    const storyEvent = new LanternEvent('Story Event', 'description');
     storyEventsPageComponent.showDetail(storyEvent);
-    expect(spy).toHaveBeenCalledWith(FormattedTextModalComponent, {
-      title: storyEvent.name,
-      text: storyEvent.description,
+    expect(spy).toHaveBeenCalledWith(TimelineEventModalComponent, {
+      lanternEvent: storyEvent,
     });
   });
 
