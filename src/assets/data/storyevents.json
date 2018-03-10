@@ -283,5 +283,45 @@
     "id": 57,
     "name": "Regurgitate",
     "description": "Place Gobbled Up survivors in a free space adjacent to the monster. Archive Gobbled Up and roll on the table below lor each survivor.(1-3) You wonder if you are dead. You are knocked down and suffer 1 brain damage. (4-7) Covered in vomit, but alive. You are knocked down and gain +1 insanity. (8-9) The experience gives you a new pe rspective. Gain +1 understanding. (10+) You vindictively attack on your way out. Gain the Flat Tooth Screaming Antelope resource. The Screaming Antelope suffers 1 wound."
+  },
+  {
+    "id": 58,
+    "name": "Hooded Knight Story Event",
+    "description": "If any survivor has the Twilight Sword, they Duel the knight. Otherwise, his motives are inscrutable. Roll below on Mysterious Agenda."
+  },
+  {
+    "id": 59,
+    "name": "Duel",
+    "description": "The hooded knight confronts the bearer of the Twilight Sword, they roll on the table. Add +1 to the result for each Twilight Sword weapon proficiency level. (1-3) The survivor perishes quickly. Disappointed, the knight leaves, never to return. (4-7) The survivor is badly wounded. Suffer the gaping chest wound severe chest injury. The knight has <b>Unfinished Business</b>. (8-9) Gain l level of weapon proficiency. Lose all survival. You cannot gain survival this settlement phase. The knight has <b>Unfinished Business</b>. (10) Gain 1 1evel of weapon proficiency. The knight has <b>Unfinished Business</b>. (11+) Gain 2 levels of weapon proficiency, +1 insanity, +1 survival. The knight has <b>Unfinished Business</b>."
+  },
+  {
+    "id": 60,
+    "name": "Mysterious Agenda",
+    "description": "(1-2) As quickly as he arrived, the hooded knight vanishes in a flash of steel and blood Suffer -2 population. The hooded knight leaves with <b>Unfinished Business</b> and will return later. (3-6) The hooded knight insists on training the uncouth survivors in martial combat. Up to 2 survivors may spend 3 resources each to learn the <b>Mighty Strike</b> fighting art. The hooded knight leaves with <b>Unfinished Business</b> and will return later.(7-10) The hooded knight forces a <b>tattered parcel</b> into the hands of the returning survivor with the most Hunt XP (if tied, randomize). The hooded kni ght leaves with <b>Unfinished Business</b>. If there are no returning survivors, then <b>Unfinished Business</b>. (br)(10) The Hooded Knight seems disturbed. If settlement has Records, roll1d10. (1-3) Destroy Records, return it to the innovation deck. (4+) if you haven't triggered <b>Nemesis Encounter - Watcher</b>, move it back 5 years on the timeline."
+  },
+  {
+    "id": 61,
+    "name": "Unfinished Business",
+    "description": "Add '(milestoneNL) Hooded Knight' to the timeline 4 years from now."
+  },
+  {
+    "id": 62,
+    "name": "Tattered Parcel",
+    "description": "The survivor gains the Twilight Sword rare gear, place it in their grid now. The survivor may select Twilight Sword as a weapon proficiency type. This weapon is cursed.(br) <b>Cursed</b>: This may not be removed from your gear grid for any reason. When you die, archive this card."
+  },
+  {
+    "id": 63,
+    "name": "Intimacy Story Event",
+    "description": "The first time your settlement gives birth to a new survivor (gains +1 population from intimacy), the survivors ponder existence. (milestoneNL)Prlnciple: New Life. As your settlement grows in size, don't forget to apply your chosen New Life Principle. It will greatly effect the outcome of your campaign."
+  },
+  {
+    "id": 64,
+    "name": "Intimacy",
+    "description": "(1) The couple cannot bear the weight of the world. They clasp hands and march into the deep and endless darkness. The nominated survivors are dead. (2-3) The female survivor perishes with her child during birth. The settlement is cast in gloom. The male survivor mourns gaining a random disorder and +3 insanity. (4-6) A new survivor is brought kicking and screaming into the world. The child's eyes are free of the ink that stained the founders' faces. The settlement gains +1 population. (7-8) The settlement gains +1 population. The male & female survivors share a deep bond and gain +10 survival each. If the settlement innovated <b>Bed</b>, the new survivor gains +1 permanent strength. (9-11+) The settlement celebrates a twice-fortunate event. A pair of healthy newborn survivors enters the world. The settlement gains +2 population.(br) (10) If the settlment innovated <b>Hovel</b>, a special child is born Instead ."
+  },
+  {
+    "id": 65,
+    "name": "Special Child",
+    "description": "On this day, everyone remembers the birth of a very special child. Where she steps, hope flourishes. (milestoneNL) Birth of a Savior."
   }
 ]

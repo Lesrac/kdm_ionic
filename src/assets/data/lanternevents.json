@@ -200,5 +200,25 @@
       56,
       57
     ]
+  },
+  {
+    "name": "Hooded Knight",
+    "todo": "A stranger emerges from the darkness.",
+    "storyEvents": [
+      58,
+      59,
+      60,
+      61,
+      62
+    ]
+  },
+  {
+    "name": "Intimacy",
+    "todo": "Nominate one consenting male and one consenting female survivor and roll on the Intimacy table below.",
+    "storyEvents": [
+      63,
+      64,
+      65
+    ]
   }
 ]
