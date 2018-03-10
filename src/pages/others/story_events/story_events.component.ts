@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KDMDataService } from '../../../service/kdm_data.service';
-import { ModalController, NavController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { LanternEvent } from '../../../model/lantern_event';
 import { TimelineEventModalComponent } from '../../timeline/timeline_event_modal.component';
 
@@ -17,7 +17,7 @@ export class StoryEventsPageComponent implements OnInit {
   allLanternEvents: LanternEvent[] = [];
   filteredLanternEvents: LanternEvent[] = [];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private kdmService: KDMDataService) {
+  constructor(public modalCtrl: ModalController, private kdmService: KDMDataService) {
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import {
   App,
-  Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController, NavParams, Platform,
+  Config, DeepLinker, DomController, Form, IonicModule, Keyboard, NavController, NavParams, Platform,
   ViewController,
 } from 'ionic-angular';
 import {

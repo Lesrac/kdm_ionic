@@ -220,5 +220,29 @@
       64,
       65
     ]
+  },
+  {
+    "name": "King's Curse",
+    "todo": "The survivor that dealt the killing blow feels their heart sink.",
+    "storyEvents": [
+      66,
+      67
+    ]
+  },
+  {
+    "name": "King's Step",
+    "todo": "Resist the unspoken pressure of the monster's onslaught.",
+    "storyEvents": [
+      68,
+      69
+    ]
+  },
+  {
+    "name": "Legendary Lungs",
+    "todo": "The sensation of the Butcher's attack is similar to drowning. Desperately, you gasp for air, only to be met with a mouthful of steel.",
+    "storyEvents": [
+      70,
+      71
+    ]
   }
 ]

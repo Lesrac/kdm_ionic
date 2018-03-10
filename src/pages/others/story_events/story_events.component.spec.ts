@@ -1,18 +1,17 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
-  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController,
-  NavParams, Platform,
+  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, Modal, ModalController,
+  Platform,
 } from 'ionic-angular';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock,
-  PlatformMock,
+  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, ModalControllerMock, ModalMock, PlatformMock,
 } from '../../../mock/mocks';
 import { KDMDataService } from '../../../service/kdm_data.service';
 import { StoryEventsPageComponent } from './story_events.component';
 import { LanternEvent } from '../../../model/lantern_event';
 import { TimelineEventModalComponent } from '../../timeline/timeline_event_modal.component';
 
-describe('Hunt Event Table Component', () => {
+describe('Story Event Table Component', () => {
 
   let storyEventsPageComponent: StoryEventsPageComponent;
   let fixture: ComponentFixture<StoryEventsPageComponent>;
@@ -23,8 +22,8 @@ describe('Hunt Event Table Component', () => {
     TestBed.configureTestingModule({
       declarations: [StoryEventsPageComponent],
       providers: [DomController, Keyboard, Form, GestureController,
-        {provide: NavParams, useClass: NavParamsMock},
-        {provide: NavController, useClass: NavMock},
+        {provide: ModalController, useClass: ModalControllerMock},
+        {provide: Modal, useClass: ModalMock},
         {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
         {provide: DeepLinker, useClass: DeepLinkerMock},
@@ -98,7 +97,7 @@ describe('Hunt Event Table Component', () => {
   });
 
   it('show detail', () => {
-    const spy = spyOn(storyEventsPageComponent.navCtrl, 'push').and.callThrough();
+    const spy = spyOn(storyEventsPageComponent.modalCtrl, 'create').and.callThrough();
     const storyEvent = new LanternEvent('Story Event', 'description');
     storyEventsPageComponent.showDetail(storyEvent);
     expect(spy).toHaveBeenCalledWith(TimelineEventModalComponent, {

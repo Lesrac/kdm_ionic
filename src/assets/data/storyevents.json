@@ -323,5 +323,35 @@
     "id": 65,
     "name": "Special Child",
     "description": "On this day, everyone remembers the birth of a very special child. Where she steps, hope flourishes. (milestoneNL) Birth of a Savior."
+  },
+  {
+    "id": 66,
+    "name": "Death",
+    "description": "On this day, everyone remembers the birth of a very special child. Where she steps, hope flourishes. (milestoneNL) Birth of a Savior."
+  },
+  {
+    "id": 67,
+    "name": "King's Curse",
+    "description": "Roll hit location die. Re-roll until you roll a location that is not wearing regal armor. (headList) Your skull erupts from inside your head, bone twisting and hardening into a plated exoskeleton. Gain a random disorder and the <b>Regal Helm</b> rare gear and place it in your gear grid now. (waistList) Your thigh bones expand and hollow, while the flesh from your legs packs itself inside the bone. The pain is exquisite. Suffer the destroyed genitals severe waist injury. Ga1n the <b>Regal Faulds</b> rare gear and place it in your gear grid now. (legsList) Searing pa1n shoots up your legs from your burning feet. Your leg bones shatter and reform in the shape of plated armor. Gain the <b>Regal Boots</b> rare gear and place it in your gear grid now. (armsList) Your fingernails rapidly grow out, encasing your arm in a cocoon of bone. Your liquefied heated flesh leaks from the joints of the hollow armor that replaces your arms. Gain the <b>Regal Gauntlets</b> rare gear and place it in your gear grid now. (br)If the settlement innovated <b>Nightmare Training</b>, your new arms prove useful. Gain +1 permanent strength. (bodyList) With a horrific crunch, your ribcage bursts from your chest and warps drastically, puncturing your internal organs. Your open stomach pours acid over your exposed innards. You double over, vomiting foamy chunks everywhere. Finally, you stand, drawing no breath but somehow alive. Gain the <b>Regal Plackart</b> rare gear and place it in your gear grid now. The other returning survivors suffer 3 brain event damage. Your body seems to move on its own. Gain the <b>King's Step</b> secret fighting art."
+  },
+  {
+    "id": 68,
+    "name": "King's Step Story Event",
+    "description": "Your body trembles and your mind wavers. You struggle just to stay standing against the pressure projected by the monster. Discard all unresolved hit locations, end your attack, and attempt to <b>Overcome</b>!"
+  },
+  {
+    "id": 69,
+    "name": "Overcome",
+    "description": "Add +1 to the result for each <b>tempo token</b> you have. (1) You are paralyzed with dread. Suffer brain damage equal to the monster's level. (2-3) The monster swiftly finds an opening in your poor footwork and mercilessly slams your shin. Suffer a random severe leg injury. Gain 1 tempo token. (4-5) The monster easily predicts your motion and skewers you with your own momentum. Spend 1 survival or suffer a random severe body injury. Gain 1 tempo token. (6-7) Just as you start to follow the monster's subtle movements, the tip of the King's Man's foot hooks your ankle. You are knocked down. Gain 1 tempo token. (8-9) You sense a pattern and foresee the monster's attempt to trip you. At the last moment, you shift your balance. Suffer 1 damage to the legs. Gain 1 tempo token. (br1)(9) If the settlement innovated <b>Forbidden Dance</b>, you start to sense the tempo of the monster's movements. Gain 2 tempo tokens and suffer knockback 3. (10+) You grasp the pattern behind the monster's f1ne movements, a rhythm that lets you control the pace of the fight. You have overcome the Battle Pressure and learned something valuable. Gain the <b>King's Step</b> secret fighting art."
+  },
+  {
+    "id": 70,
+    "name": "Legendary Lungs Story Event",
+    "description": "The monster's attacks rain down on you, each blow faster than the last. Despite the attack lasting only a moment, things seem to slow down. Your feel numb and isolated, as if trapped in an endless body of water. There is no hope of escape, just the pressure from above on your gasping lungs. As the pounding in your chest intensifies, you recall the even rhythm of the monster's heaving chest. There is a chance you will <b>Learn</b> something ."
+  },
+  {
+    "id": 71,
+    "name": "Learn",
+    "description": "(1-2) Sadly, your mind is simply adrift. Lost somewhere between the physical pain and the fear of further punishment, you learn nothing from the experience. (3-7) You feel as if on the cusp of realizing something big. It teases your mind before vanishing. Gain +3 survival. (br1)(4-7) If the settlement innovated <b>Drums</b>, the rhythmic pounding in your chest gives you insight. Proceed to the 8, 9, 10 result! (8-10) <b>Deep Breath</b> It seems crazy, but it makes perfect sense to you- the secret to the monster's attack is its amazing control over its breathing! Despite its anger, the rise and fall of it s chest keeps a constant, steady rhythm, even at the height of its brutal fury. Gain the <b>Legendary Lungs</b> secret fighting art and +3 survival."
   }
 ]

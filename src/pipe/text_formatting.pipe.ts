@@ -52,6 +52,21 @@ export class TextFormattingPipe implements PipeTransform {
         } else if ('flash' === matchesWithoutParenthesis) {
           text = text.replace(match, '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+        } else if ('headList' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
+            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+        } else if ('waistList' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
+            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+        } else if ('legsList' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
+            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+        } else if ('armsList' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
+            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+        } else if ('bodyList' === matchesWithoutParenthesis) {
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
+            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         }
       });
     }
