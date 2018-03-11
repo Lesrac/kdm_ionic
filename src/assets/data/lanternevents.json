@@ -96,8 +96,11 @@
   },
   {
     "name": "Principle: Conviction",
-    "todo": "The survivors must find a reason to be. Treasure the darkness in all its mystery, or seek to master it and grow strong.",
-    "storyEvents": []
+    "todo": "The survivors must find a reason to be. Treasure the darkness in all its mystery, or seek to master it and grow strong.(br) The group must choose one",
+    "storyEvents": [
+      79,
+      80
+    ]
   },
   {
     "name": "Watched",
@@ -262,6 +265,38 @@
       76,
       77,
       78
+    ]
+  },
+  {
+    "name": "Principle: Death",
+    "todo": "The group must decide what to do with their first survivor corpse. Choose one.",
+    "storyEvents": [
+      81,
+      82
+    ]
+  },
+  {
+    "name": "Principle: New Life",
+    "todo": "The group must decide how to raise their young. Choose one.",
+    "storyEvents": [
+      83,
+      84
+    ]
+  },
+  {
+    "name": "Principle: Society",
+    "todo": "There was once a mad women who spent her days talking to the darkness. One day, it spoke back. The group must choose one.",
+    "storyEvents": [
+      85,
+      86
+    ]
+  },
+  {
+    "name": "Run Away",
+    "todo": "Remove your survivor from the board. Roll 1d10 on the table that corresponds to the current game phase.",
+    "storyEvents": [
+      87,
+      88
     ]
   }
 ]
