@@ -48,12 +48,12 @@
   },
   {
     "name": "Nemesis Encounter - Butcher Lvl 2",
-    "todo": "",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the Butcher's monster level (it should be 1 greater than the last Butcher encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
     "name": "Nemesis Encounter - Butcher Lvl 3",
-    "todo": "",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the Butcher's monster level (it should be 1 greater than the last Butcher encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
@@ -63,12 +63,12 @@
   },
   {
     "name": "Nemesis Encounter - King's Man Lvl 2",
-    "todo": "",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the King's Man monster level (it should be 1 greater than the last King's Man encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
     "name": "Nemesis Encounter - King's Man Lvl 3",
-    "todo": "",
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select the King's Man monster level (it should be 1 greater than the last King's Man encounter) and set up the showdown accordingly.",
     "storyEvents": []
   },
   {
@@ -78,8 +78,10 @@
   },
   {
     "name": "Nemesis Encounter - The Hand Lvl 1",
-    "todo": "",
-    "storyEvents": []
+    "todo": "Departing survivors do not have a Hunt Phase. Instead, select The Hand's monster level (it should be 1 greater than the last The Hand encounter) and set up the showdown accordingly.",
+    "storyEvents": [
+      105
+    ]
   },
   {
     "name": "Nemesis Encounter - Gold Smoke Knight",
@@ -318,6 +320,48 @@
     "storyEvents": [
       92,
       93
+    ]
+  },
+  {
+    "name": "Game Over",
+    "todo": "Your campaign has ended in death and magnificent hopelessness. The settlement is lost.",
+    "storyEvents": [
+      97,
+      98,
+      99
+    ]
+  },
+  {
+    "name": "Lantern Research",
+    "todo": "Without hope, tenacity drives the settlement forward.",
+    "storyEvents": [
+      100,
+      101
+    ]
+  },
+  {
+    "name": "Oxidation",
+    "todo": "You approach the defeated Watcher. Its body crackles with electricity.",
+    "storyEvents": [
+      102,
+      103,
+      104
+    ]
+  },
+  {
+    "name": "Blackout",
+    "todo": "All at once and without warning, the collected sum of the settlement's lanterns go black. The settlement is plunged into darkness.",
+    "storyEvents": [
+      106,
+      107,
+      108
+    ]
+  },
+  {
+    "name": "Hammer and Nail",
+    "todo": "You pour all of your might into resisting the unstoppable strike, your fingernails peel backwards and hair grows downwards back into your scalp.",
+    "storyEvents": [
+      109
     ]
   }
 ]

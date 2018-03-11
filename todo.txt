@@ -13,4 +13,5 @@
 - 'Portcullis Key' Hunt Event 79
 - 'rock'-gear, Hunt Event 80
 - Monster Hunt Events
-- add (shieldtwo), (shieldthree), (puzzle color), (square color), (horse) to text_formatting.pipe
+- add (shieldtwo), (shieldthree), (puzzle color), (square color), (horse), (eyered), (eyeblue), (eyegreen) to text_formatting.pipe
+- Add legendary monsters?

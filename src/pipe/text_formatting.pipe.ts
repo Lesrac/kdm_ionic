@@ -42,6 +42,11 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, replaceText + this.milestone);
         } else if ('milestoneNL' === matchesWithoutParenthesis) {
           text = text.replace(match, this.milestone);
+        } else if ('milestonebox' === matchesWithoutParenthesis) {
+          // TODO: milestonebox image
+          text = text.replace(match, '<ion-icon name="kdmf-shieldone" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-shieldone" aria-label="kdmf shieldone" ' +
+            'ng-reflect-name="kdmf-shieldone"></ion-icon>');
         } else if ('*' === matchesWithoutParenthesis) {
           text = text.replace(match, '<ion-icon name="star" role="img" ' +
             'class="icon icon-md ion-md-star" aria-label="star" ng-reflect-name="star"></ion-icon>');
@@ -53,18 +58,23 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         } else if ('headList' === matchesWithoutParenthesis) {
+          // TODO: head image
           text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         } else if ('waistList' === matchesWithoutParenthesis) {
+          // TODO: waist image
           text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         } else if ('legsList' === matchesWithoutParenthesis) {
+          // TODO: legs image
           text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         } else if ('armsList' === matchesWithoutParenthesis) {
+          // TODO: arms image
           text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         } else if ('bodyList' === matchesWithoutParenthesis) {
+          // TODO: body image
           text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         }
