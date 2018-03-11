@@ -1039,14 +1039,16 @@ describe('KDM Data Service', () => {
     it('get settlement from cache', inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         spyOn(kdmDBServiceMock, 'getSettlementById').and.callThrough()
-          .and.returnValue(Promise.resolve(simpleSettlements));
+          .and.returnValue(Promise.resolve(simpleSettlement2));
         kdmDataService.getSettlement(2).then(settlement => {
-          expect(settlement.id).toBe(simpleSettlement2.id);
-          expect(settlement.name).toBe(simpleSettlement2.name);
-          expect(settlement.survivalLimit).toBe(simpleSettlement2.survivalLimit);
-          expect(settlement.population).toBe(simpleSettlement2.population);
-          expect(settlement.deathcount).toBe(simpleSettlement2.deathcount);
-          expect(settlement.settlementLost).toBe(simpleSettlement2.settlementLost);
+          expect(settlement.id).toBe(simpleSettlement2.id, 'the id is not set correctly');
+          expect(settlement.name).toBe(simpleSettlement2.name, 'the name is not set correctly');
+          expect(settlement.survivalLimit).toBe(simpleSettlement2.survivalLimit,
+            'the survival limit is not set correctly');
+          expect(settlement.population).toBe(simpleSettlement2.population, 'the population is not set correctly');
+          expect(settlement.deathcount).toBe(simpleSettlement2.deathcount, 'the deathcount is not set correctly');
+          expect(settlement.settlementLost).toBe(simpleSettlement2.settlementLost,
+            'the settlement lost is not set correctly');
         });
       }));
 

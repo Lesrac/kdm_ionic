@@ -753,147 +753,169 @@ export class KDMDataService {
     settlement.deathcountChange.subscribe(this.saveSettlementObserver(settlement));
     settlement.settlementLost = simplifiedSettlement.settlementLost;
     settlement.settlementLostChange.subscribe(this.saveSettlementObserver(settlement));
-    simplifiedSettlement.timeline.forEach(timelineDB => {
-      this.getLanternEvent(timelineDB.timeline[1]).then(lanternEvent => {
-        const tl: Timeline = {
-          position: timelineDB.timeline[0],
-          lanternEvent: lanternEvent,
-        };
-        const stl: SettlementTimeline = new SettlementTimeline(settlement, tl);
-        stl.reached = timelineDB.reached;
-        stl.reachedChanged.subscribe(this.saveSettlementObserver(settlement));
-        settlement.addTimelineItem(stl);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.timeline)) {
+      simplifiedSettlement.timeline.forEach(timelineDB => {
+        this.getLanternEvent(timelineDB.timeline[1]).then(lanternEvent => {
+          const tl: Timeline = {
+            position: timelineDB.timeline[0],
+            lanternEvent: lanternEvent,
+          };
+          const stl: SettlementTimeline = new SettlementTimeline(settlement, tl);
+          stl.reached = timelineDB.reached;
+          stl.reachedChanged.subscribe(this.saveSettlementObserver(settlement));
+          settlement.addTimelineItem(stl);
+        });
       });
-    });
+    }
     settlement.timelineSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.huntableMonsters.forEach(huntableMonsterDB => {
-      this.getMonster(huntableMonsterDB.monsterId).then(monster => {
-        const huntableMonster = new HuntableMonster(settlement, monster);
-        huntableMonster.isHuntable = huntableMonsterDB.isHuntable;
-        huntableMonster.isHuntableChanged.subscribe(this.saveSettlementObserver(settlement));
-        huntableMonster.defeatedLevelThree = huntableMonsterDB.defeatedLevelThree;
-        huntableMonster.defeatedLevelThreeChanged.subscribe(this.saveSettlementObserver(settlement));
-        huntableMonster.defeatedLevelTwo = huntableMonsterDB.defeatedLevelTwo;
-        huntableMonster.defeatedLevelTwoChanged.subscribe(this.saveSettlementObserver(settlement));
-        huntableMonster.defeatedLevelOne = huntableMonsterDB.defeatedLevelOne;
-        huntableMonster.defeatedLevelOneChanged.subscribe(this.saveSettlementObserver(settlement));
-        settlement.addHuntableMonster(huntableMonster);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.huntableMonsters)) {
+      simplifiedSettlement.huntableMonsters.forEach(huntableMonsterDB => {
+        this.getMonster(huntableMonsterDB.monsterId).then(monster => {
+          const huntableMonster = new HuntableMonster(settlement, monster);
+          huntableMonster.isHuntable = huntableMonsterDB.isHuntable;
+          huntableMonster.isHuntableChanged.subscribe(this.saveSettlementObserver(settlement));
+          huntableMonster.defeatedLevelThree = huntableMonsterDB.defeatedLevelThree;
+          huntableMonster.defeatedLevelThreeChanged.subscribe(this.saveSettlementObserver(settlement));
+          huntableMonster.defeatedLevelTwo = huntableMonsterDB.defeatedLevelTwo;
+          huntableMonster.defeatedLevelTwoChanged.subscribe(this.saveSettlementObserver(settlement));
+          huntableMonster.defeatedLevelOne = huntableMonsterDB.defeatedLevelOne;
+          huntableMonster.defeatedLevelOneChanged.subscribe(this.saveSettlementObserver(settlement));
+          settlement.addHuntableMonster(huntableMonster);
+        });
       });
-    });
+    }
     settlement.huntableMonstersSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.huntedMonsters.forEach(huntedMonsterDB => {
-      this.getMonster(huntedMonsterDB.monsterId).then(monster => {
-        const huntedMonster = new HuntedMonster(settlement, monster);
-        huntedMonster.monsterLevel = huntedMonsterDB.monsterLevel;
-        huntedMonsterDB.huntedResources.forEach((value: [string, number]) => {
-            this.getResourceByName(value[0]).then(resource => {
-                const r: Resource = Object.assign(resource);
-                r.amount = value[1];
-                huntedMonster.huntedResources.push(r);
-              },
-            );
-          },
-        );
-        settlement.addHuntedMonster(huntedMonster);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.huntedMonsters)) {
+      simplifiedSettlement.huntedMonsters.forEach(huntedMonsterDB => {
+        this.getMonster(huntedMonsterDB.monsterId).then(monster => {
+          const huntedMonster = new HuntedMonster(settlement, monster);
+          huntedMonster.monsterLevel = huntedMonsterDB.monsterLevel;
+          huntedMonsterDB.huntedResources.forEach((value: [string, number]) => {
+              this.getResourceByName(value[0]).then(resource => {
+                  const r: Resource = Object.assign(resource);
+                  r.amount = value[1];
+                  huntedMonster.huntedResources.push(r);
+                },
+              );
+            },
+          );
+          settlement.addHuntedMonster(huntedMonster);
+        });
       });
-    });
+    }
     settlement.huntedMonstersSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.locationNames.forEach(locationName => {
-      this.getLocation(locationName).then(location => settlement.addLocation(location));
-    });
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.locationNames)) {
+      simplifiedSettlement.locationNames.forEach(locationName => {
+        this.getLocation(locationName).then(location => settlement.addLocation(location));
+      });
+    }
     settlement.locationsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.storagesNameAmount.forEach((value: [string, number]) => {
-      this.getStorageItem(value[0]).then(storage => {
-        const s: Storage = Object.assign(storage);
-        s.amount = value[1];
-        s.amountChanged.subscribe(this.saveSettlementObserver(settlement));
-        settlement.addStorageItem(s);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.storagesNameAmount)) {
+      simplifiedSettlement.storagesNameAmount.forEach((value: [string, number]) => {
+        this.getStorageItem(value[0]).then(storage => {
+          const s: Storage = Object.assign(storage);
+          s.amount = value[1];
+          s.amountChanged.subscribe(this.saveSettlementObserver(settlement));
+          settlement.addStorageItem(s);
+        });
       });
-    });
+    }
     settlement.storagesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.innovationNames.forEach(innovationName => {
-      this.getInnovation(innovationName).then(innovation => {
-        settlement.addInnovation(innovation);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.innovationNames)) {
+      simplifiedSettlement.innovationNames.forEach(innovationName => {
+        this.getInnovation(innovationName).then(innovation => {
+          settlement.addInnovation(innovation);
+        });
       });
-    });
+    }
     settlement.innovationsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.principleNames.forEach(principleName => {
-      this.getPrinciple(principleName).then(principle => {
-        settlement.addPrinciple(principle);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.principleNames)) {
+      simplifiedSettlement.principleNames.forEach(principleName => {
+        this.getPrinciple(principleName).then(principle => {
+          settlement.addPrinciple(principle);
+        });
       });
-    });
+    }
     settlement.principlesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.milestones.forEach(settlementMilestone => {
-      this.getMilestone(settlementMilestone.milestoneId).then(milestone => {
-        const sm: SettlementMilestone = new SettlementMilestone(settlement, milestone);
-        sm.reached = settlementMilestone.reached;
-        settlement.addMilestone(sm);
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.milestones)) {
+      simplifiedSettlement.milestones.forEach(settlementMilestone => {
+        this.getMilestone(settlementMilestone.milestoneId).then(milestone => {
+          const sm: SettlementMilestone = new SettlementMilestone(settlement, milestone);
+          sm.reached = settlementMilestone.reached;
+          settlement.addMilestone(sm);
+        });
       });
-    });
+    }
     settlement.milestonesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
-    simplifiedSettlement.survivors.forEach(simplifiedSurvivor => {
-      const survivor: Survivor = new Survivor(simplifiedSurvivor.name, simplifiedSurvivor.id,
-        simplifiedSurvivor.settlementId);
-      survivor.isAlive = simplifiedSurvivor.isAlive;
-      survivor.isMale = simplifiedSurvivor.isMale;
-      survivor.experience = simplifiedSurvivor.experience;
-      survivor.survival = simplifiedSurvivor.survival;
-      survivor.canDodge = simplifiedSurvivor.canDodge;
-      survivor.canEncourage = simplifiedSurvivor.canEncourage;
-      survivor.canSurge = simplifiedSurvivor.canSurge;
-      survivor.canDash = simplifiedSurvivor.canDash;
-      survivor.movement = simplifiedSurvivor.movement;
-      survivor.accuracy = simplifiedSurvivor.accuracy;
-      survivor.strength = simplifiedSurvivor.strength;
-      survivor.evasion = simplifiedSurvivor.evasion;
-      survivor.luck = simplifiedSurvivor.luck;
-      survivor.speed = simplifiedSurvivor.speed;
-      survivor.insanity = simplifiedSurvivor.insanity;
-      survivor.isBrainDamaged = simplifiedSurvivor.isBrainDamaged;
-      survivor.headArmor = simplifiedSurvivor.headArmor;
-      survivor.headHeavyInjury = simplifiedSurvivor.headHeavyInjury;
-      survivor.armsArmor = simplifiedSurvivor.armsArmor;
-      survivor.armsLightInjury = simplifiedSurvivor.armsLightInjury;
-      survivor.armsHeavyInjury = simplifiedSurvivor.armsHeavyInjury;
-      survivor.bodyArmor = simplifiedSurvivor.bodyArmor;
-      survivor.bodyLightInjury = simplifiedSurvivor.bodyLightInjury;
-      survivor.bodyHeavyInjury = simplifiedSurvivor.bodyHeavyInjury;
-      survivor.waistArmor = simplifiedSurvivor.waistArmor;
-      survivor.waistLightInjury = simplifiedSurvivor.waistLightInjury;
-      survivor.waistHeavyInjury = simplifiedSurvivor.waistHeavyInjury;
-      survivor.legsArmor = simplifiedSurvivor.legsArmor;
-      survivor.legsLightInjury = simplifiedSurvivor.legsLightInjury;
-      survivor.legsHeavyInjury = simplifiedSurvivor.legsHeavyInjury;
-      survivor.cannotUseFightingArts = simplifiedSurvivor.cannotUseFightingArts;
-      survivor.cannotSpendSurvival = simplifiedSurvivor.cannotSpendSurvival;
-      survivor.skipNextHunt = simplifiedSurvivor.skipNextHunt;
-      survivor.oncePerLifetime = simplifiedSurvivor.oncePerLifetime;
-      survivor.understanding = simplifiedSurvivor.understanding;
-      survivor.courage = simplifiedSurvivor.courage;
-      survivor.weaponProficiencyType = simplifiedSurvivor.weaponProficiencyType;
-      survivor.weaponProficiencyXP = simplifiedSurvivor.weaponProficiencyXP;
-      simplifiedSurvivor.fightingArtNames.forEach(fightingArtName =>
-        this.getFightingArt(fightingArtName).then(fightingArt => survivor.addFightingArt(fightingArt)));
-      simplifiedSurvivor.disorderNames.forEach(disorderName =>
-        this.getDisorder(disorderName).then(disorder => survivor.addDisorder(disorder)));
-      simplifiedSurvivor.equipments.forEach(survivorEquipmentSimplified =>
-        this.getEquipment(survivorEquipmentSimplified.equipmentName).then(equipment =>
-          survivor.addEquipment(survivorEquipmentSimplified.position, equipment),
-        ),
-      );
-      this.setSurvivorObservers(survivor, settlement);
-      settlement.addSurvivor(survivor);
-    });
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.survivors)) {
+      simplifiedSettlement.survivors.forEach(simplifiedSurvivor => {
+        const survivor: Survivor = new Survivor(simplifiedSurvivor.name, simplifiedSurvivor.id,
+          simplifiedSurvivor.settlementId);
+        survivor.isAlive = simplifiedSurvivor.isAlive;
+        survivor.isMale = simplifiedSurvivor.isMale;
+        survivor.experience = simplifiedSurvivor.experience;
+        survivor.survival = simplifiedSurvivor.survival;
+        survivor.canDodge = simplifiedSurvivor.canDodge;
+        survivor.canEncourage = simplifiedSurvivor.canEncourage;
+        survivor.canSurge = simplifiedSurvivor.canSurge;
+        survivor.canDash = simplifiedSurvivor.canDash;
+        survivor.movement = simplifiedSurvivor.movement;
+        survivor.accuracy = simplifiedSurvivor.accuracy;
+        survivor.strength = simplifiedSurvivor.strength;
+        survivor.evasion = simplifiedSurvivor.evasion;
+        survivor.luck = simplifiedSurvivor.luck;
+        survivor.speed = simplifiedSurvivor.speed;
+        survivor.insanity = simplifiedSurvivor.insanity;
+        survivor.isBrainDamaged = simplifiedSurvivor.isBrainDamaged;
+        survivor.headArmor = simplifiedSurvivor.headArmor;
+        survivor.headHeavyInjury = simplifiedSurvivor.headHeavyInjury;
+        survivor.armsArmor = simplifiedSurvivor.armsArmor;
+        survivor.armsLightInjury = simplifiedSurvivor.armsLightInjury;
+        survivor.armsHeavyInjury = simplifiedSurvivor.armsHeavyInjury;
+        survivor.bodyArmor = simplifiedSurvivor.bodyArmor;
+        survivor.bodyLightInjury = simplifiedSurvivor.bodyLightInjury;
+        survivor.bodyHeavyInjury = simplifiedSurvivor.bodyHeavyInjury;
+        survivor.waistArmor = simplifiedSurvivor.waistArmor;
+        survivor.waistLightInjury = simplifiedSurvivor.waistLightInjury;
+        survivor.waistHeavyInjury = simplifiedSurvivor.waistHeavyInjury;
+        survivor.legsArmor = simplifiedSurvivor.legsArmor;
+        survivor.legsLightInjury = simplifiedSurvivor.legsLightInjury;
+        survivor.legsHeavyInjury = simplifiedSurvivor.legsHeavyInjury;
+        survivor.cannotUseFightingArts = simplifiedSurvivor.cannotUseFightingArts;
+        survivor.cannotSpendSurvival = simplifiedSurvivor.cannotSpendSurvival;
+        survivor.skipNextHunt = simplifiedSurvivor.skipNextHunt;
+        survivor.oncePerLifetime = simplifiedSurvivor.oncePerLifetime;
+        survivor.understanding = simplifiedSurvivor.understanding;
+        survivor.courage = simplifiedSurvivor.courage;
+        survivor.weaponProficiencyType = simplifiedSurvivor.weaponProficiencyType;
+        survivor.weaponProficiencyXP = simplifiedSurvivor.weaponProficiencyXP;
+        simplifiedSurvivor.fightingArtNames.forEach(fightingArtName =>
+          this.getFightingArt(fightingArtName).then(fightingArt => survivor.addFightingArt(fightingArt)));
+        simplifiedSurvivor.disorderNames.forEach(disorderName =>
+          this.getDisorder(disorderName).then(disorder => survivor.addDisorder(disorder)));
+        simplifiedSurvivor.equipments.forEach(survivorEquipmentSimplified =>
+          this.getEquipment(survivorEquipmentSimplified.equipmentName).then(equipment =>
+            survivor.addEquipment(survivorEquipmentSimplified.position, equipment),
+          ),
+        );
+        this.setSurvivorObservers(survivor, settlement);
+        settlement.addSurvivor(survivor);
+      });
+    }
     settlement.survivorsSizeChanged.subscribe(this.saveSettlementObserver(settlement));
     return settlement;
+  }
+
+  private arrayExistsAndIsNotEmpty(list: Array<any>): boolean {
+    return list && list.length > 0;
   }
 
   private setSurvivorObservers(survivor: Survivor, settlement: Settlement): void {

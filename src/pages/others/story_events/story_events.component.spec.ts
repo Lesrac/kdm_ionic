@@ -47,7 +47,7 @@ describe('Story Event Table Component', () => {
   });
 
   it('ngOnInit', fakeAsync(() => {
-    const spy = spyOn(kdmServiceMock, 'getStoryEvents').and.callThrough();
+    const spy = spyOn(kdmServiceMock, 'getLanternEvents').and.callThrough();
     storyEventsPageComponent.ngOnInit();
     tick();
     expect(spy).toHaveBeenCalled();
@@ -97,12 +97,15 @@ describe('Story Event Table Component', () => {
   });
 
   it('show detail', () => {
-    const spy = spyOn(storyEventsPageComponent.modalCtrl, 'create').and.callThrough();
-    const storyEvent = new LanternEvent('Story Event', 'description');
-    storyEventsPageComponent.showDetail(storyEvent);
+    let modalMock = new ModalMock();
+    const spy = spyOn(storyEventsPageComponent.modalCtrl, 'create').and.returnValue(modalMock);
+    const spyModalPresent = spyOn(modalMock, 'present');
+    const lanternEvent = new LanternEvent('Story Event', 'description');
+    storyEventsPageComponent.showDetail(lanternEvent);
     expect(spy).toHaveBeenCalledWith(TimelineEventModalComponent, {
-      lanternEvent: storyEvent,
+      lanternEvent: lanternEvent,
     });
+    expect(spyModalPresent).toHaveBeenCalled();
   });
 
 });
