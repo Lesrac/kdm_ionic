@@ -105,7 +105,11 @@
   {
     "name": "Watched",
     "todo": "",
-    "storyEvents": []
+    "storyEvents": [
+      94,
+      95,
+      96
+    ]
   },
   {
     "name": "Bone Witch",
@@ -297,6 +301,23 @@
     "storyEvents": [
       87,
       88
+    ]
+  },
+  {
+    "name": "White Speaker",
+    "todo": "A large and bizarrely dressed woman offers to share a story. The group must select a story they would like to hear. A survivor may be nominated for this story event only once per lifetime.",
+    "storyEvents": [
+      89,
+      90,
+      91
+    ]
+  },
+  {
+    "name": "Zero Presence",
+    "todo": "'Which is more terrifying,' you ponder. 'The monster or the sudden absence of it?'",
+    "storyEvents": [
+      92,
+      93
     ]
   }
 ]

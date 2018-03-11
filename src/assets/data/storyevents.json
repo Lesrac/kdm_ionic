@@ -438,5 +438,45 @@
     "id": 88,
     "name": "Showdown Phase",
     "description": "(1) Something pulls you into the darkness. You are dead. (2-3) Your desperation to escape causes you to stumble over your own feet. At the start of the next monster turn , place yourself in a space adjacent to the monster. You are knocked down. (4-5) Turned around. At the start of the next monster turn, place your survivor adjacent to any board edge. (6-7) Something in the dark attacks. Gain 2 bleeding tokens. Roll on this table again, adding + 1 to the result. (8-9) You wearily drag yourself to the settlement, battered but alive. You cannot imagine revisiting the horrors you witnessed. You return to the settlement safely. Skip the next hunt to recover. (10) You return to the settlement safely."
+  },
+  {
+    "id": 89,
+    "name": "Story of the Goblin",
+    "description": "The White Speaker instructs the survivors to lower her veil and hold her limbs tightly. The group must nominate a non-deaf survivor. A survivor with max understandmg cannot be nominated, as the potential of their mind has been reached Tension fills the air and the survivors are filled with a mysterious sinking feeling. She begins the Story. Rol1 1d10. (1-3) The White Speaker flies into a violent seizure. A wild toenail catches the eye of the nominated survivor, and they suffer the <b>blinded</b> severe injury. The White Speaker explodes, showering everyone in blood. The experience is surreal. Lose all (*). (4-6) The survivors' brains swell and they how1 in pain. Nominate 3 more survivors All the nominated survivors gain +5 insanity. (7-9) The nom1nated survivor's ears ring with the timing of the White Speaker's words. They gain the <b>Story of the Goblin</b> ability, but sadly, their hearing is lost forever. They suffer the <b>deaf</b> severe injury. (10+) The words of the White Speaker and even the involuntary spasms of her body all make perfect sense. The survivor gains the <b>Story of the Goblin</b> ability. (br)<b>Story of the Goblin</b>: You know the first sentence of the story. Once per showdown you may speak it out loud and roll 1d10. On a 3+, gain the <b>priority target</b> token and the monster gains +1 damage token."
+  },
+  {
+    "id": 90,
+    "name": "Story of the Forsaker",
+    "description": "The White Speaker instructs the survivors to bind their hands together and dip their knuckles in blood. If the settlement has the Forsaker Mask strange gear, this story cannot be selected. The group must nominate a non-deaf survivor. A survivor with max courage cannot be nominated, as the potential of their spirit has been reached. The White Speaker lowers her veil and begins the story. Roll 1d10. (1-5) The White Speaker growls, her graceful movement suddenly awkward and her heels catching on the stone faces on the ground. With a roar, she decks the nominated survivor in the face! They suffer the <b>broken jaw</b> severe injury. (6-8) The nominated survivor silently implodes with rage. The other bound survivors inch away from the waves of passive aggressive energy. The survivor gains +2 permanent strength and breaks free, suffering the <b>broken arm</b> severe injury twice. (9) The nominated survivor is gone (consider them dead). In their place is a strange mask. Gain the <b>Forsaker Mask</b> rare gear. (10+) The words of the White Speaker, and even the involuntary spasms of her body all make perfect sense. The survivor gains the <b>Story of the Forsaker</b> abi1ity. (br)<b>Story of the Forsaker</b>: You cannot be knocked down during a showdown with a nemesis monster."
+  },
+  {
+    "id": 91,
+    "name": "Story of the Young Hero",
+    "description": "This story cannot be selected before the 13th lantern year. The White Speaker instructs the survivors to bring her a young warrior that has never left the settlement light. Nominate a survivor that has never been on a hunt. If no one meets her instructions. she selects someone at random. The White Speaker places her veil over the surivor's eyes. Roll 1d10 (1-3) The White Speaker draws a rusty, blood-encrusted blade and grabs the nominated survivor by the back of the head. Expertly, she inserts the blade deep Into the survivor's mouth. Then, she stutters and flies into a wild seizure, accidentally murdering the survivor and breaking one of her heels. She meekly leaves in silence, carrying her shoes. (4-5) As she speaks, the White Speaker carefully examines the teeth of the nominated survivor. She flicks her wrist, and the survivor suffers the <b>broken jaw</b> severe injury. (6-9) The survivor steals a quick taste of the blood-encrusted blade the White Speaker is waving in their blinded face while telling her story. The survivor gains the <b>Story of the Young Hero</b> ability. (10+) The surv1vor gains +1 permanent accuracy, strength, evasion, speed, luck, and the <b>Story of the Young Hero</b> ability. (br)<b>Story of the Young Hero</b>: At the start of your act, you may recall the heroic sacrifice from the story and btte your wrist. Gain 2 bleeding tokens and +1 survival."
+  },
+  {
+    "id": 92,
+    "name": "Zero Presence Story Event",
+    "description": "As the monster vanishes before your eyes, you can' t help but wonder how anyone has survived up until this point. Is it possible that the monster tricked you? Or has some sort of special organ that allowed it to hide itself beyond the lantern light? You tremble with dread. You watch the monster's soundless movements, and internalize how it sli ps outside the lantern light. There is a chance you might <b>Learn</b> something."
+  },
+  {
+    "id": 93,
+    "name": "Learn",
+    "description": "(1-2) You are confused, and mistakenly believe that the White Lion has found a way to create darkness by eating light. Gain the <b>Fear of the Dark</b> disorder and +3 insanity. (3-7) Your mind leaps from one idea to another. If you have 3+ understanding, gain the <b>Rhythm Chaser</b> fighting art. (4-7) If the settlement has <b>Forbidden Dance</b>, an idea seems to flow through you. Proceed to the 8, 9, 10 result! (8-10)<b>Lack of Presence</b>(br1) A moment of clarity. If you focus on your movement, the shifting of your garments, and the impact of your footsteps , you can minimize your presence until it is barely perceptible. When you drown your own lantern light, you become invisible until you attack. Gain the <b>Zero Presence</b> secret fighting art and +3 insanity."
+  },
+  {
+    "id": 94,
+    "name": "Watched Story Event",
+    "description": "Dark spots spread across the lantern hoard. A nervous hush falls over the settlement. Slowly, the most daring survivors peer past the darkened lanterns, venturing beneath them into a vast chamber, unknown and undreamed of. Slumbering in the center of the chamber, the survivors can feel a presence of immense danger. Their ultimate predator would soon wake, extinguishing the lantern light that holds the endless darkness at bay.(br) Starting with this settlement phase, the survivors may awaken and face the sleeping menace. You may move <b>Nemesis Encounter- Watcher</b> to the current lantern year.(br) The settlements have a different <b>response</b> to the discovery based on their <b>Conviction</b>."
+  },
+  {
+    "id": 95,
+    "name": "Barbaric Response",
+    "description": "The survivors decide they must craft the perfect weapon to prepare themselves. Gain the <b>Ultimate Weapon</b> Innovation. This does not count towards your settlement's innovation total. Nominate a survivor and and roll 1d10. (1-5) The survivor begins to make preparations. Add <b>(milestoneNL) Hands of Heat</b> to the timeline 4 years from now. (6-10) The survivor silently decides they are the true hero. They gain +10 insanity, +1 permanent strength, and the <b>Quixotic</b> disorder."
+  },
+  {
+    "id": 96,
+    "name": "Romantic Response",
+    "description": "The survivors decide they must learn the perfect fighting art to prepare themselves. Gain the <b>Final Fighting Art</b> Innovation. This does not count towards your settlement's innovation total. Nominate a survivor and roll 1d10. (1-5) Without saying a word, the survivor runs into the darkness, never to be seen again. Add <b>(milestoneNL) Bone Witch</b> to the timeline 4 years from now. (6-10) The survivor bursts into an unhealthy laughter. They gain +10 insanity, +1 permanent strength, and the <b>Immortal</b> disorder."
   }
 ]
