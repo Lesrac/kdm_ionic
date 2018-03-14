@@ -239,10 +239,10 @@
     "level": 1,
     "isNemesis": true,
     "rewardText": "",
-    "terrainDeployment": "",
+    "terrainDeployment": "<ul><li>Draw 3 random terrain cards.</li><li>Place the Gold Smoke Knight in the center of the board.</li><li>Place the survivors in the blue spaces.</li><li>The survivors carrying the Final Lantern gains the Priority target token.</li><li><b>The Gold Smoke Knight goes first no matter what!!!</b></li></ul>",
     "aftermath": "",
-    "aftermathVictory": "",
-    "aftermathDefeat": "",
+    "aftermathVictory": "The Gold Smoke Knight collapses, its swollen gut gushing rusty smoke. A red pall blankets the settlement. The survivors' wary eyes grow heavy and they collapse one by one. Face to face with the stone ground they fall into a breathless slumber. Dead. (milestoneNL) <b>Game Over</b>",
+    "aftermathDefeat": "The Gold Smoke Knight drops the Final Lantern on the Watcher's corpse, bringing the maul down on the remains. The explosion incinerates flesh, cloth, hair, and skin. The Knight moves amongst the dead, arranging their bones and lighting the smile of each skull with a glowing ember. (milestoneNL) <b>Game Over</b>",
     "otherInformation": "",
     "resources": [],
     "locations": []
