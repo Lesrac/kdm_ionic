@@ -497,12 +497,12 @@
   {
     "id": 100,
     "name": "Lantern Research Story Event",
-    "description": ""
+    "description": "The Final Lantern carries the bristling remains of the knowledge consumed by the Watcher. Its energy jumps nervously between lanterns. Occasionally, it imbues the survivors with brilliant flashes of power.(br)<b>A Light for the Darkness</b>(br1)Without the Watcher's protective presence, the darkness teems with powerful creatures. To leave the settlement, all survivors must depart with a light source (a gear with the lantern keyword). As long as they have it, one survivor must always depart with the <b>Final Lantern</b> rare gear in their grid.(br1)The <b>Final Lantern</b> is <b>vital</b>. The survivors cannot travel without it. If the survivor holding the <b>Final Lantern</b> perishes before the showdown, another survivor must pick up the <b>Final Lantern</b> (discarding gear to make room on their grid if needed).(br)<b>A Flickering in the Darkness</b>(br1)At the start of the showdown, the light of the Final Lantern emboldens the survivors. Each survivor gains the <b>Horripilation</b> status card. The survivor holding the <b>Final Lantern</b> starts with the Death Die on <b>Horripilation</b>.(br1)The Death Die (orange ten sided die) replaces the Monster Controller tile. The player of the survivor with the Death Die controls the monster.(br1)At the start of each subsequent round, pass the Death Die to the <b>Horripilation</b> card to the left. The Watcher's final emanations continue to jump between lanterns of survivors that cannot act, including dead or absent survivors.(br1)Instead of the benefits of the Monster Controller tile, you may use <b>Pulse Discoveries</b>. Set the settlement's Lantern Research Level to 1. Your settlement gains <b>Aggression Overload</b>. Spend additional resources to unlock new discoveries.(br1)Once per round, the survivor with the Death Die may use one of the settlement's unlocked <b>Pulse Discoveries</b>.(br1)If the Final Lantern is lost or archived, it is gone forever. Survivors cannot use the Death Die. Return to using the Monster Controller tile."
   },
   {
     "id": 101,
     "name": "Pulse Discoveries",
-    "description": ""
+    "description": "Once per lantern year, spend 2x Bone, 2x Hide, 2x Organ to research.(br1)If you do, gain the next level of Lantern Research and record it on your Settlement Record Sheet.(br1)Your Lantern Research Level unlocks the corresponding Pulse Discoveries below. (1) <b>Aggression Overload</b> - Add an attack roll to an attack. During your attack, after making your attack rolls but before drawing hit locations, you may roll the Death Die as an additional attack roll. (2) <b>Acceleration</b> - Add +1d10 movement to a move action. Before moving, you may roll the Death Die and add the result to your movement for one move action this round. (3) <b>Uninhibited Rage</b> - Add +1d10 strength to a wound attempt. After a wound attempt is rolled you may roll the Death Die and add the result to the strength of your wound attempt. (4) <b>Legs Locked</b> When you gain the Death Die, you stand. While you have the Death Die, you cannot be knocked down for any reason. (5) <b>Metabolic Surrender</b> Any time during the showdown, you may roll the Death Die. Gain twice that much survival. This round, ignore the negative effects of permanent injuries, impairments, disorders, and negative attributes (including tokens). At the end of the round, you die."
   },
   {
     "id": 102,
@@ -512,12 +512,12 @@
   {
     "id": 103,
     "name": "Create Coating and Protective Gear",
-    "description": ""
+    "description": "This dangerous procedure requires protective outfits, a long placement tool, and a catalyst coating. Pay the cost below to prepare your implements then craft 1 piece of gear in the High Voltage Bath. After you craft the gear, the implements are destroyed.(br1)Implements Cost: 3 x Leather, 3 x Bone, 3 x Organ, 1 x Black Lichen, 1 x Cocoon Membrane"
   },
   {
     "id": 104,
     "name": "High Voltage Bath",
-    "description": ""
+    "description": "<b>Oxidized Lantern Sword</b> 1x Lantern Sword, 1x Lantern Tube(br)<b>Oxidized Beacon Shield</b> 1x Beacon Shield, 2x Iron, 1x Hide(br)<b>Oxidized Lantern Dagger</b> 1x Lantern Dagger, 1x Iron, 4x Hide(br)<b>Oxidized Lantern Glaive</b> 1x Lantern Glaive, 1x Iron, 4x Bone(br)<b>Oxidized Ring Whip</b> 1x Ring Whip, 1x Iron, 4x Organ(br)<b>Oxidized Lantern Helm</b> 1x Lantern Helm, 1x Iron, 4x Bone"
   },
   {
     "id": 105,
