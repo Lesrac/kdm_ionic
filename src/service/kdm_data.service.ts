@@ -795,8 +795,9 @@ export class KDMDataService {
           huntedMonsterDB.huntedResources.forEach((value: [string, number]) => {
               this.getResourceByName(value[0]).then(resource => {
                   const r: Resource = Object.assign(resource);
-                  r.amount = value[1];
                   huntedMonster.huntedResources.push(r);
+                  r.amount = value[1];
+                  r.amountChanged.subscribe(this.saveSettlementObserver(settlement));
                 },
               );
             },
@@ -818,9 +819,9 @@ export class KDMDataService {
       simplifiedSettlement.storagesNameAmount.forEach((value: [string, number]) => {
         this.getStorageItem(value[0]).then(storage => {
           const s: Storage = Object.assign(storage);
+          settlement.addStorageItem(s);
           s.amount = value[1];
           s.amountChanged.subscribe(this.saveSettlementObserver(settlement));
-          settlement.addStorageItem(s);
         });
       });
     }
