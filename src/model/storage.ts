@@ -70,7 +70,7 @@ export class Storage extends BaseModel {
   }
 
   get amount(): number {
-    return this._amount;
+    return +this._amount;
   }
 
   set amount(value: number) {

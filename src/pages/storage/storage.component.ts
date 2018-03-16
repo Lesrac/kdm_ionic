@@ -44,6 +44,7 @@ export class StoragePageComponent {
   removeStorage(storage: Storage): void {
     const index = this.settlement.storages.findIndex(str => str === storage);
     this.settlement.storages.splice(index, 1);
+    storage.amountChanged.next(0);
   }
 
   addStorageItem(): void {
