@@ -88,6 +88,9 @@ ion-icon {
     mask-image: url(../assets/img/square.svg);
     color: red;
   }
+  &[class*="kdmf-square-black"] {
+    mask-image: url(../assets/img/square.svg);
+  }
   &[class*="kdmf-eyeblue"] {
     mask-image: url(../assets/img/eye.svg);
     color: deepskyblue;
