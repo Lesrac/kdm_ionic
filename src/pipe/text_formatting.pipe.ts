@@ -54,29 +54,71 @@ export class TextFormattingPipe implements PipeTransform {
           text = text.replace(match, '<ion-icon name="kdmf-shieldone" role="img" ' +
             'class="icon icon-md ion-md-kdmf-shieldone" aria-label="kdmf shieldone" ' +
             'ng-reflect-name="kdmf-shieldone"></ion-icon>');
+        } else if ('shieldtwo' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-shieldtwo" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-shieldtwo" aria-label="kdmf shieldtwo" ' +
+            'ng-reflect-name="kdmf-shieldtwo"></ion-icon>');
+        } else if ('shieldthree' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-shieldthree" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-shieldthree" aria-label="kdmf shieldthree" ' +
+            'ng-reflect-name="kdmf-shieldthree"></ion-icon>');
         } else if ('flash' === matchesWithoutParenthesis) {
           text = text.replace(match, '<ion-icon name="flash" role="img" ' +
             'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
         } else if ('headList' === matchesWithoutParenthesis) {
-          // TODO: head image
-          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
-            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="kdmf-head" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-head" aria-label="kdmf head" ng-reflect-name="kdmf-head"></ion-icon>');
         } else if ('waistList' === matchesWithoutParenthesis) {
-          // TODO: waist image
-          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
-            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="kdmf-waist" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-waist" aria-label="kdmf waist" ng-reflect-name="kdmf-waist"></ion-icon>');
         } else if ('legsList' === matchesWithoutParenthesis) {
-          // TODO: legs image
-          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
-            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="kdmf-legs" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-legs" aria-label="kdmf legs" ng-reflect-name="kdmf-legs"></ion-icon>');
         } else if ('armsList' === matchesWithoutParenthesis) {
-          // TODO: arms image
-          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
-            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="kdmf-arms" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-arms" aria-label="kdmf arms" ng-reflect-name="kdmf-arms"></ion-icon>');
         } else if ('bodyList' === matchesWithoutParenthesis) {
-          // TODO: body image
-          text = text.replace(match, this.doubleBreak + '<ion-icon name="flash" role="img" ' +
-            'class="icon icon-md ion-md-flash" aria-label="flash" ng-reflect-name="flash"></ion-icon>');
+          text = text.replace(match, this.doubleBreak + '<ion-icon name="kdmf-body" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-body" aria-label="kdmf body" ng-reflect-name="kdmf-body"></ion-icon>');
+        } else if ('horse' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-horse" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-horse" aria-label="kdmf horse" ng-reflect-name="kdmf-horse"></ion-icon>');
+        } else if ('eyered' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-eyered" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-eyered" aria-label="kdmf eyered" ' +
+            'ng-reflect-name="kdmf-eyered"></ion-icon>');
+        } else if ('eyeblue' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-eyeblue" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-eyeblue" aria-label="kdmf eyeblue" ' +
+            'ng-reflect-name="kdmf-eyeblue"></ion-icon>');
+        } else if ('eyegreen' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-eyegreen" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-eyegreen" aria-label="kdmf eyegreen" ' +
+            'ng-reflect-name="kdmf-eyegreen"></ion-icon>');
+        } else if ('puzzle blue' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-puzzle-blue" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-puzzle-blue" aria-label="kdmf puzzle blue" ' +
+            'ng-reflect-name="kdmf-puzzle-blue"></ion-icon>');
+        } else if ('puzzle red' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-puzzle-red" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-puzzle-red" aria-label="kdmf puzzle red" ' +
+            'ng-reflect-name="kdmf-puzzle-red"></ion-icon>');
+        } else if ('puzzle green' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-puzzle-green" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-puzzle-green" aria-label="kdmf puzzle green" ' +
+            'ng-reflect-name="kdmf-puzzle-green"></ion-icon>');
+        } else if ('square blue' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-square-blue" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-square-blue" ' +
+            'aria-label="kdmf square blue" ng-reflect-name="kdmf-square-blue"></ion-icon>');
+        } else if ('square red' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-square-red" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-square-red" aria-label="kdmf square red" ' +
+            'ng-reflect-name="kdmf-square-red"></ion-icon>');
+        } else if ('square green' === matchesWithoutParenthesis) {
+          text = text.replace(match, '<ion-icon name="kdmf-square-green" role="img" ' +
+            'class="icon icon-md ion-md-kdmf-square-green" aria-label="kdmf square green" ' +
+            'ng-reflect-name="kdmf-square-green"></ion-icon>');
         }
       });
     }

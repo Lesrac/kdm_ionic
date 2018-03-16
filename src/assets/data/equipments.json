@@ -539,5 +539,23 @@
       "ITEM",
       "FLAMMABLE"
     ]
+  },
+  {
+    "name": "Portcullis Key",
+    "description": "Hunt Event 79 Item",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "OTHER"
+    ]
+  },
+  {
+    "name": "Rock",
+    "description": "Hunt Event 80 Item",
+    "affinities": [],
+    "tags": [
+      "ITEM",
+      "OTHER"
+    ]
   }
 ]

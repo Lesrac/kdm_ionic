@@ -40,4 +40,64 @@ ion-icon {
   &[class*="kdmf-shieldone"] {
     mask-image: url(../assets/img/shieldone.svg);
   }
+  &[class*="kdmf-shieldtwo"] {
+    mask-image: url(../assets/img/shieldtwo.svg);
+  }
+  &[class*="kdmf-shieldthree"] {
+    mask-image: url(../assets/img/shieldthree.svg);
+  }
+  &[class*="kdmf-head"] {
+    mask-image: url(../assets/img/head.svg);
+  }
+  &[class*="kdmf-waist"] {
+    mask-image: url(../assets/img/waist.svg);
+  }
+  &[class*="kdmf-legs"] {
+    mask-image: url(../assets/img/legs.svg);
+  }
+  &[class*="kdmf-arms"] {
+    mask-image: url(../assets/img/arms.svg);
+  }
+  &[class*="kdmf-body"] {
+    mask-image: url(../assets/img/body.svg);
+  }
+  &[class*="kdmf-horse"] {
+    mask-image: url(../assets/img/horse.svg);
+  }
+  &[class*="kdmf-puzzle-blue"] {
+    mask-image: url(../assets/img/puzzle.svg);
+    color: deepskyblue;
+  }
+  &[class*="kdmf-puzzle-green"] {
+    mask-image: url(../assets/img/puzzle.svg);
+    color: green;
+  }
+  &[class*="kdmf-puzzle-red"] {
+    mask-image: url(../assets/img/puzzle.svg);
+    color: red;
+  }
+  &[class*="kdmf-square-blue"] {
+    mask-image: url(../assets/img/square.svg);
+    color: deepskyblue;
+  }
+  &[class*="kdmf-square-green"] {
+    mask-image: url(../assets/img/square.svg);
+    color: green;
+  }
+  &[class*="kdmf-square-red"] {
+    mask-image: url(../assets/img/square.svg);
+    color: red;
+  }
+  &[class*="kdmf-eyeblue"] {
+    mask-image: url(../assets/img/eye.svg);
+    color: deepskyblue;
+  }
+  &[class*="kdmf-eyegreen"] {
+    mask-image: url(../assets/img/eye.svg);
+    color: green;
+  }
+  &[class*="kdmf-eyered"] {
+    mask-image: url(../assets/img/eye.svg);
+    color: red;
+  }
 }

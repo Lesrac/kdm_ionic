@@ -329,7 +329,7 @@
   },
   {
     "name": "Rainbow Katana",
-    "description": "Frail",
+    "description": "Frail. (puzzle red)(square green)(square blue) Gains Deadly",
     "affinities": [
       {
         "affinity": "RED",
@@ -351,7 +351,7 @@
   },
   {
     "name": "Finger of God",
-    "description": "Reach 2.",
+    "description": "Reach 2. (square green)(square blue)(square red) As long as you have 5+ survival, gain +1 accuracy and +1 strength.",
     "affinities": [
       {
         "affinity": "RED",
@@ -372,7 +372,7 @@
   },
   {
     "name": "Zanbato",
-    "description": "Slow, Frail, Deadly",
+    "description": "Slow, Frail, Deadly. (puzzle red)(square green) Gains Devastating 1: Whenever you wound, inflict 1 additional wound.",
     "affinities": [
       {
         "affinity": "RED",
@@ -400,7 +400,7 @@
   },
   {
     "name": "Counterweighted Axe",
-    "description": "Reach 2",
+    "description": "Reach 2. (puzzle red) On a Perfect hit, do not draw a hit location. Monster suffers 1 wound.",
     "affinities": [
       {
         "affinity": "RED",
@@ -421,7 +421,7 @@
   },
   {
     "name": "Scrap Sword",
-    "description": "On a Perfect hit, the edge sharpens. Gain +4 strength fro the rest of the attack.",
+    "description": "On a Perfect hit, the edge sharpens. Gain +4 strength fro the rest of the attack. (square red)(square red)(square blue) Gains Deadly.",
     "affinities": [
       {
         "affinity": "BLUE",

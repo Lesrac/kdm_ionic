@@ -2,7 +2,6 @@
 - Hunt XP Events
 - Impairments and Abilities for Survivor
 - Better Event handling (doing)
-- Add DB (when model structure is defined/final)
 - Survivors List with max Elements shown
 
 
@@ -10,8 +9,5 @@
 - redo Monster Resource handling when defeated
 - Random innovation from existing innovations, that has to be removed
 - Random resources cards (with amount and type chosen)
-- 'Portcullis Key' Hunt Event 79
-- 'rock'-gear, Hunt Event 80
 - Monster Hunt Events
-- add (shieldtwo), (shieldthree), (puzzle color), (square color), (horse), (eyered), (eyeblue), (eyegreen) to text_formatting.pipe
 - Add legendary monsters?

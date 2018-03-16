@@ -7,8 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-textarea readonly autoresize [ngModel]="object.description">
-    </ion-textarea>
+  <ion-item text-wrap>
+    <span [innerHTML]="object.description | kdmTextFormatting"></span>
   </ion-item>
 </ion-content>
