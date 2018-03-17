@@ -80,7 +80,7 @@ describe('testing settlement view', () => {
 
     expect(settlementPage.nemesisMonstersGroup.isPresent()).toBeTruthy('Nemesis monster group not available');
     settlementPage.nemesisMonstersGroup.all(by.className('row')).then(nemesisMonsters => {
-      expect(nemesisMonsters.length).toBe(3, 'Amount of Nemesis Monsters not correct');
+      expect(nemesisMonsters.length).toBe(5, 'Amount of Nemesis Monsters not correct');
     });
   });
 
