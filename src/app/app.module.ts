@@ -14,7 +14,6 @@ import { CreateSettlementPopoverComponent } from '../pages/popover/create_settle
 import { TimelineEventModalComponent } from '../pages/timeline/timeline_event_modal.component';
 import { DefeatedMonsterModalComponent } from '../pages/defeated_monster/defeated_monster_modal.component';
 import { AddLinebreakToPunctuationPipe } from '../pipe/add_linebreak_to_punctuation.pipe';
-import { AutoresizeTextareaDirective } from '../directive/autoresize_textarea.directive';
 import { TimelinePageComponent } from '../pages/timeline/timeline.component';
 import { DefeatedMonsterPageComponent } from '../pages/defeated_monster/defeated_monster.component';
 import { StoragePageComponent } from '../pages/storage/storage.component';
@@ -93,7 +92,6 @@ import { RemoveWhitespacePipe } from '../pipe/remove_whitespace.pipe';
     MapValuesPipe,
     FilterElementsPipe,
     RemoveWhitespacePipe,
-    AutoresizeTextareaDirective,
     BrainTraumaPageComponent,
     GlossaryPageComponent,
     HuntEventTablePageComponent,
