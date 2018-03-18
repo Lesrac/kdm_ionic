@@ -127,13 +127,185 @@
   {
     "name": "Skinnery",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Rawhide Headband",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rawhide Gloves",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rawhide Vest",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rawhide Pants",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rawhide Boots",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Bandages",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rawhide Drum",
+        "buildCosts": [
+          {
+            "name": "Drums",
+            "amount": 1,
+            "type": "innovation"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Rawhide Whip",
+        "buildCosts": [
+          {
+            "name": "Ammonia",
+            "amount": 1,
+            "type": "innovation"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
     "name": "Organ Grinder",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Stone Noses",
+        "buildCosts": [
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "Fecal Salve",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Monster Grease",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Dried Acanthus",
+        "buildCosts": [
+          {
+            "name": "Fresh Acanthus",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Lucky Charm",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Monster Tooth Necklace",
+        "buildCosts": [
+          {
+            "name": "Heat",
+            "amount": 1,
+            "type": "innovation"
+          },
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
@@ -316,7 +488,113 @@
   {
     "name": "Leather Worker",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Leather Mask",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Leather Bracers",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Leather Cuirass",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Leather Skirt",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Leather Boots",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Round Leather Shield",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Hunter Whip",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
