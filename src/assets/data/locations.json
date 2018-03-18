@@ -600,19 +600,602 @@
   {
     "name": "Stone Circle",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Screaming Horns",
+        "buildCosts": [
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Spiral Horn",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Screaming Bracers",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Screaming Coat",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Screaming Skirt",
+        "buildCosts": [
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Screaming Leg Warmers",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Boss Mehndi",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Golden Whiskers",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Beast Knuckle",
+        "buildCosts": [
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Large Flat Tooth",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Red Charm",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 3,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Blood Paint",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Paint",
+            "amount": 1,
+            "type": "innovation"
+          },
+          {
+            "name": "Bladder",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Bone Earrings",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Shank Bone",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Green Charm",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 3,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Blue Charm",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 3,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lance of Longinus",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "Legendary Horns",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
     "name": "Barber Surgeon",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "First Aid Kit",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Brain Mint",
+        "buildCosts": [
+          {
+            "name": "Screaming Brain",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Elder Earrings",
+        "buildCosts": [
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Shank Bone",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Musk Bomb",
+        "buildCosts": [
+          {
+            "name": "Resources",
+            "amount": 7,
+            "type": "text"
+          },
+          {
+            "name": "Pottery",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      },
+      {
+        "name": "Scavenger Kit",
+        "buildCosts": [
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Bug Trap",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "Muscly Gums",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Speed Powder",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "Second Heart",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Almanac",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "Pictograph",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
     "name": "Plumery",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Phoenix Helm",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Small Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Hollow Wing Bones",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Phoenix Gauntlet",
+        "buildCosts": [
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Small Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Phoenix Plackart",
+        "buildCosts": [
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Tail Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Phoenix Faulds",
+        "buildCosts": [
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Tail Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Phoenix Greaves",
+        "buildCosts": [
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Small Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "LEATHER",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Feather Shield",
+        "buildCosts": [
+          {
+            "name": "Small Feathers",
+            "amount": 2,
+            "type": "resource"
+          },
+          {
+            "name": "Muculent Droppings",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Bloom Sphere",
+        "buildCosts": [
+          {
+            "name": "Small Hand Parasites",
+            "amount": 2,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 3,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Sonic Tomahawk",
+        "buildCosts": [
+          {
+            "name": "Small Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Hollow Wing Bones",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Hollow Sword",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 2,
+            "type": "storageTag"
+          },
+          {
+            "name": "Hollow Wing Bones",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "HIDE",
+            "amount": 2,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Arc Bow",
+        "buildCosts": [
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Phoenix Whisker",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Wishbone",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Feather Mantle",
+        "buildCosts": [
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Tail Feathers",
+            "amount": 2,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Bird Bread",
+        "buildCosts": [
+          {
+            "name": "HIDE",
+            "amount": 3,
+            "type": "storageTag"
+          },
+          {
+            "name": "Pustules",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Hours Ring",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "Shimmering Halo",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Crest Crown",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "Phoenix Crest",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Hollowpoint Arrow",
+        "buildCosts": [
+          {
+            "name": "SCRAP",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "Hollow Wing Bones",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {

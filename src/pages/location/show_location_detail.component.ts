@@ -15,6 +15,7 @@ export class ShowLocationDetailComponent {
 
   constructor(public viewCtrl: ViewController, private params: NavParams) {
     this.location = this.params.get('object') as Location;
+    console.log(this.location);
   }
 
   containsOrElement(value): boolean {
