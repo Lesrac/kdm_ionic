@@ -22,10 +22,15 @@ export class MapValuesPipe implements PipeTransform {
             amount: val,
             what: k as Innovation,
           });
+        } else if (StorageTag[k]) {
+          dummyObject.costs.push({
+            amount: val,
+            what: StorageTag[k],
+          });
         } else {
           dummyObject.costs.push({
             amount: val,
-            what: <StorageTag>StorageTag[<string>k],
+            what: k,
           });
         }
       });

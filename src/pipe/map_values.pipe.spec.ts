@@ -21,13 +21,13 @@ describe('Pipe: mapValuesPipe', () => {
   });
 
   it('Map with strings', () => {
-    const ammunition: string = 'AMMUNITION';
-    const arrow: string = 'ARROW';
+    const value1: string = 'test string';
+    const value2: string = '1 2 oder 3';
 
-    map1.set(ammunition, [2]);
-    map1.set(arrow, [4]);
+    map1.set(value1, [2]);
+    map1.set(value2, [4]);
 
-    map2.set(ammunition, [1]);
+    map2.set(value1, [1]);
 
     fullMap.set(equipment1, map1);
     fullMap.set(equipment2, map2);
@@ -36,11 +36,11 @@ describe('Pipe: mapValuesPipe', () => {
     expect(dummyObjects.length).toEqual(2);
     expect(dummyObjects[0].equipment).toBe(equipment1);
     expect(dummyObjects[0].costs.length).toEqual(2);
-    expect(dummyObjects[0].costs[0].what).toEqual(<StorageTag>StorageTag[<string>ammunition]);
-    expect(dummyObjects[0].costs[1].what).toEqual(<StorageTag>StorageTag[<string>arrow]);
+    expect(dummyObjects[0].costs[0].what).toEqual(value1);
+    expect(dummyObjects[0].costs[1].what).toEqual(value2);
     expect(dummyObjects[1].equipment).toBe(equipment2);
     expect(dummyObjects[1].costs.length).toEqual(1);
-    expect(dummyObjects[1].costs[0].what).toEqual(<StorageTag>StorageTag[<string>ammunition]);
+    expect(dummyObjects[1].costs[0].what).toEqual(value1);
   });
 
   it('Map with Innovations', () => {
@@ -95,12 +95,12 @@ describe('Pipe: mapValuesPipe', () => {
     const storageTag: StorageTag = StorageTag.AXE;
     const innovation: Innovation = new Innovation('Innovation 1', 'to use',
       InnovationTag.SCULPURE_CONSEQUENCE, [InnovationTag.FAITH], false);
-    const arrow: string = 'ARROW';
+    const testString: string = 'test string';
 
     map1.set(storageTag, [2]);
     map1.set(innovation, [4]);
 
-    map2.set(arrow, [1]);
+    map2.set(testString, [1]);
 
     fullMap.set(equipment1, map1);
     fullMap.set(equipment2, map2);
@@ -113,7 +113,7 @@ describe('Pipe: mapValuesPipe', () => {
     expect(dummyObjects[0].costs[1].what).toEqual(innovation);
     expect(dummyObjects[1].equipment).toBe(equipment2);
     expect(dummyObjects[1].costs.length).toEqual(1);
-    expect(dummyObjects[1].costs[0].what).toEqual(<StorageTag>StorageTag[<string>arrow]);
+    expect(dummyObjects[1].costs[0].what).toEqual(testString);
   });
 })
 ;

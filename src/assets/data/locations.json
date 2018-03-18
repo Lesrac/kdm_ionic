@@ -289,7 +289,7 @@
         "name": "Monster Tooth Necklace",
         "buildCosts": [
           {
-            "name": "Heat",
+            "name": "Lantern Oven",
             "amount": 1,
             "type": "innovation"
           },
