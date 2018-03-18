@@ -228,8 +228,8 @@ export class KDMDataService {
   }
 
   getResourceByName(name: string): Promise<Resource> {
-    return this.getResources().then(resources => resources.find(resource =>
-      resource.name === name));
+    return this.getResources().then(resources =>
+      resources.find(resource => resource.name === name));
   }
 
   getAllExistingStorageItems(): Promise<[Storage[]]> {
@@ -378,6 +378,16 @@ export class KDMDataService {
                           costs.set(resource.name, [buildCost.amount, buildCost.or]));
                       } else {
                         this.getResourceByName(buildCost.name).then(resource =>
+                          costs.set(resource.name, [buildCost.amount]));
+                      }
+                      break;
+                    }
+                    case 'weapon': {
+                      if (buildCost.or) {
+                        this.getWeaponByName(buildCost.name).then(resource =>
+                          costs.set(resource.name, [buildCost.amount, buildCost.or]));
+                      } else {
+                        this.getWeaponByName(buildCost.name).then(resource =>
                           costs.set(resource.name, [buildCost.amount]));
                       }
                       break;
@@ -555,6 +565,10 @@ export class KDMDataService {
     }
   }
 
+  getWeaponByName(name: string): Promise<Weapon> {
+    return this.getWeapons().then(weapons => weapons.find(weapon => weapon.name === name));
+  }
+
   getArmors(): Promise<Armor[]> {
     if (this.armors.length < 1) {
       return new Promise(resolve => {
@@ -721,8 +735,8 @@ export class KDMDataService {
   private createStorageTagArray(tags: string[]): StorageTag[] {
     const storageTags: StorageTag[] = [];
     tags.forEach(tagString => {
+      // TODO remove when all storage elements are added
       if (StorageTag[tagString] === undefined) {
-        // TODO remove when all storage elements are added
         console.log('StorageTag: ' + tagString);
         console.log(StorageTag[tagString]);
       }

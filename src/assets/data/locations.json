@@ -1201,19 +1201,527 @@
   {
     "name": "Blacksmith",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "Lantern Helm",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 7,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lantern Gauntlets",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 2,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lantern Cuirass",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 2,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lantern Mail",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lantern Greaves",
+        "buildCosts": [
+          {
+            "name": "LEATHER",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lantern Sword",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "HIDE",
+            "amount": 3,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Dragon Slayer",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 3,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 5,
+            "type": "storageTag"
+          },
+          {
+            "name": "Paint",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      },
+      {
+        "name": "Perfect Slayer",
+        "buildCosts": [
+          {
+            "name": "ORGAN",
+            "amount": 3,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 9,
+            "type": "storageTag"
+          },
+          {
+            "name": "Perfect Crucible",
+            "amount": 1,
+            "type": "innovation"
+          }
+        ]
+      },
+      {
+        "name": "Ring Whip",
+        "buildCosts": [
+          {
+            "name": "BONE",
+            "amount": 3,
+            "type": "storageTag"
+          },
+          {
+            "name": "IRON",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 3,
+            "type": "storageTag"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
     "name": "Mask Maker",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "White Lion Mask",
+        "buildCosts": [
+          {
+            "name": "Shimmering Mane",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          },
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "Antelope Mask",
+        "buildCosts": [
+          {
+            "name": "Pelt",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          },
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "Phoenix Mask",
+        "buildCosts": [
+          {
+            "name": "Small Feathers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          },
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "Death Mask",
+        "buildCosts": [
+          {
+            "name": "-1 Population",
+            "amount": 1,
+            "type": "text"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          },
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "Man Mask",
+        "buildCosts": [
+          {
+            "name": "SKULL",
+            "amount": 1,
+            "type": "storageTag"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          },
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "God Mask",
+        "buildCosts": [
+          {
+            "name": "Founding Stone",
+            "amount": 1,
+            "type": "weapon"
+          },
+          {
+            "name": "BONE",
+            "amount": 6,
+            "type": "storageTag"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          },
+          {
+            "name": "*",
+            "amount": 1,
+            "type": "text"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   },
   {
     "name": "Catarium",
     "description": "",
-    "manufacturingObjects": [],
+    "manufacturingObjects": [
+      {
+        "name": "White Lion Helm",
+        "buildCosts": [
+          {
+            "name": "White Fur",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Great Cat Bones",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "White Lion Gauntlet",
+        "buildCosts": [
+          {
+            "name": "White Fur",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "White Lion Coat",
+        "buildCosts": [
+          {
+            "name": "White Fur",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "White Lion Skirt",
+        "buildCosts": [
+          {
+            "name": "White Fur",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "White Lion Boots",
+        "buildCosts": [
+          {
+            "name": "White Fur",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lion Beast Katar",
+        "buildCosts": [
+          {
+            "name": "Lion Claw",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "HIDE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Claw Head Arrow",
+        "buildCosts": [
+          {
+            "name": "Lion Claw",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "King Spear",
+        "buildCosts": [
+          {
+            "name": "Lion Claw",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "Great Cat Bones",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Cat Gut Bow",
+        "buildCosts": [
+          {
+            "name": "Sinew",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Cat Fang Knife",
+        "buildCosts": [
+          {
+            "name": "Elder Cat Teeth",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "ORGAN",
+            "amount": 4,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Cat Eye Circlet",
+        "buildCosts": [
+          {
+            "name": "Eye of Cat",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Whisker Harp",
+        "buildCosts": [
+          {
+            "name": "Golden Whiskers",
+            "amount": 1,
+            "type": "resource"
+          },
+          {
+            "name": "BONE",
+            "amount": 1,
+            "type": "storageTag"
+          }
+        ]
+      },
+      {
+        "name": "Lion Headdress",
+        "buildCosts": [
+          {
+            "name": "Shimmering Mane",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Lion Skin Cloak",
+        "buildCosts": [
+          {
+            "name": "White Fur",
+            "amount": 2,
+            "type": "resource"
+          }
+        ]
+      },
+      {
+        "name": "Frenzy Drink",
+        "buildCosts": [
+          {
+            "name": "Lion Testes",
+            "amount": 1,
+            "type": "resource"
+          }
+        ]
+      }
+    ],
     "isStartLocation": false
   }
 ]
