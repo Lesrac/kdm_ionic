@@ -1,13 +1,12 @@
+<button ion-button icon-only (click)="increaseValue()" style="width: 100%">
+  <ion-icon name="arrow-up"></ion-icon>
+</button>
 <ion-item>
   <ion-input type="number" required
              [(ngModel)]="value"
-             [formControl]="valueControl"></ion-input>
+             [formControl]="valueControl"
+             text-center></ion-input>
 </ion-item>
-<ion-segment>
-  <button ion-button icon-only (click)="increaseValue()">
-    <ion-icon name="add-circle"></ion-icon>
-  </button>
-  <button ion-button icon-only (click)="decreaseValue()">
-    <ion-icon name="remove-circle"></ion-icon>
-  </button>
-</ion-segment>
+<button ion-button icon-only (click)="decreaseValue()" style="width: 100%">
+  <ion-icon name="arrow-down"></ion-icon>
+</button>
