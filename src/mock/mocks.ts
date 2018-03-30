@@ -86,6 +86,27 @@ export class NavParamsMock {
   }
 }
 
+export class NavParamsSettlementSurvivorMock {
+  static settlement = null;
+  static survivor = null;
+
+  static setParams(settlement, survivor) {
+    NavParamsSettlementSurvivorMock.settlement = settlement;
+    NavParamsSettlementSurvivorMock.survivor = survivor;
+  }
+
+  public get(key): any {
+    if (key === 'settlement') {
+      return NavParamsSettlementSurvivorMock.settlement;
+    } else if (key === 'survivor') {
+      return NavParamsSettlementSurvivorMock.survivor;
+    } else {
+      return 'default';
+    }
+  }
+
+}
+
 export class ConfigMock {
 
   public get(): any {
