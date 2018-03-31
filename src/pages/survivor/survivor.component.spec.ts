@@ -19,6 +19,10 @@ import { SurvivorPageComponent } from './survivor.component';
 import { KeyValueDiffers } from '@angular/core';
 import { InputNumberComponent } from '../template/input_number.component';
 import { Survivor } from '../../model/survivor';
+import { FormControl } from '@angular/forms';
+import { ShowListComponent } from '../template/show_list.component';
+import { ShowListTypes } from '../../model/show_list_types';
+import { EquipmentGridPageComponent } from '../equipment/equipment_grid.component';
 
 describe('SurvivorComponent', () => {
   let survivorPageComponent: SurvivorPageComponent;
@@ -285,6 +289,69 @@ describe('SurvivorComponent', () => {
     expect(survivor.weaponProficiencyXP).toBe(2);
     survivorPageComponent.weaponProficiencyXPChange('nan');
     expect(survivor.weaponProficiencyXP).toBe(2);
+  });
+
+  it('update xp', () => {
+    let formControl: FormControl = new FormControl();
+    formControl.setValue(1);
+    let event: Event = new Event('number');
+    expect(survivor.experience).toBe(0, 'not 0');
+    survivorPageComponent.updateXP(event, formControl);
+    expect(survivor.experience).toBe(1, 'not increased to 1');
+    formControl.setValue(1);
+    survivorPageComponent.updateXP(event, formControl);
+    expect(survivor.experience).toBe(2, 'not increased to 2');
+    formControl.setValue(7);
+    survivorPageComponent.updateXP(event, formControl);
+    expect(survivor.experience).toBe(3, 'not increased to 3');
+    formControl.setValue(1);
+    survivorPageComponent.updateXP(event, formControl);
+    expect(survivor.experience).toBe(4, 'not increased to 4');
+    formControl.setValue(undefined);
+    survivorPageComponent.updateXP(event, formControl);
+    expect(survivor.experience).toBe(3, 'not decreased to 3');
+  });
+
+  it('show disorders', () => {
+    const spy = spyOn(survivorPageComponent.navCtrl, 'push').and.callThrough();
+    survivorPageComponent.showDisorders();
+    expect(spy).toHaveBeenCalledWith(ShowListComponent, {
+      objects: survivor.disorders,
+      type: ShowListTypes.DISORDER,
+      settlement: settlement,
+    });
+  });
+
+  it('show fighting arts', () => {
+    const spy = spyOn(survivorPageComponent.navCtrl, 'push').and.callThrough();
+    survivorPageComponent.showFightingArts();
+    expect(spy).toHaveBeenCalledWith(ShowListComponent, {
+      objects: survivor.fightingArts,
+      type: ShowListTypes.FIGHTINGART,
+      settlement: settlement,
+    });
+  });
+
+  it('show equipment grid', () => {
+    const spy = spyOn(survivorPageComponent.navCtrl, 'push').and.callThrough();
+    survivorPageComponent.showEquipmentGrid();
+    expect(spy).toHaveBeenCalledWith(EquipmentGridPageComponent, {
+      survivor: survivor,
+      settlement: settlement,
+    });
+  });
+
+  it('on init default survivor', () => {
+    survivorPageComponent.ngOnInit();
+    expect(survivorPageComponent.xpGroup).toBeDefined();
+    expect(survivorPageComponent.xpGroup.contains('xps')).toBeTruthy();
+  });
+
+  it('on init survivor with xp', () => {
+    survivor.experience = 5;
+    survivorPageComponent.ngOnInit();
+    expect(survivorPageComponent.xpGroup).toBeDefined();
+    expect(survivorPageComponent.xpGroup.contains('xps')).toBeTruthy();
   });
 
 });
