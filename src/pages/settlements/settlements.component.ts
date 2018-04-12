@@ -1,18 +1,9 @@
-import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { AlertController, ModalController, NavController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
 import { KDMDataService } from '../../service/kdm_data.service';
-import { Innovation, InnovationTag } from '../../model/innovation';
-import { SettlementTimeline } from '../../model/linking/settlement_timeline';
-import { SettlementMilestone } from '../../model/linking/settlement_milestone';
-import { HuntableMonster } from '../../model/linking/huntable_monster';
-import { Timeline } from '../../model/timeline';
-import { Monster } from '../../model/monster';
-import { Milestone } from '../../model/milestone';
-import { Location } from '../../model/location';
 import { CreateSettlementModalComponent } from '../settlement/create_settlement_modal.component';
-import { ShowListAddModalComponent } from '../template/show_list_add_modal.component';
 
 /**
  * Created by Daniel on 27.01.2017.
