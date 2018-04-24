@@ -12,28 +12,28 @@ import {
   NavParamsMock, PlatformMock,
 } from '../../mock/mocks';
 import { Settlement } from '../../model/settlement';
-import { KDMDataService } from '../../service/kdm_data.service';
-import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMDataService } from '../../service/kdm-data.service';
+import { KDMDBService } from '../../service/kdm-db.service';
 import { SettlementPageComponent } from './settlement.component';
-import { KDMObserverService } from '../../service/kdm_observer.service';
+import { KDMObserverService } from '../../service/kdm-observer.service';
 import { KeyValueDiffers } from '@angular/core';
-import { InputNumberComponent } from '../template/input_number.component';
+import { InputNumberComponent } from '../template/input-number.component';
 import { Milestone, MilestoneType } from '../../model/milestone';
-import { ComparableVisitorValue } from '../../model/visitor/comparable_visitor';
-import { SettlementMilestone } from '../../model/linking/settlement_milestone';
+import { ComparableVisitorValue } from '../../model/visitor/comparable-visitor';
+import { SettlementMilestone } from '../../model/linking/settlement-milestone';
 import { TimelinePageComponent } from '../timeline/timeline.component';
-import { SettlementTimeline } from '../../model/linking/settlement_timeline';
+import { SettlementTimeline } from '../../model/linking/settlement-timeline';
 import { Timeline } from '../../model/timeline';
-import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated_monster.component';
-import { ShowListComponent } from '../template/show_list.component';
-import { ShowListTypes } from '../../model/show_list_types';
+import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated-monster.component';
+import { ShowListComponent } from '../template/show-list.component';
+import { ShowListTypes } from '../../model/show-list-types';
 import { Innovation, InnovationTag } from '../../model/innovation';
 import { Location } from '../../model/location';
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { StoragePageComponent } from '../storage/storage.component';
-import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
-import { LanternEvent } from '../../model/lantern_event';
-import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
+import { SettlementLanternEvent } from '../../model/linking/settlement-lantern-event';
+import { LanternEvent } from '../../model/lantern-event';
+import { TimelineEventModalComponent } from '../timeline/timeline-event-modal.component';
 import { Equipment } from '../../model/equipment';
 
 describe('Settlement Component', () => {

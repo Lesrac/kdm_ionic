@@ -1,4 +1,4 @@
-import { BaseModel } from './base_model';
+import { BaseModel } from './base-model';
 import { Subject } from 'rxjs/Subject';
 
 export enum StorageTag {

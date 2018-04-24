@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { KDMDataServiceMock } from '../mock/mocks';
-import { KDMDataService } from '../service/kdm_data.service';
+import { KDMDataService } from '../service/kdm-data.service';
 
 describe('MyApp Component', () => {
   let fixture;

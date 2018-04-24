@@ -2,8 +2,8 @@ import { AlertController, ModalController, NavController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { SettlementPageComponent } from '../settlement/settlement.component';
-import { KDMDataService } from '../../service/kdm_data.service';
-import { CreateSettlementModalComponent } from '../settlement/create_settlement_modal.component';
+import { KDMDataService } from '../../service/kdm-data.service';
+import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
 
 /**
  * Created by Daniel on 27.01.2017.

@@ -1,11 +1,11 @@
-import { LanternEvent } from './lantern_event';
+import { LanternEvent } from './lantern-event';
 import { Comparable } from './comparable';
-import { ComparableVisitor, ComparableVisitorValue } from './visitor/comparable_visitor';
-import { GreaterThan } from './visitor/greater_than';
-import { LessThan } from './visitor/less_than';
-import { LessThanEquals } from './visitor/less_than_euqals';
+import { ComparableVisitor, ComparableVisitorValue } from './visitor/comparable-visitor';
+import { GreaterThan } from './visitor/greater-than';
+import { LessThan } from './visitor/less-than';
+import { LessThanEquals } from './visitor/less-than-euqals';
 import { Equals } from './visitor/equals';
-import { GreaterThanEquals } from './visitor/greater_than_equals';
+import { GreaterThanEquals } from './visitor/greater-than-equals';
 
 /**
  * Created by Daniel on 07.02.2017.

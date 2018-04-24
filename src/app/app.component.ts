@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPageComponent } from '../pages/tabs/tabs.component';
-import { KDMDataService } from '../service/kdm_data.service';
+import { KDMDataService } from '../service/kdm-data.service';
 
 @Component({
   templateUrl: 'app.component.html',

@@ -1,6 +1,6 @@
-import { FightingArt } from './fighting_art';
+import { FightingArt } from './fighting-art';
 import { Disorder } from './disorder';
-import { BaseModel } from './base_model';
+import { BaseModel } from './base-model';
 import { Observer } from 'rxjs/Observer';
 import { Equipment } from './equipment';
 import { Subject } from 'rxjs/Subject';

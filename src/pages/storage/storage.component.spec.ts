@@ -14,11 +14,11 @@ import {
   NavParamsMock,
   PlatformMock,
 } from '../../mock/mocks';
-import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMDBService } from '../../service/kdm-db.service';
 import { Storage, StorageTag } from '../../model/storage';
-import { StorageModalComponent } from './storage_modal.component';
-import { ShowListDetailComponent } from '../template/show_list_detail.component';
-import { KDMDataService } from '../../service/kdm_data.service';
+import { StorageModalComponent } from './storage-modal.component';
+import { ShowListDetailComponent } from '../template/show-list-detail.component';
+import { KDMDataService } from '../../service/kdm-data.service';
 
 describe('StorageComponent', () => {
   let storageComponent: StoragePageComponent;

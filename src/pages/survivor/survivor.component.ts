@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Survivor } from '../../model/survivor';
 import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { ShowListComponent } from '../template/show_list.component';
-import { ShowListTypes } from '../../model/show_list_types';
+import { ShowListComponent } from '../template/show-list.component';
+import { ShowListTypes } from '../../model/show-list-types';
 import { Settlement } from '../../model/settlement';
-import { KDMDBService } from '../../service/kdm_db.service';
-import { KDMObserverService } from '../../service/kdm_observer.service';
+import { KDMDBService } from '../../service/kdm-db.service';
+import { KDMObserverService } from '../../service/kdm-observer.service';
 import { Subject } from 'rxjs/Subject';
-import { EquipmentGridPageComponent } from '../equipment/equipment_grid.component';
+import { EquipmentGridPageComponent } from '../equipment/equipment-grid.component';
 
 /**
  * Created by Daniel on 01.03.2017.

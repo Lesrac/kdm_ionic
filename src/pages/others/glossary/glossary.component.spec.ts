@@ -7,10 +7,10 @@ import {
   AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock,
   PlatformMock
 } from '../../../mock/mocks';
-import { DiceThrowComponent } from '../../template/dice_throw.component';
-import { KDMDataService } from '../../../service/kdm_data.service';
+import { DiceThrowComponent } from '../../template/dice-throw.component';
+import { KDMDataService } from '../../../service/kdm-data.service';
 import { GlossaryPageComponent } from './glossary.component';
-import { BaseModel } from '../../../model/base_model';
+import { BaseModel } from '../../../model/base-model';
 
 describe('Glossary Component', () => {
 

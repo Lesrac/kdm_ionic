@@ -1,4 +1,4 @@
-import { LanternEvent } from './lantern_event';
+import { LanternEvent } from './lantern-event';
 
 /**
  * Created by Daniel on 27.01.2017.

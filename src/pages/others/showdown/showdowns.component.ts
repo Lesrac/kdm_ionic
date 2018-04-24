@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, NavController, ModalController } from 'ionic-angular';
-import { KDMDBService } from '../../../service/kdm_db.service';
-import { KDMDataService } from '../../../service/kdm_data.service';
+import { KDMDBService } from '../../../service/kdm-db.service';
+import { KDMDataService } from '../../../service/kdm-data.service';
 import { Monster } from '../../../model/monster';
 import { ShowdownPageComponent } from './showdown.component';
 

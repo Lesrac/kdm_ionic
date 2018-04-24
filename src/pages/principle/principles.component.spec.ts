@@ -7,13 +7,13 @@ import {
 import {
   AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, KDMDBServiceMock, NavMock, NavParamsMock, PlatformMock,
 } from '../../mock/mocks';
-import { TextFormattingPipe } from '../../pipe/text_formatting.pipe';
+import { TextFormattingPipe } from '../../pipe/text-formatting.pipe';
 import { PrinciplesPageComponent } from './principles.component';
 import { Settlement } from '../../model/settlement';
-import { KDMDataService } from '../../service/kdm_data.service';
-import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMDataService } from '../../service/kdm-data.service';
+import { KDMDBService } from '../../service/kdm-db.service';
 import { Principle, PrincipleType } from '../../model/principle';
-import { PrincipleChooserPageComponent } from './principle_chooser.component';
+import { PrincipleChooserPageComponent } from './principle-chooser.component';
 import { PrincipleDetailComponent } from './principle_detail.component';
 
 describe('Principle Page Component', () => {

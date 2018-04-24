@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { AlertController, NavController } from 'ionic-angular';
-import { KDMDataService } from '../../service/kdm_data.service';
+import { KDMDataService } from '../../service/kdm-data.service';
 import { Survivor } from '../../model/survivor';
 import { SurvivorPageComponent } from '../survivor/survivor.component';
 

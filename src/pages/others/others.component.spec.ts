@@ -8,11 +8,11 @@ import {
   AppMock, ConfigMock, DeepLinkerMock, NavMock, NavParamsMock,
   PlatformMock,
 } from '../../mock/mocks';
-import { BrainTraumaPageComponent } from './brain_trauma/brain_trauma.component';
+import { BrainTraumaPageComponent } from './brain_trauma/brain-trauma.component';
 import { GlossaryPageComponent } from './glossary/glossary.component';
-import { HuntEventTablePageComponent } from './hunt_event_table/hunt_event_table.component';
-import { SevereInjuriesPageComponent } from './severe_injuries/severe_injuries.component';
-import { StoryEventsPageComponent } from './story_events/story_events.component';
+import { HuntEventTablePageComponent } from './hunt_event_table/hunt-event-table.component';
+import { SevereInjuriesPageComponent } from './severe_injuries/severe-injuries.component';
+import { StoryEventsPageComponent } from './story_events/story-events.component';
 
 describe('Others Component', () => {
 

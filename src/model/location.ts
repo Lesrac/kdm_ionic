@@ -1,4 +1,4 @@
-import { BaseModel } from './base_model';
+import { BaseModel } from './base-model';
 import { Equipment } from './equipment';
 import { StorageTag } from './storage';
 import { Innovation } from './innovation';
