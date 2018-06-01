@@ -498,14 +498,12 @@ export class KDMDataService {
 
   getPrinciples(): Promise<Principle[]> {
     if (this.principles.length < 1) {
-      let principleTypes: PrincipleType[] = [];
-      this.getPrincipleTypes().then(pts => principleTypes = pts);
       return new Promise(resolve => {
         this.http.get<PrincipleJSON[]>(this.principlesURL).subscribe(res => {
           const principles: Principle[] = [];
           res.forEach(principleJSON => {
             const principle = new Principle(principleJSON.name, principleJSON.description,
-              principleTypes.find(principleType => principleJSON.type === principleType.name));
+              this.principleTypes.find(principleType => principleJSON.type === principleType.name));
             principles.push(principle);
           });
           this.principles = principles;
