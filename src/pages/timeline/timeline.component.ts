@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, reorderArray } from 'ionic-angular';
-import { TimelineEventModalComponent } from './timeline_event_modal.component';
-import { SettlementTimeline } from '../../model/linking/settlement_timeline';
+import { TimelineEventModalComponent } from './timeline-event-modal.component';
+import { SettlementTimeline } from '../../model/linking/settlement-timeline';
 import { ReorderIndexes } from 'ionic-angular/components/item/item-reorder';
-import { AddTimelineEventModalComponent } from './add_timeline_event_modal.component';
+import { AddTimelineEventModalComponent } from './add-timeline-event-modal.component';
 
 /**
  * Created by Daniel on 12.02.2017.

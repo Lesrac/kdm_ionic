@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { KDMDataService } from '../../../service/kdm_data.service';
-import { BaseModel } from '../../../model/base_model';
+import { KDMDataService } from '../../../service/kdm-data.service';
+import { BaseModel } from '../../../model/base-model';
 
 /**
  * Created by Daniel on 15.10.2017.

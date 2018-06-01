@@ -7,7 +7,7 @@ import { Principle } from '../../model/principle';
  */
 @Component({
   selector: 'kdmf-principle-detail',
-  templateUrl: 'principle_detail.component.html',
+  templateUrl: 'principle-detail.component.html',
 })
 export class PrincipleDetailComponent {
 

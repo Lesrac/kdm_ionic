@@ -12,13 +12,13 @@ import {
 } from '../../mock/mocks';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Settlement } from '../../model/settlement';
-import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMDBService } from '../../service/kdm-db.service';
 import { TimelinePageComponent } from './timeline.component';
-import { SettlementTimeline } from '../../model/linking/settlement_timeline';
+import { SettlementTimeline } from '../../model/linking/settlement-timeline';
 import { Timeline } from '../../model/timeline';
-import { LanternEvent } from '../../model/lantern_event';
-import { TimelineEventModalComponent } from './timeline_event_modal.component';
-import { AddTimelineEventModalComponent } from './add_timeline_event_modal.component';
+import { LanternEvent } from '../../model/lantern-event';
+import { TimelineEventModalComponent } from './timeline-event-modal.component';
+import { AddTimelineEventModalComponent } from './add-timeline-event-modal.component';
 import { ReorderIndexes } from 'ionic-angular/components/item/item-reorder';
 
 describe('TimelinePageComponent', () => {

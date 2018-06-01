@@ -11,18 +11,18 @@ import {
   KeyValueDiffersMock, ModalControllerMock, ModalMock,
   NavMock, NavParamsSettlementSurvivorMock, PlatformMock,
 } from '../../mock/mocks';
-import { KDMObserverService } from '../../service/kdm_observer.service';
+import { KDMObserverService } from '../../service/kdm-observer.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Settlement } from '../../model/settlement';
-import { KDMDBService } from '../../service/kdm_db.service';
+import { KDMDBService } from '../../service/kdm-db.service';
 import { SurvivorPageComponent } from './survivor.component';
 import { KeyValueDiffers } from '@angular/core';
-import { InputNumberComponent } from '../template/input_number.component';
+import { InputNumberComponent } from '../template/input-number.component';
 import { Survivor } from '../../model/survivor';
 import { FormControl } from '@angular/forms';
-import { ShowListComponent } from '../template/show_list.component';
-import { ShowListTypes } from '../../model/show_list_types';
-import { EquipmentGridPageComponent } from '../equipment/equipment_grid.component';
+import { ShowListComponent } from '../template/show-list.component';
+import { ShowListTypes } from '../../model/show-list-types';
+import { EquipmentGridPageComponent } from '../equipment/equipment-grid.component';
 
 describe('SurvivorComponent', () => {
   let survivorPageComponent: SurvivorPageComponent;

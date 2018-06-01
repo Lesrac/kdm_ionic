@@ -1,18 +1,18 @@
 import { Component, DoCheck, Input, KeyValueDiffers } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Settlement } from '../../model/settlement';
-import { TimelineEventModalComponent } from '../timeline/timeline_event_modal.component';
+import { TimelineEventModalComponent } from '../timeline/timeline-event-modal.component';
 import { TimelinePageComponent } from '../timeline/timeline.component';
-import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated_monster.component';
+import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated-monster.component';
 import { StoragePageComponent } from '../storage/storage.component';
 import { InnovationPageComponent } from '../innovation/innovation.component';
-import { ShowListComponent } from '../template/show_list.component';
-import { ShowListTypes } from '../../model/show_list_types';
-import { SettlementLanternEvent } from '../../model/linking/settlement_lantern_event';
+import { ShowListComponent } from '../template/show-list.component';
+import { ShowListTypes } from '../../model/show-list-types';
+import { SettlementLanternEvent } from '../../model/linking/settlement-lantern-event';
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { Subject } from 'rxjs/Subject';
-import { KDMObserverService } from '../../service/kdm_observer.service';
-import { KDMDataService } from '../../service/kdm_data.service';
+import { KDMObserverService } from '../../service/kdm-observer.service';
+import { KDMDataService } from '../../service/kdm-data.service';
 
 /**
  * Created by Daniel on 27.01.2017.

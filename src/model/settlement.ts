@@ -2,11 +2,11 @@ import { Location } from './location';
 import { Storage } from './storage';
 import { Innovation } from './innovation';
 import { Survivor } from './survivor';
-import { SettlementTimeline } from './linking/settlement_timeline';
-import { SettlementMilestone } from './linking/settlement_milestone';
+import { SettlementTimeline } from './linking/settlement-timeline';
+import { SettlementMilestone } from './linking/settlement-milestone';
 import { Principle } from './principle';
-import { HuntableMonster } from './linking/huntable_monster';
-import { HuntedMonster } from './linking/hunted_monster';
+import { HuntableMonster } from './linking/huntable-monster';
+import { HuntedMonster } from './linking/hunted-monster';
 import { Subject } from 'rxjs/Subject';
 
 /**

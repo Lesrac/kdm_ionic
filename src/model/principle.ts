@@ -1,4 +1,4 @@
-import { BaseModel } from './base_model';
+import { BaseModel } from './base-model';
 
 /**
  * Created by Daniel on 23.04.2017.

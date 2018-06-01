@@ -1,4 +1,4 @@
-import { ComparableVisitor } from './comparable_visitor';
+import { ComparableVisitor } from './comparable-visitor';
 import { Milestone } from '../milestone';
 
 /**
