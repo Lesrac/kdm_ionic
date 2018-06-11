@@ -113,6 +113,10 @@
         "variable-declaration": "space"
       }
     ],
+    "arrow-return-shorthand": [
+      true,
+      "multiline"
+    ],
     "variable-name": [
       true,
       "check-format",
