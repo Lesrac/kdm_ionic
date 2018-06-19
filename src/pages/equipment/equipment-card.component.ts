@@ -4,6 +4,7 @@ import { Survivor } from '../../model/survivor';
 import { Settlement } from '../../model/settlement';
 import { EquipmentListPageComponent } from './equipment-list.component';
 import { Affinity, Direction, Equipment } from '../../model/equipment';
+import { EquipmentDetailPageComponent } from './equipment_detail.component';
 
 /**
  * Created by Daniel on 06.01.2018.
@@ -89,8 +90,15 @@ export class EquipmentCardComponent implements OnInit, DoCheck {
       equipments: this.settlement.storages,
       survivor: this.survivor,
       position: this.position,
-    }).then(() => {
-      this.setupColors();
+    });
+  }
+
+  showDetailsOrChange(): void {
+    this.navCtrl.push(EquipmentDetailPageComponent, {
+      equipment: this.survivor.equipments.get(this.position),
+      equipments: this.settlement.storages,
+      survivor: this.survivor,
+      position: this.position,
     });
   }
 

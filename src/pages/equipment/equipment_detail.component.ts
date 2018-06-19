@@ -1,26 +1,31 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Events, ModalController, NavController, NavParams } from 'ionic-angular';
-import { Equipment } from '../../model/equipment';
 import { Survivor } from '../../model/survivor';
+import { EquipmentListPageComponent } from './equipment-list.component';
+import { Equipment } from '../../model/equipment';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { Weapon } from '../../model/weapon';
+import { Armor } from '../../model/armor';
 
 /**
- * Created by Daniel on 06.01.2018.
+ * Created by Daniel on 18.06.2018.
  */
 @Component({
-  selector: 'kdmf-page-equipment-list',
-  templateUrl: 'equipment-list.component.html',
+  selector: 'kdmf-equipment-detail-page',
+  templateUrl: 'equipment_detail.component.html',
 })
-export class EquipmentListPageComponent implements AfterViewInit {
+export class EquipmentDetailPageComponent implements AfterViewInit {
 
   survivor: Survivor;
   position: number;
+  equipment: Equipment;
   equipments: Equipment[] = [];
   allEquipments: Equipment[] = [];
   equipmentName: string;
 
   constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
               private kdmData: KDMDataService, private events: Events) {
+    this.equipment = params.get('equipment');
     if (params.get('equipments')) {
       params.get('equipments').forEach(eq => {
         this.equipments.push(Object.assign({}, eq));
@@ -28,6 +33,9 @@ export class EquipmentListPageComponent implements AfterViewInit {
     }
     this.position = params.get('position');
     this.survivor = params.get('survivor');
+    this.events.subscribe('reloadEquipmentDetailPage', () => {
+      this.equipment = this.survivor.equipments.get(this.position);
+    });
   }
 
   ngAfterViewInit(): void {
@@ -39,19 +47,24 @@ export class EquipmentListPageComponent implements AfterViewInit {
     });
   }
 
-  pushEquipment(): void {
-    const eq = this.allEquipments.find(equipment => equipment.name === this.equipmentName);
-    if (eq) {
-      this.survivor.addEquipment(this.position, eq);
-      this.events.publish('reloadEquipmentDetailPage');
-      this.navCtrl.pop();
-    }
+  swapEquipment(): void {
+    this.navCtrl.push(EquipmentListPageComponent, {
+      equipments: this.equipments,
+      survivor: this.survivor,
+      position: this.position,
+    });
   }
 
-  setEquipment(eq: Equipment): void {
-    this.survivor.addEquipment(this.position, eq);
-    this.events.publish('reloadEquipmentDetailPage');
-    this.navCtrl.pop();
+  isWeapon(): boolean {
+    return (this.equipment as Weapon).speed !== undefined;
+  }
+
+  isArmor(): boolean {
+    return (this.equipment as Armor).space !== undefined;
+  }
+
+  getTags(): string {
+    return this.equipment.tags.join(', ');
   }
 
 }

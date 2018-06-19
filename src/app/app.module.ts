@@ -53,6 +53,7 @@ import { CreateSettlementModalComponent } from '../pages/settlement/create-settl
 import { ShowdownPageComponent } from '../pages/others/showdown/showdown.component';
 import { ShowdownsPageComponent } from '../pages/others/showdown/showdowns.component';
 import { RemoveWhitespacePipe } from '../pipe/remove-whitespace.pipe';
+import { EquipmentDetailPageComponent } from '../pages/equipment/equipment_detail.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { RemoveWhitespacePipe } from '../pipe/remove-whitespace.pipe';
     EquipmentGridPageComponent,
     EquipmentCardComponent,
     EquipmentListPageComponent,
+    EquipmentDetailPageComponent,
     InputNumberComponent,
     DiceThrowComponent,
     ShowListComponent,
@@ -122,6 +124,7 @@ import { RemoveWhitespacePipe } from '../pipe/remove-whitespace.pipe';
     SurvivorPageComponent,
     EquipmentGridPageComponent,
     EquipmentListPageComponent,
+    EquipmentDetailPageComponent,
     ShowListComponent,
     ShowLocationDetailComponent,
     ShowListAddModalComponent,

@@ -327,8 +327,8 @@ export class KDMDataService {
 
   getDefaultTimeline(): Promise<Timeline[]> {
     if (this.timeline.length < 1) {
-      return this.getLanternEvents().then(lntrnEvents => {
-        return new Promise<Timeline[]>(resolve => {
+      return this.getLanternEvents().then(lntrnEvents =>
+        new Promise<Timeline[]>(resolve => {
           this.http.get<TimelineJSON[]>(this.defaulttimelineURL).subscribe(res => {
             const timelines: Timeline[] = [];
             res.forEach(timelineJson => {
@@ -339,8 +339,8 @@ export class KDMDataService {
             this.timeline = timelines;
             resolve(timelines);
           });
-        });
-      });
+        }),
+      );
     } else {
       return Promise.resolve(this.timeline);
     }
@@ -360,8 +360,9 @@ export class KDMDataService {
                   switch (buildCost.type) {
                     case 'storageTag': {
                       if (buildCost.or) {
-                        costs.set(StorageTag[buildCost.name],
-                          [buildCost.amount, buildCost.or]);
+                        const arr: [number] = [buildCost.amount];
+                        arr.push(buildCost.or);
+                        costs.set(StorageTag[buildCost.name], arr);
                       } else {
                         costs.set(StorageTag[buildCost.name], [buildCost.amount]);
                       }
@@ -374,8 +375,10 @@ export class KDMDataService {
                     }
                     case 'resource': {
                       if (buildCost.or) {
+                        const arr: [number] = [buildCost.amount];
+                        arr.push(buildCost.or);
                         this.getResourceByName(buildCost.name).then(resource =>
-                          costs.set(resource.name, [buildCost.amount, buildCost.or]));
+                          costs.set(resource.name, arr));
                       } else {
                         this.getResourceByName(buildCost.name).then(resource =>
                           costs.set(resource.name, [buildCost.amount]));
@@ -384,8 +387,10 @@ export class KDMDataService {
                     }
                     case 'weapon': {
                       if (buildCost.or) {
+                        const arr: [number] = [buildCost.amount];
+                        arr.push(buildCost.or);
                         this.getWeaponByName(buildCost.name).then(resource =>
-                          costs.set(resource.name, [buildCost.amount, buildCost.or]));
+                          costs.set(resource.name, arr));
                       } else {
                         this.getWeaponByName(buildCost.name).then(resource =>
                           costs.set(resource.name, [buildCost.amount]));
@@ -533,14 +538,14 @@ export class KDMDataService {
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
-    return this.getPrinciples().then(principles => {
-      return principles.filter(principle => {
+    return this.getPrinciples().then(principles =>
+      principles.filter(principle => {
         if (!principle.type) {
           return false;
         }
         return principle.type.name === principleType.name;
-      });
-    });
+      }),
+    );
   }
 
   getWeapons(): Promise<Weapon[]> {
@@ -644,9 +649,9 @@ export class KDMDataService {
 
   getSevereInjuriesToHitLocation(hitLocation: string): Promise<SevereInjury[]> {
     const hitLocationEnum: ArmorSpace = ArmorSpace[hitLocation];
-    return this.getAllSevereInjuries().then(severeInjuries => severeInjuries.filter(severeInjury => {
-      return severeInjury.hitLocation === hitLocationEnum;
-    }));
+    return this.getAllSevereInjuries().then(severeInjuries => severeInjuries.filter(severeInjury =>
+      severeInjury.hitLocation === hitLocationEnum,
+    ));
   }
 
   getAllBrainTraumas(): Promise<DiceThrow[]> {

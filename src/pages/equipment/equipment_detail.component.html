@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Equipment Detail
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines>
+    <button ion-button icon-only full (click)="swapEquipment()">
+      <ion-icon name="swap"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-card-title>{{equipment.name}}</ion-card-title>
+  <ion-list-header>
+    {{ getTags() | titlecase }}
+  </ion-list-header>
+  <ion-list-header>
+    <ion-label>Description</ion-label>
+  </ion-list-header>
+  <ion-item text-wrap no-lines>
+    <div [innerHTML]="equipment.description | kdmTextFormatting"></div>
+  </ion-item>
+  <ion-list-header *ngIf="isWeapon() || isArmor()">
+    <ion-label>Stats</ion-label>
+  </ion-list-header>
+  <ion-grid *ngIf="isArmor()">
+    <ion-row>
+      <ion-col>Location</ion-col>
+      <ion-col>{{ equipment.space | titlecase }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Value</ion-col>
+      <ion-col>{{equipment.value}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="isWeapon()">
+    <ion-row>
+      <ion-col>Speed</ion-col>
+      <ion-col>{{equipment.speed}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Accuracy</ion-col>
+      <ion-col>{{equipment.accuracy}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Strength</ion-col>
+      <ion-col>{{equipment.strength}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
