@@ -86,8 +86,10 @@ export class EquipmentCardComponent implements OnInit, DoCheck {
   }
 
   selectEquipment(): void {
+    const storageEquipmentItems = this.settlement.storages.filter(storage =>
+      (storage as Equipment).affinities !== undefined);
     this.navCtrl.push(EquipmentListPageComponent, {
-      equipments: this.settlement.storages,
+      equipments: storageEquipmentItems,
       survivor: this.survivor,
       position: this.position,
     });
