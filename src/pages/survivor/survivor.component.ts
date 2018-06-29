@@ -19,6 +19,8 @@ import { EquipmentGridPageComponent } from '../equipment/equipment-grid.componen
 })
 export class SurvivorPageComponent implements OnInit {
 
+  private static MAX_XP: number = 16;
+
   courage: Subject<number> = new Subject<number>();
   understanding: Subject<number> = new Subject<number>();
   xp: Subject<number> = new Subject<number>();
@@ -26,8 +28,6 @@ export class SurvivorPageComponent implements OnInit {
 
   settlement: Settlement;
   xpGroup: FormGroup;
-
-  private static MAX_XP: number = 16;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
               public formBuilder: FormBuilder, private kdmdbService: KDMDBService,
@@ -130,6 +130,12 @@ export class SurvivorPageComponent implements OnInit {
     if (typeof event === 'number') {
       this.survivor.courage = event;
       this.courage.next(event);
+    }
+  }
+
+  bleedingTokensChange(event): void {
+    if (typeof event === 'number') {
+      this.survivor.bleedingTokens = event;
     }
   }
 

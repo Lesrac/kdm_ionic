@@ -56,6 +56,7 @@ export class Survivor {
   weaponProficiencyXPChanged: Subject<number> = new Subject<number>();
   chosenBoldCourageChanged: Subject<string> = new Subject<string>();
   chosenInsightUnderstandingChanged: Subject<string> = new Subject<string>();
+  bleedingTokensChanged: Subject<number> = new Subject<number>();
   huntXPObserver1: Observer<Object>;
   huntXPObserver2: Observer<Object>;
   courageObserver1: Observer<Object>;
@@ -107,6 +108,7 @@ export class Survivor {
   private _weaponProficiencyXP: number = 0;
   private _chosenBoldCourage: string;
   private _chosenInsightUnderstanding: string;
+  private _bleedingTokens: number = 0;
 
   constructor(name: string, id: number, settlementId: number) {
     this._name = name;
@@ -533,5 +535,13 @@ export class Survivor {
 
   get equipments(): Map<number, Equipment> {
     return this._equipments;
+  }
+
+  get bleedingTokens(): number {
+    return this._bleedingTokens;
+  }
+
+  set bleedingTokens(value: number) {
+    this._bleedingTokens = value;
   }
 }

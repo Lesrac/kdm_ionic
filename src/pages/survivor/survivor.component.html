@@ -351,5 +351,11 @@
         Equipment Grid
       </button>
     </ion-item-group>
+
+    <ion-item-group>
+      <ion-label>Amount of Bleeding Tokens</ion-label>
+      <kdmf-input-number [value]="survivor.bleedingTokens" (change)="bleedingTokensChange($event)">
+      </kdmf-input-number>
+    </ion-item-group>
   </ion-list>
 </ion-content>
