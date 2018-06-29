@@ -232,9 +232,13 @@ export class KDMDataService {
       resources.find(resource => resource.name === name));
   }
 
-  getAllExistingStorageItems(): Promise<[Storage[]]> {
-    return Promise.all<Resource[], Weapon[], Armor[], Equipment[]>(
-      [this.getResources(), this.getWeapons(), this.getArmors(), this.getEquipments()]);
+  getAllExistingStorageItems(): Promise<Storage[][]> {
+    const promises = [];
+    promises.push(this.getResources());
+    promises.push(this.getWeapons());
+    promises.push(this.getArmors());
+    promises.push(this.getEquipments());
+    return Promise.all(promises);
   }
 
   getStorageItem(name: string): Promise<Storage> {
