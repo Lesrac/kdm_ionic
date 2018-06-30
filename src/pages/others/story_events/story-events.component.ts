@@ -49,10 +49,10 @@ export class StoryEventsPageComponent implements OnInit {
   }
 
   private lanternStoryEventContainsText(lanternEvent: LanternEvent, text: string): boolean {
-    return lanternEvent.storyEvents.some(storyEvent => {
-      return storyEvent.description.toLowerCase().includes(text.toLowerCase().trim()) ||
-        storyEvent.name.toLowerCase().includes(text.toLowerCase().trim());
-    });
+    return lanternEvent.storyEvents.some(storyEvent =>
+      storyEvent.description.toLowerCase().includes(text.toLowerCase().trim()) ||
+      storyEvent.name.toLowerCase().includes(text.toLowerCase().trim()),
+    );
   }
 
 }

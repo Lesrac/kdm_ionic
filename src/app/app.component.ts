@@ -24,6 +24,7 @@ export class MyApp {
         console.log('platform is cordova');
         statusBar.styleDefault();
         splashScreen.hide();
+        window['plugins'].insomnia.keepAwake();
       }
     });
   }

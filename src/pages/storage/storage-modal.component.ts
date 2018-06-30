@@ -68,11 +68,11 @@ export class StorageModalComponent implements OnInit {
   private getSearchedStorageItems(): void {
     this.foundStorageItems = this.searchNames
       .debounceTime(500)
-      .switchMap(term => {
-        return term
+      .switchMap(term =>
+        term
           ? this.searchStorageItems(this.searchName)
-          : Observable.of<Storage[]>([]);
-      })
+          : Observable.of<Storage[]>([]),
+      )
       .catch(error => {
         // TODO error handling
         console.log(error);
@@ -85,9 +85,9 @@ export class StorageModalComponent implements OnInit {
       return Observable.of<Storage[]>([]);
     }
     const searchRgx: RegExp = new RegExp(name, 'gi');
-    return Observable.of<Storage[]>(this.storageItems.filter(resource => {
-      return resource.name.match(searchRgx);
-    }));
+    return Observable.of<Storage[]>(this.storageItems.filter(resource =>
+      resource.name.match(searchRgx),
+    ));
   }
 
 }
