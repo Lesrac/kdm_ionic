@@ -1,8 +1,8 @@
-<ion-chip>
+<ion-chip style="width: 100%">
   <button ion-button clear color="light" (click)="increaseValue()">
     <ion-icon name="arrow-up"></ion-icon>
   </button>
-  <span>{{value}}</span>
+  <ion-label text-center>{{value}}</ion-label>
  <!-- <ion-input type="number" readonly
              [(ngModel)]="value"
              [formControl]="valueControl"
