@@ -29,8 +29,9 @@ export class SettlementsPageComponent implements OnInit {
 
   goToDetail(settlement: Settlement): void {
     this.kdmService.getSettlement(settlement.id).then(settlementDesimplified => {
-      this.router.navigate(['/settlement', {
-        'settlement': settlementDesimplified,
+      this.router.navigate(['/settlement/', {
+id: settlement.id,
+      //  'settlement': settlementDesimplified,
       }]).then();
     });
   }
