@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-              component: SettlementsPageComponent,
+                component: SettlementsPageComponent,
                 pathMatch: 'full',
             },
             {

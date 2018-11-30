@@ -58,13 +58,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, SettlementPageComponent, TimelinePageComponent, DefeatedMonsterPageComponent, PrinciplesPageComponent,
-    PrincipleChooserPageComponent, PrincipleDetailComponent, StoragePageComponent, SurvivorPageComponent, EquipmentGridPageComponent, EquipmentCardComponent,
-    EquipmentListPageComponent, EquipmentDetailPageComponent, InputNumberComponent, DiceThrowComponent, ShowListComponent, ShowListDetailComponent,
-    ShowListAddModalComponent, ShowLocationDetailComponent, ShowdownsPageComponent, ShowdownPageComponent, CreateSettlementModalComponent,
-    AddedResourcesModalComponent, CreateSettlementPopoverComponent, TimelineEventModalComponent, AddTimelineEventModalComponent, DefeatedMonsterModalComponent,
-    StorageModalComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe, MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe, BrainTraumaPageComponent,
-    GlossaryPageComponent, HuntEventTablePageComponent, SevereInjuriesPageComponent, SevereInjuriesDetailPageComponent, StoryEventsPageComponent,
-    FormattedTextModalComponent],
+                 PrincipleChooserPageComponent, PrincipleDetailComponent, StoragePageComponent, SurvivorPageComponent, EquipmentGridPageComponent,
+                 EquipmentCardComponent, EquipmentListPageComponent, EquipmentDetailPageComponent, InputNumberComponent, DiceThrowComponent, ShowListComponent,
+                 ShowListDetailComponent, ShowListAddModalComponent, ShowLocationDetailComponent, ShowdownsPageComponent, ShowdownPageComponent,
+                 CreateSettlementModalComponent, AddedResourcesModalComponent, CreateSettlementPopoverComponent, TimelineEventModalComponent,
+                 AddTimelineEventModalComponent, DefeatedMonsterModalComponent, StorageModalComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe,
+                 MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe, BrainTraumaPageComponent, GlossaryPageComponent, HuntEventTablePageComponent,
+                 SevereInjuriesPageComponent, SevereInjuriesDetailPageComponent, StoryEventsPageComponent, FormattedTextModalComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
   providers: [StatusBar, SplashScreen, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, {
