@@ -1,0 +1,1 @@
+{"version":3,"file":"less-than.js","sourceRoot":"","sources":["less-than.ts"],"names":[],"mappings":"AAGA;;GAEG;AACH,MAAM,OAAO,QAAQ;IACnB,KAAK,CAAC,SAAoB,EAAE,YAA6B,EAAE,QAAyB;QAClF,IAAI,YAAY,IAAI,QAAQ,EAAE;YAC5B,OAAO,YAAY,GAAG,SAAS,CAAC,KAAK,CAAC;SACvC;aAAM;YACL,OAAO,KAAK,CAAC;SACd;IACH,CAAC;CAEF"}

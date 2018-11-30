@@ -1,0 +1,1 @@
+{"version":3,"file":"settlement-timeline-db.js","sourceRoot":"","sources":["settlement-timeline-db.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,MAAM,OAAO,oBAAoB;IAM/B,YAAY,YAAoB,EAAE,QAA0B,EAAE,OAAgB;QAF9E,YAAO,GAAY,KAAK,CAAC;QAGvB,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;QACjC,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;QACzB,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IACzB,CAAC;CACF"}

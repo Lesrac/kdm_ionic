@@ -6,8 +6,6 @@
 *.log
 *.tmp
 *.tmp.*
-*.js
-*.js.map
 log.txt
 *.sublime-project
 *.sublime-workspace
@@ -15,26 +13,22 @@ log.txt
 npm-debug.log*
 
 .idea/
-.scannerwork/
+.ionic/
+.sourcemaps/
 .sass-cache/
 .tmp/
 .versions/
 coverage/
-dist/
+www/
 node_modules/
 tmp/
 temp/
-hooks/
 platforms/
 plugins/
 plugins/android.json
 plugins/ios.json
-www/
 $RECYCLE.BIN/
 
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
-
-src/service/kdm_init_db.service.ts
-.sourcemaps/

@@ -1,0 +1,1 @@
+{"version":3,"file":"less-than-euqals.js","sourceRoot":"","sources":["less-than-euqals.ts"],"names":[],"mappings":"AAGA;;GAEG;AACH,MAAM,OAAO,cAAc;IACzB,KAAK,CAAC,SAAoB,EAAE,YAA6B,EAAE,QAAyB;QAClF,IAAI,YAAY,GAAG,QAAQ,EAAE;YAC3B,OAAO,YAAY,IAAI,SAAS,CAAC,KAAK,CAAC;SACxC;aAAM;YACL,OAAO,KAAK,CAAC;SACd;IACH,CAAC;CACF"}

@@ -1,0 +1,30 @@
+<ion-tabs>
+  <ion-tab tab="settlements">
+    <ion-router-outlet name="settlements"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="survivors">
+    <ion-router-outlet name="survivors"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="other">
+    <ion-router-outlet name="other"></ion-router-outlet>
+  </ion-tab>
+
+  <ion-tab-bar>
+
+    <ion-tab-button tab="settlements" href="">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Settlements</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="survivors" href="">
+      <ion-icon name="contacts"></ion-icon>
+      <ion-label>Survivors</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="other" href="">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Other</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>

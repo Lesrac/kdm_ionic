@@ -1,8 +1,7 @@
 {
-  "name": "kdm",
-  "app_id": "",
-  "type": "ionic-angular",
+  "name": "kdm_ionic",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "angular"
 }

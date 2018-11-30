@@ -1,0 +1,1 @@
+{"version":3,"file":"story-event.js","sourceRoot":"","sources":["story-event.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,OAAO,EAAE,SAAS,EAAE,MAAM,cAAc,CAAC;AAEzC,MAAM,OAAO,UAAW,SAAQ,SAAS;IAGvC,YAAY,IAAY,EAAE,WAAmB,EAAE,EAAU;QACvD,KAAK,CAAC,IAAI,EAAE,WAAW,CAAC,CAAC;QACzB,IAAI,CAAC,EAAE,GAAG,EAAE,CAAC;IACf,CAAC;CACF"}
