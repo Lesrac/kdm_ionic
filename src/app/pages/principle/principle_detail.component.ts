@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { Principle } from '../../model/principle';
 
 /**
@@ -13,7 +13,7 @@ export class PrincipleDetailComponent {
 
   principle: Principle;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams) {
+  constructor(private params: NavParams) {
     this.principle = this.params.get('principle');
   }
 

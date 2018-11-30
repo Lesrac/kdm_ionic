@@ -1,15 +1,15 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { Events, ModalController, NavController, NavParams } from '@ionic/angular';
+import { Events, ModalController, NavParams } from '@ionic/angular';
 import { Equipment } from '../../model/equipment';
 import { Survivor } from '../../model/survivor';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 06.01.2018.
  */
 @Component({
-  selector: 'kdmf-page-equipment-list',
-  templateUrl: 'equipment-list.component.html',
+  selector: 'kdmf-page-equipment-list', templateUrl: 'equipment-list.component.html',
 })
 export class EquipmentListPageComponent implements AfterViewInit {
 
@@ -19,8 +19,7 @@ export class EquipmentListPageComponent implements AfterViewInit {
   allEquipments: Equipment[] = [];
   equipmentName: string;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
-              private kdmData: KDMDataService, private events: Events) {
+  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController, private kdmData: KDMDataService, private events: Events) {
     if (params.get('equipments')) {
       params.get('equipments').forEach(eq => {
         this.equipments.push(Object.assign({}, eq));
@@ -44,14 +43,14 @@ export class EquipmentListPageComponent implements AfterViewInit {
     if (eq) {
       this.survivor.addEquipment(this.position, eq);
       this.events.publish('reloadEquipmentDetailPage');
-      this.navCtrl.pop();
+      this.router.navigate(['/']).then(); // TODO right navigation
     }
   }
 
   setEquipment(eq: Equipment): void {
     this.survivor.addEquipment(this.position, eq);
     this.events.publish('reloadEquipmentDetailPage');
-    this.navCtrl.pop();
+    this.router.navigate(['/']).then(); // TODO right navigation
   }
 
 }

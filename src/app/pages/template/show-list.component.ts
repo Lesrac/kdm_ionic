@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { ShowListAddModalComponent } from './show-list-add-modal.component';
 import { ShowListTypes } from '../../model/show-list-types';
 import { BaseModel } from '../../model/base-model';
-import { ShowListDetailComponent } from './show-list-detail.component';
 import { Settlement } from '../../model/settlement';
-import { ShowLocationDetailComponent } from '../location/show-location-detail.component';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 16.03.2017.
  */
 @Component({
-  selector: 'kdmf-show-list',
-  templateUrl: 'show-list.component.html',
+  selector: 'kdmf-show-list', templateUrl: 'show-list.component.html',
 })
 export class ShowListComponent implements OnInit {
 
@@ -21,7 +19,7 @@ export class ShowListComponent implements OnInit {
   title: string;
   settlement: Settlement;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController) {
     this.objects = params.get('objects');
     this.type = params.get('type');
     this.settlement = params.get('settlement');
@@ -32,11 +30,11 @@ export class ShowListComponent implements OnInit {
   }
 
   addObject(): void {
-    let modal = this.modalCtrl.create(ShowListAddModalComponent, {
-      objects: this.objects,
-      type: this.type,
-    });
-    modal.present().then();
+    this.modalCtrl.create({
+      component: ShowListAddModalComponent, componentProps: {
+        objects: this.objects, type: this.type,
+      }
+    }).then(modal => modal.present());
   }
 
   removeObject(object: BaseModel): void {
@@ -46,13 +44,13 @@ export class ShowListComponent implements OnInit {
 
   showDetail(object: BaseModel): void {
     if (this.type === ShowListTypes.LOCATION) {
-      this.navCtrl.push(ShowLocationDetailComponent, {
+      this.router.navigate(['/showLocationDetail', {
         object: object,
-      }).then();
+      }]).then();
     } else {
-      this.navCtrl.push(ShowListDetailComponent, {
+      this.router.navigate(['/showListDetail', {
         object: object,
-      }).then();
+      }]).then();
     }
   }
 

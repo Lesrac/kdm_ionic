@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { Monster } from '../../model/monster';
 import { KDMCalculationService } from '../../service/kdm-calculation.service';
@@ -21,7 +21,7 @@ export class DefeatedMonsterModalComponent implements OnInit {
   monster: Monster;
   huntResources: boolean;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams,
+  constructor(private params: NavParams,
               private kdmCalculation: KDMCalculationService) {
     this.settlement = this.params.get('settlement');
   }
@@ -31,7 +31,6 @@ export class DefeatedMonsterModalComponent implements OnInit {
   }
 
   close(): void {
-    this.viewCtrl.dismiss();
   }
 
   addClose(): void {

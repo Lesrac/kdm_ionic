@@ -1,27 +1,21 @@
 import { Component, DoCheck, Input, KeyValueDiffers, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { Survivor } from '../../model/survivor';
 import { Settlement } from '../../model/settlement';
-import { EquipmentListPageComponent } from './equipment-list.component';
 import { Affinity, Direction, Equipment } from '../../model/equipment';
-import { EquipmentDetailPageComponent } from './equipment_detail.component';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 06.01.2018.
  */
 @Component({
-  selector: 'kdmf-equipment-card',
-  templateUrl: 'equipment-card.component.html',
+  selector: 'kdmf-equipment-card', templateUrl: 'equipment-card.component.html',
 })
 export class EquipmentCardComponent implements OnInit, DoCheck {
-  @Input()
-  survivor: Survivor;
+  @Input() survivor: Survivor;
 
-  @Input()
-  position: number;
+  @Input() position: number;
 
-  @Input()
-  settlement: Settlement;
+  @Input() settlement: Settlement;
 
   backgroundUp;
 
@@ -30,7 +24,7 @@ export class EquipmentCardComponent implements OnInit, DoCheck {
   backgroundDown;
   differ;
 
-  constructor(public navCtrl: NavController, public differs: KeyValueDiffers) {
+  constructor(public router: Router, public differs: KeyValueDiffers) {
     this.differ = differs.find({}).create();
   }
 
@@ -86,22 +80,16 @@ export class EquipmentCardComponent implements OnInit, DoCheck {
   }
 
   selectEquipment(): void {
-    const storageEquipmentItems = this.settlement.storages.filter(storage =>
-      (storage as Equipment).affinities !== undefined);
-    this.navCtrl.push(EquipmentListPageComponent, {
-      equipments: storageEquipmentItems,
-      survivor: this.survivor,
-      position: this.position,
-    });
+    const storageEquipmentItems = this.settlement.storages.filter(storage => (storage as Equipment).affinities !== undefined);
+    this.router.navigate(['/equipments', {
+      equipments: storageEquipmentItems, survivor: this.survivor, position: this.position,
+    }]).then();
   }
 
   showDetailsOrChange(): void {
-    this.navCtrl.push(EquipmentDetailPageComponent, {
-      equipment: this.survivor.equipments.get(this.position),
-      equipments: this.settlement.storages,
-      survivor: this.survivor,
-      position: this.position,
-    });
+    this.router.navigate(['/equipment', {
+      equipment: this.survivor.equipments.get(this.position), equipments: this.settlement.storages, survivor: this.survivor, position: this.position,
+    }]).then();
   }
 
 }

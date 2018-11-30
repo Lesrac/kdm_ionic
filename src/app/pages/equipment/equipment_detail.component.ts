@@ -1,18 +1,17 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { Events, ModalController, NavController, NavParams } from '@ionic/angular';
+import { Events, ModalController, NavParams } from '@ionic/angular';
 import { Survivor } from '../../model/survivor';
-import { EquipmentListPageComponent } from './equipment-list.component';
 import { Equipment } from '../../model/equipment';
 import { KDMDataService } from '../../service/kdm-data.service';
 import { Weapon } from '../../model/weapon';
 import { Armor } from '../../model/armor';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 18.06.2018.
  */
 @Component({
-  selector: 'kdmf-equipment-detail-page',
-  templateUrl: 'equipment_detail.component.html',
+  selector: 'kdmf-equipment-detail-page', templateUrl: 'equipment_detail.component.html',
 })
 export class EquipmentDetailPageComponent implements AfterViewInit {
 
@@ -23,8 +22,7 @@ export class EquipmentDetailPageComponent implements AfterViewInit {
   allEquipments: Equipment[] = [];
   equipmentName: string;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
-              private kdmData: KDMDataService, private events: Events) {
+  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController, private kdmData: KDMDataService, private events: Events) {
     this.equipment = params.get('equipment');
     if (params.get('equipments')) {
       params.get('equipments').forEach(eq => {
@@ -48,11 +46,9 @@ export class EquipmentDetailPageComponent implements AfterViewInit {
   }
 
   swapEquipment(): void {
-    this.navCtrl.push(EquipmentListPageComponent, {
-      equipments: this.equipments,
-      survivor: this.survivor,
-      position: this.position,
-    });
+    this.router.navigate(['/equipments', {
+      equipments: this.equipments, survivor: this.survivor, position: this.position,
+    }]);
   }
 
   isWeapon(): boolean {

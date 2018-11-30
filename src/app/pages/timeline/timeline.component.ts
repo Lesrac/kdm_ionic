@@ -1,49 +1,44 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, reorderArray } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { TimelineEventModalComponent } from './timeline-event-modal.component';
 import { SettlementTimeline } from '../../model/linking/settlement-timeline';
-import { ReorderIndexes } from '@ionic/angular/components/item/item-reorder';
 import { AddTimelineEventModalComponent } from './add-timeline-event-modal.component';
 
 /**
  * Created by Daniel on 12.02.2017.
  */
 @Component({
-  selector: 'kdmf-page-timeline',
-  templateUrl: 'timeline.component.html',
+  selector: 'kdmf-page-timeline', templateUrl: 'timeline.component.html',
 })
 export class TimelinePageComponent {
   timeline: SettlementTimeline[];
   reorderActivityName: string = 'Reorder';
   reorderFlag: boolean = false;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController) {
+  constructor(public params: NavParams, public modalCtrl: ModalController) {
     this.timeline = params.get('settlementTimeline');
   }
 
   timelineReached(event: Event, settlementTimeline: SettlementTimeline): void {
     if (settlementTimeline.timeline.lanternEvent != null && settlementTimeline.reached) {
-      let modal = this.modalCtrl.create(TimelineEventModalComponent, {
-        lanternEvent: settlementTimeline.timeline.lanternEvent,
-      });
-      modal.present({
-        ev: event,
-      });
+      this.modalCtrl.create({
+        component: TimelineEventModalComponent, componentProps: {
+          lanternEvent: settlementTimeline.timeline.lanternEvent,
+        }
+      }).then(modal => modal.present());
     }
     if (settlementTimeline.reached) {
       this.timeline.forEach(settlementTimelineInternal => {
-          if (settlementTimelineInternal.timeline.position < settlementTimeline.timeline.position) {
-            settlementTimelineInternal.reached = true;
-          }
-        },
-      );
+        if (settlementTimelineInternal.timeline.position < settlementTimeline.timeline.position) {
+          settlementTimelineInternal.reached = true;
+        }
+      });
     } else {
       this.timeline.forEach(settlementTimelineInternal => {
-          if (settlementTimelineInternal.timeline.position > settlementTimeline.timeline.position) {
-            settlementTimelineInternal.reached = false;
-          }
-        },
-      );
+        if (settlementTimelineInternal.timeline.position > settlementTimeline.timeline.position) {
+          settlementTimelineInternal.reached = false;
+        }
+      });
     }
   }
 
@@ -56,9 +51,9 @@ export class TimelinePageComponent {
     }
   }
 
-  reorderItems(indexes: ReorderIndexes): void {
+  reorderItems(/*indexes: ReorderIndexes */): void {
     // change element position number
-    if (indexes.from < indexes.to) {
+  /*  if (indexes.from < indexes.to) {
       for (let i = 0; i <= indexes.to; i++) {
         const position = this.timeline[i].timeline.position;
         if (position > indexes.from + 1 && position <= indexes.to + 1) {
@@ -73,23 +68,24 @@ export class TimelinePageComponent {
         }
       }
     }
-    this.timeline[indexes.from].timeline.position = indexes.to + 1;
-    this.timeline = reorderArray(this.timeline, indexes);
+    this.timeline[indexes.from].timeline.position = indexes.to + 1; */
+ // TODO   this.timeline = reorderArray(this.timeline, indexes);
   }
 
   addTimelineEvent(): void {
-    let modal = this.modalCtrl.create(AddTimelineEventModalComponent, {
-      settlementTimeline: this.timeline,
-    });
-    modal.present();
+    this.modalCtrl.create({
+      component: AddTimelineEventModalComponent, componentProps: {
+        settlementTimeline: this.timeline,
+      }
+    }).then(modal => modal.present());
   }
 
   changeTimelineEvent(timelineevent: SettlementTimeline): void {
-    let modal = this.modalCtrl.create(AddTimelineEventModalComponent, {
-      settlementTimeline: this.timeline,
-      replaceableTimeline: timelineevent,
-    });
-    modal.present();
+    this.modalCtrl.create({
+      component: AddTimelineEventModalComponent, componentProps: {
+        settlementTimeline: this.timeline, replaceableTimeline: timelineevent,
+      }
+    }).then(modal => modal.present());
   }
 
   removeTimelineEvent(timelineevent: SettlementTimeline): void {

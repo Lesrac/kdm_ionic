@@ -1,5 +1,5 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { ViewController, NavParams } from '@ionic/angular';
+import { AfterViewInit, Component } from '@angular/core';
+import { NavParams } from '@ionic/angular';
 import { KDMDataService } from '../../service/kdm-data.service';
 import { BaseModel } from '../../model/base-model';
 import { ShowListTypes } from '../../model/show-list-types';
@@ -14,8 +14,7 @@ import { Weapon } from '../../model/weapon';
  * Created by Daniel on 16.03.2017.
  */
 @Component({
-  selector: 'kdmf-show-list-add',
-  templateUrl: 'show-list-add-modal.component.html',
+  selector: 'kdmf-show-list-add', templateUrl: 'show-list-add-modal.component.html',
 })
 export class ShowListAddModalComponent implements AfterViewInit {
 
@@ -25,7 +24,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
   objectName: string;
   type: ShowListTypes;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
+  constructor(private params: NavParams, private kdmData: KDMDataService) {
     this.objects = this.params.get('objects');
     this.type = this.params.get('type');
   }
@@ -80,22 +79,17 @@ export class ShowListAddModalComponent implements AfterViewInit {
   }
 
   close(): void {
-    this.viewCtrl.dismiss().then();
   }
 
   private setup(): void {
     switch (this.type) {
       case ShowListTypes.FIGHTINGART:
         this.typename = 'Fighting Art';
-        this.kdmData.getFightingArts().then(fightingArt =>
-          this.existingObjects = fightingArt.filter(art =>
-            this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
+        this.kdmData.getFightingArts().then(fightingArt => this.existingObjects = fightingArt.filter(art => this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.DISORDER:
         this.typename = 'DISORDER';
-        this.kdmData.getDisorders().then(disorders =>
-          this.existingObjects = disorders.filter(disorder =>
-            this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
+        this.kdmData.getDisorders().then(disorders => this.existingObjects = disorders.filter(disorder => this.objects.indexOf(disorder) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.INNOVATION:
         this.typename = 'Innovation';
@@ -105,20 +99,16 @@ export class ShowListAddModalComponent implements AfterViewInit {
         break;
       case ShowListTypes.LOCATION:
         this.typename = 'Location';
-        this.kdmData.getSettlementLocations().then(locations =>
-          this.existingObjects = locations.filter(location =>
-            this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
+        this.kdmData.getSettlementLocations().then(locations => this.existingObjects = locations.filter(location => this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.EQUIPMENT:
         this.typename = 'Equipment';
-        this.kdmData.getAllExistingEquipmentItems().then((itemsArray: [Weapon[], Armor[], Equipment[]]) =>
-          itemsArray.forEach((items: Weapon[] | Armor[] | Equipment[]) => {
-              for (let i = 0; i < items.length; i++) {
-                this.existingObjects.push(items[i]);
-              }
-              this.existingObjects.sort(this.kdmData.sortByName);
-            },
-          ));
+        this.kdmData.getAllExistingEquipmentItems().then((itemsArray: [Weapon[], Armor[], Equipment[]]) => itemsArray.forEach((items: Weapon[] | Armor[] | Equipment[]) => {
+          for (let i = 0; i < items.length; i++) {
+            this.existingObjects.push(items[i]);
+          }
+          this.existingObjects.sort(this.kdmData.sortByName);
+        }));
         break;
       default:
         console.error('unexpected type to setup add_modal: ' + this.type);

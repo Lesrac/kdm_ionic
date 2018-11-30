@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: '/tabs/(settlements:settlements)',
+              component: SettlementsPageComponent,
                 pathMatch: 'full',
             },
             {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ViewController } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { KDMDataService } from '../../service/kdm-data.service';
 import { Storage } from '../../model/storage';
@@ -21,7 +21,7 @@ export class StorageModalComponent implements OnInit {
   foundStorageItems: Observable<Storage[]> = of<Storage[]>([]);
   private searchNames = new Subject<string>();
 
-  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
+  constructor(private params: NavParams, private kdmData: KDMDataService) {
     this.settlement = this.params.get('settlement');
   }
 
@@ -52,7 +52,6 @@ export class StorageModalComponent implements OnInit {
   }
 
   close(): void {
-    this.viewCtrl.dismiss();
   }
 
   private getStorageItems(): void {

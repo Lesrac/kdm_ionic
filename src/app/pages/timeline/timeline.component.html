@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>
       Timeline
     </ion-title>
@@ -11,12 +11,12 @@
         {{reorderActivityName}}
       </button>
     </ion-buttons>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-item-group reorder="{{reorderFlag}}" (ionItemReorder)="reorderItems($event)">
+    <ion-item-group> <!--reorder="{{reorderFlag}}" (ionItemReorder)="reorderItems($event)">   -->
       <ion-item-sliding *ngFor="let timelineevent of timeline">
         <ion-item>
           <ion-checkbox [(ngModel)]="timelineevent.reached"

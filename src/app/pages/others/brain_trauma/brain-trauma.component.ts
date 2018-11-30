@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BrainTrauma } from '../../../model/brain_trauma';
 import { NavController } from '@ionic/angular';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { DiceThrow } from '../../../model/dice-throw';
@@ -8,8 +7,7 @@ import { DiceThrow } from '../../../model/dice-throw';
  * Created by Daniel on 15.10.2017.
  */
 @Component({
-  selector: 'kdmf-page-brain-trauma',
-  templateUrl: 'brain-trauma.component.html',
+  selector: 'kdmf-page-brain-trauma', templateUrl: 'brain-trauma.component.html',
 })
 export class BrainTraumaPageComponent implements OnInit {
   diceThrows: DiceThrow[];

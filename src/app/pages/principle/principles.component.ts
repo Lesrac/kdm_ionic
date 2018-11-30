@@ -1,49 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm-data.service';
-import { PrincipleChooserPageComponent } from './principle-chooser.component';
-import { PrincipleDetailComponent } from './principle_detail.component';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 14.02.2017.
  */
 @Component({
-  selector: 'kdmf-page-principles',
-  templateUrl: 'principles.component.html',
+  selector: 'kdmf-page-principles', templateUrl: 'principles.component.html',
 })
 export class PrinciplesPageComponent implements OnInit {
 
   settlement: Settlement;
   allPrincipleTypes: PrincipleType[];
 
-  constructor(public navCtrl: NavController, public params: NavParams, private kdmData: KDMDataService) {
+  constructor(public router: Router, public params: NavParams, private kdmData: KDMDataService) {
     this.settlement = params.get('settlement');
     console.log(this.settlement);
   }
 
   ngOnInit(): void {
-    this.kdmData.getPrincipleTypes().then(principleTypes =>
-      this.allPrincipleTypes = principleTypes,
-    );
+    this.kdmData.getPrincipleTypes().then(principleTypes => this.allPrincipleTypes = principleTypes);
   }
 
   principleIsChosen(type: PrincipleType): boolean {
-    return this.settlement.principles.find(principle => principle.type.name === type.name) != null;
+    return this.settlement.principles.find((principle: Principle) => principle.type.name == type.name) != null;
   }
 
   selectPrinciple(type: PrincipleType): void {
-    this.navCtrl.push(PrincipleChooserPageComponent, {
-      principleType: type,
-      settlement: this.settlement,
-    }).then();
+    this.router.navigate(['/principleChooser', {
+      principleType: type, settlement: this.settlement,
+    }]).then();
   }
 
   removePrinciple(type: PrincipleType): void {
-    const indexOfItemToRemove: number = this.settlement.principles.findIndex(principle =>
-      principle.type === type,
-    );
+    const indexOfItemToRemove: number = this.settlement.principles.findIndex(principle => principle.type === type);
     if (indexOfItemToRemove >= 0) {
       this.settlement.principles.splice(indexOfItemToRemove, 1);
     }
@@ -60,9 +53,9 @@ export class PrinciplesPageComponent implements OnInit {
   showDetail(principleType: PrincipleType): void {
     const principle: Principle = this.settlement.principles.find(princ => princ.type.name === principleType.name);
     if (principle) {
-      this.navCtrl.push(PrincipleDetailComponent, {
-        principle: principle,
-      }).then();
     }
+    this.router.navigate(['/principleDetail', {
+      principle: principle,
+    }]).then();
   }
 }

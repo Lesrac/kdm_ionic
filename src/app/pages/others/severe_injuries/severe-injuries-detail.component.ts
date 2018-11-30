@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { SevereInjury } from '../../../model/severe-injury';
 
@@ -8,20 +8,18 @@ import { SevereInjury } from '../../../model/severe-injury';
  */
 
 @Component({
-  selector: 'kdmf-page-severe-injuries-detail',
-  templateUrl: 'severe-injuries-detail.component.html',
+  selector: 'kdmf-page-severe-injuries-detail', templateUrl: 'severe-injuries-detail.component.html',
 })
 export class SevereInjuriesDetailPageComponent implements OnInit {
   bodypart: string;
   severeInjuries: SevereInjury[];
 
-  constructor(public navCtrl: NavController, public params: NavParams, private kdmService: KDMDataService) {
+  constructor(public params: NavParams, private kdmService: KDMDataService) {
     this.bodypart = params.get('bodypart');
   }
 
   ngOnInit(): void {
-    this.kdmService.getSevereInjuriesToHitLocation(this.bodypart).then(
-      foundSevereInjuries => this.severeInjuries = foundSevereInjuries);
+    this.kdmService.getSevereInjuriesToHitLocation(this.bodypart).then(foundSevereInjuries => this.severeInjuries = foundSevereInjuries);
   }
 
 }

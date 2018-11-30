@@ -5,17 +5,17 @@
   <ion-item>
     <ion-label>Monster</ion-label>
     <ion-select [(ngModel)]="monster">
-      <ion-option *ngFor="let huntableMonster of huntableMonsters" [value]="huntableMonster.monster">
+      <ion-select-option *ngFor="let huntableMonster of huntableMonsters" [value]="huntableMonster.monster">
         {{huntableMonster.monster.name}}
-      </ion-option>
+      </ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>
     <ion-label>Level</ion-label>
     <ion-select [(ngModel)]="monsterLevel">
-      <ion-option value="1" selected="true">Level 1</ion-option>
-      <ion-option value="2">Level 2</ion-option>
-      <ion-option value="3">Level 3</ion-option>
+      <ion-select-option value="1" selected="true">Level 1</ion-select-option>
+      <ion-select-option value="2">Level 2</ion-select-option>
+      <ion-select-option value="3">Level 3</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item *ngIf="monster !== undefined && !monster.isNemesis">

@@ -40,12 +40,11 @@ export class StoryEventsPageComponent implements OnInit {
         }
     }
 
-    async showDetail(lanternEvent: LanternEvent): void {
-        let modal = await this.modalCtrl.create({
+    showDetail(lanternEvent: LanternEvent): void {
+        this.modalCtrl.create({
             component: TimelineEventModalComponent,
             componentProps: {lanternEvent: lanternEvent}
-        });
-        await modal.present();
+        }).then(modal => modal.present());
     }
 
     private lanternStoryEventContainsText(lanternEvent: LanternEvent, text: string): boolean {

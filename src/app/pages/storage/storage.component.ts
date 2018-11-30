@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
-import { NavParams, NavController, ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { Storage } from '../../model/storage';
 import { StorageModalComponent } from './storage-modal.component';
-import { ShowListDetailComponent } from '../template/show-list-detail.component';
 import { KDMDBService } from '../../service/kdm-db.service';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 14.02.2017.
  */
 @Component({
-  selector: 'kdmf-page-storage',
-  templateUrl: 'storage.component.html',
+  selector: 'kdmf-page-storage', templateUrl: 'storage.component.html',
 })
 export class StoragePageComponent {
 
   settlement: Settlement;
 
-  constructor(public navCtrl: NavController, public params: NavParams, public modalCtrl: ModalController,
-              private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
+  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController, private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
     this.settlement = params.get('settlement');
     this.settlement.storages.sort(kdmService.sortByName);
   }
@@ -48,16 +46,17 @@ export class StoragePageComponent {
   }
 
   addStorageItem(): void {
-    let modal = this.modalCtrl.create(StorageModalComponent, {
-      settlement: this.settlement,
-    });
-    modal.present();
+    this.modalCtrl.create({
+      component: StorageModalComponent, componentProps: {
+        settlement: this.settlement,
+      }
+    }).then(modal => modal.present());
   }
 
   showDetail(storageItem: Storage): void {
-    this.navCtrl.push(ShowListDetailComponent, {
+    this.router.navigate(['/showListDetail', {
       object: storageItem,
-    }).then();
+    }]).then();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 
 /**
@@ -12,11 +12,10 @@ import { Settlement } from '../../model/settlement';
 export class CreateSettlementPopoverComponent {
   settlement: Settlement;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams) {
+  constructor(private params: NavParams) {
     this.settlement = this.params.get('se');
   }
 
   close() {
-    this.viewCtrl.dismiss();
   }
 }

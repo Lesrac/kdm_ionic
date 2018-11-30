@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>
       Equipments
     </ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
@@ -15,7 +15,7 @@
   <ion-item>
     <ion-label>Equipments</ion-label>
     <ion-select [(ngModel)]="equipmentName">
-      <ion-option *ngFor="let equipment of allEquipments">{{equipment.name}}</ion-option>
+      <ion-select-option *ngFor="let equipment of allEquipments">{{equipment.name}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item *ngFor="let eq of equipments">

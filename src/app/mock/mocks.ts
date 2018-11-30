@@ -26,7 +26,6 @@ import { SettlementPageComponent } from '../pages/settlement/settlement.componen
 import { SettlementMilestone } from '../model/linking/settlement-milestone';
 import { StaticProvider } from '@angular/core/src/di';
 import { SurvivorPageComponent } from '../pages/survivor/survivor.component';
-import { mockApp, mockConfig, mockDeepLinker } from '@ionic/angular/util/mock-providers';
 import { ModalController } from '@ionic/angular';
 
 export class DummyMockElements {
@@ -190,7 +189,7 @@ export class PlatformMock {
 
 export class ModalControllerMock {
   constructor() {
-    return new ModalController(mockApp(), mockConfig(), mockDeepLinker());
+   // return new ModalController(mockApp(), mockConfig(), mockDeepLinker());
   }
 
   public create(): void {

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { ViewController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { LanternEvent } from '../../model/lantern-event';
 import { SettlementTimeline } from '../../model/linking/settlement-timeline';
 import { KDMDataService } from '../../service/kdm-data.service';
@@ -20,7 +20,7 @@ export class AddTimelineEventModalComponent implements AfterViewInit {
   addChangeText: string;
   eventName: string;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams, private kdmData: KDMDataService) {
+  constructor(private params: NavParams, private kdmData: KDMDataService) {
     this.settlementTimeline = this.params.get('settlementTimeline');
     this.replaceableTimeline = this.params.get('replaceableTimeline');
     if (this.replaceableTimeline) {
@@ -53,7 +53,6 @@ export class AddTimelineEventModalComponent implements AfterViewInit {
   }
 
   close(): void {
-    this.viewCtrl.dismiss();
   }
 
   private setup(): void {

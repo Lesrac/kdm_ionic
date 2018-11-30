@@ -5,7 +5,7 @@
   <ion-item>
     <ion-label>Event</ion-label>
     <ion-select [(ngModel)]="eventName">
-      <ion-option *ngFor="let lanternEvent of lanternEvents">{{lanternEvent.name}}</ion-option>
+      <ion-select-option *ngFor="let lanternEvent of lanternEvents">{{lanternEvent.name}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item>

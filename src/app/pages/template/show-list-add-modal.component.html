@@ -5,7 +5,7 @@
   <ion-item>
     <ion-label>{{typename | titlecase}}</ion-label>
     <ion-select [(ngModel)]="objectName">
-      <ion-option *ngFor="let object of existingObjects">{{object.name}}</ion-option>
+      <ion-select-option *ngFor="let object of existingObjects">{{object.name}}</ion-select-option>
     </ion-select>
   </ion-item>
   <ion-item *ngIf="selectedDescription()">

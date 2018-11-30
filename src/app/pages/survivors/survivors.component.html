@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>Survivors</ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item>
     <ion-label>Settlement</ion-label>
     <ion-select [(ngModel)]="settlementId" (ionChange)="confirmChange()">
-      <ion-option *ngFor="let stlmnt of settlements" (ionSelect)="selectedSettlement(stlmnt)" [value]="stlmnt.id">
+      <ion-select-option *ngFor="let stlmnt of settlements" (ionSelect)="selectedSettlement(stlmnt)" [value]="stlmnt.id">
         {{stlmnt.name}}
-      </ion-option>
+      </ion-select-option>
     </ion-select>
   </ion-item>
   <button *ngIf="settlement" ion-button icon-only full (click)="addSurvivor()">

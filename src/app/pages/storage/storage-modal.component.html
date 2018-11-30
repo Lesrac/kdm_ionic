@@ -5,7 +5,7 @@
   <ion-item id="storage_item_chooser">
     <ion-label>Storage Item</ion-label>
     <ion-select [(ngModel)]="storageItemName">
-      <ion-option *ngFor="let storageItem of storageItems">{{storageItem.name}}</ion-option>
+      <ion-select-option *ngFor="let storageItem of storageItems">{{storageItem.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 

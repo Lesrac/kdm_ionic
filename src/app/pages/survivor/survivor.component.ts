@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Survivor } from '../../model/survivor';
-import { ModalController, NavController, NavParams } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ShowListComponent } from '../template/show-list.component';
 import { ShowListTypes } from '../../model/show-list-types';
 import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm-db.service';
 import { KDMObserverService } from '../../service/kdm-observer.service';
 import { Subject } from 'rxjs';
-import { EquipmentGridPageComponent } from '../equipment/equipment-grid.component';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 01.03.2017.
  */
 @Component({
-  selector: 'kdmf-page-survivor',
-  templateUrl: 'survivor.component.html',
+  selector: 'kdmf-page-survivor', templateUrl: 'survivor.component.html',
 })
 export class SurvivorPageComponent implements OnInit {
 
@@ -29,9 +27,7 @@ export class SurvivorPageComponent implements OnInit {
   settlement: Settlement;
   xpGroup: FormGroup;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public params: NavParams,
-              public formBuilder: FormBuilder, private kdmdbService: KDMDBService,
-              private kdmObserver: KDMObserverService) {
+  constructor(public router: Router, public modalCtrl: ModalController, public params: NavParams, public formBuilder: FormBuilder, private kdmdbService: KDMDBService, private kdmObserver: KDMObserverService) {
     this.survivor = params.get('survivor');
     this.settlement = params.get('settlement');
     this.kdmObserver.registerObserverForSurvivorHappenings(this);
@@ -155,26 +151,21 @@ export class SurvivorPageComponent implements OnInit {
   }
 
   showDisorders(): void {
-    this.navCtrl.push(ShowListComponent, {
-      objects: this.survivor.disorders,
-      type: ShowListTypes.DISORDER,
-      settlement: this.settlement,
-    }).then();
+    this.router.navigate(['/showList', {
+      objects: this.survivor.disorders, type: ShowListTypes.DISORDER, settlement: this.settlement,
+    }]).then();
   }
 
   showFightingArts(): void {
-    this.navCtrl.push(ShowListComponent, {
-      objects: this.survivor.fightingArts,
-      type: ShowListTypes.FIGHTINGART,
-      settlement: this.settlement,
-    }).then();
+    this.router.navigate(['/showList', {
+      objects: this.survivor.fightingArts, type: ShowListTypes.FIGHTINGART, settlement: this.settlement,
+    }]).then();
   }
 
   showEquipmentGrid(): void {
-    this.navCtrl.push(EquipmentGridPageComponent, {
-      survivor: this.survivor,
-      settlement: this.settlement,
-    }).then();
+    this.router.navigate(['/equipmentGrid', {
+      survivor: this.survivor, settlement: this.settlement,
+    }]).then();
   }
 
   private setupXP(): void {

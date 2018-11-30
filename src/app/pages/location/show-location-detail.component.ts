@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 import { Location } from '../../model/location';
 
 /**
@@ -13,7 +13,7 @@ export class ShowLocationDetailComponent {
 
   location: Location;
 
-  constructor(public viewCtrl: ViewController, private params: NavParams) {
+  constructor(private params: NavParams) {
     this.location = this.params.get('object') as Location;
     console.log(this.location);
   }

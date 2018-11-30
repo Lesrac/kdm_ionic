@@ -1,41 +1,33 @@
 import { Component } from '@angular/core';
-
-import { NavController } from '@ionic/angular';
-import { BrainTraumaPageComponent } from './brain_trauma/brain-trauma.component';
-import { GlossaryPageComponent } from './glossary/glossary.component';
-import { HuntEventTablePageComponent } from './hunt_event_table/hunt-event-table.component';
-import { SevereInjuriesPageComponent } from './severe_injuries/severe-injuries.component';
-import { StoryEventsPageComponent } from './story_events/story-events.component';
-import { ShowdownsPageComponent } from './showdown/showdowns.component';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'kdmf-page-others',
-  templateUrl: 'others.component.html',
+  selector: 'kdmf-page-others', templateUrl: 'others.component.html',
 })
 export class OthersPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public router: Router) {
   }
 
   goToDetail(otherElement: string): void {
     switch (otherElement) {
       case 'braintrauma':
-        this.navCtrl.push(BrainTraumaPageComponent, {}).then();
+        this.router.navigate(['/brainTrauma']).then();
         break;
       case 'glossary':
-        this.navCtrl.push(GlossaryPageComponent, {}).then();
+        this.router.navigate(['/glossary']).then();
         break;
       case 'hunteventtable':
-        this.navCtrl.push(HuntEventTablePageComponent, {}).then();
+        this.router.navigate(['/huntEvents']).then();
         break;
       case 'severeinjuries':
-        this.navCtrl.push(SevereInjuriesPageComponent, {}).then();
+        this.router.navigate(['/severeInjuries']).then();
         break;
       case 'storyevents':
-        this.navCtrl.push(StoryEventsPageComponent, {}).then();
+        this.router.navigate(['/storyEvents']).then();
         break;
       case 'showdowns':
-        this.navCtrl.push(ShowdownsPageComponent, {}).then();
+        this.router.navigate(['/showdowns']).then();
         break;
       default:
         console.log('no view defined for: ', otherElement);
