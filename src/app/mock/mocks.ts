@@ -219,7 +219,7 @@ export class KDMDBServiceMock {
   }
 
   getSettlementById(id: number): Promise<SettlementSimplified> {
-    return Promise.resolve(new SettlementSimplified(id, 'Dummy simplified settlement', 1, 1, 0, 0));
+    return Promise.resolve(new SettlementSimplified(id, 'Dummy simplified settlementLocal$', 1, 1, 0, 0));
   }
 
   saveSettlements(settlements: Settlement[]): void {
@@ -240,7 +240,7 @@ export class KDMDataServiceMock {
     new Storage('Barbal', 'dummy', 1, [StorageTag.ITEM])];
 
   getSettlements(): Promise<Settlement[]> {
-    return Promise.resolve([new Settlement('dummy settlement')]);
+    return Promise.resolve([new Settlement('dummy settlementLocal$')]);
   }
 
   addSettlement(settlement: Settlement): void {

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <ion-item>
+      <ion-item *ngIf="settlement$ | async as settlement">
         <ion-input required [(ngModel)]="settlement.name" no-lines></ion-input>
       </ion-item>
     </ion-title>
@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content padding class="settlement">
-  <ion-list>
+  <ion-list *ngIf="settlement$ | async as settlement">
     <ion-item-group>
       <ion-row class="container">
         <ion-col>
@@ -38,9 +38,9 @@
     </ion-item-group>
 
     <ion-item-group>
-      <button id="button_show_timeline" ion-button full (click)="showTimeline()">
+      <ion-button id="button_show_timeline" expand="full" (click)="showTimeline()">
         Timeline
-      </button>
+      </ion-button>
     </ion-item-group>
 
     <ion-item-group id="milestones_group">
@@ -93,21 +93,21 @@
     </ion-item-group>
 
     <ion-item-group>
-      <button id="button_show_innovations" ion-button full (click)="showInnovations()">
+      <ion-button id="button_show_innovations" expand="full" (click)="showInnovations()">
         Innovations
-      </button>
+      </ion-button>
     </ion-item-group>
 
     <ion-item-group>
-      <button id="button_show_principles" ion-button full (click)="showPrinciples()">
+      <ion-button id="button_show_principles" expand="full" (click)="showPrinciples()">
         Principles
-      </button>
+      </ion-button>
     </ion-item-group>
 
     <ion-item-group>
-      <button id="button_show_settlement_locations" ion-button full (click)="showSettlementLocations()">
+      <ion-button id="button_show_settlement_locations" expand="full" (click)="showSettlementLocations()">
         Settlement Locations
-      </button>
+      </ion-button>
     </ion-item-group>
 
     <ion-item-group id="quarries_group">
@@ -123,15 +123,15 @@
     </ion-item-group>
 
     <ion-item-group>
-      <button id="button_show_storage" ion-button full (click)="showStorage()">
+      <ion-button id="button_show_storage" expand="full" (click)="showStorage()">
         Storage
-      </button>
+      </ion-button>
     </ion-item-group>
 
     <ion-item-group>
-      <button id="button_show_defeated_monsters" ion-button full (click)="showDefeatedMonsters()">
+      <ion-button id="button_show_defeated_monsters" expand="full" (click)="showDefeatedMonsters()">
         Defeated Monsters
-      </button>
+      </ion-button>
     </ion-item-group>
 
     <ion-item-group>

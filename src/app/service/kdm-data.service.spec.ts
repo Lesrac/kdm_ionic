@@ -1036,7 +1036,7 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.settlements).toContain(settlement4);
       }));
 
-    it('get settlement from cache', inject([KDMDataService],
+    it('get settlementLocal$ from cache', inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         spyOn(kdmDBServiceMock, 'getSettlementById').and.callThrough()
           .and.returnValue(Promise.resolve(simpleSettlement2));
@@ -1048,11 +1048,11 @@ describe('KDM Data Service', () => {
           expect(settlement.population).toBe(simpleSettlement2.population, 'the population is not set correctly');
           expect(settlement.deathcount).toBe(simpleSettlement2.deathcount, 'the deathcount is not set correctly');
           expect(settlement.settlementLost).toBe(simpleSettlement2.settlementLost,
-            'the settlement lost is not set correctly');
+            'the settlementLocal$ lost is not set correctly');
         });
       }));
 
-    it('remove settlement', inject([KDMDataService],
+    it('remove settlementLocal$', inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         const spy = spyOn(kdmDBServiceMock, 'removeSettlement').and.returnValue(true);
         const length = settlements.length;
@@ -1066,7 +1066,7 @@ describe('KDM Data Service', () => {
         expect(spy).toHaveBeenCalledWith(settlement2.id);
       }));
 
-    it('add settlement', fakeAsync(inject([KDMDataService],
+    it('add settlementLocal$', fakeAsync(inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         const spy = spyOn(kdmDBServiceMock, 'saveSettlement').and.returnValue(true);
         kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];

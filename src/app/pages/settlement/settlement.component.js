@@ -35,49 +35,49 @@ let SettlementPageComponent = class SettlementPageComponent {
         this.deathcount = new Subject();
         this.innovations = new Subject();
         if (params.get('settlement')) {
-            this.settlement = params.get('settlement');
+            this.settlement$ = params.get('settlement');
             this.differ = differs.find({}).create();
-            this.settlement.milestones.forEach(milestone => kdmObserver.registerObserverForMilestone(this, milestone));
+            this.settlement$.milestones.forEach(milestone => kdmObserver.registerObserverForMilestone(this, milestone));
         }
     }
     ngDoCheck() {
-        let changes = this.differ.diff(this.settlement.innovations);
+        let changes = this.differ.diff(this.settlement$.innovations);
         if (changes) {
             this.innovations.next(changes._records.size);
         }
     }
     showTimeline() {
         this.navCtrl.push(TimelinePageComponent, {
-            settlementTimeline: this.settlement.timeline,
+            settlementTimeline: this.settlement$.timeline,
         }).then();
     }
     showDefeatedMonsters() {
         this.navCtrl.push(DefeatedMonsterPageComponent, {
-            settlement: this.settlement,
+            settlement: this.settlement$,
         }).then();
     }
     showInnovations() {
         this.navCtrl.push(ShowListComponent, {
-            objects: this.settlement.innovations,
+            objects: this.settlement$.innovations,
             type: ShowListTypes.INNOVATION,
-            settlement: this.settlement,
+            settlement: this.settlement$,
         }).then();
     }
     showPrinciples() {
         this.navCtrl.push(PrinciplesPageComponent, {
-            settlement: this.settlement,
+            settlement: this.settlement$,
         }).then();
     }
     showSettlementLocations() {
         this.navCtrl.push(ShowListComponent, {
-            objects: this.settlement.locations,
+            objects: this.settlement$.locations,
             type: ShowListTypes.LOCATION,
-            settlement: this.settlement,
+            settlement: this.settlement$,
         }).then();
     }
     showStorage() {
         this.navCtrl.push(StoragePageComponent, {
-            settlement: this.settlement,
+            settlement: this.settlement$,
         }).then();
     }
     eventReached(event, settlementLanternEvent) {
@@ -92,37 +92,37 @@ let SettlementPageComponent = class SettlementPageComponent {
     }
     survivalLimitChange(event) {
         if (typeof event === 'number') {
-            this.settlement.survivalLimit = event;
+            this.settlement$.survivalLimit = event;
         }
     }
     settlementLostChange(event) {
         if (typeof event === 'number') {
-            this.settlement.settlementLost = event;
+            this.settlement$.settlementLost = event;
         }
     }
     deathcountChange(event) {
         if (typeof event === 'number') {
             this.deathcount.next(event);
-            this.settlement.deathcount = event;
+            this.settlement$.deathcount = event;
         }
     }
     populationChange(event) {
         if (typeof event === 'number') {
-            const settlement = this.settlement;
+            const settlement = this.settlement$;
             this.population.next(event);
-            this.settlement.population = event;
-            if (settlement.survivors.length < this.settlement.population) {
+            this.settlement$.population = event;
+            if (settlement.survivors.length < this.settlement$.population) {
                 this.addSurvivor();
             }
             this.populationChecker();
         }
     }
     addSurvivor() {
-        this.kdmService.createAndAddSurvivor(this.settlement);
+        this.kdmService.createAndAddSurvivor(this.settlement$);
     }
     populationChecker() {
-        const survivors = this.settlement.survivors.length;
-        const population = this.settlement.population;
+        const survivors = this.settlement$.survivors.length;
+        const population = this.settlement$.population;
         if (survivors <= population) {
             const difference = population - survivors;
             for (let i = 0; i < difference; i++) {
@@ -145,4 +145,4 @@ SettlementPageComponent = __decorate([
         KDMDataService])
 ], SettlementPageComponent);
 export { SettlementPageComponent };
-//# sourceMappingURL=settlement.component.js.map
+//# sourceMappingURL=settlement$.component.js.map

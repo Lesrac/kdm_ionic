@@ -1,12 +1,35 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { OthersPage } from './pages/others/others.component';
 
 const routes: Routes = [
-  { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  {
+    path: 'kdm',
+    children: [
+      {
+        path: 'settlements',
+        loadChildren: './pages/settlements/settlements.module#SettlementsPageModule',
+      },
+      {
+        path: 'other',
+        component: OthersPage,
+      },
+      {
+        path: 'survivors',
+        loadChildren: './pages/survivors/survivors.module#SurvivorsPageModule',
+      },
+    ],
+  },
+  {
+    path: '',
+    redirectTo: 'kdm/settlements',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {enableTracing: true})],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

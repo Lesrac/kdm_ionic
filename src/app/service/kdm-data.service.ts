@@ -141,6 +141,7 @@ export class KDMDataService {
   }
 
   getSettlement(id: number): Promise<Settlement> {
+    console.log('GET Settlement by Id from KDMDataService');
     return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
       const settlement: Settlement = this.desimplifySettlement(settlementSimplified);
       this.settlements[this.settlements.findIndex(stlmnt => stlmnt.id === id)] = settlement;

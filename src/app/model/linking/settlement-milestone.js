@@ -8,4 +8,4 @@ export class SettlementMilestone extends SettlementLanternEvent {
         this.milestone = milestone;
     }
 }
-//# sourceMappingURL=settlement-milestone.js.map
+//# sourceMappingURL=settlement$-milestone.js.map

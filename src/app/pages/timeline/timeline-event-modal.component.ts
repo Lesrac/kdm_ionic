@@ -8,7 +8,6 @@ import { LanternEvent } from '../../model/lantern-event';
     selector: 'kdmf-timeline-event-modal', templateUrl: 'timeline-event-modal.component.html',
 })
 export class TimelineEventModalComponent {
-    // TODO get the value in this component
     @Input()
     lanternEvent: LanternEvent;
 }

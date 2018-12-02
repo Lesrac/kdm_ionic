@@ -17,4 +17,4 @@ export class SettlementLanternEvent {
         this.reachedChanged.next(value);
     }
 }
-//# sourceMappingURL=settlement-lantern-event.js.map
+//# sourceMappingURL=settlement$-lantern-event.js.map

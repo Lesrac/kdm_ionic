@@ -175,4 +175,4 @@ export class Settlement {
         return this._principles;
     }
 }
-//# sourceMappingURL=settlement.js.map
+//# sourceMappingURL=settlement$.js.map

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { TimelineEventModalComponent } from './timeline-event-modal.component';
 import { SettlementTimeline } from '../../model/linking/settlement-timeline';
 import { AddTimelineEventModalComponent } from './add-timeline-event-modal.component';
@@ -10,13 +10,16 @@ import { AddTimelineEventModalComponent } from './add-timeline-event-modal.compo
 @Component({
   selector: 'kdmf-page-timeline', templateUrl: 'timeline.component.html',
 })
-export class TimelinePageComponent {
+export class TimelinePageComponent implements OnInit {
   timeline: SettlementTimeline[];
   reorderActivityName: string = 'Reorder';
   reorderFlag: boolean = false;
 
-  constructor(public params: NavParams, public modalCtrl: ModalController) {
-    this.timeline = params.get('settlementTimeline');
+  constructor(public modalCtrl: ModalController) {
+  }
+
+  ngOnInit(): void {
+
   }
 
   timelineReached(event: Event, settlementTimeline: SettlementTimeline): void {
@@ -53,23 +56,23 @@ export class TimelinePageComponent {
 
   reorderItems(/*indexes: ReorderIndexes */): void {
     // change element position number
-  /*  if (indexes.from < indexes.to) {
-      for (let i = 0; i <= indexes.to; i++) {
-        const position = this.timeline[i].timeline.position;
-        if (position > indexes.from + 1 && position <= indexes.to + 1) {
-          this.timeline[i].timeline.position--;
+    /*  if (indexes.from < indexes.to) {
+        for (let i = 0; i <= indexes.to; i++) {
+          const position = this.timeline[i].timeline.position;
+          if (position > indexes.from + 1 && position <= indexes.to + 1) {
+            this.timeline[i].timeline.position--;
+          }
+        }
+      } else {
+        for (let i = indexes.from; i >= indexes.to; i--) {
+          const position = this.timeline[i].timeline.position;
+          if (position < indexes.from + 1 && position >= indexes.to + 1) {
+            this.timeline[i].timeline.position++;
+          }
         }
       }
-    } else {
-      for (let i = indexes.from; i >= indexes.to; i--) {
-        const position = this.timeline[i].timeline.position;
-        if (position < indexes.from + 1 && position >= indexes.to + 1) {
-          this.timeline[i].timeline.position++;
-        }
-      }
-    }
-    this.timeline[indexes.from].timeline.position = indexes.to + 1; */
- // TODO   this.timeline = reorderArray(this.timeline, indexes);
+      this.timeline[indexes.from].timeline.position = indexes.to + 1; */
+    // TODO   this.timeline = reorderArray(this.timeline, indexes);
   }
 
   addTimelineEvent(): void {

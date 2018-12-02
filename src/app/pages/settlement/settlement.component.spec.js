@@ -114,7 +114,7 @@ describe('Settlement Component', () => {
             settlement: settlementPageComponent.settlement,
         });
     });
-    it('show settlement locations', () => {
+    it('show settlementLocal$ locations', () => {
         const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
         settlementPageComponent.showSettlementLocations();
         expect(spy).toHaveBeenCalledWith(ShowListComponent, {
@@ -137,7 +137,7 @@ describe('Settlement Component', () => {
         settlementPageComponent.survivalLimitChange(3);
         expect(settlementPageComponent.settlement.survivalLimit).toBe(3);
     });
-    it('change settlement lost', () => {
+    it('change settlementLocal$ lost', () => {
         settlementPageComponent.settlement.settlementLost = 2;
         settlementPageComponent.settlementLostChange('not a number');
         expect(settlementPageComponent.settlement.settlementLost).toBe(2);
@@ -186,4 +186,4 @@ describe('Settlement Component', () => {
         expect(spy).toHaveBeenCalledTimes(0);
     });
 });
-//# sourceMappingURL=settlement.component.spec.js.map
+//# sourceMappingURL=settlement$.component.spec.js.map

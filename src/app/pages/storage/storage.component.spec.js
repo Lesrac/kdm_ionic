@@ -35,7 +35,7 @@ describe('StorageComponent', () => {
             ],
             imports: [IonicModule],
         });
-        settlement = new Settlement('dummy settlement');
+        settlement = new Settlement('dummy settlementLocal$');
         NavParamsMock.setParams(settlement);
         fixture = TestBed.createComponent(StoragePageComponent);
         storageComponent = fixture.componentInstance;

@@ -29,7 +29,7 @@ export class DefeatedMonsterPageComponent {
       }
     }).then(modal => modal.present());
     /* TODO   modal.onDidDismiss(() => {
-         const huntedMonsters = this.settlement.huntedMonsters;
+         const huntedMonsters = this.settlement$.huntedMonsters;
          const huntedMonstersCount: number = huntedMonsters.length;
          if (huntedMonstersCount > this.countedHuntedMonsters) {
            const huntedMonster: HuntedMonster = huntedMonsters[huntedMonstersCount - 1];

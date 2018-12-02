@@ -1,5 +1,5 @@
-import { Component, DoCheck, Input, KeyValueDiffers } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, DoCheck, KeyValueDiffers, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline-event-modal.component';
 import { ShowListTypes } from '../../model/show-list-types';
@@ -7,7 +7,9 @@ import { SettlementLanternEvent } from '../../model/linking/settlement-lantern-e
 import { Subject } from 'rxjs';
 import { KDMObserverService } from '../../service/kdm-observer.service';
 import { KDMDataService } from '../../service/kdm-data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -15,63 +17,74 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'kdmf-page-settlement', templateUrl: 'settlement.component.html',
 })
-export class SettlementPageComponent implements DoCheck {
+export class SettlementPageComponent implements OnInit, DoCheck {
 
   population: Subject<number> = new Subject<number>();
   deathcount: Subject<number> = new Subject<number>();
   innovations: Subject<number> = new Subject<number>();
   differ;
 
-  @Input() settlement: Settlement;
+  settlement$: Observable<Settlement>;
+  settlementLocal: Settlement;
 
-  constructor(public router: Router, public modalCtrl: ModalController, public params: NavParams, public differs: KeyValueDiffers, private kdmObserver: KDMObserverService, private kdmService: KDMDataService) {
-    if (params.get('settlement')) {
-      this.settlement = params.get('settlement');
-      this.differ = differs.find({}).create();
-      this.settlement.milestones.forEach(milestone => kdmObserver.registerObserverForMilestone(this, milestone));
-    }
+  constructor(private router: Router, private route: ActivatedRoute, private modalCtrl: ModalController,
+              private differs: KeyValueDiffers, private kdmObserver: KDMObserverService, private kdmService: KDMDataService) {
+    this.differ = differs.find({}).create();
+  }
+
+  ngOnInit(): void {
+    console.log(this.route.paramMap);
+    this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+        const stlmt = this.kdmService.getSettlement(+params.get('id'));
+        stlmt.then(settlement => {
+          this.settlementLocal = settlement;
+          settlement.milestones.forEach(milestone => this.kdmObserver.registerObserverForMilestone(this, milestone));
+        });
+        return stlmt;
+      },
+    ));
   }
 
   ngDoCheck(): void {
-    let changes = this.differ.diff(this.settlement.innovations);
-    if (changes) {
-      this.innovations.next(changes._records.size);
+    if (this.settlementLocal) {
+      let changes = this.differ.diff(this.settlementLocal.innovations);
+      if (changes) {
+        this.innovations.next(changes._records.size);
+      }
     }
   }
 
   showTimeline(): void {
-    this.router.navigate(['/timelinePage', {
-      settlementTimeline: this.settlement.timeline,
-    }]).then();
+    this.router.navigate(['kdm', 'settlements', this.settlementLocal.id, 'timeline']).then();
   }
 
   showDefeatedMonsters(): void {
     this.router.navigate(['/defeatedMonsters', {
-      settlement: this.settlement,
+      settlement: this.settlement$,
     }]).then();
   }
 
   showInnovations(): void {
     this.router.navigate(['/showList', {
-      objects: this.settlement.innovations, type: ShowListTypes.INNOVATION, settlement: this.settlement,
+      objects: this.settlementLocal.innovations, type: ShowListTypes.INNOVATION, settlement: this.settlement$,
     }]).then();
   }
 
   showPrinciples(): void {
     this.router.navigate(['/principlesPage', {
-      settlement: this.settlement,
+      settlement: this.settlement$,
     }]).then();
   }
 
   showSettlementLocations(): void {
     this.router.navigate(['/showList', {
-      objects: this.settlement.locations, type: ShowListTypes.LOCATION, settlement: this.settlement,
+      objects: this.settlementLocal.locations, type: ShowListTypes.LOCATION, settlement: this.settlement$,
     }]).then();
   }
 
   showStorage(): void {
     this.router.navigate(['/storage', {
-      settlement: this.settlement,
+      settlement: this.settlement$,
     }]).then();
   }
 
@@ -80,36 +93,36 @@ export class SettlementPageComponent implements DoCheck {
       this.modalCtrl.create({
         component: TimelineEventModalComponent, componentProps: {
           lanternEvent: settlementLanternEvent.lanternEvent,
-        }
+        },
       }).then(modal => modal.present());
     }
   }
 
   survivalLimitChange(event): void {
     if (typeof event === 'number') {
-      this.settlement.survivalLimit = event;
+      this.settlementLocal.survivalLimit = event;
     }
   }
 
   settlementLostChange(event): void {
     if (typeof event === 'number') {
-      this.settlement.settlementLost = event;
+      this.settlementLocal.settlementLost = event;
     }
   }
 
   deathcountChange(event): void {
     if (typeof event === 'number') {
       this.deathcount.next(event);
-      this.settlement.deathcount = event;
+      this.settlementLocal.deathcount = event;
     }
   }
 
   populationChange(event): void {
     if (typeof event === 'number') {
-      const settlement = this.settlement;
+      const settlement = this.settlementLocal;
       this.population.next(event);
-      this.settlement.population = event;
-      if (settlement.survivors.length < this.settlement.population) {
+      this.settlementLocal.population = event;
+      if (settlement.survivors.length < settlement.population) {
         this.addSurvivor();
       }
       this.populationChecker();
@@ -117,12 +130,12 @@ export class SettlementPageComponent implements DoCheck {
   }
 
   addSurvivor(): void {
-    this.kdmService.createAndAddSurvivor(this.settlement);
+    this.kdmService.createAndAddSurvivor(this.settlementLocal);
   }
 
   populationChecker(): void {
-    const survivors = this.settlement.survivors.length;
-    const population = this.settlement.population;
+    const survivors = this.settlementLocal.survivors.length;
+    const population = this.settlementLocal.population;
     if (survivors <= population) {
       const difference = population - survivors;
       for (let i = 0; i < difference; i++) {

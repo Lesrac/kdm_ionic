@@ -24,4 +24,4 @@ export class SettlementSimplified {
         this.settlementLost = settlementLost;
     }
 }
-//# sourceMappingURL=settlement-simplified.js.map
+//# sourceMappingURL=settlement$-simplified.js.map

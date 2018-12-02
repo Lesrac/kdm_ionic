@@ -110,7 +110,7 @@ describe('Settlement Component', () => {
     const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
     settlementPageComponent.showTimeline();
     expect(spy).toHaveBeenCalledWith(TimelinePageComponent, {
-      settlementTimeline: settlementPageComponent.settlement.timeline,
+      settlementTimeline: settlementPageComponent.settlement$.timeline,
     });
   });
 
@@ -118,7 +118,7 @@ describe('Settlement Component', () => {
     const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
     settlementPageComponent.showDefeatedMonsters();
     expect(spy).toHaveBeenCalledWith(DefeatedMonsterPageComponent, {
-      settlement: settlementPageComponent.settlement,
+      settlement: settlementPageComponent.settlement$,
     });
   });
 
@@ -126,9 +126,9 @@ describe('Settlement Component', () => {
     const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
     settlementPageComponent.showInnovations();
     expect(spy).toHaveBeenCalledWith(ShowListComponent, {
-      objects: settlementPageComponent.settlement.innovations,
+      objects: settlementPageComponent.settlement$.innovations,
       type: ShowListTypes.INNOVATION,
-      settlement: settlementPageComponent.settlement,
+      settlement: settlementPageComponent.settlement$,
     });
   });
 
@@ -136,17 +136,17 @@ describe('Settlement Component', () => {
     const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
     settlementPageComponent.showPrinciples();
     expect(spy).toHaveBeenCalledWith(PrinciplesPageComponent, {
-      settlement: settlementPageComponent.settlement,
+      settlement: settlementPageComponent.settlement$,
     });
   });
 
-  it('show settlement locations', () => {
+  it('show settlementLocal$ locations', () => {
     const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
     settlementPageComponent.showSettlementLocations();
     expect(spy).toHaveBeenCalledWith(ShowListComponent, {
-      objects: settlementPageComponent.settlement.locations,
+      objects: settlementPageComponent.settlement$.locations,
       type: ShowListTypes.LOCATION,
-      settlement: settlementPageComponent.settlement,
+      settlement: settlementPageComponent.settlement$,
     });
   });
 
@@ -154,47 +154,47 @@ describe('Settlement Component', () => {
     const spy = spyOn(settlementPageComponent.navCtrl, 'push').and.callThrough();
     settlementPageComponent.showStorage();
     expect(spy).toHaveBeenCalledWith(StoragePageComponent, {
-      settlement: settlementPageComponent.settlement,
+      settlement: settlementPageComponent.settlement$,
     });
   });
 
   it('change survival limit', () => {
-    settlementPageComponent.settlement.survivalLimit = 2;
+    settlementPageComponent.settlement$.survivalLimit = 2;
     settlementPageComponent.survivalLimitChange('not a number');
-    expect(settlementPageComponent.settlement.survivalLimit).toBe(2);
+    expect(settlementPageComponent.settlement$.survivalLimit).toBe(2);
     settlementPageComponent.survivalLimitChange(3);
-    expect(settlementPageComponent.settlement.survivalLimit).toBe(3);
+    expect(settlementPageComponent.settlement$.survivalLimit).toBe(3);
   });
 
-  it('change settlement lost', () => {
-    settlementPageComponent.settlement.settlementLost = 2;
+  it('change settlementLocal$ lost', () => {
+    settlementPageComponent.settlement$.settlementLost = 2;
     settlementPageComponent.settlementLostChange('not a number');
-    expect(settlementPageComponent.settlement.settlementLost).toBe(2);
+    expect(settlementPageComponent.settlement$.settlementLost).toBe(2);
     settlementPageComponent.settlementLostChange(3);
-    expect(settlementPageComponent.settlement.settlementLost).toBe(3);
+    expect(settlementPageComponent.settlement$.settlementLost).toBe(3);
   });
 
   it('change deathcount', () => {
-    settlementPageComponent.settlement.deathcount = 2;
+    settlementPageComponent.settlement$.deathcount = 2;
     settlementPageComponent.deathcountChange('not a number');
-    expect(settlementPageComponent.settlement.deathcount).toBe(2);
+    expect(settlementPageComponent.settlement$.deathcount).toBe(2);
     settlementPageComponent.deathcountChange(3);
-    expect(settlementPageComponent.settlement.deathcount).toBe(3);
+    expect(settlementPageComponent.settlement$.deathcount).toBe(3);
   });
 
   it('change population', () => {
-    settlementPageComponent.settlement.population = 2;
+    settlementPageComponent.settlement$.population = 2;
     settlementPageComponent.populationChange('not a number');
-    expect(settlementPageComponent.settlement.population).toBe(2);
+    expect(settlementPageComponent.settlement$.population).toBe(2);
     settlementPageComponent.populationChange(3);
-    expect(settlementPageComponent.settlement.population).toBe(3);
-    expect(settlementPageComponent.settlement.survivors.length).toBe(3);
+    expect(settlementPageComponent.settlement$.population).toBe(3);
+    expect(settlementPageComponent.settlement$.survivors.length).toBe(3);
     settlementPageComponent.populationChange(3);
-    expect(settlementPageComponent.settlement.population).toBe(3);
-    expect(settlementPageComponent.settlement.survivors.length).toBe(3);
+    expect(settlementPageComponent.settlement$.population).toBe(3);
+    expect(settlementPageComponent.settlement$.survivors.length).toBe(3);
     settlementPageComponent.populationChange(2);
-    expect(settlementPageComponent.settlement.population).toBe(2);
-    expect(settlementPageComponent.settlement.survivors.length).toBe(3);
+    expect(settlementPageComponent.settlement$.population).toBe(2);
+    expect(settlementPageComponent.settlement$.survivors.length).toBe(3);
   });
 
   it('event reached', () => {

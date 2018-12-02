@@ -40,7 +40,7 @@ describe('Defeated Monster Component', () => {
       ],
       imports: [IonicModule],
     });
-    settlement = new Settlement('dummy settlement');
+    settlement = new Settlement('dummy settlementLocal$');
     NavParamsMock.setParams(settlement);
     fixture = TestBed.createComponent(DefeatedMonsterPageComponent);
     defeatedMonsterComponent = fixture.componentInstance;
