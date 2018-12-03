@@ -38,7 +38,7 @@ import { CreateSettlementModalComponent } from '../settlement/create-settlement-
     AddTimelineEventModalComponent, PrinciplesPageComponent, PrincipleChooserPageComponent, PrincipleDetailComponent,
     DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent, EquipmentCardComponent, EquipmentListPageComponent,
     EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
-  entryComponents: [CreateSettlementModalComponent],
+  entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent],
 })
 export class SettlementsPageModule {
 }
