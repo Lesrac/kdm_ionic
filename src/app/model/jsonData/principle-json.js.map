@@ -1,1 +1,0 @@
-{"version":3,"file":"principle-json.js","sourceRoot":"","sources":["principle-json.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,aAAa;IAKxB,YAAY,IAAY,EAAE,WAAmB,EAAE,IAAY;QACzD,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,WAAW,GAAG,WAAW,CAAC;QAC/B,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACnB,CAAC;CACF"}

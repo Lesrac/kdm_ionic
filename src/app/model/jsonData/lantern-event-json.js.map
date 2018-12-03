@@ -1,1 +1,0 @@
-{"version":3,"file":"lantern-event-json.js","sourceRoot":"","sources":["lantern-event-json.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,gBAAgB;IAK3B,YAAY,IAAY,EAAE,IAAY,EAAE,WAAqB;QAF7D,gBAAW,GAAa,EAAE,CAAC;QAGzB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,WAAW,GAAG,WAAW,CAAC;IACjC,CAAC;CACF"}
