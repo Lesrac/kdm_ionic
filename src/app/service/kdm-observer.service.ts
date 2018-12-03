@@ -42,9 +42,12 @@ export class KDMObserverService {
     const survivor = survivorPageComponent.survivor;
 
     const arr = [];
-    arr.push(this.kdmDataService.getLanternEvent(this.boldEvent).then(lanternEvent => survivor.courageObserver1 = this.getSurvivorObserver(this.courage1, lanternEvent)));
-    arr.push(this.kdmDataService.getLanternEvent(this.seeTheTruthEvent).then(lanternEvent => survivor.courageObserver2 = this.getSurvivorObserver(this.courage2, lanternEvent)));
-    arr.push(this.kdmDataService.getLanternEvent(this.insightEvent).then(lanternEvent => survivor.understandingObserver1 = this.getSurvivorObserver(this.understanding1, lanternEvent)));
+    arr.push(this.kdmDataService.getLanternEvent(this.boldEvent).then(lanternEvent =>
+      survivor.courageObserver1 = this.getSurvivorObserver(this.courage1, lanternEvent)));
+    arr.push(this.kdmDataService.getLanternEvent(this.seeTheTruthEvent).then(lanternEvent =>
+      survivor.courageObserver2 = this.getSurvivorObserver(this.courage2, lanternEvent)));
+    arr.push(this.kdmDataService.getLanternEvent(this.insightEvent).then(lanternEvent =>
+      survivor.understandingObserver1 = this.getSurvivorObserver(this.understanding1, lanternEvent)));
     arr.push(this.kdmDataService.getLanternEvent(this.whiteSecretEvent)
       .then(lanternEvent => survivor.understandingObserver2 = this.getSurvivorObserver(this.understanding2, lanternEvent)));
     arr.push(this.kdmDataService.getLanternEvent(this.ageEvent)
@@ -80,7 +83,7 @@ export class KDMObserverService {
             console.log('courage1');
             if (x === 3) {
               this.modalCtrl.create({
-                component: TimelineEventModalComponent, componentProps: {lanternEvent: lanternEvent}
+                component: TimelineEventModalComponent, componentProps: {lanternEvent: lanternEvent},
               }).then(modal => modal.present());
             }
             break;
@@ -89,8 +92,8 @@ export class KDMObserverService {
             if (x === 9) {
               this.modalCtrl.create({
                 component: TimelineEventModalComponent, componentProps: {
-                  lanternEvent: lanternEvent
-                }
+                  lanternEvent: lanternEvent,
+                },
               }).then(modal => modal.present());
             }
             break;
@@ -98,8 +101,8 @@ export class KDMObserverService {
             if (x === 3) {
               this.modalCtrl.create({
                 component: TimelineEventModalComponent, componentProps: {
-                  lanternEvent: lanternEvent
-                }
+                  lanternEvent: lanternEvent,
+                },
               }).then(modal => modal.present());
             }
             break;
@@ -107,15 +110,15 @@ export class KDMObserverService {
             if (x === 2 || x === 6 || x === 10 || x === 15) {
               this.modalCtrl.create({
                 component: TimelineEventModalComponent, componentProps: {
-                  lanternEvent: lanternEvent
-                }
+                  lanternEvent: lanternEvent,
+                },
               }).then(modal => modal.present());
             }
             break;
           case this.huntxp2:
             if (x === 16) {
               this.modalCtrl.create({
-                component: TimelineEventModalComponent, componentProps: {lanternEvent: lanternEvent}
+                component: TimelineEventModalComponent, componentProps: {lanternEvent: lanternEvent},
               }).then(modal => modal.present());
             }
             break;
@@ -134,15 +137,15 @@ export class KDMObserverService {
     switch (milestoneTarget.toUpperCase()) {
       case 'DEATHCOUNT':
         settlementPageComponent.deathcount.subscribe(settlementMilestone.observer);
-        settlementMilestone.oldValue = settlementPageComponent.settlement$.deathcount;
+        settlementMilestone.oldValue = settlementPageComponent.settlementLocal.deathcount;
         break;
       case 'POPULATION':
         settlementPageComponent.population.subscribe(settlementMilestone.observer);
-        settlementMilestone.oldValue = settlementPageComponent.settlement$.population;
+        settlementMilestone.oldValue = settlementPageComponent.settlementLocal.population;
         break;
       case 'INNOVATION':
         settlementPageComponent.innovations.subscribe(settlementMilestone.observer);
-        settlementMilestone.oldValue = settlementPageComponent.settlement$.innovations.length;
+        settlementMilestone.oldValue = settlementPageComponent.settlementLocal.innovations.length;
         break;
       default:
         console.log('milestoneTarget doesn\'t exist: ' + milestoneTarget);
