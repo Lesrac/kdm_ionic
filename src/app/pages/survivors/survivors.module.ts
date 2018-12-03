@@ -5,16 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SurvivorsPageComponent } from './survivors.component';
 import { SurvivorPageComponent } from '../survivor/survivor.component';
-import { InputNumberComponent } from '../template/input-number.component';
+import { ParentModule } from '../../util/parent.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    ParentModule,
     RouterModule.forChild([{path: '', component: SurvivorsPageComponent, outlet: 'survivors'}]),
   ],
-  declarations: [SurvivorsPageComponent, SurvivorPageComponent, InputNumberComponent],
+  declarations: [SurvivorsPageComponent, SurvivorPageComponent],
 })
 export class SurvivorsPageModule {
 }

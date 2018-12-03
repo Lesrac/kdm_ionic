@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OthersPage } from './pages/others/others.component';
 
 const routes: Routes = [
   {
@@ -12,7 +11,7 @@ const routes: Routes = [
       },
       {
         path: 'other',
-        component: OthersPage,
+        loadChildren: '.pages/others/others.module#OthersPageModule',
       },
       {
         path: 'survivors',
