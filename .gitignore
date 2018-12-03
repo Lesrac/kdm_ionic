@@ -38,4 +38,4 @@ src/**/*.map
 e2e/**/*.js
 e2e/**/*.map
 .scannerwork
-package-lock.json
+/package-lock.json
