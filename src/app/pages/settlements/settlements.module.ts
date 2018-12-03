@@ -29,9 +29,9 @@ import { CreateSettlementModalComponent } from '../settlement/create-settlement-
     ReactiveFormsModule,
     ParentModule,
     RouterModule.forChild([
-      {path: '', component: SettlementsPageComponent, pathMatch: 'full'},
-      {path: ':id/timeline', component: TimelinePageComponent},
-      {path: ':id', component: SettlementPageComponent},
+  //    {path: ':id/timeline', component: TimelinePageComponent},
+  //    {path: ':id', component: SettlementPageComponent},
+  //    {path: '', component: SettlementsPageComponent, pathMatch: 'full'},
     ]),
   ],
   declarations: [SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, TimelineEventModalComponent,

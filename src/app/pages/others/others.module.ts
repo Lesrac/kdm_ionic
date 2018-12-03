@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { OthersPage } from './others.component';
+import { OthersPageComponent } from './others.component';
 import { RouterModule } from '@angular/router';
 import { ParentModule } from '../../util/parent.module';
 import { DefeatedMonsterModalComponent } from '../defeated_monster/defeated-monster-modal.component';
@@ -15,7 +15,6 @@ import { ShowdownPageComponent } from './showdown/showdown.component';
 import { FormattedTextModalComponent } from '../template/formatted-text-modal.component';
 import { ShowdownsPageComponent } from './showdown/showdowns.component';
 import { BrainTraumaPageComponent } from './brain_trauma/brain-trauma.component';
-import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
 import { SevereInjuriesDetailPageComponent } from './severe_injuries/severe-injuries-detail.component';
 import { SevereInjuriesPageComponent } from './severe_injuries/severe-injuries.component';
 
@@ -25,9 +24,13 @@ import { SevereInjuriesPageComponent } from './severe_injuries/severe-injuries.c
     CommonModule,
     ParentModule,
     FormsModule,
-    RouterModule.forChild([{path: '', component: OthersPage}]),
+    RouterModule.forChild([
+      {path: '', component: OthersPageComponent, pathMatch: 'full'},
+      {path: 'huntEvents', component: HuntEventTablePageComponent},
+      {path: 'glossary', component: GlossaryPageComponent},
+      ]),
   ],
-  declarations: [OthersPage, ShowdownsPageComponent, ShowdownPageComponent, CreateSettlementModalComponent, AddedResourcesModalComponent,
+  declarations: [OthersPageComponent, ShowdownsPageComponent, ShowdownPageComponent, AddedResourcesModalComponent,
     DefeatedMonsterModalComponent, StorageModalComponent, BrainTraumaPageComponent, GlossaryPageComponent, HuntEventTablePageComponent,
     SevereInjuriesPageComponent, SevereInjuriesDetailPageComponent, StoryEventsPageComponent, FormattedTextModalComponent],
 })

@@ -4,21 +4,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'kdmf-page-others', templateUrl: 'others.component.html',
 })
-export class OthersPage {
+export class OthersPageComponent {
 
   constructor(public router: Router) {
   }
 
   goToDetail(otherElement: string): void {
+    console.log('switch: ' + otherElement);
     switch (otherElement) {
       case 'braintrauma':
         this.router.navigate(['/brainTrauma']).then();
         break;
       case 'glossary':
-        this.router.navigate(['/glossary']).then();
+        this.router.navigate(['kdm', {outlets: {others: ['glossary']}}]).then();
         break;
       case 'hunteventtable':
-        this.router.navigate(['/huntEvents']).then();
+        this.router.navigate(['kdm', {outlets: {others: ['huntEvents']}}]).then();
+        // this.router.navigate(['/huntEvents']).then();
         break;
       case 'severeinjuries':
         this.router.navigate(['/severeInjuries']).then();

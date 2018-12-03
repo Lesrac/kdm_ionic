@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OthersPage } from './others.component';
+import { OthersPageComponent } from './others.component';
 import {
   App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController,
   NavParams, Platform,
@@ -16,12 +16,12 @@ import { StoryEventsPageComponent } from './story_events/story-events.component'
 
 describe('Others Component', () => {
 
-  let othersPage: OthersPage;
-  let fixture: ComponentFixture<OthersPage>;
+  let othersPage: OthersPageComponent;
+  let fixture: ComponentFixture<OthersPageComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OthersPage],
+      declarations: [OthersPageComponent],
       providers: [DomController, Keyboard, Form, GestureController,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
@@ -32,7 +32,7 @@ describe('Others Component', () => {
       ],
       imports: [IonicModule],
     });
-    fixture = TestBed.createComponent(OthersPage);
+    fixture = TestBed.createComponent(OthersPageComponent);
     othersPage = fixture.componentInstance;
   });
 
