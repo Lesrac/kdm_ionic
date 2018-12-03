@@ -11,7 +11,7 @@ const routes: Routes = [
       },
       {
         path: 'other',
-        loadChildren: '.pages/others/others.module#OthersPageModule',
+        loadChildren: './pages/others/others.module#OthersPageModule',
       },
       {
         path: 'survivors',
