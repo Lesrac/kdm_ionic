@@ -8,9 +8,9 @@
 
 <ion-content padding>
   <ion-item>
-    <button ion-button icon-only full (click)="addDefeatedMonster()">
-      <ion-icon name="add-circle"></ion-icon>
-    </button>
+    <ion-button expand="full"(click)="addDefeatedMonster()">
+      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+    </ion-button>
   </ion-item>
   <ion-item *ngFor="let huntedMonster of settlement.huntedMonsters">
     <ion-row>
@@ -18,9 +18,9 @@
         {{huntedMonster.monster.name}} - Level {{huntedMonster.monsterLevel}}
       </ion-col>
       <ion-col col-3>
-        <button ion-button icon-only full (click)="removeDefeatedMonster(huntedMonster)">
-          <ion-icon name="remove-circle"></ion-icon>
-        </button>
+        <ion-button expand="full"(click)="removeDefeatedMonster(huntedMonster)">
+          <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-item>

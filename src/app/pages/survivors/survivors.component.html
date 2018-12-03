@@ -13,9 +13,9 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <button *ngIf="settlement" ion-button icon-only full (click)="addSurvivor()">
-    <ion-icon name="add-circle"></ion-icon>
-  </button>
+  <ion-button *ngIf="settlement" expand="full"(click)="addSurvivor()">
+    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+  </ion-button>
   <ion-item *ngIf="survivorsCheck()">
     <ion-textarea autoresize readonly
                   placeholder="There are more Survivors alive than population would allow"></ion-textarea>
@@ -40,9 +40,9 @@
           </ion-item>
         </ion-col>
         <ion-col style="width: 20%">
-          <button ion-button icon-only full (click)="removeSurvivor(survivor)">
-            <ion-icon name="remove-circle"></ion-icon>
-          </button>
+          <ion-button expand="full"(click)="removeSurvivor(survivor)">
+            <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

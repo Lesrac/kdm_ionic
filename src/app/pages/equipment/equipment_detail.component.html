@@ -8,9 +8,9 @@
 
 <ion-content padding>
   <ion-item no-lines>
-    <button ion-button icon-only full (click)="swapEquipment()">
-      <ion-icon name="swap"></ion-icon>
-    </button>
+    <ion-button expand="full"(click)="swapEquipment()">
+      <ion-icon slot="icon-only" name="swap"></ion-icon>
+    </ion-button>
   </ion-item>
   <ion-card-title>{{equipment.name}}</ion-card-title>
   <ion-list-header>

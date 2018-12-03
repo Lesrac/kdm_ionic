@@ -4,12 +4,12 @@
       Timeline
     </ion-title>
     <ion-buttons end>
-      <button ion-button small clear (click)="addTimelineEvent()">
+      <ion-button small clear (click)="addTimelineEvent()">
         <ion-icon name="add-circle"></ion-icon>
-      </button>
-      <button ion-button small clear (click)="changeReorder()">
+      </ion-button>
+      <ion-button small clear (click)="changeReorder()">
         {{reorderActivityName}}
-      </button>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -26,12 +26,12 @@
           </ion-label>
         </ion-item>
         <ion-item-options side="right">
-          <button ion-button (click)="changeTimelineEvent(timelineevent)">
+          <ion-button (click)="changeTimelineEvent(timelineevent)">
             <ion-icon name="swap"></ion-icon>
-          </button>
-          <button ion-button color="danger" (click)="removeTimelineEvent(timelineevent)">
+          </ion-button>
+          <ion-button color="danger" (click)="removeTimelineEvent(timelineevent)">
             <ion-icon name="remove-circle"></ion-icon>
-          </button>
+          </ion-button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-item-group>

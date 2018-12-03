@@ -8,9 +8,9 @@
 
 <ion-content padding>
   <ion-item>
-    <button id="add_object_button" ion-button icon-only full (click)="addObject()">
-      <ion-icon name="add-circle"></ion-icon>
-    </button>
+    <ion-button id="add_object_button" expand="full"(click)="addObject()">
+      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+    </ion-button>
   </ion-item>
   <ion-item *ngFor="let object of objects">
     <ion-row>
@@ -18,9 +18,9 @@
         {{object.name}}
       </ion-col>
       <ion-col>
-        <button ion-button icon-only full (click)="removeObject(object)">
-          <ion-icon name="remove-circle"></ion-icon>
-        </button>
+        <ion-button expand="full"(click)="removeObject(object)">
+          <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-item>
