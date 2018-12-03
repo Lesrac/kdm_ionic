@@ -19,6 +19,7 @@ import { EquipmentCardComponent } from '../equipment/equipment-card.component';
 import { EquipmentGridPageComponent } from '../equipment/equipment-grid.component';
 import { EquipmentDetailPageComponent } from '../equipment/equipment_detail.component';
 import { ShowLocationDetailComponent } from '../location/show-location-detail.component';
+import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { ShowLocationDetailComponent } from '../location/show-location-detail.co
   declarations: [SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, TimelineEventModalComponent,
     AddTimelineEventModalComponent, PrinciplesPageComponent, PrincipleChooserPageComponent, PrincipleDetailComponent,
     DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent, EquipmentCardComponent, EquipmentListPageComponent,
-    EquipmentDetailPageComponent, ShowLocationDetailComponent],
+    EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
+  entryComponents: [CreateSettlementModalComponent],
 })
 export class SettlementsPageModule {
 }

@@ -7,16 +7,16 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-label color="primary" floating>Settlement Name</ion-label>
+      <ion-label color="primary" position="floating">Settlement Name</ion-label>
       <ion-input [(ngModel)]="settlementName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" floating>Number of Survivors</ion-label>
+      <ion-label color="primary" position="floating">Number of Survivors</ion-label>
       <ion-input type="number" min="0" [(ngModel)]="population"></ion-input>
     </ion-item>
   </ion-list>
   <ion-item>
-    <ion-button expand="full"id="button-add" (click)="addClose()">Add</ion-button>
-    <ion-button expand="full"color="secondary" (click)="close()">Cancel</ion-button>
+    <ion-button expand="full" id="button-add" (click)="addClose()">Add</ion-button>
+    <ion-button expand="full" color="secondary" (click)="close()">Cancel</ion-button>
   </ion-item>
 </ion-content>

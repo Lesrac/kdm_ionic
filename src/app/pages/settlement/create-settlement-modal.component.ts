@@ -9,6 +9,7 @@ import { HuntableMonster } from '../../model/linking/huntable-monster';
 import { Location } from '../../model/location';
 import { SettlementMilestone } from '../../model/linking/settlement-milestone';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'kdmf-modal-create-settlement',
@@ -18,10 +19,11 @@ export class CreateSettlementModalComponent {
   population: number;
   settlementName: string;
 
-  constructor(private kdmService: KDMDataService) {
+  constructor(public modalCtrl: ModalController, public kdmService: KDMDataService) {
   }
 
   close(): void {
+    this.modalCtrl.dismiss().then();
   }
 
   addClose(): void {
