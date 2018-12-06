@@ -3,11 +3,11 @@
     <ion-title>
       Timeline
     </ion-title>
-    <ion-buttons end>
-      <ion-button small clear (click)="addTimelineEvent()">
+    <ion-buttons slot="end">
+      <ion-button size="small" fill="clear" (click)="addTimelineEvent()">
         <ion-icon name="add-circle"></ion-icon>
       </ion-button>
-      <ion-button small clear (click)="changeReorder()">
+      <ion-button size="small" fill="clear" (click)="changeReorder()">
         {{reorderActivityName}}
       </ion-button>
     </ion-buttons>

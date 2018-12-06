@@ -9,6 +9,10 @@ import { SettlementPageComponent } from '../pages/settlement/settlement.componen
 import { TimelinePageComponent } from '../pages/timeline/timeline.component';
 import { HuntEventTablePageComponent } from '../pages/others/hunt_event_table/hunt-event-table.component';
 import { GlossaryPageComponent } from '../pages/others/glossary/glossary.component';
+import { BrainTraumaPageComponent } from '../pages/others/brain_trauma/brain-trauma.component';
+import { SevereInjuriesPageComponent } from '../pages/others/severe_injuries/severe-injuries.component';
+import { ShowdownsPageComponent } from '../pages/others/showdown/showdowns.component';
+import { StoryEventsPageComponent } from '../pages/others/story_events/story-events.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -26,22 +30,22 @@ const routes: Routes = [
       {
         path: 'settlements',
         outlet: 'settlements',
-   //     loadChildren: '../pages/settlements/settlements.module#SettlementsPageModule',
         component: SettlementsPageComponent,
-        children: [
-     //     {path: '', component: SettlementsPageComponent, pathMatch: 'full'},
-  //        {path: ':id/timeline', component: TimelinePageComponent},
-          {path: ':id', component: SettlementPageComponent},
-        ],
+      },
+      {
+        path: ':id',
+        outlet: 'settlements',
+        component: SettlementPageComponent,
+      },
+      {
+        path: ':id/timeline',
+        outlet: 'settlements',
+        component: TimelinePageComponent,
       },
       {
         path: 'others',
         outlet: 'others',
-   //     loadChildren: '../pages/others/others.module#OthersPageModule',
         component: OthersPageComponent,
-        children: [
-          {path: 'glossary', component: GlossaryPageComponent},
-        ],
       },
       {
         path: 'huntEvents',
@@ -49,10 +53,34 @@ const routes: Routes = [
         component: HuntEventTablePageComponent,
       },
       {
+        path: 'glossary',
+        outlet: 'others',
+        component: GlossaryPageComponent,
+      },
+      {
+        path: 'brainTrauma',
+        outlet: 'others',
+        component: BrainTraumaPageComponent,
+      },
+      {
+        path: 'severeInjuries',
+        outlet: 'others',
+        component: SevereInjuriesPageComponent,
+      },
+      {
+        path: 'showdowns',
+        outlet: 'others',
+        component: ShowdownsPageComponent,
+      },
+      {
+        path: 'storyEvents',
+        outlet: 'others',
+        component: StoryEventsPageComponent,
+      },
+      {
         path: 'survivors',
         outlet: 'survivors',
         component: SurvivorsPageComponent,
-   //     loadChildren: '../pages/survivors/survivors.module#SurvivorsPageModule',
       },
     ],
   },
@@ -62,31 +90,6 @@ const routes: Routes = [
     pathMatch: 'full',
   },
 ];
-
-/*
-{
-    path: 'kdm',
-    children: [
-      {
-        path: 'settlements',
-        loadChildren: './pages/settlements/settlements.module#SettlementsPageModule',
-      },
-      {
-        path: 'other',
-        loadChildren: './pages/others/others.module#OthersPageModule',
-      },
-      {
-        path: 'survivors',
-        loadChildren: './pages/survivors/survivors.module#SurvivorsPageModule',
-      },
-    ],
-  },
-  {
-    path: '',
-    redirectTo: 'kdm/settlements',
-    pathMatch: 'full',
-  },
- */
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
 import { KDMDBService } from '../../../service/kdm-db.service';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { Monster } from '../../../model/monster';
@@ -15,7 +14,7 @@ export class ShowdownsPageComponent implements OnInit {
 
   showdownMonsters: Monster[] = [];
 
-  constructor(public router: Router, public params: NavParams, private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
+  constructor(public router: Router, private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
   }
 
   ngOnInit(): void {
