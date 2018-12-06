@@ -11,7 +11,7 @@
     <ion-item *ngFor="let element of location.manufacturingObjects | kdmfMapValuesPipe">
       <ion-row>
         <ion-col>
-          <ion-item no-lines text-wrap>{{element.equipment.name}}</ion-item>
+          <ion-item lines="none" text-wrap>{{element.equipment.name}}</ion-item>
         </ion-col>
         <ion-col>
           <ng-container *ngFor="let cost of element.costs | kdmfFilterElementsPipe:'object'">

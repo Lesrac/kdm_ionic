@@ -14,8 +14,8 @@
 
 <ion-content>
   <ion-list *ngFor="let huntEvent of filteredHuntEvents">
-    <ion-item no-lines>{{huntEvent.rollResult}} | {{huntEvent.name}}</ion-item>
-    <ion-item text-wrap no-lines>
+    <ion-item lines="none">{{huntEvent.rollResult}} | {{huntEvent.name}}</ion-item>
+    <ion-item text-wrap lines="none">
       <div [innerHTML]="huntEvent.description | kdmTextFormatting"></div>
     </ion-item>
     <ion-item-divider small></ion-item-divider>

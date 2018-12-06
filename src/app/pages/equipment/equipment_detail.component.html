@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item no-lines>
+  <ion-item lines="none">
     <ion-button expand="full" (click)="swapEquipment()">
       <ion-icon slot="icon-only" name="swap"></ion-icon>
     </ion-button>
@@ -19,7 +19,7 @@
   <ion-list-header>
     <ion-label>Description</ion-label>
   </ion-list-header>
-  <ion-item text-wrap no-lines>
+  <ion-item text-wrap lines="none">
     <div [innerHTML]="equipment.description | kdmTextFormatting"></div>
   </ion-item>
   <ion-list-header *ngIf="isWeapon() || isArmor()">

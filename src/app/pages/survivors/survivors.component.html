@@ -31,7 +31,7 @@
           <span>{{survivor.name}}</span>
         </ion-col>
         <ion-col>
-          <ion-item no-lines>
+          <ion-item lines="none">
             <ion-toggle [(ngModel)]="survivor.isAlive"></ion-toggle>
             <ng-template #isDead>
               <ion-label>is dead</ion-label>

@@ -3,7 +3,6 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OthersPageComponent } from './others.component';
-import { RouterModule } from '@angular/router';
 import { ParentModule } from '../../util/parent.module';
 import { DefeatedMonsterModalComponent } from '../defeated_monster/defeated-monster-modal.component';
 import { StorageModalComponent } from '../storage/storage-modal.component';
@@ -24,11 +23,6 @@ import { SevereInjuriesPageComponent } from './severe_injuries/severe-injuries.c
     CommonModule,
     ParentModule,
     FormsModule,
-    RouterModule.forChild([
-      {path: '', component: OthersPageComponent, pathMatch: 'full'},
-      {path: 'huntEvents', component: HuntEventTablePageComponent},
-      {path: 'glossary', component: GlossaryPageComponent},
-      ]),
   ],
   declarations: [OthersPageComponent, ShowdownsPageComponent, ShowdownPageComponent, AddedResourcesModalComponent,
     DefeatedMonsterModalComponent, StorageModalComponent, BrainTraumaPageComponent, GlossaryPageComponent, HuntEventTablePageComponent,
