@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/kdm/(settlements:settlements)"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       <ion-item *ngIf="settlement$ | async as settlement">
         <ion-input required [(ngModel)]="settlement.name" lines="none"></ion-input>
       </ion-item>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/kdm/(settlements:settlements)"></ion-back-button>
-      </ion-buttons>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -41,7 +41,7 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button id="button_show_timeline" expand="full" (click)="showTimeline()">
+      <ion-button id="button_show_timeline" expand="full" href="/kdm/(settlements:{{settlement.id}}/timeline">
         Timeline
       </ion-button>
     </ion-item-group>

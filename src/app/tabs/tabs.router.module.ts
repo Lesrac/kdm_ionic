@@ -14,6 +14,7 @@ import { SevereInjuriesPageComponent } from '../pages/others/severe_injuries/sev
 import { ShowdownsPageComponent } from '../pages/others/showdown/showdowns.component';
 import { StoryEventsPageComponent } from '../pages/others/story_events/story-events.component';
 import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe-injuries-detail.component';
+import { ShowdownPageComponent } from '../pages/others/showdown/showdown.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -102,6 +103,11 @@ const routes: Routes = [
         path: 'showdowns',
         outlet: 'others',
         component: ShowdownsPageComponent,
+      },
+      {
+        path: 'showdowns/:id',
+        outlet: 'others',
+        component: ShowdownPageComponent,
       },
       {
         path: 'storyEvents',

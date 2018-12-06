@@ -54,10 +54,6 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     }
   }
 
-  showTimeline(): void {
-    this.router.navigate(['kdm', 'settlements', this.settlementLocal.id, 'timeline']).then();
-  }
-
   showDefeatedMonsters(): void {
     this.router.navigate(['/defeatedMonsters', {
       settlement: this.settlement$,

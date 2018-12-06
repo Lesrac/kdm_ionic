@@ -19,7 +19,6 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   addSettlement(): void {
-    console.log('add Settlement');
     this.modalCtrl.create({component: CreateSettlementModalComponent}).then(modal => modal.present());
   }
 

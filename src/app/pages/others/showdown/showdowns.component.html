@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/kdm/(others:showdowns)"></ion-back-button>
+      <ion-back-button defaultHref="/kdm/(others:others)"></ion-back-button>
     </ion-buttons>
     <ion-title>
       Showdowns
@@ -10,12 +10,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let showdown of showdownMonsters; let even=even; let odd=odd"
-            [ngClass]="{ odd: odd, even: even }" lines="none">
-    <ion-row class="container">
-      <ion-col (click)="goToDetail(showdown)">
-        {{showdown.name}}
-      </ion-col>
-    </ion-row>
-  </ion-item>
+  <ion-list lines="none">
+    <ion-item *ngFor="let showdown of showdownMonsters; let even=even; let odd=odd"
+              [ngClass]="{ odd: odd, even: even }" href="/kdm/(others:showdowns/{{showdown.id}}">
+      {{showdown.name}}
+    </ion-item>
+  </ion-list>
 </ion-content>
