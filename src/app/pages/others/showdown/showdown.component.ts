@@ -12,9 +12,8 @@ import { Observable } from 'rxjs/internal/Observable';
   selector: 'kdmf-page-showdown',
   templateUrl: 'showdown.component.html',
 })
-export class ShowdownPageComponent implements OnInit{
+export class ShowdownPageComponent implements OnInit {
 
- // monster: Monster;
   monster$: Observable<Monster>;
 
   constructor(public route: ActivatedRoute, public kdmData: KDMDataService) {

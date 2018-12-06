@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="settlement$ | async">
   <ion-item>
     <ion-button id="add_object_button" expand="full" (click)="addObject()">
       <ion-icon slot="icon-only" name="add-circle"></ion-icon>

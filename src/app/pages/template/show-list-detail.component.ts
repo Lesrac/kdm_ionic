@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { BaseModel } from '../../model/base-model';
+import { ShowListTypes } from '../../model/show-list-types';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { KDMDataService } from '../../service/kdm-data.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { switchMap } from 'rxjs/operators';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -8,12 +12,33 @@ import { BaseModel } from '../../model/base-model';
 @Component({
   selector: 'kdmf-show-list-detail', templateUrl: 'show-list-detail.component.html',
 })
-export class ShowListDetailComponent {
+export class ShowListDetailComponent implements OnInit {
 
-  object: BaseModel;
+  object$: Observable<BaseModel>;
+  type: string;
 
-  constructor(private params: NavParams) {
-    this.object = this.params.get('object');
+  constructor(public route: ActivatedRoute, public kdmData: KDMDataService) {
+  }
+
+  ngOnInit(): void {
+    this.setup();
+  }
+
+  private setup(): void {
+    this.route.data.subscribe(data => this.type = data.type);
+    switch (this.type) {
+      case ShowListTypes.FIGHTINGART:
+        break;
+      case ShowListTypes.DISORDER:
+        break;
+      case ShowListTypes.INNOVATION:
+        this.object$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.kdmData.getInnovation(params.get('name'))));
+        break;
+      case ShowListTypes.EQUIPMENT:
+        break;
+      default:
+        console.error('Type doesn\'t exist in show list detail: ' + this.type);
+    }
   }
 
 }

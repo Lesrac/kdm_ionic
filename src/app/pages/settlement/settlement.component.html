@@ -27,21 +27,24 @@
           <ion-item-divider>
             Population
           </ion-item-divider>
-          <kdmf-input-number id="population" [value]="settlement.population" (change)="populationChange($event)">
+          <kdmf-input-number id="population" [value]="settlement.population"
+                             (change)="populationChange($event)">
           </kdmf-input-number>
         </ion-col>
         <ion-col>
           <ion-item-divider>
             Death Count
           </ion-item-divider>
-          <kdmf-input-number id="deathcount" [value]="settlement.deathcount" (change)="deathcountChange($event)">
+          <kdmf-input-number id="deathcount" [value]="settlement.deathcount"
+                             (change)="deathcountChange($event)">
           </kdmf-input-number>
         </ion-col>
       </ion-row>
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button id="button_show_timeline" expand="full" href="/kdm/(settlements:{{settlement.id}}/timeline">
+      <ion-button id="button_show_timeline" expand="full"
+                  href="/kdm/(settlements:{{settlement.id}}/timeline">
         Timeline
       </ion-button>
     </ion-item-group>
@@ -96,7 +99,8 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button id="button_show_innovations" expand="full" (click)="showInnovations()">
+      <ion-button id="button_show_innovations" expand="full"
+                  href="/kdm/(settlements:{{settlement.id}}/innovations">
         Innovations
       </ion-button>
     </ion-item-group>
@@ -108,7 +112,8 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button id="button_show_settlement_locations" expand="full" (click)="showSettlementLocations()">
+      <ion-button id="button_show_settlement_locations" expand="full"
+                  (click)="showSettlementLocations()">
         Settlement Locations
       </ion-button>
     </ion-item-group>

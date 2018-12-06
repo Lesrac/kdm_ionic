@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Settlement } from '../../model/settlement';
 import { KDMDataService } from '../../service/kdm-data.service';
 import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 /**
  * Created by Daniel on 27.01.2017.
@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SettlementsPageComponent implements OnInit {
   settlements: Settlement[] = [];
 
-  constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController, private alertCtrl: AlertController, private kdmService: KDMDataService) {
+  constructor(public router: Router, public modalCtrl: ModalController, public alertCtrl: AlertController, public kdmService: KDMDataService) {
   }
 
   addSettlement(): void {

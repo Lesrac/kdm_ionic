@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { SettlementsPageComponent } from './settlements.component';
 import { SettlementPageComponent } from '../settlement/settlement.component';
 import { TimelinePageComponent } from '../timeline/timeline.component';
@@ -20,6 +19,7 @@ import { EquipmentGridPageComponent } from '../equipment/equipment-grid.componen
 import { EquipmentDetailPageComponent } from '../equipment/equipment_detail.component';
 import { ShowLocationDetailComponent } from '../location/show-location-detail.component';
 import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
+import { ShowListAddModalComponent } from '../template/show-list-add-modal.component';
 
 @NgModule({
   imports: [
@@ -28,17 +28,12 @@ import { CreateSettlementModalComponent } from '../settlement/create-settlement-
     FormsModule,
     ReactiveFormsModule,
     ParentModule,
-    RouterModule.forChild([
-  //    {path: ':id/timeline', component: TimelinePageComponent},
-  //    {path: ':id', component: SettlementPageComponent},
-  //    {path: '', component: SettlementsPageComponent, pathMatch: 'full'},
-    ]),
   ],
   declarations: [SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, TimelineEventModalComponent,
     AddTimelineEventModalComponent, PrinciplesPageComponent, PrincipleChooserPageComponent, PrincipleDetailComponent,
     DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent, EquipmentCardComponent, EquipmentListPageComponent,
     EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
-  entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent],
+  entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent, ShowListAddModalComponent],
 })
 export class SettlementsPageModule {
 }

@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title *ngIf="object$ | async as object">
       {{object.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item text-wrap>
+  <ion-item text-wrap *ngIf="object$ | async as object">
     <span [innerHTML]="object.description | kdmTextFormatting"></span>
   </ion-item>
 </ion-content>

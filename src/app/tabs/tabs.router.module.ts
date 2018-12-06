@@ -15,6 +15,9 @@ import { ShowdownsPageComponent } from '../pages/others/showdown/showdowns.compo
 import { StoryEventsPageComponent } from '../pages/others/story_events/story-events.component';
 import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe-injuries-detail.component';
 import { ShowdownPageComponent } from '../pages/others/showdown/showdown.component';
+import { ShowListComponent } from '../pages/template/show-list.component';
+import { ShowListTypes } from '../model/show-list-types';
+import { ShowListDetailComponent } from '../pages/template/show-list-detail.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -43,6 +46,18 @@ const routes: Routes = [
         path: ':id/timeline',
         outlet: 'settlements',
         component: TimelinePageComponent,
+      },
+      {
+        path: ':id/innovations',
+        outlet: 'settlements',
+        component: ShowListComponent,
+        data: { type: ShowListTypes.INNOVATION },
+      },
+      {
+        path: ':id/innovations/:name',
+        outlet: 'settlements',
+        component: ShowListDetailComponent,
+        data: { type: ShowListTypes.INNOVATION },
       },
       {
         path: 'others',
