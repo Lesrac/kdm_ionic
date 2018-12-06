@@ -13,6 +13,7 @@ import { BrainTraumaPageComponent } from '../pages/others/brain_trauma/brain-tra
 import { SevereInjuriesPageComponent } from '../pages/others/severe_injuries/severe-injuries.component';
 import { ShowdownsPageComponent } from '../pages/others/showdown/showdowns.component';
 import { StoryEventsPageComponent } from '../pages/others/story_events/story-events.component';
+import { SevereInjuriesDetailPageComponent } from '../pages/others/severe_injuries/severe-injuries-detail.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -66,6 +67,36 @@ const routes: Routes = [
         path: 'severeInjuries',
         outlet: 'others',
         component: SevereInjuriesPageComponent,
+      },
+      {
+        path: 'severeInjuries/head',
+        outlet: 'others',
+        data: {bodypart: 'HEAD'},
+        component: SevereInjuriesDetailPageComponent,
+      },
+      {
+        path: 'severeInjuries/arms',
+        outlet: 'others',
+        data: {bodypart: 'ARMS'},
+        component: SevereInjuriesDetailPageComponent,
+      },
+      {
+        path: 'severeInjuries/body',
+        outlet: 'others',
+        data: {bodypart: 'BODY'},
+        component: SevereInjuriesDetailPageComponent,
+      },
+      {
+        path: 'severeInjuries/waist',
+        outlet: 'others',
+        data: {bodypart: 'WAIST'},
+        component: SevereInjuriesDetailPageComponent,
+      },
+      {
+        path: 'severeInjuries/legs',
+        outlet: 'others',
+        data: {bodypart: 'LEGS'},
+        component: SevereInjuriesDetailPageComponent,
       },
       {
         path: 'showdowns',

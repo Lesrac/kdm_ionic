@@ -14,10 +14,5 @@ export class SevereInjuriesPageComponent {
   text3: string = 'Some permanent injuries have limits to how many times they can be recorded. If a survivor suffers' + ' a severe injury that they have already recorded the maximum number of times, they instead gain 1 bleeding token.';
 
   constructor(public router: Router) {
-
-  }
-
-  goToDetail(bodypart: string): void {
-    this.router.navigate(['severeInjury', {bodypart: bodypart}]).then();
   }
 }
