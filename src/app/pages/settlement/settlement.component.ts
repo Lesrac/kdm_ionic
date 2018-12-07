@@ -33,7 +33,6 @@ export class SettlementPageComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    console.log(this.route.paramMap);
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
         const stlmt = this.kdmService.getSettlement(+params.get('id'));
         stlmt.then(settlement => {

@@ -352,7 +352,6 @@ export class KDMDataService {
   }
 
   getSettlementLocations(): Promise<Location[]> {
-    console.log(this.locations);
     if (this.locations.length < 1) {
       return new Promise<Location[]>(resolve => {
         this.http.get<LocationJSON[]>(this.locationsURL).subscribe(res => {

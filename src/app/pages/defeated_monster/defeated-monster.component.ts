@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { DefeatedMonsterModalComponent } from './defeated-monster-modal.component';
 import { Settlement } from '../../model/settlement';
 import { HuntedMonster } from '../../model/linking/hunted-monster';
-import { KDMDBService } from '../../service/kdm-db.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { KDMDataService } from '../../service/kdm-data.service';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -12,24 +14,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'kdmf-page-defeated-monster', templateUrl: 'defeated-monster.component.html',
 })
-export class DefeatedMonsterPageComponent {
+export class DefeatedMonsterPageComponent implements OnInit {
 
-  settlement: Settlement;
+  settlementLocal: Settlement;
+  settlement$: Observable<Settlement>;
   countedHuntedMonsters: number;
 
-  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController, private kdmdbService: KDMDBService) {
-    this.settlement = params.get('settlement');
+  constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController, public kdmData: KDMDataService) {
+  }
+
+  ngOnInit(): void {
+    this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+        const stlmt = this.kdmData.getSettlement(+params.get('id'));
+        stlmt.then(settlement => this.settlementLocal = settlement);
+        return stlmt;
+      },
+    ));
   }
 
   addDefeatedMonster(): void {
-    this.countedHuntedMonsters = this.settlement.huntedMonsters.length;
+    this.countedHuntedMonsters = this.settlementLocal.huntedMonsters.length;
     this.modalCtrl.create({
       component: DefeatedMonsterModalComponent, componentProps: {
-        settlement: this.settlement,
-      }
+        settlement: this.settlementLocal,
+      },
     }).then(modal => modal.present());
     /* TODO   modal.onDidDismiss(() => {
-         const huntedMonsters = this.settlement$.huntedMonsters;
+         const huntedMonsters = this.settlementLocal$.huntedMonsters;
          const huntedMonstersCount: number = huntedMonsters.length;
          if (huntedMonstersCount > this.countedHuntedMonsters) {
            const huntedMonster: HuntedMonster = huntedMonsters[huntedMonstersCount - 1];
@@ -48,8 +59,8 @@ export class DefeatedMonsterPageComponent {
   }
 
   removeDefeatedMonster(huntedMonster: HuntedMonster): void {
-    const index = this.settlement.huntedMonsters.findIndex(hMonster => hMonster === huntedMonster);
-    this.settlement.huntedMonsters.splice(index, 1);
+    const index = this.settlementLocal.huntedMonsters.findIndex(hMonster => hMonster === huntedMonster);
+    this.settlementLocal.huntedMonsters.splice(index, 1);
     // todo check and change isDefeatedLvl
   }
 }

@@ -6,13 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="settlement$ | async">
   <ion-item>
     <ion-button (click)="addDefeatedMonster()">
       <ion-icon slot="icon-only" name="add-circle"></ion-icon>
     </ion-button>
   </ion-item>
-  <ion-item *ngFor="let huntedMonster of settlement.huntedMonsters">
+  <ion-item *ngFor="let huntedMonster of settlementLocal.huntedMonsters">
     <ion-row>
       <ion-col>
         {{huntedMonster.monster.name}} - Level {{huntedMonster.monsterLevel}}

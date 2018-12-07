@@ -22,6 +22,7 @@ import { PrinciplesPageComponent } from '../pages/principle/principles.component
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 import { PrincipleChooserPageComponent } from '../pages/principle/principle-chooser.component';
 import { ShowLocationDetailComponent } from '../pages/location/show-location-detail.component';
+import { DefeatedMonsterPageComponent } from '../pages/defeated_monster/defeated-monster.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -88,6 +89,11 @@ const routes: Routes = [
         path: ':id/locations/:name',
         outlet: 'settlements',
         component: ShowLocationDetailComponent,
+      },
+      {
+        path: ':id/defeatedMonsters',
+        outlet: 'settlements',
+        component: DefeatedMonsterPageComponent,
       },
       {
         path: 'others',

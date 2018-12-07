@@ -66,9 +66,9 @@ describe('Defeated Monster Component', () => {
     settlement.addHuntedMonster(huntedMonster2);
     settlement.addHuntedMonster(huntedMonster3);
     defeatedMonsterComponent.removeDefeatedMonster(huntedMonster2);
-    expect(defeatedMonsterComponent.settlement.huntedMonsters.length).toBe(2);
-    expect(defeatedMonsterComponent.settlement.huntedMonsters).toContain(huntedMonster1);
-    expect(defeatedMonsterComponent.settlement.huntedMonsters).toContain(huntedMonster3);
+    expect(defeatedMonsterComponent.settlementLocal.huntedMonsters.length).toBe(2);
+    expect(defeatedMonsterComponent.settlementLocal.huntedMonsters).toContain(huntedMonster1);
+    expect(defeatedMonsterComponent.settlementLocal.huntedMonsters).toContain(huntedMonster3);
   });
 
   it('add defeated monster', () => {
@@ -77,7 +77,7 @@ describe('Defeated Monster Component', () => {
     const spyModalOnDidDismiss = spyOn(modalMock, 'onDidDismiss').and.callThrough();
     defeatedMonsterComponent.addDefeatedMonster();
     expect(spyModalCtrlCreate).toHaveBeenCalledWith(DefeatedMonsterModalComponent, {
-        settlement: defeatedMonsterComponent.settlement,
+        settlement: defeatedMonsterComponent.settlementLocal,
       },
     );
     expect(spyModalPresent).toHaveBeenCalled();

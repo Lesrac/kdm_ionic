@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { HuntedMonster } from '../../model/linking/hunted-monster';
 import { Storage } from '../../model/storage';
 import { Router } from '@angular/router';
@@ -14,11 +14,12 @@ export class AddedResourcesModalComponent {
 
   huntedMonster: HuntedMonster;
 
-  constructor(public router: Router, public params: NavParams) {
+  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController) {
     this.huntedMonster = this.params.get('huntedMonster');
   }
 
   close(): void {
+    this.modalCtrl.dismiss().then();
   }
 
   showDetail(storageItem: Storage): void {
