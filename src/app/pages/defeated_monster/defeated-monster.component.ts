@@ -7,6 +7,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { FormattedTextModalComponent } from '../template/formatted-text-modal.component';
+import { AddedResourcesModalComponent } from './added-resources-modal.component';
 
 /**
  * Created by Daniel on 12.02.2017.
@@ -38,24 +40,28 @@ export class DefeatedMonsterPageComponent implements OnInit {
       component: DefeatedMonsterModalComponent, componentProps: {
         settlement: this.settlementLocal,
       },
-    }).then(modal => modal.present());
-    /* TODO   modal.onDidDismiss(() => {
-         const huntedMonsters = this.settlementLocal$.huntedMonsters;
-         const huntedMonstersCount: number = huntedMonsters.length;
-         if (huntedMonstersCount > this.countedHuntedMonsters) {
-           const huntedMonster: HuntedMonster = huntedMonsters[huntedMonstersCount - 1];
-           modal = this.modalCtrl.create(FormattedTextModalComponent, {
-             title: 'Defeated ' + huntedMonster.monster.name, text: huntedMonster.monster.rewardText,
-           });
-           modal.present();
-           if (huntedMonsters[huntedMonstersCount - 1].huntedResources.length > 0) {
-             modal = this.modalCtrl.create(AddedResourcesModalComponent, {
-               huntedMonster: huntedMonster,
-             });
-             modal.present();
-           }
-         }
-       }); */
+    }).then((modal: HTMLIonModalElement) => {
+      modal.present();
+      modal.onDidDismiss().then(() => {
+        const huntedMonsters = this.settlementLocal.huntedMonsters;
+        const huntedMonstersCount: number = huntedMonsters.length;
+        if (huntedMonstersCount > this.countedHuntedMonsters) {
+          const huntedMonster: HuntedMonster = huntedMonsters[huntedMonstersCount - 1];
+          this.modalCtrl.create({
+            component: FormattedTextModalComponent, componentProps: {
+              title: 'Defeated ' + huntedMonster.monster.name, text: huntedMonster.monster.rewardText,
+            },
+          }).then(mod => {
+            mod.present();
+            if (huntedMonsters[huntedMonstersCount - 1].huntedResources.length > 0) {
+              this.modalCtrl.create({component: AddedResourcesModalComponent, componentProps: {
+                  huntedMonster: huntedMonster,
+                }}).then(dal => dal.present());
+            }
+          });
+        }
+      });
+    });
   }
 
   removeDefeatedMonster(huntedMonster: HuntedMonster): void {

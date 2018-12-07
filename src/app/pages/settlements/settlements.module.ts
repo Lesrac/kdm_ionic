@@ -21,6 +21,8 @@ import { ShowLocationDetailComponent } from '../location/show-location-detail.co
 import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
 import { ShowListAddModalComponent } from '../template/show-list-add-modal.component';
 import { DefeatedMonsterModalComponent } from '../defeated_monster/defeated-monster-modal.component';
+import { FormattedTextModalComponent } from '../template/formatted-text-modal.component';
+import { AddedResourcesModalComponent } from '../defeated_monster/added-resources-modal.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,8 @@ import { DefeatedMonsterModalComponent } from '../defeated_monster/defeated-mons
     AddTimelineEventModalComponent, PrinciplesPageComponent, PrincipleChooserPageComponent, PrincipleDetailComponent,
     DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent, EquipmentCardComponent, EquipmentListPageComponent,
     EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
-  entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent, ShowListAddModalComponent, DefeatedMonsterModalComponent],
+  entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent, ShowListAddModalComponent, DefeatedMonsterModalComponent,
+    FormattedTextModalComponent, AddedResourcesModalComponent],
 })
 export class SettlementsPageModule {
 }
