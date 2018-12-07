@@ -1,5 +1,7 @@
 <ion-header>
   <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/kdm/(settlements:{{settlement.id}})"
+                     *ngIf="settlement$ | async as settlement"></ion-back-button>
     <ion-title>
       Defeated Monsters
     </ion-title>
