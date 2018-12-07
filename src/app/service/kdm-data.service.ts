@@ -542,6 +542,21 @@ export class KDMDataService {
     }
   }
 
+  getPrincipleTypeByName(name: string): Promise<PrincipleType> {
+    return Promise.resolve(this.principleTypes.find(type => type.name === name));
+  }
+
+  getPrinciplesWithTypeName(principleTypeName: string): Promise<Principle[]> {
+    return this.getPrinciples().then(principles =>
+      principles.filter(principle => {
+        if (!principle.type) {
+          return false;
+        }
+        return principle.type.name === principleTypeName;
+      }),
+    );
+  }
+
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {
     return this.getPrinciples().then(principles =>
       principles.filter(principle => {

@@ -1,19 +1,23 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="settlement$ | async">
+      <ion-back-button defaultHref="/kdm/(settlements:{{settlement.id}})"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Settlement Principles
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="settlement$ | async">
   <ion-item *ngFor="let principleType of allPrincipleTypes">
     <ion-row>
       <ion-col>
         <ion-item lines="none">
           {{principleType.name}} principle:
         </ion-item>
-        <ion-item *ngIf="principleIsChosen(principleType)" (click)="showDetail(principleType)" lines="none">
+        <ion-item *ngIf="principleIsChosen(principleType)" lines="none"
+                  href="/kdm/(settlements:{{settlement.id}}/principles/{{principleType.name}}">
           {{getPrincipleName(principleType)}}
         </ion-item>
       </ion-col>
@@ -24,7 +28,10 @@
       </ion-col>
       <ng-template #principleNotChosen>
         <ion-col>
-          <ion-button expand="full" (click)="selectPrinciple(principleType)">Choose</ion-button>
+          <ion-button expand="full"
+                      href="/kdm/(settlements:{{settlement.id}}/principles/{{principleType.name}}/chooser">
+            Choose
+          </ion-button>
         </ion-col>
       </ng-template>
     </ion-row>

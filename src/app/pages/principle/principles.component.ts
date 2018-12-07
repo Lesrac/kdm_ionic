@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { Principle, PrincipleType } from '../../model/principle';
 import { KDMDataService } from '../../service/kdm-data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -14,25 +15,23 @@ import { Router } from '@angular/router';
 export class PrinciplesPageComponent implements OnInit {
 
   settlement: Settlement;
+  settlement$: Observable<Settlement>;
   allPrincipleTypes: PrincipleType[];
 
-  constructor(public router: Router, public params: NavParams, private kdmData: KDMDataService) {
-    this.settlement = params.get('settlement');
-    console.log(this.settlement);
+  constructor(public router: Router, public route: ActivatedRoute, public kdmData: KDMDataService) {
   }
 
   ngOnInit(): void {
+    this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+      const obsSettlement = this.kdmData.getSettlement(+params.get('id'));
+      obsSettlement.then(stlmnt => this.settlement = stlmnt);
+      return obsSettlement;
+    }));
     this.kdmData.getPrincipleTypes().then(principleTypes => this.allPrincipleTypes = principleTypes);
   }
 
   principleIsChosen(type: PrincipleType): boolean {
     return this.settlement.principles.find((principle: Principle) => principle.type.name == type.name) != null;
-  }
-
-  selectPrinciple(type: PrincipleType): void {
-    this.router.navigate(['/principleChooser', {
-      principleType: type, settlement: this.settlement,
-    }]).then();
   }
 
   removePrinciple(type: PrincipleType): void {
@@ -50,12 +49,12 @@ export class PrinciplesPageComponent implements OnInit {
     return 'not chosen';
   }
 
-  showDetail(principleType: PrincipleType): void {
+/*  showDetail(principleType: PrincipleType): void {
     const principle: Principle = this.settlement.principles.find(princ => princ.type.name === principleType.name);
     if (principle) {
     }
     this.router.navigate(['/principleDetail', {
       principle: principle,
     }]).then();
-  }
+  } */
 }

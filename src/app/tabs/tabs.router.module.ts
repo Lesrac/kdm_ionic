@@ -18,6 +18,9 @@ import { ShowdownPageComponent } from '../pages/others/showdown/showdown.compone
 import { ShowListComponent } from '../pages/template/show-list.component';
 import { ShowListTypes } from '../model/show-list-types';
 import { ShowListDetailComponent } from '../pages/template/show-list-detail.component';
+import { PrinciplesPageComponent } from '../pages/principle/principles.component';
+import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
+import { PrincipleChooserPageComponent } from '../pages/principle/principle-chooser.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -58,6 +61,21 @@ const routes: Routes = [
         outlet: 'settlements',
         component: ShowListDetailComponent,
         data: { type: ShowListTypes.INNOVATION },
+      },
+      {
+        path: ':id/principles',
+        outlet: 'settlements',
+        component: PrinciplesPageComponent,
+      },
+      {
+        path: ':id/principles/:type/chooser',
+        outlet: 'settlements',
+        component: PrincipleChooserPageComponent,
+      },
+      {
+        path: ':id/principles/:type',
+        outlet: 'settlements',
+        component: PrincipleDetailComponent,
       },
       {
         path: 'others',

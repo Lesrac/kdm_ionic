@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="settlement$ | async">
+      <ion-back-button defaultHref="/kdm/(settlements:{{settlement.id}})"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Timeline
     </ion-title>

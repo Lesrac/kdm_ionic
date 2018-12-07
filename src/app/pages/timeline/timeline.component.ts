@@ -27,7 +27,7 @@ export class TimelinePageComponent implements OnInit {
       this.modalCtrl.create({
         component: TimelineEventModalComponent, componentProps: {
           lanternEvent: settlementTimeline.timeline.lanternEvent,
-        }
+        },
       }).then(modal => modal.present());
     }
     if (settlementTimeline.reached) {
@@ -79,7 +79,7 @@ export class TimelinePageComponent implements OnInit {
     this.modalCtrl.create({
       component: AddTimelineEventModalComponent, componentProps: {
         settlementTimeline: this.timeline,
-      }
+      },
     }).then(modal => modal.present());
   }
 
@@ -87,7 +87,7 @@ export class TimelinePageComponent implements OnInit {
     this.modalCtrl.create({
       component: AddTimelineEventModalComponent, componentProps: {
         settlementTimeline: this.timeline, replaceableTimeline: timelineevent,
-      }
+      },
     }).then(modal => modal.present());
   }
 
