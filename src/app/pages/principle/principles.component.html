@@ -17,7 +17,7 @@
           {{principleType.name}} principle:
         </ion-item>
         <ion-item *ngIf="principleIsChosen(principleType)" lines="none"
-                  href="/kdm/(settlements:{{settlement.id}}/principles/{{principleType.name}}">
+                  (click)="showDetail(principleType)">
           {{getPrincipleName(principleType)}}
         </ion-item>
       </ion-col>

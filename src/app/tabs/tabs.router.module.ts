@@ -73,7 +73,7 @@ const routes: Routes = [
         component: PrincipleChooserPageComponent,
       },
       {
-        path: ':id/principles/:type',
+        path: ':id/principles/:name',
         outlet: 'settlements',
         component: PrincipleDetailComponent,
       },

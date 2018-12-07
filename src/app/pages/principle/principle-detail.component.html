@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-buttons slot="start" *ngIf="settlement$ | async as settlement">
+      <ion-back-button defaultHref="/kdm/(settlements:{{settlement.id}}/principles)"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="principle$ | async as principle">
       {{principle.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item text-wrap>
+  <ion-item text-wrap *ngIf="principle$ | async as principle">
     <div [innerHTML]="principle.description | kdmTextFormatting"></div>
   </ion-item>
 </ion-content>

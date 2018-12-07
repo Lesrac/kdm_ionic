@@ -49,12 +49,8 @@ export class PrinciplesPageComponent implements OnInit {
     return 'not chosen';
   }
 
-/*  showDetail(principleType: PrincipleType): void {
+  showDetail(principleType: PrincipleType): void {
     const principle: Principle = this.settlement.principles.find(princ => princ.type.name === principleType.name);
-    if (principle) {
-    }
-    this.router.navigate(['/principleDetail', {
-      principle: principle,
-    }]).then();
-  } */
+    this.router.navigate(['kdm', {outlets: {settlements: [this.settlement.id, 'principles', principle.name]}}]).then();
+  }
 }
