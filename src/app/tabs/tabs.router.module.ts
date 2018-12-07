@@ -21,6 +21,7 @@ import { ShowListDetailComponent } from '../pages/template/show-list-detail.comp
 import { PrinciplesPageComponent } from '../pages/principle/principles.component';
 import { PrincipleDetailComponent } from '../pages/principle/principle_detail.component';
 import { PrincipleChooserPageComponent } from '../pages/principle/principle-chooser.component';
+import { ShowLocationDetailComponent } from '../pages/location/show-location-detail.component';
 
 // known bugs for lazy loading in aux outlets:
 // https://github.com/angular/angular/issues/10981
@@ -76,6 +77,17 @@ const routes: Routes = [
         path: ':id/principles/:name',
         outlet: 'settlements',
         component: PrincipleDetailComponent,
+      },
+      {
+        path: ':id/locations',
+        outlet: 'settlements',
+        component: ShowListComponent,
+        data: { type: ShowListTypes.LOCATION },
+      },
+      {
+        path: ':id/locations/:name',
+        outlet: 'settlements',
+        component: ShowLocationDetailComponent,
       },
       {
         path: 'others',

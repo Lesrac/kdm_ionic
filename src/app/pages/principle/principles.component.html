@@ -22,13 +22,13 @@
         </ion-item>
       </ion-col>
       <ion-col *ngIf="principleIsChosen(principleType); else principleNotChosen">
-        <ion-button expand="full" (click)="removePrinciple(principleType)">
+        <ion-button (click)="removePrinciple(principleType)">
           <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
         </ion-button>
       </ion-col>
       <ng-template #principleNotChosen>
         <ion-col>
-          <ion-button expand="full"
+          <ion-button
                       href="/kdm/(settlements:{{settlement.id}}/principles/{{principleType.name}}/chooser">
             Choose
           </ion-button>

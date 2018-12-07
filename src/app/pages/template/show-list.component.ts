@@ -21,10 +21,9 @@ export class ShowListComponent implements OnInit {
   type: ShowListTypes;
   title: string;
   settlement$: Observable<Settlement>;
-  settlement: Settlement;
+  localSettlement: Settlement;
 
   constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController, public kdmData: KDMDataService) {
-    /*   this.objects = params.get('objects'); */
   }
 
   ngOnInit(): void {
@@ -35,7 +34,7 @@ export class ShowListComponent implements OnInit {
     this.modalCtrl.create({
       component: ShowListAddModalComponent, componentProps: {
         objects: this.objects, type: this.type,
-      }
+      },
     }).then(modal => modal.present());
   }
 
@@ -51,12 +50,10 @@ export class ShowListComponent implements OnInit {
       case ShowListTypes.DISORDER:
         break;
       case ShowListTypes.INNOVATION:
-        this.router.navigate(['kdm', {outlets: {settlements: [this.settlement.id, 'innovations', object.name]}}]).then();
+        this.router.navigate(['kdm', {outlets: {settlements: [this.localSettlement.id, 'innovations', object.name]}}]).then();
         break;
       case ShowListTypes.LOCATION:
-        this.router.navigate(['/showLocationDetail', {
-          object: object,
-        }]).then();
+        this.router.navigate(['kdm', {outlets: {settlements: [this.localSettlement.id, 'locations', object.name]}}]).then();
         break;
       case ShowListTypes.EQUIPMENT:
         break;
@@ -89,13 +86,13 @@ export class ShowListComponent implements OnInit {
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
       const stlmt = this.kdmData.getSettlement(+params.get('id'));
       stlmt.then(settlement => {
-        this.settlement = settlement;
+        this.localSettlement = settlement;
         switch (this.type) {
           case ShowListTypes.FIGHTINGART:
-            //          t = settlement.fightingArts;
+            //          t = localSettlement.fightingArts;
             break;
           case ShowListTypes.DISORDER:
-            //      t = settlement.disorders;
+            //      t = localSettlement.disorders;
             break;
           case ShowListTypes.INNOVATION:
             this.objects = settlement.innovations;

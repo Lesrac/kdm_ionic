@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+    <ion-buttons slot="start" *ngIf="settlement$ | async as settlement">
+      <ion-back-button defaultHref="/kdm/(settlements:{{settlement.id}})"></ion-back-button>
     </ion-buttons>
     <ion-title>
       {{title}}
@@ -11,7 +11,7 @@
 
 <ion-content padding *ngIf="settlement$ | async">
   <ion-item>
-    <ion-button id="add_object_button" expand="full" (click)="addObject()">
+    <ion-button id="add_object_button" (click)="addObject()">
       <ion-icon slot="icon-only" name="add-circle"></ion-icon>
     </ion-button>
   </ion-item>
@@ -21,7 +21,7 @@
         {{object.name}}
       </ion-col>
       <ion-col>
-        <ion-button expand="full" (click)="removeObject(object)">
+        <ion-button (click)="removeObject(object)">
           <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
         </ion-button>
       </ion-col>

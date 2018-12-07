@@ -7,7 +7,7 @@
 <ion-content padding>
   <div>
     <h2>Available Settlements</h2>
-    <ion-button expand="full" class="button-add" (click)="addSettlement()">Add</ion-button>
+    <ion-button class="button-add" (click)="addSettlement()">Add</ion-button>
   </div>
   <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
     <ion-item *ngFor="let settlement of settlements; let even=even; let odd=odd"
@@ -17,7 +17,7 @@
           {{settlement.name}}
         </ion-col>
         <ion-col>
-          <ion-button expand="full"
+          <ion-button
                   (click)="removeSettlement(settlement)">
             <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
           </ion-button>

@@ -60,12 +60,6 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     }]).then();
   }
 
-  showSettlementLocations(): void {
-    this.router.navigate(['/showList', {
-      objects: this.settlementLocal.locations, type: ShowListTypes.LOCATION, settlement: this.settlement$,
-    }]).then();
-  }
-
   showStorage(): void {
     this.router.navigate(['/storage', {
       settlement: this.settlement$,

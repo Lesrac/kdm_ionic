@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-button expand="full" (click)="addDefeatedMonster()">
+    <ion-button (click)="addDefeatedMonster()">
       <ion-icon slot="icon-only" name="add-circle"></ion-icon>
     </ion-button>
   </ion-item>
@@ -18,7 +18,7 @@
         {{huntedMonster.monster.name}} - Level {{huntedMonster.monsterLevel}}
       </ion-col>
       <ion-col col-3>
-        <ion-button expand="full" (click)="removeDefeatedMonster(huntedMonster)">
+        <ion-button (click)="removeDefeatedMonster(huntedMonster)">
           <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
         </ion-button>
       </ion-col>

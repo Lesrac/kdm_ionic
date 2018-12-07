@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { KDMDataService } from '../../service/kdm-data.service';
 import { BaseModel } from '../../model/base-model';
 import { ShowListTypes } from '../../model/show-list-types';
@@ -24,7 +24,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
   objectName: string;
   type: ShowListTypes;
 
-  constructor(private params: NavParams, private kdmData: KDMDataService) {
+  constructor(public modalCtrl: ModalController, public params: NavParams, public kdmData: KDMDataService) {
     this.objects = this.params.get('objects');
     this.type = this.params.get('type');
   }
@@ -79,6 +79,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
   }
 
   close(): void {
+    this.modalCtrl.dismiss().then();
   }
 
   private setup(): void {
