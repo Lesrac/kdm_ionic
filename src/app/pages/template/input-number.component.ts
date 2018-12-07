@@ -9,15 +9,11 @@ import { FormControl } from '@angular/forms';
   templateUrl: 'input-number.component.html',
 })
 export class InputNumberComponent {
-  init: boolean = true;
-
   @Input()
   value: number;
 
   @Output()
   change: EventEmitter<number> = new EventEmitter<number>();
-
-  valueControl: FormControl = new FormControl();
 
   increaseValue() {
     this.value++;
