@@ -141,16 +141,16 @@ export class KDMDataService {
   }
 
   getSettlement(id: number): Promise<Settlement> {
-    console.log('GET Settlement by Id from KDMDataService');
-    return this.kdmDBService.getSettlementById(id).then(settlementSimplified => {
-      const settlement: Settlement = this.desimplifySettlement(settlementSimplified);
-      this.settlements[this.settlements.findIndex(stlmnt => stlmnt.id === id)] = settlement;
-      const indexCount = this.watchedSettlements.findIndex(watchedSettlement =>
-        watchedSettlement.settlement.id === settlement.id);
-      this.watchedSettlements.splice(indexCount, 1);
-      this.watchedSettlements.push(new SettlementWatcher(settlement, Date.now()));
-      return settlement;
-    });
+    return this.kdmDBService.getSettlementById(id).then(settlementSimplified =>
+      this.desimplifySettlement(settlementSimplified).then(settlement => {
+        this.settlements[this.settlements.findIndex(stlmnt => stlmnt.id === id)] = settlement;
+        const indexCount = this.watchedSettlements.findIndex(watchedSettlement =>
+          watchedSettlement.settlement.id === settlement.id);
+        this.watchedSettlements.splice(indexCount, 1);
+        this.watchedSettlements.push(new SettlementWatcher(settlement, Date.now()));
+        return settlement;
+      }),
+    );
   }
 
   addSettlement(settlement: Settlement): void {
@@ -778,7 +778,7 @@ export class KDMDataService {
     return settlement;
   }
 
-  private desimplifySettlement(simplifiedSettlement: SettlementSimplified): Settlement {
+  private async desimplifySettlement(simplifiedSettlement: SettlementSimplified): Promise<Settlement> {
     const settlement = new Settlement(simplifiedSettlement.name);
     settlement.nameChange.subscribe(this.saveSettlementObserver(settlement));
     settlement.id = simplifiedSettlement.id;
@@ -805,6 +805,17 @@ export class KDMDataService {
       });
     }
     settlement.timelineSizeChanged.subscribe(this.saveSettlementObserver(settlement));
+
+    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.milestones)) {
+      await simplifiedSettlement.milestones.forEach(settlementMilestone => {
+        this.getMilestone(settlementMilestone.milestoneId).then(milestone => {
+          const sm: SettlementMilestone = new SettlementMilestone(settlement, milestone);
+          sm.reached = settlementMilestone.reached;
+          settlement.addMilestone(sm);
+        });
+      });
+    }
+    settlement.milestonesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
     if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.huntableMonsters)) {
       simplifiedSettlement.huntableMonsters.forEach(huntableMonsterDB => {
@@ -881,17 +892,6 @@ export class KDMDataService {
       });
     }
     settlement.principlesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
-
-    if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.milestones)) {
-      simplifiedSettlement.milestones.forEach(settlementMilestone => {
-        this.getMilestone(settlementMilestone.milestoneId).then(milestone => {
-          const sm: SettlementMilestone = new SettlementMilestone(settlement, milestone);
-          sm.reached = settlementMilestone.reached;
-          settlement.addMilestone(sm);
-        });
-      });
-    }
-    settlement.milestonesSizeChanged.subscribe(this.saveSettlementObserver(settlement));
 
     if (this.arrayExistsAndIsNotEmpty(simplifiedSettlement.survivors)) {
       simplifiedSettlement.survivors.forEach(simplifiedSurvivor => {

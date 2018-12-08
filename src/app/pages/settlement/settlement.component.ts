@@ -2,7 +2,6 @@ import { Component, DoCheck, KeyValueDiffers, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { TimelineEventModalComponent } from '../timeline/timeline-event-modal.component';
-import { ShowListTypes } from '../../model/show-list-types';
 import { SettlementLanternEvent } from '../../model/linking/settlement-lantern-event';
 import { Subject } from 'rxjs';
 import { KDMObserverService } from '../../service/kdm-observer.service';
@@ -27,8 +26,8 @@ export class SettlementPageComponent implements OnInit, DoCheck {
   settlement$: Observable<Settlement>;
   settlementLocal: Settlement;
 
-  constructor(private router: Router, private route: ActivatedRoute, private modalCtrl: ModalController,
-              private differs: KeyValueDiffers, private kdmObserver: KDMObserverService, private kdmService: KDMDataService) {
+  constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController,
+              public differs: KeyValueDiffers, public kdmObserver: KDMObserverService, public kdmService: KDMDataService) {
     this.differ = differs.find({}).create();
   }
 
@@ -37,7 +36,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
         const stlmt = this.kdmService.getSettlement(+params.get('id'));
         stlmt.then(settlement => {
           this.settlementLocal = settlement;
-          settlement.milestones.forEach(milestone => this.kdmObserver.registerObserverForMilestone(this, milestone));
+          this.settlementLocal.milestones.forEach(milestone => this.kdmObserver.registerObserverForMilestone(this, milestone));
         });
         return stlmt;
       },

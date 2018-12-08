@@ -28,7 +28,7 @@ export class KDMObserverService {
   private huntxp1: string = 'huntxp1';
   private huntxp2: string = 'huntxp2';
 
-  constructor(public modalCtrl: ModalController, private kdmDataService: KDMDataService) {
+  constructor(public modalCtrl: ModalController, public kdmDataService: KDMDataService) {
   }
 
   registerObserverForMilestone(settlementPageComponent: SettlementPageComponent, milestone: SettlementMilestone): void {

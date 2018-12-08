@@ -4,8 +4,8 @@
       <ion-back-button defaultHref="/kdm/(settlements:settlements)"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <ion-item *ngIf="settlement$ | async as settlement">
-        <ion-input required [(ngModel)]="settlement.name" lines="none"></ion-input>
+      <ion-item *ngIf="settlementLocal">
+        <ion-input required [(ngModel)]="settlementLocal.name" lines="none"></ion-input>
       </ion-item>
     </ion-title>
   </ion-toolbar>

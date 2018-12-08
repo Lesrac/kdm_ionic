@@ -3,8 +3,8 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/kdm/(others:showdowns)"></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="monster$ | async as monster">
-      Showdown: {{monster.name}}
+    <ion-title *ngIf="localMonster">
+      Showdown: {{localMonster.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>

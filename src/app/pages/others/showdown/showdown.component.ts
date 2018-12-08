@@ -15,12 +15,17 @@ import { Observable } from 'rxjs/internal/Observable';
 export class ShowdownPageComponent implements OnInit {
 
   monster$: Observable<Monster>;
+  localMonster: Monster;
 
   constructor(public route: ActivatedRoute, public kdmData: KDMDataService) {
   }
 
   ngOnInit(): void {
-    this.monster$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.kdmData.getMonster(+params.get('id'))));
+    this.monster$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+      const observableMonster = this.kdmData.getMonster(+params.get('id'));
+      observableMonster.then(monster => this.localMonster = monster);
+      return observableMonster;
+    }));
   }
 
 }

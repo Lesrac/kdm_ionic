@@ -12,13 +12,15 @@ import { ShowListAddModalComponent } from '../pages/template/show-list-add-modal
 import { ShowListDetailComponent } from '../pages/template/show-list-detail.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TimelineEventModalComponent } from '../pages/timeline/timeline-event-modal.component';
 
 @NgModule({
   declarations: [InputNumberComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe, MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe,
-    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent],
+    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent],
   imports: [IonicModule, CommonModule, FormsModule],
   exports: [InputNumberComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe, MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe,
-    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent],
+    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent],
+  entryComponents: [TimelineEventModalComponent,
 })
 export class ParentModule {
 }

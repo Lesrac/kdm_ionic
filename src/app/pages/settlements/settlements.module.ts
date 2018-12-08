@@ -32,10 +32,9 @@ import { AddedResourcesModalComponent } from '../defeated_monster/added-resource
     ReactiveFormsModule,
     ParentModule,
   ],
-  declarations: [SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, TimelineEventModalComponent,
-    AddTimelineEventModalComponent, PrinciplesPageComponent, PrincipleChooserPageComponent, PrincipleDetailComponent,
-    DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent, EquipmentCardComponent, EquipmentListPageComponent,
-    EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
+  declarations: [SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, AddTimelineEventModalComponent, PrinciplesPageComponent,
+    PrincipleChooserPageComponent, PrincipleDetailComponent, DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent,
+    EquipmentCardComponent, EquipmentListPageComponent, EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
   entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent, ShowListAddModalComponent, DefeatedMonsterModalComponent,
     FormattedTextModalComponent, AddedResourcesModalComponent],
 })
