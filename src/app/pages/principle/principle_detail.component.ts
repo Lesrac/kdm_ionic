@@ -16,13 +16,18 @@ import { Settlement } from '../../model/settlement';
 export class PrincipleDetailComponent implements OnInit {
 
   principle$: Observable<Principle>;
+  localPrinciple: Principle;
   settlement$: Observable<Settlement>;
 
   constructor(public route: ActivatedRoute, public kdmData: KDMDataService) {
   }
 
   ngOnInit(): void {
-    this.principle$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.kdmData.getPrinciple(params.get('name'))));
+    this.principle$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+      const observablePrinciple = this.kdmData.getPrinciple(params.get('name'));
+      observablePrinciple.then(principle => this.localPrinciple = principle);
+      return observablePrinciple;
+    }));
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.kdmData.getSettlement(+params.get('id'))));
   }
 

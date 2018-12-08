@@ -16,6 +16,7 @@ import { Settlement } from '../../model/settlement';
 export class ShowLocationDetailComponent implements OnInit {
 
   location$: Observable<Location>;
+  localLocation: Location;
   settlement$: Observable<Settlement>;
 
   constructor(public route: ActivatedRoute, public kdmData: KDMDataService) {
@@ -24,7 +25,9 @@ export class ShowLocationDetailComponent implements OnInit {
   ngOnInit(): void {
     this.location$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
       console.log(params.get('name'));
-      return this.kdmData.getLocation(params.get('name'));
+      const observableLocation = this.kdmData.getLocation(params.get('name'));
+      observableLocation.then(location => this.localLocation = location);
+      return observableLocation;
     }));
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.kdmData.getSettlement(+params.get('id'))));
   }

@@ -2,8 +2,8 @@
   <ion-toolbar>
     <ion-back-button slot="start" defaultHref="/kdm/(settlements:{{settlement.id}}/locations)"
                      *ngIf="settlement$ | async as settlement"></ion-back-button>
-    <ion-title *ngIf="location$ | async as location">
-      {{location.name}}
+    <ion-title *ngIf="localLocation">
+      {{localLocation.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>

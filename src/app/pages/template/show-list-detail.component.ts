@@ -15,6 +15,7 @@ import { switchMap } from 'rxjs/operators';
 export class ShowListDetailComponent implements OnInit {
 
   object$: Observable<BaseModel>;
+  localObect: BaseModel;
   type: string;
 
   constructor(public route: ActivatedRoute, public kdmData: KDMDataService) {
@@ -32,7 +33,11 @@ export class ShowListDetailComponent implements OnInit {
       case ShowListTypes.DISORDER:
         break;
       case ShowListTypes.INNOVATION:
-        this.object$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.kdmData.getInnovation(params.get('name'))));
+        this.object$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+          const observableObject = this.kdmData.getInnovation(params.get('name'));
+          observableObject.then(baseModel => this.localObect = baseModel);
+          return observableObject;
+        }));
         break;
       case ShowListTypes.EQUIPMENT:
         break;
