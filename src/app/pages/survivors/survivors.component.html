@@ -8,12 +8,12 @@
   <ion-item>
     <ion-label>Settlement</ion-label>
     <ion-select [(ngModel)]="settlementId" (ionChange)="confirmChange()">
-      <ion-select-option *ngFor="let stlmnt of settlements" (ionSelect)="selectedSettlement(stlmnt)" [value]="stlmnt.id">
+      <ion-select-option *ngFor="let stlmnt of settlements" [value]="stlmnt.id">
         {{stlmnt.name}}
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button *ngIf="settlement"(click)="addSurvivor()">
+  <ion-button *ngIf="settlement"(click)="addSurvivor()" expand="full">
     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
   </ion-button>
   <ion-item *ngIf="survivorsCheck()">
@@ -40,7 +40,7 @@
           </ion-item>
         </ion-col>
         <ion-col style="width: 20%">
-          <ion-button (click)="removeSurvivor(survivor)">
+          <ion-button (click)="removeSurvivor(survivor)" expand="full">
             <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
           </ion-button>
         </ion-col>

@@ -16,7 +16,6 @@ export class SurvivorsPageComponent implements OnInit {
   settlementId: number = -1;
   settlements: Settlement[];
   settlement: Settlement;
-  tempSettlement: Settlement;
 
   constructor(public router: Router, private alertCtrl: AlertController, private kdmService: KDMDataService) {
   }
@@ -31,19 +30,11 @@ export class SurvivorsPageComponent implements OnInit {
     }]).then();
   }
 
-  selectedSettlement(settlement: Settlement): void {
-    console.log('selected localSettlement');
-    console.log(settlement);
-    if (settlement) {
-      this.kdmService.getSettlement(settlement.id).then(stlmnt => this.tempSettlement = stlmnt);
-    }
-  }
-
   confirmChange(): void {
     console.log('confirm change');
-    if (this.tempSettlement) {
-      this.settlement = this.tempSettlement;
-      this.settlementId = this.settlement.id;
+    console.log(this.settlementId);
+    if (this.settlementId > -1) {
+      this.kdmService.getSettlement(this.settlementId).then(stlmnt => this.settlement = stlmnt);
     }
   }
 
