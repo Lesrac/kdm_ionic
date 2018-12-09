@@ -32,7 +32,7 @@ export class SurvivorsPageComponent implements OnInit {
   }
 
   selectedSettlement(settlement: Settlement): void {
-    console.log('selected settlement');
+    console.log('selected localSettlement');
     console.log(settlement);
     if (settlement) {
       this.kdmService.getSettlement(settlement.id).then(stlmnt => this.tempSettlement = stlmnt);

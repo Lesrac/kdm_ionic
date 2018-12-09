@@ -58,12 +58,6 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     }]).then();
   }
 
-  showStorage(): void {
-    this.router.navigate(['/storage', {
-      settlement: this.settlement$,
-    }]).then();
-  }
-
   eventReached(event: Event, settlementLanternEvent: SettlementLanternEvent): void {
     if (settlementLanternEvent.reached) {
       this.modalCtrl.create({

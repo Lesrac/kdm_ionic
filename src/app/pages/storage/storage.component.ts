@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { Storage } from '../../model/storage';
 import { StorageModalComponent } from './storage-modal.component';
-import { KDMDBService } from '../../service/kdm-db.service';
 import { KDMDataService } from '../../service/kdm-data.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 /**
  * Created by Daniel on 14.02.2017.
@@ -13,13 +14,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'kdmf-page-storage', templateUrl: 'storage.component.html',
 })
-export class StoragePageComponent {
+export class StoragePageComponent implements OnInit {
 
-  settlement: Settlement;
+  localSettlement: Settlement;
+  settlement$: Observable<Settlement>;
 
-  constructor(public router: Router, public params: NavParams, public modalCtrl: ModalController, private kdmdbService: KDMDBService, private kdmService: KDMDataService) {
-    this.settlement = params.get('settlement');
-    this.settlement.storages.sort(kdmService.sortByName);
+  constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController, public kdmService: KDMDataService) {
+  }
+
+  ngOnInit(): void {
+    this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+      const observableSettlement = this.kdmService.getSettlement(+params.get('id'));
+      observableSettlement.then(settlement => {
+        this.localSettlement = settlement;
+        this.localSettlement.storages.sort(this.kdmService.sortByName);
+      });
+      return observableSettlement;
+    }));
   }
 
   decreaseAmount(storage: Storage): void {
@@ -40,15 +51,15 @@ export class StoragePageComponent {
   }
 
   removeStorage(storage: Storage): void {
-    const index = this.settlement.storages.findIndex(str => str === storage);
-    this.settlement.storages.splice(index, 1);
+    const index = this.localSettlement.storages.findIndex(str => str === storage);
+    this.localSettlement.storages.splice(index, 1);
     storage.amountChanged.next(0);
   }
 
   addStorageItem(): void {
     this.modalCtrl.create({
       component: StorageModalComponent, componentProps: {
-        settlement: this.settlement,
+        settlement: this.localSettlement,
       }
     }).then(modal => modal.present());
   }

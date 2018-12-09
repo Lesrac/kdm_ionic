@@ -6,23 +6,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
-    <ion-button id="add_storage_button" (click)="addStorageItem()">
-      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-    </ion-button>
-  </ion-item>
-  <ion-list id="storage_items_list">
-    <ion-segment *ngFor="let storage of settlement.storages" attr.id="{{storage.name}}">
-      <ion-button (click)="increaseAmount(storage)">
-        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-      </ion-button>
-      <ion-button (click)="decreaseAmount(storage)">
-        <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
-      </ion-button>
-      <ion-input attr.name="{{storage.name}} {{storage.amount}}" type="number" (change)="changedAmount(storage)"
-                 [(ngModel)]="storage.amount"></ion-input>
-      <ion-label attr.name="{{storage.name}}" (click)="showDetail(storage)">{{storage.name}}</ion-label>
-    </ion-segment>
+<ion-content padding *ngIf="settlement$ | async as settlement">
+  <ion-button id="add_storage_button" (click)="addStorageItem()" expand="full">
+    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+  </ion-button>
+  <ion-list id="storage_items_list2">
+    <ion-row *ngFor="let storage of settlement.storages" attr.id="{{storage.name}}">
+      <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1" no-padding>
+        <ion-button (click)="increaseAmount(storage)" expand="full">
+          <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size-xs="2" size-sm="2" size-md="1" size-lg="1" size-xl="1" no-padding>
+        <ion-button (click)="decreaseAmount(storage)" expand="full">
+          <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size-xs="1" size-sm="1" size-md="2" size-lg="2" size-xl="2" no-padding align-self-center>
+        <ion-input attr.name="{{storage.name}} {{storage.amount}}" type="number"
+                   (change)="changedAmount(storage)" [(ngModel)]="storage.amount"></ion-input>
+      </ion-col>
+      <ion-col size-xs="7" size-sm="7" size-md="8" size-lg="8" size-xl="8" no-padding align-self-center>
+        <ion-label attr.name="{{storage.name}}"
+                   (click)="showDetail(storage)">{{storage.name}}</ion-label>
+      </ion-col>
+    </ion-row>
   </ion-list>
 </ion-content>

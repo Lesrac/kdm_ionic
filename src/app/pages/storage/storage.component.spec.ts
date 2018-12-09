@@ -69,41 +69,41 @@ describe('StorageComponent', () => {
   it('Decrease and increase storage amount', () => {
     const storage = new Storage('Storage 1', 'storage item', 1, [StorageTag.ITEM]);
     const storage2 = new Storage('Storage 2', 'storage item 2', 1, [StorageTag.ITEM]);
-    storageComponent.settlement.addStorageItem(storage);
-    storageComponent.settlement.addStorageItem(storage2);
-    const storageAmountChangeElement = storageComponent.settlement.storages[0].amount;
-    const storageAmountFixElement = storageComponent.settlement.storages[1].amount;
+    storageComponent.localSettlement.addStorageItem(storage);
+    storageComponent.localSettlement.addStorageItem(storage2);
+    const storageAmountChangeElement = storageComponent.localSettlement.storages[0].amount;
+    const storageAmountFixElement = storageComponent.localSettlement.storages[1].amount;
     storageComponent.increaseAmount(storage);
-    expect(storageComponent.settlement.storages[0].amount).toEqual(storageAmountChangeElement + 1);
-    expect(storageComponent.settlement.storages[1].amount).toEqual(storageAmountFixElement);
+    expect(storageComponent.localSettlement.storages[0].amount).toEqual(storageAmountChangeElement + 1);
+    expect(storageComponent.localSettlement.storages[1].amount).toEqual(storageAmountFixElement);
     storageComponent.decreaseAmount(storage);
-    expect(storageComponent.settlement.storages[0].amount).toEqual(storageAmountChangeElement);
-    expect(storageComponent.settlement.storages[1].amount).toEqual(storageAmountFixElement);
+    expect(storageComponent.localSettlement.storages[0].amount).toEqual(storageAmountChangeElement);
+    expect(storageComponent.localSettlement.storages[1].amount).toEqual(storageAmountFixElement);
     storageComponent.decreaseAmount(storage);
-    expect(storageComponent.settlement.storages[0]).toEqual(storage2);
+    expect(storageComponent.localSettlement.storages[0]).toEqual(storage2);
   });
 
   it('Change storage amount', () => {
-    expect(typeof storageComponent.settlement).toBe('object');
+    expect(typeof storageComponent.localSettlement).toBe('object');
     const storage = new Storage('Storage 1', 'storage item', 1, [StorageTag.ITEM]);
     const storage2 = new Storage('Storage 2', 'storage item 2', 1, [StorageTag.ITEM]);
-    storageComponent.settlement.addStorageItem(storage);
-    storageComponent.settlement.addStorageItem(storage2);
-    const storageAmountChangeElement = storageComponent.settlement.storages[0].amount;
-    const storageAmountFixElement = storageComponent.settlement.storages[1].amount;
+    storageComponent.localSettlement.addStorageItem(storage);
+    storageComponent.localSettlement.addStorageItem(storage2);
+    const storageAmountChangeElement = storageComponent.localSettlement.storages[0].amount;
+    const storageAmountFixElement = storageComponent.localSettlement.storages[1].amount;
     storageComponent.changedAmount(storage);
-    expect(storageComponent.settlement.storages[0].amount).toEqual(storageAmountChangeElement);
-    expect(storageComponent.settlement.storages[1].amount).toEqual(storageAmountFixElement);
+    expect(storageComponent.localSettlement.storages[0].amount).toEqual(storageAmountChangeElement);
+    expect(storageComponent.localSettlement.storages[1].amount).toEqual(storageAmountFixElement);
     storage.amount = 0;
     storageComponent.changedAmount(storage);
-    expect(storageComponent.settlement.storages[0].amount).toEqual(storageAmountChangeElement);
+    expect(storageComponent.localSettlement.storages[0].amount).toEqual(storageAmountChangeElement);
   });
 
   it('open modal StorageModalComponent', () => {
     const spy = spyOn(storageComponent.modalCtrl, 'create').and.returnValue(modalMock);
     storageComponent.addStorageItem();
     expect(spy).toHaveBeenCalledWith(StorageModalComponent, {
-        settlement: storageComponent.settlement,
+        settlement: storageComponent.localSettlement,
       },
     );
   });
