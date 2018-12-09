@@ -24,7 +24,6 @@ export class ShowLocationDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.location$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
-      console.log(params.get('name'));
       const observableLocation = this.kdmData.getLocation(params.get('name'));
       observableLocation.then(location => this.localLocation = location);
       return observableLocation;

@@ -36,7 +36,6 @@ export class PrinciplesPageComponent implements OnInit {
 
   removePrinciple(type: PrincipleType): void {
     const indexOfItemToRemove: number = this.settlement.principles.findIndex(principle => principle.type === type);
-    console.log(indexOfItemToRemove);
     if (indexOfItemToRemove >= 0) {
       this.settlement.principles.splice(indexOfItemToRemove, 1);
     }

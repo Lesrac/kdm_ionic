@@ -20,7 +20,7 @@ import { TimelineEventModalComponent } from '../pages/timeline/timeline-event-mo
   imports: [IonicModule, CommonModule, FormsModule],
   exports: [InputNumberComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe, MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe,
     DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent],
-  entryComponents: [TimelineEventModalComponent,
+  entryComponents: [TimelineEventModalComponent],
 })
 export class ParentModule {
 }

@@ -32,12 +32,15 @@ export class SurvivorsPageComponent implements OnInit {
   }
 
   selectedSettlement(settlement: Settlement): void {
+    console.log('selected settlement');
+    console.log(settlement);
     if (settlement) {
       this.kdmService.getSettlement(settlement.id).then(stlmnt => this.tempSettlement = stlmnt);
     }
   }
 
   confirmChange(): void {
+    console.log('confirm change');
     if (this.tempSettlement) {
       this.settlement = this.tempSettlement;
       this.settlementId = this.settlement.id;
