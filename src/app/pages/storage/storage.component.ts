@@ -60,14 +60,12 @@ export class StoragePageComponent implements OnInit {
     this.modalCtrl.create({
       component: StorageModalComponent, componentProps: {
         settlement: this.localSettlement,
-      }
+      },
     }).then(modal => modal.present());
   }
 
   showDetail(storageItem: Storage): void {
-    this.router.navigate(['/showListDetail', {
-      object: storageItem,
-    }]).then();
+    this.router.navigate(['kdm', {outlets: {settlements: [this.localSettlement.id, 'storage', storageItem.name]}}]).then();
   }
 
 }

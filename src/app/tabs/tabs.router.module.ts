@@ -102,6 +102,12 @@ const routes: Routes = [
         component: StoragePageComponent,
       },
       {
+        path: ':id/storage/:name',
+        outlet: 'settlements',
+        component: ShowListDetailComponent,
+        data: { type: ShowListTypes.EQUIPMENT },
+      },
+      {
         path: 'others',
         outlet: 'others',
         component: OthersPageComponent,
