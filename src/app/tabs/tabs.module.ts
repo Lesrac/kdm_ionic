@@ -6,9 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
-import { SettlementsPageModule } from '../pages/settlements/settlements.module';
-import { SurvivorsPageModule } from '../pages/survivors/survivors.module';
-import { OthersPageModule } from '../pages/others/others.module';
 
 @NgModule({
   imports: [
@@ -16,9 +13,6 @@ import { OthersPageModule } from '../pages/others/others.module';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    SettlementsPageModule,
-    SurvivorsPageModule,
-    OthersPageModule,
   ],
   declarations: [TabsPage],
 })

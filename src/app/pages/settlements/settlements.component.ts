@@ -27,7 +27,7 @@ export class SettlementsPageComponent implements OnInit {
   }
 
   goToDetail(settlement: Settlement): void {
-    this.router.navigate(['kdm', {outlets: {settlements: [settlement.id]}}]).then();
+    this.router.navigate(['kdm', 'settlements', settlement.id]).then();
   }
 
   removeSettlement(settlement: Settlement): void {

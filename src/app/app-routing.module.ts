@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: '', loadChildren: './tabs/tabs.module#TabsPageModule'},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], // , {enableTracing: true}
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })], // , {enableTracing: true}
   exports: [RouterModule],
 })
 export class AppRoutingModule {

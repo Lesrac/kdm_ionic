@@ -12,7 +12,7 @@
 <ion-content padding>
   <ion-list lines="none">
     <ion-item *ngFor="let showdown of showdownMonsters; let even=even; let odd=odd"
-              [ngClass]="{ odd: odd, even: even }" href="/kdm/(others:showdowns/{{showdown.id}}">
+              [ngClass]="{ odd: odd, even: even }" routerLink="/kdm/others/showdowns/{{showdown.id}}">
       {{showdown.name}}
     </ion-item>
   </ion-list>

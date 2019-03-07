@@ -65,7 +65,7 @@ export class StoragePageComponent implements OnInit {
   }
 
   showDetail(storageItem: Storage): void {
-    this.router.navigate(['kdm', {outlets: {settlements: [this.localSettlement.id, 'storage', storageItem.name]}}]).then();
+    this.router.navigate(['kdm', 'settlements', this.localSettlement.id, 'storage', storageItem.name]).then();
   }
 
 }

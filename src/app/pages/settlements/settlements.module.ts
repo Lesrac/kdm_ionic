@@ -24,6 +24,69 @@ import { DefeatedMonsterModalComponent } from '../defeated_monster/defeated-mons
 import { FormattedTextModalComponent } from '../template/formatted-text-modal.component';
 import { AddedResourcesModalComponent } from '../defeated_monster/added-resources-modal.component';
 import { StorageModalComponent } from '../storage/storage-modal.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ShowListComponent } from '../template/show-list.component';
+import { ShowListTypes } from '../../model/show-list-types';
+import { ShowListDetailComponent } from '../template/show-list-detail.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: SettlementsPageComponent,
+  },
+  {
+    path: ':id',
+    component: SettlementPageComponent,
+  },
+  {
+    path: ':id/timeline',
+    component: TimelinePageComponent,
+  },
+  {
+    path: ':id/innovations',
+    component: ShowListComponent,
+    data: {type: ShowListTypes.INNOVATION},
+  },
+  {
+    path: ':id/innovations/:name',
+    component: ShowListDetailComponent,
+    data: {type: ShowListTypes.INNOVATION},
+  },
+  {
+    path: ':id/principles',
+    component: PrinciplesPageComponent,
+  },
+  {
+    path: ':id/principles/:type/chooser',
+    component: PrincipleChooserPageComponent,
+  },
+  {
+    path: ':id/principles/:name',
+    component: PrincipleDetailComponent,
+  },
+  {
+    path: ':id/locations',
+    component: ShowListComponent,
+    data: {type: ShowListTypes.LOCATION},
+  },
+  {
+    path: ':id/locations/:name',
+    component: ShowLocationDetailComponent,
+  },
+  {
+    path: ':id/defeatedMonsters',
+    component: DefeatedMonsterPageComponent,
+  },
+  {
+    path: ':id/storage',
+    component: StoragePageComponent,
+  },
+  {
+    path: ':id/storage/:name',
+    component: ShowListDetailComponent,
+    data: {type: ShowListTypes.EQUIPMENT},
+  },
+];
 
 @NgModule({
   imports: [
@@ -32,10 +95,12 @@ import { StorageModalComponent } from '../storage/storage-modal.component';
     FormsModule,
     ReactiveFormsModule,
     ParentModule,
-  ],
-  declarations: [SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, AddTimelineEventModalComponent, PrinciplesPageComponent,
+    RouterModule.forChild(routes)],
+  exports: [RouterModule],
+  declarations: [DefeatedMonsterModalComponent, SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, AddTimelineEventModalComponent,
     PrincipleChooserPageComponent, PrincipleDetailComponent, DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent,
-    EquipmentCardComponent, EquipmentListPageComponent, EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent],
+    EquipmentCardComponent, EquipmentListPageComponent, EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent,
+    PrinciplesPageComponent],
   entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent, ShowListAddModalComponent, DefeatedMonsterModalComponent,
     FormattedTextModalComponent, AddedResourcesModalComponent, StorageModalComponent],
 })

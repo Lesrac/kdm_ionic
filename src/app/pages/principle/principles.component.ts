@@ -51,6 +51,6 @@ export class PrinciplesPageComponent implements OnInit {
 
   showDetail(principleType: PrincipleType): void {
     const principle: Principle = this.settlement.principles.find(princ => princ.type.name === principleType.name);
-    this.router.navigate(['kdm', {outlets: {settlements: [this.settlement.id, 'principles', principle.name]}}]).then();
+    this.router.navigate(['kdm', 'settlements', this.settlement.id, 'principles', principle.name]).then();
   }
 }

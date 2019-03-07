@@ -50,10 +50,10 @@ export class ShowListComponent implements OnInit {
       case ShowListTypes.DISORDER:
         break;
       case ShowListTypes.INNOVATION:
-        this.router.navigate(['kdm', {outlets: {settlements: [this.localSettlement.id, 'innovations', object.name]}}]).then();
+        this.router.navigate(['kdm', 'settlements', this.localSettlement.id, 'innovations', object.name]).then();
         break;
       case ShowListTypes.LOCATION:
-        this.router.navigate(['kdm', {outlets: {settlements: [this.localSettlement.id, 'locations', object.name]}}]).then();
+        this.router.navigate(['kdm', 'settlements', this.localSettlement.id, 'locations', object.name]).then();
         break;
       case ShowListTypes.EQUIPMENT:
         break;

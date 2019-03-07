@@ -49,7 +49,7 @@ export class PrincipleChooserPageComponent implements OnInit {
   selectPrinciple(principle: Principle): void {
     this.settlement.addPrinciple(principle);
     this.kdmdbService.saveSettlement(this.settlement);
-    this.router.navigate(['kdm', {outlets: { settlements: [this.settlement.id, 'principles']}}]).then();
+    this.router.navigate(['kdm', 'settlements', this.settlement.id, 'principles']).then();
   }
 
 }

@@ -13,13 +13,18 @@ import { ShowListDetailComponent } from '../pages/template/show-list-detail.comp
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TimelineEventModalComponent } from '../pages/timeline/timeline-event-modal.component';
+import { StorageModalComponent } from '../pages/storage/storage-modal.component';
+import { FormattedTextModalComponent } from '../pages/template/formatted-text-modal.component';
+import { AddedResourcesModalComponent } from '../pages/defeated_monster/added-resources-modal.component';
 
 @NgModule({
   declarations: [InputNumberComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe, MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe,
-    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent],
+    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent, StorageModalComponent,
+    FormattedTextModalComponent, AddedResourcesModalComponent],
   imports: [IonicModule, CommonModule, FormsModule],
   exports: [InputNumberComponent, AddLinebreakToPunctuationPipe, TextFormattingPipe, MapValuesPipe, FilterElementsPipe, RemoveWhitespacePipe,
-    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent],
+    DiceThrowComponent, ShowListComponent, ShowListDetailComponent, ShowListAddModalComponent, TimelineEventModalComponent, StorageModalComponent,
+    FormattedTextModalComponent, AddedResourcesModalComponent],
   entryComponents: [TimelineEventModalComponent],
 })
 export class ParentModule {

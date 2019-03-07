@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/kdm/(settlements:settlements)"></ion-back-button>
+      <ion-back-button defaultHref="/kdm/settlements"></ion-back-button>
     </ion-buttons>
     <ion-title>
       <ion-item *ngIf="settlementLocal">
@@ -44,7 +44,7 @@
 
     <ion-item-group>
       <ion-button expand="full" id="button_show_timeline"
-                  href="/kdm/(settlements:{{settlement.id}}/timeline">
+                  routerLink="/kdm/settlements/{{settlement.id}}/timeline">
         Timeline
       </ion-button>
     </ion-item-group>
@@ -100,21 +100,21 @@
 
     <ion-item-group>
       <ion-button expand="full" id="button_show_innovations"
-                  href="/kdm/(settlements:{{settlement.id}}/innovations)">
+                  routerLink="/kdm/settlements/{{settlement.id}}/innovations">
         Innovations
       </ion-button>
     </ion-item-group>
 
     <ion-item-group>
       <ion-button expand="full" id="button_show_principles"
-                  href="/kdm/(settlements:{{settlement.id}}/principles)">
+                  routerLink="/kdm/settlements/{{settlement.id}}/principles">
         Principles
       </ion-button>
     </ion-item-group>
 
     <ion-item-group>
       <ion-button expand="full" id="button_show_settlement_locations"
-                  href="/kdm/(settlements:{{settlement.id}}/locations)">
+                  routerLink="/kdm/settlements/{{settlement.id}}/locations">
         Settlement Locations
       </ion-button>
     </ion-item-group>
@@ -133,14 +133,14 @@
 
     <ion-item-group>
       <ion-button expand="full" id="button_show_storage"
-                  href="/kdm/(settlements:{{settlement.id}}/storage)">
+                  routerLink="/kdm/settlements/{{settlement.id}}/storage">
         Storage
       </ion-button>
     </ion-item-group>
 
     <ion-item-group>
       <ion-button expand="full" id="button_show_defeated_monsters"
-                  href="/kdm/(settlements:{{settlement.id}}/defeatedMonsters)">
+                  routerLink="/kdm/settlements/{{settlement.id}}/defeatedMonsters">
         Defeated Monsters
       </ion-button>
     </ion-item-group>
