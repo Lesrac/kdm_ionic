@@ -58,7 +58,7 @@ export class SettlementPageComponent implements OnInit, DoCheck {
     }]).then();
   }
 
-  eventReached(event: Event, settlementLanternEvent: SettlementLanternEvent): void {
+  eventReached(settlementLanternEvent: SettlementLanternEvent): void {
     if (settlementLanternEvent.reached) {
       this.modalCtrl.create({
         component: TimelineEventModalComponent, componentProps: {

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start" *ngIf="settlement">
-      <ion-back-button defaultHref="/kdm/(settlements:{{settlement.id}})"></ion-back-button>
+      <ion-back-button defaultHref="/kdm/settlements/{{settlement.id}}"></ion-back-button>
     </ion-buttons>
     <ion-title>
       Settlement Principles
@@ -29,7 +29,7 @@
       <ng-template #principleNotChosen>
         <ion-col>
           <ion-button
-                      href="/kdm/(settlements:{{settlement.id}}/principles/{{principleType.name}}/chooser">
+            routerLink="/kdm/settlements/{{settlement.id}}/principles/{{principleType.name}}/chooser">
             Choose
           </ion-button>
         </ion-col>
