@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" *ngIf="settlement$ | async">
-      <ion-back-button defaultHref="/kdm/settlements/{{settlement.id}}"></ion-back-button>
-    </ion-buttons>
     <ion-title>
       Timeline
     </ion-title>
@@ -18,17 +15,17 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf="settlement$ | async">
     <ion-item-group> <!--reorder="{{reorderFlag}}" (ionItemReorder)="reorderItems($event)">   -->
-      <ion-item-sliding *ngFor="let timelineevent of timeline">
+      <ion-item-sliding *ngFor="let timelineevent of localSettlement.timeline">
         <ion-item>
           <ion-checkbox [(ngModel)]="timelineevent.reached"
-                        (click)="timelineReached($event, timelineevent)"></ion-checkbox>
+                        (ngModelChange)="timelineReached($event, timelineevent)"></ion-checkbox>
           <ion-label>{{timelineevent.timeline.position}} <span *ngIf="timelineevent.timeline.lanternEvent"><ion-icon
             name="book"></ion-icon> {{timelineevent.timeline.lanternEvent.name}}</span>
           </ion-label>
         </ion-item>
-        <ion-item-options side="right">
+        <ion-item-options side="end">
           <ion-button (click)="changeTimelineEvent(timelineevent)">
             <ion-icon name="swap"></ion-icon>
           </ion-button>
