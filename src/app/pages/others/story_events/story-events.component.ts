@@ -42,7 +42,7 @@ export class StoryEventsPageComponent implements OnInit {
   showDetail(lanternEvent: LanternEvent): void {
     this.modalCtrl.create({
       component: TimelineEventModalComponent,
-      componentProps: {lanternEvent: lanternEvent}
+      componentProps: {lanternEvent: lanternEvent},
     }).then(modal => modal.present());
   }
 

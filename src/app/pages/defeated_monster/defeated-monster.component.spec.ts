@@ -6,8 +6,7 @@ import {
 } from '../../mock/mocks';
 import { KDMDBService } from '../../service/kdm-db.service';
 import {
-  App,
-  Config, DeepLinker, DomController, Form, IonicModule, Keyboard, Modal, ModalController, NavController, NavParams,
+  Config, DomController, IonicModule, ModalController, NavController, NavParams,
   Platform,
 } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
@@ -27,14 +26,11 @@ describe('Defeated Monster Component', () => {
     modalMock = new ModalMock();
     TestBed.configureTestingModule({
       declarations: [DefeatedMonsterPageComponent],
-      providers: [DomController, Keyboard, Form,
+      providers: [DomController,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: ModalController, useClass: ModalControllerMock},
-        {provide: Modal, useClass: ModalMock},
-        {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
-        {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDBService, useValue: kdmdbServiceMock},
       ],

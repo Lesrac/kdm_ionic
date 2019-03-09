@@ -1,14 +1,15 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
-  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController,
+  Config, DomController, IonicModule, NavController,
   NavParams, Platform,
 } from '@ionic/angular';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock, PlatformMock,
+  ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock, PlatformMock,
 } from '../../../mock/mocks';
 import { SevereInjuriesDetailPageComponent } from './severe-injuries-detail.component';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { DiceThrowComponent } from '../../template/dice-throw.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('Severe Injuries Detail Component', () => {
 
@@ -21,12 +22,10 @@ describe('Severe Injuries Detail Component', () => {
     kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [SevereInjuriesDetailPageComponent, DiceThrowComponent],
-      providers: [DomController, Keyboard, Form, GestureController,
+      providers: [DomController, ActivatedRoute,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
-        {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
-        {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
       ],

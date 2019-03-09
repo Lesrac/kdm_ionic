@@ -26,7 +26,6 @@ import { SettlementPageComponent } from '../pages/settlement/settlement.componen
 import { SettlementMilestone } from '../model/linking/settlement-milestone';
 import { StaticProvider } from '@angular/core/src/di';
 import { SurvivorPageComponent } from '../pages/survivor/survivor.component';
-import { ModalController } from '@ionic/angular';
 
 export class DummyMockElements {
   public static storage: Storage = new Storage('Storage Dummy', 'dummy', 1, [StorageTag.ITEM]);

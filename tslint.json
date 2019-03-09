@@ -1,6 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "codelyzer"
   ],
   "rules": {
     "align": [
@@ -19,6 +19,10 @@
     "indent": [
       true,
       "spaces"
+    ],
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
     ],
     "interface-name": false,
     "jsdoc-format": true,

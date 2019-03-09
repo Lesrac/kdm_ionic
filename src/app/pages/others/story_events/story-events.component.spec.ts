@@ -1,15 +1,16 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
-  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, Modal, ModalController,
-  Platform,
+  Config, DomController, IonicModule, ModalController, NavController, Platform,
 } from '@ionic/angular';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, ModalControllerMock, ModalMock, PlatformMock,
+  ConfigMock, KDMDataServiceMock, ModalControllerMock, ModalMock, NavMock, PlatformMock,
 } from '../../../mock/mocks';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { StoryEventsPageComponent } from './story-events.component';
 import { LanternEvent } from '../../../model/lantern-event';
 import { TimelineEventModalComponent } from '../../timeline/timeline-event-modal.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('Story Event Table Component', () => {
 
@@ -21,16 +22,15 @@ describe('Story Event Table Component', () => {
     kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [StoryEventsPageComponent],
-      providers: [DomController, Keyboard, Form, GestureController,
+      providers: [DomController,
         {provide: ModalController, useClass: ModalControllerMock},
-        {provide: Modal, useClass: ModalMock},
-        {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
-        {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
+        {provide: NavController, useClass: NavMock},
       ],
-      imports: [IonicModule],
+      imports: [IonicModule, RouterTestingModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(StoryEventsPageComponent);
     storyEventsPageComponent = fixture.componentInstance;

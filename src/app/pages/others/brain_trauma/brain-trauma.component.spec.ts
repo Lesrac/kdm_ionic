@@ -1,11 +1,11 @@
 import {
-  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController,
-  NavParams, Platform
+  Config, DomController, IonicModule, NavController,
+  NavParams, Platform,
 } from '@ionic/angular';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock,
-  PlatformMock
+  ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock,
+  PlatformMock,
 } from '../../../mock/mocks';
 import { BrainTraumaPageComponent } from './brain-trauma.component';
 import { DiceThrowComponent } from '../../template/dice-throw.component';
@@ -21,12 +21,10 @@ describe('Brain Trauma Component', () => {
     kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [BrainTraumaPageComponent, DiceThrowComponent],
-      providers: [DomController, Keyboard, Form, GestureController,
+      providers: [DomController,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
-        {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
-        {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
       ],

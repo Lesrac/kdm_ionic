@@ -1,10 +1,10 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
-  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController,
+  Config, DomController, IonicModule, NavController,
   NavParams, Platform,
 } from '@ionic/angular';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock,
+  ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock,
   PlatformMock,
 } from '../../../mock/mocks';
 import { HuntEventTablePageComponent } from './hunt-event-table.component';
@@ -22,12 +22,10 @@ describe('Hunt Event Table Component', () => {
     kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [HuntEventTablePageComponent, TextFormattingPipe],
-      providers: [DomController, Keyboard, Form, GestureController,
+      providers: [DomController,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
-        {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
-        {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
       ],
@@ -58,8 +56,8 @@ describe('Hunt Event Table Component', () => {
   it('filter hunt event table empty value', () => {
     const event = {
       target: {
-        value: ''
-      }
+        value: '',
+      },
     };
     huntEventTablePageComponent.allHuntEvents = [new HuntEvent('Hunt Event', 'dummy')];
     huntEventTablePageComponent.filteredHuntEvents = [new HuntEvent('Dummy', 'dummy')];
@@ -70,8 +68,8 @@ describe('Hunt Event Table Component', () => {
   it('filter hunt event table filter value with found object', () => {
     const event = {
       target: {
-        value: 'hunt Event'
-      }
+        value: 'hunt Event',
+      },
     };
     const huntEvent = new HuntEvent('Hunt Event 1', 'dummy');
     const huntEvent2 = new HuntEvent('Hunt Event 2', 'dummy');
@@ -86,8 +84,8 @@ describe('Hunt Event Table Component', () => {
   it('filter hunt event table filter value with no object found', () => {
     const event = {
       target: {
-        value: 'bar'
-      }
+        value: 'bar',
+      },
     };
     const huntEvent = new HuntEvent('Hunt Event 1', 'dummy');
     const huntEvent2 = new HuntEvent('Hunt Event 2', 'dummy');

@@ -1,11 +1,11 @@
 import {
-  App, Config, DeepLinker, DomController, Form, GestureController, IonicModule, Keyboard, NavController,
-  NavParams, Platform
+  Config, DomController, IonicModule, NavController,
+  NavParams, Platform,
 } from '@ionic/angular';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock,
-  PlatformMock
+  ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock,
+  PlatformMock,
 } from '../../../mock/mocks';
 import { DiceThrowComponent } from '../../template/dice-throw.component';
 import { KDMDataService } from '../../../service/kdm-data.service';
@@ -22,12 +22,10 @@ describe('Glossary Component', () => {
     kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [GlossaryPageComponent, DiceThrowComponent],
-      providers: [DomController, Keyboard, Form, GestureController,
+      providers: [DomController,
         {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
-        {provide: App, useClass: AppMock},
         {provide: Config, useClass: ConfigMock},
-        {provide: DeepLinker, useClass: DeepLinkerMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
       ],
@@ -59,8 +57,8 @@ describe('Glossary Component', () => {
   it('filter glossary empty value', () => {
     const event = {
       target: {
-        value: ''
-      }
+        value: '',
+      },
     };
     glossaryPageComponent.allGlossaryEntries = [new BaseModel('Base Model', 'dummy')];
     glossaryPageComponent.filteredGlossaryEntries = [new BaseModel('Dummy', 'dummy')];
@@ -71,8 +69,8 @@ describe('Glossary Component', () => {
   it('filter glossary filter value with found object', () => {
     const event = {
       target: {
-        value: 'base model'
-      }
+        value: 'base model',
+      },
     };
     const baseModel = new BaseModel('Base Model 1', 'dummy');
     const baseModel2 = new BaseModel('Base Model 2', 'dummy');
@@ -87,8 +85,8 @@ describe('Glossary Component', () => {
   it('filter glossary filter value with no object found', () => {
     const event = {
       target: {
-        value: 'bar'
-      }
+        value: 'bar',
+      },
     };
     const baseModel = new BaseModel('Base Model 1', 'dummy');
     const baseModel2 = new BaseModel('Base Model 2', 'dummy');
