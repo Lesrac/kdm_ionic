@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
-  Config, DomController, IonicModule, NavController,
-  NavParams, Platform,
+  Config, DomController, IonicModule, NavController, Platform,
 } from '@ionic/angular';
 import {
-  AppMock, ConfigMock, DeepLinkerMock, NavMock, NavParamsMock, PlatformMock,
+  ConfigMock, NavMock, PlatformMock,
 } from '../../../mock/mocks';
 import { SevereInjuriesPageComponent } from './severe-injuries.component';
-import { SevereInjuriesDetailPageComponent } from './severe-injuries-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Severe Injuries Component', () => {
 
@@ -18,12 +17,11 @@ describe('Severe Injuries Component', () => {
     TestBed.configureTestingModule({
       declarations: [SevereInjuriesPageComponent],
       providers: [DomController,
-        {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: Config, useClass: ConfigMock},
         {provide: Platform, useClass: PlatformMock},
       ],
-      imports: [IonicModule],
+      imports: [IonicModule, RouterTestingModule],
     });
     fixture = TestBed.createComponent(SevereInjuriesPageComponent);
     severeInjuriesPageComponent = fixture.componentInstance;
@@ -38,12 +36,5 @@ describe('Severe Injuries Component', () => {
     expect(fixture).toBeTruthy();
     expect(severeInjuriesPageComponent).toBeTruthy();
   });
-
-/*  it('open detail Page', () => {
-    const spy = spyOn(severeInjuriesPageComponent.navCtrl, 'push').and.callThrough();
-    const bodypart = 'WAIST';
-    severeInjuriesPageComponent.goToDetail(bodypart);
-    expect(spy).toHaveBeenCalledWith(SevereInjuriesDetailPageComponent, {bodypart: bodypart});
-  }); */
 
 });

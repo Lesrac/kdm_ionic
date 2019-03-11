@@ -1,43 +1,36 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DefeatedMonsterPageComponent } from './defeated-monster.component';
-import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock,
-  NavParamsMock, PlatformMock,
-} from '../../mock/mocks';
-import { KDMDBService } from '../../service/kdm-db.service';
-import {
-  Config, DomController, IonicModule, ModalController, NavController, NavParams,
-  Platform,
-} from '@ionic/angular';
+import { ConfigMock, KDMDataServiceMock, ModalControllerMock, ModalMock, NavMock, PlatformMock, } from '../../mock/mocks';
+import { Config, DomController, IonicModule, ModalController, NavController, Platform, } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
 import { HuntedMonster } from '../../model/linking/hunted-monster';
 import { Monster } from '../../model/monster';
 import { DefeatedMonsterModalComponent } from './defeated-monster-modal.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { KDMDataService } from '../../service/kdm-data.service';
 
 describe('Defeated Monster Component', () => {
   let defeatedMonsterComponent: DefeatedMonsterPageComponent;
   let fixture: ComponentFixture<DefeatedMonsterPageComponent>;
-  let kdmdbServiceMock: KDMDBServiceMock;
+  let kdmServiceMock: KDMDataServiceMock;
   let modalMock: ModalMock;
   let settlement: Settlement;
 
   beforeEach(() => {
-    kdmdbServiceMock = new KDMDBServiceMock();
     modalMock = new ModalMock();
+    kdmServiceMock = new KDMDataServiceMock();
     TestBed.configureTestingModule({
       declarations: [DefeatedMonsterPageComponent],
       providers: [DomController,
-        {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: ModalController, useClass: ModalControllerMock},
         {provide: Config, useClass: ConfigMock},
         {provide: Platform, useClass: PlatformMock},
-        {provide: KDMDBService, useValue: kdmdbServiceMock},
+        {provide: KDMDataService, useValue: kdmServiceMock},
       ],
-      imports: [IonicModule],
+      imports: [IonicModule, RouterTestingModule],
     });
     settlement = new Settlement('dummy settlementLocal$');
-    NavParamsMock.setParams(settlement);
     fixture = TestBed.createComponent(DefeatedMonsterPageComponent);
     defeatedMonsterComponent = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,12 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OthersPageComponent } from './others.component';
 import {
-  Config, DomController, IonicModule, NavController,
-  NavParams, Platform,
+  Config, DomController, IonicModule, NavController, NavParams, Platform,
 } from '@ionic/angular';
-import {
-  ConfigMock, NavMock, NavParamsMock, PlatformMock,
-} from '../../mock/mocks';
+import { ConfigMock, NavMock, NavParamsMock, PlatformMock } from '../../mock/mocks';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Others Component', () => {

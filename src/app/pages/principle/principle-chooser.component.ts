@@ -4,7 +4,7 @@ import { KDMDataService } from '../../service/kdm-data.service';
 import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm-db.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 /**
@@ -16,6 +16,7 @@ import { switchMap } from 'rxjs/operators';
 export class PrincipleChooserPageComponent implements OnInit {
 
   settlement: Settlement;
+  settlement$2: Subscription;
   settlement$: Observable<Settlement>;
   principleType: PrincipleType;
   allPrinciples: Principle[];
@@ -27,7 +28,28 @@ export class PrincipleChooserPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('ngInit');
+    // this.settlement$2 = this.route.paramMap.subscribe(params => {
+    //   console.log(params);
+    //   this.kdmData.getPrinciplesWithTypeName(params.get('type')).then(principles => {
+    //     this.allPrinciples = principles;
+    //     console.log(principles);
+    //     if (principles.length > 1) {
+    //       this.principleOne = principles[0];
+    //       this.principleTwo = principles[1];
+    //     }
+    //     this.isLoading = false;
+    //   });
+    //
+    //   this.kdmData.getPrincipleTypeByName(params.get('type')).then(type => this.principleType = type);
+    //
+    //   const obsSettlement = this.kdmData.getSettlement(+params.get('id'));
+    //   obsSettlement.then(stlmnt => this.settlement = stlmnt);
+    //   return obsSettlement;
+    // });
+
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+      console.log(params);
       this.kdmData.getPrinciplesWithTypeName(params.get('type')).then(principles => {
         this.allPrinciples = principles;
         if (principles.length > 1) {

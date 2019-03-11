@@ -1,21 +1,12 @@
-import {
-  Config, DomController, IonicModule, NavController, NavParams, Platform,
-} from '@ionic/angular';
-import {
-  AppMock,
-  ConfigMock,
-  DeepLinkerMock,
-  KDMCalculationServiceMock,
-  NavMock,
-  NavParamsMock,
-  PlatformMock, ViewControllerMock,
-} from '../../mock/mocks';
+import { Config, DomController, IonicModule, NavController, NavParams, Platform, } from '@ionic/angular';
+import { ConfigMock, KDMCalculationServiceMock, NavMock, NavParamsMock, PlatformMock, } from '../../mock/mocks';
 import { Settlement } from '../../model/settlement';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DefeatedMonsterModalComponent } from './defeated-monster-modal.component';
 import { KDMCalculationService } from '../../service/kdm-calculation.service';
 import { HuntableMonster } from '../../model/linking/huntable-monster';
 import { Monster } from '../../model/monster';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('Defeated Monster Modal', () => {
   let defeatedMonsterModalComponent: DefeatedMonsterModalComponent;
@@ -34,6 +25,7 @@ describe('Defeated Monster Modal', () => {
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMCalculationService, useValue: kdmCalculationServiceMock},
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [IonicModule],
     });
     settlement = new Settlement('dummy settlementLocal$');
@@ -48,11 +40,11 @@ describe('Defeated Monster Modal', () => {
     defeatedMonsterModalComponent = null;
   });
 
-/*  it('close', () => {
-    const spy = spyOn(defeatedMonsterModalComponent.viewCtrl, 'dismiss');
-    defeatedMonsterModalComponent.close();
-    expect(spy).toHaveBeenCalled();
-  }); */
+  /*  it('close', () => {
+      const spy = spyOn(defeatedMonsterModalComponent.viewCtrl, 'dismiss');
+      defeatedMonsterModalComponent.close();
+      expect(spy).toHaveBeenCalled();
+    }); */
 
   it('ngOnInit', () => {
     const monster = new Monster(1, 'Dummy Monster', false);

@@ -1,22 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StoragePageComponent } from './storage.component';
-import {
-  Config, DomController, IonicModule, ModalController,
-  NavController, NavParams, Platform,
-} from '@ionic/angular';
+import { Config, DomController, IonicModule, ModalController, NavController, Platform } from '@ionic/angular';
 import { Settlement } from '../../model/settlement';
-import {
-  AppMock, ConfigMock, DeepLinkerMock, DummyMockElements, KDMDataServiceMock, KDMDBServiceMock, ModalControllerMock,
-  ModalMock, NavMock,
-  NavParamsMock,
-  PlatformMock,
-} from '../../mock/mocks';
+import { ConfigMock, KDMDataServiceMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock, NavParamsMock, PlatformMock } from '../../mock/mocks';
 import { KDMDBService } from '../../service/kdm-db.service';
 import { Storage, StorageTag } from '../../model/storage';
 import { StorageModalComponent } from './storage-modal.component';
-import { ShowListDetailComponent } from '../template/show-list-detail.component';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('StorageComponent', () => {
   let storageComponent: StoragePageComponent;
@@ -34,7 +27,6 @@ describe('StorageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [StoragePageComponent],
       providers: [DomController,
-        {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: ModalController, useClass: ModalControllerMock},
         {provide: Config, useClass: ConfigMock},
@@ -42,7 +34,8 @@ describe('StorageComponent', () => {
         {provide: KDMDBService, useValue: kdmdbServiceMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
       ],
-      imports: [IonicModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [IonicModule, RouterTestingModule],
     });
     settlement = new Settlement('dummy settlementLocal$');
     NavParamsMock.setParams(settlement);
@@ -103,13 +96,13 @@ describe('StorageComponent', () => {
     );
   });
 
-/*  it('open NavContoller with ShowListDetailComponent', () => {
-    const spy = spyOn(storageComponent.navCtrl, 'push').and.callThrough();
-    storageComponent.showDetail(DummyMockElements.storage);
-    expect(spy).toHaveBeenCalledWith(ShowListDetailComponent, {
-        object: DummyMockElements.storage,
-      },
-    );
-  }); */
+  /*  it('open NavContoller with ShowListDetailComponent', () => {
+      const spy = spyOn(storageComponent.navCtrl, 'push').and.callThrough();
+      storageComponent.showDetail(DummyMockElements.storage);
+      expect(spy).toHaveBeenCalledWith(ShowListDetailComponent, {
+          object: DummyMockElements.storage,
+        },
+      );
+    }); */
 
 });

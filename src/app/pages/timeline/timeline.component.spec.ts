@@ -1,12 +1,5 @@
-import {
-  Config, DomController, IonicModule, ModalController,
-  NavController, NavParams, Platform,
-} from '@ionic/angular';
-import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock, NavParamsMock,
-  PlatformMock,
-  ViewControllerMock,
-} from '../../mock/mocks';
+import { Config, DomController, IonicModule, ModalController, NavController, Platform, } from '@ionic/angular';
+import { ConfigMock, KDMDBServiceMock, ModalControllerMock, ModalMock, NavMock, PlatformMock, } from '../../mock/mocks';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm-db.service';
@@ -15,6 +8,8 @@ import { SettlementTimeline } from '../../model/linking/settlement-timeline';
 import { Timeline } from '../../model/timeline';
 import { LanternEvent } from '../../model/lantern-event';
 import { TimelineEventModalComponent } from './timeline-event-modal.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TimelinePageComponent', () => {
   let timelinePageComponent: TimelinePageComponent;
@@ -34,14 +29,14 @@ describe('TimelinePageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TimelinePageComponent],
       providers: [DomController,
-        {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: ModalController, useClass: ModalControllerMock},
         {provide: Config, useClass: ConfigMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDBService, useValue: kdmdbServiceMock},
       ],
-      imports: [IonicModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [IonicModule, RouterTestingModule],
     });
     const settlement = new Settlement('Dummy Settlement');
     const timeline = new Timeline(1, null);
@@ -55,8 +50,6 @@ describe('TimelinePageComponent', () => {
     const timeline5 = new Timeline(5, null);
     timeline5.position = 5;
     settlementTimelinePosition5 = new SettlementTimeline(settlement, timeline5);
-    NavParamsMock.setParams([settlementTimelinePosition1, settlementTimelinePosition2,
-      settlementTimelinePosition3, settlementTimelinePosition4, settlementTimelinePosition5]);
     fixture = TestBed.createComponent(TimelinePageComponent);
     timelinePageComponent = fixture.componentInstance;
     fixture.detectChanges();
@@ -141,76 +134,76 @@ describe('TimelinePageComponent', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-/*  it('add timeline event', () => {
-    const spy = spyOn(timelinePageComponent.modalCtrl, 'create').and.returnValue(modalMock);
-    const spyModalPresent = spyOn(modalMock, 'present');
-    timelinePageComponent.addTimelineEvent();
-    expect(spy).toHaveBeenCalledWith(AddTimelineEventModalComponent, {
-      settlementTimeline: timelinePageComponent.timeline,
+  /*  it('add timeline event', () => {
+      const spy = spyOn(timelinePageComponent.modalCtrl, 'create').and.returnValue(modalMock);
+      const spyModalPresent = spyOn(modalMock, 'present');
+      timelinePageComponent.addTimelineEvent();
+      expect(spy).toHaveBeenCalledWith(AddTimelineEventModalComponent, {
+        settlementTimeline: timelinePageComponent.timeline,
+      });
+      expect(spyModalPresent).toHaveBeenCalled();
     });
-    expect(spyModalPresent).toHaveBeenCalled();
-  });
 
-  it('change timeline event', () => {
-    const spy = spyOn(timelinePageComponent.modalCtrl, 'create').and.returnValue(modalMock);
-    const spyModalPresent = spyOn(modalMock, 'present');
-    timelinePageComponent.changeTimelineEvent(settlementTimelinePosition3);
-    expect(spy).toHaveBeenCalledWith(AddTimelineEventModalComponent, {
-      settlementTimeline: timelinePageComponent.timeline,
-      replaceableTimeline: settlementTimelinePosition3,
+    it('change timeline event', () => {
+      const spy = spyOn(timelinePageComponent.modalCtrl, 'create').and.returnValue(modalMock);
+      const spyModalPresent = spyOn(modalMock, 'present');
+      timelinePageComponent.changeTimelineEvent(settlementTimelinePosition3);
+      expect(spy).toHaveBeenCalledWith(AddTimelineEventModalComponent, {
+        settlementTimeline: timelinePageComponent.timeline,
+        replaceableTimeline: settlementTimelinePosition3,
+      });
+      expect(spyModalPresent).toHaveBeenCalled();
     });
-    expect(spyModalPresent).toHaveBeenCalled();
-  });
 
-  it('remove timeline event', () => {
-    timelinePageComponent.removeTimelineEvent(settlementTimelinePosition3);
-    expect(timelinePageComponent.timeline.length).toBe(4);
-    expect(settlementTimelinePosition4.timeline.position).toBe(3);
-    expect(settlementTimelinePosition5.timeline.position).toBe(4);
-    expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition1);
-    expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition2);
-    expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition4);
-    expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition5);
-  });
+    it('remove timeline event', () => {
+      timelinePageComponent.removeTimelineEvent(settlementTimelinePosition3);
+      expect(timelinePageComponent.timeline.length).toBe(4);
+      expect(settlementTimelinePosition4.timeline.position).toBe(3);
+      expect(settlementTimelinePosition5.timeline.position).toBe(4);
+      expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition1);
+      expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition2);
+      expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition4);
+      expect(timelinePageComponent.timeline).toContain(settlementTimelinePosition5);
+    });
 
-  it('reorder timeline event in the middle, low to high', () => {
-    const reorderIndex = new ReorderIndexes(1, 3);
-    timelinePageComponent.reorderItems(reorderIndex);
-    expect(settlementTimelinePosition1.timeline.position).toBe(1);
-    expect(settlementTimelinePosition2.timeline.position).toBe(4);
-    expect(settlementTimelinePosition3.timeline.position).toBe(2);
-    expect(settlementTimelinePosition4.timeline.position).toBe(3);
-    expect(settlementTimelinePosition5.timeline.position).toBe(5);
-  });
+    it('reorder timeline event in the middle, low to high', () => {
+      const reorderIndex = new ReorderIndexes(1, 3);
+      timelinePageComponent.reorderItems(reorderIndex);
+      expect(settlementTimelinePosition1.timeline.position).toBe(1);
+      expect(settlementTimelinePosition2.timeline.position).toBe(4);
+      expect(settlementTimelinePosition3.timeline.position).toBe(2);
+      expect(settlementTimelinePosition4.timeline.position).toBe(3);
+      expect(settlementTimelinePosition5.timeline.position).toBe(5);
+    });
 
-  it('reorder timeline event at the start, low to high', () => {
-    const reorderIndex = new ReorderIndexes(0, 3);
-    timelinePageComponent.reorderItems(reorderIndex);
-    expect(settlementTimelinePosition1.timeline.position).toBe(4);
-    expect(settlementTimelinePosition2.timeline.position).toBe(1);
-    expect(settlementTimelinePosition3.timeline.position).toBe(2);
-    expect(settlementTimelinePosition4.timeline.position).toBe(3);
-    expect(settlementTimelinePosition5.timeline.position).toBe(5);
-  });
+    it('reorder timeline event at the start, low to high', () => {
+      const reorderIndex = new ReorderIndexes(0, 3);
+      timelinePageComponent.reorderItems(reorderIndex);
+      expect(settlementTimelinePosition1.timeline.position).toBe(4);
+      expect(settlementTimelinePosition2.timeline.position).toBe(1);
+      expect(settlementTimelinePosition3.timeline.position).toBe(2);
+      expect(settlementTimelinePosition4.timeline.position).toBe(3);
+      expect(settlementTimelinePosition5.timeline.position).toBe(5);
+    });
 
-  it('reorder timeline event in the middle, high to low', () => {
-    const reorderIndex = new ReorderIndexes(3, 1);
-    timelinePageComponent.reorderItems(reorderIndex);
-    expect(settlementTimelinePosition1.timeline.position).toBe(1);
-    expect(settlementTimelinePosition2.timeline.position).toBe(3);
-    expect(settlementTimelinePosition3.timeline.position).toBe(4);
-    expect(settlementTimelinePosition4.timeline.position).toBe(2);
-    expect(settlementTimelinePosition5.timeline.position).toBe(5);
-  });
+    it('reorder timeline event in the middle, high to low', () => {
+      const reorderIndex = new ReorderIndexes(3, 1);
+      timelinePageComponent.reorderItems(reorderIndex);
+      expect(settlementTimelinePosition1.timeline.position).toBe(1);
+      expect(settlementTimelinePosition2.timeline.position).toBe(3);
+      expect(settlementTimelinePosition3.timeline.position).toBe(4);
+      expect(settlementTimelinePosition4.timeline.position).toBe(2);
+      expect(settlementTimelinePosition5.timeline.position).toBe(5);
+    });
 
-  it('reorder timeline event at the end, high to low', () => {
-    const reorderIndex = new ReorderIndexes(4, 2);
-    timelinePageComponent.reorderItems(reorderIndex);
-    expect(settlementTimelinePosition1.timeline.position).toBe(1);
-    expect(settlementTimelinePosition2.timeline.position).toBe(2);
-    expect(settlementTimelinePosition3.timeline.position).toBe(4);
-    expect(settlementTimelinePosition4.timeline.position).toBe(5);
-    expect(settlementTimelinePosition5.timeline.position).toBe(3);
-  });
-*/
+    it('reorder timeline event at the end, high to low', () => {
+      const reorderIndex = new ReorderIndexes(4, 2);
+      timelinePageComponent.reorderItems(reorderIndex);
+      expect(settlementTimelinePosition1.timeline.position).toBe(1);
+      expect(settlementTimelinePosition2.timeline.position).toBe(2);
+      expect(settlementTimelinePosition3.timeline.position).toBe(4);
+      expect(settlementTimelinePosition4.timeline.position).toBe(5);
+      expect(settlementTimelinePosition5.timeline.position).toBe(3);
+    });
+  */
 });

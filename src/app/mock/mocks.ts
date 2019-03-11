@@ -211,10 +211,9 @@ export class ModalMock {
 export class KDMDBServiceMock {
   private settlements: string = 'settlements';
 
-  getSettlements(): Promise<[SettlementSimplified[], void]> {
+  getSettlements(): Promise<SettlementSimplified[]> {
     const settlements: SettlementSimplified[] = [];
-    let x: void;
-    return Promise.all<SettlementSimplified[], void>([settlements, x]);
+    return Promise.resolve(settlements);
   }
 
   getSettlementById(id: number): Promise<SettlementSimplified> {
@@ -314,6 +313,10 @@ export class KDMDataServiceMock {
     return Promise.resolve([new Timeline(1, new LanternEvent())]);
   }
 
+  getSettlement(id: number): Promise<Settlement> {
+    return Promise.resolve(new Settlement(''));
+  }
+
   getSettlementLocations(): Promise<Location[]> {
     return Promise.resolve([new Location('Location', 'dummy',
       new Map<Equipment, Map<string | Innovation, [number]>>(), false)]);
@@ -363,8 +366,17 @@ export class KDMDataServiceMock {
     return Promise.resolve(new Principle(name, 'dummy', new PrincipleType('Dummy Type')));
   }
 
+  getPrincipleTypeByName(name: string): Promise<PrincipleType> {
+    return Promise.resolve(new PrincipleType(name));
+  }
+
   getPrincipleTypes(): Promise<PrincipleType[]> {
     return Promise.resolve([new PrincipleType('Dummy Type')]);
+  }
+
+  getPrinciplesWithTypeName(principleTypeName: string): Promise<Principle[]> {
+    return Promise.resolve([new Principle('Principle', 'dummy', new PrincipleType('Dummy Type')),
+      new Principle('Principle 2', 'dummy', new PrincipleType('Dummy Type'))]);
   }
 
   getPrinciplesWithType(principleType: PrincipleType): Promise<Principle[]> {

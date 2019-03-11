@@ -1,12 +1,6 @@
-import {
-  Config, DomController, IonicModule, NavController,
-  NavParams, Platform,
-} from '@ionic/angular';
+import { Config, DomController, IonicModule, NavController, NavParams, Platform } from '@ionic/angular';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import {
-  ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock,
-  PlatformMock,
-} from '../../../mock/mocks';
+import { ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock, PlatformMock } from '../../../mock/mocks';
 import { DiceThrowComponent } from '../../template/dice-throw.component';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { GlossaryPageComponent } from './glossary.component';

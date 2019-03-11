@@ -1,14 +1,12 @@
-import {
-  Config, DomController, IonicModule, NavController, NavParams, Platform} from '@ionic/angular';
-import {
-  AppMock, ConfigMock, DeepLinkerMock, KDMDataServiceMock, NavMock, NavParamsMock, PlatformMock, ViewControllerMock,
-} from '../../mock/mocks';
+import { Config, DomController, IonicModule, NavController, Platform } from '@ionic/angular';
+import { ConfigMock, KDMDataServiceMock, NavMock, PlatformMock, } from '../../mock/mocks';
 import { KDMDataService } from '../../service/kdm-data.service';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Settlement } from '../../model/settlement';
 import { Storage, StorageTag } from '../../model/storage';
 import { StorageModalComponent } from './storage-modal.component';
 import { isEmpty } from 'rxjs/operators';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('StorageModalComponent', () => {
   let storageModalComponent: StorageModalComponent;
@@ -22,16 +20,15 @@ describe('StorageModalComponent', () => {
     TestBed.configureTestingModule({
       declarations: [StorageModalComponent],
       providers: [DomController,
-        {provide: NavParams, useClass: NavParamsMock},
         {provide: NavController, useClass: NavMock},
         {provide: Config, useClass: ConfigMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [IonicModule],
     });
     settlement = new Settlement('dummy settlementLocal$');
-    NavParamsMock.setParams(settlement);
     fixture = TestBed.createComponent(StorageModalComponent);
     storageModalComponent = fixture.componentInstance;
     fixture.detectChanges();
@@ -49,11 +46,11 @@ describe('StorageModalComponent', () => {
     expect(storageModalComponent.storageItemName).toEqual(storageItemName);
   });
 
-/*  it('close', () => {
-    const spy = spyOn(storageModalComponent.viewCtrl, 'dismiss');
-    storageModalComponent.close();
-    expect(spy).toHaveBeenCalled();
-  }); */
+  /*  it('close', () => {
+      const spy = spyOn(storageModalComponent.viewCtrl, 'dismiss');
+      storageModalComponent.close();
+      expect(spy).toHaveBeenCalled();
+    }); */
 
   it('on init', fakeAsync(() => {
     spyOn(kdmServiceMock, 'getAllExistingStorageItems').and.callThrough();

@@ -1011,8 +1011,7 @@ describe('KDM Data Service', () => {
 
     it('get settlements', fakeAsync(inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
-        const spy = spyOn(kdmDBServiceMock, 'getSettlements').and.callThrough()
-          .and.returnValue(Promise.resolve([simpleSettlements, undefined]));
+        const spy = spyOn(kdmDBServiceMock, 'getSettlements').and.returnValue(Promise.resolve(simpleSettlements));
         kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];
         kdmDataService.lanternEvents = [new LanternEvent()];
         kdmDataService.milestones = [new Milestone(1, 'Milestone', 2, ComparableVisitorValue.EQ,
@@ -1036,7 +1035,7 @@ describe('KDM Data Service', () => {
         expect(kdmDataService.settlements).toContain(settlement4);
       }));
 
-    it('get settlementLocal$ from cache', inject([KDMDataService],
+    it('get settlement from cache', inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         spyOn(kdmDBServiceMock, 'getSettlementById').and.callThrough()
           .and.returnValue(Promise.resolve(simpleSettlement2));
@@ -1066,7 +1065,7 @@ describe('KDM Data Service', () => {
         expect(spy).toHaveBeenCalledWith(settlement2.id);
       }));
 
-    it('add settlementLocal$', fakeAsync(inject([KDMDataService],
+    it('add settlement', fakeAsync(inject([KDMDataService],
       (kdmDataService: KDMDataService) => {
         const spy = spyOn(kdmDBServiceMock, 'saveSettlement').and.returnValue(true);
         kdmDataService.storyEvents = [new StoryEvent('Dummy Story Event', 'dummy', 1)];

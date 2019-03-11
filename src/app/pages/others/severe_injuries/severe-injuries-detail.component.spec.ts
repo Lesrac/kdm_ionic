@@ -1,15 +1,15 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
-  Config, DomController, IonicModule, NavController,
-  NavParams, Platform,
+  Config, DomController, IonicModule, NavController, Platform,
 } from '@ionic/angular';
 import {
-  ConfigMock, KDMDataServiceMock, NavMock, NavParamsMock, PlatformMock,
+  ConfigMock, KDMDataServiceMock, NavMock, PlatformMock,
 } from '../../../mock/mocks';
 import { SevereInjuriesDetailPageComponent } from './severe-injuries-detail.component';
 import { KDMDataService } from '../../../service/kdm-data.service';
 import { DiceThrowComponent } from '../../template/dice-throw.component';
-import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute, Data } from '@angular/router';
 
 describe('Severe Injuries Detail Component', () => {
 
@@ -20,19 +20,24 @@ describe('Severe Injuries Detail Component', () => {
 
   beforeEach(() => {
     kdmServiceMock = new KDMDataServiceMock();
+    bodypart = 'WAIST';
     TestBed.configureTestingModule({
       declarations: [SevereInjuriesDetailPageComponent, DiceThrowComponent],
-      providers: [DomController, ActivatedRoute,
-        {provide: NavParams, useClass: NavParamsMock},
+      providers: [DomController,
         {provide: NavController, useClass: NavMock},
         {provide: Config, useClass: ConfigMock},
         {provide: Platform, useClass: PlatformMock},
         {provide: KDMDataService, useValue: kdmServiceMock},
+        {
+          provide: ActivatedRoute, useValue: {
+            data: {
+              subscribe: (fn: (value: Data) => void) => fn({bodypart: bodypart}),
+            },
+          },
+        },
       ],
-      imports: [IonicModule],
+      imports: [IonicModule, RouterTestingModule],
     });
-    bodypart = 'WAIST';
-    NavParamsMock.setParams(bodypart);
     fixture = TestBed.createComponent(SevereInjuriesDetailPageComponent);
     severeInjuriesDetailPageComponent = fixture.componentInstance;
   });
