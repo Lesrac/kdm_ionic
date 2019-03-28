@@ -13,7 +13,7 @@ npm install
 
 
 #Start:
-ionic serve
+ng serve
 
 ##On Android:
 ionic cordova run android --livereload

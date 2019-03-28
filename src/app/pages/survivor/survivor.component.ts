@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Survivor } from '../../model/survivor';
-import { ModalController, NavParams } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ShowListTypes } from '../../model/show-list-types';
 import { Settlement } from '../../model/settlement';
 import { KDMDBService } from '../../service/kdm-db.service';
 import { KDMObserverService } from '../../service/kdm-observer.service';
-import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { KDMDataService } from '../../service/kdm-data.service';
 
 /**
  * Created by Daniel on 01.03.2017.
@@ -22,156 +24,168 @@ export class SurvivorPageComponent implements OnInit {
   courage: Subject<number> = new Subject<number>();
   understanding: Subject<number> = new Subject<number>();
   xp: Subject<number> = new Subject<number>();
-  survivor: Survivor;
+  survivorLocal: Survivor;
 
   settlement: Settlement;
+  survivor$: Observable<Survivor>;
   xpGroup: FormGroup;
 
-  constructor(public router: Router, public modalCtrl: ModalController, public params: NavParams, public formBuilder: FormBuilder, private kdmdbService: KDMDBService, private kdmObserver: KDMObserverService) {
-    this.survivor = params.get('survivor');
-    this.settlement = params.get('settlement');
-    this.kdmObserver.registerObserverForSurvivorHappenings(this);
+  constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController, public formBuilder: FormBuilder,
+              private kdmdbService: KDMDBService, private kdmObserver: KDMObserverService, public kdmService: KDMDataService) {
   }
 
   ngOnInit(): void {
-    this.setupXP();
+    this.survivor$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+        const stlmnt = this.kdmService.getSettlement(+params.get('id'));
+        stlmnt.then(settlement => {
+          this.settlement = settlement;
+        });
+        const srv = this.kdmService.getSurvivor(+params.get('id'), +params.get('survivorId'));
+        srv.then(survivor => {
+          this.survivorLocal = survivor;
+          this.setupXP();
+          this.kdmObserver.registerObserverForSurvivorHappenings(this);
+        });
+        return srv;
+      },
+    ));
   }
 
   survivalChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.survival = event;
+      this.survivorLocal.survival = event;
     }
   }
 
   movementChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.movement = event;
+      this.survivorLocal.movement = event;
     }
   }
 
   accuracyChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.accuracy = event;
+      this.survivorLocal.accuracy = event;
     }
   }
 
   strengthChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.strength = event;
+      this.survivorLocal.strength = event;
     }
   }
 
   evasionChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.evasion = event;
+      this.survivorLocal.evasion = event;
     }
   }
 
   luckChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.luck = event;
+      this.survivorLocal.luck = event;
     }
   }
 
   speedChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.speed = event;
+      this.survivorLocal.speed = event;
     }
   }
 
   insanityChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.insanity = event;
+      this.survivorLocal.insanity = event;
     }
   }
 
   headArmorChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.headArmor = event;
+      this.survivorLocal.headArmor = event;
     }
   }
 
   armsArmorChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.armsArmor = event;
+      this.survivorLocal.armsArmor = event;
     }
   }
 
   bodyArmorChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.bodyArmor = event;
+      this.survivorLocal.bodyArmor = event;
     }
   }
 
   waistArmorChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.waistArmor = event;
+      this.survivorLocal.waistArmor = event;
     }
   }
 
   legsArmorChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.legsArmor = event;
+      this.survivorLocal.legsArmor = event;
     }
   }
 
   understandingChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.understanding = event;
+      this.survivorLocal.understanding = event;
       this.understanding.next(event);
     }
   }
 
   courageChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.courage = event;
+      this.survivorLocal.courage = event;
       this.courage.next(event);
     }
   }
 
   bleedingTokensChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.bleedingTokens = event;
+      this.survivorLocal.bleedingTokens = event;
     }
   }
 
   weaponProficiencyXPChange(event): void {
     if (typeof event === 'number') {
-      this.survivor.weaponProficiencyXP = event;
+      this.survivorLocal.weaponProficiencyXP = event;
     }
   }
 
   updateXP(event: Event, control: FormControl): void {
     if (control.value) {
-      this.survivor.experience++;
+      this.survivorLocal.experience++;
     } else {
-      this.survivor.experience--;
+      this.survivorLocal.experience--;
     }
-    this.xp.next(this.survivor.experience);
+    this.xp.next(this.survivorLocal.experience);
   }
 
   showDisorders(): void {
     this.router.navigate(['/showList', {
-      objects: this.survivor.disorders, type: ShowListTypes.DISORDER, settlement: this.settlement,
+      objects: this.survivorLocal.disorders, type: ShowListTypes.DISORDER, settlement: this.settlement,
     }]).then();
   }
 
   showFightingArts(): void {
     this.router.navigate(['/showList', {
-      objects: this.survivor.fightingArts, type: ShowListTypes.FIGHTINGART, settlement: this.settlement,
+      objects: this.survivorLocal.fightingArts, type: ShowListTypes.FIGHTINGART, settlement: this.settlement,
     }]).then();
   }
 
   showEquipmentGrid(): void {
     this.router.navigate(['/equipmentGrid', {
-      survivor: this.survivor, settlement: this.settlement,
+      survivor: this.survivorLocal, settlement: this.settlement,
     }]).then();
   }
 
   private setupXP(): void {
     const checkboxArray = new FormArray([]);
     for (let i: number = 0; i < SurvivorPageComponent.MAX_XP; i++) {
-      if (i < this.survivor.experience) {
+      if (i < this.survivorLocal.experience) {
         checkboxArray.push(new FormControl(true));
       } else {
         checkboxArray.push(new FormControl(false));

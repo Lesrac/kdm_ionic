@@ -181,6 +181,10 @@ export class KDMDataService {
     return survivor;
   }
 
+  getSurvivor(settlementId: number, survivorId: number): Promise<Survivor> {
+    return this.getSettlement(settlementId).then(settlement => settlement.survivors.find(s => s.id === survivorId));
+  }
+
   getMonsters(): Promise<Monster[]> {
     if (this.monsters.length < 1) {
       return new Promise(resolve => {

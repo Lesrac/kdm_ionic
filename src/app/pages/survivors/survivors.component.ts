@@ -25,9 +25,7 @@ export class SurvivorsPageComponent implements OnInit {
   }
 
   goToDetail(survivor: Survivor): void {
-    this.router.navigate(['/survivor', {
-      survivor: survivor, settlement: this.settlement,
-    }]).then();
+    this.router.navigate(['kdm', 'survivors', this.settlement.id, 'survivor', survivor.id]).then();
   }
 
   confirmChange(): void {

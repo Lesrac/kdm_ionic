@@ -3,15 +3,15 @@
     <ion-title>
       <ion-item>
         Survivor
-        <ion-input required [(ngModel)]="survivor.name"></ion-input>
+     <!--   <ion-input required [(ngModel)]="survivor.name"></ion-input> -->
       </ion-item>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item-group radio-group [(ngModel)]="survivor.isMale">
+  <ion-list *ngIf="survivor$ | async as survivor">
+    <ion-radio-group [(ngModel)]="survivor.isMale">
       <ion-row>
         <ion-col>
           <ion-item>
@@ -33,7 +33,7 @@
           </ion-item>
         </ion-col>
       </ion-row>
-    </ion-item-group>
+    </ion-radio-group>
     <ion-item-group>
       <ion-row class="container">
         <ion-col>

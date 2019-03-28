@@ -39,7 +39,7 @@ export class KDMObserverService {
   registerObserverForSurvivorHappenings(survivorPageComponent: SurvivorPageComponent): void {
     this.kdmDataService.getStoryEvents();
     this.kdmDataService.getLanternEvents();
-    const survivor = survivorPageComponent.survivor;
+    const survivor = survivorPageComponent.survivorLocal;
 
     const arr = [];
     arr.push(this.kdmDataService.getLanternEvent(this.boldEvent).then(lanternEvent =>
