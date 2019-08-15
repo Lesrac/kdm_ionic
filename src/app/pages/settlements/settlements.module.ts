@@ -11,12 +11,8 @@ import { ParentModule } from '../../util/parent.module';
 import { PrincipleDetailComponent } from '../principle/principle_detail.component';
 import { PrinciplesPageComponent } from '../principle/principles.component';
 import { PrincipleChooserPageComponent } from '../principle/principle-chooser.component';
-import { EquipmentListPageComponent } from '../equipment/equipment-list.component';
 import { StoragePageComponent } from '../storage/storage.component';
 import { DefeatedMonsterPageComponent } from '../defeated_monster/defeated-monster.component';
-import { EquipmentCardComponent } from '../equipment/equipment-card.component';
-import { EquipmentGridPageComponent } from '../equipment/equipment-grid.component';
-import { EquipmentDetailPageComponent } from '../equipment/equipment_detail.component';
 import { ShowLocationDetailComponent } from '../location/show-location-detail.component';
 import { CreateSettlementModalComponent } from '../settlement/create-settlement-modal.component';
 import { ShowListAddModalComponent } from '../template/show-list-add-modal.component';
@@ -98,8 +94,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)],
   exports: [RouterModule],
   declarations: [DefeatedMonsterModalComponent, SettlementsPageComponent, SettlementPageComponent, TimelinePageComponent, AddTimelineEventModalComponent,
-    PrincipleChooserPageComponent, PrincipleDetailComponent, DefeatedMonsterPageComponent, StoragePageComponent, EquipmentGridPageComponent,
-    EquipmentCardComponent, EquipmentListPageComponent, EquipmentDetailPageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent,
+    PrincipleChooserPageComponent, PrincipleDetailComponent, DefeatedMonsterPageComponent, StoragePageComponent, ShowLocationDetailComponent, CreateSettlementModalComponent,
     PrinciplesPageComponent],
   entryComponents: [CreateSettlementModalComponent, TimelineEventModalComponent, ShowListAddModalComponent, DefeatedMonsterModalComponent,
     FormattedTextModalComponent, AddedResourcesModalComponent, StorageModalComponent],

@@ -335,19 +335,22 @@
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button (click)="showDisorders()">
+      <ion-button expand="full" id="button_show_disorders"
+                  routerLink="/kdm/survivors/{{survivor.settlementId}}/survivor/{{survivor.id}}/disorders/">
         Disorders
       </ion-button>
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button (click)="showFightingArts()">
+      <ion-button expand="full" id="button_show_fighting_arts"
+                  routerLink="/kdm/survivors/{{survivor.settlementId}}/survivor/{{survivor.id}}/fightingArts/">
         Fighting Arts
       </ion-button>
     </ion-item-group>
 
     <ion-item-group>
-      <ion-button (click)="showEquipmentGrid()">
+      <ion-button expand="full" id="button_show_equipment"
+                  routerLink="/kdm/survivors/{{survivor.settlementId}}/survivor/{{survivor.id}}/equipment/">
         Equipment Grid
       </ion-button>
     </ion-item-group>

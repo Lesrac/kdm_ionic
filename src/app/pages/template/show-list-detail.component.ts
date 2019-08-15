@@ -29,8 +29,18 @@ export class ShowListDetailComponent implements OnInit {
     this.route.data.subscribe(data => this.type = data.type);
     switch (this.type) {
       case ShowListTypes.FIGHTINGART:
+        this.object$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+          const observableObject = this.kdmData.getFightingArt(params.get('name'));
+          observableObject.then(baseModel => this.localObject = baseModel);
+          return observableObject;
+        }));
         break;
       case ShowListTypes.DISORDER:
+        this.object$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
+          const observableObject = this.kdmData.getDisorder(params.get('name'));
+          observableObject.then(baseModel => this.localObject = baseModel);
+          return observableObject;
+        }));
         break;
       case ShowListTypes.INNOVATION:
         this.object$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {

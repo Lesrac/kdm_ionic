@@ -9,6 +9,9 @@ import { Disorder } from '../../model/disorder';
 import { Armor } from '../../model/armor';
 import { Equipment } from '../../model/equipment';
 import { Weapon } from '../../model/weapon';
+import { Settlement } from '../../model/settlement';
+import { KDMDBService } from '../../service/kdm-db.service';
+import { Survivor } from '../../model/survivor';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -20,13 +23,17 @@ export class ShowListAddModalComponent implements AfterViewInit {
 
   objects: Object[] = [];
   existingObjects: Object[] = [];
+  settlement: Settlement;
+  survivor: Survivor;
   typename: string = 'Non selected';
   objectName: string;
   type: ShowListTypes;
 
-  constructor(public modalCtrl: ModalController, public params: NavParams, public kdmData: KDMDataService) {
+  constructor(public modalCtrl: ModalController, public params: NavParams, public kdmData: KDMDataService, public kdm: KDMDBService) {
     this.objects = this.params.get('objects');
     this.type = this.params.get('type');
+    this.settlement = this.params.get('settlement');
+    this.survivor = this.params.get('survivor');
   }
 
   ngAfterViewInit(): void {
@@ -37,6 +44,7 @@ export class ShowListAddModalComponent implements AfterViewInit {
     const object = this.existingObjects.find((item: BaseModel) => item.name === this.objectName);
     if (object) {
       this.objects.push(object);
+      this.kdm.saveSettlement(this.settlement);
     }
     this.close();
   }
@@ -86,7 +94,8 @@ export class ShowListAddModalComponent implements AfterViewInit {
     switch (this.type) {
       case ShowListTypes.FIGHTINGART:
         this.typename = 'Fighting Art';
-        this.kdmData.getFightingArts().then(fightingArt => this.existingObjects = fightingArt.filter(art => this.objects.indexOf(art) === -1).sort(this.kdmData.sortByName));
+        this.kdmData.getFightingArts().then(fightingArts => this.existingObjects = fightingArts.filter(fightingArt => this.objects.indexOf(fightingArt) === -1)
+        .sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.DISORDER:
         this.typename = 'DISORDER';
@@ -100,7 +109,8 @@ export class ShowListAddModalComponent implements AfterViewInit {
         break;
       case ShowListTypes.LOCATION:
         this.typename = 'Location';
-        this.kdmData.getSettlementLocations().then(locations => this.existingObjects = locations.filter(location => this.objects.indexOf(location) === -1).sort(this.kdmData.sortByName));
+        this.kdmData.getSettlementLocations().then(locations => this.existingObjects = locations.filter(location => this.objects.indexOf(location) === -1)
+        .sort(this.kdmData.sortByName));
         break;
       case ShowListTypes.EQUIPMENT:
         this.typename = 'Equipment';

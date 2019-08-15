@@ -8,6 +8,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap } from 'rxjs/operators';
 import { KDMDataService } from '../../service/kdm-data.service';
+import { Survivor } from '../../model/survivor';
 
 /**
  * Created by Daniel on 16.03.2017.
@@ -22,6 +23,7 @@ export class ShowListComponent implements OnInit {
   title: string;
   settlement$: Observable<Settlement>;
   localSettlement: Settlement;
+  localSurvivor: Survivor;
 
   constructor(public router: Router, public route: ActivatedRoute, public modalCtrl: ModalController, public kdmData: KDMDataService) {
   }
@@ -33,7 +35,7 @@ export class ShowListComponent implements OnInit {
   addObject(): void {
     this.modalCtrl.create({
       component: ShowListAddModalComponent, componentProps: {
-        objects: this.objects, type: this.type,
+        objects: this.objects, type: this.type, settlement: this.localSettlement, survivor: this.localSurvivor,
       },
     }).then(modal => modal.present());
   }
@@ -46,8 +48,10 @@ export class ShowListComponent implements OnInit {
   showDetail(object: BaseModel): void {
     switch (this.type) {
       case ShowListTypes.FIGHTINGART:
+        this.router.navigate(['kdm', 'survivors', this.localSettlement.id, 'survivor', this.localSurvivor.id, 'fightingArts', object.name]).then();
         break;
       case ShowListTypes.DISORDER:
+        this.router.navigate(['kdm', 'survivors', this.localSettlement.id, 'survivor', this.localSurvivor.id, 'disorders', object.name]).then();
         break;
       case ShowListTypes.INNOVATION:
         this.router.navigate(['kdm', 'settlements', this.localSettlement.id, 'innovations', object.name]).then();
@@ -85,14 +89,16 @@ export class ShowListComponent implements OnInit {
     }
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
       const stlmt = this.kdmData.getSettlement(+params.get('id'));
-      stlmt.then(settlement => {
+      stlmt.then((settlement: Settlement) => {
         this.localSettlement = settlement;
         switch (this.type) {
           case ShowListTypes.FIGHTINGART:
-            //          t = localSettlement.fightingArts;
+            this.localSurvivor = settlement.survivors.find(survivor => survivor.id === +params.get('survivorId'));
+            this.objects = this.localSurvivor.fightingArts;
             break;
           case ShowListTypes.DISORDER:
-            //      t = localSettlement.disorders;
+            this.localSurvivor = settlement.survivors.find(survivor => survivor.id === +params.get('survivorId'));
+            this.objects = this.localSurvivor.disorders;
             break;
           case ShowListTypes.INNOVATION:
             this.objects = settlement.innovations;
