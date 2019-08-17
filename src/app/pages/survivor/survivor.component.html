@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/kdm/survivors"></ion-back-button>
+    </ion-buttons>
     <ion-title>
-      <ion-item>
-        Survivor
-     <!--   <ion-input required [(ngModel)]="survivor.name"></ion-input> -->
+      <ion-item *ngIf="survivor$ | async as survivor">
+        <ion-input required [(ngModel)]="survivor.name"></ion-input>
       </ion-item>
     </ion-title>
   </ion-toolbar>

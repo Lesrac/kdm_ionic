@@ -23,17 +23,15 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Init Principles');
     this.settlement$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => {
       const obsSettlement = this.kdmData.getSettlement(+params.get('id'));
-      //    obsSettlement.then(stlmnt => this.settlement = stlmnt);
+      obsSettlement.then(settlement => this.settlement = settlement);
       return obsSettlement;
     }));
     this.kdmData.getPrincipleTypes().then(principleTypes => this.allPrincipleTypes = principleTypes);
   }
 
   principleIsChosen(type: PrincipleType, stlmt: Settlement): boolean {
-    console.log(stlmt);
     if (stlmt) {
       return stlmt.principles.find((principle: Principle) => principle.type.name === type.name) != null;
     }
@@ -59,10 +57,6 @@ export class PrinciplesPageComponent implements OnInit {
   }
 
   showDetail(principleType: PrincipleType): void {
-    console.log(this.settlement);
-    console.log(this.settlement$.subscribe(shaddap => {
-      console.log(shaddap);
-    }));
     const principle: Principle = this.settlement.principles.find(princ => princ.type.name === principleType.name);
     this.router.navigate(['kdm', 'settlements', this.settlement.id, 'principles', principle.name]).then();
   }
